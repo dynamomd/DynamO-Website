@@ -48,7 +48,6 @@ include_once("pages/".$page.".php");
       var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
       })();
     </script>
-
     <link href="/video-js/video-js.css" rel="stylesheet" type="text/css">
     <script src="/video-js/video.js"></script>
     <script>_V_.options.flash.swf = "/video-js/video-js.swf";</script>

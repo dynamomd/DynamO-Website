@@ -98,5 +98,13 @@
     state of the polymer.
   </li>
 </ul>
+
+<div style="margin-left:auto; margin-right:auto; width:1280px;">
+  <video class="video-js vjs-default-skin" controls preload="metadata" width="100%" height="702" data-setup="{}">
+    <source src="/videos/sleepingparticles.mp4" type='video/mp4'>
+  </video>
+</div>
+
+
 <!-- Page End -->
 <?php $content = ob_get_clean(); ?>
