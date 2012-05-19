@@ -20,6 +20,7 @@ body {
 /* Stuff for making full width HTML5 and flash videos */
 video {
 	max-width: 100%;
+	min-width:533px;
 	height: auto;
 }
 
@@ -44,7 +45,7 @@ video {
 /* Floating footer code */
 #wrapper { 
     min-height:100%; 
-    min-width:600px;
+    min-width:768px;
     overflow-y:visible; 
     position:relative; 
 }
@@ -132,6 +133,7 @@ video {
     padding-right:15px; 
     padding-top:10px; 
     padding-bottom:10px;
+    min-width:533px; 
 }
 
 .code { background-color:<?php echo $codebg;?>; font-family:monospace; padding:5px; }

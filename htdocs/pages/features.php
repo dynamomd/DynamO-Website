@@ -91,7 +91,7 @@
 <h2>Sheared and Compressed Polydisperse Hard Spheres</h2>
 
 <h2>Gravity, boundary sphere meshes and sleeping particles</h2>
-<div class="video-container" >
+<div class="video-container" style="padding-bottom: 54.90%; " >
   <video controls >
     <source src="/videos/sleepingparticles.mp4" type='video/mp4' />
     <source src="/videos/sleepingparticles.ogg" type='video/ogg' />
