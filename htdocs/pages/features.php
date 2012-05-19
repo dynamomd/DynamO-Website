@@ -11,11 +11,6 @@
    ?>
 <!-- Page Begin -->
 <h1>Simple Systems</h1>
-<div class="figure" style="width:365px;">
-  <iframe style="height:225px;" src="http://www.youtube-nocookie.com/embed/VGSY6DNrrxk?rel=0" frameborder="0" allowfullscreen></iframe>
-  <div class="caption">A polydisperse, sheared system undergoing compression.</div>
-</div>
-
 <p>DynamO can simulate:</p>
 <ul>
   <li>
@@ -46,14 +41,6 @@
 </ul>
 
 <h1>Granular Systems/Complex Boundaries</h1>
-<div class="figure" style="width:365px;">
-  <iframe style="height:230px;" src="http://www.youtube-nocookie.com/embed/9oaobaxhGX8?rel=0" frameborder="0"></iframe>
-  <div class="caption">
-    Hopper emptying through a chute modelled with sphere meshes, and
-    accelerated using sleeping particles (dynamic particles turn white
-    when sleeping).
-  </div>
-</div>
 <p>DynamO contains all the latest EDMD algorithms for dissipative
   systems:</p>
 <ul>
@@ -99,12 +86,18 @@
   </li>
 </ul>
 
-<div style="margin-left:auto; margin-right:auto; width:1280px;">
-  <video class="video-js vjs-default-skin" controls preload="metadata" width="100%" height="702" data-setup="{}">
-    <source src="/videos/sleepingparticles.mp4" type='video/mp4'>
+<h1>Example Videos</h1>
+
+<h2>Sheared and Compressed Polydisperse Hard Spheres</h2>
+
+<h2>Gravity, boundary sphere meshes and sleeping particles</h2>
+<div class="video-container" >
+  <video controls >
+    <source src="/videos/sleepingparticles.mp4" type='video/mp4' />
+    <source src="/videos/sleepingparticles.ogg" type='video/ogg' />
+    <iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/9oaobaxhGX8" frameborder="0" allowfullscreen></iframe>
   </video>
 </div>
-
 
 <!-- Page End -->
 <?php $content = ob_get_clean(); ?>

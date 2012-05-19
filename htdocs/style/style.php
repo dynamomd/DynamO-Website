@@ -9,12 +9,36 @@ $hoverbutton = "#bbcccc";
 
 /* Main html element styles */
 html { height: 100%; }
-/*#e4f4ff*/
+
 body { 
     margin: 0; 
     padding: 0; 
     height: 100%; 
     background-color:<?php echo $sitebg; ?>; 
+}
+
+/* Stuff for making full width HTML5 and flash videos */
+video {
+	max-width: 100%;
+	height: auto;
+}
+
+.video-container {
+    position: relative;
+    padding-bottom: 56.25%;
+    padding-top: 30px;
+    height: 0;
+    overflow: hidden;
+}
+
+.video-container iframe,  
+.video-container object,  
+.video-container embed {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
 }
 
 /* Floating footer code */
