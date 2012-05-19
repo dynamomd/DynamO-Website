@@ -17,6 +17,10 @@ body {
     background-color:<?php echo $sitebg; ?>; 
 }
 
+h1 {
+   min-width:533px;
+}
+
 /* Stuff for making full width HTML5 and flash videos */
 video {
 	max-width: 100%;
@@ -118,6 +122,7 @@ video {
     margin-left:190px; 
     margin-right:15px;
     position:relative;
+    min-width:563px;
 }
 
 #pagetitle { 
