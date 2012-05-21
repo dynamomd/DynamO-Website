@@ -78,7 +78,7 @@ ob_start();
   </li>
   <li>
     A small PNG library is used for saving snapshots and was provided
-    by <a href="http://blue-neutrino.com/">Severin Strobl</a>.
+    by <a href="http://www.blue-neutrino.com/">Severin Strobl</a>.
   </li>
   <li>
     A big thank you to Michael R Sweet for
