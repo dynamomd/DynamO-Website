@@ -30,8 +30,6 @@ ob_start();
   available at the link below.
 </p>
 <div style="text-align:center;"><?php button("DynamO API Documentation","/doxygen");?></div>
-</table> 
-
 <h1>Reporting Bugs</h1>
 <p>If you think you've found a bug, please report it using the GitHub
 Issue tracker link below.</p>

@@ -95,7 +95,7 @@
   <video controls >
     <source src="/videos/sleepingparticles.mp4" type='video/mp4' />
     <source src="/videos/sleepingparticles.ogg" type='video/ogg' />
-    <iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/9oaobaxhGX8" frameborder="0" allowfullscreen></iframe>
+    <iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/9oaobaxhGX8" allowfullscreen></iframe>
   </video>
 </div>
 
