@@ -1,4 +1,6 @@
 <?php
+header("Content-Type: text/html; charset=utf-8");
+
 function button($text, $link)
 {
 ?>
@@ -30,6 +32,7 @@ include_once("pages/".$page.".php");
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
     <meta name="description" content="DynamO Event Driven Simulation Package" />
     <meta name="keywords" content="DynamO, Event Driven Simulation, hard sphere, square well" />
     <meta name="author" content="Marcus Bannerman" />
