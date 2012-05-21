@@ -9,8 +9,8 @@ if (!isset($in_template))
 $pagetitle="Credits";
 ob_start();
    ?>
-<img height="80" width="200" src="/images/EPSRC.png" style="margin: 35px 5px; float:left;">
-<img height="150" width="192" src="/images/MSS_logo.png" style="margin: 0px 5px; float:left;">
+<img height="80" width="200" alt="Logo for the EPSRC" src="/images/EPSRC.png" style="margin: 35px 5px; float:left;"></img>
+<img height="150" width="192" alt="Logo for the MSS research group in Erlangen" src="/images/MSS_logo.png" style="margin: 0px 5px; float:left;"></img>
 <div style="clear: both; height: 10px;"></div>
 <h1>Programming Credits</h1>
 <ul>
