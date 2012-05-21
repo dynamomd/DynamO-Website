@@ -32,11 +32,26 @@ ob_start();
 <div style="text-align:center;"><?php button("DynamO API Documentation","/doxygen");?></div>
 </table> 
 
-<h1>Support</h1> 
+<h1>Reporting Bugs</h1>
+<p>If you think you've found a bug, please report it using the GitHub
+Issue tracker link below.</p>
+<div style="text-align:center;"><?php button("GitHub Issue
+Tracker","https://github.com/toastedcrumpets/DynamO/issues");?></div>
 
-<p>If you have a problem and cannot find the answer in the
-documentation, you can email your queries to the following
+<h1>Support</h1>
+<p>If you have a problem which is not a bug and cannot find the answer
+in the documentation, you can email your queries to the following
 address:</p>
-<p style="text-align:center;">support@dynamomd.org</p>
+<p style="text-align:center;"><a href="mailto:support@dynamomd.org">support@dynamomd.org</a></p>
+<h1>Citing DynamO</h1>
+<p>If you find the DynamO useful and publish a paper using results
+obtained from DynamO, please help support it's development by citing
+the following paper.</p>
+<div style="text-align:center;">
+  M. N. Bannerman, R. Sargant, L. Lue, "DynamO: A free O(N) general
+    event-driven simulator,"<em>
+    J. Comp. Chem.</em>, <strong>32</strong>, 3329-3338 (2011)"
+  <br/><a href="http://dx.doi.org/10.1002/jcc.21915"> Link to journal article</a>
+</div>
 <!-- Page End -->
 <?php $content = ob_get_clean(); ?>

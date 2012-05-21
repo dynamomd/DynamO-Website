@@ -74,7 +74,7 @@ include_once("pages/".$page.".php");
 	<div class="horizontalborder"></div>
 	<a href="/index.php/news">News</a>
 	<a href="/index.php/download">Download</a>
-	<a href="/index.php/documentation">Documentation</a>
+	<a href="/index.php/documentation">Docs/Support</a>
 	<a href="/index.php/features">Features</a>
 	<div class="bottomleftcornerborder sprite"></div>
 	<div class="bottomrightcornerborder sprite"></div>
