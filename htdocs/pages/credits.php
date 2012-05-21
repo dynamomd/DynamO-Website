@@ -9,9 +9,10 @@ if (!isset($in_template))
 $pagetitle="Credits";
 ob_start();
    ?>
-<img height="80" width="200" alt="Logo for the EPSRC" src="/images/EPSRC.png" style="margin: 35px 5px; float:left;"></img>
-<img height="150" width="192" alt="Logo for the MSS research group in Erlangen" src="/images/MSS_logo.png" style="margin: 0px 5px; float:left;"></img>
-<div style="clear: both; height: 10px;"></div>
+<img height="80" width="214" alt="Logo for the University of Aberdeen" src="/images/UoALogo.png" style="margin: 45px 15px 10px 15px; float:left;"></img>
+<img height="80" width="200" alt="Logo for the EPSRC" src="/images/EPSRC.png" style="margin: 45px 15px 10px 15px; float:left;"></img>
+<img height="150" width="192" alt="Logo for the MSS research group in Erlangen" src="/images/MSS_logo.png" style="margin: 10px 15px 10px 15px; float:left;"></img>
+<div style="clear: both;"></div>
 <h1>Programming Credits</h1>
 <ul>
   <li>
