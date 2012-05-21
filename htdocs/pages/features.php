@@ -86,7 +86,7 @@
   </li>
 </ul>
 
-<h1>Example Videos</h1>
+<h1>Videos of Example Systems</h1>
 
 <h2>Sheared and Compressed Polydisperse Hard Spheres</h2>
 

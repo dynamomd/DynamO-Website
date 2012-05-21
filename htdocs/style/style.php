@@ -21,6 +21,8 @@ h1 {
    min-width:533px;
 }
 
+li {margin:5px;}
+
 /* Stuff for making full width HTML5 and flash videos */
 video {
 	max-width: 100%;
