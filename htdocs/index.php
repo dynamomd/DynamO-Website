@@ -1,5 +1,6 @@
 <?php
 header("Content-Type: text/html; charset=utf-8");
+date_default_timezone_set('Europe/London');
 
 function pagestart($title)
  {
@@ -13,6 +14,10 @@ function pagestart($title)
   $pagetitle=$title;
   ob_start();
  }
+
+function includenews($newsfile)
+{
+}
 
 function pageend() 
  {
@@ -123,7 +128,7 @@ include_once("pages/".$page.".php");
 	<div class="bottomleftcornerborder sprite"></div>
       </div>
       <div class="bordercentre">
-	<p>Copyright &copy; 2008-<?php date_default_timezone_set('Europe/London'); echo date("Y"); ?></p>
+	<p>Copyright &copy; 2008-<?php echo date("Y"); ?></p>
 	<a href="http://validator.w3.org/check?uri=referer" class="w3footerlogo" style="background: url('/images/valid-xhtml11-blue.png'); right:0;"></a>
 	<a href="http://jigsaw.w3.org/css-validator/check/referer" class="w3footerlogo" style="background: url('/images/vcss-blue.png'); right:93px;"></a>
       </div>

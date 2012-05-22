@@ -23,6 +23,14 @@ h1 {
 
 li {margin:5px;}
 
+
+.newsdate {
+    display:inline;
+    float:right;
+    padding-top:10px;
+    font-weight:bold;
+}
+
 /* Stuff for making full width HTML5 and flash videos */
 video {
 	max-width: 100%;

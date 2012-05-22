@@ -26,6 +26,10 @@ $file_array=glob('pages/news/*.html');
 rsort($file_array);
 
 if (!empty($file_array))
-{ include(current($file_array)); }
+{ 
+  $filename = current($file_array);
+ echo "<div class=\"newsdate\">".date("jS F Y", filemtime($filename))."</div>";
+ include($filename); 
+}
 pageend();
 ?>
