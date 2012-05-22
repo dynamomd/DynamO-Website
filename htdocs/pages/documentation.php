@@ -1,14 +1,4 @@
-<?php
-/*Check that this file is being accessed by the template*/
-if (!isset($in_template))
-  {
-    header( 'Location: /index.php/404');
-    return;
-  }
-
-$pagetitle="Documentation";
-ob_start();
-   ?>
+<?php pagestart("Documentation"); ?>
 <h1>Tutorials</h1> 
 <p>
   The documentation for DynamO is still being written and limited to a
@@ -46,7 +36,7 @@ the following paper.</p>
 <div style="text-align:center;">
   M. N. Bannerman, R. Sargant, L. Lue, "DynamO: A free O(N) general
     event-driven simulator,"<em>
-    J. Comp. Chem.</em>, <strong>32</strong>, 3329-3338 (2011)"
+    J. Comp. Chem.</em>, <b>32</b>, 3329-3338 (2011)"
   <br/><a href="http://dx.doi.org/10.1002/jcc.21915"> Link to journal article</a>
 </div>
 <h1>Alternatives</h1>
@@ -94,5 +84,4 @@ the following paper.</p>
       field.
   </li>
 </ul>
-<!-- Page End -->
-<?php $content = ob_get_clean(); ?>
+<?php pageend(); ?>

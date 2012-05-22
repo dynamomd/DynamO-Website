@@ -1,14 +1,4 @@
-<?php
-/*Check that this file is being accessed by the template*/
-if (!isset($in_template))
-  {
-    header( 'Location: /index.php/404');
-    return;
-  }
-
-$pagetitle="Credits";
-ob_start();
-   ?>
+<?php pagestart("Credits"); ?>
 <img height="80" width="214" alt="Logo for the University of Aberdeen" src="/images/UoALogo.png" style="margin: 45px 15px 10px 15px; float:left;"></img>
 <img height="80" width="200" alt="Logo for the EPSRC" src="/images/EPSRC.png" style="margin: 45px 15px 10px 15px; float:left;"></img>
 <img height="150" width="192" alt="Logo for the MSS research group in Erlangen" src="/images/MSS_logo.png" style="margin: 10px 15px 10px 15px; float:left;"></img>
@@ -85,16 +75,12 @@ ob_start();
     A big thank you to Michael R Sweet for
     creating <a href="http://www.easysw.com/~mike/fldiff/index.html">fldiff</a>,
     a program which makes it so easy to compare good and bad EDMD
-    trajectories, its saved me hours of debugging the schedulers!
+    trajectories, its has saved hours of debugging in the scheduler code.
   </li>
   <li>
-    The coil library can render 100,000's of spheres in realtime
-    thanks to its dynamic tesselation of spheres, calculated using
-    OpenCL. This would of been a lot harder without the help of Cédric
-    Laugerotte's website
-    on <a href="http://student.ulb.ac.be/~claugero/sphere/index.html">sphere
-    tesselation</a>.
+    Cédric Laugerotte's website was a great help for determining
+    <a href="http://student.ulb.ac.be/~claugero/sphere/index.html">tesselations
+    of spheres</a>.
   </li>
 </ul>
-<!-- Page End -->
-<?php $content = ob_get_clean(); ?>
+<?php pageend(); ?>

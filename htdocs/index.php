@@ -1,17 +1,36 @@
 <?php
 header("Content-Type: text/html; charset=utf-8");
 
+function pagestart($title)
+ {
+  global $pagetitle, $in_template;
+  /*Check that this file is being accessed by the template*/
+  if (!isset($in_template))
+  {
+   header( 'Location: /index.php/404');
+   return;
+  }
+  $pagetitle=$title;
+  ob_start();
+ }
+
+function pageend() 
+ {
+  global $content;
+  $content = ob_get_clean(); 
+ }
+
 function button($text, $link)
-{
-?>
+ {
+ ?>
 <div class="button" >
   <div class="left"></div>
   <a href="<?php echo $link;?>" ><span></span></a>
   <div class="center"><?php echo $text;?></div>
   <div class="right"></div>
 </div>
-<?php
-}
+ <?php
+ }
 
 /* Set the default page accessed when someone opens this file*/
 $page="frontpage";
@@ -27,7 +46,6 @@ if (!file_exists("pages/".$page.".php"))
 /*Load the page*/
 $in_template=1;
 include_once("pages/".$page.".php");
-
 ?>
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
