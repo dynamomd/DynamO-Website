@@ -109,7 +109,7 @@ include_once("pages/".$page.".php");
 	<div class="toprightcornerborder sprite"></div>
 	<div class="horizontalborder"></div>
 	<div id="pagetitle"><?php echo $pagetitle; ?></div>
-	<div id="content"><?php echo $content; ?></div>
+	<div id="content"><div style="width:100%;"><?php echo $content; ?></div></div>
 	<div class="bottomleftcornerborder sprite"></div> 
 	<div class="bottomrightcornerborder sprite"></div>
 	<div class="horizontalborder"></div>
