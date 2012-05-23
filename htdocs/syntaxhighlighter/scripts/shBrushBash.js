@@ -27,7 +27,7 @@
 						'diff diff3 dig dir dircolors dirname dirs du echo egrep eject enable env ethtool eval ' +
 						'exec exit expand export expr false fdformat fdisk fg fgrep file find fmt fold format ' +
 						'free fsck ftp gawk getopts grep groups gzip hash head history hostname id ifconfig ' +
-						'import install join kill less let ln local locate logname logout look lpc lpr lprint ' +
+						'import join kill less let ln local locate logname logout look lpc lpr lprint ' +
 						'lprintd lprintq lprm ls lsof make man mkdir mkfifo mkisofs mknod more mount mtools ' +
 						'mv netstat nice nl nohup nslookup open op passwd paste pathchk ping popd pr printcap ' +
 						'printenv printf ps pushd pwd quota quotacheck quotactl ram rcp read readonly renice ' +
@@ -35,17 +35,21 @@
 						'sleep sort source split ssh strace su sudo sum symlink sync tail tar tee test time ' +
 						'times touch top traceroute trap tr true tsort tty type ulimit umask umount unalias ' +
 						'uname unexpand uniq units unset unshar useradd usermod users uuencode uudecode v vdir ' +
-						'vi watch wc whereis which who whoami Wget xargs yes'
+						'vi watch wc whereis which who whoami Wget xargs yes' +
+		                                'emacs git'
 						;
 
 		this.regexList = [
-			{ regex: /^#!.*$/gm,											css: 'preprocessor bold' },
-			{ regex: /\/[\w-\/]+/gm,										css: 'plain' },
+			{ regex: /^#!.*$/gm,							css: 'preprocessor bold' },
+			{ regex: /\/[\w-\/]+/gm,						css: 'plain' },
 			{ regex: SyntaxHighlighter.regexLib.singleLinePerlComments,		css: 'comments' },		// one line comments
 			{ regex: SyntaxHighlighter.regexLib.doubleQuotedString,			css: 'string' },		// double quoted strings
 			{ regex: SyntaxHighlighter.regexLib.singleQuotedString,			css: 'string' },		// single quoted strings
 			{ regex: new RegExp(this.getKeywords(keywords), 'gm'),			css: 'keyword' },		// keywords
-			{ regex: new RegExp(this.getKeywords(commands), 'gm'),			css: 'functions' }		// commands
+		        { regex: new RegExp(this.getKeywords(commands), 'gmi'),			css: 'functions' },		// commands
+		        { regex: /[A-z0-9\.\/]*(dynamod)/gm,			                css: 'functions' },		// The dynamo commands
+		        { regex: /[A-z0-9\.\/]*(dynarun)/gm,			                css: 'functions' },		// ...
+			{ regex: /[A-z0-9\.\/]*(bjam)/gm,			                css: 'functions' }		// ...
 			];
 	}
 
