@@ -1,4 +1,6 @@
 <?php
+header("Content-Type: text/html; charset=utf-8");
+date_default_timezone_set('Europe/London');
 
 function box_start($id)
 {
@@ -22,17 +24,36 @@ function box_end()
 <?php
 }
 
+function pagestart($title)
+ {
+  global $pagetitle, $in_template;
+  /*Check that this file is being accessed by the template*/
+  if (!isset($in_template))
+  {
+   header( 'Location: /index.php/404');
+   return;
+  }
+  $pagetitle=$title;
+  ob_start();
+ }
+
+function pageend() 
+ {
+  global $content;
+  $content = ob_get_clean(); 
+ }
+
 function button($text, $link)
-{
-?>
+ {
+ ?>
 <div class="button" >
   <div class="left"></div>
   <a href="<?php echo $link;?>" ><span></span></a>
   <div class="center"><?php echo $text;?></div>
   <div class="right"></div>
 </div>
-<?php
-}
+ <?php
+ }
 
 /* Set the default page accessed when someone opens this file*/
 $page="frontpage";
@@ -46,14 +67,14 @@ if (!file_exists("pages/".$page.".php"))
 { $page="404"; }
 
 /*Load the page*/
+$syntaxhighlighter=0;
 $in_template=1;
 include_once("pages/".$page.".php");
-
 ?>
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
     <meta name="description" content="DynamO Event Driven Simulation Package" />
     <meta name="keywords" content="DynamO, Event Driven Simulation, hard sphere, square well" />
     <meta name="author" content="Marcus Bannerman" />
@@ -71,9 +92,6 @@ include_once("pages/".$page.".php");
       var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
       })();
     </script>
-    <link href="/video-js/video-js.css" rel="stylesheet" type="text/css">
-    <script src="/video-js/video.js"></script>
-    <script>_V_.options.flash.swf = "/video-js/video-js.swf";</script>
   </head>
   <body>
     <div id="wrapper">
@@ -88,8 +106,9 @@ include_once("pages/".$page.".php");
 	<div class="horizontalborder"></div>
 	<a href="/index.php/news">News</a>
 	<a href="/index.php/download">Download</a>
-	<a href="/index.php/documentation">Documentation</a>
+	<a href="/index.php/documentation">Docs/Support</a>
 	<a href="/index.php/features">Features</a>
+	<a href="/index.php/credits">Credits</a>
 	<div class="bottomleftcornerborder sprite"></div>
 	<div class="bottomrightcornerborder sprite"></div>
 	<div class="horizontalborder"></div>
@@ -110,7 +129,7 @@ include_once("pages/".$page.".php");
 	<div class="bottomleftcornerborder sprite"></div>
       </div>
       <div class="bordercentre">
-	<p>Copyright &copy; 2008-<?php date_default_timezone_set('Europe/London'); echo date("Y"); ?></p>
+	<p>Copyright &copy; 2008-<?php echo date("Y"); ?></p>
 	<a href="http://validator.w3.org/check?uri=referer" class="w3footerlogo" style="background: url('/images/valid-xhtml11-blue.png'); right:0;"></a>
 	<a href="http://jigsaw.w3.org/css-validator/check/referer" class="w3footerlogo" style="background: url('/images/vcss-blue.png'); right:93px;"></a>
       </div>
@@ -120,5 +139,19 @@ include_once("pages/".$page.".php");
 	<div class="bottomrightcornerborder sprite"></div>
       </div>
     </div>
+    <?php if ($syntaxhighlighter) { ?>
+    <link href="/syntaxhighlighter/styles/shThemeDynamO.css" type="text/css" rel="stylesheet" />
+    <link href="/syntaxhighlighter/styles/shCore.css" type="text/css" rel="stylesheet" />
+    <script type="text/javascript" src="/syntaxhighlighter/scripts/shCore.js"></script>
+    <script type="text/javascript" src="/syntaxhighlighter/scripts/shAutoloader.js"></script>
+    <script type="text/javascript">
+      SyntaxHighlighter.autoloader(
+      'cpp c /syntaxhighlighter/scripts/shBrushCpp.js',
+      'bash shell script /syntaxhighlighter/scripts/shBrushBash.js',
+      'xml /syntaxhighlighter/scripts/shBrushXml.js',
+      'text plain /syntaxhighlighter/scripts/shBrushPlain.js'
+      );
+      SyntaxHighlighter.all()</script>
+    <?php } ?>
   </body>
 </html>
