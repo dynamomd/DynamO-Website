@@ -5,7 +5,8 @@
   set of tutorials on the basic topics. Please click on any of the
   links below to take a look
 </p>
-<div style="text-align:center;"><?php button("Tutorial 1: Compiling DynamO from Source","/index.php/tutorial1");?></div>
+<div style="text-align:center; padding:5px;"><?php button("Tutorial 1: Compiling DynamO from Source","/index.php/tutorial1");?></div>
+<div style="text-align:center; padding:5px;"><?php button("Tutorial 2: Running a Simulation of Hard Spheres","/index.php/tutorial2");?></div>
 <p>
   If what you need to simulate is not covered in the tutorials, but is
   listed in the <a href="/index.php/features">features</a>, please

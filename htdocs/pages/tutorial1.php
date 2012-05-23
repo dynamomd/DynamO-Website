@@ -67,11 +67,12 @@
 </ul>
 <h1>Step 1: Download the Source Code</h1>
 <p>
-  Use the menu link to the left to download a copy of DynamO. Once
-  you have the source code, change into the directory ready to start the
-  build.
+  Use the menu link to the left to download a copy of DynamO. Once you
+  have the source code, change into the directory ready to start the
+  build. I download the DynamO source code to my home directory, so I
+  would type:
 </p>
-<pre class="brush: shell">cd DynamO</pre>
+<pre class="brush: shell">cd ~/DynamO</pre>
 <h1>Step 2: Compilation and Installation</h1>
 <p>
   DynamO uses the modern, powerful, but quite complicated boost-build
