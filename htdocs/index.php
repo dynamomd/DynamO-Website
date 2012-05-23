@@ -2,7 +2,7 @@
 header("Content-Type: text/html; charset=utf-8");
 date_default_timezone_set('Europe/London');
 
-function box_start($id)
+function white_box_start($id)
 {
 echo "<div ";
 if ($id) echo "id=\"".$id."\"";
@@ -14,7 +14,7 @@ echo ">";
 <?php
 }
 
-function box_end()
+function white_box_end()
 {
 ?>
 <div class="bottomleftcornerborder sprite"></div>
@@ -96,28 +96,25 @@ include_once("pages/".$page.".php");
   <body>
     <div id="wrapper">
       <!-- HEADER AND LOGO -->
-      <?php box_start("header"); ?>
+      <?php white_box_start("header"); ?>
       <a href="/" id="sitelogo" ></a>
-      <?php box_end(); ?>
+      <?php white_box_end(); ?>
+
       <!-- MENU -->
-      <div id="leftmenu">
-	<div class="topleftcornerborder sprite"></div> 
-	<div class="toprightcornerborder sprite"></div>
-	<div class="horizontalborder"></div>
-	<a href="/index.php/news">News</a>
-	<a href="/index.php/download">Download</a>
-	<a href="/index.php/documentation">Docs/Support</a>
-	<a href="/index.php/features">Features</a>
-	<a href="/index.php/credits">Credits</a>
-	<div class="bottomleftcornerborder sprite"></div>
-	<div class="bottomrightcornerborder sprite"></div>
-	<div class="horizontalborder"></div>
-      </div>
+      <?php white_box_start("leftmenu"); ?>
+      <a href="/index.php/news">News</a>
+      <a href="/index.php/download">Download</a>
+      <a href="/index.php/documentation">Docs/Support</a>
+      <a href="/index.php/features">Features</a>
+      <a href="/index.php/credits">Credits</a>
+      <?php white_box_end(); ?>
+
       <!-- CONTENT -->
-      <?php box_start("contentwrapper"); ?>
+      <?php white_box_start("contentwrapper"); ?>
       <div id="pagetitle"><?php echo $pagetitle; ?></div>
       <div id="content"><?php echo $content; ?></div>
-      <?php box_end(); ?>
+      <?php white_box_end(); ?>
+
       <!-- A DIV TO STOP THE FOOTER OVERLAPPING THE CONTENT -->
       <div id="wrapperfooterpad"></div>
     </div>

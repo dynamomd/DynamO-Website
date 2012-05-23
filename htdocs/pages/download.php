@@ -1,23 +1,28 @@
-<?php pagestart("Download"); ?>
-<p>DynamO is an open-source and free code, made available under
-version 3 of the GPL licence. There are several ways you can obtain a
-copy of the source code and these are listed below.</p>
-
+<?php 
+   $syntaxhighlighter=1;
+   pagestart("Download"); 
+?>
+<p> 
+  DynamO is an open-source and free code, made available under
+  version 3 of the GPL licence. There are several ways you can obtain a
+  copy of the source code and these are listed below.
+</p>
 <h1>Git Access to the Source</h1> 
+<p>
+  The recommended method to downloade an up-to-date copy of the DynamO
+  sources is using git and
+  the <a href="https://github.com/toastedcrumpets/DynamO"> public
+  GitHub repository</a>.
+</p>
 
-<p>The recommended method to downloade an up-to-date copy of the
-DynamO sources is using git and the <a
-href="https://github.com/toastedcrumpets/DynamO"> public GitHub
-repository</a>.</p>
-
-<p> Just use the following git command in your terminal:</p> 
-
-<div class="code"> git clone
-https://github.com/toastedcrumpets/DynamO.git
-</div>
-
-<p>This will create a folder called <em>DynamO</em> in the working
-directory.</p>
+<p>
+  Just use the following git command in your terminal:
+</p> 
+<pre class="brush: shell">git clone https://github.com/toastedcrumpets/DynamO.git</pre>
+<p>
+  This will create a folder called <em>DynamO</em> in the working
+  directory.
+</p>
 <p>
   You can now pick which branch or version of DynamO you'd like. There
   are several available, but the default <b>master</b>
@@ -45,8 +50,7 @@ directory.</p>
 </ul>
 <p>If you decide you want something other than the default branch
 (master), just check it out using the following command:</p>
-<div class="code">git checkout dynamo-1-2</div>
-
+<pre class="brush: shell">git checkout dynamo-1-2</pre>
 <h1>Alternative Source Code Downloads</h1>
 <p>
   It is recommended that you use the git to download the source code
@@ -54,7 +58,6 @@ directory.</p>
   git on your computer, you may download a copy of the sources using
   the links below.
 </p>
-
 <div style="text-align:center; padding: 5px;"><?php button("Download Latest Development Branch","https://github.com/toastedcrumpets/DynamO/zipball/master");?></div>
 <div style="text-align:center; padding: 5px;"><?php button("Download Stable Version 1.3","https://github.com/toastedcrumpets/DynamO/zipball/dynamo-1-3");?></div>
 <div style="text-align:center; padding: 5px;"><?php button("Download Stable Version 1.2","https://github.com/toastedcrumpets/DynamO/zipball/dynamo-1-2");?></div>
