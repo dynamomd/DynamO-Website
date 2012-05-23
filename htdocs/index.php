@@ -1,4 +1,27 @@
 <?php
+
+function box_start($id)
+{
+echo "<div ";
+if ($id) echo "id=\"".$id."\"";
+echo ">";
+?>
+<div class="topleftcornerborder sprite"></div> 
+<div class="toprightcornerborder sprite"></div>
+<div class="horizontalborder"></div>
+<?php
+}
+
+function box_end()
+{
+?>
+<div class="bottomleftcornerborder sprite"></div>
+<div class="bottomrightcornerborder sprite"></div>
+<div class="horizontalborder"></div>
+</div>
+<?php
+}
+
 function button($text, $link)
 {
 ?>
@@ -54,22 +77,10 @@ include_once("pages/".$page.".php");
   </head>
   <body>
     <div id="wrapper">
-      <div style="height:15px;"></div>
       <!-- HEADER AND LOGO -->
-      <div id="header">
-	<div class="borderleft">
-	  <div class="topleftcornerborder sprite"></div>
-	  <div class="verticalborder"></div>
-	  <div class="bottomleftcornerborder sprite"></div>
-	</div>
-	<a href="/" id="sitelogo" class="bordercentre"></a>
-	<div class="borderright">
-	  <div class="toprightcornerborder sprite"></div>
-	  <div class="verticalborder"></div>
-	  <div class="bottomrightcornerborder sprite"></div>
-	</div>
-      </div>
-      <div id="headercontentspacing"></div>
+      <?php box_start("header"); ?>
+      <a href="/" id="sitelogo" ></a>
+      <?php box_end(); ?>
       <!-- MENU -->
       <div id="leftmenu">
 	<div class="topleftcornerborder sprite"></div> 
@@ -84,16 +95,10 @@ include_once("pages/".$page.".php");
 	<div class="horizontalborder"></div>
       </div>
       <!-- CONTENT -->
-      <div id="contentwrapper">
-	<div class="topleftcornerborder sprite"></div> 
-	<div class="toprightcornerborder sprite"></div>
-	<div class="horizontalborder"></div>
-	<div id="pagetitle"><?php echo $pagetitle; ?></div>
-	<div id="content"><?php echo $content; ?></div>
-	<div class="bottomleftcornerborder sprite"></div> 
-	<div class="bottomrightcornerborder sprite"></div>
-	<div class="horizontalborder"></div>
-      </div>
+      <?php box_start("contentwrapper"); ?>
+      <div id="pagetitle"><?php echo $pagetitle; ?></div>
+      <div id="content"><?php echo $content; ?></div>
+      <?php box_end(); ?>
       <!-- A DIV TO STOP THE FOOTER OVERLAPPING THE CONTENT -->
       <div id="wrapperfooterpad"></div>
     </div>

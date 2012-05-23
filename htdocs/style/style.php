@@ -33,17 +33,18 @@ body {
     margin-left:190px; 
 }
 
-#header { 
+#header {
     position:relative; 
-    padding-left:30px; 
-    padding-right:30px; 
-    height:145px;
+    margin: 15px 15px 15px 15px; 
 }
 
 #sitelogo { 
     background-repeat:no-repeat; 
     background-image:url(../images/sitelogo.png); 
-    background-position: 15px 15px; 
+    background-position: 15px 0px;
+    height: 115px;
+    display:block;
+    background-color:#ffffff;
 }
 
 #headercontentspacing { 
