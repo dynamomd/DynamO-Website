@@ -15,10 +15,6 @@ function pagestart($title)
   ob_start();
  }
 
-function includenews($newsfile)
-{
-}
-
 function pageend() 
  {
   global $content;
@@ -49,6 +45,7 @@ if (!file_exists("pages/".$page.".php"))
 { $page="404"; }
 
 /*Load the page*/
+$syntaxhighlighter=0;
 $in_template=1;
 include_once("pages/".$page.".php");
 ?>
@@ -138,5 +135,19 @@ include_once("pages/".$page.".php");
 	<div class="bottomrightcornerborder sprite"></div>
       </div>
     </div>
+    <?php if ($syntaxhighlighter) { ?>
+    <link href="/syntaxhighlighter/styles/shThemeDynamO.css" type="text/css" rel="stylesheet" />
+    <link href="/syntaxhighlighter/styles/shCore.css" type="text/css" rel="stylesheet" />
+    <script type="text/javascript" src="/syntaxhighlighter/scripts/shCore.js"></script>
+    <script type="text/javascript" src="/syntaxhighlighter/scripts/shAutoloader.js"></script>
+    <script type="text/javascript">
+      SyntaxHighlighter.autoloader(
+      'cpp c /syntaxhighlighter/scripts/shBrushCpp.js',
+      'bash shell script /syntaxhighlighter/scripts/shBrushBash.js',
+      'xml /syntaxhighlighter/scripts/shBrushXml.js',
+      'text plain /syntaxhighlighter/scripts/shBrushPlain.js'
+      );
+      SyntaxHighlighter.all()</script>
+    <?php } ?>
   </body>
 </html>

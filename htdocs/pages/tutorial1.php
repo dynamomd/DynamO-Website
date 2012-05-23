@@ -1,4 +1,7 @@
-<?php pagestart("Tutorial 1: Compiling and Installing DynamO"); ?>
+<?php 
+  $syntaxhighlighter=1;
+  pagestart("Tutorial 1: Compiling and Installing DynamO"); 
+?>
 <p>
   This tutorial covers the requirements, compilation and installation
   of the DynamO simulation package. It is recommended that you build
@@ -56,8 +59,10 @@
     (NVidia)).
   </li>
   <li>
-    <a href="http://ffmpeg.org/">libavcodec</a> - (Optional) Allows you to record visualisations directly to a movie file.
-    <br/> (<b>Ubuntu Package</b>: libavcodec-dev)
+    <a href="http://ffmpeg.org/">libavcodec</a> - (Optional) Allows
+    you to record visualisations directly to a movie file. This may be
+    supplied by your systems FFMPEG package.  <br/> (<b>Ubuntu
+    Package</b>: libavcodec-dev)
   </li>
 </ul>
 <h1>Step 1: Download the Source Code</h1>
@@ -66,7 +71,7 @@
   you have the source code, change into the directory ready to start the
   build.
 </p>
-<div class="code">cd DynamO</div>
+<pre class="brush: shell">cd DynamO</pre>
 <h1>Step 2: Compilation and Installation</h1>
 <p>
   DynamO uses the modern, powerful, but quite complicated boost-build
@@ -78,7 +83,7 @@
   Building DynamO is then as straightforward as running the make
   command:
 </p>
-<div class="code">make</div>
+<pre class="brush: shell">make</pre>
 <p>
   This step can take a while, it will download a copy of boost, and
   build DynamO.
@@ -87,40 +92,24 @@
   If there are any errors, they are often due to missing build
   dependencies. Dynamo automatically checks if it can find the
   dependencies it needs to build. The list of tests should look like
-  this:
+  this (they may be in any order):
 </p>
-<div class="code">
-  <p>
-    Performing configuration checks
-  </p>
-  <p>
-    <b>..The dependencies below are required to build DynamO..</b><br />
-    - DynamO: bzip2 library : yes
-  </p>
-  <p>
-    <b>..The dependencies below are for coil/visualisation
-      only..</b><br /> - Coil:
-    Gtkmm&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-    : yes<br /> - Coil: OpenCL
-    lib&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; : yes<br /> -
-    Coil:
-    GLEW&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-    : yes<br /> - Coil:
-    GLUT&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-    : yes
-  <p>
-    <b>..This confirms that you can build DynamO with the visualiser enabled..</b><br/>
-    - DynamO-Coil Integration&nbsp; : yes
-  </p>
-  <p>
-    <b>..The dependencies below add extra functionality to the
-      visualizer and are optional..</b><br /> - Coil: libCwiid
-    Wii-mote support (Optional) : yes<br /> - Magnet: libavcodec
-    (video encoding support, may also be packaged with FFMPEG) :
-    yes
-  </p>
-  </p>
-</div>
+<pre class="brush: plain; highlight: [2, 5, 12];">
+Performing configuration checks
+    (Required libraries for building DynamO)
+    - DynamO: bzip2 library    : yes
+
+    (Tests for building the visualiser)
+    - Coil: Gtkmm              : yes
+    - Coil: OpenCL lib         : yes
+    - Coil: GLEW               : yes
+    - Coil: GLUT               : yes
+    - DynamO-Coil Integration  : yes
+
+    (Tests for added functionality in the visualiser)
+    - Magnet: libavcodec (video encoding support) : yes
+    - Coil: libCwiid Wii-mote support (Optional) : yes
+</pre>
 <p>
   If you are missing the <b>bzip2</b> library, then DynamO won't build
   at all. If you are missing any of Coil's dependencies [DynamO-Coil
@@ -141,12 +130,12 @@
   some convenient place. For example, you can look at the help page of
   dynamod by running the following command from the <em>DynamO</em> directory.:
 </p>
-<div class="code">./bin/dynamod --help</div>
+<pre class="brush: shell">./bin/dynamod --help</pre>
 <p>
   You can also install the exectuables into your /usr/bin directory
   (although its not recommended) using the following command.
 </p>
-<div class="code">sudo make install</div>
+<pre class="brush: shell">sudo make install</pre>
 <p>
   Congratulations! You now have a working installation of DynamO.
 </p>
@@ -161,17 +150,13 @@
   of boost used, new dependencies, etc.), you will need to clean up
   the current version of the code by running the following command:
 </p>
-<div class="code">make distclean</div> 
+<pre class="brush: shell">make distclean</pre>
 <p>
   You can then easily update to the latest version of DynamO by just
-  running the following command:
+  running the following commands:
 </p>
-<div class="code">git pull</div>
-<p>
-  Then just run <em>"make"</em> again to build new executables with
-  the latest changes:
-</p>
-<div class="code">make</div> 
+<pre class="brush: shell">git pull
+make</pre>
 <p>
   (and "<em>sudo make install"</em> if you previously installed it to
   the system).
@@ -184,7 +169,7 @@
   sanity checks and verbose error reports. To create the debugging
   version just run the following command in the DynamO directory
 </p>
-<div class="code">src/boost/bjam -j2 install debug</div>
+<pre class="brush: shell">src/boost/bjam -j2 install debug</pre>
 <p>
   This will install some executables built with debugging symbols and
   extra sanity checks in the <em>bin/</em> directory. These
