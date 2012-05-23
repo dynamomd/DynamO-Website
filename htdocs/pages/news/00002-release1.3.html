@@ -20,6 +20,14 @@
     of dense, complex systems such as polymers.
   </li>
   <li>
+    The file format has been cleaned up to remove confusion about the
+    dynamics and liouvillean tags (the useless Dynamics wrapper tag
+    has been removed, and the Liouvillean tag has been renamed
+    Dynamics to make it easier for new users to understand).<br/>
+    <b>Configuration files created using version 1.2 will not work
+    with version 1.3, you will have to regenerate them.</b>
+  </li> 
+  <li>
     Updated to boost 1.49.0, (you will need to do a <em>make
     distclean</em> and <em>make</em> for this to take effect).
   </li>
