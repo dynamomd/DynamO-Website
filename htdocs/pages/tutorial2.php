@@ -15,23 +15,18 @@
 <p>
   Please ensure that you have already followed
   the <a href="/index.php/tutorial1">previous tutorial</a> and
-  compiled your own copy of DynamO. You should have a directory,
-  called DynamO, and inside this there should be a <em>bin</em>
-  sub-directory with the <b>dynamod</b> and <b>dynarun</b> programs
-  inside.
+  compiled your own copy of DynamO. 
 </p>
 <p>
-  We'll start of by testing if you successfully compiled DynamO. If
-  you installed DynamO directly to your home directory, you can just
-  run the following command
+  We'll start of by testing if you successfully compiled DynamO. You
+  can just run the following command
 </p>
-<pre class="brush: shell; ">~/DynamO/bin/dynamod</pre>
+<pre class="brush: shell; ">dynamod</pre>
 <p>
-  And you will see the copyright notice and the descriptions of the
-  options of the dynamod program. If you do not, check that you
-  encountered no errors when building dynamo and return to
-  the <a href="/index.php/tutorial1">previous tutorial</a>. The
-  correct output should look something like this:
+  Advanced users may need to change this path to wherever you
+  installed the dynamo binaries. If everything is working correctly,
+  you should see the copyright notice and the descriptions of the
+  options of the dynamod program:
 </p>
 <script type="syntaxhighlighter" class="brush: plain"><![CDATA[
 dynamod  Copyright (C) 2011  Marcus N Campbell Bannerman
@@ -42,11 +37,14 @@ the code
 Usage : dynamod <OPTIONS>...[CONFIG FILE]
 ....]]></script>
 <p>
-  You can copy the dynarun and dynamod programs wherever you like, and
-  run them from there. From now on, the tutorials will write dynarun
-  or dynamod, but you should substitute your own path
-  to <em>DynamO/bin/</em> before this.
+  If you do not see the above output, please double check that you
+  encountered no errors when building dynamo. Return to
+  the <a href="/index.php/tutorial1">previous tutorial</a> and recheck
+  the output of the <b>make</b> command.
+</p>
 <p>
+  We're now ready to run our first simulation.
+</p>
 <h1 >2. Configuration files and dynamod</h1>
 <p>
   In this section, we will learn about the configuration files of

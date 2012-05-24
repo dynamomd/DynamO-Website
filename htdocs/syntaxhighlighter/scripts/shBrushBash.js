@@ -36,7 +36,7 @@
 						'times touch top traceroute trap tr true tsort tty type ulimit umask umount unalias ' +
 						'uname unexpand uniq units unset unshar useradd usermod users uuencode uudecode v vdir ' +
 						'vi watch wc whereis which who whoami Wget xargs yes' +
-		                                'emacs git'
+		                                'emacs'
 						;
 
 		this.regexList = [
@@ -47,9 +47,10 @@
 			{ regex: SyntaxHighlighter.regexLib.singleQuotedString,			css: 'string' },		// single quoted strings
 			{ regex: new RegExp(this.getKeywords(keywords), 'gm'),			css: 'keyword' },		// keywords
 		        { regex: new RegExp(this.getKeywords(commands), 'gmi'),			css: 'functions' },		// commands
-		        { regex: /[A-z0-9\.\/]*(dynamod)/gm,			                css: 'functions' },		// The dynamo commands
-		        { regex: /[A-z0-9\.\/]*(dynarun)/gm,			                css: 'functions' },		// ...
-			{ regex: /[A-z0-9\.\/]*(bjam)/gm,			                css: 'functions' }		// ...
+		        { regex: /^[^ ]*dynamod/gm,			                css: 'functions' },		// The dynamo commands
+		        { regex: /^[^ ]*dynarun/gm,			                css: 'functions' },		// ...
+		        { regex: /^[^ ]*bjam/gm,			                css: 'functions' },		// ...
+			{ regex: /^git/gm,			                css: 'functions' }		// ...
 			];
 	}
 

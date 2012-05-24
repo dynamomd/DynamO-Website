@@ -6,14 +6,15 @@
   This tutorial covers the requirements, compilation and installation
   of the DynamO simulation package. It is recommended that you build
   your own version of DynamO to keep up with the rapid code
-  development and to ensure compatibility with your system.
+  development and to make sure the executables are compatible with
+  your system.
 </p>
 <h1>Step 0: Build Requirements</h1>
 <p>
-  Currently DynamO will only run on <b>Gnu/Linux</b> based
-  systems (e.g., Ubuntu/Gentoo/RedHat). You will need to be familiar
-  with how to install programs on whichever distribution of Linux you
-  are using before you will be able to setup DynamO. 
+  Currently DynamO will only run on <b>Gnu/Linux</b> based systems
+  (e.g., Ubuntu/Gentoo/RedHat). You will also need to be familiar with
+  how to install programs on whichever distribution of Linux you are
+  using before you will be able to setup DynamO.
 </p>
 <p>
   DynamO, like many Linux programs, is driven through a Command-Line
@@ -24,60 +25,66 @@
   at all unsure what this means.
 </p>
 <p>
-  Before you can build DynamO, you will need several programs and
-  libraries installed. There are also several optional libraries which,
-  if they're installed, will activate extra features. 
+  Before you can build DynamO, you will need a compiler and several
+  other programs and libraries installed. There are also several
+  optional libraries which, if they're installed, will activate extra
+  features.
 </p>
 <h2>Required Libraries</h2>
 <ul>
   <li>
+    <a href="http://git-scm.com/">git</a> - The source code is
+    downloaded using the Git program.  (<b>Ubuntu Package</b>: git).
+  </li>
+  <li>
     <a href="http://www.bzip.org/">libbz2</a> - The output of DynamO
     is compressed for efficiency using this library.
-    <br/>(<b>Ubuntu Packages</b>: libbz2-dev).
+    (<b>Ubuntu Package</b>: libbz2-dev).
   </li>
 </ul>
 <h2>Visualisation Requirements (Optional)</h2>
 <ul>
-  <li><a href="http://www.gtkmm.org/">Gtkmm</a>
-    <br/>(<b style="font-size: 16px;">Ubuntu Package</b>:
-    libgtkmm-2.4-dev).
+  <li><a href="http://www.gtkmm.org/">Gtkmm</a> (<b style="font-size:
+    16px;">Ubuntu Package</b>: libgtkmm-2.4-dev).
   </li>
   <li>
-    <a href="http://freeglut.sourceforge.net/">Freeglut</a>
-    <br/>(<b>Ubuntu Package</b>:freeglut3-dev)
+    <a href="http://freeglut.sourceforge.net/">Freeglut</a> (<b>Ubuntu
+    Package</b>: freeglut3-dev).
   </li>
   <li>
-    <a href="http://glew.sourceforge.net/">GLEW</a> (ver 1.6 and
-    above) <br/> (<b>Ubuntu Package</b>: libglew1.6-dev)
+    <a href="http://glew.sourceforge.net/">GLEW</a> version 1.6+ (<b>Ubuntu Package</b>: libglew1.6-dev).
   </li>
   <li>
     <a href="http://www.khronos.org/opencl/">OpenCL</a> - An OpenCL
-    implementation is provided with the latest AMD and NVidia
-    graphics card drivers. You will need a relatively modern
-    graphics card to use the visualiser too. <br/> (<b>Ubuntu
-      Packages</b>: either fglrx-dev (AMD) or nvidia-dev
-    (NVidia)).
+    implementation is provided with the latest AMD and NVidia graphics
+    card drivers. You will need a relatively modern graphics card to
+    use the visualiser too. (<b>Ubuntu Packages</b>: either fglrx-dev
+    (AMD) or nvidia-dev (NVidia)).
   </li>
   <li>
     <a href="http://ffmpeg.org/">libavcodec</a> - (Optional) Allows
     you to record visualisations directly to a movie file. This may be
-    supplied by your systems FFMPEG package.  <br/> (<b>Ubuntu
-    Package</b>: libavcodec-dev)
+    supplied by your systems FFMPEG package (<b>Ubuntu Package</b>:
+    libavcodec-dev).
   </li>
 </ul>
 <h1>Step 1: Download the Source Code</h1>
 <p>
-  Use the menu link to the left to download a copy of DynamO. Once you
-  have the source code, change into the directory ready to start the
-  build. I download the DynamO source code to my home directory, so I
-  would type:
+  Take a look at the download page for full instructions on how to
+  download a copy of the DynamO source code. Once you have the source
+  code, change into the directory ready to start the build. 
 </p>
-<pre class="brush: shell">cd ~/DynamO</pre>
+<p>
+  The recommended method is to use git to download the source, which
+  would look like this:
+</p>
+<pre class="brush: shell">git clone https://github.com/toastedcrumpets/DynamO.git
+cd DynamO</pre>
 <h1>Step 2: Compilation and Installation</h1>
 <p>
   DynamO uses the modern, powerful, but quite complicated boost-build
   system. Using the boost build system takes some getting used to;
-  however, to make it easy to build DynamO there is a fake Makefile
+  however, to make it easy to build DynamO there is a wrapper Makefile
   included in the sources.
 </p>
 <p>
@@ -120,27 +127,30 @@ Performing configuration checks
 <p>
   If you still have errors, take a look at the
   <a href="/index.php/documentation">documentation</a> to find ways of
-  contacting the developers.
+  filing a bug report and how to contact the developers.
 </p>
 <h1>Step 3: Installing the Executables</h1>
 <p>
-  Once DynamO compiled successfully the two main exectuables,
-  called <em><b>dynamod</b></em>
-  and <em><b>dynarun</b></em>, should be in the <em>bin</em>
-  directory. You can run these programs from there, or copy them to
-  some convenient place. For example, you can look at the help page of
-  dynamod by running the following command from the <em>DynamO</em> directory.:
+  Once the compilation has been successfully completed, everything you
+  need to use DynamO should be in the <em>bin</em> sub-directory.
 </p>
-<pre class="brush: shell">./bin/dynamod --help</pre>
 <p>
-  You can also install the exectuables into your /usr/bin directory
-  (although its not recommended) using the following command.
+  You can now install DynamO into your system (<em>/usr/bin</em>) using the
+  following command.
 </p>
 <pre class="brush: shell">sudo make install</pre>
 <p>
-  Congratulations! You now have a working installation of DynamO.
+  (Advanced users can copy the contents of <em>DynamO/bin</em>
+  wherever they like, or add it to their PATH variable, or just run
+  the executables from where they are)
 </p>
-<h1>Step 4: Updating the Code</h1>
+<p>
+  Congratulations! You now have a working installation of DynamO. You
+  can now move on to the next tutorial!
+</p>
+<div style="text-align:center; padding:5px;"><?php button("Tutorial 2: Running a Simulation of Hard Spheres","/index.php/tutorial2");?></div>
+
+<h1>Appendix A: Updating the Code</h1>
 <p>
   This covers how to update using Git, which you might choose to do if
   you have made changes to the code. In other cases, you can just
@@ -157,12 +167,13 @@ Performing configuration checks
   running the following commands:
 </p>
 <pre class="brush: shell">git pull
-make</pre>
+make
+sudo make install
+</pre>
 <p>
-  (and "<em>sudo make install"</em> if you previously installed it to
-  the system).
+  and you should now have an up-to-date set of executables installed!
 </p>
-<h1>Appendix A: Building Executables for Debugging</h1>
+<h1>Appendix B: Building Executables for Debugging</h1>
 <p>
   If you're having some trouble with DynamO, you can build a debug
   version of the simulator once a normal version has been built. This
