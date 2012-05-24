@@ -112,7 +112,7 @@ video {
 }
 
 #w3footerlogoCSS {
-    right:93px;
+    right:108px;
     background-position: -96px 0;
 }
 
