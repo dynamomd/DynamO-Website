@@ -1,8 +1,5 @@
 <?php pagestart("Credits"); ?>
-<img height="80" width="214" alt="Logo for the University of Aberdeen" src="/images/UoALogo.png" style="margin: 45px 15px 10px 15px; float:left;" />
-<img height="80" width="200" alt="Logo for the EPSRC" src="/images/EPSRC.png" style="margin: 45px 15px 10px 15px; float:left;" />
-<img height="150" width="192" alt="Logo for the MSS research group in Erlangen" src="/images/MSS_logo.png" style="margin: 10px 15px 10px 15px; float:left;" />
-<div style="clear: both;"></div>
+<img height="74" width="503" alt="Logos for the University of Aberdeen, EPSRC, and the MSS research group in Erlangen" src="/images/credit_logos.png" style="margin: 45px auto 10px auto; display:block;" />
 <h1>Programming Credits</h1>
 <ul>
   <li>
