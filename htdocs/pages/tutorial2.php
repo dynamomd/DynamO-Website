@@ -156,23 +156,32 @@ dynarun config.equilibrated.xml -c 1000000 -o config.end.xml</pre>
 </p>
 <pre class="brush: shell; ">dynamod --help</pre>
 <p>
-  There are many options available, but if we want to generate a
-  configuration, we only need to be interested in the section starting
-  with
+  There are many options available and most are related to modifying
+  existing configurations (this is why it is called dyna<b>mod</b>),
+  but if we want to generate a configuration we are only need to be
+  interested in the section starting with
 </p>
+<pre class="brush: shell; ">
+...
+Packer options:
+  -m [ --packer-mode ] arg    Chooses the system to pack (construct)
+                              Packer Modes:
+                              0:  Monocomponent hard spheres
+                              1:  Mono/Multi-component square wells
+                              2:  Random walk of an isolated attractive polymer
+...
+</pre>
 <p>
   We can ask <b>dynamod</b> to generate any one of the configurations
   listed there using the <em>--packer-mode</em> option (or <em>-m</em>
-  for short):
+  for short). As this is a tutorial on hard spheres, we should
+  probably use mode 0:
 </p>
 <pre class="brush: shell">dynamod -m 0 -o hardsphere.xml</pre>
 <p>
-  This writes a configuration file corresponding to a hard sphere
-  system to the file called <em>hardsphere.xml</em>. You can generate
-  a larger/smaller/denser/rarer hard sphere system using some extra
-  options, which are listed by running <b>dynamod</b> again but
-  specifying the <em>--help</em> flag along with the packer mode
-  (<em>-m 0</em>).
+  This writes a configuration file corresponding to the default
+  hard-sphere system to a file called <em>hardsphere.xml</em>. But how
+  do you control the density, or size and temperature of the system?
 </p>
 <pre class="brush: shell">dynamod -m 0 --help</pre>
 <p>
