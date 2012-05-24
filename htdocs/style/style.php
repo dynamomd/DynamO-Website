@@ -29,15 +29,13 @@ li {margin:5px;}
 
 /* Stuff for making full width HTML5 and flash videos */
 video {
-	max-width: 100%;
-	min-width:533px;
-	height: auto;
+    max-width: 100%;
+    height: auto;
 }
 
 .video-container {
     position: relative;
     padding-bottom: 56.25%;
-    padding-top: 30px;
     height: 0;
     overflow: hidden;
 }
@@ -86,6 +84,7 @@ video {
     height:40px; 
     margin-top:-55px;
     position:relative;
+    min-width:768px;
 }
 
 #w3footerlogoHTML, #w3footerlogoCSS {
@@ -98,7 +97,7 @@ video {
 }
 
 #w3footerlogoHTML {
-    right:0;
+    right:5px;
     background-position: -186px 0;
 }
 

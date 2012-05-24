@@ -81,7 +81,7 @@
 
 <h2>Gravity, boundary sphere meshes and sleeping particles</h2>
 <div class="video-container" style="padding-bottom: 54.90%; " >
-  <video controls >
+  <video style="min-width:533px;" controls >
     <source src="/videos/sleepingparticles.mp4" type='video/mp4' />
     <source src="/videos/sleepingparticles.ogg" type='video/ogg' />
     <iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/9oaobaxhGX8" allowfullscreen frameborder="0"></iframe>
