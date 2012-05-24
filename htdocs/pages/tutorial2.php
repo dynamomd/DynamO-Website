@@ -11,15 +11,15 @@
 <p>
   A video of this system is presented to the right.
 </p>
-<h1>1. Requirements</h1>
+<h1>1. Verifying your DynamO Installation</h1>
 <p>
   Please ensure that you have already followed
   the <a href="/index.php/tutorial1">previous tutorial</a> and
   compiled your own copy of DynamO. 
 </p>
 <p>
-  We'll start of by testing if you successfully compiled DynamO. You
-  can just run the following command
+  We'll start of by testing if you successfully compiled DynamO. Open
+  up a terminal run the following command:
 </p>
 <pre class="brush: shell; ">dynamod</pre>
 <p>
@@ -45,13 +45,46 @@ Usage : dynamod <OPTIONS>...[CONFIG FILE]
 <p>
   We're now ready to run our first simulation.
 </p>
-<h1 >2. Configuration files and dynamod</h1>
+<h1>2. In Brief</h1> 
 <p>
-  In this section, we will learn about the configuration files of
-  DynamO, and how to generate configuration files, which are the main
-  input and output of DynamO.
+  Let's quickly cover the content of this tutorial now, and we'll go
+  into the detail afterwards. Let us say that you want to run a
+  hard-sphere simulation of 1372 particles at a reduced density of 0.5
+  and a temperature of 1.
 </p>
-<h2 >2.1. About the configuration file</h2>
+<p>
+  You want to create the system, and then run it for 10<sup>6</sup>
+  collisions to equilibrate, then another 10<sup>6</sup> collisions to
+  collect some data for your research. All you have to do is run the
+  following commands in your terminal/shell:
+</p>
+<pre class="brush: shell; ">#Create the configuration
+dynamod -m 0 -C 7 -d 0.5 -r 1 -o config.start.xml
+
+#A "equilibration run" to equilibrate the configuration
+dynarun config.start.xml -c 1000000 -o config.equilibrated.xml
+
+#A "production run" to collect data on the system
+dynarun config.equilibrated.xml -c 1000000 -o config.end.xml</pre>
+<p>
+  But what were those three commands and what do the options/switches
+  (-c -o -m) control? We'll look at each command individually in the
+  following sections.
+</p>
+<h1>2. Configuration files and dynamod</h1>
+<p>
+  The first step in the brief example was to create
+  the <b>configuration file</b>, called <em>config.start.xml</em>,
+  using <b>dynamod</b>.
+</p>
+<pre class="brush: shell; ">dynamod -m 0 -C 7 -d 0.5 -r 1 -o config.start.xml</pre>
+<p>
+ In this section,
+  we will learn about the configuration files of DynamO, which are the
+  main input and output of DynamO, and how to generate configuration
+  files using <b>dynamod</b>.
+</p>
+<h2>2.1. About the configuration file</h2>
 <p>
   Before we can run any simulations with DynamO, we must write or
   generate a configuration file. A configuration file is a single file
