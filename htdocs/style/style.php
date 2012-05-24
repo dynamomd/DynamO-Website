@@ -176,9 +176,9 @@ video {
     height:30px; 
     display:inline-block; 
     /*Fixes for crappy ie7*/
-    zoom:1; *display: inline;
+    /*zoom:1; *display: inline;*/
     /*Fixes for crappy ie6*/
-    _height: 30px;
+    /*_height: 30px;*/
 }
 
 .button span { 
@@ -190,15 +190,20 @@ video {
     z-index:1;
 }
 
+.button .center a {
+    color:#000000;
+    text-decoration:none;
+}
+
 .button .center { 
     background-color: <?php echo $inactivebutton;?>; 
     height:30px; 
     line-height:30px; 
     display:inline-block; 
     /*Fixes for crappy ie7*/
-    zoom:1; *display: inline;
+    /*zoom:1; *display: inline;*/
     /*Fixes for crappy ie6*/
-    _height: 30px;
+    /*_height: 30px;*/
 }
 .button .left, .button .right {
     background-image: url(csssprites.png); 
@@ -227,9 +232,9 @@ h2 { font-size:16pt; display:block; }
     margin:5px; 
     border: solid 1px; 
     /*Fixes for crappy ie7*/
-    zoom:1; *display: inline;
+    /*zoom:1; *display: inline;*/
     /*Fixes for crappy ie6*/
-    _height: 30px;
+    /*_height: 30px;*/
 }
 
 .figure iframe { 

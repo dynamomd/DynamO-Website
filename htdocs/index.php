@@ -49,7 +49,7 @@ function button($text, $link)
 <div class="button" >
   <div class="left"></div>
   <a href="<?php echo $link;?>" ><span></span></a>
-  <div class="center"><?php echo $text;?></div>
+  <div class="center"><a href="<?php echo $link;?>"><?php echo $text;?></a></div>
   <div class="right"></div>
 </div>
  <?php
