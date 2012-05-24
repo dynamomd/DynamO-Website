@@ -15,18 +15,18 @@
 <p>
   Please ensure that you have already followed
   the <a href="/index.php/tutorial1">previous tutorial</a> and
-  compiled your own copy of DynamO. 
+  compiled and installed your own copy of DynamO.
 </p>
 <p>
-  We'll start of by testing if you successfully compiled DynamO. Open
-  up a terminal run the following command:
+  We'll start of by testing if you successfully compiled and installed
+  DynamO. Open up a terminal and run the following command:
 </p>
 <pre class="brush: shell; ">dynamod</pre>
 <p>
-  Advanced users may need to change this path to wherever you
-  installed the dynamo binaries. If everything is working correctly,
-  you should see the copyright notice and the descriptions of the
-  options of the dynamod program:
+  You may need to change this path to wherever you installed the
+  dynamo binaries. If everything is working correctly, you should see
+  the copyright notice and the descriptions of the options of the
+  dynamod program:
 </p>
 <script type="syntaxhighlighter" class="brush: plain"><![CDATA[
 dynamod  Copyright (C) 2011  Marcus N Campbell Bannerman
@@ -47,10 +47,10 @@ Usage : dynamod <OPTIONS>...[CONFIG FILE]
 </p>
 <h1>2. In Brief</h1> 
 <p>
-  Let's quickly cover the content of this tutorial now, and we'll go
-  into the detail afterwards. Let us say that you want to run a
-  hard-sphere simulation of 1372 particles at a reduced density of 0.5
-  and a temperature of 1.
+  Lets quickly cover the content of this tutorial now, and afterwards
+  we'll go into the detail of each step. Let us say that you want to
+  run a hard-sphere simulation of 1372 particles at a reduced density
+  of 0.5 and a temperature of 1.
 </p>
 <p>
   You want to create the system, and then run it for 10<sup>6</sup>
@@ -73,8 +73,8 @@ dynarun config.equilibrated.xml -c 1000000 -o config.end.xml</pre>
 </p>
 <h1>2. Configuration files and dynamod</h1>
 <p>
-  The first step in the brief example was to create
-  the <b>configuration file</b>, called <em>config.start.xml</em>,
+  The first step in the brief example was to create the
+  initial <b>configuration file</b>, called <em>config.start.xml</em>,
   using <b>dynamod</b>.
 </p>
 <pre class="brush: shell; ">dynamod -m 0 -C 7 -d 0.5 -r 1 -o config.start.xml</pre>
