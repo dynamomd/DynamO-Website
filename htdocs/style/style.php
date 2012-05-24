@@ -2,7 +2,6 @@
 $sitebg = "#b7c7c8";
 $pagebg = "#ffffff";
 $leftmenuhovercolor = "#eeeeee";
-$codebg = "#ccdddd";
 $inactivebutton = "#ccdddd";
 $hoverbutton = "#bbcccc";
 ?>
@@ -10,19 +9,16 @@ $hoverbutton = "#bbcccc";
 /* Main html element styles */
 html { height: 100%; }
 
-body { 
-    margin: 0; 
-    padding: 0; 
-    height: 100%; 
-    background-color:<?php echo $sitebg; ?>; 
+body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    background-color:<?php echo $sitebg; ?>;
 }
 
-h1 {
-   min-width:533px;
-}
+h1 { min-width:533px; }
 
 li {margin:5px;}
-
 
 .newsdate {
     display:inline;
@@ -86,11 +82,6 @@ video {
     background-color:#ffffff;
 }
 
-#headercontentspacing { 
-    height: 15px; 
-    clear: both; 
-}
-
 #footer {
     height:40px; 
     margin-top:-55px;
@@ -116,14 +107,11 @@ video {
     background-position: -96px 0;
 }
 
-.sprite { 
-    background-image: url(csssprites.png); 
-}
-
-#leftmenu { 
-    width:160px; 
+#leftmenu {
+    width:160px;
     margin-left:15px; 
     position:absolute;
+    left:0;
 }
 
 #leftmenu a { 
@@ -138,7 +126,6 @@ video {
 #leftmenu a:hover { 
     background-color:<?php echo $leftmenuhovercolor;?>; 
 }
-
 
 #contentwrapper { 
     margin-left:190px; 
@@ -156,33 +143,73 @@ video {
 
 #content { 
     background-color:<?php echo $pagebg; ?>; 
-    padding-left:15px; 
-    padding-right:15px; 
-    padding-top:10px; 
-    padding-bottom:10px;
+    padding: 10px 15px 10px 15px;
     min-width:533px; 
 }
 
-.code { background-color:<?php echo $codebg;?>; font-family:monospace; padding:5px; }
-
 /*     Styling of the round edged boxes       */
-.borderleft { left:15px; position:absolute; top:0px; width:15px; height:100%; }
-.borderright { right:15px; position:absolute; top:0px; width:15px; height:100%; }
+.borderleft, .borderright { position:absolute; top:0px; width:15px; height:100%; }
+.borderleft { left:15px; }
+.borderright { right:15px; }
 .bordercentre { background-color:<?php echo $pagebg; ?>; position:absolute; left:30px; right:30px; bottom:0; top:0;}
-.verticalborder { background: <?php echo $pagebg; ?>; position:absolute; top:15px; bottom:15px;left:0px; right:0px; }
-.horizontalborder { background: <?php echo $pagebg; ?>; height:15px; margin-left:15px; margin-right:15px; }
+.verticalborder { background-color: <?php echo $pagebg; ?>; position:absolute; top:15px; bottom:15px;left:0px; right:0px; }
+.horizontalborder { background-color: <?php echo $pagebg; ?>; height:15px; margin-left:15px; margin-right:15px; }
 
-.topleftcornerborder { background-image: url(csssprites.png); width:15px; height:15px; position:absolute; top:0; left:0; background-position: 0 0; }
-.bottomleftcornerborder { background-image: url(csssprites.png); width:15px; height:15px; position:absolute; bottom:0; left:0; background-position: 0 -15px; }
-.toprightcornerborder { background-image: url(csssprites.png); width:15px; height:15px; position:absolute; top:0; right:0; background-position: -15px 0; }
-.bottomrightcornerborder { background-image: url(csssprites.png); width:15px; height:15px; position:absolute; bottom:0; right:0; background-position: -15px -15px; }
+.topleftcornerborder, .bottomleftcornerborder, .toprightcornerborder, .bottomrightcornerborder {
+    background-image: url(csssprites.png);
+    width:15px;
+    height:15px;
+    position:absolute;
+}
+
+.topleftcornerborder { top:0; left:0; background-position: 0 0; }
+.bottomleftcornerborder { bottom:0; left:0; background-position: 0 -15px; }
+.toprightcornerborder { top:0; right:0; background-position: -15px 0; }
+.bottomrightcornerborder { bottom:0; right:0; background-position: -15px -15px; }
 
 /* Button */
-.button { position:relative; padding-left:15px; padding-right:15px; height:30px; display:inline-block; }
-.button span { position:absolute; width:100%; height:100%; top:0; left:0; z-index:1; }
-.button .center { background-color: <?php echo $inactivebutton;?>; height:30px; line-height:30px; display:inline-block; }
-.button .left { background-image: url(csssprites.png); width:15px; height:30px; position:absolute; top:0; left:0; background-position: -32px 0; }
-.button .right { background-image: url(csssprites.png); width:15px; height:30px; position:absolute; bottom:0; right:0; background-position: -47px 0; }
+.button { 
+    cursor: pointer;
+    position:relative; 
+    padding-left:15px; 
+    padding-right:15px;
+    height:30px; 
+    display:inline-block; 
+    /*Fixes for crappy ie7*/
+    zoom:1; *display: inline;
+    /*Fixes for crappy ie6*/
+    _height: 30px;
+}
+
+.button span { 
+    position:absolute; 
+    width:100%; 
+    height:100%; 
+    top:0;
+    left:0;
+    z-index:1;
+}
+
+.button .center { 
+    background-color: <?php echo $inactivebutton;?>; 
+    height:30px; 
+    line-height:30px; 
+    display:inline-block; 
+    /*Fixes for crappy ie7*/
+    zoom:1; *display: inline;
+    /*Fixes for crappy ie6*/
+    _height: 30px;
+}
+.button .left, .button .right {
+    background-image: url(csssprites.png); 
+    width:15px; 
+    height:30px; 
+    position:absolute;
+}
+
+.button .left { top:0; left:0; background-position: -32px 0; }
+
+.button .right { bottom:0; right:0; background-position: -47px 0; }
 
 .button:hover .center { background-color: <?php echo $hoverbutton;?>; }
 .button:hover .left { background-position: -64px 0; }
@@ -194,6 +221,23 @@ h1 { font-size:18pt; border-bottom:3px solid; display:block; clear:both; }
 
 h2 { font-size:16pt; display:block; }
 
-.figure { float: right; display: inline-block; margin:5px; border: solid 1px; }
-.figure iframe { width:100%; }
-.figure .caption { text-align:center; clear: both;padding:5px; }
+.figure { 
+    float: right; 
+    display: inline-block; 
+    margin:5px; 
+    border: solid 1px; 
+    /*Fixes for crappy ie7*/
+    zoom:1; *display: inline;
+    /*Fixes for crappy ie6*/
+    _height: 30px;
+}
+
+.figure iframe { 
+    width:100%; 
+}
+
+.figure .caption { 
+    text-align:center; 
+    clear: both;
+    padding:5px; 
+}

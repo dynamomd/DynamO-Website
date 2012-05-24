@@ -8,8 +8,8 @@ echo "<div ";
 if ($id) echo "id=\"".$id."\"";
 echo ">";
 ?>
-<div class="topleftcornerborder sprite"></div> 
-<div class="toprightcornerborder sprite"></div>
+<div class="topleftcornerborder"></div> 
+<div class="toprightcornerborder"></div>
 <div class="horizontalborder"></div>
 <?php
 }
@@ -17,8 +17,8 @@ echo ">";
 function white_box_end()
 {
 ?>
-<div class="bottomleftcornerborder sprite"></div>
-<div class="bottomrightcornerborder sprite"></div>
+<div class="bottomleftcornerborder"></div>
+<div class="bottomrightcornerborder"></div>
 <div class="horizontalborder"></div>
 </div>
 <?php
@@ -121,9 +121,9 @@ include_once("pages/".$page.".php");
     <!-- FOOTER -->
     <div id="footer">
       <div class="borderleft">
-	<div class="topleftcornerborder sprite"></div>
+	<div class="topleftcornerborder"></div>
 	<div class="verticalborder"></div>
-	<div class="bottomleftcornerborder sprite"></div>
+	<div class="bottomleftcornerborder"></div>
       </div>
       <div class="bordercentre">
 	<p>Copyright &copy; 2008-<?php echo date("Y"); ?></p>
@@ -131,9 +131,9 @@ include_once("pages/".$page.".php");
 	<a href="http://jigsaw.w3.org/css-validator/check/referer" id="w3footerlogoCSS"></a>
       </div>
       <div class="borderright">
-	<div class="toprightcornerborder sprite"></div>
+	<div class="toprightcornerborder"></div>
 	<div class="verticalborder"></div>
-	<div class="bottomrightcornerborder sprite"></div>
+	<div class="bottomrightcornerborder"></div>
       </div>
     </div>
     <?php if ($syntaxhighlighter) { ?>

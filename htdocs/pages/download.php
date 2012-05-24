@@ -9,14 +9,14 @@
 </p>
 <h1>Git Access to the Source</h1> 
 <p>
-  The recommended method to downloade an up-to-date copy of the DynamO
-  sources is using git and
+  The recommended method of downloading an up-to-date copy of the
+  DynamO sources is using git and
   the <a href="https://github.com/toastedcrumpets/DynamO"> public
   GitHub repository</a>.
 </p>
 
 <p>
-  Just use the following git command in your terminal:
+  Just install git and use the following command in your terminal:
 </p> 
 <pre class="brush: shell">git clone https://github.com/toastedcrumpets/DynamO.git</pre>
 <p>
@@ -26,8 +26,7 @@
 <p>
   You can now pick which branch or version of DynamO you'd like. There
   are several available, but the default <b>master</b>
-  branch is probably the most popular. There are three main branches
-  available:
+  branch is probably the most popular:
 </p>
 <ul>
     <li>
@@ -36,7 +35,7 @@
       be a little buggy.
     </li>
     <li>
-      <b>dynamo-1-2:</b> This is the most recent stable
+      <b>dynamo-1-3:</b> This is the most recent stable
       release, the code is as stable as possible but may be up three
       months behind in features.
     </li>
@@ -50,7 +49,7 @@
 </ul>
 <p>If you decide you want something other than the default branch
 (master), just check it out using the following command:</p>
-<pre class="brush: shell">git checkout dynamo-1-2</pre>
+<pre class="brush: shell">git checkout dynamo-1-3</pre>
 <h1>Alternative Source Code Downloads</h1>
 <p>
   It is recommended that you use the git to download the source code

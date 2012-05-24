@@ -1,9 +1,9 @@
 <?php pagestart("Documentation"); ?>
-<h1>Tutorials</h1> 
+<h1>User Documentation/Tutorials</h1> 
 <p>
-  The documentation for DynamO is still being written and limited to a
-  set of tutorials on the basic topics. Please click on any of the
-  links below to take a look
+  The user documentation for DynamO comes in the form of a set of
+  tutorials on the basic topics. Please click on any of the links
+  below to take a look
 </p>
 <div style="text-align:center; padding:5px;"><?php button("Tutorial 1: Compiling DynamO from Source","/index.php/tutorial1");?></div>
 <div style="text-align:center; padding:5px;"><?php button("Tutorial 2: Running a Simulation of Hard Spheres","/index.php/tutorial2");?></div>
@@ -13,7 +13,7 @@
   feel free to email the developers for some advice (see below).
 </p>
 
-<h1>Source Code</h1>
+<h1>Developer Documentation</h1>
 <p>
   If you're looking to extend DynamO or to understand how it works,
   you'll need to take a look at the source code. The DynamO API is
