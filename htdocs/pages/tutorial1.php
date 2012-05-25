@@ -148,7 +148,7 @@ Performing configuration checks
   Congratulations! You now have a working installation of DynamO. You
   can now move on to the next tutorial!
 </p>
-<div style="text-align:center; padding:5px;"><?php button("Tutorial 2: Running a Simulation of Hard Spheres","/index.php/tutorial2");?></div>
+<?php button("Tutorial 2: Running a Simulation of Hard Spheres","/index.php/tutorial2");?>
 
 <h1>Appendix A: Updating the Code</h1>
 <p>

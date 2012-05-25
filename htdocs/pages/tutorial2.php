@@ -304,7 +304,7 @@ Mode 0: Monocomponent hard spheres
 </p>
 <p>
   From previous experience, this is more than enough events to
-  equilibrate this small system of 1372 particles. Now we can run the
+  equilibrate this small system of 1372 particles.Now we can run the
   simulation to collect some data from the system at equilibrium. We
   just take the output from the previous <b>dynarun</b> command as
   input to a new one:
@@ -313,15 +313,32 @@ Mode 0: Monocomponent hard spheres
 <p>
   But where is this data that's been collected? The most obvious
   result is that you have a new configuration file,
-  called <em>config.end.xml</em>. But is there any more information?
+  called <em>config.end.xml</em>. If you're interested in studying
+  structural properties the stored particle positions are probably
+  sufficient for your research. But there is another source of data
+  generated with each execution of dynarun.
 </p>
+<h1>4. Processing the Collected Data</h1>
 <p>
   <b>dynarun</b> has the ability to collect a wide range of
   properties, such as transport coefficients, radial distribution
-  functions and much more. These will be covered in a future tutorial,
-  but there are some basic properties which dynamo always collects.
+  functions and much more. How to use these will be covered in the
+  following tutorials, but there are some basic properties which
+  <b>dynarun</b> will always collect. These results, along with any
+  other enabled properties, are outputted to a compressed XML file
+  called <em>output.xml.bz2</em> (you can set the output filename
+  using the <em>--out-data-file</em> option). 
+</>
+  To read this output data file, you must first uncompress the file
+  using the <b>bunzip2</b> command like so:
 </p>
+<pre class="brush: shell; ">bunzip2 output.xml.bz2</pre>
 <p>
-  <b>dynarun</b>
+  This will rename the file from <em>output.xml.bz2</em> to
+  output.xml, and you will be able to open it using your favourite
+  text editor. An example output.xml file from the default hard sphere
+  simulation is available below.
 </p>
+<?php button("Example output.xml file contents", "/index.php/tutorial2exampleoutput");?>
+
 <?php pageend(); ?>
