@@ -142,7 +142,7 @@ dynarun config.equilibrated.xml -c 1000000 -o config.end.xml</pre>
   but DynamO only uses one file. Lets take a look at how we can
   generate a configuration file...
 </p>
-<h2 >2.2. Generating an initial configuration file</h2>
+<h2 >2.2. Generating Configuration Files Using Dynamod</h2>
 <p>
   <b>dynamod</b> is a program designed to manipulate existing
   configuration files or to generate example configuration files. We
@@ -205,6 +205,7 @@ Mode 0: Monocomponent hard spheres
   command.
 </p>
 <pre class="brush: shell; ">dynamod -m0 -C 7 -d 0.5 --i1 0 --f1 1.0 -o config.start.xml.bz2</pre>
+<h2>2.3. Initial Positions and Crystal structures</h2>
 <div class="figure" style="width:250px;">
   <a href="/images/tut1_initialpos.jpg">
     <img height="250px" width="250px" alt="Image of hard spheres arranged in an FCC lattice." src="/images/tut1_initialpos.jpg"/>
@@ -215,20 +216,40 @@ Mode 0: Monocomponent hard spheres
 </div>
 <p>
   Most of the options for this <em>--pack-mode</em> (and many other
-  pack modes) are to do with the initial positions of the hard sphere
+  pack modes) control the initial positions of the hard sphere
   particles.
 </p>
-<p> You want to place the particles in a structure which is guaranteed
-  to give you no overlaps.  For mono-sized spheres, there are three
-  popular
+<p>
+  You need to place the particles in a structure which will minimise
+  the chance of overlaps or, to put it another way, will maximise the
+  spacing between all particles. Such structures occur frequently in
+  nature and they're called <b>crystal structures</b>. You can take a
+  look
+  at <a href="http://en.wikipedia.org/wiki/Close-packing_of_spheres">wikipedia's
+  article on the closest way to pack spheres</a> for more information.
+</p>
+<p>
+  For mono-sized spheres, there are three popular
   <a href="http://en.wikipedia.org/wiki/Cubic_crystal_system">cubic
-  crystal structures</a> which distribute the particles out over
-  space. There is Face-Centered Cubic (FCC), Body-Centered Cubic
-  (BCC), and the Simple (or Primitive) Cubic (SC). 
+  crystal structures</a> which are used by simulators to initially
+  position particles. There is Face-Centered Cubic (FCC),
+  Body-Centered Cubic (BCC), and the Simple (or Primitive) Cubic (SC).
+</p>
 <p>
   The FCC crystal is favoured for producing the initial particle
-  positions (and it is the default one here as set by <em>--i1</em>)
-  as it is the true crystal structure of hard spheres and it is the
-  closest packing you can achieve.
+  positions as it is the naturally-forming crystal structure of
+  single-sized hard-spheres. Thus, it gives the closest packing you
+  can physically achieve without generating overlaps.
 </p>
-<?php pageend(); ?>
+<p>
+  So, back to <b>dynamod</b>. When you pass <em>-C7 --i1 0</em>
+  to <b>dynamod</b> you are asking dynamo to produce a 7x7x7 FCC
+  lattice and place a single particle on each lattice site.
+</p>
+<p>
+  As the FCC lattice has 4 unique sites per unit cell, this will
+  result in N=4x7x7x7=1372 particles being generated. The size of the
+  particles is then scaled to match the density passed (<em>-d
+  0.5</em>).
+</p>
+  <?php pageend(); ?>
