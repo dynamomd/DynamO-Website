@@ -89,7 +89,7 @@ Usage : dynamod <OPTIONS>...[CONFIG FILE]
   following commands in your terminal/shell:
 </p>
 <pre class="brush: shell; ">#Create the configuration
-dynamod -m 0 -C 7 -d 0.5 -r 1 -o config.start.xml
+dynamod -m 0 -C 7 -d 0.5 --i1 0 -r 1 -o config.start.xml
 
 #A "equilibration run" to equilibrate the configuration
 dynarun config.start.xml -c 1000000 -o config.equilibrated.xml
@@ -107,7 +107,7 @@ dynarun config.equilibrated.xml -c 1000000 -o config.end.xml</pre>
   initial <b>configuration file</b>, called <em>config.start.xml</em>,
   using <b>dynamod</b>.
 </p>
-<pre class="brush: shell; ">dynamod -m 0 -C 7 -d 0.5 -r 1 -o config.start.xml</pre>
+<pre class="brush: shell; ">dynamod -m 0 -C 7 -d 0.5 --i1 0 -r 1 -o config.start.xml</pre>
 <p>
  In this section,
   we will learn about the configuration files of DynamO, which are the
@@ -204,8 +204,8 @@ Mode 0: Monocomponent hard spheres
   It will actually output the same result as running the following
   command.
 </p>
-<pre class="brush: shell; ">dynamod -m0 -C 7 -d 0.5 --i1 0 --f1 1.0 -o config.start.xml.bz2</pre>
-<h2>2.3. Initial Positions and Crystal structures</h2>
+<pre class="brush: shell; ">dynamod -m 0 -C 7 -d 0.5 --i1 0 -r 1 -o config.start.xml</pre>
+<h2>2.3. Initial Positions and Crystal Structures</h2>
 <div class="figure" style="width:250px;">
   <a href="/images/tut1_initialpos.jpg">
     <img height="250px" width="250px" alt="Image of hard spheres arranged in an FCC lattice." src="/images/tut1_initialpos.jpg"/>
@@ -252,4 +252,76 @@ Mode 0: Monocomponent hard spheres
   particles is then scaled to match the density passed (<em>-d
   0.5</em>).
 </p>
-  <?php pageend(); ?>
+<h2>2.4. In Summary</h2>
+<p>
+  To conclude this part, we'll quickly summurise the description of
+  each of the options passed to dynamod
+</p>
+<pre class="brush: shell;">dynamod -m 0 -C 7 -d 0.5 --i1 0 -r 1 -o config.start.xml</pre>
+<p>
+  The above command says:
+</p>
+<ul>
+  <li>
+    <b><em>-m 0</em></b> : Generate a hard sphere system.
+  </li>
+  <li>
+    <b><em>-C 7</em></b> : Create a 7x7x7 lattice.
+  </li>
+  <li>
+    <b><em>--i1 0</em></b> : The unit cell of the lattice is Face Centered
+    Cubic (FCC).
+  </li>
+  <li>
+    <b><em>-d 0.5</em></b> : Scale the particles so that it has a reduced
+    density of 0.5.
+  </li>
+  <li>
+    <b><em>-r 1</em></b> : Rescale the particle velocities so the system has a
+    temperature of 1.
+  </li>
+  <li>
+    <b><em>-o config.start.xml</em></b> : And write the result out into a
+    configuration file called <em>config.start.xml</em>.
+    </li>
+</ul>
+<h1>3. Running the Simulation</h1>
+<p>
+  The hardest part of this tutorial is now over. All we need to do is
+  take the starting configuration file and actually run a simulation.
+</p>
+<p>
+  The running of simulations is performed using the <b>dynarun</b>
+  command. This command has many options which can be seen
+  using <em>--help</em>, but for now we'll only use <em>-c</em>
+  and <em>-o</em>.
+</p>
+<pre class="brush: shell; ">dynarun config.start.xml -c 1000000 -o config.equilibrated.xml</pre>
+<p>
+  This command takes the configuration in <em>config.start.xml</em>
+  and runs it for 10<sup>6</sup> events/collisions, before putting the
+  final configuration in <em>config.equilibrated.xml</em>
+</p>
+<p>
+  From previous experience, this is more than enough events to
+  equilibrate this small system of 1372 particles. Now we can run the
+  simulation to collect some data from the system at equilibrium. We
+  just take the output from the previous <b>dynarun</b> command as
+  input to a new one:
+</p>
+<pre class="brush: shell; ">dynarun config.equilibrated.xml -c 1000000 -o config.end.xml</pre>
+<p>
+  But where is this data that's been collected? The most obvious
+  result is that you have a new configuration file,
+  called <em>config.end.xml</em>. But is there any more information?
+</p>
+<p>
+  <b>dynarun</b> has the ability to collect a wide range of
+  properties, such as transport coefficients, radial distribution
+  functions and much more. These will be covered in a future tutorial,
+  but there are some basic properties which dynamo always collects.
+</p>
+<p>
+  <b>dynarun</b>
+</p>
+<?php pageend(); ?>
