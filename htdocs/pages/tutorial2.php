@@ -164,29 +164,57 @@ dynarun config.equilibrated.xml -c 1000000 -o config.end.xml</pre>
 <pre class="brush: shell; ">
 ...
 Packer options:
-  -m [ --packer-mode ] arg    Chooses the system to pack (construct)
-                              Packer Modes:
-                              0:  Monocomponent hard spheres
-                              1:  Mono/Multi-component square wells
-                              2:  Random walk of an isolated attractive polymer
+  -m [ --pack-mode ] arg    Chooses the system to pack (construct)
+                            Packer Modes:
+                            0:  Monocomponent hard spheres
+                            1:  Mono/Multi-component square wells
+                            2:  Random walk of an isolated attractive polymer
 ...
 </pre>
 <p>
   We can ask <b>dynamod</b> to generate any one of the configurations
-  listed there using the <em>--packer-mode</em> option (or <em>-m</em>
+  listed there using the <em>--pack-mode</em> option (or <em>-m</em>
   for short). As this is a tutorial on hard spheres, we should
-  probably use mode 0:
+  probably use mode 0. We can request more information on the options
+  of mode 0 by selecting pack-mode 0 and using the help option:
+</p>
+<pre class="brush: shell; ">dynamod -m0 --help</pre>
+<p>
+ And you should get the following output:
+</p>
+<pre class="brush: plain">
+Mode 0: Monocomponent hard spheres
+ Options
+  -C [ --NCells ] arg (=7)    Set the default number of lattice unit-cells in each direction.
+  -x [ --xcell ] arg          Number of unit-cells in the x dimension.
+  -y [ --ycell ] arg          Number of unit-cells in the y dimension.
+  -z [ --zcell ] arg          Number of unit-cells in the z dimension.
+  --rectangular-box           Set the simulation box to be rectangular so that the x,y,z cells also specify the simulation aspect ratio.
+  -d [ --density ] arg (=0.5) System density.
+  --i1 arg (=FCC)             Lattice type (0=FCC, 1=BCC, 2=SC)
+  --i2 arg (disabled)         Adds a temperature rescale event every x events
+  --f1 arg (=1.0)             Sets the elasticity of the hard spheres
+</pre>
+<p>
+  There are a lot of options, but most of them should be self
+  explanitory. The only concept 
+</p>
+<p>
+and we'll also use
+  the <em>--out-config-file</em> option (or <em>-o</em> for short) to
+  name our file <em>hardsphere.xml</em>:
 </p>
 <pre class="brush: shell">dynamod -m 0 -o hardsphere.xml</pre>
 <p>
   This writes a configuration file corresponding to the default
   hard-sphere system to a file called <em>hardsphere.xml</em>. But how
   do you control the density, or size and temperature of the system?
+  Well, that's what the additional <em>-C 7 -d 0.5 -r 1</em>
+  parameters are for. These are explained when you use <em>--help</em>
+  in combination with a <em>--pack-mode</em> (<em>-m</em>):
 </p>
 <pre class="brush: shell">dynamod -m 0 --help</pre>
-<p>
-  However, for now we will just use the default settings.
-</p>
+
 <h2>2.3. Exploring the configuration file</h2>
 <p>
   Lets take a look inside the <em>hardsphere.xml</em> file we just
