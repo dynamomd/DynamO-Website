@@ -5,8 +5,8 @@
   tutorials on the basic topics. Please click on any of the links
   below to take a look
 </p>
-<div style="text-align:center; padding:5px;"><?php button("Tutorial 1: Compiling DynamO from Source","/index.php/tutorial1");?></div>
-<div style="text-align:center; padding:5px;"><?php button("Tutorial 2: Running a Simulation of Hard Spheres","/index.php/tutorial2");?></div>
+<?php button("Tutorial 1: Compiling DynamO from Source","/index.php/tutorial1");?>
+<?php button("Tutorial 2: Running a Simulation of Hard Spheres","/index.php/tutorial2");?>
 <p>
   If what you need to simulate is not covered in the tutorials, but is
   listed in the <a href="/index.php/features">features</a>, please
@@ -20,28 +20,37 @@
   partially documented using Doxygen and a up to date version is
   available at the link below.
 </p>
-<div style="text-align:center;"><?php button("DynamO API Documentation","/doxygen");?></div>
+<?php button("DynamO API Documentation","/doxygen");?>
 <h1>Support and Reporting Bugs</h1>
-<p>If you think you've found a bug, please report it using the GitHub
-Issue tracker link below.</p>
-<div style="text-align:center;"><?php button("GitHub Issue
-Tracker","https://github.com/toastedcrumpets/DynamO/issues");?></div>
-<p>If you have a problem which is not a bug and cannot find the answer
-in the documentation, you can email your queries to the following
-address:</p>
-<p style="text-align:center;"><a href="mailto:support@dynamomd.org">support@dynamomd.org</a></p>
+<p>
+  If you think you've found a bug, please report it using the GitHub
+  Issue tracker link below.
+</p>
+<?php button("GitHub Issue Tracker",
+      "https://github.com/toastedcrumpets/DynamO/issues");?>
+<p>
+  If you have a problem which is not a bug and cannot find the answer
+  in the documentation, you can email your queries to the following
+  address:
+</p>
+<?php button("support@dynamomd.org", "mailto:support@dynamomd.org");?>
 <h1>Citing DynamO</h1>
-<p>If you find the DynamO useful and publish a paper using results
-obtained from DynamO, please help support it's development by citing
-the following paper.</p>
+<p>
+  If you find the DynamO useful and publish a paper using results
+  obtained from DynamO, please help support it's development by citing
+  the following paper.
+</p>
 <div style="text-align:center;">
   M. N. Bannerman, R. Sargant, L. Lue, "DynamO: A free O(N) general
     event-driven simulator,"<em>
     J. Comp. Chem.</em>, <b>32</b>, 3329-3338 (2011)"
-  <br/><a href="http://dx.doi.org/10.1002/jcc.21915"> Link to journal article</a>
 </div>
+<?php button("Link to journal article","http://dx.doi.org/10.1002/jcc.21915");?>
 <h1>Alternatives</h1>
-<p>There are some alternative event driven packages available on the internet and they are listed here:</p>
+<p>
+  There are some alternative event driven packages available on the
+  internet and they are listed here:
+</p>
 <ul>
   <li>
     <a href="http://www.speadmd.org/">SPEADMD</a> : This is a

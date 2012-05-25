@@ -46,11 +46,13 @@ function pageend()
 function button($text, $link)
  {
  ?>
-<div class="button" >
-  <div class="left"></div>
-  <a href="<?php echo $link;?>" ><span></span></a>
-  <div class="center"><a href="<?php echo $link;?>"><?php echo $text;?></a></div>
-  <div class="right"></div>
+<div style="text-align:center; padding:5px;">
+  <div class="button" >
+    <div class="left"></div>
+    <a href="<?php echo $link;?>" ><span></span></a>
+    <div class="center"><a href="<?php echo $link;?>"><?php echo $text;?></a></div>
+    <div class="right"></div>
+  </div>
 </div>
  <?php
  }
