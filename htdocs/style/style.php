@@ -243,5 +243,5 @@ h2 { font-size:16pt; display:block; }
 .figure .caption { 
     text-align:center; 
     clear: both;
-    padding:5px; 
+    padding:5px;
 }

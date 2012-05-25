@@ -114,7 +114,11 @@ include_once("pages/".$page.".php");
       <!-- CONTENT -->
       <?php white_box_start("contentwrapper"); ?>
       <div id="pagetitle"><?php echo $pagetitle; ?></div>
-      <div id="content"><?php echo $content; ?></div>
+      <div id="content">
+	<?php echo $content; ?>
+	<div style="clear:both;"></div>
+      </div>
+      
       <?php white_box_end(); ?>
 
       <!-- A DIV TO STOP THE FOOTER OVERLAPPING THE CONTENT -->
