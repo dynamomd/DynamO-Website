@@ -48,8 +48,8 @@
   compiled and installed your own copy of DynamO.
 </p>
 <p>
-  We'll start of by testing if you successfully compiled and installed
-  DynamO. Open up a terminal and run the following command:
+  We'll start off by testing if you successfully compiled and
+  installed DynamO. Open up a terminal and run the following command:
 </p>
 <pre class="brush: shell; ">dynamod</pre>
 <p>
