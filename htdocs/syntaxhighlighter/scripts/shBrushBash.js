@@ -36,7 +36,7 @@
 						'times touch top traceroute trap tr true tsort tty type ulimit umask umount unalias ' +
 						'uname unexpand uniq units unset unshar useradd usermod users uuencode uudecode v vdir ' +
 						'vi watch wc whereis which who whoami Wget xargs yes' +
-		                                'emacs'
+		                                'emacs bunzip2 bzip2'
 						;
 
 		this.regexList = [

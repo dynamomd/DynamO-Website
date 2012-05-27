@@ -340,5 +340,33 @@ Mode 0: Monocomponent hard spheres
   simulation is available below.
 </p>
 <?php button("Example output.xml file contents", "/index.php/tutorial2exampleoutput");?>
-
+<p>
+  Taking a look inside <em>output.xml</em>, we can see there's lots of
+  information. The mean free time, density, packing fraction, memory
+  usage and runtime/performance are available.  The full pressure
+  tensor, calculated using the virial expression, is available under
+  the Pressure tag:
+</p>
+<script type="syntaxhighlighter" class="brush: xml"><![CDATA[
+<Pressure Avg="1.63787027134353">
+  <Tensor>
+    1.63913447194771 0.000569183767859779 0.000659703403366379 
+    0.000569183767859774 1.63705438233026 -0.000767271561307316 
+    0.000659703403366379 -0.000767271561307315 1.63742195975262 
+  </Tensor>
+</Pressure>
+....]]></script>
+<p>
+  The first row are the xx, xy, and xz pressure terms, the second row
+  are the yx, yy, and so on. There are some other properties in there
+  as well, such as the configurational internal energy and residual
+  heat capacity:
+</p>
+<script type="syntaxhighlighter" class="brush: xml"><![CDATA[
+<UConfigurational Mean="0" MeanSqr="0" Current="0"/>
+<ResidualHeatCapacity Value="0"/>
+....]]></script>
+<p>
+  
+</p>
 <?php pageend(); ?>
