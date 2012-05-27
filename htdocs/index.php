@@ -70,6 +70,7 @@ if (!file_exists("pages/".$page.".php"))
 
 /*Load the page*/
 $syntaxhighlighter=0;
+$mathjax=0;
 $in_template=1;
 include_once("pages/".$page.".php");
 ?>
@@ -94,6 +95,20 @@ include_once("pages/".$page.".php");
       var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
       })();
     </script>
+    <?php if ($mathjax) { ?>
+    <script type="text/javascript" src="/MathJax/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+       tex2jax: {
+        inlineMath: [['$','$'], ['\\(','\\)']],
+        processEscapes: true },
+       TeX: {
+        equationNumbers: { autoNumber: "AMS" },
+        extensions: ["AMSmath.js", "AMSsymbols.js", "autobold.js", "cancel.js"]
+        }
+      });
+    </script>
+    <?php } ?>
   </head>
   <body>
     <div id="wrapper">
