@@ -77,8 +77,6 @@
 
 <h1>Videos of Example Systems</h1>
 
-<h2>Sheared and Compressed Polydisperse Hard Spheres</h2>
-
 <h2>Gravity, boundary sphere meshes and sleeping particles</h2>
 <div class="video-container" style="padding-bottom: 54.90%; " >
   <video style="min-width:533px;" controls >
