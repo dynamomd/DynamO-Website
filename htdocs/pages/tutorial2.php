@@ -318,11 +318,28 @@ Mode 0: Monocomponent hard spheres
   final configuration in <em>config.equilibrated.xml</em>
 </p>
 <p>
-  From previous experience, this is more than enough events to
-  equilibrate this small system of 1372 particles.Now we can run the
-  simulation to collect some data from the system at equilibrium. We
-  just take the output from the previous <b>dynarun</b> command as
-  input to a new one:
+  Periodically, you should see some output from <b>dynarun</b>
+  informing you of its progress in the simulation:
+</p>
+<script type="syntaxhighlighter" class="brush: plain"><![CDATA[
+...
+Mon 07:59, ETA 5s, Events 100k, t 19.0791, <Mean Free Time> 0.130882, 
+Mon 07:59, ETA 4s, Events 200k, t 38.0597, <Mean Free Time> 0.130545,
+...]]></script>
+<p>
+  This is telling you the time the output was written to screen (so
+  you can see if the simulator has frozen), an estimate of how much
+  longer the simulation will take (ETA), how many events have been
+  executed already, and how much simulation time has passed. The
+  average mean free time is also outputted to help you track the
+  equilibration of the system.
+</p>
+<p>
+  From previous experience, $10^6$ events is more than enough
+  to equilibrate this small system of 1372 particles. Now we can run
+  the simulation to collect some data from the system at
+  equilibrium. We just take the output from the
+  previous <b>dynarun</b> command as input to a new one:
 </p>
 <pre class="brush: shell; ">dynarun config.equilibrated.xml -c 1000000 -o config.end.xml</pre>
 <p>
@@ -342,7 +359,11 @@ Mode 0: Monocomponent hard spheres
   <b>dynarun</b> will always collect. These results, along with any
   other enabled properties, are outputted to a compressed XML file
   called <em>output.xml.bz2</em> (you can set the output file name
-  using the <em>--out-data-file</em> option).
+  using the <em>--out-data-file</em> option). Both the configuration
+  files and the output files are written in XML, as it is a format
+  that is easy for both humans and computers to read. We'll cover how
+  to look at this data by hand now, and how to write programs/scripts
+  to access it in a later tutorial.
 </p>
 <p>
   To read this output data file, you must first un-compress the file
@@ -351,15 +372,26 @@ Mode 0: Monocomponent hard spheres
 <pre class="brush: shell; ">bunzip2 output.xml.bz2</pre>
 <p>
   This will rename the file from <em>output.xml.bz2</em> to
-  output.xml, and you will be able to open it using your favourite
-  text editor. An example output.xml file from the default hard sphere
-  simulation is available below.
+  <em>output.xml</em>, and you will be able to open it using your
+  favourite text editor. An example <em>output.xml</em> file from the
+  default hard sphere simulation is available below.
 </p>
 <?php button("Example output.xml file contents", "/index.php/tutorial2exampleoutput");?>
 <p>
   Taking a look inside <em>output.xml</em>, we can see there's lots of
-  information available by default. The mean free time, density,
-  packing fraction, memory usage and performance are available.
+  information available. The mean free time, density, packing
+  fraction, particle count, simulation size, memory usage and
+  performance are available. The temperature is available too:
+</p>
+<script type="syntaxhighlighter" class="brush: xml"><![CDATA[
+...
+<Temperature Mean="0.99999999999997" MeanSqr="0.999999999999985" Current="1.00000000000001"/>
+...]]></script>
+<p>
+  Here you can see that the temperature is almost exactly 1. Hard
+  spheres have no configurational internal energy, so once you set
+  their temperature it will not fluctuate. In this case, we don't need
+  a thermostat to hold the temperature at 1. 
 </p>
 <p>
   The most interesting property for the hard sphere system is the
@@ -381,9 +413,10 @@ Mode 0: Monocomponent hard spheres
   expression</a>. The isotropic pressure,
   $p=\left(P_{xx}+P_{yy}+P_{zz}\right)/3$, is available as the Avg
   attribute, but the full pressure tensor, $\mathbf{P}$, is under the
-  Tensor attribute. The pressure values are arranged as follows:
+  Tensor attribute. The pressure values are just written out as a set
+  of space separated values which are arranged as follows:
 </p>
-$$ 
+$$
 \begin{align}
 \mathbf{P}=
 \begin{pmatrix}
@@ -403,8 +436,10 @@ $$
 <ResidualHeatCapacity Value="0"/>
 ...]]></script>
 <p>
-  However, these values are zero as the hard sphere fluid has an ideal
-  heat capacity and internal energy.
+  But as mentioned before these values are zero as the hard sphere
+  fluid has an ideal heat capacity and internal energy. In later
+  tutorials, we'll look at more complex systems and their properties
+  in detail.
 </p>
 <h1>5. In Summary</h1>
 <p>
