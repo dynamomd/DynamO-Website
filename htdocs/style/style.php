@@ -28,26 +28,16 @@ li {margin:5px;}
 }
 
 /* Stuff for making full width HTML5 and flash videos */
-video {
-    max-width: 100%;
+.video-container video {
+    width: 100%;
+    min-width: 533px;
     height: auto;
 }
 
 .video-container {
-    position: relative;
-    padding-bottom: 56.25%;
-    height: 0;
-    overflow: hidden;
-}
-
-.video-container iframe,  
-.video-container object,  
-.video-container embed {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
+    max-width:600px; 
+    margin-left:auto; 
+    margin-right:auto;
 }
 
 /* Floating footer code */

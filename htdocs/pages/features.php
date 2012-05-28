@@ -77,12 +77,28 @@
 
 <h1>Videos of Example Systems</h1>
 
+<h2>Granular Damper Simulation</h2>
+<div class="video-container">
+  <video controls>
+    <source src="/videos/granularDamper.mp4" type='video/mp4' />
+    <source src="/videos/granularDamper.ogg" type='video/ogg' />
+  </video>
+</div>
+
 <h2>Gravity, boundary sphere meshes and sleeping particles</h2>
-<div class="video-container" style="padding-bottom: 54.90%; " >
-  <video style="min-width:533px;" controls >
+<div class="video-container">
+  <video controls>
     <source src="/videos/sleepingparticles.mp4" type='video/mp4' />
     <source src="/videos/sleepingparticles.ogg" type='video/ogg' />
     <iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/9oaobaxhGX8" allowfullscreen frameborder="0"></iframe>
+  </video>
+</div>
+
+<h2>Triangle meshes and Gravity</h2>
+<div class="video-container">
+  <video controls>
+    <source src="/videos/trianglemesh.mp4" type='video/mp4' />
+    <source src="/videos/trianglemesh.ogg" type='video/ogg' />
   </video>
 </div>
 <?php pageend(); ?>
