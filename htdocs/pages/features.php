@@ -82,6 +82,7 @@
   <video controls>
     <source src="/videos/granularDamper.mp4" type='video/mp4' />
     <source src="/videos/granularDamper.ogg" type='video/ogg' />
+    <iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/3mlisuFJkqk"></iframe>
   </video>
 </div>
 
@@ -90,7 +91,7 @@
   <video controls>
     <source src="/videos/sleepingparticles.mp4" type='video/mp4' />
     <source src="/videos/sleepingparticles.ogg" type='video/ogg' />
-    <iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/9oaobaxhGX8" allowfullscreen frameborder="0"></iframe>
+    <iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/9oaobaxhGX8"></iframe>
   </video>
 </div>
 
@@ -99,6 +100,7 @@
   <video controls>
     <source src="/videos/trianglemesh.mp4" type='video/mp4' />
     <source src="/videos/trianglemesh.ogg" type='video/ogg' />
+    <iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/1Rn-bL8S30Y"></iframe>
   </video>
 </div>
 <?php pageend(); ?>
