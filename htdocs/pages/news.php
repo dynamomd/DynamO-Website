@@ -7,9 +7,9 @@ rsort($file_array);
 ob_start();
 foreach ($file_array as $filename) 
 { 
-  echo "<hr />"; 
   echo "<div class=\"newsdate\">".date("jS F Y", filemtime($filename))."</div>";
   include($filename);
+  echo "<hr />"; 
 }
 
 pageend();

@@ -138,8 +138,12 @@ li { margin:5px; }
 #pagetitle { 
     position:absolute; 
     font-weight:bold; 
-    top:2px; 
-    padding-left:15px;
+    top:0;
+    left:0;
+    padding: 2px 15px 2px 15px;
+    border-top-left-radius: 15px;
+    border-bottom-right-radius: 15px;
+    background-color:#ddeeee;
 }
 
 #content { 
