@@ -3,9 +3,9 @@
   $mathjax=1;
   pagestart("Tutorial 2: Running a Simulation of Hard Spheres"); 
 ?>
-<div style="float:right; width:50%; max-width:500px">
-  <div class="video-container" style="padding-bottom: 62.5%;" >
-    <video controls >
+<div style="position:relative; padding-right:30px;float:right; width:50%; max-width:500px">
+  <div class="video-container">
+    <video controls poster="/videos/hardspheres.jpg" preload="none">
       <source src="/videos/hardspheres.mp4" type='video/mp4' />
       <source src="/videos/hardspheres.ogg" type='video/ogg' />
       <iframe width="266" height="160" src="https://www.youtube-nocookie.com/embed/tn6Cz0tNPuU"></iframe>

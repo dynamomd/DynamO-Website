@@ -76,10 +76,10 @@
 </ul>
 
 <h1>Videos of Example Systems</h1>
-
+<?php /*for file in $(ls *.mp4); do name=${file%.mp4}; ffmpeg -i $name.mp4  -ss 10 -vframes 1 -vcodec mjpeg -f image2 $name.jpg; done*/ ?>
 <h2>Granular Damper Simulation</h2>
 <div class="video-container">
-  <video controls>
+  <video controls poster="/videos/granularDamper.jpg" preload="none">
     <source src="/videos/granularDamper.mp4" type='video/mp4' />
     <source src="/videos/granularDamper.ogg" type='video/ogg' />
     <iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/3mlisuFJkqk"></iframe>
@@ -88,7 +88,7 @@
 
 <h2>Gravity, Boundary Sphere Meshes and Sleeping Particles</h2>
 <div class="video-container">
-  <video controls>
+  <video controls poster="/videos/sleepingparticles.jpg" preload="none">
     <source src="/videos/sleepingparticles.mp4" type='video/mp4' />
     <source src="/videos/sleepingparticles.ogg" type='video/ogg' />
     <iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/9oaobaxhGX8"></iframe>
@@ -97,7 +97,7 @@
 
 <h2>Triangle Meshes and Gravity</h2>
 <div class="video-container">
-  <video controls>
+  <video controls poster="/videos/trianglemesh.jpg" preload="none">
     <source src="/videos/trianglemesh.mp4" type='video/mp4' />
     <source src="/videos/trianglemesh.ogg" type='video/ogg' />
     <iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/1Rn-bL8S30Y"></iframe>
