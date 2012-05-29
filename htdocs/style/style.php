@@ -16,9 +16,17 @@ body {
     background-color:<?php echo $sitebg; ?>;
 }
 
-h1 { min-width:533px; }
+h1 { min-width:533px; font-size:18pt; border-bottom:3px solid; display:block; clear:both; }
 
-li {margin:5px;}
+h2 { font-size:16pt; display:block; }
+
+li { margin:5px; }
+
+.rounded {
+    border-radius: 15px;
+    padding: 15px;
+    background-color: #ffffff;
+}
 
 .newsdate {
     display:inline;
@@ -67,14 +75,18 @@ li {margin:5px;}
     background-position: 15px 0px;
     height: 115px;
     display:block;
-    background-color:#ffffff;
 }
 
 #footer {
-    height:40px; 
     margin-top:-55px;
+    margin-left:15px;
+    margin-right:15px;
     position:relative;
     min-width:768px;
+    height:41px;
+    padding:0px;
+    padding-left:15px;
+    line-height:41px;
 }
 
 #w3footerlogoHTML, #w3footerlogoCSS {
@@ -87,28 +99,28 @@ li {margin:5px;}
 }
 
 #w3footerlogoHTML {
-    right:5px;
-    background-position: -186px 0;
+    right:15px;
+    background-position: -90px 0;
 }
 
 #w3footerlogoCSS {
-    right:108px;
-    background-position: -96px 0;
+    right:118px;
+    background-position: 0 0;
 }
 
 #leftmenu {
     width:160px;
-    margin-left:15px; 
     position:absolute;
-    left:0;
+    left:15px;
+    padding:15px 0 15px 0;
 }
 
 #leftmenu a { 
     color:#000000; 
     text-decoration: none; 
     line-height:30px; 
-    display:block; 
-    padding-left:16px; 
+    display:block;
+    padding-left:15px;
     background-color:<?php echo $pagebg; ?>;
 }
 
@@ -133,42 +145,26 @@ li {margin:5px;}
 #content { 
     background-color:<?php echo $pagebg; ?>; 
     padding: 10px 15px 10px 15px;
-    min-width:533px; 
 }
-
-/*     Styling of the round edged boxes       */
-.borderleft, .borderright { position:absolute; top:0px; width:15px; height:100%; }
-.borderleft { left:15px; }
-.borderright { right:15px; }
-.bordercentre { background-color:<?php echo $pagebg; ?>; position:absolute; left:30px; right:30px; bottom:0; top:0;}
-.verticalborder { background-color: <?php echo $pagebg; ?>; position:absolute; top:15px; bottom:15px;left:0px; right:0px; }
-.horizontalborder { background-color: <?php echo $pagebg; ?>; height:15px; margin-left:15px; margin-right:15px; }
-
-.topleftcornerborder, .bottomleftcornerborder, .toprightcornerborder, .bottomrightcornerborder {
-    background-image: url(csssprites.png);
-    width:15px;
-    height:15px;
-    position:absolute;
-}
-
-.topleftcornerborder { top:0; left:0; background-position: 0 0; }
-.bottomleftcornerborder { bottom:0; left:0; background-position: 0 -15px; }
-.toprightcornerborder { top:0; right:0; background-position: -15px 0; }
-.bottomrightcornerborder { bottom:0; right:0; background-position: -15px -15px; }
 
 /* Button */
 .button { 
+    background-color: <?php echo $inactivebutton;?>; 
     cursor: pointer;
     position:relative; 
     padding-left:15px; 
     padding-right:15px;
     height:30px; 
     display:inline-block; 
+    border-radius:15px;
+    line-height:30px; 
     /*Fixes for crappy ie7*/
     /*zoom:1; *display: inline;*/
     /*Fixes for crappy ie6*/
     /*_height: 30px;*/
 }
+
+.button:hover { background-color: <?php echo $hoverbutton;?>; }
 
 .button span { 
     position:absolute; 
@@ -179,41 +175,10 @@ li {margin:5px;}
     z-index:1;
 }
 
-.button .center a {
+.button a {
     color:#000000;
     text-decoration:none;
 }
-
-.button .center { 
-    background-color: <?php echo $inactivebutton;?>; 
-    height:30px; 
-    line-height:30px; 
-    display:inline-block; 
-    /*Fixes for crappy ie7*/
-    /*zoom:1; *display: inline;*/
-    /*Fixes for crappy ie6*/
-    /*_height: 30px;*/
-}
-.button .left, .button .right {
-    background-image: url(csssprites.png); 
-    width:15px; 
-    height:30px; 
-    position:absolute;
-}
-
-.button .left { top:0; left:0; background-position: -32px 0; }
-
-.button .right { bottom:0; right:0; background-position: -47px 0; }
-
-.button:hover .center { background-color: <?php echo $hoverbutton;?>; }
-.button:hover .left { background-position: -64px 0; }
-.button:hover .right { background-position: -79px 0; }
-
-.bordercentre p { padding:0; margin:0; line-height:40px; }
-
-h1 { font-size:18pt; border-bottom:3px solid; display:block; clear:both; }
-
-h2 { font-size:16pt; display:block; }
 
 .figure { 
     float: right; 

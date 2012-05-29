@@ -2,28 +2,6 @@
 header("Content-Type: text/html; charset=utf-8");
 date_default_timezone_set('Europe/London');
 
-function white_box_start($id)
-{
-echo "<div ";
-if ($id) echo "id=\"".$id."\"";
-echo ">";
-?>
-<div class="topleftcornerborder"></div> 
-<div class="toprightcornerborder"></div>
-<div class="horizontalborder"></div>
-<?php
-}
-
-function white_box_end()
-{
-?>
-<div class="bottomleftcornerborder"></div>
-<div class="bottomrightcornerborder"></div>
-<div class="horizontalborder"></div>
-</div>
-<?php
-}
-
 function pagestart($title)
  {
   global $pagetitle, $in_template;
@@ -48,10 +26,8 @@ function button($text, $link)
  ?>
 <div style="text-align:center; padding:5px;">
   <div class="button" >
-    <div class="left"></div>
     <a href="<?php echo $link;?>" ><span></span></a>
-    <div class="center"><a href="<?php echo $link;?>"><?php echo $text;?></a></div>
-    <div class="right"></div>
+    <a href="<?php echo $link;?>"><?php echo $text;?></a>
   </div>
 </div>
  <?php
@@ -114,50 +90,36 @@ include_once("pages/".$page.".php");
   <body>
     <div id="wrapper">
       <!-- HEADER AND LOGO -->
-      <?php white_box_start("header"); ?>
-      <a href="/" id="sitelogo" ></a>
-      <?php white_box_end(); ?>
+      <div class="rounded" id="header">
+	<a href="/" id="sitelogo" ></a>
+      </div>
 
       <!-- MENU -->
-      <?php white_box_start("leftmenu"); ?>
-      <a href="/index.php/news">News</a>
-      <a href="/index.php/download">Download</a>
-      <a href="/index.php/documentation">Docs/Support</a>
-      <a href="/index.php/features">Features</a>
-      <a href="/index.php/credits">Credits</a>
-      <?php white_box_end(); ?>
+      <div class="rounded" id="leftmenu">
+	<a href="/index.php/news">News</a>
+	<a href="/index.php/download">Download</a>
+	<a href="/index.php/documentation">Docs/Support</a>
+	<a href="/index.php/features">Features</a>
+	<a href="/index.php/credits">Credits</a>
+      </div>
 
       <!-- CONTENT -->
-      <?php white_box_start("contentwrapper"); ?>
-      <div id="pagetitle"><?php echo $pagetitle; ?></div>
-      <div id="content">
+      <div id="contentwrapper" class="rounded" >
+	<div id="pagetitle"><?php echo $pagetitle; ?></div>
 	<?php echo $content; ?>
 	<div style="clear:both;"></div>
       </div>
-      
-      <?php white_box_end(); ?>
 
       <!-- A DIV TO STOP THE FOOTER OVERLAPPING THE CONTENT -->
       <div id="wrapperfooterpad"></div>
     </div>
     <!-- FOOTER -->
-    <div id="footer">
-      <div class="borderleft">
-	<div class="topleftcornerborder"></div>
-	<div class="verticalborder"></div>
-	<div class="bottomleftcornerborder"></div>
-      </div>
-      <div class="bordercentre">
-	<p>Copyright &copy; Marcus Bannerman 2008-<?php echo date("Y"); ?></p>
-	<a href="http://validator.w3.org/check?uri=referer" id="w3footerlogoHTML"></a>
-	<a href="http://jigsaw.w3.org/css-validator/check/referer" id="w3footerlogoCSS"></a>
-      </div>
-      <div class="borderright">
-	<div class="toprightcornerborder"></div>
-	<div class="verticalborder"></div>
-	<div class="bottomrightcornerborder"></div>
-      </div>
+    <div id="footer" class="rounded">
+      Copyright &copy; Marcus Bannerman 2008-<?php echo date("Y"); ?>
+      <a href="http://validator.w3.org/check?uri=referer" id="w3footerlogoHTML"></a>
+      <a href="http://jigsaw.w3.org/css-validator/check/referer" id="w3footerlogoCSS"></a>
     </div>
+
     <?php if ($syntaxhighlighter) { ?>
     <link href="/syntaxhighlighter/styles/shThemeDynamO.css" type="text/css" rel="stylesheet" />
     <link href="/syntaxhighlighter/styles/shCore.css" type="text/css" rel="stylesheet" />
