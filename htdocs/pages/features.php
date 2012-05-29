@@ -86,7 +86,7 @@
   </video>
 </div>
 
-<h2>Gravity, boundary sphere meshes and sleeping particles</h2>
+<h2>Gravity, Boundary Sphere Meshes and Sleeping Particles</h2>
 <div class="video-container">
   <video controls>
     <source src="/videos/sleepingparticles.mp4" type='video/mp4' />
@@ -95,7 +95,7 @@
   </video>
 </div>
 
-<h2>Triangle meshes and Gravity</h2>
+<h2>Triangle Meshes and Gravity</h2>
 <div class="video-container">
   <video controls>
     <source src="/videos/trianglemesh.mp4" type='video/mp4' />
