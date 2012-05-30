@@ -1,9 +1,8 @@
 <?php header("Content-type: text/css"); 
-$sitebg = "#b7c7c8";
+$sitebg = "#b7c7d7";
 $pagebg = "#ffffff";
-$leftmenuhovercolor = "#eeeeee";
-$inactivebutton = "#ccdddd";
-$hoverbutton = "#bbcccc";
+$inactivebutton = "#e0f0ff";
+$hoverbutton = "#ccddcc";
 ?>
 
 /* Main html element styles */
@@ -127,14 +126,17 @@ li { margin:5px; }
     line-height:30px; 
     display:block;
     padding-left:15px;
-    background-color:<?php echo $pagebg; ?>;
+    background-color:<?php echo $inactivebutton; ?>;
+    border:1px solid;
+    border-radius:15px;
+    margin-bottom:5px;
 }
 
 #leftmenu a:hover { 
-    background-color:<?php echo $leftmenuhovercolor;?>; 
+    background-color: <?php echo $hoverbutton;?>; 
 }
 
-#contentwrapper { 
+#contentwrapper {
     margin-left:190px; 
     margin-right:15px;
     position:relative;
@@ -148,12 +150,11 @@ li { margin:5px; }
     padding: 0px 15px 0px 15px;
     border-radius: 15px 0 15px 0;
     border-bottom:1px solid;
-    border-right:1px solid;    
-    background-color:#ddeeee;
+    border-right:1px solid; 
+    background-color:<?php echo $inactivebutton; ?>;
 }
 
 #pagetitle p {
-    font-weight:bold;
     padding:0;
     margin: 2px 0 2px 0;
 }

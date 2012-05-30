@@ -109,7 +109,7 @@ include_once("pages/".$page.".php");
       </div>
 
       <!-- MENU -->
-      <div class="rounded" id="leftmenu">
+      <div id="leftmenu">
 	<a href="/index.php/news">News</a>
 	<a href="/index.php/download">Download</a>
 	<a href="/index.php/documentation">Docs/Support</a>
