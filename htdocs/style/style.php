@@ -135,15 +135,19 @@ li { margin:5px; }
     min-width:563px;
 }
 
-#pagetitle { 
-    position:absolute; 
-    font-weight:bold; 
-    top:0;
-    left:0;
-    padding: 2px 15px 2px 15px;
-    border-top-left-radius: 15px;
-    border-bottom-right-radius: 15px;
+#pagetitle {
+    position:absolute;
+    left: 0px;
+    top: 0px;
+    padding: 0px 15px 0px 15px;
+    border-radius: 15px 0 15px 0;
     background-color:#ddeeee;
+}
+
+#pagetitle p {
+    font-weight:bold;
+    padding:0;
+    margin: 2px 0 2px 0;
 }
 
 #content { 

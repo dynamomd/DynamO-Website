@@ -8,3 +8,4 @@ ErrorDocument 404 /index.php?page=404
 AddType video/ogg .ogv
 AddType video/mp4 .mp4
 AddType video/webm .webm
+AddType text/x-component .htc
