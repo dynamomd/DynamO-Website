@@ -18,7 +18,20 @@ function pagestart($title)
 function pageend() 
  {
   global $content;
-  $content = ob_get_clean(); 
+  $content = ob_get_clean();
+ }
+
+function codeblockstart()
+ {
+   global $syntaxhighlighter;
+   $syntaxhighlighter=1;
+   ob_start();
+ }
+
+function codeblockend($opts)
+ {
+   $code = ob_get_clean();
+   echo "<pre class=\"".$opts."\">".htmlentities($code)."</pre>";
  }
 
 function button($text, $link)

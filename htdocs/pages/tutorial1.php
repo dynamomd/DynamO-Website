@@ -1,7 +1,4 @@
-<?php 
-  $syntaxhighlighter=1;
-  pagestart("Tutorial 1: Compiling and Installing DynamO"); 
-?>
+<?php pagestart("Tutorial 1: Compiling and Installing DynamO"); ?>
 <p>
   This tutorial covers the requirements, compilation and installation
   of the DynamO simulation package. It is recommended that you build
@@ -78,8 +75,8 @@
   The recommended method is to use git to download the source, which
   would look like this:
 </p>
-<pre class="brush: shell">git clone https://github.com/toastedcrumpets/DynamO.git
-cd DynamO</pre>
+<?php codeblockstart(); ?>git clone https://github.com/toastedcrumpets/DynamO.git
+cd DynamO<?php codeblockend("brush: shell;"); ?>
 <h1>Step 2: Compilation and Installation</h1>
 <p>
   DynamO uses the modern, powerful, but quite complicated boost-build
@@ -91,7 +88,7 @@ cd DynamO</pre>
   Building DynamO is then as straightforward as running the make
   command:
 </p>
-<pre class="brush: shell">make</pre>
+<?php codeblockstart(); ?>make<?php codeblockend("brush: shell;"); ?>
 <p>
   This step can take a while, it will download a copy of boost, and
   build DynamO.
@@ -102,7 +99,7 @@ cd DynamO</pre>
   dependencies it needs to build. The list of tests should look like
   this (they may be in any order):
 </p>
-<pre class="brush: plain; highlight: [2, 5, 12];">
+<?php codeblockstart(); ?>
 Performing configuration checks
     (Required libraries for building DynamO)
     - DynamO: bzip2 library    : yes
@@ -117,7 +114,7 @@ Performing configuration checks
     (Tests for added functionality in the visualiser)
     - Magnet: libavcodec (video encoding support) : yes
     - Coil: libCwiid Wii-mote support (Optional) : yes
-</pre>
+<?php codeblockend("brush: plain; highlight: [2, 5, 12];"); ?>
 <p>
   If you are missing the <b>bzip2</b> library, then DynamO won't build
   at all. If you are missing any of Coil's dependencies [DynamO-Coil
@@ -138,7 +135,7 @@ Performing configuration checks
   You can now install DynamO into your system (<em>/usr/bin</em>) using the
   following command.
 </p>
-<pre class="brush: shell">sudo make install</pre>
+<?php codeblockstart(); ?>sudo make install<?php codeblockend("brush: shell;"); ?>
 <p>
   (Advanced users can copy the contents of <em>DynamO/bin</em>
   wherever they like, or add it to their PATH variable, or just run
@@ -161,15 +158,14 @@ Performing configuration checks
   of boost used, new dependencies, etc.), you will need to clean up
   the current version of the code by running the following command:
 </p>
-<pre class="brush: shell">make distclean</pre>
+<?php codeblockstart(); ?>make distclean<?php codeblockend("brush: shell;"); ?>
 <p>
   You can then easily update to the latest version of DynamO by just
   running the following commands:
 </p>
-<pre class="brush: shell">git pull
+<?php codeblockstart(); ?>git pull
 make
-sudo make install
-</pre>
+sudo make install<?php codeblockend("brush: shell;"); ?>
 <p>
   and you should now have an up-to-date set of executables installed!
 </p>
@@ -181,7 +177,7 @@ sudo make install
   sanity checks and verbose error reports. To create the debugging
   version just run the following command in the DynamO directory
 </p>
-<pre class="brush: shell">src/boost/bjam -j2 install debug</pre>
+<?php codeblockstart(); ?>src/boost/bjam -j2 install debug<?php codeblockend("brush: shell;"); ?>
 <p>
   This will install some executables built with debugging symbols and
   extra sanity checks in the <em>bin/</em> directory. These

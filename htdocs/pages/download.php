@@ -1,7 +1,4 @@
-<?php 
-   $syntaxhighlighter=1;
-   pagestart("Download"); 
-?>
+<?php pagestart("Download"); ?>
 <p> 
   DynamO is an open-source and free code, made available under
   version 3 of the GPL licence. There are several ways you can obtain a
@@ -18,7 +15,7 @@
 <p>
   Just install git and use the following command in your terminal:
 </p> 
-<pre class="brush: shell">git clone https://github.com/toastedcrumpets/DynamO.git</pre>
+<?php codeblockstart(); ?>git clone https://github.com/toastedcrumpets/DynamO.git<?php codeblockend("brush: shell;"); ?>
 <p>
   This will create a folder called <em>DynamO</em> in the working
   directory.
@@ -49,7 +46,7 @@
 </ul>
 <p>If you decide you want something other than the default branch
 (master), just check it out using the following command:</p>
-<pre class="brush: shell">git checkout dynamo-1-3</pre>
+<?php codeblockstart(); ?>git checkout dynamo-1-3<?php codeblockend("brush: shell;"); ?>
 <h1>Alternative Source Code Downloads</h1>
 <p>
   It is recommended that you use the git to download the source code

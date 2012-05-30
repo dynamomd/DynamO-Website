@@ -1,5 +1,4 @@
 <?php
-  $syntaxhighlighter=1;
   $mathjax=1;
   pagestart("Tutorial 2: Running a Simulation of Hard Spheres"); 
 ?>
@@ -54,21 +53,20 @@
   We'll start off by testing if you successfully compiled and
   installed DynamO. Open up a terminal and run the following command:
 </p>
-<pre class="brush: shell; ">dynamod</pre>
+<?php codeblockstart(); ?>dynamod<?php codeblockend("brush: shell;"); ?>
 <p>
   You may need to change this path to wherever you installed the
   dynamo binaries. If everything is working correctly, you should see
   the copyright notice and the descriptions of the options of the
   dynamod program:
 </p>
-<script type="syntaxhighlighter" class="brush: plain"><![CDATA[
-dynamod  Copyright (C) 2011  Marcus N Campbell Bannerman
+<?php codeblockstart(); ?>dynamod  Copyright (C) 2011  Marcus N Campbell Bannerman
 This program comes with ABSOLUTELY NO WARRANTY.
 This is free software, and you are welcome to redistribute it
 under certain conditions. See the licence you obtained with
 the code
 Usage : dynamod <OPTIONS>...[CONFIG FILE]
-....]]></script>
+...<?php codeblockend("brush: plain;"); ?>
 <p>
   If you do not see the above output, please double check that you
   encountered no errors when building dynamo. Return to
@@ -91,14 +89,15 @@ Usage : dynamod <OPTIONS>...[CONFIG FILE]
   your research. All you have to do is run the following commands in
   your terminal/shell:
 </p>
-<pre class="brush: shell; ">#Create the configuration
+<?php codeblockstart(); ?>#Create the configuration
 dynamod -m 0 -C 7 -d 0.5 --i1 0 -r 1 -o config.start.xml
 
 #A "equilibration run" to equilibrate the configuration
 dynarun config.start.xml -c 1000000 -o config.equilibrated.xml
 
 #A "production run" to collect data on the system
-dynarun config.equilibrated.xml -c 1000000 -o config.end.xml</pre>
+dynarun config.equilibrated.xml -c 1000000 -o config.end.xml
+<?php codeblockend("brush: shell;"); ?>
 <p>
   But what were those three commands and what do the options/switches
   (-c -o -m) control? We'll look at each command individually in the
@@ -110,7 +109,7 @@ dynarun config.equilibrated.xml -c 1000000 -o config.end.xml</pre>
   initial <b>configuration file</b>, called <em>config.start.xml</em>,
   using <b>dynamod</b>.
 </p>
-<pre class="brush: shell; ">dynamod -m 0 -C 7 -d 0.5 --i1 0 -r 1 -o config.start.xml</pre>
+<?php codeblockstart(); ?>dynamod -m 0 -C 7 -d 0.5 --i1 0 -r 1 -o config.start.xml<?php codeblockend("brush: shell;"); ?>
 <p>
   In this section, we will learn about the configuration files of
   DynamO, which are the main input and output of DynamO, and how to
@@ -151,23 +150,21 @@ dynarun config.equilibrated.xml -c 1000000 -o config.end.xml</pre>
   can take a look at the options of <b>dynamod</b> using
   the <em>--help</em> option:
 </p>
-<pre class="brush: shell; ">dynamod --help</pre>
+<?php codeblockstart(); ?>dynamod --help<?php codeblockend("brush: shell;"); ?>
 <p>
   There are many options available and a lot are related to modifying
   existing configurations (this is why it is called dyna<b>mod</b>),
   but if we want to generate a configuration we are only need to be
   interested in the bottom section which starts with:
 </p>
-<pre class="brush: shell; ">
-...
+<?php codeblockstart(); ?>...
 Packer options:
   -m [ --pack-mode ] arg    Chooses the system to pack (construct)
                             Packer Modes:
                             0:  Monocomponent hard spheres
                             1:  Mono/Multi-component square wells
                             2:  Random walk of an isolated attractive polymer
-...
-</pre>
+...<?php codeblockend("brush: plain;"); ?>
 <p>
   This section is a list of the built in example configurations
   that <b>dynamod</b> can produce.  We ask <b>dynamod</b> to generate
@@ -181,11 +178,11 @@ Packer options:
   the <em>--help</em> option again in combination with the
   selected <em>--pack-mode</em>:
 </p>
-<pre class="brush: shell; ">dynamod -m0 --help</pre>
+<?php codeblockstart(); ?>dynamod -m0 --help<?php codeblockend("brush: shell;"); ?>
 <p>
  And you should get the following output:
 </p>
-<pre class="brush: plain">
+<?php codeblockstart(); ?>
 Mode 0: Monocomponent hard spheres
  Options
   -C [ --NCells ] arg (=7)    Set the default number of lattice unit-cells in each direction.
@@ -197,17 +194,17 @@ Mode 0: Monocomponent hard spheres
   --i1 arg (=FCC)             Lattice type (0=FCC, 1=BCC, 2=SC)
   --i2 arg (disabled)         Adds a temperature rescale event every x events
   --f1 arg (=1.0)             Sets the elasticity of the hard spheres
-</pre>
+<?php codeblockend("brush: plain;"); ?>
 <p>
   What you can see here are a list of options with their default
   values in parenthesis, so if you run:
 </p>
-<pre class="brush: shell; ">dynamod -m0 -o config.start.xml.bz2</pre>
+<?php codeblockstart(); ?>dynamod -m0 -o config.start.xml.bz2<?php codeblockend("brush: shell;"); ?>
 <p>
   It will actually output the same result as running the following
   command.
 </p>
-<pre class="brush: shell; ">dynamod -m 0 -C 7 -d 0.5 --i1 0 -r 1 -o config.start.xml</pre>
+<?php codeblockstart(); ?>dynamod -m 0 -C 7 -d 0.5 --i1 0 -r 1 -o config.start.xml<?php codeblockend("brush: shell;"); ?>
 <h2>2.3. Initial Positions and Crystal Structures</h2>
 <div class="figure" style="width:250px;">
   <a href="/images/tut1_initialpos.jpg">
@@ -273,7 +270,7 @@ Mode 0: Monocomponent hard spheres
   To conclude this part, we'll quickly summarise the description of
   each of the options passed to dynamod
 </p>
-<pre class="brush: shell;">dynamod -m 0 -C 7 -d 0.5 --i1 0 -r 1 -o config.start.xml</pre>
+<?php codeblockstart(); ?>dynamod -m 0 -C 7 -d 0.5 --i1 0 -r 1 -o config.start.xml<?php codeblockend("brush: shell;"); ?>
 <p>
   The above command says:
 </p>
@@ -312,7 +309,7 @@ Mode 0: Monocomponent hard spheres
   using <em>--help</em>, but for now we'll only use <em>-c</em>
   and <em>-o</em>.
 </p>
-<pre class="brush: shell; ">dynarun config.start.xml -c 1000000 -o config.equilibrated.xml</pre>
+<?php codeblockstart(); ?>dynarun config.start.xml -c 1000000 -o config.equilibrated.xml<?php codeblockend("brush: shell;"); ?>
 <p>
   This command takes the configuration in <em>config.start.xml</em>
   and runs it for 10<sup>6</sup> events/collisions, before putting the
@@ -322,11 +319,10 @@ Mode 0: Monocomponent hard spheres
   Periodically, you should see some output from <b>dynarun</b>
   informing you of its progress in the simulation:
 </p>
-<script type="syntaxhighlighter" class="brush: plain"><![CDATA[
-...
+<?php codeblockstart(); ?>...
 Mon 07:59, ETA 5s, Events 100k, t 19.0791, <Mean Free Time> 0.130882, 
 Mon 07:59, ETA 4s, Events 200k, t 38.0597, <Mean Free Time> 0.130545,
-...]]></script>
+...<?php codeblockend("brush: plain;"); ?>
 <p>
   This is telling you the time the output was written to screen (so
   you can see if the simulator has frozen), an estimate of how much
@@ -342,7 +338,7 @@ Mon 07:59, ETA 4s, Events 200k, t 38.0597, <Mean Free Time> 0.130545,
   equilibrium. We just take the output from the
   previous <b>dynarun</b> command as input to a new one:
 </p>
-<pre class="brush: shell; ">dynarun config.equilibrated.xml -c 1000000 -o config.end.xml</pre>
+<?php codeblockstart(); ?>dynarun config.equilibrated.xml -c 1000000 -o config.end.xml<?php codeblockend("brush: shell;"); ?>
 <p>
   But where is this data that's been collected? The most obvious
   result is that you have a new configuration file,
@@ -370,7 +366,7 @@ Mon 07:59, ETA 4s, Events 200k, t 38.0597, <Mean Free Time> 0.130545,
   To read this output data file, you must first un-compress the file
   using the <b>bunzip2</b> command like so:
 </p>
-<pre class="brush: shell; ">bunzip2 output.xml.bz2</pre>
+<?php codeblockstart(); ?>bunzip2 output.xml.bz2<?php codeblockend("brush: shell;"); ?>
 <p>
   This will rename the file from <em>output.xml.bz2</em> to
   <em>output.xml</em>, and you will be able to open it using your
@@ -384,10 +380,9 @@ Mon 07:59, ETA 4s, Events 200k, t 38.0597, <Mean Free Time> 0.130545,
   fraction, particle count, simulation size, memory usage and
   performance are available. The temperature is available too:
 </p>
-<script type="syntaxhighlighter" class="brush: xml"><![CDATA[
-...
+<?php codeblockstart(); ?>...
 <Temperature Mean="0.99999999999997" MeanSqr="0.999999999999985" Current="1.00000000000001"/>
-...]]></script>
+...<?php codeblockend("brush: xml;"); ?>
 <p>
   Here you can see that the temperature is almost exactly 1. Hard
   spheres have no configurational internal energy, so once you set
@@ -398,8 +393,7 @@ Mon 07:59, ETA 4s, Events 200k, t 38.0597, <Mean Free Time> 0.130545,
   The most interesting property for the hard sphere system is the
   pressure, conveniently available under the Pressure tag:
 </p>
-<script type="syntaxhighlighter" class="brush: xml"><![CDATA[
-...
+<?php codeblockstart(); ?>...
 <Pressure Avg="1.63787027134353">
   <Tensor>
     1.63913447194771 0.000569183767859779 0.000659703403366379 
@@ -407,7 +401,7 @@ Mon 07:59, ETA 4s, Events 200k, t 38.0597, <Mean Free Time> 0.130545,
     0.000659703403366379 -0.000767271561307315 1.63742195975262 
   </Tensor>
 </Pressure>
-...]]></script>
+...<?php codeblockend("brush: xml;"); ?>
 <p>
   The pressure is calculated using
   the <a href="http://www.sklogwiki.org/SklogWiki/index.php/Pressure#Virial_pressure">virial
@@ -431,11 +425,10 @@ $$
   There are some other properties available, such as the
   configurational internal energy and residual heat capacity:
 </p>
-<script type="syntaxhighlighter" class="brush: xml"><![CDATA[
-...
+<?php codeblockstart(); ?>...
 <UConfigurational Mean="0" MeanSqr="0" Current="0"/>
 <ResidualHeatCapacity Value="0"/>
-...]]></script>
+...<?php codeblockend("brush: xml;"); ?>
 <p>
   But as mentioned before these values are zero as the hard sphere
   fluid has an ideal heat capacity and internal energy. In later
