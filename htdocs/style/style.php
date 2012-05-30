@@ -16,7 +16,13 @@ body {
     background-color:<?php echo $sitebg; ?>;
 }
 
-h1 { min-width:533px; font-size:18pt; border-bottom:3px solid; display:block; clear:both; }
+h1 { 
+    min-width:533px; 
+    font-size:18pt; 
+    border-bottom:1px solid; 
+    display:block; 
+    clear:both; 
+}
 
 h2 { font-size:16pt; display:block; }
 
@@ -141,6 +147,8 @@ li { margin:5px; }
     top: 0px;
     padding: 0px 15px 0px 15px;
     border-radius: 15px 0 15px 0;
+    border-bottom:1px solid;
+    border-right:1px solid;    
     background-color:#ddeeee;
 }
 
@@ -158,18 +166,13 @@ li { margin:5px; }
 /* Button */
 .button { 
     background-color: <?php echo $inactivebutton;?>; 
+    border:1px solid;
     cursor: pointer;
-    position:relative; 
-    padding-left:15px; 
-    padding-right:15px;
-    height:30px; 
+    position:relative;
+    padding: 0px 15px;
     display:inline-block; 
     border-radius:15px;
     line-height:30px; 
-    /*Fixes for crappy ie7*/
-    /*zoom:1; *display: inline;*/
-    /*Fixes for crappy ie6*/
-    /*_height: 30px;*/
 }
 
 .button:hover { background-color: <?php echo $hoverbutton;?>; }
@@ -193,14 +196,6 @@ li { margin:5px; }
     display: inline-block; 
     margin:5px; 
     border: solid 1px; 
-    /*Fixes for crappy ie7*/
-    /*zoom:1; *display: inline;*/
-    /*Fixes for crappy ie6*/
-    /*_height: 30px;*/
-}
-
-.figure iframe { 
-    width:100%; 
 }
 
 .figure .caption { 

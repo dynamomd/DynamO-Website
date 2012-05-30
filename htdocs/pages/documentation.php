@@ -12,7 +12,6 @@
   listed in the <a href="/index.php/features">features</a>, please
   feel free to email the developers for some advice (see below).
 </p>
-
 <h1>Developer Documentation</h1>
 <p>
   If you're looking to extend DynamO or to understand how it works,
