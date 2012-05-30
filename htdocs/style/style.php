@@ -18,7 +18,7 @@ body {
 h1 { 
     min-width:533px; 
     font-size:18pt; 
-    border-bottom:1px solid; 
+    border-bottom:1.5px solid; 
     display:block; 
     clear:both; 
 }
@@ -126,7 +126,7 @@ li { margin:5px; }
     display:block;
     padding-left:15px;
     background-color:<?php echo $inactivebutton; ?>;
-    border:1px solid;
+    border:1.5px solid;
     border-radius:15px;
     margin-bottom:5px;
 }
@@ -148,14 +148,14 @@ li { margin:5px; }
     top: 0px;
     padding: 0px 15px 0px 15px;
     border-radius: 15px 0 15px 0;
-    border-bottom:1px solid;
-    border-right:1px solid; 
+    border-bottom:1.5px solid;
+    border-right:1.5px solid; 
     background-color:<?php echo $inactivebutton; ?>;
 }
 
 #pagetitle p {
     padding:0;
-    margin: 2px 0 2px 0;
+    margin: 1.5px 0 1.5px 0;
 }
 
 #content { 
@@ -166,7 +166,7 @@ li { margin:5px; }
 /* Button */
 .button { 
     background-color: <?php echo $inactivebutton;?>; 
-    border:1px solid;
+    border:1.5px solid;
     cursor: pointer;
     position:relative;
     padding: 0px 15px;
@@ -195,7 +195,7 @@ li { margin:5px; }
     float: right; 
     display: inline-block; 
     margin:5px; 
-    border: solid 1px; 
+    border:1.5px solid; 
 }
 
 .figure .caption { 
