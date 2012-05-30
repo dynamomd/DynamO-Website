@@ -117,7 +117,6 @@ li { margin:5px; }
     width:160px;
     position:absolute;
     left:15px;
-    padding:15px 0 15px 0;
 }
 
 #leftmenu a { 
