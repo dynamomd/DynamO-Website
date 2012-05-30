@@ -43,7 +43,7 @@ li { margin:5px; }
 }
 
 .video-container {
-    max-width:600px; 
+    width:533px; 
     margin-left:auto; 
     margin-right:auto;
 }
