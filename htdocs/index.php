@@ -36,14 +36,8 @@ function codeblockend($opts)
 
 function button($text, $link)
  {
- ?>
-<div style="text-align:center; padding:5px;">
-  <div class="button" >
-    <a href="<?php echo $link;?>" ><span></span></a>
-    <a href="<?php echo $link;?>"><?php echo $text;?></a>
-  </div>
-</div>
- <?php
+ ?> <div class="button"><a href="<?php echo $link;?>"><?php echo $text;?></a></div>
+<?php
  }
 
 /* Set the default page accessed when someone opens this file*/

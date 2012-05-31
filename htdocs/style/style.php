@@ -119,7 +119,8 @@ li { margin:5px; }
     left:15px;
 }
 
-#leftmenu a { 
+
+#leftmenu a {
     color:#000000; 
     text-decoration: none; 
     line-height:30px; 
@@ -164,30 +165,18 @@ li { margin:5px; }
 }
 
 /* Button */
-.button { 
-    background-color: <?php echo $inactivebutton;?>; 
-    border:2px solid;
-    cursor: pointer;
-    position:relative;
-    padding: 0px 15px;
-    display:inline-block; 
-    border-radius:15px;
-    line-height:30px; 
-}
+.button { text-align:center; margin: 15px 0; }
 
-.button:hover { background-color: <?php echo $hoverbutton;?>; }
-
-.button span { 
-    position:absolute; 
-    width:100%; 
-    height:100%; 
-    top:0;
-    left:0;
-    z-index:1;
-}
+.button a:hover { background-color: <?php echo $hoverbutton;?>; }
 
 .button a {
+    border:2px solid;
+    position:relative;
+    padding: 5px 15px;
+    border-radius:15px;
+    background-color: <?php echo $inactivebutton;?>; 
     color:#000000;
+    display:inline-block;
     text-decoration:none;
 }
 
