@@ -96,32 +96,29 @@ include_once("pages/".$page.".php");
     <?php } ?>
   </head>
   <body>
-    <div id="wrapper">
-      <!-- HEADER AND LOGO -->
-      <div class="rounded" id="header">
-	<a href="/" id="sitelogo" ></a>
-      </div>
-
-      <!-- MENU -->
-      <div id="leftmenu">
-	<a href="/index.php/news">News</a>
-	<a href="/index.php/download">Download</a>
-	<a href="/index.php/documentation">Docs/Support</a>
-	<a href="/index.php/features">Features</a>
-	<a href="/index.php/credits">Credits</a>
-      </div>
-
-      <!-- CONTENT -->
-      <div id="contentwrapper" class="rounded" >
-	<div id="pagetitle"><p><?php echo $pagetitle; ?></p></div>
-	<div style="height:0px;"></div>
-	<?php echo $content; ?>
-	<div style="clear:both;"></div>
-      </div>
-
-      <!-- A DIV TO STOP THE FOOTER OVERLAPPING THE CONTENT -->
-      <div id="wrapperfooterpad"></div>
+    <!-- HEADER AND LOGO -->
+    <div style="height:15px;"></div>
+    <div class="rounded" id="header">
+      <a href="/" id="sitelogo" ></a>
     </div>
+
+    <!-- MENU -->
+    <div id="leftmenu">
+      <a href="/index.php/news">News</a>
+      <a href="/index.php/download">Download</a>
+      <a href="/index.php/documentation">Docs/Support</a>
+      <a href="/index.php/features">Features</a>
+      <a href="/index.php/credits">Credits</a>
+    </div>
+
+    <!-- CONTENT -->
+    <div id="contentwrapper" class="rounded" >
+      <div id="pagetitle"><p><?php echo $pagetitle; ?></p></div>
+      <div style="height:0px;"></div>
+      <?php echo $content; ?>
+      <div style="clear:both;"></div>
+    </div>
+
     <!-- FOOTER -->
     <div id="footer" class="rounded">
       Copyright &copy; Marcus Bannerman 2008-<?php echo date("Y"); ?>

@@ -16,7 +16,6 @@ body {
 }
 
 h1 { 
-    min-width:533px; 
     font-size:18pt; 
     border-bottom:2px solid; 
     display:block; 
@@ -43,7 +42,6 @@ li { margin:5px; }
 /* Stuff for making full width HTML5 and flash videos */
 .video-container video {
     width: 100%;
-    min-width: 533px;
     height: auto;
 }
 
@@ -53,25 +51,9 @@ li { margin:5px; }
     margin-right:auto;
 }
 
-/* Floating footer code */
-#wrapper { 
-    min-height:100%; 
-    min-width:768px;
-    overflow-y:visible; 
-    position:relative; 
-}
-
-#wrapperfooterpad { 
-    height:55px; 
-    margin-bottom:10px; 
-    clear:both; 
-    position:relative;
-    margin-left:190px; 
-}
-
 #header {
     position:relative; 
-    margin: 15px 15px 15px 15px; 
+    margin: 0px 15px 15px 15px; 
 }
 
 #sitelogo { 
@@ -83,11 +65,8 @@ li { margin:5px; }
 }
 
 #footer {
-    margin-top:-55px;
-    margin-left:15px;
-    margin-right:15px;
     position:relative;
-    min-width:768px;
+    margin:15px;
     height:41px;
     padding:0px;
     padding-left:15px;
@@ -114,22 +93,19 @@ li { margin:5px; }
 }
 
 #leftmenu {
-    width:160px;
-    position:absolute;
-    left:15px;
+    margin:15px;
 }
 
-
 #leftmenu a {
-    color:#000000; 
+    color:#000000;
     text-decoration: none; 
-    line-height:30px; 
-    display:block;
     padding-left:15px;
     background-color:<?php echo $inactivebutton; ?>;
     border:2px solid;
     border-radius:15px;
-    margin-bottom:5px;
+    padding: 5px 15px;
+    display:inline-block;
+    margin-right:5px;
 }
 
 #leftmenu a:hover { 
@@ -137,21 +113,37 @@ li { margin:5px; }
 }
 
 #contentwrapper {
-    margin-left:190px; 
-    margin-right:15px;
+    margin: 15px;
     position:relative;
-    min-width:563px;
+    min-height:210px;
+}
+
+@media screen and (min-width: 800px) {
+    #leftmenu {
+	width:160px;
+	position:absolute;
+	margin-top:0;
+    }
+    
+    #leftmenu a {
+	min-width:126px;
+	margin-bottom:15px;
+    }
+ 
+    #contentwrapper {
+	margin-left:190px;
+    }  
 }
 
 #pagetitle {
     position:absolute;
-    left: 0px;
-    top: 0px;
-    padding: 0px 15px 0px 15px;
+    left: 0; 
+    top: 0;
+    padding: 0px 15px;
     border-radius: 15px 0 15px 0;
-    border-bottom:2px solid;
-    border-right:2px solid; 
-    background-color:<?php echo $inactivebutton; ?>;
+    font-weight: bold;
+    border-bottom: 2px solid;
+    border-right: 2px solid; 
 }
 
 #pagetitle p {
