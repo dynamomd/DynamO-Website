@@ -118,7 +118,7 @@ li { margin:5px; }
     min-height:210px;
 }
 
-@media screen and (min-width: 800px) {
+@media only screen and (min-width: 800px) {
     #leftmenu {
 	width:160px;
 	position:absolute;
