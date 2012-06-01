@@ -53,7 +53,7 @@ li { margin:5px; }
 
 #header {
     position:relative; 
-    margin: 0px 15px 15px 15px; 
+    margin: 15px; 
 }
 
 #sitelogo { 

@@ -97,7 +97,7 @@ include_once("pages/".$page.".php");
   </head>
   <body>
     <!-- HEADER AND LOGO -->
-    <div style="height:15px;"></div>
+    <div style="height:1px;"></div>
     <div class="rounded" id="header">
       <a href="/" id="sitelogo" ></a>
     </div>
@@ -125,7 +125,7 @@ include_once("pages/".$page.".php");
       <a href="http://validator.w3.org/check?uri=referer" id="w3footerlogoHTML"></a>
       <a href="http://jigsaw.w3.org/css-validator/check/referer" id="w3footerlogoCSS"></a>
     </div>
-
+    <div style="height:1px;"></div>
     <?php if ($syntaxhighlighter) { ?>
     <link href="/syntaxhighlighter/styles/shThemeDynamO.css" type="text/css" rel="stylesheet" />
     <link href="/syntaxhighlighter/styles/shCore.css" type="text/css" rel="stylesheet" />
