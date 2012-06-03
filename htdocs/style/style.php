@@ -103,8 +103,9 @@ li { margin:5px; }
     background-color:<?php echo $inactivebutton; ?>;
     padding:10px 15px;
     display:inline-block;
-    border: 1px solid;
+    border: 2px solid;
     border-radius: 15px 15px 0 0;
+    margin-left:-2px;
     font-weight:bold;
 }
 
