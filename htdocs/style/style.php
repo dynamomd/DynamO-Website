@@ -13,6 +13,7 @@ body {
     padding: 0;
     height: 100%;
     background-color:<?php echo $sitebg; ?>;
+    min-width:768px;
 }
 
 h1 { 
@@ -92,63 +93,44 @@ li { margin:5px; }
     background-position: 0 0;
 }
 
-#leftmenu {
-    margin:15px;
+#menu {
+    margin:15px 15px 0 15px;
 }
 
-#leftmenu a {
+#menu a {
     color:#000000;
     text-decoration: none; 
-    padding-left:15px;
     background-color:<?php echo $inactivebutton; ?>;
-    border:2px solid;
-    border-radius:15px;
-    padding: 5px 15px;
+    padding:10px 15px;
     display:inline-block;
-    margin-right:5px;
+    border: 1px solid;
+    border-radius: 15px 15px 0 0;
+    font-weight:bold;
 }
 
-#leftmenu a:hover { 
+#menu a:hover { 
     background-color: <?php echo $hoverbutton;?>; 
 }
 
 #contentwrapper {
-    margin: 15px;
-    position:relative;
-    min-height:210px;
-}
+    border-radius: 0 15px 15px 15px;
+    padding: 15px;
+    background-color: #ffffff;
 
-@media (min-width: 800px) {
-    #leftmenu {
-	width:160px;
-	position:absolute;
-	margin-top:0;
-    }
-    
-    #leftmenu a {
-	min-width:126px;
-	margin-bottom:15px;
-    }
- 
-    #contentwrapper {
-	margin-left:190px;
-    }  
+    margin: 15px;
+    margin-top:0;
+    position:relative;
 }
 
 #pagetitle {
     position:absolute;
     left: 0; 
     top: 0;
-    padding: 0px 15px;
+    padding: 2px 15px;
     border-radius: 15px 0 15px 0;
     font-weight: bold;
     border-bottom: 2px solid;
     border-right: 2px solid; 
-}
-
-#pagetitle p {
-    padding:0;
-    margin: 2px 0 2px 0;
 }
 
 #content { 

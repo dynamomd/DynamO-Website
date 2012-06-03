@@ -40,6 +40,11 @@ function button($text, $link)
 <?php
  }
 
+function menulink($page, $text)
+ {
+   echo "<a href=\"/index.php/".$page."\">".$text."</a>";
+ }
+
 /* Set the default page accessed when someone opens this file*/
 $page="frontpage";
 
@@ -103,17 +108,13 @@ include_once("pages/".$page.".php");
     </div>
 
     <!-- MENU -->
-    <div id="leftmenu">
-      <a href="/index.php/news">News</a>
-      <a href="/index.php/download">Download</a>
-      <a href="/index.php/documentation">Docs/Support</a>
-      <a href="/index.php/features">Features</a>
-      <a href="/index.php/credits">Credits</a>
+    <div id="menu">
+      <?php menulink("news", "News"); ?><?php menulink("download", "Download"); ?><?php menulink("documentation", "Docs/Support"); ?><?php menulink("features", "Features"); ?><?php menulink("credits", "Credits"); ?>
     </div>
 
     <!-- CONTENT -->
-    <div id="contentwrapper" class="rounded" >
-      <div id="pagetitle"><p><?php echo $pagetitle; ?></p></div>
+    <div id="contentwrapper">
+      <div id="pagetitle"><?php echo $pagetitle; ?></div>
       <div style="height:0px;"></div>
       <?php echo $content; ?>
       <div style="clear:both;"></div>
