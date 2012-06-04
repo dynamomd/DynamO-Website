@@ -71,7 +71,7 @@ include_once("pages/".$page.".php");
     <meta name="author" content="Marcus Bannerman" />
     <meta name="google-site-verification" content="atSxig_hk_QoQxF4dobExHXxGUIt57ToZf3g_welkB0" />
     <link rel="stylesheet" type="text/css" href="/style/style.php" />
-    <!--[if IE]><link rel="stylesheet" href="/style/ie-css3-support.css" type="text/css"/><![endif]-->
+    <!--[if lt IE 10]><link rel="stylesheet" href="/style/ie-css3-support.css" type="text/css"/><![endif]-->
     <link rel="icon" type="image/png" href="/images/favicon.png" />
     <title>DynamO Simulation Package</title>
     <script type="text/javascript">
