@@ -3,8 +3,7 @@
   $syntaxhighlighter=1;
   pagestart("Tutorial 2: Example output.xml file"); 
 ?>
-<script type="syntaxhighlighter" class="brush: xml"><![CDATA[
-<?xml version="1.0"?>
+<?php codeblockstart(); ?><?xml version="1.0"?>
 <OutputData>
   <Misc>
     <Density val="0.5"/>
@@ -30,5 +29,6 @@
     <Memusage MaxKiloBytes="32628"/>
   </Misc>
 </OutputData>
-]]></script>
-<?php pageend(); ?>
+<?php 
+ codeblockend("brush: xml;");
+ pageend(); ?>
