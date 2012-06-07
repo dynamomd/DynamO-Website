@@ -31,6 +31,7 @@ li { margin:5px; }
     border-radius: 15px;
     padding: 15px;
     background-color: #ffffff;
+    margin: 0px 15px 15px 15px;
 }
 
 .newsdate {
@@ -52,10 +53,6 @@ li { margin:5px; }
     margin-right:auto;
 }
 
-#header {
-    margin: 0 15px 15px 15px; 
-}
-
 #sitelogo { 
     background-repeat:no-repeat; 
     background-image:url(sitelogo.png); 
@@ -66,7 +63,6 @@ li { margin:5px; }
 
 #footer {
     position:relative;
-    margin:15px;
     height:41px;
     padding:0px;
     padding-left:15px;
@@ -74,7 +70,8 @@ li { margin:5px; }
 }
 
 #w3footerlogoHTML, #w3footerlogoCSS {
-    border:0; 
+    border:0;
+    float:right;
     width:88px; 
     height:31px; 
     position:absolute;
@@ -114,11 +111,6 @@ li { margin:5px; }
 
 #contentwrapper {
     border-radius: 0 15px 15px 15px;
-    padding: 15px;
-    background-color: #ffffff;
-
-    margin: 15px;
-    margin-top:0;
     position:relative;
 }
 
@@ -131,11 +123,6 @@ li { margin:5px; }
     font-weight: bold;
     border-bottom: 1px solid;
     border-right: 1px solid; 
-}
-
-#content { 
-    background-color:<?php echo $pagebg; ?>; 
-    padding: 10px 15px 10px 15px;
 }
 
 /* Button */

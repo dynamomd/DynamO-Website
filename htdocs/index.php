@@ -74,36 +74,13 @@ include_once("pages/".$page.".php");
     <!--[if lt IE 10]><link rel="stylesheet" href="/style/ie-css3-support.css" type="text/css"/><![endif]-->
     <link rel="icon" type="image/png" href="/images/favicon.png" />
     <title>DynamO Simulation Package</title>
-    <script type="text/javascript">
-      var _gaq = _gaq || [];
-      _gaq.push(['_setAccount', 'UA-31464781-1']);
-      _gaq.push(['_trackPageview']);
-
-      (function() {
-      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-      })();
-    </script>
-    <?php if ($mathjax) { ?>
-    <script type="text/javascript" src="/MathJax/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-    <script type="text/x-mathjax-config">
-      MathJax.Hub.Config({
-       tex2jax: {
-        inlineMath: [['$','$'], ['\\(','\\)']],
-        processEscapes: true },
-       TeX: {
-        equationNumbers: { autoNumber: "AMS" },
-        extensions: ["AMSmath.js", "AMSsymbols.js", "autobold.js", "cancel.js"]
-        }
-      });
-    </script>
-    <?php } ?>
   </head>
   <body>
-    <!-- HEADER AND LOGO -->
+    <!-- SPACER TO COUNTER DODGY PAGE MARGIN INTERACTIONS -->
     <div style="height:15px;"></div>
-    <div class="rounded" id="header">
+
+    <!-- HEADER AND LOGO -->
+    <div class="rounded">
       <a href="/" id="sitelogo" ></a>
     </div>
 
@@ -113,7 +90,7 @@ include_once("pages/".$page.".php");
     </div>
 
     <!-- CONTENT -->
-    <div id="contentwrapper">
+    <div id="contentwrapper" class="rounded">
       <div id="pagetitle"><?php echo $pagetitle; ?></div>
       <div style="height:0px;"></div>
       <?php echo $content; ?>
@@ -126,7 +103,11 @@ include_once("pages/".$page.".php");
       <a href="http://validator.w3.org/check?uri=referer" id="w3footerlogoHTML"></a>
       <a href="http://jigsaw.w3.org/css-validator/check/referer" id="w3footerlogoCSS"></a>
     </div>
+
+    <!-- SPACER TO COUNTER DODGY PAGE MARGIN INTERACTIONS -->
     <div style="height:1px;"></div>
+
+    <!-- JAVASCRIPT -->
     <?php if ($syntaxhighlighter) { ?>
     <link href="/syntaxhighlighter/styles/shThemeDynamO.css" type="text/css" rel="stylesheet" />
     <link href="/syntaxhighlighter/styles/shCore.css" type="text/css" rel="stylesheet" />
@@ -141,5 +122,20 @@ include_once("pages/".$page.".php");
       );
       SyntaxHighlighter.all()</script>
     <?php } ?>
+    <?php if ($mathjax) { ?>
+    <script type="text/javascript" src="/MathJax/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+       tex2jax: {
+        inlineMath: [['$','$'], ['\\(','\\)']],
+        processEscapes: true },
+       TeX: {
+        equationNumbers: { autoNumber: "AMS" },
+        extensions: ["AMSmath.js", "AMSsymbols.js", "autobold.js", "cancel.js"]
+        }
+      });
+    </script>
+    <?php } ?>
+    <script type="text/javascript" async="" src="http://www.google-analytics.com/ga.js"></script>
   </body>
 </html>
