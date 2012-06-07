@@ -102,7 +102,7 @@ include_once("pages/".$page.".php");
   </head>
   <body>
     <!-- HEADER AND LOGO -->
-    <div style="height:1px;"></div>
+    <div style="height:15px;"></div>
     <div class="rounded" id="header">
       <a href="/" id="sitelogo" ></a>
     </div>
