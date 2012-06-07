@@ -17,9 +17,9 @@
   DynamO, like many Linux programs, is driven through a Command-Line
   Interface (CLI). To be able to use DynamO, you will need to be
   familiar with the terminal of your Linux distribution. Take a look
-  at <a href="https://help.ubuntu.com/community/UsingTheTerminal">this
-    link</a> to learn more about the terminal and how it works if you are
-  at all unsure what this means.
+  at <a href="http://www.linuxcommand.org">this link</a> to learn more
+  about the terminal and how it works if you are at all unsure what
+  this means.
 </p>
 <p>
   Before you can build DynamO, you will need a compiler and several
