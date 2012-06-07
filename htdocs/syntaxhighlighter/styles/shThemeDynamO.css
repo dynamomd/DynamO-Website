@@ -3,23 +3,19 @@
   clear:both;
 }
 
-.syntaxhighlighter .line.alt1 {
-  background-color: #ecf4f4 !important;
-}
-.syntaxhighlighter .line.alt2 {
-  background-color: #ecf4f4 !important;
-}
 .syntaxhighlighter .line.highlighted.alt1, .syntaxhighlighter .line.highlighted.alt2 {
   background-color: #d5e5e5 !important;
 }
+
+.syntaxhighlighter {
+    border-radius:10px;
+}
+
 .syntaxhighlighter .line.highlighted.number {
   color: #ecf4f4 !important;
 }
 .syntaxhighlighter table caption {
   color: black !important;
-}
-.syntaxhighlighter .gutter {
-  color: #787878 !important;
 }
 .syntaxhighlighter .gutter .line {
   border-right: 3px solid #d4d0c8 !important;
@@ -56,6 +52,11 @@
 .syntaxhighlighter .toolbar a:hover {
   color: red !important;
 }
+
+.syntaxhighlighter .toolbar {
+    border-radius:0 10px 0 0;
+}
+
 .syntaxhighlighter .plain, .syntaxhighlighter .plain a {
   color: black !important;
 }
