@@ -103,4 +103,12 @@
     <iframe width="533" height="286" src="https://www.youtube-nocookie.com/embed/1Rn-bL8S30Y"></iframe>
   </video>
 </div>
+
+<h2>Triangle Meshes and Gravity</h2>
+<div class="video-container">
+  <video controls poster="/videos/shearpoly2d.jpg" preload="none">
+    <source src="/videos/shearpoly2d.mp4" type='video/mp4' />
+    <iframe width="533" height="286" src="https://www.youtube-nocookie.com/embed/0kYY6NjE_sE"></iframe>
+  </video>
+</div>
 <?php pageend(); ?>
