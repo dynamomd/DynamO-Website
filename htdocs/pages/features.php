@@ -104,7 +104,7 @@
   </video>
 </div>
 
-<h2>Triangle Meshes and Gravity</h2>
+<h2>Sheared Polydisperse Hard Disks (2D)</h2>
 <div class="video-container">
   <video controls poster="/videos/shearpoly2d.jpg" preload="none">
     <source src="/videos/shearpoly2d.mp4" type='video/mp4' />
