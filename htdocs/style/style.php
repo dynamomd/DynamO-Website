@@ -48,9 +48,25 @@ li { margin:5px; }
 }
 
 .video-container {
+    position:relative;
     width:533px; 
     margin-left:auto; 
     margin-right:auto;
+}
+
+.video-container .fullscreen-button {
+    width:31px;
+    display:inline;
+    height:31px;
+    background-image: url(csssprites.png);
+    background-position: -180px 0;
+    position:absolute;
+    right:0;
+    top:0;
+}
+
+.video-container .fullscreen-button:hover {
+    background-position: -211px 0;
 }
 
 #sitelogo { 

@@ -82,7 +82,7 @@
   <video controls poster="/videos/granularDamper.jpg" preload="none">
     <source src="/videos/granularDamper.mp4" type='video/mp4' />
     <source src="/videos/granularDamper.ogg" type='video/ogg' />
-    <iframe width="533" height="315" src="https://www.youtube-nocookie.com/embed/3mlisuFJkqk"></iframe>
+    <iframe width="533" height="315" src="http://www.youtube-nocookie.com/embed/3mlisuFJkqk"></iframe>
   </video>
 </div>
 
@@ -91,7 +91,7 @@
   <video controls poster="/videos/sleepingparticles.jpg" preload="none">
     <source src="/videos/sleepingparticles.mp4" type='video/mp4' />
     <source src="/videos/sleepingparticles.ogg" type='video/ogg' />
-    <iframe width="533" height="293" src="https://www.youtube-nocookie.com/embed/9oaobaxhGX8"></iframe>
+    <iframe width="533" height="293" src="http://www.youtube-nocookie.com/embed/9oaobaxhGX8"></iframe>
   </video>
 </div>
 
@@ -100,7 +100,7 @@
   <video controls poster="/videos/trianglemesh.jpg" preload="none">
     <source src="/videos/trianglemesh.mp4" type='video/mp4' />
     <source src="/videos/trianglemesh.ogg" type='video/ogg' />
-    <iframe width="533" height="286" src="https://www.youtube-nocookie.com/embed/1Rn-bL8S30Y"></iframe>
+    <iframe width="533" height="286" src="http://www.youtube-nocookie.com/embed/1Rn-bL8S30Y"></iframe>
   </video>
 </div>
 
@@ -109,7 +109,15 @@
   <video controls poster="/videos/shearpoly2d.jpg" preload="none">
     <source src="/videos/shearpoly2d.mp4" type='video/mp4' />
     <source src="/videos/shearpoly2d.ogg" type='video/ogg' />
-    <iframe width="533" height="286" src="https://www.youtube-nocookie.com/embed/0kYY6NjE_sE"></iframe>
+    <iframe width="533" height="286" src="http://www.youtube-nocookie.com/embed/0kYY6NjE_sE"></iframe>
   </video>
+</div>
+
+<h2>Infinitely-thin hard rods</h2>
+<div class="video-container">
+  <video controls poster="/videos/thinHardLines.jpg" preload="none" class="fullscreenable">
+    <source src="/videos/thinHardLines.mp4" type='video/mp4' />
+    <source src="/videos/thinHardLines.webm" type='video/webm' />
+  <iframe width="533" height="286" src="http://www.youtube-nocookie.com/embed/hUVZxEhjoc0"></iframe>
 </div>
 <?php pageend(); ?>
