@@ -64,7 +64,7 @@
   called <b>SimulationSize</b>. Unsurprisingly, this holds the size of
   the simulation domain.
 </p>
-<?php codeblockstart(); ?><script type="syntaxhighlighter" class="brush: xml"><![CDATA[
+<?php codeblockstart(); ?>
 <SimulationSize x="1.400000000000e+01" y="1.400000000000e+01" z="1.400000000000e+01"/>
 <?php codeblockend("brush: xml;"); ?>
 <p>

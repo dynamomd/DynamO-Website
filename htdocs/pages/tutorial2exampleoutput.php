@@ -1,5 +1,4 @@
 <?php 
-   $syntaxhighlighter=1;
    /*Check that this file is being accessed by the template*/
    if (!isset($in_template))
    {
