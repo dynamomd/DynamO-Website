@@ -2,25 +2,6 @@
 header("Content-Type: text/html; charset=utf-8");
 date_default_timezone_set('Europe/London');
 
-function pagestart($title)
- {
-  global $pagetitle, $in_template;
-  /*Check that this file is being accessed by the template*/
-  if (!isset($in_template))
-  {
-   header( 'Location: /index.php/404');
-   return;
-  }
-  $pagetitle=$title;
-  ob_start();
- }
-
-function pageend() 
- {
-  global $content;
-  $content = ob_get_clean();
- }
-
 function codeblockstart()
  {
    global $syntaxhighlighter;
@@ -60,7 +41,12 @@ if (!file_exists("pages/".$page.".php"))
 $syntaxhighlighter=0;
 $mathjax=0;
 $in_template=1;
+
+
+ob_start();
 include_once("pages/".$page.".php");
+$content = ob_get_clean();
+
 ?>
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">

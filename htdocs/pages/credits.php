@@ -1,4 +1,12 @@
-<?php pagestart("Credits"); ?>
+<?php 
+   /*Check that this file is being accessed by the template*/
+   if (!isset($in_template))
+   {
+   header( 'Location: /index.php/404');
+   return;
+   }
+   $pagetitle="Credits";
+ ?>
 <img height="74" width="503" alt="Logos for the University of Aberdeen, EPSRC, and the MSS research group in Erlangen" src="/images/credit_logos.png" style="margin: 45px auto 10px auto; display:block;" />
 <h1>Programming Credits</h1>
 <ul>
@@ -80,4 +88,3 @@
     of spheres</a>.
   </li>
 </ul>
-<?php pageend(); ?>

@@ -1,4 +1,12 @@
-<?php pagestart("Download"); ?>
+<?php 
+   /*Check that this file is being accessed by the template*/
+   if (!isset($in_template))
+   {
+   header( 'Location: /index.php/404');
+   return;
+   }
+   $pagetitle="Download";
+ ?>
 <p> 
   DynamO is an open-source and free code, made available under
   version 3 of the GPL licence. There are several ways you can obtain a
@@ -57,4 +65,3 @@
 <?php button("Download Latest Development Branch","https://github.com/toastedcrumpets/DynamO/zipball/master");?>
 <?php button("Download Stable Version 1.3","https://github.com/toastedcrumpets/DynamO/zipball/dynamo-1-3");?>
 <?php button("Download Stable Version 1.2","https://github.com/toastedcrumpets/DynamO/zipball/dynamo-1-2");?>
-<?php pageend(); ?>

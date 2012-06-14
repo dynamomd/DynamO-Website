@@ -1,4 +1,12 @@
-<?php pagestart("Features"); ?>
+<?php 
+   /*Check that this file is being accessed by the template*/
+   if (!isset($in_template))
+   {
+   header( 'Location: /index.php/404');
+   return;
+   }
+   $pagetitle="Features";
+ ?>
 <h1>Simple Systems</h1>
 <p>DynamO can simulate:</p>
 <ul>
@@ -136,4 +144,3 @@
 </div>
 <p>The dynamod command used to generate the configuration:</p>
 <?php codeblockstart(); ?>dynamod -m 15 --i1 2 -C 10<?php codeblockend("brush: shell;"); ?>
-<?php pageend(); ?>

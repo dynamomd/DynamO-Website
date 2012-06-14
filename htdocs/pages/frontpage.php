@@ -1,4 +1,12 @@
-<?php pagestart("Welcome"); ?>
+<?php 
+   /*Check that this file is being accessed by the template*/
+   if (!isset($in_template))
+   {
+   header( 'Location: /index.php/404');
+   return;
+   }
+   $pagetitle="Welcome";
+   ?>
 <p>
   DynamO is a free and open-source event-driven particle simulator.
 </p>
@@ -31,5 +39,4 @@ if (!empty($file_array))
  echo "<div class=\"newsdate\">".date("jS F Y", filemtime($filename))."</div>";
  include($filename); 
 }
-pageend();
 ?>

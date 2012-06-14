@@ -1,7 +1,13 @@
-<?php
-  $mathjax=1;
-  pagestart("Tutorial 2: Running a Simulation of Hard Spheres"); 
-?>
+<?php 
+   $mathjax=1;
+   /*Check that this file is being accessed by the template*/
+   if (!isset($in_template))
+   {
+   header( 'Location: /index.php/404');
+   return;
+   }
+   $pagetitle="Tutorial 2: Running a Simulation of Hard Spheres";
+   ?>
 <p>
   In this tutorial, we will cover the basics of using DynamO, and
   learn how to simulate the simplest event driven system, the hard
@@ -452,4 +458,3 @@ $$
   systems and we can also learn to use the visualiser to render the
   results of the simulations.
 </p>
-<?php pageend(); ?>

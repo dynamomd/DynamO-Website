@@ -1,4 +1,12 @@
-<?php pagestart("Tutorial 3: Exploring the Configuration Files (sheared inelastic hard spheres)"); ?>
+<?php 
+   /*Check that this file is being accessed by the template*/
+   if (!isset($in_template))
+   {
+   header( 'Location: /index.php/404');
+   return;
+   }
+   $pagetitle="Tutorial 3: Exploring the Configuration Files (sheared inelastic hard spheres)";
+   ?>
 <h2>2.3. Exploring the configuration file</h2>
 <p>
   Lets take a look inside the <em>hardsphere.xml</em> file we just

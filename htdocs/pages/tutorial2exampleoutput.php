@@ -1,8 +1,13 @@
-<?php
-  global $syntaxhighlighter;
-  $syntaxhighlighter=1;
-  pagestart("Tutorial 2: Example output.xml file"); 
-?>
+<?php 
+   $syntaxhighlighter=1;
+   /*Check that this file is being accessed by the template*/
+   if (!isset($in_template))
+   {
+   header( 'Location: /index.php/404');
+   return;
+   }
+   $pagetitle="Tutorial 2: Example output.xml file";
+   ?>
 <?php codeblockstart(); ?><?xml version="1.0"?>
 <OutputData>
   <Misc>
@@ -29,6 +34,4 @@
     <Memusage MaxKiloBytes="32628"/>
   </Misc>
 </OutputData>
-<?php 
- codeblockend("brush: xml;");
- pageend(); ?>
+<?php codeblockend("brush: xml;"); ?>

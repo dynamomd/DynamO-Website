@@ -1,4 +1,14 @@
-<?php pagestart("Tutorial 1: Compiling and Installing DynamO"); ?>
+<?php 
+   $syntaxhighlighter=1;
+   $mathjax=1;
+   /*Check that this file is being accessed by the template*/
+   if (!isset($in_template))
+   {
+   header( 'Location: /index.php/404');
+   return;
+   }
+   $pagetitle="Tutorial 1: Compiling and Installing DynamO";
+   ?>
 <p>
   This tutorial covers the requirements, compilation and installation
   of the DynamO simulation package. It is recommended that you build
@@ -184,4 +194,3 @@ sudo make install<?php codeblockend("brush: shell;"); ?>
   executables have the suffix "<em>_d</em>" (dynamod_d and dynarun_d)
   to indicate they're the debugging version.
 </p>
-<?php pageend(); ?>
