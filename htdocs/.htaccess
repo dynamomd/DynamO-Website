@@ -1,4 +1,5 @@
 Options +FollowSymlinks
+Options -Indexes
 RewriteEngine on
 
 RewriteRule ^index.php/([0-9a-zA-Z]+)$ index.php?page=$1
@@ -10,3 +11,4 @@ AddType video/mp4 .mp4
 AddType video/webm .webm
 AddType text/x-component .htc
 FileETag none
+
