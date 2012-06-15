@@ -283,7 +283,10 @@ for PtElement in PtTags:
 <h2>Example: Making a Povray file from a DynamO configuration</h2>
 <p>
   Sometimes you might want to prepare a very high quality image for
-  publication or presentation at a conference.
+  publication or presentation at a conference. Povray is an excellent
+  and free ray-tracing renderer, capable of producing stunning
+  scenes. This example script converts a dynamo output file into a
+  simple Povray file.
 </p>
 <?php codeblockstart(); ?>
 #!/usr/bin/python
