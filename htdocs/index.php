@@ -104,6 +104,7 @@ $content = ob_get_clean();
       'cpp c /syntaxhighlighter/scripts/shBrushCpp.js',
       'bash shell script /syntaxhighlighter/scripts/shBrushBash.js',
       'xml /syntaxhighlighter/scripts/shBrushXml.js',
+      'xpath /syntaxhighlighter/scripts/shBrushXPath.js',
       'text plain /syntaxhighlighter/scripts/shBrushPlain.js'
       );
       SyntaxHighlighter.all()</script>
