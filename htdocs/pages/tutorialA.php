@@ -27,7 +27,7 @@
   already be familiar with how DynamO operates and have a good idea
   what information you'd like to extract.
 </p>
-<h2>XPath Expressions</h2>
+<h1>1. XPath Expressions</h1>
 <p>
   The file formats of DynamO are written in XML, which is a convenient
   markup language that is easy for both humans and computers to
@@ -190,7 +190,7 @@
   expressions to XML documents and to actually discuss some
   interesting examples.
 </p>
-<h1>Using XMLStarlet</h1>
+<h1>2. Using XMLStarlet</h1>
 <p>
   The easiest way to see the effect of XPath expressions on a DynamO
   configuration file is to use
@@ -199,7 +199,7 @@
   data out of an xml file, and if you are familar with shell scripting
   you will find it very easy to use.
 </p>
-<h2>Example: Making an XYZ Position File</h2>
+<h2>2.1 Example: Making an XYZ Position File</h2>
 <p>
   The best way to learn XMLstarlet is through examples. The first is
   how to generate a file with just the positions in it. This file
@@ -243,7 +243,7 @@ xmlstarlet sel -t -m '//Pt/P' -v '@x' -o ' ' -v '@y' -o ' ' -v '@z' -n config.ou
   You should use shell redirection if you want to send this output to
   a file.
 </p>
-<h2>Example: Deleting Particles to Make a Sphere</h2>
+<h2>2.2 Example: Deleting Particles to Make a Sphere</h2>
 <p>
   We will now show a nice feature of XPath expressions, which is the
   ability to do math!
@@ -307,7 +307,7 @@ P_x^2+P_y^2+P_z^2 &> 25
   The simplest interface I've encountered is the lxml library in
   Python, which is introduced now.
 </p>
-<h1>Python</h1>
+<h1>3. Python</h1>
 <p>
   The library I use for parsing XML in python is called lxml. If you
   have it installed its relatively easy to give it XPath expressions
@@ -344,7 +344,7 @@ for PtElement in PtTags:
 	#highlights the many (and confusing) ways you can access data
 	print PtElement.get("ID"), PtElement.xpath("P/@x")[0], PtElement.find("P").get("y"), PtElement.xpath("P/@z")[0]
 <?php codeblockend("brush: python;"); ?>
-<h2>Example: Making a Povray file from a DynamO configuration</h2>
+<h2>3.1 Example: Making a Povray file from a DynamO configuration</h2>
 <p>
   Sometimes you might want to prepare a very high quality image for
   publication or presentation at a conference. Povray is an excellent

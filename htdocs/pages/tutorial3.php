@@ -5,21 +5,68 @@
    header( 'Location: /index.php/404');
    return;
    }
-   $pagetitle="Tutorial 3: Exploring the Configuration Files (sheared inelastic hard spheres)";
+   $pagetitle="Tutorial 3: Exploring the Configuration File";
    ?>
-<h2>2.3. Exploring the configuration file</h2>
 <p>
-  Lets take a look inside the <em>hardsphere.xml</em> file we just
-  generated. You can open this <b>XML file</b> with your favourite
-  text editor, or even your web browser. XML files are a modern way
-  for storing data and are used in a wide range of applications as
-  they're easy for both a human and a computer to understand. If you
-  have trouble understanding the general XML format,
-  please <a href="http://www.w3schools.com/xml/">take a look at these
-  tutorials</a>.
+  In this tutorial we'll start to explore the file format of DynamO
+  and look at ways of setting up arbitrary simulations.
+</p>
+<h1>1. Introduction</h1>
+<p>
+  When studying a new system, we need to find a convenient way to
+  generate sample configurations generated across the range of study
+  parameters that we wish to simulate.
 </p>
 <p>
-  The whole configuration is enclosed within a pair
+  Many sample configurations, with variable input parameters, can be
+  generated using the dynamod tool; However, these example setups only
+  cover systems studied by the DynamO developers and will sometimes
+  not exactly coincide with the wishes of the DynamO user.
+</p>
+<p>
+  The recommended method for performing simulations with DynamO is to
+  use dynamod to generate a configuration close to what you wish to
+  simulate. This configuration can then be modified to produce the
+  exact system you wish to study. These changes can easily be
+  automated to reduce the manual effort
+  required (<a href="/index.php/tutorialA">See Appendix A</a> for
+  more information).
+</p>
+<p>
+  But before we can change the configuration, we must understand
+  it. 
+</p>
+<h1>2. The Starting Configuration</h1>
+<p>
+  We will generate a standard hard sphere configuration, use it to
+  explore the file format, and to demonstrate the large effect of some
+  simple changes.  We have chosen to look at the hard sphere
+  configuration as it is one of the simplest configurations we can
+  generate.
+</p>
+<p>
+  To begin, use dynamod to generate a hard sphere configuration like
+  so:
+</p>
+<?php codeblockstart(); ?>
+dynamod -m 0 -d 0.5 -C 7 -o config.start.xml
+<?php codeblockend("brush: shell;"); ?>
+<p>
+  Some example output is provided at the button below for
+  convenience. Note that your own generated output will have different
+  randomly-assigned-velocities than the example provided.
+</p>
+<?php button("Tutorial 2: Running a Simulation of Hard Spheres","/pages/config.tut3.xml");?>
+<p>
+</p>
+
+
+
+
+<h1>3. The Tags</h1>
+
+<p>
+ The whole configuration is enclosed within a pair
   of <b>DynamOconfig</b> <em>tags</em>.
 </p>
 <?php codeblockstart(); ?><?xml version="1.0"?>
@@ -118,4 +165,3 @@
 <p>
   Congratulations, you've run your first DynamO simulation!
 </p>
-<?php pageend(); ?>
