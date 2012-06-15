@@ -105,7 +105,8 @@ $content = ob_get_clean();
       'bash shell script /syntaxhighlighter/scripts/shBrushBash.js',
       'xml /syntaxhighlighter/scripts/shBrushXml.js',
       'xpath /syntaxhighlighter/scripts/shBrushXPath.js',
-      'text plain /syntaxhighlighter/scripts/shBrushPlain.js'
+      'text plain /syntaxhighlighter/scripts/shBrushPlain.js',
+      'python /syntaxhighlighter/scripts/shBrushPython.js'
       );
       SyntaxHighlighter.all()</script>
     <?php } ?>

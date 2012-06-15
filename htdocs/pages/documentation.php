@@ -15,6 +15,7 @@
 </p>
 <?php button("Tutorial 1: Compiling DynamO from Source","/index.php/tutorial1");?>
 <?php button("Tutorial 2: Running a Simulation of Hard Spheres","/index.php/tutorial2");?>
+<?php button("Appendix A: Parsing Output and Config Files","/index.php/tutorialAParsingOutput");?>
 <p>
   If what you need to simulate is not covered in the tutorials, but is
   listed in the <a href="/index.php/features">features</a>, please

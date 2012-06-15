@@ -6,7 +6,7 @@
    header( 'Location: /index.php/404');
    return;
    }
-   $pagetitle="Tutorial A: Parsing Output/Config Files";
+   $pagetitle="Tutorial A: Parsing Output and Config Files";
    ?>
 <p>
   This tutorial is designed to help people interface DynamO with other
@@ -48,7 +48,8 @@
   parts of it. In general, a DynamO output file will look something
   like this:
 </p>
-<?php codeblockstart(); ?><?xml version="1.0"?>
+<?php codeblockstart(); ?>
+<?xml version="1.0"?>
 <OutputData>
   <Misc>
     <Density val="0.5"/>
@@ -73,13 +74,16 @@
     <NegativeTimeEvents Count="0"/>
     <Memusage MaxKiloBytes="35404"/>
   </Misc>
-</OutputData><?php codeblockend("brush: xml;"); ?>
+</OutputData>
+<?php codeblockend("brush: xml;"); ?>
 <p>
   Let us say we wanted to read the number of events the simulation has
   run for. We can specify the Event attribute of the Duration tag
   using the following XPath expression:
 </p>
-<?php codeblockstart(); ?>/OutputData/Misc/Duration/@Events<?php codeblockend("brush: xpath;"); ?>
+<?php codeblockstart(); ?>
+/OutputData/Misc/Duration/@Events
+<?php codeblockend("brush: xpath;"); ?>
 <p>
   This XPath expression selects the Event attribute by descending from
   the root tag (<b>OutputData</b>) all the way down to
@@ -92,7 +96,9 @@
   We could write an XPath expression which searches for all Duration
   tags, and selects their Event attributes like so:
 </p>
-<?php codeblockstart(); ?>//Duration/@Events<?php codeblockend("brush: xpath;"); ?>
+<?php codeblockstart(); ?>
+//Duration/@Events
+<?php codeblockend("brush: xpath;"); ?>
 <p>
   Notice the double forward slash at the start? It means search
   through the whole document for the node called Duration, then try to
@@ -105,7 +111,8 @@
   What if there are many tags all with the same name? How do we pick
   just one of them? Consider the truncated DynamO configuration file below:
 </p>
-<?php codeblockstart(); ?><?xml version="1.0"?>
+<?php codeblockstart(); ?>
+<?xml version="1.0"?>
 <DynamOconfig version="1.5.0">
   <Simulation>...</Simulation>
   <Properties/>
@@ -135,15 +142,18 @@
   later read their P (position) tags? The following two expressions
   are equivalent and do exactly what we want:
 </p>
-<?php codeblockstart(); ?>/DynamOconfig/ParticleData/Pt
-//Pt<?php codeblockend("brush: xpath;"); ?>
+<?php codeblockstart(); ?>
+/DynamOconfig/ParticleData/Pt
+//Pt
+<?php codeblockend("brush: xpath;"); ?>
 <p>
   So how do we select just one tag out of a whole list of tags? Well,
   the easiest way is to specify its number, like so:
 </p>
 <?php codeblockstart(); ?>
 /DynamOconfig/ParticleData/Pt[1]
-//Pt[1]<?php codeblockend("brush: xpath;"); ?>
+//Pt[1]
+<?php codeblockend("brush: xpath;"); ?>
 <p>
   Both of these expressions create a list of Pt tags, then select the
   first one to appear (in this case, the one with and ID attribute of
@@ -152,8 +162,8 @@
   expressions becomes apparent:
 </p>
 <?php codeblockstart(); ?>
-/DynamOconfig/ParticleData/Pt[@ID="0"]
-//Pt[@ID="0"]<?php codeblockend("brush: xpath;"); ?>
+//Pt[@ID="0"]
+<?php codeblockend("brush: xpath;"); ?>
 <p>
   Now we're searching for a Pt tag with an ID attribute value of
   0. These square bracket expressions are called predictates and they
@@ -161,14 +171,15 @@
   using the following XPath expressions:
 </p>
 <?php codeblockstart(); ?>
-/DynamOconfig/ParticleData/Pt[last()]
-//Pt[last()]<?php codeblockend("brush: xpath;"); ?>
+//Pt[last()]
+<?php codeblockend("brush: xpath;"); ?>
 <p>
-  Or we could select the Position tags of all Pt tags with an ID below
+  Or we could select the P tags of all Pt tags with an ID below
   4 using the following XPath expressions:
 </p>
-<?php codeblockstart(); ?> /DynamOconfig/ParticleData/Pt[@ID<4]/P
-//Pt[@ID<4]/P<?php codeblockend("brush: xpath;"); ?>
+<?php codeblockstart(); ?>
+//Pt[@ID<4]/P
+<?php codeblockend("brush: xpath;"); ?>
 <p>
   There is a lot more to learn about XPath expressions, but we now
   know enough to access any data we would like to from the output and
@@ -195,7 +206,9 @@
   format is very popular among the MD community. The way you would
   call xmlstarlet is as follows:
 </p>
-<?php codeblockstart(); ?>xmlstarlet sel -t -m '//Pt/P' -v '@x' -o ' ' -v '@y' -o ' ' -v '@z' -n config.out.xml<?php codeblockend("brush: shell;"); ?>
+<?php codeblockstart(); ?>
+xmlstarlet sel -t -m '//Pt/P' -v '@x' -o ' ' -v '@y' -o ' ' -v '@z' -n config.out.xml
+<?php codeblockend("brush: shell;"); ?>
 <p>
   Breaking this command down, it calls xmlstarlet, places it into
   select mode (sel). Then it starts a template (-t) which is a command
@@ -231,7 +244,92 @@
   a file.
 </p>
 <h1>Python</h1>
-<p> 
-  Something
+<p>
+  The library I use for parsing XML in python is called lxml. If you
+  have it installed its relatively easy to give it XPath expressions
+  to use. A generic example is given below. This prints out the ID and
+  position of every particle in the config file.
 </p>
-<?php codeblockstart(); ?>dynamod<?php codeblockend("brush: shell;"); ?>
+<?php codeblockstart(); ?>
+#!/usr/bin/python
+import os
+from lxml import etree
+
+#A helpful function to load compressed or uncompressed XML files
+def loadXMLFile(filename):
+	#Check if the file is compressed or not, and 
+	if (os.path.splitext(filename)[1][1:].strip() == "bz2"):
+		import bz2
+		f = bz2.BZ2File(filename)
+		doc = etree.parse(f)
+		f.close()
+		return doc
+	else:
+		return etree.parse(filename)
+
+#Load the XML file
+XMLDoc = loadXMLFile("config.out.xml.bz2")
+#Grab the root element (the DynamOconfig element)
+RootElement=XMLDoc.getroot()
+
+#We can create a list of all particle tags using an xpath expression (xpath expressions always return lists)
+PtTags = RootElement.xpath("//Pt")
+
+for PtElement in PtTags:
+	#print the ID, followed by the x y and z positions. This
+	#highlights the many (and confusing) ways you can access data
+	print PtElement.get("ID"), PtElement.xpath("P/@x")[0], PtElement.find("P").get("y"), PtElement.xpath("P/@z")[0]
+<?php codeblockend("brush: python;"); ?>
+<h2>Example: Making a Povray file from a DynamO configuration</h2>
+<p>
+  Sometimes you might want to prepare a very high quality image for
+  publication or presentation at a conference.
+</p>
+<?php codeblockstart(); ?>
+#!/usr/bin/python
+import os
+from lxml import etree
+import sys
+
+def loadXMLFile(filename):
+	if (os.path.splitext(filename)[1][1:].strip() == "bz2"):
+		import bz2
+		f = bz2.BZ2File(filename)
+		doc = etree.parse(f)
+		f.close()
+		return doc
+	else:
+		return etree.parse(filename)
+
+XMLDoc = loadXMLFile(sys.argv[1])
+RootElement=XMLDoc.getroot()
+
+#Create a list of all particle P tags
+PtTags = RootElement.xpath("//Pt/P")
+
+diameter = 1.0
+
+print '#version 3.6 ;'
+print '#include \"colors.inc\"'
+print '#include \"transforms.inc\"'
+print '#include \"glass.inc\"'
+print 'global_settings { max_trace_level 20 }'
+print 'global_settings { noise_generator 1 }'
+print 'global_settings { ambient_light 2.5 }'
+print 'global_settings { assumed_gamma 1.0 }'
+print 'background { rgb<1, 1, 1> }'
+print '#declare zoom = 10.4 ;'
+print '#declare Cam0 ='
+print '  camera {location  <-0.75*zoom , 0.75*zoom , zoom>'
+print '           look_at   <0.05 , 0.1 , 0.0>}'
+print 'camera{Cam0}'
+print 'light_source{<-10,50,0> color White}'
+print 'light_source{<10,30,30> color White}'
+print '#declare particle = sphere {'
+print ' <0,0,0>', diameter/2
+print ' texture { pigment { color rgb<0.1,0.1,0.6> }}'
+print '  finish { phong 0.9 phong_size 60 } }'
+
+for element in PtTags:
+	print "object { particle translate <", element.get("x"),",", element.get("y"),",", element.get("z"),">}"
+<?php codeblockend("brush: python;"); ?>
