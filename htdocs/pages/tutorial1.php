@@ -40,12 +40,17 @@
 <ul>
   <li>
     <a href="http://git-scm.com/">git</a> - The source code is
-    downloaded using the Git program.  (<b>Ubuntu Package</b>: git).
+    downloaded using the Git program.  (<b>Ubuntu/OpenSuse/Gentoo Package</b>: git).
+  </li>
+  <li>
+    <a href="http://gcc.gnu.org">gcc</a> - You need a compiler and GCC
+    is the standard choice.(<b>Ubuntu/Gentoo Package</b>: Installed by
+    default, <b>OpenSuse Package</b>: gcc-g++).
   </li>
   <li>
     <a href="http://www.bzip.org/">libbz2</a> - The output of DynamO
     is compressed for efficiency using this library.
-    (<b>Ubuntu Package</b>: libbz2-dev).
+    (<b>Ubuntu Package</b>: libbz2-dev, <b>Gentoo Package</b>: Installed by default, <b>OpenSuse</b>: libbz2-devel).
   </li>
 </ul>
 <h2>Visualisation Requirements (Optional)</h2>
