@@ -158,7 +158,6 @@ li { margin:5px; }
 }
 
 .figure { 
-    float: right; 
     display: inline-block; 
     margin:5px; 
     border:2px solid; 

@@ -199,7 +199,7 @@
   data out of an xml file, and if you are familar with shell scripting
   you will find it very easy to use.
 </p>
-<h2>Example: Making an XYZ position file</h2>
+<h2>Example: Making an XYZ Position File</h2>
 <p>
   The best way to learn XMLstarlet is through examples. The first is
   how to generate a file with just the positions in it. This file
@@ -242,6 +242,70 @@ xmlstarlet sel -t -m '//Pt/P' -v '@x' -o ' ' -v '@y' -o ' ' -v '@z' -n config.ou
 <p>
   You should use shell redirection if you want to send this output to
   a file.
+</p>
+<h2>Example: Deleting Particles to Make a Sphere</h2>
+<p>
+  We will now show a nice feature of XPath expressions, which is the
+  ability to do math!
+</p>
+<p>
+  First, create a system of 1372 hard spheres using the following command:
+</p>
+<?php codeblockstart(); ?>dynamod -m 0 -C 7 -d 0.5 -o config.start.xml<?php codeblockend("brush: python;"); ?>
+<p>
+  If you take a look inside the configuration, you'll see the system
+  is a 14x14x14 periodic cube, and the particle positions lie in the
+  range of $[\pm7,\pm7,\pm7]$.
+</p>
+<p>
+  Lets pretend that we want to chop off all particles whose centres
+  lie outside of a sphere of radius 5, centered about the origin. We
+  need an XPath expression to select all particle (Pt) tags, whose
+  centers (P) lie outside of the sphere. This can be achieved easily
+  using math in the predicate:
+</p>
+<?php codeblockstart(); ?>
+//Pt[P/@x * P/@x + P/@y * P/@y + P/@z * P/@z  > 25.0]
+<?php codeblockend("brush: xpath;"); ?>
+<p>
+  We have to use the square of the radius, $R=5$, as XPath does not
+  support math functions such as square root yet. The reasoning behind
+  the $R^2=5^2=25$ value is as follows.
+</p>
+$$\begin{align*}
+\left|\mathbf{P}\right| &> R\\
+\mathbf{P}^2 &> R^2\\
+P_x^2+P_y^2+P_z^2 &> 5^2\\
+P_x^2+P_y^2+P_z^2 &> 25
+\end{align*}$$
+<p>
+  To use this XPath expression to delete the nodes, we simply run
+  XMLstarlet using its edit (ed) mode, and apply a delete (-d) action
+  as follows:
+</p>
+<?php codeblockstart(); ?>cat config.start.xml | xmlstarlet ed -d '//Pt[P/@x * P/@x + P/@y * P/@y + P/@z * P/@z  > 25.0]' > config.trimmed.xml<?php codeblockend("brush: bash;"); ?>
+<div class="figure" style="width:450px; float:right;" >
+  <a href="/images/tutA_cubetosphere.png">
+    <img height="209" width="450" alt="An image demonstrating the effect of the XPath expression." src="/images/tutA_cubetosphere.png"/>
+  </a>
+  <div class="caption">
+    A demonstration of the effect of the XPath expression in creating
+    a rough sphere of particles.
+  </div>
+</div>
+<p>
+  We can take a look at the difference between config.start.xml and
+  config.trimmed.xml using the visualiser and see the results to the
+  right.
+</p>
+<p>
+  If you want to create or edit XML files in great detail, I highly
+  recommend that you switch from using XMLStarlet to using an XML
+  library in the programming language of your choice. 
+</p>
+<p>
+  The simplest interface I've encountered is the lxml library in
+  Python, which is introduced now.
 </p>
 <h1>Python</h1>
 <p>
