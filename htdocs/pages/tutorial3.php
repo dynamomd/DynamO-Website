@@ -5,7 +5,7 @@
    header( 'Location: /index.php/404');
    return;
    }
-   $pagetitle="Tutorial 3: Exploring the Configuration File";
+   $pagetitle="Tutorial 3: Exploring the Configuration File Format";
    ?>
 <p>
   In this tutorial we'll start to explore the file format of DynamO
@@ -33,14 +33,14 @@
   more information).
 </p>
 <p>
-  But before we can change the configuration, we must understand
-  it. 
+  So in order to effectively use DynamO, we must have a good
+  understanding of it's configuration file format.
 </p>
 <h1>2. The Starting Configuration</h1>
 <p>
-  We will generate a standard hard sphere configuration, use it to
-  explore the file format, and to demonstrate the large effect of some
-  simple changes.  We have chosen to look at the hard sphere
+  We will generate a standard hard sphere configuration and use it to
+  explore the file format. We will also demonstrate the effect of some
+  simple changes as well.  We have chosen to look at the hard sphere
   configuration as it is one of the simplest configurations we can
   generate.
 </p>
@@ -56,27 +56,35 @@ dynamod -m 0 -d 0.5 -C 7 -o config.start.xml
   convenience. Note that your own generated output will have different
   randomly-assigned-velocities than the example provided.
 </p>
-<?php button("Tutorial 2: Running a Simulation of Hard Spheres","/pages/config.tut3.xml");?>
+<?php button("Example Configuration File","/pages/config.tut3.xml");?>
 <p>
+  XML files can be opened and edited by your favourite text editor. If
+  you click the link above you will see that modern web browsers will
+  present the contents of an XML file nicely, but you won't be able to
+  edit them.
 </p>
-
-
-
-
 <h1>3. The Tags</h1>
-
 <p>
- The whole configuration is enclosed within a pair
+  Open the XML file and take a look at the top of the file. You'll
+  notice that there is a short line at the top that identifies this
+  file as an XML file:
+</p>
+<?php codeblockstart(); ?>
+<?xml version="1.0"?>
+<?php codeblockend("brush: xml;"); ?>
+<p>
+  Underneath this is the contents of the file. You will notice that he
+  whole content of the file is enclosed within a pair
   of <b>DynamOconfig</b> <em>tags</em>.
 </p>
-<?php codeblockstart(); ?><?xml version="1.0"?>
-<DynamOconfig version="1.4.0">
+<?php codeblockstart(); ?>
+<DynamOconfig version="1.5.0">
 ...
 </DynamOconfig>
 <?php codeblockend("brush: xml;"); ?>
 <p>
-  We will omit these tags in the following examples and use "..." to
-  indicate any XML data we have skipped.
+  Whenever some content has been omitted we will use "..." to indicate
+  the XML data we have skipped.
 </p>
 <p>
   We'll start with the particle data first. At the bottom of the file,
@@ -127,41 +135,4 @@ dynamod -m 0 -d 0.5 -C 7 -o config.start.xml
   now, we will just use this starting configuration to run a
   simulation and collect snapshots of the system.
 </p>
-<h1>3. Running a simulation</h1>
-<p>
-  Now that we have a configuration, we are ready to run a simulation!
-  This is very easy, just run <b>dynarun</b> like so:
-</p>
-<?php codeblockstart(); ?>dynarun hardsphere.xml -o hardsphere.final.xml -c 1000000<?php codeblockend("brush: shell;"); ?>
-<p>
-  This will use <b>dynarun</b> to calculate the trajectory of
-  the <em>hardsphere.xml</em> configuration for a million events
-  (<em>-c 1000000</em>) and then write the final configuration
-  to <em>hardsphere.final.xml</em>. If you want to run a simulation
-  for a certain time (instead of a certain number of events) you just
-  run <b>dynarun</b> with the <em>-f</em> option:
-</p>
-<?php codeblockstart(); ?>dynarun hardsphere.xml -o hardsphere.final.xml -f 200<?php codeblockend("brush: shell;"); ?>
-<p>
-  and this will use <b>dynarun</b> to calculate the trajectory of the
-  hardsphere.xml configuration for 200 units of simulation time.
-</p>
-<p>
-  There are many ways to collect data from a DynamO simulation, but
-  the most common usage is to take periodic snapshots of the
-  system. DynamO has a special command line option for this:
-</p>
-<?php codeblockstart(); ?>dynarun hardsphere.xml -o hardsphere.final.xml -f 200 --snapshot 20<?php codeblockend("brush: shell;"); ?>
-<p>
-  This will take a snapshot of the system every 20 units of simulation
-  time! If you run the command above, you will see you have 10
-  snapshots taken:
-</p>
-<?php codeblockstart(); ?>ls Snapshot.* 
-  Snapshot.0.xml.bz2 Snapshot.1.xml.bz2 Snapshot.2.xml.bz2
-  Snapshot.3.xml.bz2 Snapshot.4.xml.bz2 Snapshot.5.xml.bz2
-  Snapshot.6.xml.bz2 Snapshot.7.xml.bz2 Snapshot.8.xml.bz2
-  Snapshot.9.xml.bz2<?php codeblockend("brush: shell;"); ?>
-<p>
-  Congratulations, you've run your first DynamO simulation!
-</p>
+
