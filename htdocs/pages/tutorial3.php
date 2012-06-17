@@ -37,6 +37,19 @@
   understanding of it's configuration file format.
 </p>
 <h1>2. The Starting Configuration</h1>
+<div class="figure" style="float:right;width:400px;">
+  <div class="video-container" style="width:400px;">
+    <video controls poster="/videos/hardspheres.jpg" preload="none">
+      <source src="/videos/hardspheres.mp4" type='video/mp4' />
+      <source src="/videos/hardspheres.ogg" type='video/ogg' />
+      <iframe width="400" height="250" src="https://www.youtube-nocookie.com/embed/tn6Cz0tNPuU"></iframe>
+    </video>
+  </div>
+  <div class="caption">
+    The starting configuration of 1372 hard-spheres with periodic
+    boundary conditions.
+  </div>
+</div>
 <p>
   We will generate a standard hard sphere configuration and use it to
   explore the file format. We will also demonstrate the effect of some

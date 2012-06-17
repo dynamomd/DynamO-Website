@@ -212,7 +212,7 @@ Mode 0: Monocomponent hard spheres
 </p>
 <?php codeblockstart(); ?>dynamod -m 0 -C 7 -d 0.5 --i1 0 -r 1 -o config.start.xml<?php codeblockend("brush: shell;"); ?>
 <h2>2.3. Initial Positions and Crystal Structures</h2>
-<div class="figure" style="float:right;">
+<div class="figure" style="float:right; width:250px;">
   <a href="/images/tut1_initialpos.jpg">
     <img height="250" width="250" alt="Image of hard spheres arranged in an FCC lattice." src="/images/tut1_initialpos.jpg"/>
   </a>
