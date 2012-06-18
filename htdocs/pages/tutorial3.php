@@ -8,6 +8,7 @@
    }
    $pagetitle="Tutorial 3: Exploring the Configuration File Format";
    ?>
+<p style="text-align:center;"><b>This tutorial is still being written</b></p>
 <p>
   In this tutorial we'll start to explore the file format of DynamO
   and look at ways of setting up arbitrary simulations.
@@ -132,7 +133,7 @@ dynamod -m 0 -d 0.5 -C 7 -o config.start.xml
   you identify the particle. <u>This ID number is not read by
   DynamO</u>. DynamO loads and assigns ID's to the particles in the
   order they appear in the configuration file. It is just written
-  their for your reference to show you the ID numbers DynamO last
+  there for your reference to show you the ID numbers DynamO last
   used.
 </p>
 <p>
@@ -151,13 +152,39 @@ dynamod -m 0 -d 0.5 -C 7 -o config.start.xml
   in the <b>Interaction</b> tags. We'll start to explore these
   Simulation settings in the following sections.
 </p>
-<h2>Simulation Settings</h2>
+<h2>Scheduler</h2>
 <p>
   At the top of the file, the actual dynamics of the simulation are
-  specified. These are all contained within a <b>Simulation</b> tag.
-  For example, in the <b>Simulation</b> <i>tag</i> there is
-  another <i>tag</i> called <b>SimulationSize</b>. Unsurprisingly,
-  this holds the size of the simulation domain.
+  specified. These are all contained within a <b>Simulation</b>
+  tag. The first tags are the <b>Scheduler</b> tags (please ignore the
+  ensemble tags for now, they will be removed in a future version).
+</p>
+<?php codeblockstart(); ?>
+<DynamOconfig version="1.5.0">
+  ...
+  <Scheduler Type="NeighbourList">
+    <Sorter Type="BoundedPQMinMax3"/>
+  </Scheduler>
+  ...
+</DynamOconfig>
+<?php codeblockend("brush: xml;"); ?>
+<p>
+  The Scheduler tags contain the settings for the event scheduler and
+  event sorter, which are the parts of DynamO responsible for
+  determining which event happens next in the simulation. 
+</p>
+<p>
+  Changing the scheduler settings should never affect the results
+  DynamO generates, but a correct set of settings will greatly
+  increase DynamO's speed. The Scheduler tags will almost always look
+  as they do above, as these are the optimal settings for most simple
+  systems.
+</p>
+<h2>Simulation Settings</h2>
+<p>
+  In the <b>Simulation</b> <i>tag</i> there is another <i>tag</i>
+  called <b>SimulationSize</b>. Unsurprisingly, this holds the size of
+  the simulation domain.
 </p>
 <?php codeblockstart(); ?>
 <DynamOconfig version="1.5.0">
@@ -171,12 +198,13 @@ dynamod -m 0 -d 0.5 -C 7 -o config.start.xml
   $14\times14\times14$ domain. We will see in a moment that this
   system has periodic boundary conditions, but even infinite systems
   must have some finite size specified for the neighbourlist to
-  function.
+  function, so you will always see a SimulationSize tag in your
+  configurations.
 </p>
 <h2>Boundary Conditions</h2>
 <p>
-  In the Simulation tags the boundary conditions are defined inside
-  a <b>BC</b> tag.
+  Another mandatory tag within the Simulation tags is the Boundary
+  Condition (<b>BC</b>) tag.
 </p>
 <?php codeblockstart(); ?>
 <DynamOconfig version="1.5.0">
@@ -185,7 +213,47 @@ dynamod -m 0 -d 0.5 -C 7 -o config.start.xml
   ...
 </DynamOconfig>
 <?php codeblockend("brush: xml;"); ?>
+
 <p>
-  Here we can see that they are Periodic Boundary Conditions
-  (<b>PBC</b>). You can change the boundary conditions to
+  Here we can see that the current BCs are Periodic Boundary
+  Conditions (<b>PBC</b>). If you change the boundary conditions
+  to <b>None</b>, like so:
 </p>
+<?php codeblockstart(); ?>
+...
+<BC Type="None"/>
+...
+<?php codeblockend("brush: xml;"); ?>
+<div class="figure" style="float:right;width:337px;">
+  <iframe width="333" height="250" src="https://www.youtube-nocookie.com/embed/RzjmpRtwDAw"></iframe>
+  <div class="caption">
+    The same configuration as in the movie above, but with the
+    Boundary Conditions set to <b>None</b>.
+  </div>
+</div>
+<p>
+  The configuration will now exist in an infinite domain without
+  boundaries (see the video on the right). The particles will be
+  allowed to fly off in all directions, which is very useful if you
+  want to simulate a single polymer or any macroscopic piece of
+  equipment.
+</p>
+<p>
+  But be warned, if you now try to convert back to periodic boundary
+  conditions, all particle positions will be "folded" back into the
+  simulation domain specified by the <b>SimulationSize</b> tag (a
+  cubic $14\times14\times14$ volume). This "folding" will probably
+  result in overlapping particles leading to invalid dynamics, so you
+  need to be careful when changing Boundary Conditions from None to
+  PBC.
+</p>
+<p>
+  There are also Lees-Edwards shearing boundary conditions available
+  in DynamO (Type="LE") which will be discussed in a future tutorial.
+</p>
+<h2>Species</h2>
+<h2>Interactions</h2>
+<h2>Locals</h2>
+<h2>Globals</h2>
+<h2>Dynamics</h2>
+<h2>Units</h2>
