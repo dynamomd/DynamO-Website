@@ -8,7 +8,9 @@
    }
    $pagetitle="Tutorial 3: Exploring the Configuration File Format";
    ?>
-<p style="text-align:center;"><b>This tutorial is still being written</b></p>
+<p style="text-align:center; border: 5px solid; background-color:#FFD800; font-size:16pt; font-family:sans; line-height:40px;">
+  <b>This tutorial is currently being written.</b>
+</p>
 <p>
   In this tutorial we'll start to explore the file format of DynamO
   and look at ways of setting up arbitrary simulations.
@@ -257,3 +259,7 @@ dynamod -m 0 -d 0.5 -C 7 -o config.start.xml
 <h2>Globals</h2>
 <h2>Dynamics</h2>
 <h2>Units</h2>
+<p>
+  A common question users ask when first using DynamO is "What are the
+  units of Dynamo?" and the answer is "whichever units you use". 
+</p>
