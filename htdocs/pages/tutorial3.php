@@ -86,9 +86,10 @@ dynamod -m 0 -d 0.5 -C 7 -o config.start.xml
 <?xml version="1.0"?>
 <?php codeblockend("brush: xml;"); ?>
 <p>
-  Underneath this is the contents of the file. You will notice that he
-  whole content of the file is enclosed within a pair
-  of <b>DynamOconfig</b> <i>tags</i>.
+  Underneath this is the contents of the file. You will notice that
+  the whole content of the file is enclosed within a pair
+  of <b>DynamOconfig</b> <i>tags</i>. In XML, these are called
+  the <i>root tags</i>:
 </p>
 <?php codeblockstart(); ?>
 <DynamOconfig version="1.5.0">
@@ -100,8 +101,9 @@ dynamod -m 0 -d 0.5 -C 7 -o config.start.xml
   the XML data we have skipped. There is
   a <b>version</b> <i>attribute</i> in
   the <b>DynamOconfig</b> <i>tag</i> which is used by DynamO to check
-  that the file format is the correct version, before trying to load
-  it.
+  that the file format is the up-to-date version before trying to load
+  it. This version number is only incremented whenever a breaking
+  change is needed.
 </p>
 <h2>Particle Data</h2>
 <p>
@@ -109,14 +111,17 @@ dynamod -m 0 -d 0.5 -C 7 -o config.start.xml
   you should see lots of <b>Pt</b> <i>tags</i> stored inside
   a <b>ParticleData</b> <i>tag</i>:
 </p>
-<?php codeblockstart(); ?><ParticleData>
-...
-<Pt ID="56">
-<P x="-6.50000000000000e+00" y="-2.50000000000000e+00" z="-6.50000000000000e+00"/>
-<V x="5.20851366504843e-01" y="-5.38736236641469e-01" z="-1.56915668716473e+00"/>
-</Pt>
-...
-</ParticleData>
+<?php codeblockstart(); ?>
+<DynamOconfig version="1.5.0">
+  ...
+  <ParticleData>
+    <Pt ID="0">
+      <P x="-6.50000000000000e+00" y="-6.50000000000000e+00" z="-6.50000000000000e+00"/>
+      <V x="-5.52389513657453e-01" y="-1.50017672465470e-01" z="-2.80144593124301e-01"/>
+    </Pt>
+    ...
+  </ParticleData>
+</DynamOconfig>
 <?php codeblockend("brush: xml;"); ?>
 <p>
   Each of these <b>Pt</b> <i>tags</i> represent the data of a single
