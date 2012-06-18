@@ -107,8 +107,9 @@ dynamod -m 0 -d 0.5 -C 7 -o config.start.xml
 </p>
 <h2>Particle Data</h2>
 <p>
-  We'll start with the particle data first. At the bottom of the file,
-  you should see lots of <b>Pt</b> <i>tags</i> stored inside
+  We'll start with the particle data first as it makes up the bulk of
+  the data contained in the file. At the bottom of the file, you
+  should see lots of <b>Pt</b> <i>tags</i> stored inside
   a <b>ParticleData</b> <i>tag</i>:
 </p>
 <?php codeblockstart(); ?>
@@ -152,25 +153,26 @@ dynamod -m 0 -d 0.5 -C 7 -o config.start.xml
 <h2>Simulation Settings</h2>
 <p>
   At the top of the file, the actual dynamics of the simulation are
-  specified. For example, in the <b>Simulation</b> <i>tag</i> there
-  is another <i>tag</i>
-  called <b>SimulationSize</b>. Unsurprisingly, this holds the size of
-  the simulation domain.
+  specified. These are all contained within a <b>Simulation</b> tag.
+  For example, in the <b>Simulation</b> <i>tag</i> there is
+  another <i>tag</i> called <b>SimulationSize</b>. Unsurprisingly,
+  this holds the size of the simulation domain.
 </p>
 <?php codeblockstart(); ?>
-<SimulationSize x="1.400000000000e+01" y="1.400000000000e+01" z="1.400000000000e+01"/>
+<DynamOconfig version="1.5.0">
+  ...
+  <SimulationSize x="1.400000000000e+01" y="1.400000000000e+01" z="1.400000000000e
+								   +01"/>
+  ...
+</DynamOconfig>
 <?php codeblockend("brush: xml;"); ?>
 <p>
-  There are many other <i>tags</i> in the configuration file. For
-  example, the <b>BC</b> <i>tag</i> sets the boundary conditions of
-  the simulation. The type may be <b>"PBC"</b> for periodic boundary
-  conditions or <b>"None"</b> for an infinite system.
+  Here we can see the simulation is performed in a
+  $14\times14\times14$ domain. We will see in a moment that this
+  system has periodic boundary conditions, but even infinite systems
+  must have some finite size specified for the neighbourlist to
+  function.
 </p>
+<h2>Boundary Conditions</h2>
 <p>
-  If you want to simulate a certain system, it is recommended you take
-  the nearest system available in dynamod, then look at other examples
-  to understand how to add whatever else you might require. But for
-  now, we will just use this starting configuration to run a
-  simulation and collect snapshots of the system.
 </p>
-
