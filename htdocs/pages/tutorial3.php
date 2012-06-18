@@ -1,5 +1,6 @@
 <?php 
    /*Check that this file is being accessed by the template*/
+   $mathjax=1;
    if (!isset($in_template))
    {
    header( 'Location: /index.php/404');
@@ -161,8 +162,7 @@ dynamod -m 0 -d 0.5 -C 7 -o config.start.xml
 <?php codeblockstart(); ?>
 <DynamOconfig version="1.5.0">
   ...
-  <SimulationSize x="1.400000000000e+01" y="1.400000000000e+01" z="1.400000000000e
-								   +01"/>
+  <SimulationSize x="1.400000000000e+01" y="1.400000000000e+01" z="1.400000000000e+01"/>
   ...
 </DynamOconfig>
 <?php codeblockend("brush: xml;"); ?>
@@ -175,4 +175,17 @@ dynamod -m 0 -d 0.5 -C 7 -o config.start.xml
 </p>
 <h2>Boundary Conditions</h2>
 <p>
+  In the Simulation tags the boundary conditions are defined inside
+  a <b>BC</b> tag.
+</p>
+<?php codeblockstart(); ?>
+<DynamOconfig version="1.5.0">
+  ...
+  <BC Type="PBC"/>
+  ...
+</DynamOconfig>
+<?php codeblockend("brush: xml;"); ?>
+<p>
+  Here we can see that they are Periodic Boundary Conditions
+  (<b>PBC</b>). You can change the boundary conditions to
 </p>
