@@ -125,13 +125,13 @@ dynamod -m 0 -d 0.5 -C 7 -o config.start.xml
 <?php codeblockend("brush: xml;"); ?>
 <p>
   Each of these <b>Pt</b> <i>tags</i> represent the data of a single
-  particle.
-</p>
-<p>
-  Each <b>Pt</b> <i>tag</i> has an <b>ID</b> <i>attribute</i>, which is a
-  unique number used to help you identify the particle. This number is
-  not read by DynamO (it loads the particles in the order they appear
-  in the file), it is just for your reference. 
+  particle.  Each <b>Pt</b> <i>tag</i> has
+  an <b>ID</b> <i>attribute</i>, which is a unique number used to help
+  you identify the particle. <u>This ID number is not read by
+  DynamO</u>. DynamO loads and assigns ID's to the particles in the
+  order they appear in the configuration file. It is just written
+  their for your reference to show you the ID numbers DynamO last
+  used.
 </p>
 <p>
   Inside the particle (<b>Pt</b>) <i>tag</i> there are two
@@ -141,11 +141,13 @@ dynamod -m 0 -d 0.5 -C 7 -o config.start.xml
   velocity.
 </p>
 <p>
-  You may notice that there is no mass or size of the particles
-  specified here. This is because of the unique functional definition
-  of "properties" of particles. The mass of a particle is defined by
-  Species tags, and its interaction properties, such as its diameter,
-  is specified in the Interaction tags.
+  You may notice and wonder that there is no mass or size of the
+  particles specified here. This is because of the very general and
+  unique functional definition of "properties" of particles possible
+  in DynamO. The mass of a particle is defined by <b>Species</b> tags,
+  and its interaction properties, such as its diameter, is specified
+  in the <b>Interaction</b> tags. We'll start to explore these
+  Simulation settings in the following sections.
 </p>
 <h2>Simulation Settings</h2>
 <p>
