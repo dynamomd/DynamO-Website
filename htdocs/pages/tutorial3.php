@@ -88,7 +88,7 @@ dynamod -m 0 -d 0.5 -C 7 -o config.start.xml
 <p>
   Underneath this is the contents of the file. You will notice that he
   whole content of the file is enclosed within a pair
-  of <b>DynamOconfig</b> <em>tags</em>.
+  of <b>DynamOconfig</b> <i>tags</i>.
 </p>
 <?php codeblockstart(); ?>
 <DynamOconfig version="1.5.0">
@@ -97,12 +97,17 @@ dynamod -m 0 -d 0.5 -C 7 -o config.start.xml
 <?php codeblockend("brush: xml;"); ?>
 <p>
   Whenever some content has been omitted we will use "..." to indicate
-  the XML data we have skipped.
+  the XML data we have skipped. There is
+  a <b>version</b> <i>attribute</i> in
+  the <b>DynamOconfig</b> <i>tag</i> which is used by DynamO to check
+  that the file format is the correct version, before trying to load
+  it.
 </p>
+<h2>Particle Data</h2>
 <p>
   We'll start with the particle data first. At the bottom of the file,
-  you should see lots of <b>Pt</b> <em>tags</em> stored inside
-  a <b>ParticleData</b> <em>tag</em>:
+  you should see lots of <b>Pt</b> <i>tags</i> stored inside
+  a <b>ParticleData</b> <i>tag</i>:
 </p>
 <?php codeblockstart(); ?><ParticleData>
 ...
@@ -114,21 +119,34 @@ dynamod -m 0 -d 0.5 -C 7 -o config.start.xml
 </ParticleData>
 <?php codeblockend("brush: xml;"); ?>
 <p>
-  Each of these <b>Pt</b> <em>tags</em> represent the data of a single
+  Each of these <b>Pt</b> <i>tags</i> represent the data of a single
   particle.
 </p>
 <p>
-  Each <b>Pt</b> tag has an <b>ID</b> <em>attribute</em>, which is a
-  unique number used to identify the particle, and two
-  enclosed <em>tags</em> called <b>P</b>
-  and <b>V</b>. The <b>P</b> <em>tag</em> holds the position of a
+  Each <b>Pt</b> <i>tag</i> has an <b>ID</b> <i>attribute</i>, which is a
+  unique number used to help you identify the particle. This number is
+  not read by DynamO (it loads the particles in the order they appear
+  in the file), it is just for your reference. 
+</p>
+<p>
+  Inside the particle (<b>Pt</b>) <i>tag</i> there are two
+  enclosed <i>tags</i> called <b>P</b>
+  and <b>V</b>. The <b>P</b> <i>tag</i> holds the position of a
   particle within the system and the <b>V</b> tag holds the particles
   velocity.
 </p>
 <p>
+  You may notice that there is no mass or size of the particles
+  specified here. This is because of the unique functional definition
+  of "properties" of particles. The mass of a particle is defined by
+  Species tags, and its interaction properties, such as its diameter,
+  is specified in the Interaction tags.
+</p>
+<h2>Simulation Settings</h2>
+<p>
   At the top of the file, the actual dynamics of the simulation are
-  specified. For example, in the <b>Simulation</b> <em>tag</em> there
-  is another <em>tag</em>
+  specified. For example, in the <b>Simulation</b> <i>tag</i> there
+  is another <i>tag</i>
   called <b>SimulationSize</b>. Unsurprisingly, this holds the size of
   the simulation domain.
 </p>
@@ -136,8 +154,8 @@ dynamod -m 0 -d 0.5 -C 7 -o config.start.xml
 <SimulationSize x="1.400000000000e+01" y="1.400000000000e+01" z="1.400000000000e+01"/>
 <?php codeblockend("brush: xml;"); ?>
 <p>
-  There are many other <em>tags</em> in the configuration file. For
-  example, the <b>BC</b> <em>tag</em> sets the boundary conditions of
+  There are many other <i>tags</i> in the configuration file. For
+  example, the <b>BC</b> <i>tag</i> sets the boundary conditions of
   the simulation. The type may be <b>"PBC"</b> for periodic boundary
   conditions or <b>"None"</b> for an infinite system.
 </p>
