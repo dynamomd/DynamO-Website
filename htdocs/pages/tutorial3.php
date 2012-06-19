@@ -42,7 +42,7 @@
   understanding of it's configuration file format.
 </p>
 <h1>The Example Configuration</h1>
-<div class="figure" style="float:right;width:400px;">
+<div class="figure" style="clear:right; float:right;width:400px;">
   <div class="video-container" style="width:400px;">
     <video controls poster="/videos/hardspheres.jpg" preload="none">
       <source src="/videos/hardspheres.mp4" type='video/mp4' />
