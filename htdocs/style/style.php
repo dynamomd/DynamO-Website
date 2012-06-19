@@ -20,7 +20,6 @@ h1 {
     font-size:18pt; 
     border-bottom:2px solid; 
     display:block; 
-    clear:both; 
 }
 
 h2 { font-size:16pt; display:block; }
@@ -49,7 +48,8 @@ li { margin:5px; }
 
 .video-container {
     position:relative;
-    width:533px; 
+    width:533px;
+    clear:both;
     margin-left:auto; 
     margin-right:auto;
 }
@@ -128,21 +128,40 @@ li { margin:5px; }
 #contentwrapper {
     border-radius: 0 15px 15px 15px;
     position:relative;
+    padding-top: 15px;
+}
+
+#TOC {
+     float:right;
+     display:inline-block;
+     background-color:#ccddee;
+     margin: -15px -15px 15px 15px;
+     padding:15px;
+     border-radius: 0 15px 0 15px;
+}
+
+#TOC #header {
+     float:right;
+     display:inline;
+     margin: -15px -15px 0 0;
+     border-bottom:solid 1px;
+     border-left:solid 1px;
+     border-radius: 0 15px 0 15px;
+     padding: 2px 15px;
 }
 
 #pagetitle {
-    position:absolute;
-    left: 0; 
-    top: 0;
+    float:left;
     padding: 2px 15px;
     border-radius: 15px 0 15px 0;
     font-weight: bold;
     border-bottom: 1px solid;
     border-right: 1px solid; 
+    margin: -15px 15px 15px -15px;
 }
 
 /* Button */
-.button { text-align:center; margin: 15px 0; }
+.button { text-align:center; margin: 15px 0; clear:both; }
 
 .button a:hover { background-color: <?php echo $hoverbutton;?>; }
 
@@ -160,7 +179,8 @@ li { margin:5px; }
 .figure { 
     display: inline-block; 
     margin:5px; 
-    border:2px solid; 
+    border:2px solid;
+    background-color:#ffffff;
 }
 
 .figure .caption { 

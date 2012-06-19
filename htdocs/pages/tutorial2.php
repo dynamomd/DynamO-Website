@@ -8,6 +8,7 @@
    }
    $pagetitle="Tutorial 2: Running a Simulation of Hard Spheres";
    ?>
+<?php printTOC(); ?>
 <p>
   In this tutorial, we will cover the basics of using DynamO, and
   learn how to simulate the simplest event driven system, the hard
@@ -49,7 +50,7 @@
 <p>
   Let's take a look at how to perform this simulation in DynamO...
 </p>
-<h1>1. Verifying your DynamO Installation</h1>
+<h1>Verifying the DynamO Installation</h1>
 <p>
   Please ensure that you have already followed
   the <a href="/index.php/tutorial1">previous tutorial</a> and
@@ -82,7 +83,7 @@ Usage : dynamod <OPTIONS>...[CONFIG FILE]
 <p>
   We're now ready to setup and run our first DynamO simulation...
 </p>
-<h1>2. In Brief</h1> 
+<h1>In Brief</h1> 
 <p>
   There are only three commands to cover in this tutorial, so we'll
   cover them briefly and then go into each command in detail. 
@@ -109,7 +110,7 @@ dynarun config.equilibrated.xml -c 1000000 -o config.end.xml
   (-c -o -m) control? We'll look at each command individually in the
   following sections.
 </p>
-<h1>2. Configuration files and dynamod</h1>
+<h1>Configuration Files and Dynamod</h1>
 <p>
   The first step in the brief example was to create the
   initial <b>configuration file</b>, called <em>config.start.xml</em>,
@@ -121,7 +122,7 @@ dynarun config.equilibrated.xml -c 1000000 -o config.end.xml
   DynamO, which are the main input and output of DynamO, and how to
   generate configuration files using <b>dynamod</b>.
 </p>
-<h2>2.1. About the configuration file</h2>
+<h2>About the Configuration File</h2>
 <p>
   Before we can run any simulations with DynamO, we must write or
   generate a configuration file. A configuration file is a single file
@@ -149,7 +150,7 @@ dynarun config.equilibrated.xml -c 1000000 -o config.end.xml
   but DynamO only uses one file. Lets take a look at how we can
   generate a configuration file...
 </p>
-<h2 >2.2. Generating Configuration Files Using Dynamod</h2>
+<h2>Generating Configuration Files</h2>
 <p>
   <b>dynamod</b> is a program designed to manipulate existing
   configuration files or to generate example configuration files. We
@@ -211,7 +212,7 @@ Mode 0: Monocomponent hard spheres
   command.
 </p>
 <?php codeblockstart(); ?>dynamod -m 0 -C 7 -d 0.5 --i1 0 -r 1 -o config.start.xml<?php codeblockend("brush: shell;"); ?>
-<h2>2.3. Initial Positions and Crystal Structures</h2>
+<h2>Initial Positions and Crystals</h2>
 <div class="figure" style="float:right; width:250px;">
   <a href="/images/tut1_initialpos.jpg">
     <img height="250" width="250" alt="Image of hard spheres arranged in an FCC lattice." src="/images/tut1_initialpos.jpg"/>
@@ -271,7 +272,7 @@ Mode 0: Monocomponent hard spheres
   the <em>--density</em> option, or <em>-d</em> for short (by default
   we have <em>-d 0.5</em>).
 </p>
-<h2>2.4. In Summary</h2>
+<h2>In Summary</h2>
 <p>
   To conclude this part, we'll quickly summarise the description of
   each of the options passed to dynamod
@@ -304,7 +305,7 @@ Mode 0: Monocomponent hard spheres
     configuration file called <em>config.start.xml</em>.
     </li>
 </ul>
-<h1>3. Running the Simulation</h1>
+<h1>Running the Simulation</h1>
 <p>
   The hardest part of this tutorial is now over. All we need to do is
   take the starting configuration file and actually run a simulation.
@@ -353,7 +354,7 @@ Mon 07:59, ETA 4s, Events 200k, t 38.0597, <Mean Free Time> 0.130545,
   sufficient for your research. But there is another source of data
   generated with each execution of dynarun.
 </p>
-<h1>4. Processing the Collected Data</h1>
+<h1>Processing the Collected Data</h1>
 <p>
   <b>dynarun</b> has the ability to collect a wide range of
   properties, such as transport coefficients, radial distribution
@@ -441,7 +442,7 @@ $$
   tutorials, we'll look at more complex systems and their properties
   in detail.
 </p>
-<h1>5. In Summary</h1>
+<h1>In Summary</h1>
 <p>
   We've covered how to create an initial configuration,
   using <b>dynamod</b> and how to "run" this configuration for a fixed

@@ -8,6 +8,7 @@
    }
    $pagetitle="Tutorial 1: Compiling and Installing DynamO";
    ?>
+<?php printTOC(); ?>
 <p>
   This tutorial covers the requirements, compilation and installation
   of the DynamO simulation package. It is recommended that you build
@@ -36,7 +37,10 @@
   optional libraries which, if they're installed, will activate extra
   features.
 </p>
-<h2>Required Libraries</h2>
+<h2>Essential Libraries</h2>
+<p>
+  These programs and libraries <b>must</b> be installed if you want to use DynamO:
+</p>
 <ul>
   <li>
     <a href="http://git-scm.com/">git</a> - The source code is
@@ -53,7 +57,11 @@
     (<b>Ubuntu Package</b>: libbz2-dev, <b>Gentoo Package</b>: Installed by default, <b>OpenSuse</b>: libbz2-devel).
   </li>
 </ul>
-<h2>Visualisation Requirements (Optional)</h2>
+<h2>Visualiser Requirements</h2>
+<p>
+  These programs and libraries only need to be installed if you want
+  to use the visualiser (called Coil) supplied with DynamO:
+</p>
 <ul>
   <li><a href="http://www.gtkmm.org/">Gtkmm</a> (<b style="font-size:
     16px;">Ubuntu Package</b>: libgtkmm-2.4-dev).
@@ -79,7 +87,7 @@
     libavcodec-dev).
   </li>
 </ul>
-<h1>Step 1: Download the Source Code</h1>
+<h1>Step 1: Downloading</h1>
 <p>
   Take a look at the download page for full instructions on how to
   download a copy of the DynamO source code. Once you have the source
@@ -91,7 +99,7 @@
 </p>
 <?php codeblockstart(); ?>git clone https://github.com/toastedcrumpets/DynamO.git
 cd DynamO<?php codeblockend("brush: shell;"); ?>
-<h1>Step 2: Compilation and Installation</h1>
+<h1>Step 2: Compilation</h1>
 <p>
   DynamO uses the modern, powerful, but quite complicated boost-build
   system. Using the boost build system takes some getting used to;
@@ -140,7 +148,7 @@ Performing configuration checks
   <a href="/index.php/documentation">documentation</a> to find ways of
   filing a bug report and how to contact the developers.
 </p>
-<h1>Step 3: Installing the Executables</h1>
+<h1>Step 3: Installation</h1>
 <p>
   Once the compilation has been successfully completed, everything you
   need to use DynamO should be in the <em>bin</em> sub-directory.
@@ -161,7 +169,7 @@ Performing configuration checks
 </p>
 <?php button("Tutorial 2: Running a Simulation of Hard Spheres","/index.php/tutorial2");?>
 
-<h1>Appendix A: Updating the Code</h1>
+<h1>Appendix A: Updating</h1>
 <p>
   This covers how to update using Git, which you might choose to do if
   you have made changes to the code. In other cases, you can just
@@ -183,7 +191,7 @@ sudo make install<?php codeblockend("brush: shell;"); ?>
 <p>
   and you should now have an up-to-date set of executables installed!
 </p>
-<h1>Appendix B: Building Executables for Debugging</h1>
+<h1>Appendix B: Debugging Executables</h1>
 <p>
   If you're having some trouble with DynamO, you can build a debug
   version of the simulator once a normal version has been built. This

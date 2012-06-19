@@ -8,14 +8,15 @@
    }
    $pagetitle="Tutorial 3: Exploring the Configuration File Format";
    ?>
-<p style="text-align:center; border: 5px solid; background-color:#FFD800; font-size:16pt; font-family:sans; line-height:40px;">
+<div style="text-align:center; border: 5px solid; margin:15px;  background-color:#FFD800; font-size:16pt; font-family:sans; line-height:40px;">
   <b>This tutorial is currently being written.</b>
-</p>
+</div>
+<?php printTOC(); ?>
 <p>
   In this tutorial we'll start to explore the file format of DynamO
   and look at ways of setting up arbitrary simulations.
 </p>
-<h1>1. Introduction</h1>
+<h1>Introduction</h1>
 <p>
   When studying a new system, we need to find a convenient way to
   generate sample configurations generated across the range of study
@@ -40,7 +41,7 @@
   So in order to effectively use DynamO, we must have a good
   understanding of it's configuration file format.
 </p>
-<h1>2. The Starting Configuration</h1>
+<h1>The Example Configuration</h1>
 <div class="figure" style="float:right;width:400px;">
   <div class="video-container" style="width:400px;">
     <video controls poster="/videos/hardspheres.jpg" preload="none">
@@ -80,7 +81,7 @@ dynamod -m 0 -d 0.5 -C 7 -o config.start.xml
   present the contents of an XML file nicely, but you won't be able to
   edit them.
 </p>
-<h1>3. The Tags</h1>
+<h1>The Configuration Tags</h1>
 <p>
   Open the XML file and take a look at the top of the file. You'll
   notice that there is a short line at the top that identifies this
