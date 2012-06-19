@@ -81,7 +81,7 @@ dynamod -m 0 -d 0.5 -C 7 -o config.start.xml
   present the contents of an XML file nicely, but you won't be able to
   edit them.
 </p>
-<h1>The Configuration Tags</h1>
+<h1>General Layout</h1>
 <p>
   Open the XML file and take a look at the top of the file. You'll
   notice that there is a short line at the top that identifies this
@@ -91,14 +91,14 @@ dynamod -m 0 -d 0.5 -C 7 -o config.start.xml
 <?xml version="1.0"?>
 <?php codeblockend("brush: xml;"); ?>
 <p>
-  Underneath this is the contents of the file. You will notice that
+  Underneath this lies the contents of the file. You will notice that
   the whole content of the file is enclosed within a pair
   of <b>DynamOconfig</b> <i>tags</i>. In XML, these are called
   the <i>root tags</i>:
 </p>
 <?php codeblockstart(); ?>
 <DynamOconfig version="1.5.0">
-...
+  ...
 </DynamOconfig>
 <?php codeblockend("brush: xml;"); ?>
 <p>
@@ -107,15 +107,45 @@ dynamod -m 0 -d 0.5 -C 7 -o config.start.xml
   a <b>version</b> <i>attribute</i> in
   the <b>DynamOconfig</b> <i>tag</i> which is used by DynamO to check
   that the file format is the up-to-date version before trying to load
-  it. This version number is only incremented whenever a breaking
-  change is needed.
+  it. This version number is only incremented when a major change in
+  the file format is needed in a new version of DynamO.
+</p>
+<p>
+  At the top of the file are a pair of <b>Simulation</b> tags.
+</p>
+<?php codeblockstart(); ?>
+<DynamOconfig version="1.5.0">
+  <Simulation>
+    ...
+  </Simulation>
+  ...
+</DynamOconfig>
+<?php codeblockend("brush: xml;"); ?>
+<p>
+  These contain most of the settings of the simulation and their
+  contents are discussed in detail below. Beneath the simulation tags
+  is the
+  <b>Properties</b> tag:
+</p>
+<?php codeblockstart(); ?>
+<DynamOconfig version="1.5.0">
+  ...
+  <Properties/>
+  ...
+</DynamOconfig>
+<?php codeblockend("brush: xml;"); ?>
+<p>
+  You can see that this tag is empty in this configuration. It is only
+  needed in polydisperse systems where there are a large number of
+  parameters to set for each particle. Their use will be covered in a
+  later tutorial but for now we can ignore them.
 </p>
 <h2>Particle Data</h2>
 <p>
-  We'll start with the particle data first as it makes up the bulk of
-  the data contained in the file. At the bottom of the file, you
-  should see lots of <b>Pt</b> <i>tags</i> stored inside
-  a <b>ParticleData</b> <i>tag</i>:
+  Underneath the Properties tag, at the bottom of the file, lies
+  the <b>ParticleData</b> tags.  You should see lots
+  of <b>Pt</b> <i>tags</i> stored inside
+  the <b>ParticleData</b> <i>tags</i>, like so:
 </p>
 <?php codeblockstart(); ?>
 <DynamOconfig version="1.5.0">
@@ -134,10 +164,10 @@ dynamod -m 0 -d 0.5 -C 7 -o config.start.xml
   particle.  Each <b>Pt</b> <i>tag</i> has
   an <b>ID</b> <i>attribute</i>, which is a unique number used to help
   you identify the particle. <u>This ID number is not read by
-  DynamO</u>. DynamO loads and assigns ID's to the particles in the
-  order they appear in the configuration file. It is just written
-  there for your reference to show you the ID numbers DynamO last
-  used.
+  DynamO</u> when it loads the configuration file. DynamO loads and
+  assigns ID's to the particles in the order they appear in the
+  configuration file. It is just written there for your reference of
+  the ID numbers DynamO last used.
 </p>
 <p>
   Inside the particle (<b>Pt</b>) <i>tag</i> there are two
@@ -147,20 +177,26 @@ dynamod -m 0 -d 0.5 -C 7 -o config.start.xml
   velocity.
 </p>
 <p>
-  You may notice and wonder that there is no mass or size of the
-  particles specified here. This is because of the very general and
-  unique functional definition of "properties" of particles possible
-  in DynamO. The mass of a particle is defined by <b>Species</b> tags,
-  and its interaction properties, such as its diameter, is specified
-  in the <b>Interaction</b> tags. We'll start to explore these
-  Simulation settings in the following sections.
+  You may notice that there is no mass or size of the particles
+  specified here. This is because of the very general and unique
+  functional definition of "properties" of particles possible in
+  DynamO. The mass of a particle is defined by <b>Species</b> tags,
+  and its interaction properties, such as its diameter, are specified
+  in <b>Interaction</b>, <b>Global</b>, and <b>Local</b> tags in the
+  Simulation section. These are now discussed in the following
+  section.
+</p>
+<h1>Simulation Tags</h1>
+<p>
+  The <b>Simulation</b> tags are where the details of the system are
+  stored. There is a huge number of settings that can be adjusted
+  here, so we will deal with each tag separately.
 </p>
 <h2>Scheduler</h2>
 <p>
-  At the top of the file, the actual dynamics of the simulation are
-  specified. These are all contained within a <b>Simulation</b>
-  tag. The first tags are the <b>Scheduler</b> tags (please ignore the
-  ensemble tags for now, they will be removed in a future version).
+  The first tag in the <b>Simulation</b> section are
+  the <b>Scheduler</b> tags (please ignore the ensemble tags for now,
+  they will be removed in a future version).
 </p>
 <?php codeblockstart(); ?>
 <DynamOconfig version="1.5.0">
@@ -181,7 +217,9 @@ dynamod -m 0 -d 0.5 -C 7 -o config.start.xml
   DynamO generates, but a correct set of settings will greatly
   increase DynamO's speed. The Scheduler tags will almost always look
   as they do above, as these are the optimal settings for most simple
-  systems.
+  systems. These settings are to use a neighbour list to detect
+  events, and to use a Bounded Priority Queue on Min-Max heaps for
+  event sorting.
 </p>
 <h2>Simulation Settings</h2>
 <p>
@@ -238,8 +276,7 @@ dynamod -m 0 -d 0.5 -C 7 -o config.start.xml
   The configuration will now exist in an infinite domain without
   boundaries (see the video on the right). The particles will be
   allowed to fly off in all directions, which is very useful if you
-  want to simulate a single polymer or any macroscopic piece of
-  equipment.
+  want to simulate a single polymer or any system with gravity.
 </p>
 <p>
   But be warned, if you now try to convert back to periodic boundary
