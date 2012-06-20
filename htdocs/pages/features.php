@@ -89,7 +89,7 @@
 <?php embedvideo("granularDamper", "3mlisuFJkqk", 533, 315); ?>
 
 <h2>Gravity, Boundary Sphere Meshes and Sleeping Particles</h2>
-<?php embedvideo("sleepingparticles", "9oaobaxhGX8", 533, 293); ?>
+<?php embedvideo("sleepingparticles", "9oaobaxhGX8", 533, 298); ?>
 <p>The dynamod command used to generate the configuration:</p>
 <?php codeblockstart(); ?>dynamod -m 25<?php codeblockend("brush: shell;"); ?>
 
@@ -97,16 +97,16 @@
 <?php embedvideo("trianglemesh", "1Rn-bL8S30Y", 538, 286); ?>
 
 <h2>Sheared Polydisperse Hard Disks (2D)</h2>
-<?php embedvideo("shearpoly2d", "0kYY6NjE_sE", 533, 286); ?>
+<?php embedvideo("shearpoly2d", "0kYY6NjE_sE", 533, 298); ?>
 <p>The dynamod command used to generate the configuration:</p>
 <?php codeblockstart(); ?>dynamod -m 26 -x 50 -y 50 -z 1 --i1 2 -d 0.8 --rectangular-box --zero-vel=2<?php codeblockend("brush: shell;"); ?>
 
 <h2>Infinitely-Thin Hard Rods</h2>
-<?php embedvideo("thinHardLines", "hUVZxEhjoc0", 533, 286); ?>
+<?php embedvideo("thinHardLines", "hUVZxEhjoc0", 533, 298); ?>
 <p>The dynamod command used to generate the configuration:</p>
 <?php codeblockstart(); ?>dynamod -m 9 -C 1000<?php codeblockend("brush: shell;"); ?>
 
 <h2>Parallel Hard Cubes</h2>
-<?php embedvideo("parallelCubes", "B_qASDj9J8I", 533, 286); ?>
+<?php embedvideo("parallelCubes", "B_qASDj9J8I", 533, 298); ?>
 <p>The dynamod command used to generate the configuration:</p>
 <?php codeblockstart(); ?>dynamod -m 15 --i1 2 -C 10<?php codeblockend("brush: shell;"); ?>
