@@ -17,7 +17,7 @@
   read out the data you want or to edit and change the configuration
   files.
 </p>
-<p style="text-align:center; clear:both;">
+<p style="text-align:center;">
   <b>This is not a tutorial on the format of the configuration or
   output files, but on <u>easy ways to read and edit these
   files.</u></b>
