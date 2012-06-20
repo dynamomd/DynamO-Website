@@ -8,10 +8,10 @@
    }
    $pagetitle="Tutorial 3: Exploring the Configuration File Format";
    ?>
-<div style="text-align:center; border: 5px solid; margin:15px; min-width:50%;  background-color:#FFD800; font-size:16pt; font-family:sans; line-height:40px;">
-  <b>This tutorial is currently being written, so it may be incomplete or contain errors.</b>
-</div>
 <?php printTOC(); ?>
+<p style="text-align:center; margin:15px; background-color:#FFD800; font-size:16pt; font-family:sans; line-height:40px;">
+  <b>This tutorial is currently being written, so it may be incomplete or contain errors.</b>
+</p>
 <p>
   In this tutorial we'll start to explore the file format of DynamO
   and look at ways of setting up arbitrary simulations.
