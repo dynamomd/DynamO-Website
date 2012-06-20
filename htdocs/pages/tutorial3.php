@@ -420,9 +420,33 @@ dynamod -m 0 -d 0.5 -C 7 -o config.start.xml
 <p>
   Here we can see that the particles with IDs in the range $[0,134]$
   belong to Species "A" and the particles with IDs in the range
-  $[135,13499]$ belong to Species "B"!
+  $[135,13499]$ belong to Species "B"! In later tutorials, we will see
+  some more types of Ranges and what happens when functional
+  definitions are almost impossible in polydisperse systems.
 </p>
 <h2>Interactions</h2>
+<p>
+  The next important tags in the file format are
+  the <b>Interaction</b> tags. These tags are used to specify the
+  interactions between particles, whether they are bonds, hard
+  spheres, cubes, lines, square wells or Lennard-Jones stepped
+  potentials. <u>Every two particle event is specified here</u>
+</p>
+<p>
+  If we take a look at the example configuration file again, we have:
+</p>
+<?php codeblockstart(); ?>
+<DynamOconfig version="1.5.0">
+  <Simulation>
+    ...
+    <Interactions>
+      <Interaction Type="HardSphere" Diameter="1" Elasticity="1" Name="Bulk" Range="2All"/>
+    </Interactions>
+    ...
+  </Simulation>
+  ...
+</DynamOconfig>
+<?php codeblockend("brush: xml;"); ?>
 <h2>Locals</h2>
 <h2>Globals</h2>
 <h2>Dynamics</h2>
