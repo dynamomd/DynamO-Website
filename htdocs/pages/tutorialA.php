@@ -252,7 +252,7 @@ xmlstarlet sel -t -m '//Pt/P' -v '@x' -o ' ' -v '@y' -o ' ' -v '@z' -n config.ou
 <p>
   First, create a system of 1372 hard spheres using the following command:
 </p>
-<?php codeblockstart(); ?>dynamod -m 0 -C 7 -d 0.5 -o config.start.xml<?php codeblockend("brush: python;"); ?>
+<?php codeblockstart(); ?>dynamod -m 0 -C 7 -d 0.5 -o config.start.xml<?php codeblockend("brush: bash;"); ?>
 <p>
   If you take a look inside the configuration, you'll see the system
   is a 14x14x14 periodic cube, and the particle positions lie in the
