@@ -260,7 +260,7 @@ dynamod -m 0 -d 0.5 -C 7 -o config.start.xml
 ...
 <?php codeblockend("brush: xml;"); ?>
 <div class="figure" style="float:right;width:337px;">
-  <iframe width="333" height="250" src="https://www.youtube-nocookie.com/embed/RzjmpRtwDAw"></iframe>
+  <?php embedvideo("infinitehardspheres", "RzjmpRtwDAw", 333, 250); ?>
   <div class="caption">
     The same configuration as in the movie above, but with the
     Boundary Conditions set to <b>None</b>.
