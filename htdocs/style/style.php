@@ -10,6 +10,7 @@ html { height: 100%; }
 
 .syntaxhighlighterwrapper {
     display:inline-block;
+    max-width:100%;
 }
 
 body {
