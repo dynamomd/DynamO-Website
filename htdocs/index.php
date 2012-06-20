@@ -34,6 +34,28 @@ function printTOC()
    echo "TABLEOFCONTENTSMARKER";
  }
 
+$html5video = false;
+
+function embedvideo($filename, $youtubecode, $width, $height)
+{
+   echo "<div class=\"video-container\">";
+
+   global $html5video;
+
+   $basename = $_SERVER{'DOCUMENT_ROOT'} . "/videos/" . $filename;
+   $html5embed = $html5video && file_exists($basename.".jpg");
+   if ($html5embed)
+   { ?> <video controls poster="/videos/<?php echo $filename; ?>.jpg" preload="none"> <?php
+     if (file_exists($basename.".mp4")) {?> <source src="/videos/<?php echo $filename; ?>.mp4" type='video/mp4' /> <?php }
+     if (file_exists($basename.".webm")) {?> <source src="/videos/<?php echo $filename; ?>.webm" type='video/webm' /> <?php }
+     if (file_exists($basename.".ogg")) {?> <source src="/videos/<?php echo $filename; ?>.ogg" type='video/ogg' /> <?php }
+   }
+  ?> <iframe frameborder="0" width="<?php echo $width?>" height="<?php echo $height?>" src="https://www.youtube-nocookie.com/embed/<?php echo $youtubecode?>?rel=0&autohide=1&theme=light&modestbranding=1&showinfo=0"></iframe> <?php
+
+  if ($html5embed) { ?></video><?php }
+  echo "</div>";
+}
+
 /* Set the default page accessed when someone opens this file*/
 $page="frontpage";
 

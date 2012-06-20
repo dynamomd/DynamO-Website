@@ -43,13 +43,7 @@
 </p>
 <h1>The Example Configuration</h1>
 <div class="figure" style="clear:right; float:right;width:400px;">
-  <div class="video-container" style="width:400px;">
-    <video controls poster="/videos/hardspheres.jpg" preload="none">
-      <source src="/videos/hardspheres.mp4" type='video/mp4' />
-      <source src="/videos/hardspheres.ogg" type='video/ogg' />
-      <iframe width="400" height="250" src="https://www.youtube-nocookie.com/embed/tn6Cz0tNPuU"></iframe>
-    </video>
-  </div>
+  <?php embedvideo("hardspheres", "tn6Cz0tNPuU", 400, 250); ?>
   <div class="caption">
     The starting configuration of 1372 hard-spheres with periodic
     boundary conditions.

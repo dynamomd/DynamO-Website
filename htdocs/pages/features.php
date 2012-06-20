@@ -86,61 +86,27 @@
 <h1>Videos of Example Systems</h1>
 <?php /*for file in $(ls *.mp4); do name=${file%.mp4}; ffmpeg -i $name.mp4  -ss 10 -vframes 1 -vcodec mjpeg -f image2 $name.jpg; done*/ ?>
 <h2>Granular Damper Simulation</h2>
-<div class="video-container">
-  <video controls poster="/videos/granularDamper.jpg" preload="none">
-    <source src="/videos/granularDamper.mp4" type='video/mp4' />
-    <source src="/videos/granularDamper.ogg" type='video/ogg' />
-    <iframe width="533" height="315" src="http://www.youtube-nocookie.com/embed/3mlisuFJkqk?rel=0"></iframe>
-  </video>
-</div>
+<?php embedvideo("granularDamper", "3mlisuFJkqk", 533, 315); ?>
 
 <h2>Gravity, Boundary Sphere Meshes and Sleeping Particles</h2>
-<div class="video-container">
-  <video controls poster="/videos/sleepingparticles.jpg" preload="none">
-    <source src="/videos/sleepingparticles.mp4" type='video/mp4' />
-    <source src="/videos/sleepingparticles.ogg" type='video/ogg' />
-    <iframe width="533" height="293" src="http://www.youtube-nocookie.com/embed/9oaobaxhGX8?rel=0"></iframe>
-  </video>
-</div>
+<?php embedvideo("sleepingparticles", "9oaobaxhGX8", 533, 293); ?>
 <p>The dynamod command used to generate the configuration:</p>
 <?php codeblockstart(); ?>dynamod -m 25<?php codeblockend("brush: shell;"); ?>
 
 <h2>Triangle Meshes and Gravity</h2>
-<div class="video-container">
-  <video controls poster="/videos/trianglemesh.jpg" preload="none">
-    <source src="/videos/trianglemesh.mp4" type='video/mp4' />
-    <source src="/videos/trianglemesh.ogg" type='video/ogg' />
-    <iframe width="533" height="286" src="http://www.youtube-nocookie.com/embed/1Rn-bL8S30Y?rel=0"></iframe>
-  </video>
-</div>
+<?php embedvideo("trianglemesh", "1Rn-bL8S30Y", 538, 286); ?>
 
 <h2>Sheared Polydisperse Hard Disks (2D)</h2>
-<div class="video-container">
-  <video controls poster="/videos/shearpoly2d.jpg" preload="none">
-    <source src="/videos/shearpoly2d.mp4" type='video/mp4' />
-    <source src="/videos/shearpoly2d.ogg" type='video/ogg' />
-    <iframe width="533" height="286" src="http://www.youtube-nocookie.com/embed/0kYY6NjE_sE?rel=0"></iframe>
-  </video>
-</div>
+<?php embedvideo("shearpoly2d", "0kYY6NjE_sE", 533, 286); ?>
 <p>The dynamod command used to generate the configuration:</p>
 <?php codeblockstart(); ?>dynamod -m 26 -x 50 -y 50 -z 1 --i1 2 -d 0.8 --rectangular-box --zero-vel=2<?php codeblockend("brush: shell;"); ?>
 
 <h2>Infinitely-Thin Hard Rods</h2>
-<div class="video-container">
-  <video controls poster="/videos/thinHardLines.jpg" preload="none" class="fullscreenable">
-    <source src="/videos/thinHardLines.mp4" type='video/mp4' />
-    <source src="/videos/thinHardLines.webm" type='video/webm' />
-  <iframe width="533" height="286" src="http://www.youtube-nocookie.com/embed/hUVZxEhjoc0?rel=0"></iframe>
-</div>
+<?php embedvideo("thinHardLines", "hUVZxEhjoc0", 533, 286); ?>
 <p>The dynamod command used to generate the configuration:</p>
 <?php codeblockstart(); ?>dynamod -m 9 -C 1000<?php codeblockend("brush: shell;"); ?>
 
 <h2>Parallel Hard Cubes</h2>
-<div class="video-container">
-  <video controls poster="/videos/parallelCubes.jpg" preload="none" class="fullscreenable">
-    <source src="/videos/parallelCubes.mp4" type='video/mp4' />
-    <source src="/videos/parallelCubes.webm" type='video/webm' />
-  <iframe width="533" height="286" src="http://www.youtube-nocookie.com/embed/B_qASDj9J8I?rel=0"></iframe>
-</div>
+<?php embedvideo("parallelCubes", "B_qASDj9J8I", 533, 286); ?>
 <p>The dynamod command used to generate the configuration:</p>
 <?php codeblockstart(); ?>dynamod -m 15 --i1 2 -C 10<?php codeblockend("brush: shell;"); ?>
