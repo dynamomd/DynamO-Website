@@ -8,8 +8,8 @@
    }
    $pagetitle="Tutorial 3: Exploring the Configuration File Format";
    ?>
-<div style="text-align:center; border: 5px solid; margin:15px;  background-color:#FFD800; font-size:16pt; font-family:sans; line-height:40px;">
-  <b>This tutorial is currently being written.</b>
+<div style="text-align:center; border: 5px solid; margin:15px; min-width:50%;  background-color:#FFD800; font-size:16pt; font-family:sans; line-height:40px;">
+  <b>This tutorial is currently being written, so it may be incomplete or contain errors.</b>
 </div>
 <?php printTOC(); ?>
 <p>
@@ -194,10 +194,12 @@ dynamod -m 0 -d 0.5 -C 7 -o config.start.xml
 </p>
 <?php codeblockstart(); ?>
 <DynamOconfig version="1.5.0">
-  ...
-  <Scheduler Type="NeighbourList">
-    <Sorter Type="BoundedPQMinMax3"/>
-  </Scheduler>
+  <Simulation>
+    <Scheduler Type="NeighbourList">
+      <Sorter Type="BoundedPQMinMax3"/>
+    </Scheduler>
+    ...
+  </Simulation>
   ...
 </DynamOconfig>
 <?php codeblockend("brush: xml;"); ?>
@@ -223,8 +225,11 @@ dynamod -m 0 -d 0.5 -C 7 -o config.start.xml
 </p>
 <?php codeblockstart(); ?>
 <DynamOconfig version="1.5.0">
-  ...
-  <SimulationSize x="1.400000000000e+01" y="1.400000000000e+01" z="1.400000000000e+01"/>
+  <Simulation>
+    ...
+    <SimulationSize x="1.400000000000e+01" y="1.400000000000e+01" z="1.400000000000e+01"/>
+    ...
+  </Simulation>
   ...
 </DynamOconfig>
 <?php codeblockend("brush: xml;"); ?>
@@ -237,28 +242,6 @@ dynamod -m 0 -d 0.5 -C 7 -o config.start.xml
   configurations.
 </p>
 <h2>Boundary Conditions</h2>
-<p>
-  Another mandatory tag within the Simulation tags is the Boundary
-  Condition (<b>BC</b>) tag.
-</p>
-<?php codeblockstart(); ?>
-<DynamOconfig version="1.5.0">
-  ...
-  <BC Type="PBC"/>
-  ...
-</DynamOconfig>
-<?php codeblockend("brush: xml;"); ?>
-
-<p>
-  Here we can see that the current BCs are Periodic Boundary
-  Conditions (<b>PBC</b>). If you change the boundary conditions
-  to <b>None</b>, like so:
-</p>
-<?php codeblockstart(); ?>
-...
-<BC Type="None"/>
-...
-<?php codeblockend("brush: xml;"); ?>
 <div class="figure" style="float:right;width:337px;">
   <?php embedvideo("infinitehardspheres", "RzjmpRtwDAw", 333, 250); ?>
   <div class="caption">
@@ -266,6 +249,35 @@ dynamod -m 0 -d 0.5 -C 7 -o config.start.xml
     Boundary Conditions set to <b>None</b>.
   </div>
 </div>
+<p>
+  Another mandatory tag within the Simulation tags is the Boundary
+  Condition (<b>BC</b>) tag.
+</p>
+<?php codeblockstart(); ?>
+<DynamOconfig version="1.5.0">
+  <Simulation>
+    ...
+    <BC Type="PBC"/>
+    ...
+  </Simulation>
+  ...
+</DynamOconfig>
+<?php codeblockend("brush: xml;"); ?>
+<p>
+  Here we can see that the current BCs are Periodic Boundary
+  Conditions (<b>PBC</b>). If you change the boundary conditions
+  to <b>None</b>, like so:
+</p>
+<?php codeblockstart(); ?>
+<DynamOconfig version="1.5.0">
+  <Simulation>
+    ...
+    <BC Type="None"/>
+    ...
+  </Simulation>
+  ...
+</DynamOconfig>
+<?php codeblockend("brush: xml;"); ?>
 <p>
   The configuration will now exist in an infinite domain without
   boundaries (see the video on the right). The particles will be
@@ -287,6 +299,56 @@ dynamod -m 0 -d 0.5 -C 7 -o config.start.xml
   tutorial.
 </p>
 <h2>Species</h2>
+<p>
+  The next interesting tags are the <b>Species</b> tags within
+  the <b>Genus</b> tags.
+</p>
+<?php codeblockstart(); ?>
+<DynamOconfig version="1.5.0">
+  <Simulation>
+    ...
+    <Genus>
+      <Species Mass="1" Name="Bulk" IntName="Bulk" Type="Point" Range="All"/>
+    </Genus>
+    ...
+  </Simulation>
+  ...
+</DynamOconfig>
+<?php codeblockend("brush: xml;"); ?>
+<p>
+  In DynamO, a single <b>Species</b> tag defines the mass and inertia
+  tensor of a collection of particles. It also defines how the
+  particles are represented when visualised. Each particle must
+  therefore belong to one species.
+</p>
+<p>
+  The obvious attributes of the <b>Species</b> tag are the <b>Mass</b>
+  of the particles and the <b>Name</b> of the Species. Names are used
+  when reporting collected results which vary by the species, such as
+  diffusion coefficients, radial distribution functions, and so on.
+<p>
+  The <b>IntName</b> attribute specifies the name of
+  the <b>Interaction</b> (see below) that can be used to visualise
+  this particle. For example, if the Interaction named "Bulk" was a
+  hard-sphere interaction, spheres would be used to draw the
+  particle. If it was a hard line or parallel cube Interaction, lines
+  or cubes respectively would be used to render them. This interaction
+  is also queried for the excluded volume of each particle of the
+  Species, for example when calculating the packing fraction of the
+  system.
+</p>
+<p>
+  The <b>Type</b> parameter specifies the class of inertia tensor that
+  the particle has. A value of "Point" implies that this particle has
+  no rotational degrees of freedom, such as atoms in molecular
+  systems. Other values, such as spherical top or a full tensor are
+  available.
+</p>
+<p>
+  Finally, we come to the <b>Range</b> attribute, which is complex
+  enough to deserve its own section.
+</p>
+<h2>Range Attributes</h2>
 <h2>Interactions</h2>
 <h2>Locals</h2>
 <h2>Globals</h2>
