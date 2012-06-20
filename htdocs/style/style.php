@@ -161,7 +161,7 @@ li { margin:5px; }
 }
 
 /* Button */
-.button { text-align:center; margin: 15px 0; clear:both; }
+.button { text-align:center; margin: 15px 0; }
 
 .button a:hover { background-color: <?php echo $hoverbutton;?>; }
 
