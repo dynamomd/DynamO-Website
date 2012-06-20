@@ -49,7 +49,8 @@
 }
 
 .syntaxhighlighter {
-  width: 100% !important;
+  display:inline-block;
+  max-width:100%;
   margin: 1em 0 1em 0 !important;
   position: relative !important;
   font-size: 1em !important;
