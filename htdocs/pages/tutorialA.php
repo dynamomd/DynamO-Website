@@ -269,15 +269,13 @@ xmlstarlet sel -t -m '//Pt/P' -v '@x' -o ' ' -v '@y' -o ' ' -v '@z' -n config.ou
 //Pt[P/@x * P/@x + P/@y * P/@y + P/@z * P/@z  > 25.0]
 <?php codeblockend("brush: xpath;"); ?>
 <p>
-  We have to use the square of the radius, $R=5$, as XPath does not
-  support math functions such as square root yet. The reasoning behind
-  the $R^2=5^2=25$ value is as follows.
+  We have to use the square of the radius, $R^2=5^2=25$, is because
+  XPath does not support math functions such as square root, and we
+  use the following identity
 </p>
 $$\begin{align*}
 \left|\mathbf{P}\right| &> R\\
-\mathbf{P}^2 &> R^2\\
-P_x^2+P_y^2+P_z^2 &> 5^2\\
-P_x^2+P_y^2+P_z^2 &> 25
+P_x^2+P_y^2+P_z^2 &> R^2
 \end{align*}$$
 <p>
   To use this XPath expression to delete the nodes, we simply run
@@ -372,11 +370,8 @@ def loadXMLFile(filename):
 XMLDoc = loadXMLFile(sys.argv[1])
 RootElement=XMLDoc.getroot()
 
-#Create a list of all particle P tags
-PtTags = RootElement.xpath("//Pt/P")
-
+# Write the header for the Povray file
 diameter = 1.0
-
 print '#version 3.6 ;'
 print '#include \"colors.inc\"'
 print '#include \"transforms.inc\"'
@@ -398,6 +393,10 @@ print ' <0,0,0>', diameter/2
 print ' texture { pigment { color rgb<0.1,0.1,0.6> }}'
 print '  finish { phong 0.9 phong_size 60 } }'
 
+#Create a list of all particle position (P) tags
+PtTags = RootElement.xpath("//Pt/P")
+
+#Loop over each particles position, outputting a povray object for it
 for element in PtTags:
 	print "object { particle translate <", element.get("x"),",", element.get("y"),",", element.get("z"),">}"
 <?php codeblockend("brush: python;"); ?>
