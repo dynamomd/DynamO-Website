@@ -19,7 +19,7 @@
 <h1>Introduction</h1>
 <p>
   When studying a new system, we need to find a convenient way to
-  generate configurations across the range of study parameters you
+  generate configurations across the range of study parameters we
   wish to explore.
 </p>
 <p>
