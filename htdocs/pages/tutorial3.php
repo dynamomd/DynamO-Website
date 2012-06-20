@@ -217,7 +217,7 @@ dynamod -m 0 -d 0.5 -C 7 -o config.start.xml
   events, and to use a Bounded Priority Queue on Min-Max heaps for
   event sorting.
 </p>
-<h2>Simulation Settings</h2>
+<h2>Simulation Size</h2>
 <p>
   In the <b>Simulation</b> <i>tag</i> there is another <i>tag</i>
   called <b>SimulationSize</b>. Unsurprisingly, this holds the size of
@@ -317,9 +317,12 @@ dynamod -m 0 -d 0.5 -C 7 -o config.start.xml
 <?php codeblockend("brush: xml;"); ?>
 <p>
   In DynamO, a single <b>Species</b> tag defines the mass and inertia
-  tensor of a collection of particles. It also defines how the
-  particles are represented when visualised. Each particle must
-  therefore belong to one species.
+  tensor of a collection of particles. It also defines and allows the
+  calculation any unique property of the particle. For example, it
+  defines how the particles are represented when visualised and it
+  defines the excluded volume of each so that a packing fraction can
+  be calculated. Therefore, <u>each particle must belong to <b>exactly</b>
+  one species</u>.
 </p>
 <p>
   The obvious attributes of the <b>Species</b> tag are the <b>Mass</b>
@@ -342,13 +345,83 @@ dynamod -m 0 -d 0.5 -C 7 -o config.start.xml
   the particle has. A value of "Point" implies that this particle has
   no rotational degrees of freedom, such as atoms in molecular
   systems. Other values, such as spherical top or a full tensor are
-  available.
+  available and are useful when studying granular systems.
 </p>
 <p>
-  Finally, we come to the <b>Range</b> attribute, which is complex
-  enough to deserve its own section.
+  Finally, we come to the <b>Range</b> attribute, which is discussed
+  in the next section.
 </p>
 <h2>Range Attributes</h2>
+<p>
+  The <b>Range</b> attributes are perhaps the most unique and
+  confusing part of the DynamO file format. However, they are
+  extremely powerful and a very elegant method for mapping properties
+  and interactions onto particles.
+</p>
+<p>
+  <i>"Traditionally"</i> in other particle simulators, each particle has its
+  own section of the configuration file (and memory) to store its
+  mass. Unfortunately, in many simulations every particle has the same
+  mass and this redundant storage of information wastes memory and
+  speed. 
+</p>
+<p>
+  What we want is a <i>"functional"</i> definition of properties, such
+  as the mass. We would like to be able to specify it once, and
+  then <i>map</i> this property onto a <b>range</b> of particles:
+</p>
+<div style="width:456px; margin: 15px auto; display:block;">
+  <img src="/images/range_explanation.png" width="456" height="179" alt="A graphic comparing the traditional method of storing redundant particle data, and the functional method" />
+</div>
+<p>
+  This "functional" mapping saves memory and the small computational
+  cost of using these definitions is nothing compared to the speed
+  increases due to the reduced use of the memory bandwidth.
+</p>
+<p>
+  But how does this work in DynamO? You might have guessed by now, the
+  range of particle ID's that a property such as the <b>Species</b>
+  maps on to is specified by the <b>Range</b> attribute. If we take a
+  look at the example configuration file again:
+</p>
+<?php codeblockstart(); ?>
+<DynamOconfig version="1.5.0">
+  <Simulation>
+    ...
+    <Genus>
+      <Species Mass="1" Name="Bulk" IntName="Bulk" Type="Point" Range="All"/>
+    </Genus>
+    ...
+  </Simulation>
+  ...
+</DynamOconfig>
+<?php codeblockend("brush: xml;"); ?>
+<p>
+  Here it is clear to see that the Range attribute has a value of
+  "All", which means all particles have the same Species (and
+  therefore mass, intertia tensor and representative Interaction).
+  Multiple species can be defined in a straightforward way. For
+  example, take a look at this snippet from a binary systems
+  configuration file:
+</p>
+<?php codeblockstart(); ?>
+<DynamOconfig version="1.5.0">
+  <Simulation>
+    ...
+    <Genus>
+      <Species Mass="1" Name="A" IntName="AAInt" Type="Point" Range="Ranged" Start="0" End="134"/>
+      <Species Mass="0.001" Name="B" IntName="BBInt" Type="Point" Range="Ranged" Start="135" End="13499"/>
+    </Genus>
+    ...
+  </Simulation>
+  ...
+</DynamOconfig>
+<?php codeblockend("brush: xml;"); ?>
+<p>
+  Here we can see that the particles with IDs in the range $[0,134]$
+  belong to Species "A" and the particles with IDs in the range
+  $[135,13499]$ belong to Species "B"!
+</p>
 <h2>Interactions</h2>
 <h2>Locals</h2>
 <h2>Globals</h2>
