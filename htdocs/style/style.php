@@ -8,6 +8,10 @@ $hoverbutton = "#ccddcc";
 /* Main html element styles */
 html { height: 100%; }
 
+.syntaxhighlighterwrapper {
+    display:inline-block;
+}
+
 body {
     margin: 0;
     padding: 0;

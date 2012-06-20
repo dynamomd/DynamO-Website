@@ -201,7 +201,7 @@ if ($TOC)
       'text plain /syntaxhighlighter/scripts/shBrushPlain.js',
       'python /syntaxhighlighter/scripts/shBrushPython.js'
       );
-      SyntaxHighlighter.all()</script>
+      SyntaxHighlighter.all();</script>
     <?php } ?>
     <?php if ($mathjax) { ?>
     <script type="text/javascript" src="/MathJax/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
