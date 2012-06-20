@@ -53,10 +53,6 @@
   color: red !important;
 }
 
-.syntaxhighlighter .toolbar {
-    border-radius:0 10px 0 0;
-}
-
 .syntaxhighlighter .plain, .syntaxhighlighter .plain a {
   color: black !important;
 }

@@ -19,8 +19,8 @@
 <h1>Introduction</h1>
 <p>
   When studying a new system, we need to find a convenient way to
-  generate sample configurations generated across the range of study
-  parameters that we wish to simulate.
+  generate configurations across the range of study parameters you
+  wish to explore.
 </p>
 <p>
   Many sample configurations, with variable input parameters, can be

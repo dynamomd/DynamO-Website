@@ -130,7 +130,7 @@
 }
 .syntaxhighlighter .toolbar {
   position: absolute !important;
-  right: 1px !important;
+  left: 1px !important;
   top: 1px !important;
   min-width: 15px;
   max-width: 15px !important;
