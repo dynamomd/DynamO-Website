@@ -8,10 +8,10 @@
    }
    $pagetitle="Tutorial 3: Exploring the Configuration File Format";
    ?>
-<div style="text-align:center; border: 5px solid; margin:15px;  background-color:#FFD800; font-size:16pt; font-family:sans; line-height:40px;">
-  <b>This tutorial is currently being written.</b>
-</div>
 <?php printTOC(); ?>
+<p style="text-align:center; margin:15px; background-color:#FFD800; font-size:16pt; font-family:sans; line-height:40px;">
+  <b>This tutorial is currently being written, so it may be incomplete or contain errors.</b>
+</p>
 <p>
   In this tutorial we'll start to explore the file format of DynamO
   and look at ways of setting up arbitrary simulations.
@@ -194,10 +194,12 @@ dynamod -m 0 -d 0.5 -C 7 -o config.start.xml
 </p>
 <?php codeblockstart(); ?>
 <DynamOconfig version="1.5.0">
-  ...
-  <Scheduler Type="NeighbourList">
-    <Sorter Type="BoundedPQMinMax3"/>
-  </Scheduler>
+  <Simulation>
+    <Scheduler Type="NeighbourList">
+      <Sorter Type="BoundedPQMinMax3"/>
+    </Scheduler>
+    ...
+  </Simulation>
   ...
 </DynamOconfig>
 <?php codeblockend("brush: xml;"); ?>
@@ -215,7 +217,7 @@ dynamod -m 0 -d 0.5 -C 7 -o config.start.xml
   events, and to use a Bounded Priority Queue on Min-Max heaps for
   event sorting.
 </p>
-<h2>Simulation Settings</h2>
+<h2>Simulation Size</h2>
 <p>
   In the <b>Simulation</b> <i>tag</i> there is another <i>tag</i>
   called <b>SimulationSize</b>. Unsurprisingly, this holds the size of
@@ -223,8 +225,11 @@ dynamod -m 0 -d 0.5 -C 7 -o config.start.xml
 </p>
 <?php codeblockstart(); ?>
 <DynamOconfig version="1.5.0">
-  ...
-  <SimulationSize x="1.400000000000e+01" y="1.400000000000e+01" z="1.400000000000e+01"/>
+  <Simulation>
+    ...
+    <SimulationSize x="1.400000000000e+01" y="1.400000000000e+01" z="1.400000000000e+01"/>
+    ...
+  </Simulation>
   ...
 </DynamOconfig>
 <?php codeblockend("brush: xml;"); ?>
@@ -237,28 +242,6 @@ dynamod -m 0 -d 0.5 -C 7 -o config.start.xml
   configurations.
 </p>
 <h2>Boundary Conditions</h2>
-<p>
-  Another mandatory tag within the Simulation tags is the Boundary
-  Condition (<b>BC</b>) tag.
-</p>
-<?php codeblockstart(); ?>
-<DynamOconfig version="1.5.0">
-  ...
-  <BC Type="PBC"/>
-  ...
-</DynamOconfig>
-<?php codeblockend("brush: xml;"); ?>
-
-<p>
-  Here we can see that the current BCs are Periodic Boundary
-  Conditions (<b>PBC</b>). If you change the boundary conditions
-  to <b>None</b>, like so:
-</p>
-<?php codeblockstart(); ?>
-...
-<BC Type="None"/>
-...
-<?php codeblockend("brush: xml;"); ?>
 <div class="figure" style="float:right;width:337px;">
   <?php embedvideo("infinitehardspheres", "RzjmpRtwDAw", 333, 250); ?>
   <div class="caption">
@@ -266,6 +249,35 @@ dynamod -m 0 -d 0.5 -C 7 -o config.start.xml
     Boundary Conditions set to <b>None</b>.
   </div>
 </div>
+<p>
+  Another mandatory tag within the Simulation tags is the Boundary
+  Condition (<b>BC</b>) tag.
+</p>
+<?php codeblockstart(); ?>
+<DynamOconfig version="1.5.0">
+  <Simulation>
+    ...
+    <BC Type="PBC"/>
+    ...
+  </Simulation>
+  ...
+</DynamOconfig>
+<?php codeblockend("brush: xml;"); ?>
+<p>
+  Here we can see that the current BCs are Periodic Boundary
+  Conditions (<b>PBC</b>). If you change the boundary conditions
+  to <b>None</b>, like so:
+</p>
+<?php codeblockstart(); ?>
+<DynamOconfig version="1.5.0">
+  <Simulation>
+    ...
+    <BC Type="None"/>
+    ...
+  </Simulation>
+  ...
+</DynamOconfig>
+<?php codeblockend("brush: xml;"); ?>
 <p>
   The configuration will now exist in an infinite domain without
   boundaries (see the video on the right). The particles will be
@@ -287,7 +299,154 @@ dynamod -m 0 -d 0.5 -C 7 -o config.start.xml
   tutorial.
 </p>
 <h2>Species</h2>
+<p>
+  The next interesting tags are the <b>Species</b> tags within
+  the <b>Genus</b> tags.
+</p>
+<?php codeblockstart(); ?>
+<DynamOconfig version="1.5.0">
+  <Simulation>
+    ...
+    <Genus>
+      <Species Mass="1" Name="Bulk" IntName="Bulk" Type="Point" Range="All"/>
+    </Genus>
+    ...
+  </Simulation>
+  ...
+</DynamOconfig>
+<?php codeblockend("brush: xml;"); ?>
+<p>
+  In DynamO, a single <b>Species</b> tag defines the mass and inertia
+  tensor of a collection of particles. It also defines and allows the
+  calculation any unique property of the particle. For example, it
+  defines how the particles are represented when visualised and it
+  defines the excluded volume of each so that a packing fraction can
+  be calculated. Therefore, <u>each particle must belong to <b>exactly</b>
+  one species</u>.
+</p>
+<p>
+  The obvious attributes of the <b>Species</b> tag are the <b>Mass</b>
+  of the particles and the <b>Name</b> of the Species. Names are used
+  when reporting collected results which vary by the species, such as
+  diffusion coefficients, radial distribution functions, and so on.
+<p>
+  The <b>IntName</b> attribute specifies the name of
+  the <b>Interaction</b> (see below) that can be used to visualise
+  this particle. For example, if the Interaction named "Bulk" was a
+  hard-sphere interaction, spheres would be used to draw the
+  particle. If it was a hard line or parallel cube Interaction, lines
+  or cubes respectively would be used to render them. This interaction
+  is also queried for the excluded volume of each particle of the
+  Species, for example when calculating the packing fraction of the
+  system.
+</p>
+<p>
+  The <b>Type</b> parameter specifies the class of inertia tensor that
+  the particle has. A value of "Point" implies that this particle has
+  no rotational degrees of freedom, such as atoms in molecular
+  systems. Other values, such as spherical top or a full tensor are
+  available and are useful when studying granular systems.
+</p>
+<p>
+  Finally, we come to the <b>Range</b> attribute, which is discussed
+  in the next section.
+</p>
+<h2>Range Attributes</h2>
+<p>
+  The <b>Range</b> attributes are perhaps the most unique and
+  confusing part of the DynamO file format. However, they are
+  extremely powerful and a very elegant method for mapping properties
+  and interactions onto particles.
+</p>
+<p>
+  <i>"Traditionally"</i> in other particle simulators, each particle has its
+  own section of the configuration file (and memory) to store its
+  mass. Unfortunately, in many simulations every particle has the same
+  mass and this redundant storage of information wastes memory and
+  speed. 
+</p>
+<p>
+  What we want is a <i>"functional"</i> definition of properties, such
+  as the mass. We would like to be able to specify it once, and
+  then <i>map</i> this property onto a <b>range</b> of particles:
+</p>
+<div style="width:456px; margin: 15px auto; display:block;">
+  <img src="/images/range_explanation.png" width="456" height="179" alt="A graphic comparing the traditional method of storing redundant particle data, and the functional method" />
+</div>
+<p>
+  This "functional" mapping saves memory and the small computational
+  cost of using these definitions is nothing compared to the speed
+  increases due to the reduced use of the memory bandwidth.
+</p>
+<p>
+  But how does this work in DynamO? You might have guessed by now, the
+  range of particle ID's that a property such as the <b>Species</b>
+  maps on to is specified by the <b>Range</b> attribute. If we take a
+  look at the example configuration file again:
+</p>
+<?php codeblockstart(); ?>
+<DynamOconfig version="1.5.0">
+  <Simulation>
+    ...
+    <Genus>
+      <Species Mass="1" Name="Bulk" IntName="Bulk" Type="Point" Range="All"/>
+    </Genus>
+    ...
+  </Simulation>
+  ...
+</DynamOconfig>
+<?php codeblockend("brush: xml;"); ?>
+<p>
+  Here it is clear to see that the Range attribute has a value of
+  "All", which means all particles have the same Species (and
+  therefore mass, intertia tensor and representative Interaction).
+  Multiple species can be defined in a straightforward way. For
+  example, take a look at this snippet from a binary systems
+  configuration file:
+</p>
+<?php codeblockstart(); ?>
+<DynamOconfig version="1.5.0">
+  <Simulation>
+    ...
+    <Genus>
+      <Species Mass="1" Name="A" IntName="AAInt" Type="Point" Range="Ranged" Start="0" End="134"/>
+      <Species Mass="0.001" Name="B" IntName="BBInt" Type="Point" Range="Ranged" Start="135" End="13499"/>
+    </Genus>
+    ...
+  </Simulation>
+  ...
+</DynamOconfig>
+<?php codeblockend("brush: xml;"); ?>
+<p>
+  Here we can see that the particles with IDs in the range $[0,134]$
+  belong to Species "A" and the particles with IDs in the range
+  $[135,13499]$ belong to Species "B"! In later tutorials, we will see
+  some more types of Ranges and what happens when functional
+  definitions are almost impossible in polydisperse systems.
+</p>
 <h2>Interactions</h2>
+<p>
+  The next important tags in the file format are
+  the <b>Interaction</b> tags. These tags are used to specify the
+  interactions between particles, whether they are bonds, hard
+  spheres, cubes, lines, square wells or Lennard-Jones stepped
+  potentials. <u>Every two particle event is specified here</u>
+</p>
+<p>
+  If we take a look at the example configuration file again, we have:
+</p>
+<?php codeblockstart(); ?>
+<DynamOconfig version="1.5.0">
+  <Simulation>
+    ...
+    <Interactions>
+      <Interaction Type="HardSphere" Diameter="1" Elasticity="1" Name="Bulk" Range="2All"/>
+    </Interactions>
+    ...
+  </Simulation>
+  ...
+</DynamOconfig>
+<?php codeblockend("brush: xml;"); ?>
 <h2>Locals</h2>
 <h2>Globals</h2>
 <h2>Dynamics</h2>
