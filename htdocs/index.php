@@ -50,7 +50,7 @@ function embedvideo($filename, $youtubecode, $width, $height)
      if (file_exists($basename.".webm")) {?> <source src="/videos/<?php echo $filename; ?>.webm" type='video/webm' /> <?php }
      if (file_exists($basename.".ogg")) {?> <source src="/videos/<?php echo $filename; ?>.ogg" type='video/ogg' /> <?php }
    }
-  ?> <iframe frameborder="0" width="<?php echo $width?>" height="<?php echo $height?>" src="https://www.youtube-nocookie.com/embed/<?php echo $youtubecode?>?rel=0&autohide=1&theme=light&modestbranding=1&showinfo=0"></iframe> <?php
+  ?> <iframe frameborder="0" width="<?php echo $width?>" height="<?php echo $height?>" src="https://www.youtube-nocookie.com/embed/<?php echo $youtubecode?>?rel=0&amp;autohide=1&amp;theme=light&amp;modestbranding=1&amp;showinfo=0"></iframe> <?php
 
   if ($html5embed) { ?></video><?php }
   echo "</div>";
@@ -170,7 +170,7 @@ if ($TOC)
     <meta name="description" content="DynamO Event Driven Simulation Package" />
     <meta name="keywords" content="DynamO, Event Driven Simulation, hard sphere, square well" />
     <meta name="author" content="Marcus Bannerman" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" >
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="google-site-verification" content="atSxig_hk_QoQxF4dobExHXxGUIt57ToZf3g_welkB0" />
     <link rel="stylesheet" type="text/css" href="/style/style.php" />
     <!--[if lt IE 10]><link rel="stylesheet" href="/style/ie-css3-support.css" type="text/css"/><![endif]-->
