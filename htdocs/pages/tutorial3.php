@@ -492,10 +492,126 @@ dynamod -m 0 -d 0.5 -C 7 -o config.start.xml
 </p>
 <h2>Locals</h2>
 <p>
-  
+  In this simulation, we have an empty <b>Locals</b> tag:
 </p>
+<?php codeblockstart(); ?>
+<DynamOconfig version="1.5.0">
+  <Simulation>
+    ...
+    <Locals/>
+    ...
+  </Simulation>
+  ...
+</DynamOconfig>
+<?php codeblockend("brush: xml;"); ?>
+<p>
+  A <b>Local</b> is any possible event involving one particle which is
+  localised in space. Typical examples of Locals are are walls,
+  triangle meshes and other fixed objects. The key part of the
+  definition is that the events only occur if the particle is in a
+  certain location in space. This means these events can be optimised
+  by inserting them into the neighbour list.
+</p>
+<p>
+  Using <b>Locals</b> will be discussed in a later tutorial.
+</p>
+<?php codeblockstart(); ?>
+<DynamOconfig version="1.5.0">
+  <Simulation>
+    ...
+    <Locals/>
+    ...
+  </Simulation>
+  ...
+</DynamOconfig>
+<?php codeblockend("brush: xml;"); ?>
 <h2>Globals</h2>
+<p>
+  <b>Globals</b> are single particle events which can occur anywhere
+  (i.e., they cannot be optimised by the use of neighbour lists. On
+  example of a Global <b>is</b> a neighbour list itself:
+</p>
+<?php codeblockstart(); ?>
+<DynamOconfig version="1.5.0">
+  <Simulation>
+    ...
+    <Globals>
+      <Global Type="Cells" Name="SchedulerNBList" NeighbourhoodRange="1.00000000000000e+00" Range="All"/>
+    </Globals>
+    ...
+  </Simulation>
+  ...
+</DynamOconfig>
+<?php codeblockend("brush: xml;"); ?>
+<p>
+  This <b>Global</b> is a celluar neighbour list
+  (<b>Type</b>=&quot;<i>Cells</i>&quot;), which can calculate all of
+  the particles within a distance of at least 1, as specified by
+  the <b>NeighbourhoodRange</b> attribute. This neighbour list has a
+  special <b>Name</b> (<i>SchedulerNBList</i>), to mark it out as the
+  neighbour list used by the <b>Scheduler</b>.
+</p>
+<p>
+  There are a few more Global events available in DynamO, such as
+  single-occupancy cells or a waker for the sleeping particles
+  algorithm. However, the use of these events is rare and often
+  the <b>Globals</b> tag only contains a single neighbour list.
+</p>
+<h2>Systems</h2>
+<p>
+  Finally, <b>System</b> events are everything else that didn't fit
+  into the above categories. These might be thermostats, umbrella
+  potentials, snapshotting, simulation end conditions or temperature
+  rescalers.
+</p>
+<?php codeblockstart(); ?>
+<DynamOconfig version="1.5.0">
+  <Simulation>
+    ...
+    <SystemEvents/>
+    ...
+  </Simulation>
+  ...
+</DynamOconfig>
+<?php codeblockend("brush: xml;"); ?>
+<p>
+  This configuration has no System events, but we will see the use of
+  thermostats in later tutorials.
+</p>
 <h2>Dynamics</h2>
+<p>
+  Finally, the last tag to discuss is the <b>Dynamics</b> tag:
+</p>
+<?php codeblockstart(); ?>
+<DynamOconfig version="1.5.0">
+  <Simulation>
+    ...
+    <Dynamics Type="Newtonian"/>
+  </Simulation>
+  ...
+</DynamOconfig>
+<?php codeblockend("brush: xml;"); ?>
+<p>
+  Here you can change the fundamental dynamics of the system. For
+  example, you might add a constant downwards force to all particles
+  to mimic gravity (see right).
+</p>
+<?php codeblockstart(); ?>
+<DynamOconfig version="1.5.0">
+  <Simulation>
+    ...
+    <Dynamics Type="NewtonianGravity">
+      <g x="0" y="-1" z="0"/>
+    </Dynamics>
+  </Simulation>
+  ...
+</DynamOconfig>
+<?php codeblockend("brush: xml;"); ?>
+<p>
+  You can also run compression simulations or use multicanonical
+  potentials to deform the energy landscape of the system through
+  the <b>Dynamics</b> tag.
+</p>
 <h2>Units</h2>
 <p>
   A common question users ask when first using DynamO is "What are the
