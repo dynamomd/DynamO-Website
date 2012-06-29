@@ -445,12 +445,11 @@ dynamod -m 0 -d 0.5 -C 7 -o config.start.xml
 <p>
   The next important tags in the file format are
   the <b>Interaction</b> tags. These tags are used to specify the
-  interactions between particles, whether they are non-bonded
-  interactions, such as Lennard-Jones, or bonded interactions. The key
-  definition of an Interaction is an event generator involving
-  two-particles. Therefore, every two particle event is specified
-  here, and <b><u>every pair of particles must have a corresponding
-      Interaction!</u></b>
+  interactions between pairs of particles (bonded, non-bonded,
+  whatever). The key definition of an Interaction is an event which
+  involves two-particles. Therefore, every two particle event is
+  specified here, and <b><u>every pair of particles must have a
+  corresponding Interaction!</u></b>
 </p>
 <p>
   If we take a look at the example configuration file again, we have:
@@ -469,7 +468,70 @@ dynamod -m 0 -d 0.5 -C 7 -o config.start.xml
 <?php codeblockend("brush: xml;"); ?>
 <p>
   Here we can see the <b>Type</b> attribute specifying that this is a
-  hard sphere interaction,
+  hard sphere interaction. Hard spheres have a <b>Diameter</b>
+  and <b>Elasticity</b> which are set by the appropriate
+  attributes. The Interaction has a <b>Name</b> which is used to
+  identify it, e.g, it is used in the <b>IntName</b> attribute of
+  the <b>Species</b> tag.
+</p>
+<p>
+  Finally, there is a <b>Range</b> attribute at the end of the
+  tag. Interaction Ranges are unique in that they specify pairs of
+  particles, not just individual particles like all other ranges. This
+  is why this value is <em>2All</em>, which specifies all pairs of
+  particles.
+</p>
+<p>
+  When DynamO is testing for a possible interaction between two
+  particles, it starts at the top of the list of Interactions and
+  moves down until it makes a match. When it makes a match, only this
+  Interaction is considered for the generation of events. Thus, the
+  Ranges of interactions may overlap, but only one Interaction (the
+  first match) will ever be used. An example of this is discussed in
+  the following section.
+</p>
+<h2>Species and Interaction Example: Binary System</h2>
+<p>
+  Lets change our simulation into a two-component system. Take the
+  example output file and change the Species and Interaction tags like
+  so:
+</p>
+<?php codeblockstart(); ?>
+<DynamOconfig version="1.5.0">
+  <Simulation>
+    ...
+    <Genus>
+      <Species Mass="1" Name="A" IntName="AAInt" Type="Point" Range="Ranged" Start="0" End="12"/>
+      <Species Mass="0.001" Name="B" IntName="BBInt" Type="Point" Range="Ranged" Start="13" End="1371"/>
+    </Genus>
+    ...
+    <Interactions>
+      <Interaction Type="HardSphere" Diameter="1" Elasticity="1" Name="AAInt" Range="2Single">
+        <SingleRange Range="Ranged" Start="0" End="99"/>
+      </Interaction>
+      <Interaction Type="HardSphere" Diameter="0.55" Elasticity="1" Name="ABInt" Range="Pair">
+        <Range1 Range="Ranged" Start="0" End="99"/>
+        <Range2 Range="Ranged" Start="100" End="1371"/>
+      </Interaction>
+      <Interaction Type="HardSphere" Diameter="0.1" Elasticity="1" Name="BBInt" Range="2All"/>
+    </Interactions>
+    ...
+  </Simulation>
+  ...
+</DynamOconfig>
+<?php codeblockend("brush: xml;"); ?>
+<div class="figure" style="float:right;width:337px;">
+  <?php embedvideo("binarysystem", "PJPM61SH_BI", 333, 187); ?>
+  <div class="caption">
+    The example configuration modified so that its a binary system.
+  </div>
+</div>
+<p>
+  The final result is available below, and a video of the system is presented to the right:
+</p>
+<?php button("Example Binary Configuration File","/pages/config.tut3.binary.xml");?>
+<p>
+  First, we changed the Species tags to create two 
 </p>
 <h2>Locals</h2>
 <h2>Globals</h2>
