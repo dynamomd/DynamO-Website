@@ -14,32 +14,42 @@
 </p>
 <p>
   In this tutorial we'll start to explore the file format of DynamO
-  and look at ways of setting up arbitrary simulations.
+  and look at ways of setting up arbitrary simulations. Understanding
+  the configuration file format is key to understanding how to use and
+  setup DynamO, even if the dynamod tool already generates the systems
+  you're interested in. The configuration file format is also key to
+  understanding the DynamO code, as it introduces all of the
+  terminology and concepts you need. Almost every parameter of a
+  simulation, apart from its duration, is set inside the configuration
+  file.
 </p>
 <h1>Introduction</h1>
 <p>
   When studying a new system, we need to find a convenient way to
-  generate configurations across the range of study parameters we
-  wish to explore.
+  generate configurations across the range of study parameters we wish
+  to explore. For example, if we want to study hard spheres we need to
+  generate systems at different densities and particle counts.
 </p>
 <p>
   Many sample configurations, with variable input parameters, can be
   generated using the dynamod tool; However, these example setups only
-  cover systems studied by the DynamO developers and will sometimes
-  not exactly coincide with the wishes of the DynamO user.
+  cover systems studied by the DynamO developers and will not always
+  be what you want.
 </p>
 <p>
   The recommended method for performing simulations with DynamO is to
   use dynamod to generate a configuration close to what you wish to
-  simulate. This configuration can then be modified to produce the
-  exact system you wish to study. These changes can easily be
-  automated to reduce the manual effort
-  required (<a href="/index.php/tutorialA">See Appendix A</a> for
-  more information).
+  simulate. This configuration can then be modified slightly to
+  produce the exact system you wish to study. These changes can easily
+  be automated to reduce the manual effort required
+  (<a href="/index.php/tutorialA">See Appendix A</a> for more
+  information).
 </p>
 <p>
   So in order to effectively use DynamO, we must have a good
-  understanding of it's configuration file format.
+  understanding of it's configuration file format. Then we can take a
+  look at the dynamod examples in later tutorials, learn all of the
+  different options and how to change them.
 </p>
 <h1>The Example Configuration</h1>
 <div class="figure" style="clear:right; float:right;width:400px;">
@@ -158,10 +168,11 @@ dynamod -m 0 -d 0.5 -C 7 -o config.start.xml
   particle.  Each <b>Pt</b> <i>tag</i> has
   an <b>ID</b> <i>attribute</i>, which is a unique number used to help
   you identify the particle. <u>This ID number is not read by
-  DynamO</u> when it loads the configuration file. DynamO loads and
-  assigns ID's to the particles in the order they appear in the
-  configuration file. It is just written there for your reference of
-  the ID numbers DynamO last used.
+    DynamO</u> when it loads the configuration file. <b><u>DynamO loads
+      and assigns ID's to the particles in the order they appear in the
+      configuration file</u></b>. The ID is written there for your
+  reference of the ID numbers DynamO used in the simulation that
+  produced this file.
 </p>
 <p>
   Inside the particle (<b>Pt</b>) <i>tag</i> there are two
@@ -214,8 +225,8 @@ dynamod -m 0 -d 0.5 -C 7 -o config.start.xml
   increase DynamO's speed. The Scheduler tags will almost always look
   as they do above, as these are the optimal settings for most simple
   systems. These settings are to use a neighbour list to detect
-  events, and to use a Bounded Priority Queue on Min-Max heaps for
-  event sorting.
+  events, and to use a Bounded Priority Queue on three-element Min-Max
+  heaps for event sorting.
 </p>
 <h2>Simulation Size</h2>
 <p>
@@ -322,7 +333,7 @@ dynamod -m 0 -d 0.5 -C 7 -o config.start.xml
   defines how the particles are represented when visualised and it
   defines the excluded volume of each so that a packing fraction can
   be calculated. Therefore, <u>each particle must belong to <b>exactly</b>
-  one species</u>.
+    one species</u>.
 </p>
 <p>
   The obvious attributes of the <b>Species</b> tag are the <b>Mass</b>
@@ -401,16 +412,16 @@ dynamod -m 0 -d 0.5 -C 7 -o config.start.xml
   "All", which means all particles have the same Species (and
   therefore mass, intertia tensor and representative Interaction).
   Multiple species can be defined in a straightforward way. For
-  example, take a look at this snippet from a binary systems
-  configuration file:
+  example, we can change the configuration file so that we have two
+  <b>Species</b>, each with a different mass:
 </p>
 <?php codeblockstart(); ?>
 <DynamOconfig version="1.5.0">
   <Simulation>
     ...
     <Genus>
-      <Species Mass="1" Name="A" IntName="AAInt" Type="Point" Range="Ranged" Start="0" End="134"/>
-      <Species Mass="0.001" Name="B" IntName="BBInt" Type="Point" Range="Ranged" Start="135" End="13499"/>
+      <Species Mass="1" Name="A" IntName="Bulk" Type="Point" Range="Ranged" Start="0" End="134"/>
+      <Species Mass="0.001" Name="B" IntName="Bulk" Type="Point" Range="Ranged" Start="135" End="1371"/>
     </Genus>
     ...
   </Simulation>
@@ -420,17 +431,26 @@ dynamod -m 0 -d 0.5 -C 7 -o config.start.xml
 <p>
   Here we can see that the particles with IDs in the range $[0,134]$
   belong to Species "A" and the particles with IDs in the range
-  $[135,13499]$ belong to Species "B"! In later tutorials, we will see
-  some more types of Ranges and what happens when functional
-  definitions are almost impossible in polydisperse systems.
+  $[135,13499]$ belong to Species "B"! Both Species have the
+  same <b>IntName</b> attribute here, but in true binary systems you
+  will probably need different interactions for different species.
+</p>
+<p>
+  In later tutorials, we will see some more types of Ranges and how
+  they can be used. We will also see what to do when functional
+  definitions are difficult, such as in polydisperse systems where
+  every particle has a unique mass and size.
 </p>
 <h2>Interactions</h2>
 <p>
   The next important tags in the file format are
   the <b>Interaction</b> tags. These tags are used to specify the
-  interactions between particles, whether they are bonds, hard
-  spheres, cubes, lines, square wells or Lennard-Jones stepped
-  potentials. <u>Every two particle event is specified here</u>
+  interactions between particles, whether they are non-bonded
+  interactions, such as Lennard-Jones, or bonded interactions. The key
+  definition of an Interaction is an event generator involving
+  two-particles. Therefore, every two particle event is specified
+  here, and <b><u>every pair of particles must have a corresponding
+      Interaction!</u></b>
 </p>
 <p>
   If we take a look at the example configuration file again, we have:
@@ -447,6 +467,10 @@ dynamod -m 0 -d 0.5 -C 7 -o config.start.xml
   ...
 </DynamOconfig>
 <?php codeblockend("brush: xml;"); ?>
+<p>
+  Here we can see the <b>Type</b> attribute specifying that this is a
+  hard sphere interaction,
+</p>
 <h2>Locals</h2>
 <h2>Globals</h2>
 <h2>Dynamics</h2>
