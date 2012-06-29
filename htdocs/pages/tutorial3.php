@@ -480,14 +480,14 @@ dynamod -m 0 -d 0.5 -C 7 -o config.start.xml
   units of Dynamo?" and the answer is whichever units you use. Every
   setting in the configuration file has consistent units. If you
   specify all lengths in meters, all times in seconds and all masses
-  in kilograms then you should use Joules when specifying
-  energies. There is no hidden units within the simulator.
+  in kilograms then you should use Joules when specifying energies. In
+  general, there are no hidden units within the simulator.
 </p>
 <p>
-  One exception to this is the Boltzmann constant. DynamO assumes this
-  to be $k_B=1$. What this means is that when you specify the
-  temperature in DynamO, you are actually specifying the thermal unit,
-  $k_B\,T$.
+  However, there is one standard exception to this, which is the
+  Boltzmann constant. DynamO assumes this to be $k_B=1$. What this
+  means is that when you specify the temperature in DynamO, you are
+  actually specifying the thermal unit, $k_B\,T$.
 </p>
 <p>
   In practice, event-driven simulations are usually carried out in
