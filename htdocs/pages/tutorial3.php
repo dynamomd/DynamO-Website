@@ -492,17 +492,18 @@ dynamod -m 0 -d 0.5 -C 7 -o config.start.xml
 </p>
 <h2>Species and Interaction Example: Binary System</h2>
 <p>
-  Lets change our simulation into a two-component system. Take the
-  example output file and change the Species and Interaction tags like
-  so:
+  As an example of where you can take what we've covered so far, we
+  will change our simulation into a two-component system. Take the
+  example output file and change the Species and Interaction tags to
+  the following values:
 </p>
 <?php codeblockstart(); ?>
 <DynamOconfig version="1.5.0">
   <Simulation>
     ...
     <Genus>
-      <Species Mass="1" Name="A" IntName="AAInt" Type="Point" Range="Ranged" Start="0" End="12"/>
-      <Species Mass="0.001" Name="B" IntName="BBInt" Type="Point" Range="Ranged" Start="13" End="1371"/>
+      <Species Mass="1" Name="A" IntName="AAInt" Type="Point" Range="Ranged" Start="0" End="99"/>
+      <Species Mass="0.001" Name="B" IntName="BBInt" Type="Point" Range="Ranged" Start="100" End="1371"/>
     </Genus>
     ...
     <Interactions>
@@ -527,11 +528,63 @@ dynamod -m 0 -d 0.5 -C 7 -o config.start.xml
   </div>
 </div>
 <p>
-  The final result is available below, and a video of the system is presented to the right:
+  You can download a pre-changed result using the button below and a
+  video of the result is presented to the right:
 </p>
 <?php button("Example Binary Configuration File","/pages/config.tut3.binary.xml");?>
 <p>
-  First, we changed the Species tags to create two 
+  First, we changed the Species tags to create two species, one
+  species of 100 relatively heavy particles and the remainder a
+  relatively light set of particles:
+</p>
+<?php codeblockstart(); ?>
+<Species Mass="1" Name="A" IntName="AAInt" Type="Point" Range="Ranged" Start="0" End="99"/>
+<Species Mass="0.001" Name="B" IntName="BBInt" Type="Point" Range="Ranged" Start="100" End="1371"/>
+<?php codeblockend("brush: xml;"); ?>
+<p>
+  The first 100 particles ($0\to99$ inclusive) of the configuration
+  file belong to <b>Species</b> <b>Name</b> <i>A</i> and have
+  a <b>Mass</b> of <i>1</i>. The Interaction which represents these
+  particles is called <i>AAInt</i>. The rest of the particles
+  ($100\to1371$ inclusive) belong
+  to <b>Species</b> <b>Name</b> <i>B</i>, with a much
+  lower <b>Mass</b> of <i>0.001</i>.
+</p>
+<p>
+  You should note that when defining these species I've been careful
+  that each particle belongs to only one species and the Ranges do not
+  overlap.
+</p>
+<p>
+  We now also have multiple <b>Interaction</b> tags, each one
+  describing an interaction between the different species. For
+  example, the first Interaction represents the interaction between
+  particles of Species A with other particles of Species A.
+</p>
+<?php codeblockstart(); ?>
+<Interaction Type="HardSphere" Diameter="1" Elasticity="1" Name="AAInt" Range="2Single">
+  <SingleRange Range="Ranged" Start="0" End="99"/>
+</Interaction>
+<?php codeblockend("brush: xml;"); ?>
+<p>
+  This was achieved by using the <i>2Single</i> <b>Range</b>, which
+  converts a single <b>Range</b> (stored in the <b>SingleRange</b>
+  tag) into a pair Range. Basically, if the first particle and the
+  second particle match the SingleRange (i.e., they have ID's in the
+  range $[0,99]$), they will use this interaction. You can see that
+  Species A interacts with itself with a diameter of <i>1</i>.
+</p>
+<p>
+  The next Interaction accounts for the interactions between
+  Species <i>A</i> and Species <i>B</i>.:
+</p>
+  <?php codeblockstart(); ?>
+<Interaction Type="HardSphere" Diameter="0.55" Elasticity="1" Name="ABInt" Range="Pair">
+  <Range1 Range="Ranged" Start="0" End="99"/>
+  <Range2 Range="Ranged" Start="100" End="1371"/>
+</Interaction>
+<?php codeblockend("brush: xml;"); ?>
+<p>
 </p>
 <h2>Locals</h2>
 <h2>Globals</h2>
