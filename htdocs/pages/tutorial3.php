@@ -13,43 +13,26 @@
   <b>This tutorial is currently being written, so it may be incomplete or contain errors.</b>
 </p>
 <p>
-  In this tutorial we'll start to explore the file format of DynamO
-  and look at ways of setting up arbitrary simulations. Understanding
-  the configuration file format is key to understanding how to use and
-  setup DynamO, even if the dynamod tool already generates the systems
-  you're interested in. The configuration file format is also key to
-  understanding the DynamO code, as it introduces all of the
-  terminology and concepts you need. Almost every parameter of a
-  simulation, apart from its duration, is set inside the configuration
-  file.
-</p>
-<h1>Introduction</h1>
-<p>
-  When studying a new system, we need to find a convenient way to
-  generate configurations across the range of study parameters we wish
-  to explore. For example, if we want to study hard spheres we need to
-  generate systems at different densities and particle counts.
+  In this tutorial we will start to explore the file format of DynamO,
+  learn all of the DynamO terminology, and start to look at ways of
+  setting up arbitrary simulations. 
 </p>
 <p>
-  Many sample configurations, with variable input parameters, can be
-  generated using the dynamod tool; However, these example setups only
-  cover systems studied by the DynamO developers and will not always
-  be what you want.
+  Understanding the configuration file format is key to understanding
+  how to use and setup DynamO, even if the <b>dynamod</b> tool already
+  generates the systems you're interested in. The configuration file
+  format is also key to understanding the DynamO code, as it
+  introduces all of the terminology and concepts you need.
 </p>
 <p>
-  The recommended method for performing simulations with DynamO is to
-  use dynamod to generate a configuration close to what you wish to
-  simulate. This configuration can then be modified slightly to
-  produce the exact system you wish to study. These changes can easily
-  be automated to reduce the manual effort required
-  (<a href="/index.php/tutorialA">See Appendix A</a> for more
-  information).
+  Almost every parameter of a simulation, apart from its duration, is
+  set inside the configuration file, so you will at least need to be
+  able to read the configuration file information even if you don't
+  intend to change it.
 </p>
 <p>
-  So in order to effectively use DynamO, we must have a good
-  understanding of it's configuration file format. Then we can take a
-  look at the dynamod examples in later tutorials, learn all of the
-  different options and how to change them.
+  We will take a look at the same system as studied in the previous
+  tutorial and use its configuration file as an example.
 </p>
 <h1>The Example Configuration</h1>
 <div class="figure" style="clear:right; float:right;width:400px;">
@@ -64,7 +47,8 @@
   explore the file format. We will also demonstrate the effect of some
   simple changes as well.  We have chosen to look at the hard sphere
   configuration as it is one of the simplest configurations we can
-  generate.
+  generate. The more complex settings will be covered in later
+  tutorials.
 </p>
 <p>
   To begin, use dynamod to generate a hard sphere configuration like
@@ -81,9 +65,9 @@ dynamod -m 0 -d 0.5 -C 7 -o config.start.xml
 <?php button("Example Configuration File","/pages/config.tut3.xml");?>
 <p>
   XML files can be opened and edited by your favourite text editor. If
-  you click the link above you will see that modern web browsers will
-  present the contents of an XML file nicely, but you won't be able to
-  edit them.
+  you click the link above you will see that web browsers will present
+  the contents of an XML file nicely, but you won't be able to edit
+  them.
 </p>
 <h1>General Layout</h1>
 <p>
@@ -106,13 +90,13 @@ dynamod -m 0 -d 0.5 -C 7 -o config.start.xml
 </DynamOconfig>
 <?php codeblockend("brush: xml;"); ?>
 <p>
-  Whenever some content has been omitted we will use "..." to indicate
-  the XML data we have skipped. There is
+  Whenever some content has been omitted we will use &quot;...&quot;
+  to indicate the XML data we have skipped. There is
   a <b>version</b> <i>attribute</i> in
   the <b>DynamOconfig</b> <i>tag</i> which is used by DynamO to check
-  that the file format is the up-to-date version before trying to load
+  that the file format is the correct version before trying to load
   it. This version number is only incremented when a major change in
-  the file format is needed in a new version of DynamO.
+  the file format happens.
 </p>
 <p>
   At the top of the file are a pair of <b>Simulation</b> tags.
@@ -127,9 +111,8 @@ dynamod -m 0 -d 0.5 -C 7 -o config.start.xml
 <?php codeblockend("brush: xml;"); ?>
 <p>
   These contain most of the settings of the simulation and their
-  contents are discussed in detail below. Beneath the simulation tags
-  is the
-  <b>Properties</b> tag:
+  contents are discussed in detail below. Beneath
+  the <b>Simulation</b> tags lies the <b>Properties</b> tag:
 </p>
 <?php codeblockstart(); ?>
 <DynamOconfig version="1.5.0">
@@ -183,13 +166,13 @@ dynamod -m 0 -d 0.5 -C 7 -o config.start.xml
 </p>
 <p>
   You may notice that there is no mass or size of the particles
-  specified here. This is because of the very general and unique
-  functional definition of "properties" of particles possible in
-  DynamO. The mass of a particle is defined by <b>Species</b> tags,
+  specified here. This is because of the general and unique functional
+  definition of &quot;properties&quot; of particles in DynamO. Roughly
+  speaking, the mass of a particle is defined by <b>Species</b> tags,
   and its interaction properties, such as its diameter, are specified
-  in <b>Interaction</b>, <b>Global</b>, and <b>Local</b> tags in the
-  Simulation section. These are now discussed in the following
-  sections.
+  in <b>Interaction</b>, <b>Global</b>, and <b>Local</b> tags which
+  are all inside the <b>Simulation</b> section. Each of these tags are
+  discussed in the following sections.
 </p>
 <h1>Simulation Tags</h1>
 <p>
@@ -215,18 +198,40 @@ dynamod -m 0 -d 0.5 -C 7 -o config.start.xml
 </DynamOconfig>
 <?php codeblockend("brush: xml;"); ?>
 <p>
-  The Scheduler tags contain the settings for the event scheduler and
+  The <b>Scheduler</b> tags contain the settings for the event scheduler and
   event sorter, which are the parts of DynamO responsible for
   determining which event happens next in the simulation. 
 </p>
 <p>
-  Changing the scheduler settings should never affect the results
-  DynamO generates, but a correct set of settings will greatly
-  increase DynamO's speed. The Scheduler tags will almost always look
-  as they do above, as these are the optimal settings for most simple
-  systems. These settings are to use a neighbour list to detect
-  events, and to use a Bounded Priority Queue on three-element Min-Max
-  heaps for event sorting.
+  <u>Changing the <b>Scheduler</b> settings should never affect the
+  results DynamO generates</u>. However, a correct set of settings
+  will greatly increase DynamO's speed. The <b>Scheduler</b> tags will
+  almost always look as they do above, as these are the optimal
+  settings for most simple systems. These settings are to use a
+  neighbour list to detect events, and to use a Bounded Priority Queue
+  on three-element Min-Max heaps for event sorting.
+</p>
+<p>
+  Instead of the <i>NeighbourList</i> <b>Scheduler</b> we could use
+  the <i>Dumb</i> <b>Scheduler</b>:
+</p>
+<?php codeblockstart(); ?>
+<DynamOconfig version="1.5.0">
+  <Simulation>
+    <Scheduler Type="Dumb">
+      <Sorter Type="BoundedPQMinMax3"/>
+    </Scheduler>
+    ...
+  </Simulation>
+  ...
+</DynamOconfig>
+<?php codeblockend("brush: xml;"); ?>
+<p>
+  The <i>Dumb</i> type is the simplest type of <b>Scheduler</b> and it
+  doesn't need a NeighbourList to function. However, it is very slow
+  as it checks all pairs of particles for events, regardless of their
+  position. Its only practical use is when developing new types of
+  <b>Interaction</b>s, or tracking down errors in the Neighbour List.
 </p>
 <h2>Simulation Size</h2>
 <p>
@@ -293,16 +298,17 @@ dynamod -m 0 -d 0.5 -C 7 -o config.start.xml
   The configuration will now exist in an infinite domain without
   boundaries (see the video on the right). The particles will be
   allowed to fly off in all directions, which is very useful if you
-  want to simulate a single polymer or any system with gravity.
+  want to simulate a single isolated polymer, or any system with
+  gravity.
 </p>
 <p>
   But be warned, if you now try to convert back to periodic boundary
-  conditions, all particle positions will be "folded" back into the
+  conditions, all particle positions will be &quot;folded&quot; back into the
   simulation domain specified by the <b>SimulationSize</b> tag (a
-  cubic $14\times14\times14$ volume). This "folding" will probably
+  cubic $14\times14\times14$ volume). This &quot;folding&quot; will probably
   result in overlapping particles leading to invalid dynamics, so you
-  need to be careful when changing Boundary Conditions from None to
-  PBC.
+  need to be careful when changing Boundary Conditions from <i>None</i> to
+  <i>PBC</i>.
 </p>
 <p>
   There are also Lees-Edwards shearing boundary conditions available
@@ -327,34 +333,35 @@ dynamod -m 0 -d 0.5 -C 7 -o config.start.xml
 </DynamOconfig>
 <?php codeblockend("brush: xml;"); ?>
 <p>
-  In DynamO, a single <b>Species</b> tag defines the mass and inertia
-  tensor of a collection of particles. It also defines and allows the
-  calculation any unique property of the particle. For example, it
-  defines how the particles are represented when visualised and it
-  defines the excluded volume of each so that a packing fraction can
-  be calculated. Therefore, <u>each particle must belong to <b>exactly</b>
-    one species</u>.
+  A single <b>Species</b> tag defines the mass and inertia tensor of a
+  collection of particles. It also defines the calculation of certain
+  unique properties of the particle. For example, it defines how the
+  particles are represented when visualised. It also defines the
+  excluded volume of each particle so that a packing fraction can be
+  calculated. Therefore, <u>each particle must belong
+  to <b>exactly</b> one species</u>.
 </p>
 <p>
   The obvious attributes of the <b>Species</b> tag are the <b>Mass</b>
-  of the particles and the <b>Name</b> of the Species. Names are used
-  when reporting collected results which vary by the species, such as
-  diffusion coefficients, radial distribution functions, and so on.
+  of the particles and the <b>Name</b> of
+  the <b>Species</b>. <b>Name</b>s are used to identify particles when
+  reporting species specific results, such as diffusion coefficients,
+  radial distribution functions, and so on.
 <p>
   The <b>IntName</b> attribute specifies the name of
   the <b>Interaction</b> (see below) that can be used to visualise
-  this particle. For example, if the Interaction named "Bulk" was a
-  hard-sphere interaction, spheres would be used to draw the
-  particle. If it was a hard line or parallel cube Interaction, lines
-  or cubes respectively would be used to render them. This interaction
-  is also queried for the excluded volume of each particle of the
-  Species, for example when calculating the packing fraction of the
-  system.
+  this particle. For example, if the <b>Interaction</b> named
+  &quot;Bulk&quot; was a hard-sphere interaction, spheres would be
+  used to draw the particle. If it was a hard line or parallel cube
+  Interaction, lines or cubes respectively would be used to render
+  them. This interaction is also queried for the excluded volume of
+  each particle of the Species, for example when calculating the
+  packing fraction of the system.
 </p>
 <p>
   The <b>Type</b> parameter specifies the class of inertia tensor that
-  the particle has. A value of "Point" implies that this particle has
-  no rotational degrees of freedom, such as atoms in molecular
+  the particle has. A value of <i>Point</i> implies that this particle
+  has no rotational degrees of freedom, such as atoms in molecular
   systems. Other values, such as spherical top or a full tensor are
   available and are useful when studying granular systems.
 </p>
@@ -370,7 +377,7 @@ dynamod -m 0 -d 0.5 -C 7 -o config.start.xml
   and interactions onto particles.
 </p>
 <p>
-  <i>"Traditionally"</i> in other particle simulators, each particle
+  <i>&quot;Traditionally&quot;</i> in other particle simulators, each particle
   has its own section of the configuration file (and memory) to store
   properties such as its mass, diameter, type and so
   on. Unfortunately, in many simulations many particles have the same
@@ -378,8 +385,8 @@ dynamod -m 0 -d 0.5 -C 7 -o config.start.xml
   and speed.
 </p>
 <p>
-  What we want is a <i>"functional"</i> definition of properties where
-  we can input statements like "all particles have a mass of 1" (see
+  What we want is a <i>&quot;functional&quot;</i> definition of properties where
+  we can input statements like &quot;all particles have a mass of 1&quot; (see
   image below). We would like to be able to specify a property once,
   and then <i>map</i> this property onto a <b>range</b> of particles:
 </p>
@@ -387,7 +394,7 @@ dynamod -m 0 -d 0.5 -C 7 -o config.start.xml
   <img src="/images/range_explanation.png" width="456" height="179" alt="A graphic comparing the traditional method of storing redundant particle data, and the functional method" />
 </div>
 <p>
-  This "functional" mapping saves memory and the small computational
+  This &quot;functional&quot; mapping saves memory and the small computational
   cost of using these definitions is nothing compared to the speed
   increases due to the reduced use of the memory bandwidth.
 </p>
@@ -411,7 +418,7 @@ dynamod -m 0 -d 0.5 -C 7 -o config.start.xml
 <?php codeblockend("brush: xml;"); ?>
 <p>
   Here it is clear to see that the Range attribute has a value of
-  "All", which means all particles have the same Species (and
+  &quot;All&quot;, which means all particles have the same Species (and
   therefore mass, intertia tensor and representative Interaction).
   Multiple species can be defined in a straightforward way. For
   example, we can change the configuration file so that we have two
@@ -432,8 +439,8 @@ dynamod -m 0 -d 0.5 -C 7 -o config.start.xml
 <?php codeblockend("brush: xml;"); ?>
 <p>
   Here we can see that the particles with IDs in the range $[0,134]$
-  belong to Species "A" and the particles with IDs in the range
-  $[135,13499]$ belong to Species "B"! Both Species have the
+  belong to Species &quot;A&quot; and the particles with IDs in the range
+  $[135,13499]$ belong to Species &quot;B&quot;! Both Species have the
   same <b>IntName</b> attribute here, but in true binary systems you
   will probably need different interactions for different species.
 </p>
@@ -602,8 +609,8 @@ dynamod -m 0 -d 0.5 -C 7 -o config.start.xml
 </p>
 <h1>Units</h1>
 <p>
-  A common question users ask when first using DynamO is "What are the
-  units of Dynamo?" and the answer is whichever units you use. Every
+  A common question users ask when first using DynamO is &quot;What are the
+  units of Dynamo?&quot; and the answer is whichever units you use. Every
   setting in the configuration file has consistent units. If you
   specify all lengths in meters, all times in seconds and all masses
   in kilograms then you should use Joules when specifying energies. In

@@ -13,7 +13,36 @@
   <b>This tutorial is currently being written, so it may be incomplete or contain errors.</b>
 </p>
 
+<h1>Introduction</h1>
+<p>
+  When studying a new system, we need to find a convenient way to
+  generate configurations across the range of study parameters we wish
+  to explore. For example, if we want to study hard spheres we need to
+  generate systems at different densities and particle counts.
+</p>
+<p>
+  Many sample configurations, with variable input parameters, can be
+  generated using the dynamod tool; However, these example setups only
+  cover systems studied by the DynamO developers and will not always
+  be what you want.
+</p>
+<p>
+  The recommended method for performing simulations with DynamO is to
+  use dynamod to generate a configuration close to what you wish to
+  simulate. This configuration can then be modified slightly to
+  produce the exact system you wish to study. These changes can easily
+  be automated to reduce the manual effort required
+  (<a href="/index.php/tutorialA">See Appendix A</a> for more
+  information).
+</p>
+<p>
+  So in order to effectively use DynamO, we must have a good
+  understanding of it's configuration file format. Then we can take a
+  look at the dynamod examples in later tutorials, learn all of the
+  different options and how to change them.
+</p>
 
+<h1>Blah</h1>
 <p>
   When DynamO is testing for a possible interaction between two
   particles, it starts at the top of the list of Interactions and
