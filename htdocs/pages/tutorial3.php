@@ -189,7 +189,7 @@ dynamod -m 0 -d 0.5 -C 7 -o config.start.xml
   and its interaction properties, such as its diameter, are specified
   in <b>Interaction</b>, <b>Global</b>, and <b>Local</b> tags in the
   Simulation section. These are now discussed in the following
-  section.
+  sections.
 </p>
 <h1>Simulation Tags</h1>
 <p>
@@ -370,16 +370,18 @@ dynamod -m 0 -d 0.5 -C 7 -o config.start.xml
   and interactions onto particles.
 </p>
 <p>
-  <i>"Traditionally"</i> in other particle simulators, each particle has its
-  own section of the configuration file (and memory) to store its
-  mass. Unfortunately, in many simulations every particle has the same
-  mass and this redundant storage of information wastes memory and
-  speed. 
+  <i>"Traditionally"</i> in other particle simulators, each particle
+  has its own section of the configuration file (and memory) to store
+  properties such as its mass, diameter, type and so
+  on. Unfortunately, in many simulations many particles have the same
+  properties and this redundant storage of information wastes memory
+  and speed.
 </p>
 <p>
-  What we want is a <i>"functional"</i> definition of properties, such
-  as the mass. We would like to be able to specify it once, and
-  then <i>map</i> this property onto a <b>range</b> of particles:
+  What we want is a <i>"functional"</i> definition of properties where
+  we can input statements like "all particles have a mass of 1" (see
+  image below). We would like to be able to specify a property once,
+  and then <i>map</i> this property onto a <b>range</b> of particles:
 </p>
 <div style="width:456px; margin: 15px auto; display:block;">
   <img src="/images/range_explanation.png" width="456" height="179" alt="A graphic comparing the traditional method of storing redundant particle data, and the functional method" />
@@ -476,19 +478,14 @@ dynamod -m 0 -d 0.5 -C 7 -o config.start.xml
 </p>
 <p>
   Finally, there is a <b>Range</b> attribute at the end of the
-  tag. Interaction Ranges are unique in that they specify pairs of
-  particles, not just individual particles like all other ranges. This
-  is why this value is <em>2All</em>, which specifies all pairs of
-  particles.
+  tag. <b>Interaction</b> <b>Range</b>s are unique in that they
+  specify <u>pairs</u> of particles, not just individual
+  particles. This is why the <b>Range</b> attribute has a value
+  of <em>2All</em>, which specifies all pairs of particles.
 </p>
 <p>
-  When DynamO is testing for a possible interaction between two
-  particles, it starts at the top of the list of Interactions and
-  moves down until it makes a match. When it makes a match, only this
-  Interaction is considered for the generation of events. Thus, the
-  Ranges of interactions may overlap, but only one Interaction (the
-  first match) will ever be used. An example of this is discussed in
-  the next tutorial.
+  Interactions and two particle ranges are covered in more detail in
+  the following tutorial.
 </p>
 <h2>Locals</h2>
 <p>
@@ -515,21 +512,11 @@ dynamod -m 0 -d 0.5 -C 7 -o config.start.xml
 <p>
   Using <b>Locals</b> will be discussed in a later tutorial.
 </p>
-<?php codeblockstart(); ?>
-<DynamOconfig version="1.5.0">
-  <Simulation>
-    ...
-    <Locals/>
-    ...
-  </Simulation>
-  ...
-</DynamOconfig>
-<?php codeblockend("brush: xml;"); ?>
 <h2>Globals</h2>
 <p>
   <b>Globals</b> are single particle events which can occur anywhere
-  (i.e., they cannot be optimised by the use of neighbour lists. On
-  example of a Global <b>is</b> a neighbour list itself:
+  (i.e., they cannot be optimised by the use of neighbour lists). One
+  example of a <b>Global</b> is a neighbour list itself:
 </p>
 <?php codeblockstart(); ?>
 <DynamOconfig version="1.5.0">
@@ -545,11 +532,12 @@ dynamod -m 0 -d 0.5 -C 7 -o config.start.xml
 <?php codeblockend("brush: xml;"); ?>
 <p>
   This <b>Global</b> is a celluar neighbour list
-  (<b>Type</b>=&quot;<i>Cells</i>&quot;), which can calculate all of
-  the particles within a distance of at least 1, as specified by
-  the <b>NeighbourhoodRange</b> attribute. This neighbour list has a
-  special <b>Name</b> (<i>SchedulerNBList</i>), to mark it out as the
-  neighbour list used by the <b>Scheduler</b>.
+  (<b>Type</b>=&quot;<i>Cells</i>&quot;), which is set to track the
+  particles within a distance of at least 1 of every particle, as
+  specified by the <b>NeighbourhoodRange</b> attribute. This neighbour
+  list has a special <b>Name</b> (<i>SchedulerNBList</i>) which is
+  used by the <i>NeighbourList</i> <b>Scheduler</b> to identify which
+  one it is to use.
 </p>
 <p>
   There are a few more Global events available in DynamO, such as
@@ -559,10 +547,10 @@ dynamod -m 0 -d 0.5 -C 7 -o config.start.xml
 </p>
 <h2>Systems</h2>
 <p>
-  Finally, <b>System</b> events are everything else that didn't fit
-  into the above categories. These might be thermostats, umbrella
-  potentials, snapshotting, simulation end conditions or temperature
-  rescalers.
+  Finally, <b>System</b> events comprise every other source of events
+  that does not fit into the above categories. These might be
+  thermostats, umbrella potentials, snapshotting, simulation end
+  conditions or temperature rescalers.
 </p>
 <?php codeblockstart(); ?>
 <DynamOconfig version="1.5.0">
@@ -575,8 +563,8 @@ dynamod -m 0 -d 0.5 -C 7 -o config.start.xml
 </DynamOconfig>
 <?php codeblockend("brush: xml;"); ?>
 <p>
-  This configuration has no System events, but we will see the use of
-  thermostats in later tutorials.
+  This configuration has no <b>System</b> events, but we will see the
+  use of thermostats in later tutorials.
 </p>
 <h2>Dynamics</h2>
 <p>
@@ -612,7 +600,7 @@ dynamod -m 0 -d 0.5 -C 7 -o config.start.xml
   potentials to deform the energy landscape of the system through
   the <b>Dynamics</b> tag.
 </p>
-<h2>Units</h2>
+<h1>Units</h1>
 <p>
   A common question users ask when first using DynamO is "What are the
   units of Dynamo?" and the answer is whichever units you use. Every
@@ -622,10 +610,10 @@ dynamod -m 0 -d 0.5 -C 7 -o config.start.xml
   general, there are no hidden units within the simulator.
 </p>
 <p>
-  However, there is one standard exception to this, which is the
-  Boltzmann constant. DynamO assumes this to be $k_B=1$. What this
-  means is that when you specify the temperature in DynamO, you are
-  actually specifying the thermal unit, $k_B\,T$.
+  However, there is one standard exception to this which is the
+  Boltzmann constant, $k_B$. DynamO assumes $k_B=1$. What this means
+  is that when you specify the temperature in DynamO, you are actually
+  specifying the thermal unit, $k_B\,T$.
 </p>
 <p>
   In practice, event-driven simulations are usually carried out in

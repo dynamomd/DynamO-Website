@@ -12,6 +12,18 @@
 <p style="text-align:center; margin:15px; background-color:#FFD800; font-size:16pt; font-family:sans; line-height:40px;">
   <b>This tutorial is currently being written, so it may be incomplete or contain errors.</b>
 </p>
+
+
+<p>
+  When DynamO is testing for a possible interaction between two
+  particles, it starts at the top of the list of Interactions and
+  moves down until it makes a match. When it makes a match, only this
+  Interaction is considered for the generation of events. Thus, the
+  Ranges of interactions may overlap, but only one Interaction (the
+  first match) will ever be used. An example of this is discussed in
+  the next tutorial.
+</p>
+
 <h2>Species and Interaction Example: Binary System</h2>
 <p>
   As an example of where you can take what we've covered so far, we
