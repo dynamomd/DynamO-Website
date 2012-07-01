@@ -13,6 +13,32 @@
   <b>This tutorial is currently being written, so it may be incomplete or contain errors.</b>
 </p>
 
+<p>
+For example, we can change the configuration file so that
+we have two
+<b>Species</b>, each with a different mass:
+</p>
+<?php codeblockstart(); ?>
+<DynamOconfig version="1.5.0">
+  <Simulation>
+    ...
+    <Genus>
+      <Species Mass="1" Name="A" IntName="Bulk" Type="Point" Range="Ranged" Start="0" End="134"/>
+      <Species Mass="0.001" Name="B" IntName="Bulk" Type="Point" Range="Ranged" Start="135" End="1371"/>
+    </Genus>
+    ...
+  </Simulation>
+  ...
+</DynamOconfig>
+<?php codeblockend("brush: xml;"); ?>
+<p>
+  Here we can see that the particles with IDs in the range $[0,134]$
+  belong to <b>Species</b> &quot;A&quot; and the particles with IDs in
+  the range $[135,13499]$ belong to <b>Species</b> &quot;B&quot;! Both
+  <b>Species</b> have the same <b>IntName</b> attribute here, but in true
+  binary systems you will probably need different interactions for
+  different species.
+</p>
 <h1>Introduction</h1>
 <p>
   When studying a new system, we need to find a convenient way to

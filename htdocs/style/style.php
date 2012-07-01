@@ -53,7 +53,6 @@ li { margin:5px; }
 
 .video-container {
     position:relative;
-    width:533px;
     clear:both;
     margin-left:auto; 
     margin-right:auto;

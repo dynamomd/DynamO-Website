@@ -221,6 +221,7 @@ if ($TOC)
     <div style="height:1px;"></div>
 
     <!-- JAVASCRIPT -->
+    <!-- SYNTAXHIGHLIGHTER -->
     <?php if ($syntaxhighlighter) { ?>
     <link href="/syntaxhighlighter/styles/shThemeDynamO.css" type="text/css" rel="stylesheet" />
     <link href="/syntaxhighlighter/styles/shCore.css" type="text/css" rel="stylesheet" />
@@ -237,6 +238,7 @@ if ($TOC)
       );
       SyntaxHighlighter.all();</script>
     <?php } ?>
+    <!-- MATHJAX -->
     <?php if ($mathjax) { ?>
     <script type="text/javascript" src="/MathJax/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <script type="text/x-mathjax-config">
@@ -251,6 +253,9 @@ if ($TOC)
       });
     </script>
     <?php } ?>
+    
+    <?php if ($html5video) { ?>
+    <!-- FULLSCREEN HTML 5 VIDEO BUTTONS -->
     <script>
 /*!
 * screenfull.js
@@ -277,5 +282,6 @@ if (document.getElementsByClassName)
     }
 }
     </script>
+    <?php } ?>
   </body>
 </html>
