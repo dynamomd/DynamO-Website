@@ -355,8 +355,8 @@ dynamod -m 0 -d 0.5 -C 7 -o config.start.xml
   used to draw the particle. If it was a hard line or parallel cube
   Interaction, lines or cubes respectively would be used to render
   them. This interaction is also queried for the excluded volume of
-  each particle of the Species, for example when calculating the
-  packing fraction of the system.
+  each particle of the <b>Species</b>, for example when calculating
+  the packing fraction of the system.
 </p>
 <p>
   The <b>Type</b> parameter specifies the class of inertia tensor that
@@ -417,36 +417,16 @@ dynamod -m 0 -d 0.5 -C 7 -o config.start.xml
 </DynamOconfig>
 <?php codeblockend("brush: xml;"); ?>
 <p>
-  Here it is clear to see that the Range attribute has a value of
-  &quot;All&quot;, which means all particles have the same Species (and
-  therefore mass, intertia tensor and representative Interaction).
-  Multiple species can be defined in a straightforward way. For
-  example, we can change the configuration file so that we have two
-  <b>Species</b>, each with a different mass:
-</p>
-<?php codeblockstart(); ?>
-<DynamOconfig version="1.5.0">
-  <Simulation>
-    ...
-    <Genus>
-      <Species Mass="1" Name="A" IntName="Bulk" Type="Point" Range="Ranged" Start="0" End="134"/>
-      <Species Mass="0.001" Name="B" IntName="Bulk" Type="Point" Range="Ranged" Start="135" End="1371"/>
-    </Genus>
-    ...
-  </Simulation>
-  ...
-</DynamOconfig>
-<?php codeblockend("brush: xml;"); ?>
-<p>
-  Here we can see that the particles with IDs in the range $[0,134]$
-  belong to Species &quot;A&quot; and the particles with IDs in the range
-  $[135,13499]$ belong to Species &quot;B&quot;! Both Species have the
-  same <b>IntName</b> attribute here, but in true binary systems you
-  will probably need different interactions for different species.
+  Here it is clear to see that the <b>Range</b> attribute has a value
+  of &quot;All&quot;, which means all particles have the
+  same <b>Species</b> (and therefore mass, intertia tensor and
+  representative Interaction).  Multiple <b>Species</b> can be defined
+  in a straightforward way, and this is discussed in the following
+  tutorial.
 </p>
 <p>
-  In later tutorials, we will see some more types of Ranges and how
-  they can be used. We will also see what to do when functional
+  In later tutorials, we will see some more types of <b>Ranges</b> and
+  how they can be used. We will also see what to do when functional
   definitions are difficult, such as in polydisperse systems where
   every particle has a unique mass and size.
 </p>
