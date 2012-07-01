@@ -258,13 +258,6 @@ dynamod -m 0 -d 0.5 -C 7 -o config.start.xml
   configurations.
 </p>
 <h2>Boundary Conditions</h2>
-<div class="figure" style="float:right;width:337px;">
-  <?php embedvideo("infinitehardspheres", "RzjmpRtwDAw", 333, 250); ?>
-  <div class="caption">
-    The same configuration as in the movie above, but with the
-    Boundary Conditions set to <b>None</b>.
-  </div>
-</div>
 <p>
   Another mandatory tag within the Simulation tags is the Boundary
   Condition (<b>BC</b>) tag.
@@ -294,6 +287,13 @@ dynamod -m 0 -d 0.5 -C 7 -o config.start.xml
   ...
 </DynamOconfig>
 <?php codeblockend("brush: xml;"); ?>
+<div class="figure" style="float:right;width:337px;">
+  <?php embedvideo("infinitehardspheres", "RzjmpRtwDAw", 333, 250); ?>
+  <div class="caption">
+    The same configuration as in the movie above, but with the
+    Boundary Conditions set to <b>None</b>.
+  </div>
+</div>
 <p>
   The configuration will now exist in an infinite domain without
   boundaries (see the video on the right). The particles will be
