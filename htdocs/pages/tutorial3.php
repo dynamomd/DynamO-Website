@@ -49,8 +49,8 @@
   tutorials.
 </p>
 <p>
-  To begin, use dynamod to generate a hard sphere configuration like
-  so:
+  To begin, use <b>dynamod</b> to generate a hard sphere configuration
+  like so:
 </p>
 <?php codeblockstart(); ?>
 dynamod -m 0 -d 0.5 -C 7 -o config.start.xml
@@ -62,9 +62,10 @@ dynamod -m 0 -d 0.5 -C 7 -o config.start.xml
 </p>
 <p>
   XML files can be opened and edited by your favourite text editor. If
-  you click the link above you will see that web browsers will present
-  the contents of an XML file nicely, but you won't be able to edit
-  them.
+  you click the button in the caption of the video you will see that
+  web browsers will present the contents of an XML file nicely but to
+  edit it you will need to save it and open the saved file in a text
+  editor.
 </p>
 <h1>General Layout</h1>
 <p>
@@ -97,7 +98,8 @@ dynamod -m 0 -d 0.5 -C 7 -o config.start.xml
   the file format happens.
 </p>
 <p>
-  At the top of the file are a pair of <b>Simulation</b> tags.
+  At the top of the file, inside the root tags, are a pair
+  of <b>Simulation</b> tags.
 </p>
 <?php codeblockstart(); ?>
 <DynamOconfig version="1.5.0">
@@ -108,8 +110,8 @@ dynamod -m 0 -d 0.5 -C 7 -o config.start.xml
 </DynamOconfig>
 <?php codeblockend("brush: xml;"); ?>
 <p>
-  These contain most of the settings of the simulation and their
-  contents are discussed in detail below. Beneath
+  These <b>Simulation</b> contain most of the settings of the
+  simulation and their contents are discussed in detail below. Beneath
   the <b>Simulation</b> tags lies the <b>Properties</b> tag:
 </p>
 <?php codeblockstart(); ?>
@@ -127,7 +129,7 @@ dynamod -m 0 -d 0.5 -C 7 -o config.start.xml
 </p>
 <h2>Particle Data</h2>
 <p>
-  Underneath the Properties tag, at the bottom of the file, lies
+  Underneath the <b>Properties</b> tag, at the bottom of the file, lies
   the <b>ParticleData</b> tags.  You should see lots
   of <b>Pt</b> <i>tags</i> stored inside
   the <b>ParticleData</b> <i>tags</i>, like so:
@@ -160,7 +162,8 @@ dynamod -m 0 -d 0.5 -C 7 -o config.start.xml
   enclosed <i>tags</i> called <b>P</b>
   and <b>V</b>. The <b>P</b> <i>tag</i> holds the position of a
   particle within the system and the <b>V</b> tag holds the particles
-  velocity.
+  velocity. DynamO always outputs numerical values in scientific
+  notation to ensure no precision is lost when loading and saving.
 </p>
 <p>
   You may notice that there is no mass or size of the particles
@@ -250,12 +253,11 @@ dynamod -m 0 -d 0.5 -C 7 -o config.start.xml
 <?php codeblockend("brush: xml;"); ?>
 <p>
   Here we can see the simulation is performed in a
-  $14\times14\times14$ domain (DynamO always outputs in scientific
-  notation to ensure no precision is lost when loading and saving). We
-  will see in a moment that this system has periodic boundary
-  conditions, but even infinite systems must have some finite size
-  specified for the neighbourlist to function, so you will always see
-  a <b>SimulationSize</b> tag in your configurations.
+  $14\times14\times14$ domain. We will see in a moment that this
+  system has periodic boundary conditions, but even infinite systems
+  must have some finite size specified for the neighbourlist to
+  function, so you will always see a <b>SimulationSize</b> tag in your
+  configurations.
 </p>
 <p>
   If we increase the size of the simulation domain to a
@@ -274,7 +276,7 @@ dynamod -m 0 -d 0.5 -C 7 -o config.start.xml
 <div class="figure" style="clear:right; float:right;width:400px;">
   <?php embedvideo("hardspheres", "-QbpKrtPvWU", 400, 300); ?>
   <div class="caption">
-    The effect of expanding the simulation domain
+    The effect of expanding the simulation domain.
     <?php button("Show Modified Configuration","/pages/config.tut3.expanded.xml");?>
   </div>
 </div>
@@ -288,14 +290,16 @@ dynamod -m 0 -d 0.5 -C 7 -o config.start.xml
   simulation domain.
 </p>
 <p>
-  If, instead of expanding the simulation domain, we tried to reduce
-  it, we might run into difficulties. This is because any particles
-  now outside the primary image will be folded back into it, possibly
-  causing overlapping particles and invalid dynamics.
+  If, instead of expanding, we tried to reduce the simulation domain
+  we might find that we run into difficulties. This is because any
+  particles now outside the primary image will be &quot;folded&quot;
+  back into it, possibly causing overlapping particles and invalid
+  dynamics.
 </p>
 <p>
-  We will now look into removing this periodic &quot;folding&quot;
-  completely in the following section on boundary conditions.
+  We will now look into how we can disable this periodic
+  &quot;folding&quot; completely in the following section on boundary
+  conditions.
 </p>
 <h2>Boundary Conditions</h2>
 <p>
@@ -474,7 +478,7 @@ dynamod -m 0 -d 0.5 -C 7 -o config.start.xml
 </p>
 <h2>Topology</h2>
 <p>
-  The first empty tag you will encounter in the configuration file is
+  Another empty tag you will encounter in this configuration file is
   the <b>Topology</b> tag.
 </p>
 <?php codeblockstart(); ?>
@@ -564,13 +568,13 @@ dynamod -m 0 -d 0.5 -C 7 -o config.start.xml
 </div>
 <p>
   By lowering the <b>Diameter</B> to a half of its previous value,
-  we've reduced the density of the system by a factor of 8. If you
+  we've reduced the density of the system by a factor of $2^3=8$. If you
   take a look at the video to the right you will see that this density
   is comparable to the density of the system where we doubled the size
   of the simulation domain (see the <b>SimulationSize</b> tag above);
   However, in this case the particles are spread evenly about in space
   at the start of the simulation. Please note that if you increase the
-  diameter, you may again cause overlaps and invalid dynamics!
+  <b>Diameter</b>, you may again cause overlaps and invalid dynamics!
 </p>
 <p>
   By lowering the <b>Elasticty</b>, we have created a <i>granular</i>
@@ -747,6 +751,8 @@ dynamod -m 0 -d 0.5 -C 7 -o config.start.xml
   J. M. Haile, 1992, Wiley
 </p>
 <p>
-  The following tutorials will now focus on case studies of certain
-  systems and will expand on each topic above.
+  Now that we've covered the general workflow of using DynamO in
+  tutorial 2, and all of the terminology and configuration file format
+  in this tutorial, the following tutorials will now focus on case
+  studies of certain systems and collecting data.
 </p>
