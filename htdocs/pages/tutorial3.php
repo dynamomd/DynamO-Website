@@ -9,9 +9,6 @@
    $pagetitle="Tutorial 3: Exploring the Configuration File Format";
    ?>
 <?php printTOC(); ?>
-<p style="text-align:center; margin:15px; background-color:#FFD800; font-size:16pt; font-family:sans; line-height:40px;">
-  <b>This tutorial is currently being written, so it may be incomplete or contain errors.</b>
-</p>
 <p>
   In this tutorial we will start to explore the file format of DynamO,
   learn all of the DynamO terminology, and start to look at ways of
@@ -71,7 +68,8 @@ dynamod -m 0 -d 0.5 -C 7 -o config.start.xml
 </p>
 <h1>General Layout</h1>
 <p>
-  Open the XML file and take a look at the top of the file. You'll
+  Open the XML file, <i>config.start.xml</i>, which was generated
+  by <b>dynamod</b> and take a look at the top of the file. You'll
   notice that there is a short line at the top that identifies this
   file as an XML file:
 </p>
@@ -176,15 +174,15 @@ dynamod -m 0 -d 0.5 -C 7 -o config.start.xml
 </p>
 <h1>Simulation Tags</h1>
 <p>
-  The <b>Simulation</b> tags are where the details of the system are
-  stored. There is a huge number of settings that can be adjusted
-  here, so we will deal with each tag separately.
+  The <b>Simulation</b> tags are where the details of the system
+  dynamics are stored. There are a huge number of settings that can be
+  adjusted here, so we will deal with each tag separately.
 </p>
 <h2>Scheduler</h2>
 <p>
-  The first tag in the <b>Simulation</b> section are
-  the <b>Scheduler</b> tags (please ignore the ensemble tags for now,
-  they will be removed in a future version).
+  The first tags in the <b>Simulation</b> section of the configuration
+  file are the <b>Scheduler</b> tags (please ignore the ensemble tags
+  for now, they will be removed in a future version).
 </p>
 <?php codeblockstart(); ?>
 <DynamOconfig version="1.5.0">
@@ -231,7 +229,8 @@ dynamod -m 0 -d 0.5 -C 7 -o config.start.xml
   doesn't need a NeighbourList to function. However, it is very slow
   as it checks all pairs of particles for events, regardless of their
   position. Its only practical use is when developing new types of
-  <b>Interaction</b>s, or tracking down errors in the Neighbour List.
+  <b>Interaction</b>s, or tracking down errors in the Neighbour List
+  implementation.
 </p>
 <h2>Simulation Size</h2>
 <p>
@@ -272,6 +271,13 @@ dynamod -m 0 -d 0.5 -C 7 -o config.start.xml
   ...
 </DynamOconfig>
 <?php codeblockend("brush: xml;"); ?>
+<div class="figure" style="clear:right; float:right;width:400px;">
+  <?php embedvideo("hardspheres", "-QbpKrtPvWU", 400, 300); ?>
+  <div class="caption">
+    The effect of expanding the simulation domain
+    <?php button("Show Modified Configuration","/pages/config.tut3.expanded.xml");?>
+  </div>
+</div>
 <p>
   We lower the density of the configuration and produce the video to
   the right. Notice that the particles are still in the center of the
@@ -288,8 +294,8 @@ dynamod -m 0 -d 0.5 -C 7 -o config.start.xml
   causing overlapping particles and invalid dynamics.
 </p>
 <p>
-  We will now look into removing this folding completely in the
-  following section on boundary conditions.
+  We will now look into removing this periodic &quot;folding&quot;
+  completely in the following section on boundary conditions.
 </p>
 <h2>Boundary Conditions</h2>
 <p>
@@ -420,10 +426,11 @@ dynamod -m 0 -d 0.5 -C 7 -o config.start.xml
   and speed.
 </p>
 <p>
-  What we want is a <i>&quot;functional&quot;</i> definition of properties where
-  we can input statements like &quot;all particles have a mass of 1&quot; (see
-  image below). We would like to be able to specify a property once,
-  and then <i>map</i> this property onto a <b>range</b> of particles:
+  What we want is a <i>&quot;functional&quot;</i> definition of
+  properties where we can input statements like &quot;all particles
+  have a mass of 1&quot; . We would like to be able to specify a
+  property once, and then <i>map</i> this property onto a <b>range</b>
+  of particles (see image below).
 </p>
 <div style="width:456px; margin: 15px auto; display:block;">
   <img src="/images/range_explanation.png" width="456" height="179" alt="A graphic comparing the traditional method of storing redundant particle data, and the functional method" />
@@ -456,7 +463,7 @@ dynamod -m 0 -d 0.5 -C 7 -o config.start.xml
   of &quot;All&quot;, which means all particles have the
   same <b>Species</b> (and therefore mass, intertia tensor and
   representative Interaction).  Multiple <b>Species</b> can be defined
-  in a straightforward way, and this is discussed in the following
+  in a straightforward way, and this is discussed in the next
   tutorial.
 </p>
 <p>
@@ -465,15 +472,39 @@ dynamod -m 0 -d 0.5 -C 7 -o config.start.xml
   definitions are difficult, such as in polydisperse systems where
   every particle has a unique mass and size.
 </p>
+<h2>Topology</h2>
+<p>
+  The first empty tag you will encounter in the configuration file is
+  the <b>Topology</b> tag.
+</p>
+<?php codeblockstart(); ?>
+<DynamOconfig version="1.5.0">
+  <Simulation>
+    ...
+    <Topology/>
+    ...
+  </Simulation>
+  ...
+</DynamOconfig>
+<?php codeblockend("brush: xml;"); ?>
+<p>
+  This tag does not affect the dynamics at all. It is used as a way to
+  mark out molecules or other multi-particle structures for monitoring
+  and collection of data. For example, you might create a list of the
+  particles in each polymer in your molecular simulation so that you
+  can calculate a molecular (instead of atomic) diffusion coefficient.
+  This tag will become more useful when bonded interactions are
+  introduced in a later tutorial on polymeric systems.
+</p>
 <h2>Interactions</h2>
 <p>
   The next important tags in the file format are
   the <b>Interaction</b> tags. These tags are used to specify the
   interactions between pairs of particles (bonded, non-bonded,
-  whatever). The key definition of an Interaction is an event which
-  involves two-particles. Therefore, every two particle event is
-  specified here, and <b><u>every pair of particles must have a
-  corresponding Interaction!</u></b>
+  whatever). The key definition of an <b>Interaction</b> is an event
+  which involves two-particles. Therefore, every two particle event is
+  specified here, and <u>every pair of particles must have a
+  corresponding <b>Interaction!</b></u>
 </p>
 <p>
   If we take a look at the example configuration file again, we have:
@@ -494,20 +525,66 @@ dynamod -m 0 -d 0.5 -C 7 -o config.start.xml
   Here we can see the <b>Type</b> attribute specifying that this is a
   hard sphere interaction. Hard spheres have a <b>Diameter</b>
   and <b>Elasticity</b> which are set by the appropriate
-  attributes. The Interaction has a <b>Name</b> which is used to
-  identify it, e.g, it is used in the <b>IntName</b> attribute of
-  the <b>Species</b> tag.
+  attributes. The <b>Interaction</b> has a <b>Name</b> which is used
+  to identify it (e.g, it is used in the <b>IntName</b> attribute of
+  the <b>Species</b> tag).
 </p>
 <p>
   Finally, there is a <b>Range</b> attribute at the end of the
   tag. <b>Interaction</b> <b>Range</b>s are unique in that they
   specify <u>pairs</u> of particles, not just individual
   particles. This is why the <b>Range</b> attribute has a value
-  of <em>2All</em>, which specifies all pairs of particles.
+  of <em>2All</em>, which specifies all pairs of particles.  Two
+  particle ranges are covered in more detail in the next tutorial.
 </p>
 <p>
-  Interactions and two particle ranges are covered in more detail in
-  the following tutorial.
+  We can see the dramatic effect of some simple changes to the
+  <b>Interaction</b> by reducing the particle <b>Diameter</b>
+  and <b>Elasticity</b>:
+</p>
+<?php codeblockstart(); ?>
+<DynamOconfig version="1.5.0">
+  <Simulation>
+    ...
+    <Interactions>
+      <Interaction Type="HardSphere" Diameter="0.5" Elasticity="0.5" Name="Bulk" Range="2All"/>
+    </Interactions>
+    ...
+  </Simulation>
+  ...
+</DynamOconfig>
+<?php codeblockend("brush: xml;"); ?>
+<div class="figure" style="float:right;width:337px;">
+  <?php embedvideo("granularhardspheres", "d6M43_Nr4pQ", 333, 250); ?>
+  <div class="caption">
+    Modifying the <b>Interaction</b> to make a low density granular
+    gas. <?php button("Show Modified
+    Configuration","/pages/config.tut3.granular.xml");?>
+  </div>
+</div>
+<p>
+  By lowering the <b>Diameter</B> to a half of its previous value,
+  we've reduced the density of the system by a factor of 8. If you
+  take a look at the video to the right you will see that this density
+  is comparable to the density of the system where we doubled the size
+  of the simulation domain (see the <b>SimulationSize</b> tag above);
+  However, in this case the particles are spread evenly about in space
+  at the start of the simulation. Please note that if you increase the
+  diameter, you may again cause overlaps and invalid dynamics!
+</p>
+<p>
+  By lowering the <b>Elasticty</b>, we have created a <i>granular</i>
+  system. In granular systems, inelastic interactions remove energy
+  over time and the system begins to slow down. You can also see a
+  hint of clustering in the video to the right, which is another
+  characteristic of granular systems.
+</p>
+<p>
+  We have now covered the primary type of events (two
+  particle <b>Interaction</b> events) which will occur in our
+  simulations but there are many other possible event types
+  available. These are grouped into <b>Locals</b>, <b>Globals</b>,
+  and <b>System</b> events, which are discussed below.
 </p>
 <h2>Locals</h2>
 <p>
@@ -525,14 +602,15 @@ dynamod -m 0 -d 0.5 -C 7 -o config.start.xml
 <?php codeblockend("brush: xml;"); ?>
 <p>
   A <b>Local</b> is any possible event involving one particle which is
-  localised in space. Typical examples of Locals are are walls,
+  localised in space. Typical examples of <b>Local</b>s are are walls,
   triangle meshes and other fixed objects. The key part of the
   definition is that the events only occur if the particle is in a
   certain location in space. This means these events can be optimised
   by inserting them into the neighbour list.
 </p>
 <p>
-  Using <b>Locals</b> will be discussed in a later tutorial.
+  Using <b>Locals</b> will be discussed in a later tutorial when we
+  study walls and triangle meshes.
 </p>
 <h2>Globals</h2>
 <p>
@@ -559,10 +637,10 @@ dynamod -m 0 -d 0.5 -C 7 -o config.start.xml
   specified by the <b>NeighbourhoodRange</b> attribute. This neighbour
   list has a special <b>Name</b> (<i>SchedulerNBList</i>) which is
   used by the <i>NeighbourList</i> <b>Scheduler</b> to identify which
-  one it is to use.
+  neighbour list it is to use when detecting events.
 </p>
 <p>
-  There are a few more Global events available in DynamO, such as
+  There are a few more <b>Global</b> events available in DynamO, such as
   single-occupancy cells or a waker for the sleeping particles
   algorithm. However, the use of these events is rare and often
   the <b>Globals</b> tag only contains a single neighbour list.
@@ -586,7 +664,7 @@ dynamod -m 0 -d 0.5 -C 7 -o config.start.xml
 <?php codeblockend("brush: xml;"); ?>
 <p>
   This configuration has no <b>System</b> events, but we will see the
-  use of thermostats in later tutorials.
+  use of thermostats and rescalers in later tutorials.
 </p>
 <h2>Dynamics</h2>
 <p>
@@ -633,25 +711,42 @@ dynamod -m 0 -d 0.5 -C 7 -o config.start.xml
 </p>
 <h1>Units</h1>
 <p>
-  A common question users ask when first using DynamO is &quot;What are the
-  units of Dynamo?&quot; and the answer is whichever units you use. Every
-  setting in the configuration file has consistent units. If you
-  specify all lengths in meters, all times in seconds and all masses
-  in kilograms then you should use Joules when specifying energies. In
-  general, there are no hidden units within the simulator.
+  A common question users ask when first using DynamO is &quot;What
+  are the units of Dynamo?&quot; and the answer is &quot;whichever
+  units you use.&quot; Every setting in the configuration file has
+  consistent units. If you specify all lengths in meters, all times in
+  seconds and all masses in kilograms then you should use Joules when
+  specifying energies.  Generally speaking, there are no hidden units
+  within the simulator.
 </p>
 <p>
   However, there is one standard exception to this which is the
   Boltzmann constant, $k_B$. DynamO assumes $k_B=1$. What this means
-  is that when you specify the temperature in DynamO, you are actually
-  specifying the thermal unit, $k_B\,T$.
+  in practice is that when you specify the temperature in DynamO, you
+  are actually specifying the thermal unit, $k_B\,T$.
 </p>
 <p>
   In practice, event-driven simulations are usually carried out in
   some reduced set of units. For this reason, any configuration
   generated by <b>dynamod</b> will have one set of particles with a
   mass and diameter of 1. In athermal systems such as hard spheres,
-  the temperature is set to 1 to set the time and energy units. In
+  the temperature is set to 1 to fix the units of time and energy. In
   energetic systems such as square wells, one interaction energy is
-  set to 1 to set the time and energy units.
+  set to 1 to establish the time and energy units.
+</p>
+<h1>Conclusion</h1>
+<p>
+  In this lengthy tutorial we've covered the entire configuration file
+  format. This has introduced many concepts and terms which you may be
+  unfamiliar with. If you are looking for a good resource on
+  molecular-dynamics and event-driven simulation we can recommend the
+  following text:
+</p>
+<p style="text-align:center;">
+  &quot;Molecular Dynamics Simulation: Elementary Methods,&quot;
+  J. M. Haile, 1992, Wiley
+</p>
+<p>
+  The following tutorials will now focus on case studies of certain
+  systems and will expand on each topic above.
 </p>
