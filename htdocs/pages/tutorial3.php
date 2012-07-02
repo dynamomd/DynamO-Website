@@ -260,7 +260,7 @@ dynamod -m 0 -d 0.5 -C 7 -o config.start.xml
 </p>
 <p>
   If we increase the size of the simulation domain to a
-  $14\times14\times14$ domain:
+  $30\times30\times30$ domain:
 </p>
 <?php codeblockstart(); ?>
 <DynamOconfig version="1.5.0">
@@ -275,18 +275,21 @@ dynamod -m 0 -d 0.5 -C 7 -o config.start.xml
 <p>
   We lower the density of the configuration and produce the video to
   the right. Notice that the particles are still in the center of the
-  domain. When using periodic boundary conditions, the positions in
-  the configuration file are always reported back in the range $(\pm
-  L_x/2,~\pm L_y/2,~\pm L_z/2)$ so that the point $(0,0,0)$ lies in
-  the middle of the simulation domain.
+  domain and expand outwards to fill the primary image. When using
+  periodic boundary conditions, the positions in the configuration
+  file are always written out in the range $(\pm L_x/2, \pm L_y/2, \pm
+  L_z/2)$ so that the point $(0,0,0)$ lies in the middle of the
+  simulation domain.
 </p>
 <p>
   If, instead of expanding the simulation domain, we tried to reduce
-  it we might run into difficulties. This is because any particles now
-  outside the primary image will be folded back into it, possibly
-  causing overlapping particles. This will probably cause the
-  simulation to fail. We will now look into removing this folding
-  completely in the following section on boundary conditions.
+  it, we might run into difficulties. This is because any particles
+  now outside the primary image will be folded back into it, possibly
+  causing overlapping particles and invalid dynamics.
+</p>
+<p>
+  We will now look into removing this folding completely in the
+  following section on boundary conditions.
 </p>
 <h2>Boundary Conditions</h2>
 <p>
@@ -344,8 +347,8 @@ dynamod -m 0 -d 0.5 -C 7 -o config.start.xml
 </p>
 <p>
   There are also Lees-Edwards shearing boundary conditions available
-  in DynamO (<b>Type="LE"</b>) which will be discussed in a future
-  tutorial.
+  in DynamO (<b>Type</b>=&quot;<i>LE</i>&quot;) which will be
+  discussed in a future tutorial.
 </p>
 <h2>Species</h2>
 <p>
