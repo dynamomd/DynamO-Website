@@ -251,16 +251,47 @@ dynamod -m 0 -d 0.5 -C 7 -o config.start.xml
 <?php codeblockend("brush: xml;"); ?>
 <p>
   Here we can see the simulation is performed in a
-  $14\times14\times14$ domain. We will see in a moment that this
-  system has periodic boundary conditions, but even infinite systems
-  must have some finite size specified for the neighbourlist to
-  function, so you will always see a SimulationSize tag in your
-  configurations.
+  $14\times14\times14$ domain (DynamO always outputs in scientific
+  notation to ensure no precision is lost when loading and saving). We
+  will see in a moment that this system has periodic boundary
+  conditions, but even infinite systems must have some finite size
+  specified for the neighbourlist to function, so you will always see
+  a <b>SimulationSize</b> tag in your configurations.
+</p>
+<p>
+  If we increase the size of the simulation domain to a
+  $14\times14\times14$ domain:
+</p>
+<?php codeblockstart(); ?>
+<DynamOconfig version="1.5.0">
+  <Simulation>
+    ...
+    <SimulationSize x="30" y="30" z="30"/>
+    ...
+  </Simulation>
+  ...
+</DynamOconfig>
+<?php codeblockend("brush: xml;"); ?>
+<p>
+  We lower the density of the configuration and produce the video to
+  the right. Notice that the particles are still in the center of the
+  domain. When using periodic boundary conditions, the positions in
+  the configuration file are always reported back in the range $(\pm
+  L_x/2,~\pm L_y/2,~\pm L_z/2)$ so that the point $(0,0,0)$ lies in
+  the middle of the simulation domain.
+</p>
+<p>
+  If, instead of expanding the simulation domain, we tried to reduce
+  it we might run into difficulties. This is because any particles now
+  outside the primary image will be folded back into it, possibly
+  causing overlapping particles. This will probably cause the
+  simulation to fail. We will now look into removing this folding
+  completely in the following section on boundary conditions.
 </p>
 <h2>Boundary Conditions</h2>
 <p>
-  Another mandatory tag within the Simulation tags is the Boundary
-  Condition (<b>BC</b>) tag.
+  Another mandatory tag within the <b>Simulation</b> tags is the
+  Boundary Condition (<b>BC</b>) tag.
 </p>
 <?php codeblockstart(); ?>
 <DynamOconfig version="1.5.0">
