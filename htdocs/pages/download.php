@@ -40,9 +40,9 @@
       be a little buggy.
     </li>
     <li>
-      <b>dynamo-1-3:</b> This is the most recent stable
-      release, the code is as stable as possible but may be up three
-      months behind in features.
+      <b>dynamo-1-3-1:</b> This is the most recent stable release, the
+      code is as stable as possible but may be a few months behind in
+      features.
     </li>
     <li>
       <b>experimental:</b> This is where new patches and
@@ -54,7 +54,7 @@
 </ul>
 <p>If you decide you want something other than the default branch
 (master), just check it out using the following command:</p>
-<?php codeblockstart(); ?>git checkout dynamo-1-3<?php codeblockend("brush: shell;"); ?>
+<?php codeblockstart(); ?>git checkout dynamo-1-3-1<?php codeblockend("brush: shell;"); ?>
 <h1>Alternative Source Code Downloads</h1>
 <p>
   It is recommended that you use the git to download the source code
@@ -63,5 +63,5 @@
   the links below.
 </p>
 <?php button("Download Latest Development Branch","https://github.com/toastedcrumpets/DynamO/zipball/master");?>
-<?php button("Download Stable Version 1.3","https://github.com/toastedcrumpets/DynamO/zipball/dynamo-1-3");?>
+<?php button("Download Stable Version 1.3.1","https://github.com/toastedcrumpets/DynamO/zipball/dynamo-1-3-1");?>
 <?php button("Download Stable Version 1.2","https://github.com/toastedcrumpets/DynamO/zipball/dynamo-1-2");?>
