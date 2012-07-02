@@ -40,6 +40,7 @@
   <div class="caption">
     The starting configuration of 1372 hard-spheres with periodic
     boundary conditions.
+    <?php button("Show Configuration","/pages/config.tut3.xml");?>
   </div>
 </div>
 <p>
@@ -58,11 +59,10 @@
 dynamod -m 0 -d 0.5 -C 7 -o config.start.xml
 <?php codeblockend("brush: shell;"); ?>
 <p>
-  Some example output is provided at the button below for
-  convenience. Note that your own generated output will have different
-  randomly-assigned-velocities than the example provided.
+  Some example output is provided in the caption of the video to the
+  right. Please note that your own generated output will have
+  different randomly-assigned-velocities than the example provided.
 </p>
-<?php button("Example Configuration File","/pages/config.tut3.xml");?>
 <p>
   XML files can be opened and edited by your favourite text editor. If
   you click the link above you will see that web browsers will present
@@ -292,6 +292,7 @@ dynamod -m 0 -d 0.5 -C 7 -o config.start.xml
   <div class="caption">
     The same configuration as in the movie above, but with the
     Boundary Conditions set to <b>None</b>.
+    <?php button("Show Modified Configuration","/pages/config.tut3.infinite.xml");?>
   </div>
 </div>
 <p>
@@ -582,6 +583,15 @@ dynamod -m 0 -d 0.5 -C 7 -o config.start.xml
   ...
 </DynamOconfig>
 <?php codeblockend("brush: xml;"); ?>
+<div class="figure" style="clear:right; float:right;width:400px;">
+  <?php embedvideo("fallinghardspheres", "Hx6rcS-RAkU", 400, 300); ?>
+  <div class="caption">
+    Enabling gravity causes all the particles to fall, but with
+    periodic boundary conditions there is nothing to arrest their
+    descent.
+    <?php button("Show Modified Configuration","/pages/config.tut3.gravity.xml");?>
+  </div>
+</div>
 <p>
   You can also run compression simulations or use multicanonical
   potentials to deform the energy landscape of the system through
