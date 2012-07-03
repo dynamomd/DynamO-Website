@@ -11,6 +11,7 @@ html { height: 100%; }
 .syntaxhighlighterwrapper {
     display:inline-block;
     max-width:100%;
+    min-height:20px;
 }
 
 body {
@@ -131,7 +132,6 @@ li { margin:5px; }
 
 #contentwrapper {
     border-radius: 0 15px 15px 15px;
-    position:relative;
     padding-top: 15px;
 }
 
@@ -142,6 +142,9 @@ li { margin:5px; }
      margin: -15px -15px 15px 15px;
      padding:15px;
      border-radius: 0 15px 0 15px;
+     position:relative;
+     border-bottom:solid 2px;
+     border-left:solid 2px;
 }
 
 #TOC #header {
@@ -185,6 +188,7 @@ li { margin:5px; }
     margin:5px; 
     border:2px solid;
     background-color:#ffffff;
+    border-radius: 0 0 15px 15px;
 }
 
 .figure .caption { 
