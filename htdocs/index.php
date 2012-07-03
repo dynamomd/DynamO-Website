@@ -170,7 +170,6 @@ if ($TOC)
     <meta name="description" content="DynamO Event Driven Simulation Package" />
     <meta name="keywords" content="DynamO, Event Driven Simulation, hard sphere, square well" />
     <meta name="author" content="Marcus Bannerman" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="google-site-verification" content="atSxig_hk_QoQxF4dobExHXxGUIt57ToZf3g_welkB0" />
     <link rel="stylesheet" type="text/css" href="/style/style.php" />
     <!--[if lt IE 10]><link rel="stylesheet" href="/style/ie-css3-support.css" type="text/css"/><![endif]-->
