@@ -21,9 +21,12 @@ function button($text, $link)
 <?php
  }
 
-function menulink($page, $text)
+function menulink($linkpage, $text)
  {
-   echo "<a href=\"/index.php/".$page."\">".$text."</a>";
+   global $page;
+   echo "<a";
+   if ($page == $linkpage) echo " class=\"selected\"";
+   echo " href=\"/index.php/".$linkpage."\">".$text."</a>";
  }
 
 $TOC=0;

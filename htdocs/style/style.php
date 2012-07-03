@@ -121,13 +121,23 @@ li { margin:5px; }
     padding:10px 15px;
     display:inline-block;
     border: 1px solid;
+    border-bottom: none;
     border-radius: 15px 15px 0 0;
     margin-left:-1px;
     font-weight:bold;
 }
 
+#menu a.selected {
+    background-color:#ffffff;
+    border-bottom:none;
+}
+
 #menu a:hover { 
     background-color: <?php echo $hoverbutton;?>; 
+}
+
+#menu a.selected:hover {
+    background-color: #eeeeee; 
 }
 
 #contentwrapper {
@@ -160,10 +170,9 @@ li { margin:5px; }
 #pagetitle {
     float:left;
     padding: 2px 15px;
-    border-radius: 15px 0 15px 0;
+    border-radius: 0 0 15px 0;
     font-weight: bold;
-    border-bottom: 1px solid;
-    border-right: 1px solid; 
+    border: 1px solid;
     margin: -15px 15px 15px -15px;
 }
 
