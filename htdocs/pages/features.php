@@ -88,6 +88,9 @@
 <h2>Granular Damper Simulation</h2>
 <?php embedvideo("granularDamper", "3mlisuFJkqk", 533, 315); ?>
 
+<h2>Pair of Interacting HP Heteropolymers</h2>
+<?php embedvideo("pairHPpolymer", "RXCOU9btDuQ", 400, 300); ?>
+
 <h2>Gravity, Boundary Sphere Meshes and Sleeping Particles</h2>
 <?php embedvideo("sleepingparticles", "9oaobaxhGX8", 533, 298); ?>
 <p>The dynamod command used to generate the configuration:</p>

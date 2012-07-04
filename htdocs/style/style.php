@@ -172,7 +172,7 @@ li { margin:5px; }
     padding: 2px 15px;
     border-radius: 0 0 15px 0;
     font-weight: bold;
-    border: 1px solid;
+    border-bottom: 1px solid;
     margin: -15px 15px 15px -15px;
 }
 
