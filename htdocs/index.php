@@ -177,7 +177,7 @@ if ($TOC)
     <link rel="stylesheet" type="text/css" href="/style/style.php" />
     <!--[if lt IE 10]><link rel="stylesheet" href="/style/ie-css3-support.css" type="text/css"/><![endif]-->
     <link rel="icon" type="image/png" href="/images/favicon.png" />
-    <title>DynamO Simulation Package</title>
+    <title>DynamO: <?php echo $pagetitle; ?></title>
     <script type="text/javascript">
       var _gaq = _gaq || [];
       _gaq.push(['_setAccount', 'UA-31464781-1']);

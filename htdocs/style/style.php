@@ -121,7 +121,6 @@ li { margin:5px; }
     padding:10px 15px;
     display:inline-block;
     border: 1px solid;
-    border-bottom: none;
     border-radius: 15px 15px 0 0;
     margin-left:-1px;
     font-weight:bold;
@@ -129,7 +128,7 @@ li { margin:5px; }
 
 #menu a.selected {
     background-color:#ffffff;
-    border-bottom:none;
+    border-bottom:1px solid #ffffff;
 }
 
 #menu a:hover { 
@@ -172,8 +171,7 @@ li { margin:5px; }
     padding: 2px 15px;
     border-radius: 0 0 15px 0;
     font-weight: bold;
-    border-bottom: 1px solid;
-    margin: -15px 15px 15px -15px;
+    margin: -10px 15px 15px -15px;
 }
 
 /* Button */
