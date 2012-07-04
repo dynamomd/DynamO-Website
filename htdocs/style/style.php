@@ -169,7 +169,6 @@ li { margin:5px; }
 #pagetitle {
     float:left;
     padding: 2px 15px;
-    border-radius: 0 0 15px 0;
     font-weight: bold;
     margin: -10px 15px 15px -15px;
 }
