@@ -331,8 +331,8 @@ dynamod -m 0 -d 0.5 -C 7 -o config.start.xml
   ...
 </DynamOconfig>
 <?php codeblockend("brush: xml;"); ?>
-<div class="figure" style="float:right;width:337px;">
-  <?php embedvideo("infinitehardspheres", "RzjmpRtwDAw", 333, 250); ?>
+<div class="figure" style="float:right;width:400px;">
+  <?php embedvideo("infinitehardspheres", "RzjmpRtwDAw", 400, 300); ?>
   <div class="caption">
     The same configuration as in the movie above, but with the
     Boundary Conditions set to <b>None</b>.
@@ -558,8 +558,8 @@ dynamod -m 0 -d 0.5 -C 7 -o config.start.xml
   ...
 </DynamOconfig>
 <?php codeblockend("brush: xml;"); ?>
-<div class="figure" style="float:right;width:337px;">
-  <?php embedvideo("granularhardspheres", "d6M43_Nr4pQ", 333, 250); ?>
+<div class="figure" style="float:right;width:400px;">
+  <?php embedvideo("granularhardspheres", "d6M43_Nr4pQ", 400, 300); ?>
   <div class="caption">
     Modifying the <b>Interaction</b> to make a low density granular
     gas. <?php button("Show Modified

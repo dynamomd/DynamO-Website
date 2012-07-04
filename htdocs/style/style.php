@@ -203,5 +203,5 @@ li { margin:5px; }
 .figure .caption { 
     text-align:center; 
     clear: both;
-    padding:5px;
+    margin:15px;
 }
