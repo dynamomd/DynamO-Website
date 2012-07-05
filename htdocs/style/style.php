@@ -14,6 +14,13 @@ html { height: 100%; }
     min-height:20px;
 }
 
+.newsdivider {
+    height:2px;
+    clear:both;
+    background-color:#000000;
+    margin:15px;
+}	
+
 body {
     margin: 0;
     padding: 0;

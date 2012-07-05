@@ -15,6 +15,6 @@ foreach ($file_array as $filename)
 { 
   echo "<div class=\"newsdate\">".date("jS F Y", filemtime($filename))."</div>";
   include($filename);
-  echo "<hr />"; 
+  echo "<div class=\"newsdivider\"></div>"; 
 }
 ?>
