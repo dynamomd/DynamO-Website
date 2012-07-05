@@ -204,10 +204,11 @@ li { margin:5px; }
 
 .figure { 
     display: inline-block; 
-    margin:5px; 
+    margin:5px;
+    padding-top:15px;
     border:2px solid;
     background-color:#ffffff;
-    border-radius: 0 0 15px 15px;
+    border-radius: 15px 15px 15px 15px;
 }
 
 .figure .caption { 
