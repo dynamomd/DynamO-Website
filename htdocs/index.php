@@ -195,7 +195,7 @@ if ($TOC)
     <div style="height:15px;"></div>
 
     <!-- HEADER AND LOGO -->
-    <div class="rounded">
+    <div class="logo rounded">
       <a href="/" id="sitelogo" ></a>
     </div>
 

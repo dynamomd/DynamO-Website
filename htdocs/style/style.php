@@ -39,6 +39,10 @@ li { margin:5px; }
     margin: 0px 15px 15px 15px;
 }
 
+.logo {
+ border:2px solid;
+}
+
 .newsdate {
     display:inline;
     float:right;
@@ -88,6 +92,7 @@ li { margin:5px; }
     padding:0px;
     padding-left:15px;
     line-height:41px;
+    border:2px solid;
 }
 
 #w3footerlogoHTML, #w3footerlogoCSS {
@@ -120,15 +125,15 @@ li { margin:5px; }
     background-color:<?php echo $inactivebutton; ?>;
     padding:10px 15px;
     display:inline-block;
-    border: 1px solid;
+    border: 2px solid;
+    border-bottom:none;
     border-radius: 15px 15px 0 0;
-    margin-left:-1px;
+    margin-right:-2px;
     font-weight:bold;
 }
 
 #menu a.selected {
     background-color:#ffffff;
-    border-bottom:1px solid #ffffff;
 }
 
 #menu a:hover { 
@@ -142,6 +147,7 @@ li { margin:5px; }
 #contentwrapper {
     border-radius: 0 15px 15px 15px;
     padding-top: 15px;
+    border:2px solid;
 }
 
 #TOC {
@@ -160,8 +166,8 @@ li { margin:5px; }
      float:right;
      display:inline;
      margin: -15px -15px 0 0;
-     border-bottom:solid 1px;
-     border-left:solid 1px;
+     border-bottom:solid 2px;
+     border-left:solid 2px;
      border-radius: 0 15px 0 15px;
      padding: 2px 15px;
 }
