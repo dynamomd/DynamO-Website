@@ -141,6 +141,8 @@ li { margin:5px; }
 
 #menu a.selected {
     background-color:#ffffff;
+    border-bottom:2px solid #ffffff;
+    margin-bottom:-2px;
 }
 
 #menu a:hover { 
