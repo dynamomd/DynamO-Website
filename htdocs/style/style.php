@@ -165,13 +165,14 @@ li { margin:5px; }
      padding:15px;
      border-radius: 0 15px 0 15px;
      position:relative;
-     border-bottom:solid 2px;
-     border-left:solid 2px;
+     border-bottom:solid 2px #000000;
+     border-left:solid 2px #000000;
 }
 
 #TOC #header {
      float:right;
      display:inline;
+     position:relative;
      margin: -15px -15px 0 0;
      border-bottom:solid 2px;
      border-left:solid 2px;
