@@ -80,6 +80,8 @@ ob_start();
 include_once("pages/".$page.".php");
 $content = ob_get_clean();
 
+$contentdate = date("l jS F Y ", filemtime("pages/".$page.".php"));
+
 function create_toc( $content ) {
 	preg_match_all( '/<h([1-6])(.*)>([^<]+)<\/h[1-6]>/i', $content, $matches, PREG_SET_ORDER );
  
@@ -207,9 +209,9 @@ if ($TOC)
     <!-- CONTENT -->
     <div id="contentwrapper" class="rounded">
       <div id="pagetitle"><?php echo $pagetitle; ?></div>
-      <div style="clear:left; display:inline-block; height:15px; width:5px;"></div>
       <?php echo $content; ?>
-      <div style="clear:both;"></div>
+      <div style="clear:both;height:10px;"></div>
+      <div id="pagedate"><i>Page last modified: <?php echo $contentdate; ?></i></div>
     </div>
     
     <!-- FOOTER -->

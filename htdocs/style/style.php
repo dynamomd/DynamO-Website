@@ -30,9 +30,10 @@ body {
 }
 
 h1 { 
-    font-size:18pt; 
-    border-bottom:2px solid; 
-    display:block; 
+    font-size:18pt;
+    border-bottom:2px solid;
+    display:block;
+    clear:left;
 }
 
 h2 { font-size:16pt; display:block; }
@@ -47,7 +48,7 @@ li { margin:5px; }
 }
 
 .logo {
- border:2px solid;
+    border:2px solid;
 }
 
 .newsdate {
@@ -141,8 +142,10 @@ li { margin:5px; }
 
 #menu a.selected {
     background-color:#ffffff;
-    border-bottom:2px solid #ffffff;
     margin-bottom:-2px;
+    z-index:100;
+    padding-bottom:12px;
+    position:relative;
 }
 
 #menu a:hover { 
@@ -157,36 +160,43 @@ li { margin:5px; }
     border-radius: 0 15px 15px 15px;
     padding-top: 15px;
     border:2px solid;
+    position:relative;
 }
 
 #TOC {
-     float:right;
-     display:inline-block;
-     background-color:#ccddee;
-     margin: -15px -15px 15px 15px;
-     padding:15px;
-     border-radius: 0 15px 0 15px;
-     position:relative;
-     border-bottom:solid 2px #000000;
-     border-left:solid 2px #000000;
+    float:right;
+    display:inline-block;
+    background-color:#ccddee;
+    margin: -15px -15px 15px 15px;
+    padding:15px;
+    border-radius: 0 15px 0 15px;
+    position:relative;
+    border-bottom:solid 2px #000000;
+    border-left:solid 2px #000000;
 }
 
 #TOC #header {
-     float:right;
-     display:inline;
-     position:relative;
-     margin: -15px -15px 0 0;
-     border-bottom:solid 2px;
-     border-left:solid 2px;
-     border-radius: 0 15px 0 15px;
-     padding: 2px 15px;
+    float:right;
+    display:inline;
+    position:relative;
+    margin: -15px -15px 0 0;
+    border-bottom:solid 2px;
+    border-left:solid 2px;
+    border-radius: 0 15px 0 15px;
+    padding: 2px 15px;
 }
 
 #pagetitle {
-    float:left;
-    padding: 2px 15px;
+    position:absolute;
+    top:2px;
+    left:15px;
     font-weight: bold;
-    margin: -10px 15px 15px -15px;
+}
+
+#pagedate {
+    position:absolute;
+    right:15px;
+    bottom:2px;
 }
 
 /* Button */
@@ -212,6 +222,7 @@ li { margin:5px; }
     border:2px solid;
     background-color:#ffffff;
     border-radius: 15px 15px 15px 15px;
+    position:relative;
 }
 
 .figure .caption { 
