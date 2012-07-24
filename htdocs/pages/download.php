@@ -52,8 +52,11 @@
       track or join in the development process.
     </li>
 </ul>
-<p>If you decide you want something other than the default branch
-(master), just check it out using the following command:</p>
+<p>
+  If you decide you want something other than the default branch
+  (master), just check it out by running the following command in the
+  DynamO directory:
+</p>
 <?php codeblockstart(); ?>git checkout dynamo-1-3-1<?php codeblockend("brush: shell;"); ?>
 <h1>Alternative Source Code Downloads</h1>
 <p>
