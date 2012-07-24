@@ -26,30 +26,30 @@
 <?php codeblockstart(); ?>git clone https://github.com/toastedcrumpets/DynamO.git<?php codeblockend("brush: shell;"); ?>
 <p>
   This will create a folder called <em>DynamO</em> in the working
-  directory.
+  directory. If this command fails, you can try the alternative git
+  protocol address using the command below:
 </p>
+<?php codeblockstart(); ?>git clone git://github.com/toastedcrumpets/DynamO.git<?php codeblockend("brush: shell;"); ?>
 <p>
   You can now pick which branch or version of DynamO you'd like. There
-  are several available, but the default <b>master</b>
-  branch is probably the most popular:
+  are several available:
 </p>
 <ul>
     <li>
-      <b>master:</b> This is the stable development branch,
-      code should compile and run without errors but new features may
-      be a little buggy.
-    </li>
-    <li>
       <b>dynamo-1-3-1:</b> This is the most recent stable release, the
-      code is as stable as possible but may be a few months behind in
-      features.
+      code is as stable as possible and has been thoroughly tested for
+      bugs, but it may miss recently added features.
     </li>
     <li>
-      <b>experimental:</b> This is where new patches and
-      features are born. Probably a bit unstable and buggy, but very
-      fresh! Not really meant for the public, but its been made
-      available to let others track or join in the development
-      process.
+      <b>master:</b> This is the stable development branch for the
+      next release of DynamO, code <i>should</i> compile and run
+      without errors but it may be a little buggy.
+    </li>
+    <li>
+      <b>experimental:</b> This is where new patches and features are
+      born. Probably unstable and buggy, but very fresh! Not really
+      meant for the public, but its been made available to let others
+      track or join in the development process.
     </li>
 </ul>
 <p>If you decide you want something other than the default branch
