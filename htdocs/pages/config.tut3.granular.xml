@@ -1,7 +1,6 @@
 <?xml version="1.0"?>
 <DynamOconfig version="1.5.0">
   <Simulation>
-    <Ensemble Type="NVE"/>
     <Scheduler Type="NeighbourList">
       <Sorter Type="BoundedPQMinMax3"/>
     </Scheduler>
