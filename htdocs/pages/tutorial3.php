@@ -184,8 +184,7 @@ dynamod -m 0 -d 0.5 -C 7 -o config.start.xml
 <h2>Scheduler</h2>
 <p>
   The first tags in the <b>Simulation</b> section of the configuration
-  file are the <b>Scheduler</b> tags (please ignore the ensemble tags
-  for now, they will be removed in a future version).
+  file are the <b>Scheduler</b> tags.
 </p>
 <?php codeblockstart(); ?>
 <DynamOconfig version="1.5.0">
