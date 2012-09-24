@@ -618,8 +618,10 @@ dynamod -m 0 -d 0.5 -C 7 -o config.start.xml
 <h2>Globals</h2>
 <p>
   <b>Globals</b> are single particle events which can occur anywhere
-  (i.e., they cannot be optimised by the use of neighbour lists). One
-  example of a <b>Global</b> is a neighbour list itself:
+  (i.e., they cannot be optimised by the use of neighbour
+  lists). Examples of global events are Single Occupancy cells,
+  Boundary condition enforcers, but the most common <b>Global</b> used
+  in configuration files <i>is</i> the neighbour list itself:
 </p>
 <?php codeblockstart(); ?>
 <DynamOconfig version="1.5.0">
@@ -634,13 +636,27 @@ dynamod -m 0 -d 0.5 -C 7 -o config.start.xml
 </DynamOconfig>
 <?php codeblockend("brush: xml;"); ?>
 <p>
-  This <b>Global</b> is a celluar neighbour list
-  (<b>Type</b>=&quot;<i>Cells</i>&quot;), which is set to track the
-  particles within a distance of at least 1 of every particle, as
-  specified by the <b>NeighbourhoodRange</b> attribute. This neighbour
-  list has a special <b>Name</b> (<i>SchedulerNBList</i>) which is
-  used by the <i>NeighbourList</i> <b>Scheduler</b> to identify which
-  neighbour list it is to use when detecting events.
+  Neighbourlists are used by DynamO to efficiently detect which
+  particles have a chance of interacting. This information is used to
+  then build a list of all possible events for each particle. If the
+  neighbourlist is incorrectly setup, the simulation may produce
+  overlaps and errors or it may run slowly.
+</p>
+<p>
+  This <b>Global</b> is a celluar neighbourlist
+  (<b>Type</b>=&quot;<i>Cells</i>&quot;), which is set to track all
+  pairs of particles within a distance of at least 1. This distance is
+  specified by the <b>NeighbourhoodRange</b> attribute and must be at
+  least as big as the maximum interaction distance in the system. If
+  it is smaller, DynamO might not test an interaction until it already
+  has happened. DynamO should detect this error and report it when
+  loading the configuration file.
+</p>
+<p>
+  This neighbour list has a special <b>Name</b>
+  (<i>SchedulerNBList</i>) which is used by
+  the <i>NeighbourList</i> <b>Scheduler</b> to identify it as the
+  neighbourlist to be used when detecting events.
 </p>
 <p>
   There are a few more <b>Global</b> events available in DynamO, such as
