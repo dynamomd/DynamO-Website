@@ -48,8 +48,7 @@
   </li>
   <li>
     <a href="http://gcc.gnu.org">gcc</a> - You need a compiler and GCC
-    is the standard choice.(<b>Ubuntu/Gentoo Package</b>: Installed by
-    default, <b>OpenSuse Package</b>: gcc-g++).
+    is the standard choice.(<b>Ubuntu/Gentoo Package</b>: build-essential, <b>OpenSuse Package</b>: gcc-g++).
   </li>
   <li>
     <a href="http://www.bzip.org/">libbz2</a> - The output of DynamO
@@ -75,10 +74,9 @@
   </li>
   <li>
     <a href="http://www.khronos.org/opencl/">OpenCL</a> - An OpenCL
-    implementation is provided with the latest AMD and NVidia graphics
-    card drivers. You will need a relatively modern graphics card to
-    use the visualiser too. (<b>Ubuntu Packages</b>: either fglrx-dev
-    (AMD) or nvidia-dev (NVidia)).
+    implementation is provided with the latest AMD and NVidia binary
+    graphics card drivers. You will need a relatively modern graphics
+    card to use the visualiser too. (<b>Ubuntu Packages</b>: fglrx (AMD) <i>OR</i> nvidia-current (NVidia)).
   </li>
   <li>
     <a href="http://ffmpeg.org/">libavcodec</a> - (Optional) Allows
