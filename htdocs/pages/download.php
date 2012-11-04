@@ -7,6 +7,7 @@
    }
    $pagetitle="Download";
  ?>
+<?php printTOC(); ?>
 <p>
   DynamO is an open-source and free code, made available under version
   3 of the GPL licence. Here you can download prebuilt packages for
