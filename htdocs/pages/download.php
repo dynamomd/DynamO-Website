@@ -9,10 +9,27 @@
  ?>
 <p> 
   DynamO is an open-source and free code, made available under
-  version 3 of the GPL licence. There are several ways you can obtain a
-  copy of the source code and these are listed below.
+  version 3 of the GPL licence.
 </p>
-<h1>Git Access to the Source</h1> 
+<p>
+  You can either download the source code and compile DynamO yourself
+  <a href="/index.php/tutorial1">following the tutorial</a>, or you
+  can use the links to the prebuilt packages below.
+</p>
+<h1>Ubuntu Packages</h1>
+<p>
+  At the moment, there are no stable releases available for Ubuntu as
+  these prebuilt packages are a new feature for DynamO 1.4.0. You can
+  use the development versions by adding the DynamO Daily Build PPA to
+  your system. See the details in the link below
+</p>
+<?php button("View the Ubuntu PPA","https://code.launchpad.net/~dynamomd/+archive/dynamo-daily-ppa");?>
+<h1>Source Code Downloads</h1>
+<p>
+  There are several ways you can obtain a copy of the source code and
+  these are listed below.
+</p>
+<h2>Git Access to the Source</h2> 
 <p>
   The recommended method of downloading an up-to-date copy of the
   DynamO sources is using git and
@@ -58,7 +75,7 @@
   DynamO directory:
 </p>
 <?php codeblockstart(); ?>git checkout dynamo-1-3-2<?php codeblockend("brush: shell;"); ?>
-<h1>Alternative Source Code Downloads</h1>
+<h2>Alternative Source Code Downloads</h2>
 <p>
   It is recommended that you use the git to download the source code
   whenever possible. However, incase there is any problem accessing
