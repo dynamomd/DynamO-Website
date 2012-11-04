@@ -7,14 +7,11 @@
    }
    $pagetitle="Download";
  ?>
-<p> 
-  DynamO is an open-source and free code, made available under
-  version 3 of the GPL licence.
-</p>
 <p>
-  You can either download the source code and compile DynamO yourself
-  <a href="/index.php/tutorial1">following the tutorial</a>, or you
-  can use the links to the prebuilt packages below.
+  DynamO is an open-source and free code, made available under version
+  3 of the GPL licence. Here you can download prebuilt packages for
+  Ubuntu systems or obtain the source code to compile your own copy of
+  DynamO.
 </p>
 <h1>Ubuntu Packages</h1>
 <p>
@@ -27,7 +24,9 @@
 <h1>Source Code Downloads</h1>
 <p>
   There are several ways you can obtain a copy of the source code and
-  these are listed below.
+  these are listed below.  Once you have a copy of the source code you
+  can compile DynamO by
+  <a href="/index.php/tutorial1">following the tutorial</a>.
 </p>
 <h2>Git Access to the Source</h2> 
 <p>
