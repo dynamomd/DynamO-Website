@@ -16,11 +16,17 @@
 <h1>Ubuntu Packages</h1>
 <p>
   At the moment, there are no stable releases available for Ubuntu as
-  these prebuilt packages are a new feature for DynamO 1.4.0. You can
-  use the development versions by adding the DynamO Daily Build PPA to
-  your system. See the details in the link below
+  prebuilt packages for Ubuntu are a new feature for DynamO
+  1.4.0. Once DynamO 1.4.0 has been released, a PPA with the stable
+  packages will be posted here.
 </p>
-<?php button("View the Ubuntu PPA","https://code.launchpad.net/~dynamomd/+archive/dynamo-daily-ppa");?>
+<p>
+  There is a daily build of the DynamO development tree which you can
+  use to get the latest versions and features. Just add the daily
+  build PPA to your ubuntu system following the instructions on the
+  page linked below.
+</p>
+<?php button("Ubuntu Daily Build PPA","https://code.launchpad.net/~dynamomd/+archive/dynamo-daily-ppa");?>
 <h1>Source Code Downloads</h1>
 <p>
   There are several ways you can obtain a copy of the source code and
