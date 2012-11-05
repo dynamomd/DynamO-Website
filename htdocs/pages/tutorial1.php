@@ -12,48 +12,46 @@
 <p>
   This tutorial covers the requirements, compilation and installation
   of the DynamO simulation package. It is recommended that you build
-  your own version of DynamO to keep up with the rapid code
-  development and to make sure the executables are compatible with
-  your system.
+  your own version of DynamO if you want to make changes or plan to
+  add new features to DynamO.
 </p>
+<p>
+  If you've already installed DynamO using the prebuilt packages, you
+  can skip straight to tutorial 2.
+</p>
+<?php button("Tutorial 2: Running a Simulation of Hard Spheres","/index.php/tutorial2");?>
 <h1>Step 0: Build Requirements</h1>
-<p>
-  Currently DynamO will only run on <b>Gnu/Linux</b> based systems
-  (e.g., Ubuntu/Gentoo/RedHat). You will also need to be familiar with
-  how to install programs on whichever distribution of Linux you are
-  using before you will be able to setup DynamO.
-</p>
-<p>
-  DynamO, like many Linux programs, is driven through a Command-Line
-  Interface (CLI). To be able to use DynamO, you will need to be
-  familiar with the terminal of your Linux distribution. Take a look
-  at <a href="http://www.linuxcommand.org">this link</a> to learn more
-  about the terminal and how it works if you are at all unsure what
-  this means.
-</p>
 <p>
   Before you can build DynamO, you will need a compiler and several
   other programs and libraries installed. There are also several
   optional libraries which, if they're installed, will activate extra
-  features.
+  features such as saving visualisations directly to video, or
+  wii-remote head tracking.
 </p>
 <h2>Essential Libraries</h2>
 <p>
-  These programs and libraries <b>must</b> be installed if you want to use DynamO:
+  These programs and libraries <b>must</b> be installed if you want to
+  compile DynamO:
 </p>
 <ul>
   <li>
-    <a href="http://git-scm.com/">git</a> - The source code is
-    downloaded using the Git program.  (<b>Ubuntu/OpenSuse/Gentoo Package</b>: git).
+    <a href="http://gcc.gnu.org">gcc</a>
+    and <a href="http://www.gnu.org/software/make/">make</a> - You
+    need a compiler and the make build system(<b>Ubuntu</b>:
+    build-essential).
   </li>
   <li>
-    <a href="http://gcc.gnu.org">gcc</a> - You need a compiler and GCC
-    is the standard choice.(<b>Ubuntu/Gentoo Package</b>: build-essential, <b>OpenSuse Package</b>: gcc-g++).
+    <a href="http://www.boost.org/">Boost Libraries</a> - DynamO uses
+    many of the boost libraries (program_options, iostreams,
+    filesystem, math) and it is easiest to install them all (<b>Ubuntu
+    Package</b>: libboost-all-dev).
   </li>
   <li>
-    <a href="http://www.bzip.org/">libbz2</a> - The output of DynamO
-    is compressed for efficiency using this library.
-    (<b>Ubuntu Package</b>: libbz2-dev, <b>Gentoo Package</b>: Installed by default, <b>OpenSuse</b>: libbz2-devel).
+    <a href="http://www.boost.org/boost-build2/">Boost Build</a> - DynamO uses the
+    boost build system to manage the compilation, this is usually
+    included with the boost libraries (<b>Ubuntu Package</b>:
+    libboost-dev, but it will be pulled in by the libboost-all-dev
+    above).
   </li>
 </ul>
 <h2>Visualiser Requirements</h2>
@@ -73,10 +71,16 @@
     <a href="http://glew.sourceforge.net/">GLEW</a> version 1.6+ (<b>Ubuntu Package</b>: libglew1.6-dev).
   </li>
   <li>
-    <a href="http://www.khronos.org/opencl/">OpenCL</a> - An OpenCL
-    implementation is provided with the latest AMD and NVidia binary
+    <a href="http://www.khronos.org/opencl/">OpenCL Headers</a> -
+    OpenCL is a new parallel programming paradigm, and the visualiser
+    uses it to process data during rendering (<b>Ubuntu Packages</b>: opencl-headers).
+  </li>
+  <li>
+    <a href="http://www.khronos.org/opencl/">OpenCL Library</a> - An
+    OpenCL library is provided with the latest AMD and NVidia binary
     graphics card drivers. You will need a relatively modern graphics
-    card to use the visualiser too. (<b>Ubuntu Packages</b>: fglrx (AMD) <i>OR</i> nvidia-current (NVidia)).
+    card to use the visualiser too. (<b>Ubuntu Packages</b>: fglrx
+    (AMD) <i>OR</i> nvidia-current (NVidia)).
   </li>
   <li>
     <a href="http://ffmpeg.org/">libavcodec</a> - (Optional) Allows
@@ -110,8 +114,8 @@ cd DynamO<?php codeblockend("brush: shell;"); ?>
 </p>
 <?php codeblockstart(); ?>make<?php codeblockend("brush: shell;"); ?>
 <p>
-  This step can take a while, it will download a copy of boost, and
-  build DynamO.
+  This step can take a while as there are hundreds of source files to
+  compile.
 </p>
 <p>
   If there are any errors, they are often due to missing build
@@ -119,27 +123,28 @@ cd DynamO<?php codeblockend("brush: shell;"); ?>
   dependencies it needs to build. The list of tests should look like
   this (they may be in any order):
 </p>
-<?php codeblockstart(); ?>
-Performing configuration checks
-    (Required libraries for building DynamO)
-    - DynamO: bzip2 library    : yes
+<?php codeblockstart(); ?>Performing configuration checks
 
-    (Tests for building the visualiser)
-    - Coil: Gtkmm              : yes
-    - Coil: OpenCL lib         : yes
-    - Coil: GLEW               : yes
-    - Coil: GLUT               : yes
-    - DynamO-Coil Integration  : yes
-
-    (Tests for added functionality in the visualiser)
+    - DynamO: Boost headers    : yes
+    - DynamO: Boost system library : yes
+    - DynamO: Boost filesystem library : yes
+    - DynamO: Boost program options library : yes
+    - DynamO: Boost iostreams library : yes
     - Magnet: libavcodec (video encoding support) : yes
-    - Coil: libCwiid Wii-mote support (Optional) : yes
-<?php codeblockend("brush: plain; highlight: [2, 5, 12];"); ?>
+    - Coil: Gtkmm              : yes
+    - Coil: OpenCL libraries and headers : yes
+    - Coil: GLEW (v1.6+)       : yes
+    - Coil: GLUT               : yes
+    - Coil: libCwiid Wii-mote support (Optional) : no
+    - DynamO-Coil Integration  : yes
+...patience...
+<?php codeblockend("brush: plain;"); ?>
 <p>
-  If you are missing the <b>bzip2</b> library, then DynamO won't build
-  at all. If you are missing any of Coil's dependencies [DynamO-Coil
-  Integration : <b>no</b>] DynamO will still build, but without the
-  visualizer support.
+  If you are missing any of the boost libraries, then DynamO won't
+  build at all. If you are missing any of Coil's dependencies you will
+  see [DynamO-Coil Integration : <b>no</b>]; however, DynamO will
+  still build but without the visualizer support (the dynavis program
+  will be missing).
 </p>
 <p>
   If you still have errors, take a look at the
@@ -170,8 +175,8 @@ Performing configuration checks
 <h1>Appendix A: Updating</h1>
 <p>
   This covers how to update using Git, which you might choose to do if
-  you have made changes to the code. In other cases, you can just
-  redownload the code and start from the top.
+  you have made changes to the code. Alternatively, you can just
+  redownload the code and start again from the top.
 </p> 
 <p>
   If there has been a major update to the code (change in the version
@@ -197,7 +202,8 @@ sudo make install<?php codeblockend("brush: shell;"); ?>
   sanity checks and verbose error reports. To create the debugging
   version just run the following command in the DynamO directory
 </p>
-<?php codeblockstart(); ?>src/boost/bjam -j2 install debug<?php codeblockend("brush: shell;"); ?>
+<?php codeblockstart(); ?>make debug
+sudo make install<?php codeblockend("brush: shell;"); ?>
 <p>
   This will install some executables built with debugging symbols and
   extra sanity checks in the <em>bin/</em> directory. These

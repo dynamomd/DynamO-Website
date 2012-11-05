@@ -7,12 +7,23 @@
    }
    $pagetitle="Documentation";
  ?>
+<?php printTOC(); ?>
+<h1>The Basics</h1>
+<p>
+  DynamO, like many Linux programs, is driven through a Command-Line
+  Interface (CLI). To be able to use DynamO, you will need to be
+  familiar with the Linux terminal. Take a look
+  at <a href="http://www.linuxcommand.org">this link</a> to learn more
+  about the terminal and how it works if you are at all unsure what
+  this means.
+</p>
 <h1>User Documentation/Tutorials</h1> 
 <p>
   The user documentation for DynamO comes in the form of a set of
   tutorials on the basic topics. Please click on any of the links
   below to take a look
 </p>
+<div style="clear:both;"></div>
 <?php button("Tutorial 1: Compiling DynamO from Source","/index.php/tutorial1");?>
 <?php button("Tutorial 2: Running a Simulation of Hard Spheres","/index.php/tutorial2");?>
 <?php button("Tutorial 3: Exploring the Configuration File Format","/index.php/tutorial3");?>

@@ -14,6 +14,13 @@
   Ubuntu systems or obtain the source code to compile your own copy of
   DynamO.
 </p>
+<p>
+  Currently DynamO will only compile and run on <b>Gnu/Linux</b> based
+  systems (e.g., Ubuntu/Gentoo/RedHat). You will also need to be
+  familiar with how to compile and install programs on whichever
+  distribution of Linux you are using before you will be able to setup
+  DynamO.
+</p>
 <h1>Ubuntu Systems</h1>
 <p>
   To download and install DynamO on Ubuntu, it is recommended that you

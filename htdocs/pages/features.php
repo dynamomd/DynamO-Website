@@ -7,6 +7,7 @@
    }
    $pagetitle="Features";
  ?>
+<?php printTOC(); ?>
 <h1>Video Gallery</h1>
 <p>
   The videos below are all running in real time or have been slowed
