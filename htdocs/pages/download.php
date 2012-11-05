@@ -14,18 +14,31 @@
   Ubuntu systems or obtain the source code to compile your own copy of
   DynamO.
 </p>
-<h1>Ubuntu Packages</h1>
+<h1>Ubuntu Systems</h1>
+<p>
+  To download and install DynamO on Ubuntu, it is recommended that you
+  add a DynamO PPA repository so that you recieve automatic updates
+  and bug fixes.
+</p>
+<h2>Stable Releases</h2>
 <p>
   At the moment, there are no stable releases available for Ubuntu as
   prebuilt packages for Ubuntu are a new feature for DynamO
   1.4.0. Once DynamO 1.4.0 has been released, a PPA with the stable
   packages will be posted here.
 </p>
+<h2>Daily Development Releases</h2>
 <p>
   There is a daily build of the DynamO development tree which you can
   use to get the latest versions and features. Just add the daily
-  build PPA to your ubuntu system following the instructions on the
-  page linked below.
+  build PPA to your ubuntu system using the following terminal
+  commands:
+</p>
+<?php codeblockstart(); ?>sudo add-apt-repository ppa:dynamomd/dynamo-daily-ppa
+sudo apt-get update
+sudo apt-get install dynamo-core dynamo-tools dynamo-visualisation<?php codeblockend("brush: shell;"); ?>
+<p>
+  More information about the PPA is given on its Launchpad site.
 </p>
 <?php button("Ubuntu Daily Build PPA","https://code.launchpad.net/~dynamomd/+archive/dynamo-daily-ppa");?>
 <h1>Source Code Downloads</h1>
