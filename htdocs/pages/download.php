@@ -66,7 +66,7 @@ sudo apt-get install dynamo-core dynamo-tools dynamo-visualisation<?php codebloc
 <p>
   Just install git and use the following command in your terminal:
 </p> 
-<?php codeblockstart(); ?>git clone https://github.com/toastedcrumpets/DynamO.git<?php codeblockend("brush: shell;"); ?>
+<?php codeblockstart(); ?>git clone http://github.com/toastedcrumpets/DynamO.git<?php codeblockend("brush: shell;"); ?>
 <p>
   This will create a folder called <em>DynamO</em> in the working
   directory. If this command fails, you can try the alternative git
