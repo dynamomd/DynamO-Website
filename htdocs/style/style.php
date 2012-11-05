@@ -177,7 +177,9 @@ li { margin:5px; }
 
 #TOC #header {
     float:right;
+    font-weight:bold;
     display:inline;
+    background-color:#ffffff;
     position:relative;
     margin: -15px -15px 0 0;
     border-bottom:solid 2px;
