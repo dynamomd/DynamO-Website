@@ -76,17 +76,21 @@
     <a href="http://www.speadmd.org/">SPEADMD</a> : This is a
     collection of event driven potentials and Thermodynamic
     Perturbation Theory (TPT) which can be used to accurately estimate
-    the thermophysical properties of compounds. Although the results
-    are extremely impressive, it appears that the potentials used are
-    unpublished and the code is unavailable, except via a web
-    interface.</li>
+    the thermophysical properties of compounds. The results are
+    extremely impressive, although it appears that the fine details on
+    the potentials used are not readily available and the code is
+    unavailable, except via a web interface.</li>
   <li>
     <a href="http://cims.nyu.edu/~donev/Packing/PackLSD/Instructions.html">PackLSD </a>
     (or an <a href="http://cherrypit.princeton.edu/Packing/C++/">older
-    version</a>):<br /> This is powerful code for generating densely
-    packed hard sphere configurations. DynamO uses the same technique
-    but this code is simpler as it is targeted only to this task and
-    contains tools for analysing the packed configuration.
+    version</a>):<br /> This is powerful code aimed at generating
+    densely packed hard particle (ellipsoidal) configurations. DynamO
+    uses the same techniques for compression but it is limited to
+    spherical shapes. The PackLSD code is also simpler as it is
+    targeted only to the task of generating hard particle packings,
+    yet more advanced in that it handles more general particle
+    shapes. It also contains tools for analysing the packed
+    configuration.
   </li>
   <li>
     <a href="http://danger.med.unc.edu/tools.php">iFold:</a> This is
