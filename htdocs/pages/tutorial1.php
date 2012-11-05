@@ -126,7 +126,6 @@ cd DynamO<?php codeblockend("brush: shell;"); ?>
 <?php codeblockstart(); ?>Performing configuration checks
 
     - DynamO: Boost headers    : yes
-    - DynamO: Boost system library : yes
     - DynamO: Boost filesystem library : yes
     - DynamO: Boost program options library : yes
     - DynamO: Boost iostreams library : yes
