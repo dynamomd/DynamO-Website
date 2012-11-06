@@ -205,7 +205,6 @@ sudo make install<?php codeblockend("brush: shell;"); ?>
 sudo make install<?php codeblockend("brush: shell;"); ?>
 <p>
   This will install some executables built with debugging symbols and
-  extra sanity checks in the <em>bin/</em> directory. These
-  executables have the suffix "<em>_d</em>" (dynamod_d and dynarun_d)
-  to indicate they're the debugging version.
+  extra sanity checks. These executables have the suffix "<em>_d</em>"
+  (dynamod_d and dynarun_d) to indicate they're the debugging version.
 </p>
