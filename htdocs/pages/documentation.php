@@ -10,6 +10,12 @@
 <?php printTOC(); ?>
 <h1>The Basics</h1>
 <p>
+  All of the documentation of DynamO assumes that you have some
+  experience with both Linux and Molecular Dynamics simulation. Here
+  some resources are provided to help with these basics if you have no
+  prior experience in these topics.
+</pg>
+<p>
   DynamO, like many Linux programs, is driven through a Command-Line
   Interface (CLI). To be able to use DynamO, you will need to be
   familiar with the Linux terminal. Take a look
@@ -19,8 +25,9 @@
 </p>
 <p>
   If you're looking for general documentation on Molecular Dynamics,
-  there are a few good introductory textbooks available. The text by
-  Allen and Tildesley has always been very popular.
+  there are a few good introductory textbooks available. The
+  definitive text by Allen and Tildesley has always been very popular
+  with students and veterans alike.
 </p>
 <p style="text-align:center;">
   &quot;Computer Simulation of Liquids,&quot;
@@ -29,12 +36,12 @@
 <p>
   A short summary of the basics, written by Allen
   is <a href="http://www2.fz-juelich.de/nic-series/volume23/allen.pdf">also
-  available online</a>.
+  available online</a> if you cannot find a copy of the book.
 </p>
 <p>
   The event-driven techniques used in DynamO are quite different to
-  the standard approach. Marcus' favourite text on the subject is the
-  excellent book by Haile.
+  the standard approaches outlined in the resources above. These
+  differences are best described in the excellent book by Haile.
 </p>
 <p style="text-align:center;">
   &quot;Molecular Dynamics Simulation: Elementary Methods,&quot;
