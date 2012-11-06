@@ -39,8 +39,9 @@
   available online</a> if you cannot find a copy of the book.
 </p>
 <p>
-  The event-driven techniques used in DynamO are quite different to
-  the standard approaches outlined in the resources above. These
+  Although the fundamentals of Molecular Dynamics are always the same,
+  the event-driven techniques used in DynamO differ in implementation
+  from the techniques described in the resources above.. These
   differences are best described in the excellent book by Haile.
 </p>
 <p style="text-align:center;">
