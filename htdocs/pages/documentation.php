@@ -17,6 +17,29 @@
   about the terminal and how it works if you are at all unsure what
   this means.
 </p>
+<p>
+  If you're looking for general documentation on Molecular Dynamics,
+  there are a few good introductory textbooks available. The text by
+  Allen and Tildesley has always been very popular.
+</p>
+<p style="text-align:center;">
+  &quot;Computer Simulation of Liquids,&quot;
+  M. P. Allen, and D. J. Tildesley, 1989, Oxford Science Pub.
+</p>
+<p>
+  A short summary of the basics, written by Allen
+  is <a href="http://www2.fz-juelich.de/nic-series/volume23/allen.pdf">also
+  available online</a>.
+</p>
+<p>
+  The event-driven techniques used in DynamO are quite different to
+  the standard approach. Marcus' favourite text on the subject is the
+  excellent book by Haile.
+</p>
+<p style="text-align:center;">
+  &quot;Molecular Dynamics Simulation: Elementary Methods,&quot;
+  J. M. Haile, 1992, Wiley
+</p>
 <h1>User Documentation/Tutorials</h1> 
 <p>
   The user documentation for DynamO comes in the form of a set of
