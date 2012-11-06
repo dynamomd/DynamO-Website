@@ -13,7 +13,7 @@
   In this tutorial, we will cover the basics of using DynamO, and
   learn how to simulate the simplest event driven system, the hard
   sphere fluid with periodic boundary conditions. This will give you
-  an overview of the general work-flow of working with DynamO, and
+  an overview of the general work-flow of simulations with DynamO, and
   later tutorials will go into the details.
 </p>
 <div class="figure" style="clear:right; float:right;width:400px;">
