@@ -53,7 +53,7 @@ function embedvideo($filename, $youtubecode, $width, $height)
      if (file_exists($basename.".webm")) {?> <source src="/videos/<?php echo $filename; ?>.webm" type='video/webm' /> <?php }
      if (file_exists($basename.".ogg")) {?> <source src="/videos/<?php echo $filename; ?>.ogg" type='video/ogg' /> <?php }
    }
-  ?> <iframe style="border:none;" width="<?php echo $width?>" height="<?php echo $height?>" src="https://www.youtube-nocookie.com/embed/<?php echo $youtubecode?>?rel=0&amp;autohide=1&amp;theme=light&amp;modestbranding=1&amp;showinfo=0"></iframe> <?php
+  ?> <iframe style="border:none;" width="<?php echo $width?>" height="<?php echo $height?>" src="https://www.youtube-nocookie.com/embed/<?php echo $youtubecode?>?rel=0&amp;autohide=1&amp;theme=light&amp;modestbranding=1&amp;showinfo=0;vq=hd1080"></iframe> <?php
 
   if ($html5embed) { ?></video><?php }
   echo "</div>";

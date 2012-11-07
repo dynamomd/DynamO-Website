@@ -15,6 +15,15 @@
   been produced using the Coil visualisation software, which is
   included as a part of DynamO.
 </p>
+<div style="clear:both;"></div>
+
+<div class="figure" style="float:left; height:368px; width:533px;">
+  <?php embedvideo("nanospheres", "zBi5eEP2V90", 533, 300); ?>
+  <div class="caption" >
+    A simulation of thermophoresis (also known as the Soret effect or
+    thermodiffusion) occuring in a model nanofluid.
+  </div>
+</div>
 <div class="figure" style="float:left; height:368px;width:533px;">
   <?php embedvideo("granularDamper", "3mlisuFJkqk", 533, 315); ?>
   <div class="caption">
@@ -22,7 +31,7 @@
   </div>
 </div>
 <div class="figure" style="float:left; height:368px;width:533px;">
-  <?php embedvideo("pairHPpolymer", "RXCOU9btDuQ", 400, 300); ?>
+  <?php embedvideo("pairHPpolymer", "RXCOU9btDuQ", 400, 325); ?>
   <div class="caption">
     Pair of Interacting HP Heteropolymers.
   </div>
