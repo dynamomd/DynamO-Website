@@ -14,7 +14,7 @@
   experience with both Linux and Molecular Dynamics simulation. Here
   some resources are provided to help with these basics if you have no
   prior experience in these topics.
-</pg>
+</p>
 <p>
   DynamO, like many Linux programs, is driven through a Command-Line
   Interface (CLI). To be able to use DynamO, you will need to be
