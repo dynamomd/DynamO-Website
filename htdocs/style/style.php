@@ -8,6 +8,11 @@ $hoverbutton = "#ccddcc";
 /* Main html element styles */
 html { height: 100%; }
 
+/* This fixes a buggy/deliberate behavior of android phones which causes them to shrink paragraph boxes!*/
+p {
+  background-color: transparent;
+}
+
 .syntaxhighlighterwrapper {
     display:inline-block;
     max-width:100%;
