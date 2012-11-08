@@ -191,6 +191,11 @@ li {
     border-left:solid 2px #000000;
 }
 
+#TOC li { 
+    /* Android autofit bugfix */
+    background-color:#ccddee;
+ }
+
 #TOC #header {
     float:right;
     font-weight:bold;
