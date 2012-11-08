@@ -8,9 +8,9 @@ $hoverbutton = "#ccddcc";
 /* Main html element styles */
 html { height: 100%; }
 
-/* This fixes a buggy/deliberate behavior of android phones which causes them to shrink paragraph boxes!*/
 p {
-  background-color: #ffffff;
+    /* Android autofit bugfix */
+    background-color: #ffffff;
 }
 
 .syntaxhighlighterwrapper {
@@ -39,11 +39,22 @@ h1 {
     border-bottom:2px solid;
     display:block;
     clear:left;
+    /* Android autofit bugfix */
+    background-color: #ffffff;
 }
 
-h2 { font-size:16pt; display:block; }
+h2 { 
+    font-size:16pt; 
+    display:block; 
+    /* Android autofit bugfix */
+    background-color: #ffffff;
+}
 
-li { margin:5px; }
+li { 
+    margin:5px;     
+    /* Android autofit bugfix */
+    background-color: #ffffff;
+ }
 
 .rounded {
     border-radius: 15px;
