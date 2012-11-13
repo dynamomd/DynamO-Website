@@ -21,7 +21,14 @@
   <?php embedvideo("nanospheres", "zBi5eEP2V90", 533, 300); ?>
   <div class="caption" >
     A simulation of thermophoresis (also known as the Soret effect or
-    thermodiffusion) occuring in a model nanofluid.
+    thermodiffusion) occurring in a model nanofluid.
+  </div>
+</div>
+<div class="figure" style="float:left; height:368px; width:533px;">
+  <?php embedvideo("pendulum", "FrDoc6t7jwI", 533, 300); ?>
+  <div class="caption" >
+    A simulation of a pendulum used to test the constraint force
+    implementation in gravity.
   </div>
 </div>
 <div class="figure" style="float:left; height:368px;width:533px;">
