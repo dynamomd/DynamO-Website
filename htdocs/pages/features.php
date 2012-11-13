@@ -76,34 +76,51 @@
 </div>
 </div>
 <h1 style="clear:both;">Full List of Features</h1>
-<h2>Simple Systems</h2>
-<p>DynamO can simulate:</p>
+<h2>Key Features</h2>
+<p>DynamO has the following features:</p>
 <ul>
   <li>
-    <b>Smooth</b> or <b>rough hard
-      spheres</b>, <b>square wells</b>, <b>soft
-      cores</b> and all the other simple EDMD potentials.
+    <b>Smooth</b> or <b>rough hard spheres</b>, <b>square
+      wells</b>, <b>soft cores</b>, <b>stepped potentials</b> and all
+      the other simple EDMD potentials are fully supported. Some
+      complex interactions, such as <b>hard lines</b> and part of the
+      PRIME model for protiens, are also supported.
   </li>
   <li>
-    <b>Millions of particles </b>for <b>billions of
-      events</b>: Using 500 bytes per particle and running at
-    around 75k events a second, even an old laptop can run huge
-    simulations.
+    <b>Millions of particles </b>for <b>billions of events</b>. Using
+      500 bytes per particle and running at around 75k events per
+      second, DynamO is one of the most efficient and fastest
+      event-driven simulators available.
+  </li>
+  <li><b>Transport Properties</b>: DynamO automatically collects
+    information on all of the transport coefficients for the simulated
+    fluid, including the thermal conductivity, viscosity, self and
+    mutual diffusion, and thermal diffusion coefficients. These are
+    collected using the Einstein form of the Green-Kubo expressions.
   </li>
   <li>
-    <b>Non-Equilibrium Molecular Dynamics</b> (NEMD):
-    DynamO has Lees-Edwards boundary conditions for shearing systems,
-    thermalised walls and Andersen or rescaling thermostats.
+    <b>Non-Equilibrium Molecular Dynamics</b> (NEMD): DynamO has
+    thermostats, thermalised walls, and Lees-Edwards boundary
+    conditions for shearing systems, allowing the study of a wide
+    range of Non-Equilibrium data.
   </li>
   <li>
-    <b>Compression dynamics</b>: Need high density
-    systems? DynamO can compress any of its systems using isotropic
-    compaction until the pressure diverges! 
+    <b>Compression dynamics</b>: Need to study high density systems?
+    DynamO can compress most of its model systems using isotropic
+    compaction, allowing you to start from a low density where it is
+    easier to place the particles.
   </li>
   <li>
     <b>Poly-dispersity</b>: All interactions are
     generalised to fully poly-disperse particles.
   </li>
+  <li>
+    <b>Stable handling of overlapped states</b>: Thanks to a careful
+    implementation of the event-detection routines in DynamO, it can
+    safely recover from invalid states caused by overlapped cores in
+    most cases. This makes DynamO the most stable event-driven
+    particle dynamics code, and this feature is essential
+    in <b>granular systems</b>.
 </ul>
 
 <h2>Granular Systems/Complex Boundaries</h2>
@@ -111,9 +128,9 @@
   systems:</p>
 <ul>
   <li>
-    <b>Event driven dynamics with gravity</b>: Almost all
-    interactions work in the presence of gravity, allowing event driven
-    simulations of macroscopic systems.
+    <b>Event driven dynamics with gravity</b>: All interactions work
+    in the presence of gravity, allowing event driven simulations of
+    macroscopic systems.
   </li>
   <li>
     <b>Sleeping particles</b>: In systems where particles
@@ -137,17 +154,19 @@
   <li>
     <b>Parallel tempering/Replica exchange</b>: Run multiple
     simulations in parallel and use this Monte Carlo technique to
-    enhance the sampling of phase space.
+    enhance the sampling of phase space when it is energetically
+    difficult. This is essential in protein/polymer-folding
+    simulations.
   </li>
   <li>
-    <b>Histogram reweighting</b>: Combine the results from
-    replica exchange simulations and extrapolate to temperatures which
-    were not simulated.
+    <b>Histogram reweighting</b>: Combine the results from replica
+    exchange simulations and extrapolate to temperatures which were
+    not simulated, maximising the information extracted.
   </li>
   <li>
-    <b>Multicanonical simulations</b>: Used in conjunction
-    with replica exchange techniques, multicanonical simulations greatly
-    enhance the sampling of phase space, helping find the true native
-    state of the polymer.
+    <b>Multicanonical simulations</b>: Used either in conjunction with
+    or as a replacement for replica exchange techniques,
+    multicanonical simulations greatly enhance the sampling of phase
+    space, helping find the true native states of the polymer.
   </li>
 </ul>
