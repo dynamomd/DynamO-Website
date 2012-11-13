@@ -16,59 +16,59 @@
   included as a part of DynamO.
 </p>
 <div style="clear:both;text-align:center;">
-<div class="figure" style="height:368px; width:533px;">
+<div class="figure" style="height:368px; width:533px; vertical-align:middle;">
   <?php embedvideo("nanospheres", "zBi5eEP2V90", 533, 300); ?>
   <div class="caption" >
     A simulation of thermophoresis (also known as the Soret effect or
     thermodiffusion) occurring in a model nanofluid.
   </div>
 </div>
-<div class="figure" style="height:368px; width:533px;">
+<div class="figure" style="height:368px; width:533px; vertical-align:middle;">
   <?php embedvideo("pendulum", "FrDoc6t7jwI", 533, 300); ?>
   <div class="caption" >
     A simulation of a pendulum used to test the constraint force
     implementation in gravity.
   </div>
 </div>
-<div class="figure" style="height:368px;width:533px;">
+<div class="figure" style="height:368px;width:533px; vertical-align:middle;">
   <?php embedvideo("granularDamper", "3mlisuFJkqk", 533, 315); ?>
   <div class="caption">
     Granular Damper Simulation.
   </div>
 </div>
-<div class="figure" style="height:368px;width:533px;">
+<div class="figure" style="height:368px;width:533px; vertical-align:middle;">
   <?php embedvideo("pairHPpolymer", "RXCOU9btDuQ", 400, 325); ?>
   <div class="caption">
     Pair of Interacting HP Heteropolymers.
   </div>
 </div>
-<div class="figure" style="height:368px;width:533px;">
+<div class="figure" style="height:368px;width:533px; vertical-align:middle;">
   <?php embedvideo("sleepingparticles", "9oaobaxhGX8", 533, 298); ?>
   <div class="caption">
     Gravity, Boundary Sphere Meshes and Sleeping Particles.
     <!--<?php codeblockstart(); ?>dynamod -m 25<?php codeblockend("brush: shell;"); ?>-->
   </div>
 </div>
-<div class="figure" style="height:368px;width:533px;">
+<div class="figure" style="height:368px;width:533px; vertical-align:middle;">
   <?php embedvideo("trianglemesh", "1Rn-bL8S30Y", 533, 280); ?>
   <div class="caption">
     Triangle Meshes and Gravity.
   </div>
 </div>
-<div class="figure" style="height:368px;width:533px;">
+<div class="figure" style="height:368px;width:533px; vertical-align:middle;">
 <?php embedvideo("shearpoly2d", "0kYY6NjE_sE", 533, 298); ?>
   <div class="caption">
     Sheared Polydisperse Hard Disks (2D).
     <!-- <?php codeblockstart(); ?>dynamod -m 26 -x 50 -y 50 -z 1 --i1 2 -d 0.8 --rectangular-box --zero-vel=2<?php codeblockend("brush: shell;"); ?> -->
   </div>
 </div>
-<div class="figure" style="height:368px;width:533px;">
+<div class="figure" style="height:368px;width:533px; vertical-align:middle;">
   <?php embedvideo("thinHardLines", "hUVZxEhjoc0", 533, 298); ?>
   <div class="caption">
     Infinitely-Thin Hard Rods.
   </div>
 </div>
-<div class="figure" style="height:368px;width:533px;">
+<div class="figure" style="height:368px;width:533px; vertical-align:middle;">
   <?php embedvideo("parallelCubes", "B_qASDj9J8I", 533, 298); ?>
   <div class="caption">
     Parallel Hard Cubes.
