@@ -60,6 +60,12 @@
   to use the visualiser (called Coil) supplied with DynamO:
 </p>
 <ul>
+  <li>
+    <b>OpenGL 3.3+ Graphics Card and Drivers</b>: You will need a
+    modern graphics card with support for OpenGL 3.3 or
+    higher. Usually, this means using a AMD/ATI or Nvidia card with
+    up-to-date drivers.
+  </li>
   <li><a href="http://www.gtkmm.org/">Gtkmm</a> (<b style="font-size:
     16px;">Ubuntu Package</b>: libgtkmm-2.4-dev).
   </li>
@@ -69,18 +75,6 @@
   </li>
   <li>
     <a href="http://glew.sourceforge.net/">GLEW</a> version 1.6+ (<b>Ubuntu Package</b>: libglew1.6-dev).
-  </li>
-  <li>
-    <a href="http://www.khronos.org/opencl/">OpenCL Headers</a> -
-    OpenCL is a new parallel programming paradigm, and the visualiser
-    uses it to process data during rendering (<b>Ubuntu Packages</b>: opencl-headers).
-  </li>
-  <li>
-    <a href="http://www.khronos.org/opencl/">OpenCL Library</a> - An
-    OpenCL library is provided with the latest AMD and NVidia binary
-    graphics card drivers. You will need a relatively modern graphics
-    card to use the visualiser too. (<b>Ubuntu Packages</b>: fglrx
-    (AMD) <i>OR</i> nvidia-current (NVidia)).
   </li>
   <li>
     <a href="http://ffmpeg.org/">libavcodec</a> - (Optional) Allows
@@ -131,7 +125,6 @@ cd DynamO<?php codeblockend("brush: shell;"); ?>
     - DynamO: Boost iostreams library : yes
     - Magnet: libavcodec (video encoding support) : yes
     - Coil: Gtkmm              : yes
-    - Coil: OpenCL libraries and headers : yes
     - Coil: GLEW (v1.6+)       : yes
     - Coil: GLUT               : yes
     - Coil: libCwiid Wii-mote support (Optional) : no
