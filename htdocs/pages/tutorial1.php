@@ -123,6 +123,7 @@ cd DynamO<?php codeblockend("brush: shell;"); ?>
     - DynamO: Boost filesystem library : yes
     - DynamO: Boost program options library : yes
     - DynamO: Boost iostreams library : yes
+    - Magnet: OpenCL libraries and headers (optional) : no
     - Magnet: libavcodec (video encoding support) : yes
     - Coil: Gtkmm              : yes
     - Coil: GLEW (v1.6+)       : yes
