@@ -17,6 +17,13 @@
 </p>
 <div style="clear:both;text-align:center;">
 <div class="figure" style="height:368px; width:533px; vertical-align:middle;">
+  <?php embedvideo("vibratedBed", "2MBmJRDzYYk", 533, 300); ?>
+  <div class="caption" >
+    A test simulation of a vibrated mixture of granulate.
+  </div>
+</div>
+<div style="clear:both;text-align:center;">
+<div class="figure" style="height:368px; width:533px; vertical-align:middle;">
   <?php embedvideo("nanospheres", "zBi5eEP2V90", 533, 300); ?>
   <div class="caption" >
     A simulation of thermophoresis (also known as the Soret effect or
