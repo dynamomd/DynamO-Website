@@ -194,7 +194,8 @@ if ($TOC)
         videoelem = document.getElementById(videoelemid);
         videoelem.removeAttribute("style");
         videoelem.removeAttribute("onclick");
-        videoelem.childNodes[0]("onclick");
+	videoelem.removeChild(videoelem.childNodes[0]);
+
         player = new YT.Player(videoelemid, {
           playerVars: { modestbranding: true, 'showinfo': 0, theme: 'light', 'autohide': 1, 'rel': 0, wmode: "opaque"},
           height: height,
