@@ -74,32 +74,24 @@ li {
     font-weight:bold;
 }
 
-/* Stuff for making full width HTML5 and flash videos */
-.video-container video {
-    width: 100%;
-    height: auto;
-}
-
 .video-container {
     position:relative;
     clear:both;
+    cursor: hand; cursor: pointer;
     margin-left:auto; 
     margin-right:auto;
 }
 
-.video-container .fullscreen-button {
+.video-container .play-button {
     width:31px;
-    display:inline;
     height:31px;
-    background-image: url(csssprites.png);
-    background-position: -180px 0;
     position:absolute;
-    right:0;
-    top:0;
+    background-image: url(csssprites.png);
+    background-position: -242px 0;
 }
 
-.video-container .fullscreen-button:hover {
-    background-position: -211px 0;
+.video-container:hover .play-button {
+    background-position: -273px 0;
 }
 
 #sitelogo { 

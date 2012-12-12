@@ -39,24 +39,11 @@ function printTOC()
 
 $html5video = false;
 
-function embedvideo($filename, $youtubecode, $width, $height)
+function embedAJAXvideo($filename, $youtubecode, $width, $height)
 {
-   echo "<div class=\"video-container\" style=\"width:".$width."px;\">";
-
-   global $html5video;
-
-   $basename = $_SERVER{'DOCUMENT_ROOT'} . "/videos/" . $filename;
-   $html5embed = $html5video && file_exists($basename.".jpg");
-   if ($html5embed)
-   { ?> <video controls poster="/videos/<?php echo $filename; ?>.jpg" preload="none"> <?php
-     if (file_exists($basename.".mp4")) {?> <source src="/videos/<?php echo $filename; ?>.mp4" type='video/mp4' /> <?php }
-     if (file_exists($basename.".webm")) {?> <source src="/videos/<?php echo $filename; ?>.webm" type='video/webm' /> <?php }
-     if (file_exists($basename.".ogg")) {?> <source src="/videos/<?php echo $filename; ?>.ogg" type='video/ogg' /> <?php }
-   }
-  ?> <iframe style="border:none;" width="<?php echo $width?>" height="<?php echo $height?>" src="https://www.youtube-nocookie.com/embed/<?php echo $youtubecode?>?rel=0&amp;autohide=1&amp;theme=light&amp;modestbranding=1&amp;showinfo=0;vq=hd1080"></iframe> <?php
-
-  if ($html5embed) { ?></video><?php }
-  echo "</div>";
+   $playtop=(intval($height) - 31) * 0.5;
+   $playleft=(intval($width) - 31) * 0.5;
+   echo "<div class=\"video-container\" style=\"width:".$width."px;height:".$height."px;background-image:url('/videos/".$filename.".jpg')\" id=\"".$filename."video\" onclick=\"delayedLoadOfVideo('".$filename."video', '".$height."', '".$width."', '".$youtubecode."')\"><div class=\"play-button\" style=\"top:".$playtop."px; left:".$playleft."px;\"></div></div>";
 }
 
 /* Set the default page accessed when someone opens this file*/
@@ -190,6 +177,34 @@ if ($TOC)
       ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
       var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
       })();
+    </script>
+    <script type="text/javascript">
+      var tag = document.createElement('script');
+      tag.src = "//www.youtube.com/iframe_api";
+      var firstScriptTag = document.getElementsByTagName('script')[0];
+      firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+
+      function onPlayerReady(event) {
+        event.target.playVideo();
+        event.target.setPlaybackQuality('highres');
+      }
+
+      function delayedLoadOfVideo(videoelemid, height, width, youtubecode)
+      {
+        videoelem = document.getElementById(videoelemid);
+        videoelem.removeAttribute("style");
+        videoelem.removeAttribute("onclick");
+        videoelem.childNodes[0]("onclick");
+        player = new YT.Player(videoelemid, {
+          playerVars: { modestbranding: true, 'showinfo': 0, theme: 'light', 'autohide': 1, 'rel': 0, wmode: "opaque"},
+          height: height,
+          width: width,
+          videoId: youtubecode,
+          events: {
+            'onReady': onPlayerReady,
+          }
+        });
+      }
     </script>
   </head>
   <body>

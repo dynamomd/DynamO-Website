@@ -17,7 +17,7 @@
   later tutorials will go into the details.
 </p>
 <div class="figure" style="clear:right; float:right;width:400px;">
-  <?php embedvideo("hardspheres", "tn6Cz0tNPuU", 400, 250); ?>
+  <?php embedAJAXvideo("hardspheres", "tn6Cz0tNPuU", 400, 250); ?>
   <div class="caption">
     A video of the system generated and simulated in this tutorial.
     <?php button("Show Configuration","/pages/config.tut3.xml");?>

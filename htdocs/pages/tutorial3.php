@@ -33,7 +33,7 @@
 </p>
 <h1>The Example Configuration</h1>
 <div class="figure" style="clear:right; float:right;width:400px;">
-  <?php embedvideo("hardspheres", "tn6Cz0tNPuU", 400, 250); ?>
+  <?php embedAJAXvideo("hardspheres", "tn6Cz0tNPuU", 400, 250); ?>
   <div class="caption">
     The starting configuration of 1372 hard-spheres with periodic
     boundary conditions.
@@ -75,7 +75,7 @@ dynamod -m 0 -d 0.5 -C 7 -o config.start.xml
   file as an XML file:
 </p>
 <?php codeblockstart(); ?>
-<?xml version="1.0"?>
+<xml version="1.0" ?>
 <?php codeblockend("brush: xml;"); ?>
 <p>
   Underneath this lies the contents of the file. You will notice that
@@ -273,7 +273,7 @@ dynamod -m 0 -d 0.5 -C 7 -o config.start.xml
 </DynamOconfig>
 <?php codeblockend("brush: xml;"); ?>
 <div class="figure" style="clear:right; float:right;width:400px;">
-  <?php embedvideo("hardspheres", "-QbpKrtPvWU", 400, 300); ?>
+  <?php embedAJAXvideo("hardspheresExpand", "-QbpKrtPvWU", 400, 300); ?>
   <div class="caption">
     The effect of expanding the simulation domain.
     <?php button("Show Modified Configuration","/pages/config.tut3.expanded.xml");?>
@@ -331,7 +331,7 @@ dynamod -m 0 -d 0.5 -C 7 -o config.start.xml
 </DynamOconfig>
 <?php codeblockend("brush: xml;"); ?>
 <div class="figure" style="float:right;width:400px;">
-  <?php embedvideo("infinitehardspheres", "RzjmpRtwDAw", 400, 300); ?>
+  <?php embedAJAXvideo("infinitehardspheres", "RzjmpRtwDAw", 400, 300); ?>
   <div class="caption">
     The same configuration as in the movie above, but with the
     Boundary Conditions set to <b>None</b>.
@@ -558,7 +558,7 @@ dynamod -m 0 -d 0.5 -C 7 -o config.start.xml
 </DynamOconfig>
 <?php codeblockend("brush: xml;"); ?>
 <div class="figure" style="float:right;width:400px;">
-  <?php embedvideo("granularhardspheres", "d6M43_Nr4pQ", 400, 300); ?>
+  <?php embedAJAXvideo("granularhardspheres", "d6M43_Nr4pQ", 400, 300); ?>
   <div class="caption">
     Modifying the <b>Interaction</b> to make a low density granular
     gas. <?php button("Show Modified
@@ -715,7 +715,7 @@ dynamod -m 0 -d 0.5 -C 7 -o config.start.xml
 </DynamOconfig>
 <?php codeblockend("brush: xml;"); ?>
 <div class="figure" style="clear:right; float:right;width:400px;">
-  <?php embedvideo("fallinghardspheres", "Hx6rcS-RAkU", 400, 300); ?>
+  <?php embedAJAXvideo("fallinghardspheres", "Hx6rcS-RAkU", 400, 300); ?>
   <div class="caption">
     Enabling gravity causes all the particles to fall, but with
     periodic boundary conditions there is nothing to arrest their
