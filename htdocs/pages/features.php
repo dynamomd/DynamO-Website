@@ -16,68 +16,84 @@
   included as a part of DynamO.
 </p>
 <div style="clear:both;text-align:center;">
-<div class="figure" style="height:368px; width:533px; vertical-align:middle;">
+<div class="figure" style="height:378px; width:533px; vertical-align:middle;">
   <?php embedAJAXvideo("vibratedBed", "2MBmJRDzYYk", 533, 300); ?>
   <div class="caption">
-    A test simulation of a vibrated mixture of granulate.
+    A small test simulation of a vibrated mixture of granulate. The
+    wall at the bottom of the container has a "temperature" which is
+    an approximation of a high frequency and low amplitude vibration.
   </div>
 </div>
-<div class="figure" style="height:368px; width:533px; vertical-align:middle;">
+<div class="figure" style="height:378px; width:533px; vertical-align:middle;">
   <?php embedAJAXvideo("nanospheres", "zBi5eEP2V90", 533, 300); ?>
   <div class="caption" >
     A simulation of thermophoresis (also known as the Soret effect or
-    thermodiffusion) occurring in a model nanofluid.
+    thermodiffusion) occurring in a nanofluid in between a hot and
+    cold wall.
   </div>
 </div>
-<div class="figure" style="height:368px; width:533px; vertical-align:middle;">
+<div class="figure" style="height:378px; width:533px; vertical-align:middle;">
   <?php embedAJAXvideo("pendulum", "FrDoc6t7jwI", 533, 300); ?>
   <div class="caption" >
     A simulation of a pendulum used to test the constraint force
     implementation in gravity.
   </div>
 </div>
-<div class="figure" style="height:368px;width:533px; vertical-align:middle;">
+<div class="figure" style="height:378px;width:533px; vertical-align:middle;">
   <?php embedAJAXvideo("granularDamper", "3mlisuFJkqk", 533, 315); ?>
   <div class="caption">
-    Granular Damper Simulation.
+    A simulation (top) of an experimental granular damper
+    (bottom). The decay of the amplitude is predicted to within 1% of
+    the experimental results.
   </div>
 </div>
-<div class="figure" style="height:368px;width:533px; vertical-align:middle;">
+<div class="figure" style="height:378px;width:533px; vertical-align:middle;">
   <?php embedAJAXvideo("pairHPpolymer", "RXCOU9btDuQ", 400, 325); ?>
   <div class="caption">
-    Pair of Interacting HP Heteropolymers.
+    A simulation of a pair of heteropolymers which agglomerate and
+    begin to fold.
   </div>
 </div>
-<div class="figure" style="height:368px;width:533px; vertical-align:middle;">
+<div class="figure" style="height:378px;width:533px; vertical-align:middle;">
   <?php embedAJAXvideo("sleepingparticles", "9oaobaxhGX8", 533, 298); ?>
   <div class="caption">
-    Gravity, Boundary Sphere Meshes and Sleeping Particles.
+    A simple test simulation of gravity and boundary sphere meshes
+    used to implement the hopper, chute and cup. The particles in the
+    cup are sent to "sleep" once they settle and may "wake up" on
+    impact.
     <!--<?php codeblockstart(); ?>dynamod -m 25<?php codeblockend("brush: shell;"); ?>-->
   </div>
 </div>
-<div class="figure" style="height:368px;width:533px; vertical-align:middle;">
+<div class="figure" style="height:378px;width:533px; vertical-align:middle;">
   <?php embedAJAXvideo("trianglemesh", "1Rn-bL8S30Y", 533, 280); ?>
   <div class="caption">
-    Triangle Meshes and Gravity.
+    A test simulation of the triangle mesh boundaries, these can be
+    used to capture arbitrarily complex (and sharp) boundaries.
   </div>
 </div>
-<div class="figure" style="height:368px;width:533px; vertical-align:middle;">
+<div class="figure" style="height:378px;width:533px; vertical-align:middle;">
 <?php embedAJAXvideo("shearpoly2d", "0kYY6NjE_sE", 533, 298); ?>
   <div class="caption">
-    Sheared Polydisperse Hard Disks (2D).
+    A simple simulation of sheared polydisperse hard disks used to
+    demonstrate the use of DynamO in 2D systems.
     <!-- <?php codeblockstart(); ?>dynamod -m 26 -x 50 -y 50 -z 1 --i1 2 -d 0.8 --rectangular-box --zero-vel=2<?php codeblockend("brush: shell;"); ?> -->
   </div>
 </div>
-<div class="figure" style="height:368px;width:533px; vertical-align:middle;">
+<div class="figure" style="height:378px;width:533px; vertical-align:middle;">
   <?php embedAJAXvideo("thinHardLines", "hUVZxEhjoc0", 533, 298); ?>
   <div class="caption">
-    Infinitely-Thin Hard Rods.
+    The complex system of infinitely-thin rods. These "molecules"
+    caused a stir when first proposed as they are an ideal gas with
+    non-ideal transport properties.
   </div>
 </div>
-<div class="figure" style="height:368px;width:533px; vertical-align:middle;">
+<div class="figure" style="height:378px;width:533px; vertical-align:middle;">
   <?php embedAJAXvideo("parallelCubes", "B_qASDj9J8I", 533, 300); ?>
   <div class="caption">
-    Parallel Hard Cubes.
+    Parallel hard cubes are a simple model-molecular system with
+    interesting thermodynamics. The freezing transition is still
+    poorly understood and this system is an "ideal" model to explore
+    it in.
   </div>
 </div>
 </div>
