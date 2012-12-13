@@ -10,10 +10,12 @@
 <?php printTOC(); ?>
 <h1>Video Gallery</h1>
 <p>
-  The videos below are all running in real time or have been slowed
-  down to allow a clearer animation. The majority of the videos have
-  been produced using the Coil visualisation software, which is
-  included as a part of DynamO.
+  In this section, a range of sample videos of DynamO simulations are
+  presented to highlight what is currently possible with the code and
+  to give an idea of its speed. The videos below are all running in
+  real time or have been slowed down to allow a clearer animation. The
+  majority of the videos have been produced using the Coil
+  visualisation software, which is included as a part of DynamO.
 </p>
 <div style="clear:both;text-align:center;">
 <div class="figure" style="width:533px; vertical-align:middle;">
@@ -29,38 +31,46 @@
   <div class="caption" >
     A simulation of thermophoresis (also known as the Soret effect or
     thermodiffusion) occurring in a nanofluid in between a hot and
-    cold wall.
+    cold wall. Highlighted here is reverse thermophoresis, where the
+    larger species migrates towards the hot plate.
   </div>
 </div>
 <div class="figure" style="width:533px; vertical-align:middle;">
   <?php embedAJAXvideo("pendulum", "FrDoc6t7jwI", 533, 300); ?>
   <div class="caption" >
     A simulation of a pendulum used to test the constraint force
-    implementation in gravity.
+    implementation in gravity. The constraint force is used to anchor
+    the top of the chain to the fixed particle (white), and is a key
+    element of the more general rigid-body simulators.
   </div>
 </div>
 <div class="figure" style="width:533px; vertical-align:middle;">
   <?php embedAJAXvideo("granularDamper", "3mlisuFJkqk", 533, 315); ?>
   <div class="caption">
-    A simulation (top) of an experimental granular damper
-    (bottom). The decay of the amplitude is predicted to within 1% of
-    the experimental results.
+    A simulation (top) of an experimental granular damper (bottom)
+    after an initial perturbation. Granular dampers are novel devices
+    used to dampen vibration in structures without requiring a fixed
+    anchor or significant maintainance. The simulator predicts the
+    decay of the amplitude to within 1% of the experimental results.
   </div>
 </div>
 <div class="figure" style="width:533px; vertical-align:middle;">
   <?php embedAJAXvideo("pairHPpolymer", "RXCOU9btDuQ", 400, 325); ?>
   <div class="caption">
-    A simulation of a pair of heteropolymers which agglomerate and
-    begin to fold.
+    DynamO has many tools for simulating the folding of model proteins
+    and this is just an example simulation of a pair of heteropolymers
+    which agglomerate and begin to fold. The image in the lower right
+    is the contact map used to track the folded structure of the pair.
   </div>
 </div>
 <div class="figure" style="width:533px; vertical-align:middle;">
   <?php embedAJAXvideo("sleepingparticles", "9oaobaxhGX8", 533, 298); ?>
   <div class="caption">
-    A simple test simulation of gravity and boundary sphere meshes
+    A simple test simulation of gravity and the boundary sphere meshes
     used to implement the hopper, chute and cup. The particles in the
-    cup are sent to "sleep" once they settle and may "wake up" on
-    impact.
+    cup are sent to "sleep" (white) once they settle and may "wake up"
+    on impact. The advantage of sending particles to sleep is that
+    they incurr no computational cost.
     <!--<?php codeblockstart(); ?>dynamod -m 25<?php codeblockend("brush: shell;"); ?>-->
   </div>
 </div>
@@ -82,18 +92,21 @@
 <div class="figure" style="width:533px; vertical-align:middle;">
   <?php embedAJAXvideo("thinHardLines", "hUVZxEhjoc0", 533, 298); ?>
   <div class="caption">
-    The complex system of infinitely-thin rods. These "molecules"
-    caused a stir when first proposed as they are an ideal gas with
-    non-ideal transport properties.
+    The complex dynamical system of infinitely-thin rods. These
+    "molecules" caused a stir when they were first proposed, as they
+    are an ideal gas which exhibits non-ideal transport
+    properties. They are therefore an excellent model to test some of
+    the dynamical approximations of kinetic theory.
   </div>
 </div>
 <div class="figure" style="width:533px; vertical-align:middle;">
   <?php embedAJAXvideo("parallelCubes", "B_qASDj9J8I", 533, 300); ?>
   <div class="caption">
-    Parallel hard cubes are a simple model-molecular system with
-    interesting thermodynamics. The freezing transition is still
-    poorly understood and this system is an "ideal" model to explore
-    it in.
+    Parallel hard cubes are another simple model-molecular system with
+    interesting thermodynamic behaviour. The freezing transition in
+    fluids is still poorly understood and this system is an "ideal"
+    model to explore it in, as it readily and obviously freezes but
+    appears to undergo a second order transition.
   </div>
 </div>
 </div>
