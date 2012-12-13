@@ -71,7 +71,6 @@
     cup are sent to "sleep" (white) once they settle and may "wake up"
     on impact. The advantage of sending particles to sleep is that
     they incurr no computational cost.
-    <!--<?php codeblockstart(); ?>dynamod -m 25<?php codeblockend("brush: shell;"); ?>-->
   </div>
 </div>
 <div class="figure" style="width:533px; vertical-align:middle;">
@@ -86,7 +85,6 @@
   <div class="caption">
     A simple simulation of sheared polydisperse hard disks used to
     demonstrate the use of DynamO in 2D systems.
-    <!-- <?php codeblockstart(); ?>dynamod -m 26 -x 50 -y 50 -z 1 --i1 2 -d 0.8 --rectangular-box --zero-vel=2<?php codeblockend("brush: shell;"); ?> -->
   </div>
 </div>
 <div class="figure" style="width:533px; vertical-align:middle;">
