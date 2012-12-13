@@ -51,8 +51,10 @@
 <h1>User Documentation/Tutorials</h1> 
 <p>
   The user documentation for DynamO comes in the form of a set of
-  tutorials on the basic topics. Please click on any of the links
-  below to take a look
+  tutorials, which take you through the basic topics and lead you onto
+  more advanced techniques. Afterwards there is a set of reference
+  appendices which cover everything else. Please click on any of the
+  links below to take a look
 </p>
 <div style="clear:both;"></div>
 <?php button("Tutorial 1: Compiling DynamO from Source","/index.php/tutorial1");?>
