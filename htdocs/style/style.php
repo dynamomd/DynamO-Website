@@ -77,7 +77,7 @@ li {
 .video-container {
     position:relative;
     clear:both;
-    cursor: hand; cursor: pointer;
+    cursor: pointer;
     margin-left:auto; 
     margin-right:auto;
 }
