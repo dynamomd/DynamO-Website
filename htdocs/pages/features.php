@@ -19,11 +19,22 @@
 </p>
 <div style="clear:both;text-align:center;">
 <div class="figure" style="width:533px; vertical-align:middle;">
-  <?php embedAJAXvideo("vibratedBed", "2MBmJRDzYYk", 533, 300); ?>
+  <?php embedAJAXvideo("snowmen", "zAC4PgtUwU4", 533, 300); ?>
   <div class="caption">
-    A small test simulation of a vibrated mixture of granulate. The
-    wall at the bottom of the container has a "temperature" which is
-    an approximation of a high frequency and low amplitude vibration.
+    This is a simulation of a snowmen molecules. Snowmen molecules can
+    be used as a tool to study crystal formation in binary systems
+    (such as NaCl salts) or as a simple model of a liquid
+    crystal. They also provide a initial test system for the
+    implementation of composite particles for granular systems.
+  </div>
+</div>
+<div class="figure" style="width:533px; vertical-align:middle;">
+  <?php embedAJAXvideo("nanospheres", "zBi5eEP2V90", 533, 300); ?>
+  <div class="caption" >
+    A simulation of thermophoresis (also known as the Soret effect or
+    thermodiffusion) occurring in a nanofluid in between a hot and
+    cold wall. Highlighted here is reverse thermophoresis, where the
+    larger species migrates towards the hot plate.
   </div>
 </div>
 <div class="figure" style="width:533px; vertical-align:middle;">
