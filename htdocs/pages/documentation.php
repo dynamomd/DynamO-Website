@@ -30,8 +30,8 @@
   with students and veterans alike.
 </p>
 <p style="text-align:center;">
-  &quot;Computer Simulation of Liquids,&quot;
-  M. P. Allen, and D. J. Tildesley, 1989, Oxford Science Pub.
+  <i><u>&quot;Computer Simulation of Liquids,&quot;
+  M. P. Allen, and D. J. Tildesley, 1989, Oxford Science Pub.</u></i>
 </p>
 <p>
   A short summary of the basics, written by Allen
@@ -45,8 +45,8 @@
   differences are best described in the excellent book by Haile.
 </p>
 <p style="text-align:center;">
-  &quot;Molecular Dynamics Simulation: Elementary Methods,&quot;
-  J. M. Haile, 1992, Wiley
+  <i><u>&quot;Molecular Dynamics Simulation: Elementary Methods,&quot;
+  J. M. Haile, 1992, Wiley</u></i>
 </p>
 <h1>User Documentation/Tutorials</h1> 
 <p>
@@ -74,80 +74,85 @@
   available at the link below.
 </p>
 <?php button("DynamO API Documentation","/doxygen");?>
-<h1>Support and Reporting Bugs</h1>
-<p>
-  If you think you've found a bug, please report it using the GitHub
-  Issue tracker link below.
-</p>
-<?php button("GitHub Issue Tracker",
-      "https://github.com/toastedcrumpets/DynamO/issues");?>
-<p>
-  If you have a problem which is not a bug and cannot find the answer
-  in the documentation, you can email your queries to the following
-  address:
-</p>
-<?php button("support@dynamomd.org", "mailto:support@dynamomd.org");?>
-<h1>Citing DynamO</h1>
+<h1>Publications/Citing DynamO</h1>
 <p>
   If you find the DynamO useful and publish a paper using results
   obtained from DynamO, please help support it's development by citing
   the following paper.
 </p>
 <div style="text-align:center;">
-  M. N. Bannerman, R. Sargant, L. Lue, "DynamO: A free O(N) general
-    event-driven simulator,"<em>
-    J. Comp. Chem.</em>, <b>32</b>, 3329-3338 (2011)"
+  <a href="http://dx.doi.org/10.1002/jcc.21915">M. N. Bannerman,
+    R. Sargant, L. Lue, "DynamO: A free O(N) general event-driven
+    simulator,"<i> J. Comp. Chem.</i>, <b>32</b>, 3329-3338
+    (2011)"</a>
 </div>
-<?php button("Link to journal article","http://dx.doi.org/10.1002/jcc.21915");?>
-<h1>Alternatives</h1>
 <p>
-  There are some alternative event driven packages available on the
-  internet and they are listed here:
+  Below is a list of publications which have used DynamO:
 </p>
 <ul>
   <li>
-    <a href="http://www.speadmd.org/">SPEADMD</a> : This is a
-    collection of event driven potentials and Thermodynamic
-    Perturbation Theory (TPT) which can be used to accurately estimate
-    the thermophysical properties of compounds. The results are
-    extremely impressive, although it appears that the fine details on
-    the potentials used are not readily available and the code is
-    unavailable, except via a web interface.</li>
-  <li>
-    <a href="http://cims.nyu.edu/~donev/Packing/PackLSD/Instructions.html">PackLSD </a>
-    (or an <a href="http://cherrypit.princeton.edu/Packing/C++/">older
-    version</a>):<br /> This is powerful code aimed at generating
-    densely packed hard particle (ellipsoidal) configurations. DynamO
-    uses the same techniques for compression but it is limited to
-    spherical shapes. The PackLSD code is also simpler as it is
-    targeted only to the task of generating hard particle packings,
-    yet more advanced in that it handles more general particle
-    shapes. It also contains tools for analysing the packed
-    configuration.
+    <a href="http://dx.doi.org/10.1103/PhysRevLett.108.098301">
+      S. Mandal, M. Gross, D. Raabe, F. Varnik, "Heterogeneous Shear
+      in Hard Sphere Glasses," <i>Phys. Rev. Lett.<i>, <b>108</b>,
+      098301 (2012)
+    </a>
   </li>
   <li>
-    <a href="http://danger.med.unc.edu/tools.php">iFold:</a> This is
-    an event driven simulator for protein simulations presented by the
-    Dokholyan group. It doesn't appear that the source code for the
-    simulator is freely available.
+    <a href="http://dx.doi.org/10.1007/s10035-012-0324-5">
+      P. Müller, T. Pöschel, "Oblique impact of frictionless spheres:
+      on the limitations of hard sphere models for granular dynamics
+      ," <i>Gran. Matt.</i>, <b>14</b>, 115-120 (2012)
+    </a>
   </li>
   <li>
-    <a href="http://halmd.org/index.html">HALMD</a>: <br />This looks
-    like a general time-stepping package but it has a backend for
-    performing simulations of hard spheres.
+    <a href="http://dx.doi.org/10.1103/PhysRevE.84.011301">
+      M. N. Bannerman, J. E. Kollmer, A. Sack, M. Heckel, P. Müller,
+      T. Pöschel, "Movers and shakers: Granular damping in
+      microgravity," <i>Phys. Rev. E</i>, <b>84</b>, 011301 (2011)
+    </a>
   </li>
   <li>
-    <a href="http://nba.uth.tmc.edu/cds/">Cellular Dynamic
-      Simulator</a>: <br /> An impressive package designed to simulate
-    biological processes. Includes support for triangle meshes,
-    brownian dynamics, and also has its own 3D visualizer.
+    <a href="http://link.aip.org/link/?JCP/133/124506">
+      M. N. Bannerman, L. Lue, "Exact event-rate formulae for
+      square-well and square-shoulder systems," <i>J. Chem. Phys.,</i> <b>133</b>,
+      124506 (2010)
+    </a>
   </li>
   <li>
-    <a href="http://www.lps.ens.fr/~krauth/index.php/Bernard_Krauth_Wilson_2009">Event-Chain
-      Algorithm:</a> <br />A remarkable event-driven algorithm capable
-      of evolving discrete and continuous potential
-      configurations. Not molecular dynamics but a great example of
-      advanced algorithmic ideas from the event driven particles
-      field.
+    <a href="http://link.aip.org/link/?JCPSA6/132/084507/1">
+      M. N. Bannerman, L. Lue, L. V. Woodcock "Thermodynamic pressures
+      for hard spheres and closed-virial equation-of-state,"
+      <i>J. Chem. Phys.</i>, <b>132</b>, 084507 (2010)
+    </a>
+  </li>
+  <li>
+    <a href="http://dx.doi.org/10.1007/s10955-009-9795-0">
+      Wm. G. Hoover, C. G. Hoover, M. N. Bannerman, "Single-Speed
+      Molecular Dynamics of Hard Parallel Squares and Cubes,"
+      <i>J. Stat. Phys.</i>, <b>136</b>, 715-732 (2009)
+    </a>
+  </li>
+  <li>
+    <a href="http://dx.doi.org/10.1103/PhysRevE.80.021801">
+      M. N. Bannerman, J. E. Magee, L. Lue, "Structure and stability
+      of helices in square-well homopolymers," <i>Phys. Rev. E</i>, <b>80</b>,
+      021801 (2009)
+    </a>
+  </li>
+  <li>
+    <a href="http://dx.doi.org/10.1063/1.3120488">
+      M. N. Bannerman, L. Lue, "Transport properties of highly
+      asymmetric hard sphere
+      mixtures," <i>J. Chem. Phys.</i>, <b>130</b>, 164507 (2009)
+    </a>
+  </li>
+  <li>
+    <a href="http://dx.doi.org/10.1103/PhysRevE.79.041308">
+      M. N. Bannerman, T. E. Green, P. Grassia, L. Lue, "Collision
+      statistics in sheared inelastic hard
+      spheres," <i>Phys. Rev. E</i>, <b>79</b>, 041308 (2009)
+    </a>
   </li>
 </ul>
+
+

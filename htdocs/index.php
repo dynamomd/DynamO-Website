@@ -220,7 +220,7 @@ if ($TOC)
     <!-- MENU -->
     <div id="menu">
       <!-- There can be no spaces between these elements, due to the treatment of the anchor tag as a word and the automatic kerning of html -->
-      <?php menulink("news", "News"); ?><?php menulink("download", "Download"); ?><?php menulink("documentation", "Docs/Support"); ?><?php menulink("features", "Features"); ?><?php menulink("credits", "Credits"); ?>
+      <?php menulink("news", "News"); ?><?php menulink("download", "Download"); ?><?php menulink("documentation", "Documentation"); ?><?php menulink("features", "Features / Gallery"); ?><?php menulink("support", "Support"); ?><?php menulink("credits", "Credits"); ?>
     </div>
     <!-- CONTENT -->
     <div id="contentwrapper" class="rounded">

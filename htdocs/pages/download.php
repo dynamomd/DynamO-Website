@@ -10,18 +10,20 @@
 <?php printTOC(); ?>
 <p>
   DynamO is an open-source and free code, made available under version
-  3 of the GPL licence. Here you can download prebuilt packages for
-  Ubuntu systems or obtain the source code to compile your own copy of
-  DynamO.
+  3 of the GPL licence. On this page you
+  can <a href="#source-code-downloads">download the source code</a> so
+  you can compile DynamO yourself or, if you have Ubuntu linux, you
+  can use the <a href="#ubuntu">prebuilt packages for
+  Ubuntu</a>.
 </p>
 <p>
-  Currently DynamO will only compile and run on <b>Gnu/Linux</b> based
-  systems (e.g., Ubuntu/Gentoo/RedHat). You will also need to be
-  familiar with how to compile and install programs on whichever
-  distribution of Linux you are using before you will be able to setup
-  DynamO.
+  Currently, DynamO will only compile and run on <b>Gnu/Linux</b>
+  based systems (e.g., Ubuntu/Gentoo/RedHat/Suse) and there are no
+  plans at this time to create a windows version of DynamO. The code
+  should compile with only minor modifications on Mac systems, but
+  this has not been tested.
 </p>
-<h1>Ubuntu Systems</h1>
+<h1>Ubuntu</h1>
 <p>
   To download and install DynamO on Ubuntu, it is recommended that you
   add a DynamO PPA repository so that you recieve automatic updates
@@ -29,10 +31,8 @@
 </p>
 <h2>Stable Releases</h2>
 <p>
-  At the moment, there are no stable releases available for Ubuntu as
-  prebuilt packages for Ubuntu are a new feature for DynamO
-  1.4.0. Once DynamO 1.4.0 has been released, a PPA with the stable
-  packages will be posted here.
+  Once DynamO 1.4.0 has been released, a PPA with the stable packages
+  will be posted here.
 </p>
 <h2>Daily Development Releases</h2>
 <p>
@@ -60,17 +60,17 @@ sudo apt-get install dynamo-core dynamo-tools dynamo-visualisation<?php codebloc
   The recommended method of downloading an up-to-date copy of the
   DynamO sources is using git and
   the <a href="https://github.com/toastedcrumpets/DynamO"> public
-  GitHub repository</a>.
-</p>
-
-<p>
-  Just install git and use the following command in your terminal:
+  GitHub repository</a>. Using git, it is easy to update your version
+  of the code and to send any changes you make back to the developers.
+  To get a copy of the code, just install git and use the following
+  command in your terminal:
 </p> 
 <?php codeblockstart(); ?>git clone http://github.com/toastedcrumpets/DynamO.git<?php codeblockend("brush: shell;"); ?>
 <p>
   This will create a folder called <em>DynamO</em> in the working
-  directory. If this command fails, you can try the alternative git
-  protocol address using the command below:
+  directory. If this command fails (you have a restrictive proxy), you
+  can try the alternative git protocol address using the command
+  below:
 </p>
 <?php codeblockstart(); ?>git clone git://github.com/toastedcrumpets/DynamO.git<?php codeblockend("brush: shell;"); ?>
 <p>
@@ -101,12 +101,16 @@ sudo apt-get install dynamo-core dynamo-tools dynamo-visualisation<?php codebloc
   DynamO directory:
 </p>
 <?php codeblockstart(); ?>git checkout dynamo-1-3-2<?php codeblockend("brush: shell;"); ?>
+<p>
+  Now that you've downloaded the source code, you can follow the tutorial on how to compile DynamO:
+</p>
+<?php button("Tutorial 1: Compiling DynamO from Source","/index.php/tutorial1");?>
 <h2>Alternative Source Code Downloads</h2>
 <p>
   It is recommended that you use the git to download the source code
   whenever possible. However, incase there is any problem accessing
   git on your computer, you may download a copy of the sources using
-  the links below.
+  one of the links below.
 </p>
 <?php button("Download Latest Development Branch","https://github.com/toastedcrumpets/DynamO/zipball/master");?>
 <?php button("Download Stable Version 1.3.2","https://github.com/toastedcrumpets/DynamO/zipball/dynamo-1-3-2");?>
