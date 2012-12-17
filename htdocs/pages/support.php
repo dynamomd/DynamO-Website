@@ -11,28 +11,43 @@
 <p>
   DynamO is a research project which has been open-sourced to help
   push forward both event-driven algorithms and discrete-potential
-  models.
-  The <a href="/index.php/documentation">online documentation</a> is improving all the
-  time and eventually this should answer the majority of the queries.
+  models. As such, the best way to recieve support for your own
+  project is to contact and collaborate with researchers/developers
+  familiar with DynamO. Listed below are some methods you can use to
+  do this.
 </p>
-
-<h1>Support and Reporting Bugs</h1>
+<p>
+  If you have a straightforward question, please check
+  the <a href="/index.php/documentation">online documentation</a>
+  first to see if it answers your questions.
+</p>
+<h1>Reporting Bugs</h1>
 <p>
   If you think you've found a bug, please report it using the GitHub
-  Issue tracker link below.
+  Issue tracker link below. The bug tracker allows others to see how
+  your problem might be resolved and allows you to track the
+  development of DynamO.
 </p>
 <?php button("GitHub Issue Tracker",
       "https://github.com/toastedcrumpets/DynamO/issues");?>
 <p>
-  If you have a problem which is not a bug and cannot find the answer
-  in the documentation, you can email your queries to the following
-  address:
+  Please note, you will need a (free) GitHub account to report bugs.
+</p>
+<h1>Contacting the Developers</h1>
+<p>
+  If you are having problems, you can email your queries to the
+  following address:
 </p>
 <?php button("support@dynamomd.org", "mailto:support@dynamomd.org");?>
+<p>
+  If it turns out that you've discovered a bug in DynamO, you will be
+  encouraged to post a bug report on the Github issue tracker so you
+  can track when the bug is fixed.
+</p>
 <h1>Alternatives</h1>
 <p>
-  There are some alternative event driven packages available on the
-  internet and they are listed here:
+  If all else fails, there are some alternative event-driven packages
+  available and they are listed here:
 </p>
 <ul>
   <li>
