@@ -29,6 +29,14 @@
   </div>
 </div>
 <div class="figure" style="width:533px; vertical-align:middle;">
+<?php embedAJAXvideo("vibratedBed", "2MBmJRDzYYk", 533, 300); ?>
+  <div class="caption" >
+    A small test simulation of a vibrated mixture of granulate. The
+    wall at the bottom of the container has a "temperature" which is
+    an approximation of a high frequency and low amplitude vibration.
+  </div>
+</div>
+<div class="figure" style="width:533px; vertical-align:middle;">
   <?php embedAJAXvideo("nanospheres", "zBi5eEP2V90", 533, 300); ?>
   <div class="caption" >
     A simulation of thermophoresis (also known as the Soret effect or
