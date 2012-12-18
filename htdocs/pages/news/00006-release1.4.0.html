@@ -1,0 +1,66 @@
+<h2>Dynamo 1.4.0 Released</h2>
+<div style="float:right; padding: 15px;">
+  <img src="/images/v1.4logo.png" width="125" height="165" alt="A small DynamO logo with a V 1.4 underneath" />
+</div>
+<p>
+  DynamO 1.4.0 has finally been released. This version contains many
+  major improvements, including:
+</p>
+<ul>
+  <li>
+    <b>Automatic full checking of configuration for invalid states on
+    load</b><br/> As soon as the simulator has finished loading the
+    configuration, it now verifies that no particles are in an invalid
+    state before starting the simulation. If any particles are
+    "overlapping" or the capture map has become invalid, these errors
+    will be reported to the user on load. As these errors are the main
+    source of difficulty, these changes should make DynamO much easier
+    to use.
+  </li>
+  <li>
+    <b>Fully stabilised event-detection algorithms</b><br/> In this
+    version of DynamO, all interactions have been reimplemented using
+    the stable EDPD approach, as detailed in
+    <a href="http://arxiv.org/abs/1211.6718">this preprint</a>. This
+    greatly enhances the stability of the simulator and even allows it
+    to recover from some types of poorly initialised systems.
+  </li>
+  <li>
+    <b>Ubuntu Packages</b><br/> Users using a recent ubuntu version
+    (12.04+) will no-longer have to compile their own copy of DynamO,
+    as prebuilt packages are now available at the following PPA:
+    <?php button("DynamO Stable
+    PPA","https://code.launchpad.net/~dynamomd/+archive/stable");?>
+    More information on these packages (and how to use them) is
+    available in the <a href="/index.php/download">download section of
+    the site</a>.
+  <li>
+    <b>New Features</b><br/> A few new interactions, such as
+    assymetric particle shapes, full wall support including
+    compression and polydisperse particles, and constraint forces in
+    gravity have been implemented.
+    The <a href="/index.php/features">features gallery</a> has been
+    updated with some example simulations using these features.
+  </li>
+  <li>
+    <b>Changed File Format</b><br/> Unfortunately, the file format has
+    had to change to acommodate some new features and so
+    configurations made using DynamO v1.3 will not load in
+    v1.4. Although this is inconvenient for some users, at the same
+    time many cleanups were also implemented to ensure the file format
+    was as logical as possible and to maximise the
+    flexibility/compatibility of the format so that future upgrades
+    will not be so disruptive.
+  </li>
+</ul>
+<p>
+  There are also a number of other minor bug fixes and
+  improvements. Some of which are detailed in
+  the <a href="https://github.com/toastedcrumpets/DynamO/issues?milestone=1&state=closed">Github
+    Issue Tracker</a>.
+</p>
+<p>
+  Over the next month or two there will be a focus on writing up a
+  full set of tutorials demonstrating how to use DynamO in a range of
+  systems.
+</p>
