@@ -38,15 +38,6 @@
   </div>
 </div>
 <div class="figure" style="width:533px; vertical-align:middle;">
-  <?php embedAJAXvideo("nanospheres", "zBi5eEP2V90", 533, 300); ?>
-  <div class="caption" >
-    A simulation of thermophoresis (also known as the Soret effect or
-    thermodiffusion) occurring in a nanofluid in between a hot and
-    cold wall. Highlighted here is reverse thermophoresis, where the
-    larger species migrates towards the hot plate.
-  </div>
-</div>
-<div class="figure" style="width:533px; vertical-align:middle;">
   <?php embedAJAXvideo("pendulum", "FrDoc6t7jwI", 533, 300); ?>
   <div class="caption" >
     A simulation of a pendulum used to test the constraint force
