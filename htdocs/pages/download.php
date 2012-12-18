@@ -13,41 +13,45 @@
   3 of the GPL licence. On this page you
   can <a href="#source-code-downloads">download the source code</a> so
   you can compile DynamO yourself or, if you have Ubuntu linux, you
-  can use the <a href="#ubuntu">prebuilt packages for
-  Ubuntu</a>.
-</p>
-<p>
-  Currently, DynamO will only compile and run on <b>Gnu/Linux</b>
-  based systems (e.g., Ubuntu/Gentoo/RedHat/Suse) and there are no
-  plans at this time to create a windows version of DynamO. The code
-  should compile with only minor modifications on Mac systems, but
-  this has not been tested.
+  can use the <a href="#ubuntu">prebuilt packages</a>.
 </p>
 <h1>Ubuntu</h1>
 <p>
-  To download and install DynamO on Ubuntu, it is recommended that you
-  add a DynamO PPA repository so that you recieve automatic updates
-  and bug fixes.
+  DynamO is now extremely easy to install on Ubuntu. Although you can
+  download individual packages by hand, the recommended installation
+  method is to add the PPA (Personal Package Archive) to your system
+  so that you will recieve automatic updates whenever they are
+  released.
 </p>
 <h2>Stable Releases</h2>
 <p>
-  Once DynamO 1.4.0 has been released, a PPA with the stable packages
-  will be posted here.
+  To add the stable DynamO PPA to your system just open a terminal
+  and run the following commands:
 </p>
-<h2>Daily Development Releases</h2>
+<?php codeblockstart(); ?>sudo add-apt-repository ppa:dynamomd/stable
+sudo apt-get update<?php codeblockend("brush: shell;"); ?>
+<p>
+  One the PPA has been added, you can install DynamO, the tools, and
+  the visualiser using the standard software manager or the following
+  shell command:
+</p>
+<?php codeblockstart(); ?>sudo apt-get install dynamo-core dynamo-tools dynamo-visualisation<?php codeblockend("brush: shell;"); ?>
+<h2>Nightly Development Releases</h2>
 <p>
   There is a daily build of the DynamO development tree which you can
-  use to get the latest versions and features. Just add the daily
-  build PPA to your ubuntu system using the following terminal
-  commands:
+  use to get the cutting-edge features, but be warned, these builds
+  may be unstable. 
+</p>
+<p>
+  To add the development packages, add the development PPA to your
+  system.
 </p>
 <?php codeblockstart(); ?>sudo add-apt-repository ppa:dynamomd/dynamo-daily-ppa
-sudo apt-get update
-sudo apt-get install dynamo-core dynamo-tools dynamo-visualisation<?php codeblockend("brush: shell;"); ?>
+sudo apt-get update<?php codeblockend("brush: shell;"); ?>
 <p>
-  More information about the PPA is given on its Launchpad site.
+  <b> Warning!</b>  If the development PPA is installed, it will
+  override the stable PPA.
 </p>
-<?php button("Ubuntu Daily Build PPA","https://code.launchpad.net/~dynamomd/+archive/dynamo-daily-ppa");?>
 <h1>Source Code Downloads</h1>
 <p>
   There are several ways you can obtain a copy of the source code and
@@ -79,7 +83,7 @@ sudo apt-get install dynamo-core dynamo-tools dynamo-visualisation<?php codebloc
 </p>
 <ul>
     <li>
-      <b>dynamo-1-3-2:</b> This is the most recent stable release, the
+      <b>dynamo-1-4-0:</b> This is the most recent stable release, the
       code is as stable as possible and has been thoroughly tested for
       bugs, but it may miss recently added features.
     </li>
@@ -100,7 +104,7 @@ sudo apt-get install dynamo-core dynamo-tools dynamo-visualisation<?php codebloc
   (master), just check it out by running the following command in the
   DynamO directory:
 </p>
-<?php codeblockstart(); ?>git checkout dynamo-1-3-2<?php codeblockend("brush: shell;"); ?>
+<?php codeblockstart(); ?>git checkout dynamo-1-4-0<?php codeblockend("brush: shell;"); ?>
 <p>
   Now that you've downloaded the source code, you can follow the tutorial on how to compile DynamO:
 </p>
@@ -113,5 +117,4 @@ sudo apt-get install dynamo-core dynamo-tools dynamo-visualisation<?php codebloc
   one of the links below.
 </p>
 <?php button("Download Latest Development Branch","https://github.com/toastedcrumpets/DynamO/zipball/master");?>
-<?php button("Download Stable Version 1.3.2","https://github.com/toastedcrumpets/DynamO/zipball/dynamo-1-3-2");?>
-<?php button("Download Stable Version 1.2","https://github.com/toastedcrumpets/DynamO/zipball/dynamo-1-2");?>
+<?php button("Download Stable Version 1.4.0","https://github.com/toastedcrumpets/DynamO/zipball/dynamo-1-4-0");?>

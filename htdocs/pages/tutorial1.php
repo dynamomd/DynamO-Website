@@ -22,6 +22,13 @@
 <?php button("Tutorial 2: Running a Simulation of Hard Spheres","/index.php/tutorial2");?>
 <h1>Step 0: Build Requirements</h1>
 <p>
+  Currently, DynamO will only compile and run on <b>Gnu/Linux</b>
+  based systems (e.g., Ubuntu/Gentoo/RedHat/Suse) and there are no
+  plans at this time to create a windows version of DynamO. The code
+  should compile with only minor modifications on Mac systems, but
+  this has not been tested.
+</p>
+<p>
   Before you can build DynamO, you will need a compiler and several
   other programs and libraries installed. There are also several
   optional libraries which, if they're installed, will activate extra
