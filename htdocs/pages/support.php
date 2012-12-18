@@ -25,8 +25,8 @@
 <p>
   If you think you've found a bug, please report it using the GitHub
   Issue tracker link below. The bug tracker allows others to see how
-  your problem might be resolved and allows you to track the
-  development of DynamO.
+  your problem might be resolved and it also allows you to track the
+  progress in dealing with any reported issues.
 </p>
 <?php button("GitHub Issue Tracker",
       "https://github.com/toastedcrumpets/DynamO/issues");?>
@@ -35,7 +35,8 @@
 </p>
 <h1>Contacting the Developers</h1>
 <p>
-  If you are having problems, you can email your queries to the
+  If you are having problems or you wish to contact the developers to
+  discuss possible collaborations, you can email your queries to the
   following address:
 </p>
 <?php button("support@dynamomd.org", "mailto:support@dynamomd.org");?>
