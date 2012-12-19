@@ -10,30 +10,33 @@
    ?>
 <?php printTOC(); ?>
 <p>
-  This tutorial covers the requirements, compilation and installation
-  of the DynamO simulation package. It is recommended that you build
-  your own version of DynamO if you want to make changes or plan to
-  add new features to DynamO.
+  This tutorial covers the build requirements, compilation, and
+  installation of the DynamO simulation package and its tools. It is
+  highly recommended that you build your own version of DynamO if you
+  want to be able to make changes to the code or if you plan to add
+  new features to DynamO.
 </p>
 <p>
-  If you've already installed DynamO using the prebuilt packages, you
-  can skip straight to tutorial 2.
+  If you've already installed DynamO using the prebuilt packages and
+  you don't plan on modifying DynamO yourself, you can skip straight
+  to tutorial 2, which 
 </p>
-<?php button("Tutorial 2: Running a Simulation of Hard Spheres","/index.php/tutorial2");?>
+<?php button("Tutorial 2: Introduction to the DynamO workflow: Running a simulation of hard spheres","/index.php/tutorial2");?>
+<p>
+</p>
 <h1>Step 0: Build Requirements</h1>
 <p>
   Currently, DynamO will only compile and run on <b>Gnu/Linux</b>
   based systems (e.g., Ubuntu/Gentoo/RedHat/Suse) and there are no
   plans at this time to create a windows version of DynamO. The code
   should compile with only minor modifications on Mac systems, but
-  this has not been tested.
+  this has not been tested by the developers.
 </p>
 <p>
   Before you can build DynamO, you will need a compiler and several
   other programs and libraries installed. There are also several
-  optional libraries which, if they're installed, will activate extra
-  features such as saving visualisations directly to video, or
-  wii-remote head tracking.
+  optional dependencies which, if they're installed, will activate
+  extra features such as saving visualisations directly to video.
 </p>
 <h2>Essential Libraries</h2>
 <p>
@@ -54,17 +57,17 @@
     Package</b>: libboost-all-dev).
   </li>
   <li>
-    <a href="http://www.boost.org/boost-build2/">Boost Build</a> - DynamO uses the
-    boost build system to manage the compilation, this is usually
-    included with the boost libraries (<b>Ubuntu Package</b>:
-    libboost-dev, but it will be pulled in by the libboost-all-dev
-    above).
+    <a href="http://www.boost.org/boost-build2/">Boost Build</a> -
+    DynamO uses the boost build system to manage the compilation and
+    it is usually included with the boost libraries (<b>Ubuntu
+    Package</b>: libboost-dev, but it will be pulled in by the
+    libboost-all-dev above).
   </li>
 </ul>
 <h2>Visualiser Requirements</h2>
 <p>
   These programs and libraries only need to be installed if you want
-  to use the visualiser (called Coil) supplied with DynamO:
+  to use the visualiser supplied with DynamO:
 </p>
 <ul>
   <li>
@@ -93,15 +96,15 @@
 <h1>Step 1: Downloading</h1>
 <p>
   Take a look at the download page for full instructions on how to
-  download a copy of the DynamO source code. Once you have the source
-  code, change into the directory ready to start the build. 
-</p>
-<p>
-  The recommended method is to use git to download the source, which
+  download a copy of the DynamO source code.   The recommended method is to use git to download the source, which
   would look like this:
 </p>
 <?php codeblockstart(); ?>git clone https://github.com/toastedcrumpets/DynamO.git
 cd DynamO<?php codeblockend("brush: shell;"); ?>
+<p>
+Once you have the source
+  code, change into the directory ready to start the build. 
+</p>
 <h1>Step 2: Compilation</h1>
 <p>
   DynamO uses the modern, powerful, but quite complicated boost-build
@@ -170,20 +173,19 @@ cd DynamO<?php codeblockend("brush: shell;"); ?>
   Congratulations! You now have a working installation of DynamO. You
   can now move on to the next tutorial!
 </p>
-<?php button("Tutorial 2: Running a Simulation of Hard Spheres","/index.php/tutorial2");?>
+<?php button("Tutorial 2: Introduction to the DynamO workflow","/index.php/tutorial2");?>
 
 <h1>Appendix A: Updating</h1>
 <p>
   This covers how to update using Git, which you might choose to do if
   you have made changes to the code. Alternatively, you can just
-  redownload the code and start again from the top.
+  redownload the code and start again from the instructions above.
 </p> 
 <p>
-  If there has been a major update to the code (change in the version
-  of boost used, new dependencies, etc.), you will need to clean up
-  the current version of the code by running the following command:
+  If there has been a major update to the code, you will need to clean
+  up the current version of the code by running the following command:
 </p>
-<?php codeblockstart(); ?>make distclean<?php codeblockend("brush: shell;"); ?>
+<?php codeblockstart(); ?>make clean<?php codeblockend("brush: shell;"); ?>
 <p>
   You can then easily update to the latest version of DynamO by just
   running the following commands:

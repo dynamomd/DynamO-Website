@@ -58,7 +58,7 @@
 </p>
 <div style="clear:both;"></div>
 <?php button("Tutorial 1: Compiling DynamO from Source","/index.php/tutorial1");?>
-<?php button("Tutorial 2: Running a Simulation of Hard Spheres","/index.php/tutorial2");?>
+<?php button("Tutorial 2: Introduction to the DynamO workflow","/index.php/tutorial2");?>
 <?php button("Tutorial 3: Exploring the Configuration File Format","/index.php/tutorial3");?>
 <?php button("Appendix A: Parsing Output and Config Files","/index.php/tutorialA");?>
 <p>
