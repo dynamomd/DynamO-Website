@@ -167,40 +167,39 @@ dynamod -m 0 -d 0.5 -C 7 -o config.start.xml
   The <b>Scheduler</b> tags contain the settings for the event scheduler and
   event sorter, which are the parts of DynamO responsible for
   determining which event happens next in the simulation. 
-</p>
-<p>
   <u>Changing the <b>Scheduler</b> settings should never affect the
-  results DynamO generates</u>. However, a correct set of settings
-  will greatly increase DynamO's speed. The <b>Scheduler</b> tags will
+  results DynamO generates</u>. However, optimal settings will greatly
+  increase DynamO's calculation speed. The <b>Scheduler</b> tags will
   almost always look as they do above, as these are the optimal
   settings for most simple systems. These settings are to use a
   neighbour list to detect events, and to use a Bounded Priority Queue
   on three-element Min-Max heaps for event sorting.
 </p>
 <p>
-  Instead of the <i>NeighbourList</i> <b>Scheduler</b> we could use
-  the <i>Dumb</i> <b>Scheduler</b>. The <i>Dumb</i> type is the
-  simplest type of <b>Scheduler</b> and it doesn't need a
-  NeighbourList to function. However, it is very slow as it checks all
-  pairs of particles for events, regardless of their position. Its
-  only practical use is when developing new types of
-  <b>Interaction</b>s, or tracking down errors in the Neighbour List
-  implementation.
+  Instead of the <i>NeighbourList</i> type <b>Scheduler</b>, we could
+  use the <i>Dumb</i> type <b>Scheduler</b>. The <i>Dumb</i> type is
+  the simplest type of <b>Scheduler</b> as it doesn't use a neighbour
+  list but simply tests all pairs of particles for events. This
+  approach is very slow and it is only practical when developing new
+  types of <b>Interaction</b>s, or tracking down errors in the
+  Neighbour List implementation. If you try changing the Scheduler
+  type to Dumb in this example configuration you will notice the
+  simulator processes around $1/25^{th}$ of the events per second.
 </p>
 <h2>Simulation Size</h2>
 <p>
   In the <b>Simulation</b> <i>tag</i> there is another <i>tag</i>
-  called <b>SimulationSize</b>. Unsurprisingly, this holds the size of
-  the simulation domain.
+  called <b>SimulationSize</b> which holds the size of the primary
+  simulation domain.
 </p>
 <?php xmlXPathFile("pages/config.tut3.xml", "/DynamOconfig/Simulation/SimulationSize"); ?>
 <p>
   Here we can see the simulation is performed in a
   $14\times14\times14$ domain. We will see in a moment that this
-  system has periodic boundary conditions, but even infinite systems
-  must have some finite size specified for the neighbourlist to
-  function, so you will always see a <b>SimulationSize</b> tag in your
-  configurations.
+  system has periodic boundary conditions, but even infinite
+  (non-periodic) systems must have some finite size specified for the
+  neighbourlist to function, so you will always see
+  a <b>SimulationSize</b> tag in your configurations.
 </p>
 <div class="figure" style="clear:right; float:right;width:400px;">
   <?php embedAJAXvideo("hardspheresExpand", "-QbpKrtPvWU", 400, 300); ?>
@@ -212,19 +211,21 @@ dynamod -m 0 -d 0.5 -C 7 -o config.start.xml
 <p>
   If we increase the size of the simulation domain to a
   $30\times30\times30$ domain, we lower the density of the
-  configuration and produce the video to the right. Notice that the
-  particles are still in the center of the domain and expand outwards
-  to fill the primary image. When using periodic boundary conditions,
-  the positions in the configuration file are always written out in
-  the range $(\pm L_x/2, \pm L_y/2, \pm L_z/2)$ so that the point
-  $(0,0,0)$ lies in the middle of the simulation domain.
+  configuration and produce the video to the right. You should notice
+  that the particles start in the center of the domain and expand
+  outwards to fill the primary image. When using periodic boundary
+  conditions, the positions in the configuration file are always
+  written out in the range $(\pm L_x/2, \pm L_y/2, \pm L_z/2)$ so that
+  the point $(0,0,0)$ lies in the middle of the simulation domain.
 </p>
 <p>
   If, instead of expanding, we tried to reduce the simulation domain
   we might find that we run into difficulties. This is because any
   particles now outside the primary image will be &quot;folded&quot;
   back into it, possibly causing overlapping particles and invalid
-  dynamics.
+  dynamics. With periodic boundary conditions, reducing the size of
+  the simulation is not simple and we have to look at more advanced
+  techniques such as compression.
 </p>
 <p>
   We will now look into how we can disable this periodic
@@ -236,32 +237,8 @@ dynamod -m 0 -d 0.5 -C 7 -o config.start.xml
   Another mandatory tag within the <b>Simulation</b> tags is the
   Boundary Condition (<b>BC</b>) tag.
 </p>
-<?php codeblockstart(); ?>
-<DynamOconfig version="1.5.0">
-  <Simulation>
-    ...
-    <BC Type="PBC"/>
-    ...
-  </Simulation>
-  ...
-</DynamOconfig>
-<?php codeblockend("brush: xml;"); ?>
-<p>
-  Here we can see that the current BCs are Periodic Boundary
-  Conditions (<b>PBC</b>). If you change the boundary conditions
-  to <b>None</b>, like so:
-</p>
-<?php codeblockstart(); ?>
-<DynamOconfig version="1.5.0">
-  <Simulation>
-    ...
-    <BC Type="None"/>
-    ...
-  </Simulation>
-  ...
-</DynamOconfig>
-<?php codeblockend("brush: xml;"); ?>
-<div class="figure" style="float:right;width:400px;">
+<?php xmlXPathFile("pages/config.tut3.xml", "/DynamOconfig/Simulation/BC"); ?>
+<div class="figure" style="clear:right; float:right;width:400px;">
   <?php embedAJAXvideo("infinitehardspheres", "RzjmpRtwDAw", 400, 300); ?>
   <div class="caption">
     The same configuration as in the movie above, but with the
@@ -270,43 +247,37 @@ dynamod -m 0 -d 0.5 -C 7 -o config.start.xml
   </div>
 </div>
 <p>
-  The configuration will now exist in an infinite domain without
-  boundaries (see the video on the right). The particles will be
-  allowed to fly off in all directions, which is very useful if you
-  want to simulate a single isolated polymer, or any system with
-  gravity.
+  Here we can see that the current BCs are Periodic Boundary
+  Conditions (<b>PBC</b>). If you change the boundary condition type
+  attribute to <b>None</b>, the system will now be an infinite domain
+  without boundaries. The particles will be allowed to fly off in all
+  directions without constraint (see the video on the right), which is
+  very useful if you want to simulate a single isolated polymer, or
+  any system with gravity.
 </p>
 <p>
   But be warned, if you now try to convert back to periodic boundary
-  conditions, all particle positions will be &quot;folded&quot; back into the
+  conditions by changing the boundary condition type back to PBC, all
+  particle positions will be &quot;folded&quot; back into the primary
   simulation domain specified by the <b>SimulationSize</b> tag (a
-  cubic $14\times14\times14$ volume). This &quot;folding&quot; will probably
-  result in overlapping particles leading to invalid dynamics, so you
-  need to be careful when changing Boundary Conditions from <i>None</i> to
+  cubic $14\times14\times14$ volume). This &quot;folding&quot; will
+  probably result in overlapping particles leading to invalid
+  dynamics, so you need to be careful when changing Boundary
+  Conditions from <i>None</i> back to
   <i>PBC</i>.
 </p>
 <p>
   There are also Lees-Edwards shearing boundary conditions available
   in DynamO (<b>Type</b>=&quot;<i>LE</i>&quot;) which will be
-  discussed in a future tutorial.
+  discussed in a later tutorial.
 </p>
-<h2>Species</h2>
+<h2>Genus/Species</h2>
 <p>
-  The next interesting tags are the <b>Species</b> tags within
-  the <b>Genus</b> tags.
+  The next set of tags in the <b>Simulation</b> section are
+  the <b>Species</b> tags, which are defined within the <b>Genus</b>
+  tags.
 </p>
-<?php codeblockstart(); ?>
-<DynamOconfig version="1.5.0">
-  <Simulation>
-    ...
-    <Genus>
-      <Species Mass="1" Name="Bulk" IntName="Bulk" Type="Point" Range="All"/>
-    </Genus>
-    ...
-  </Simulation>
-  ...
-</DynamOconfig>
-<?php codeblockend("brush: xml;"); ?>
+<?php xmlXPathFile("pages/config.tut3.xml", "/DynamOconfig/Simulation/Genus/Species"); ?>
 <p>
   A single <b>Species</b> tag defines the mass and inertia tensor of a
   collection of particles. It also defines the calculation of certain

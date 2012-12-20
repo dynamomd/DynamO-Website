@@ -18,7 +18,7 @@ function codeblockend($opts)
 function echoXML($xmlnode, $spacing, $max_depth, $max_children)
 {
  //Print the current node and its attributes
- echo str_repeat(" ", $spacing)."<".$xmlnode->getName();
+ echo str_repeat("  ", $spacing)."<".$xmlnode->getName();
  foreach ($xmlnode->attributes() as $name => $attr){
   echo " ".$name."=\"".$attr."\"";
  }
@@ -28,7 +28,7 @@ function echoXML($xmlnode, $spacing, $max_depth, $max_children)
   echo ">\n";
   if ($max_depth == 1){
    //This node has children, but the maximum depth has been reached
-   echo str_repeat(" ", $spacing+1)."...\n"; 
+   echo str_repeat("  ", $spacing+1)."...\n"; 
   } else {
    //
    $childcounter = 0;
@@ -37,9 +37,9 @@ function echoXML($xmlnode, $spacing, $max_depth, $max_children)
     if ((++$childcounter == $max_children)) break;
    }
    if (($childcounter == $max_children) && ($childcounter < $xmlnode->count()))
-    echo str_repeat(" ", $spacing+1)."...\n";
+    echo str_repeat("  ", $spacing+1)."...\n";
   }
- echo str_repeat(" ", $spacing)."</".$xmlnode->getName().">\n";
+ echo str_repeat("  ", $spacing)."</".$xmlnode->getName().">\n";
  } else {
  echo "/>\n";
  }
@@ -54,14 +54,14 @@ function xmlXPathFile($file, $xpathExpr, $max_depth = 0, $max_children = 0)
    array_pop($tags);
    $currentdepth=0;
    foreach ($tags as $node){
-    echo str_repeat(" ", $currentdepth)."<".$node.">\n";
+    echo str_repeat("  ", $currentdepth)."<".$node.">\n";
     ++$currentdepth;
    }
    foreach ($nodelist as $node){
     echoXML($node, $currentdepth, $max_depth, $max_children);
    }
    foreach (array_reverse($tags) as $node){
-    echo str_repeat(" ", --$currentdepth)."</".$node.">\n";
+    echo str_repeat("  ", --$currentdepth)."</".$node.">\n";
    }
    codeblockend("brush: xml;");
 }
