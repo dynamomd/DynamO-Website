@@ -88,7 +88,8 @@
     (2011)"</a>
 </div>
 <p>
-  Below is a list of publications which have used DynamO:
+  Below is a list of publications which have used DynamO in their
+  results:
 </p>
 <ul>
   <li>
@@ -96,13 +97,6 @@
       S. Mandal, M. Gross, D. Raabe, F. Varnik, "Heterogeneous Shear
       in Hard Sphere Glasses," <i>Phys. Rev. Lett.<i>, <b>108</b>,
       098301 (2012)
-    </a>
-  </li>
-  <li>
-    <a href="http://dx.doi.org/10.1007/s10035-012-0324-5">
-      P. Müller, T. Pöschel, "Oblique impact of frictionless spheres:
-      on the limitations of hard sphere models for granular dynamics
-      ," <i>Gran. Matt.</i>, <b>14</b>, 115-120 (2012)
     </a>
   </li>
   <li>
