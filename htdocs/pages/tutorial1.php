@@ -174,8 +174,7 @@ Once you have the source
   can now move on to the next tutorial!
 </p>
 <?php button("Tutorial 2: Introduction to the DynamO workflow","/index.php/tutorial2");?>
-
-<h1>Appendix A: Updating</h1>
+<h1>Updating</h1>
 <p>
   This covers how to update using Git, which you might choose to do if
   you have made changes to the code. Alternatively, you can just
@@ -196,7 +195,7 @@ sudo make install<?php codeblockend("brush: shell;"); ?>
 <p>
   and you should now have an up-to-date set of executables installed!
 </p>
-<h1>Appendix B: Debugging Executables</h1>
+<h1>Building Debugging Executables</h1>
 <p>
   If you're having some trouble with DynamO, you can build a debug
   version of the simulator once a normal version has been built. This
