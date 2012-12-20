@@ -13,10 +13,10 @@
   In this tutorial, we will cover the basics of using DynamO and also
   learn how to simulate the simplest event driven system, the hard
   sphere fluid. This tutorial is designed to give you a general
-  understanding of the steps you need to carry out to run a simulation
-  with DynamO. Later tutorials will go into the detail to show you how
-  to simulate different systems and to process the output of DynamO to
-  collect meaningful results.
+  understanding of the steps you carry out to run a simulation with
+  DynamO. Later tutorials will go into the detail to show you how to
+  simulate different systems and to process the output of DynamO to
+  collect publishable results.
 </p>
 <div class="figure" style="clear:right; float:right;width:400px;">
   <?php embedAJAXvideo("hardspheres", "tn6Cz0tNPuU", 400, 250); ?>
@@ -29,14 +29,14 @@
 <p>
   The basic steps of working with dynamo are:
 </p>
-<ul>
+<ol>
   <li>Create an initial configuration of particles and
   interactions.</li>
   <li>Simulate the initial configuration's motion through time to
   allow it to come into equilibrium.</li>
   <li>Continue simulating the now equilibrated configuration to
   collect data.</li>
-</ul>
+</ol>
 <p>
   A video of initial configuration and equilibration which you will
   perform in this tutorial is presented in the video to the right.  At
@@ -57,11 +57,10 @@
   speed for a few thousand collisions and then slowed down again to
   take a look at the results. We can see that the simulation has
   equilibrated well and the coloured particles are well mixed. This
-  system is ready to sample equilibrium data from.
+  system is ready to sample "equilibrium" data from.
 </p>
 <p>
-  Let's take a look at how to actually perform this simulation in
-  DynamO...
+  Let's take a look at how to perform this simulation in DynamO...
 </p>
 <h1>Verifying the DynamO Installation</h1>
 <p>
@@ -77,10 +76,10 @@
 </p>
 <?php codeblockstart(); ?>dynamod<?php codeblockend("brush: shell;"); ?>
 <p>
-  You may need to change this path to wherever you installed the
-  dynamo binaries. If everything is working correctly, you should see
-  the copyright notice and the descriptions of the options of the
-  dynamod program:
+  If you compiled DynamO yourself, you may need to change this path to
+  wherever you installed the dynamo binaries. If everything is working
+  correctly, you should see the copyright notice and the descriptions
+  of the options of the dynamod program:
 </p>
 <?php codeblockstart(); ?>dynamod  Copyright (C) 2011  Marcus N Campbell Bannerman
 This program comes with ABSOLUTELY NO WARRANTY.
@@ -91,12 +90,14 @@ Usage : dynamod <OPTIONS>...[CONFIG FILE]
 ...<?php codeblockend("brush: plain;"); ?>
 <p>
   If you do not see the above output, please double check that you
-  encountered no errors when building DynamO. Return to
+  encountered no errors while installing/building DynamO. If you have
+  problems and you have built DynamO yourself, you can return to
   the <a href="/index.php/tutorial1">previous tutorial</a> and recheck
   the output of the <b>make</b> command.
 </p>
 <p>
-  We're now ready to setup and run our first DynamO simulation...
+  If you do see the output above, it means you're now ready to setup
+  and run your first DynamO simulation...
 </p>
 <h1>In Brief</h1> 
 <p>
@@ -105,13 +106,16 @@ Usage : dynamod <OPTIONS>...[CONFIG FILE]
 </p>
 <p>
   Let us say that you want to run a hard-sphere simulation of 1372
-  particles. These particles are packed together at a reduced density
-  of 0.5 and have a reduced temperature of 1 (these reduced units may
-  look peculiar, but they're the natural dimensionless units of hard
-  spheres).  You want to create the system, and then run it for $10^6$
-  collisions to equilibrate, then carry on and run it for another
-  $10^6$ collisions to collect some data for your research. All you
-  have to do is run the following commands in your terminal/shell:
+  particles. These particles should be packed together at a reduced
+  density of 0.5 and have a reduced temperature of 1 (the values of
+  these reduced parameters may look peculiar, but they're in the
+  natural dimensionless units of hard spheres, see
+  the <a href="/index.php/FAQ#q-what-are-the-units-of-dynamo">FAQ on
+  the units of DynamO</a>).  You want to create the system, and then
+  run it for $10^6$ collisions to equilibrate, then carry on and run
+  it for another $10^6$ collisions to collect some data for your
+  research. All you have to do is run the following commands in your
+  terminal/shell:
 </p>
 <?php codeblockstart(); ?>
 dynamod -m 0 -C 7 -d 0.5 --i1 0 -r 1 -o config.start.xml
@@ -272,12 +276,13 @@ Mode 0: Monocomponent hard spheres
   For mono-sized spheres, there are three popular
   <a href="http://en.wikipedia.org/wiki/Cubic_crystal_system">cubic
   crystal structures</a> which are used by simulators to initially
-  position particles. There is Face-Centred Cubic (FCC),
-  Body-Centered Cubic (BCC), and the Simple (or Primitive) Cubic
-  (SC). DynamO can use any of these three to initially place your
-  particles, and this is selected using the first integer argument
-  (<em>--i1 X</em>, where <em>X=0</em> for FCC, <em>X=1</em> for BCC
-  and <em>X=2</em> for SC).
+  position particles. There
+  is <a href="http://en.wikipedia.org/wiki/Cubic_crystal_system#Cubic_space_groups">Face-Centred
+  Cubic (FCC), Body-Centered Cubic (BCC), and the Simple (or
+  Primitive) Cubic (SC)</a>. DynamO can use any of these three to
+  initially place your particles, and this is selected using the first
+  integer argument (<em>--i1 X</em>, where <em>X=0</em> for
+  FCC, <em>X=1</em> for BCC and <em>X=2</em> for SC).
 </p>
 <p>
   The FCC crystal often is favoured for producing the initial particle
@@ -379,9 +384,8 @@ Mode 0: Monocomponent hard spheres
   processes these at a constant rate.
 </p>
 <p>
-  When you run the command above, periodically you should see some
-  output from <b>dynarun</b> informing you of its progress in the
-  simulation:
+  When you run the command above, you should see some periodic output
+  from <b>dynarun</b> informing you of its progress in the simulation:
 </p>
 <?php codeblockstart(); ?>...
 Wed 16:36, ETA 11s, Events 100k, t 19.0446, <MFT> 0.130646, <T> 1, U 0
@@ -454,10 +458,11 @@ Simulation: Config written to config.end.xml<?php codeblockend("brush: plain;");
 </p>
 <?php codeblockstart(); ?>bunzip2 output.xml.bz2<?php codeblockend("brush: shell;"); ?>
 <p>
-  This will rename the file from <em>output.xml.bz2</em> to
+  This will uncompress the file from <em>output.xml.bz2</em> into
   <em>output.xml</em>, and you will be able to open it using your
-  favourite text editor. An example <em>output.xml</em> file from the
-  default hard sphere simulation is available below.
+  favourite text editor. Even internet browsers can open XML files and
+  an example <em>output.xml</em> file from the default hard sphere
+  simulation is available at the link below.
 </p>
 <?php button("Example output.xml file", "/pages/tutorial2output.xml");?>
 <p>
@@ -466,9 +471,7 @@ Simulation: Config written to config.end.xml<?php codeblockend("brush: plain;");
   fraction, particle count, simulation size, memory usage and
   performance are available. The temperature is available too:
 </p>
-<?php codeblockstart(); ?>...
-<Temperature Mean="0.99999999999997" MeanSqr="0.999999999999985" Current="1.00000000000001"/>
-...<?php codeblockend("brush: xml;"); ?>
+<?php xmlXPathFile("pages/tutorial2output.xml", "//Temperature"); ?>
 <p>
   Here you can see that the temperature is almost exactly 1. Hard
   spheres have no configurational internal energy, so once you set
@@ -476,18 +479,10 @@ Simulation: Config written to config.end.xml<?php codeblockend("brush: plain;");
   a thermostat to hold the temperature at 1. 
 </p>
 <p>
-  The most interesting property for the hard sphere system is the
-  pressure, conveniently available under the Pressure tag:
+  An interesting property for the hard sphere system is the pressure,
+  conveniently available under the Pressure tag:
 </p>
-<?php codeblockstart(); ?>...
-<Pressure Avg="1.63787027134353">
-  <Tensor>
-    1.63913447194771 0.000569183767859779 0.000659703403366379 
-    0.000569183767859774 1.63705438233026 -0.000767271561307316 
-    0.000659703403366379 -0.000767271561307315 1.63742195975262 
-  </Tensor>
-</Pressure>
-...<?php codeblockend("brush: xml;"); ?>
+<?php xmlXPathFile("pages/tutorial2output.xml", "//Pressure"); ?>
 <p>
   The pressure is calculated using
   the <a href="http://www.sklogwiki.org/SklogWiki/index.php/Pressure#Virial_pressure">virial
@@ -512,16 +507,16 @@ $$
   There are some other properties available, such as the
   configurational internal energy and residual heat capacity:
 </p>
-<?php codeblockstart(); ?>...
-<UConfigurational Mean="0" MeanSqr="0" Current="0"/>
-<ResidualHeatCapacity Value="0"/>
-...<?php codeblockend("brush: xml;"); ?>
+<?php xmlXPathFile("pages/tutorial2output.xml", "//UConfigurational"); ?>
+<p></p>
+<?php xmlXPathFile("pages/tutorial2output.xml", "//ResidualHeatCapacity"); ?>
 <p>
   But as mentioned before these values are zero as the hard sphere
-  fluid has an ideal heat capacity and internal energy. In later
-  tutorials, we'll look at more complex systems and their properties
-  in detail.
-</p>
+  fluid has an ideal heat capacity and internal energy. At the bottom
+  of the file are correlation data for the thermal conductivity
+  (<b>ThermalConductivity</b> tag) and other transport properties, but
+  these will be covered in later tutorials.
+</p> 
 <h1>In Summary</h1>
 <p>
   We've covered how to create an initial configuration,
@@ -531,11 +526,13 @@ $$
 </p>
 <p>
   This is just the tip of the iceberg as far as what is possible. In
-  the later tutorials we will take a look at more complex systems and
-  how to edit the configuration files by hand. We will cover loading
-  output plug-ins to collect more interesting information, such as the
-  thermal conductivity and viscosity. We will show how to use
-  compression dynamics to generate dense configurations of arbitrary
-  systems and we can also learn to use the visualiser to render the
-  results of the simulations.
+  the next tutorial, we will take a look at more complex systems and
+  <a href="/index.php/tutorial3">how to edit the configuration files
+  by hand</a> to generate them. Later tutorials will cover loading
+  output plug-ins to collect more interesting information, and how to
+  process complex properties such as the thermal conductivity and
+  viscosity. We will also show how to use compression dynamics to
+  generate dense configurations of arbitrary systems and we can also
+  learn to use the visualiser to render the results of the
+  simulations.
 </p>

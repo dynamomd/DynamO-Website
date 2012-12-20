@@ -61,6 +61,7 @@
 <?php button("Tutorial 2: Introduction to the DynamO workflow","/index.php/tutorial2");?>
 <?php button("Tutorial 3: Exploring the Configuration File Format","/index.php/tutorial3");?>
 <?php button("Appendix A: Parsing Output and Config Files","/index.php/tutorialA");?>
+<?php button("Appendix B: Frequently Asked Questions","/index.php/FAQ");?>
 <p>
   If what you need to simulate is not covered in the tutorials, but is
   listed in the <a href="/index.php/features">features</a>, please

@@ -15,6 +15,17 @@ function codeblockend($opts)
    echo "<pre class=\"".$opts."\">".htmlentities($code)."</pre>";
  }
 
+function xmlXPathFile($file, $xpathExpr)
+{
+   $fileXML = new SimpleXMLElement($file,0,true);
+   $nodelist = $fileXML->xpath($xpathExpr);
+   codeblockstart();
+   foreach ($nodelist as $n){
+   echo $n->asXML();
+   }
+   codeblockend("brush: xml;");
+}
+
 function button($text, $link)
  {
  ?> <div class="button"><a href="<?php echo $link;?>"><?php echo $text;?></a></div>
