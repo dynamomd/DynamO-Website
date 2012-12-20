@@ -15,13 +15,53 @@ function codeblockend($opts)
    echo "<pre class=\"".$opts."\">".htmlentities($code)."</pre>";
  }
 
-function xmlXPathFile($file, $xpathExpr)
+function echoXML($xmlnode, $spacing, $max_depth, $max_children)
+{
+ //Print the current node and its attributes
+ echo str_repeat(" ", $spacing)."<".$xmlnode->getName();
+ foreach ($xmlnode->attributes() as $name => $attr){
+  echo " ".$name."=\"".$attr."\"";
+ }
+
+ if ($xmlnode->count()){
+  //Print the node's children
+  echo ">\n";
+  if ($max_depth == 1){
+   //This node has children, but the maximum depth has been reached
+   echo str_repeat(" ", $spacing+1)."...\n"; 
+  } else {
+   //
+   $childcounter = 0;
+   foreach ($xmlnode->children() as $child){
+    echoXML($child, $spacing+1, $max_depth - 1, $max_children);
+    if ((++$childcounter == $max_children)) break;
+   }
+   if (($childcounter == $max_children) && ($childcounter < $xmlnode->count()))
+    echo str_repeat(" ", $spacing+1)."...\n";
+  }
+ echo str_repeat(" ", $spacing)."</".$xmlnode->getName().">\n";
+ } else {
+ echo "/>\n";
+ }
+}
+
+function xmlXPathFile($file, $xpathExpr, $max_depth = 0, $max_children = 0)
 {
    $fileXML = new SimpleXMLElement($file,0,true);
    $nodelist = $fileXML->xpath($xpathExpr);
    codeblockstart();
-   foreach ($nodelist as $n){
-   echo $n->asXML();
+   $tags=explode("/", trim($xpathExpr, " /"));
+   array_pop($tags);
+   $currentdepth=0;
+   foreach ($tags as $node){
+    echo str_repeat(" ", $currentdepth)."<".$node.">\n";
+    ++$currentdepth;
+   }
+   foreach ($nodelist as $node){
+    echoXML($node, $currentdepth, $max_depth, $max_children);
+   }
+   foreach (array_reverse($tags) as $node){
+    echo str_repeat(" ", --$currentdepth)."</".$node.">\n";
    }
    codeblockend("brush: xml;");
 }
