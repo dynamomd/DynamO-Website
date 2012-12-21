@@ -36,7 +36,6 @@
   <div class="caption">
     The starting configuration of 1372 hard-spheres with periodic
     boundary conditions.
-    <?php button("Show Configuration","/pages/config.tut3.xml");?>
   </div>
 </div>
 <p>
@@ -231,7 +230,6 @@ dynamod -m 0 -d 0.5 -C 7 -o config.start.xml
   <?php embedAJAXvideo("hardspheresExpand", "-QbpKrtPvWU", 400, 300); ?>
   <div class="caption">
     The effect of expanding the simulation domain.
-    <?php button("Show Modified Configuration","/pages/config.tut3.expanded.xml");?>
   </div>
 </div>
 <p>
@@ -250,8 +248,9 @@ dynamod -m 0 -d 0.5 -C 7 -o config.start.xml
   particles now outside the new, smaller, primary image will be
   &quot;folded&quot; back into it, possibly causing overlapping
   particles and invalid dynamics. With periodic boundary conditions,
-  reducing the size of the simulation is not simple and we have to
-  look at more advanced techniques such as compression.
+  reducing the size of the simulation is not straightforward and we
+  will have to look at more advanced techniques such as compression if
+  we want to increase a configuration's density.
 </p>
 <p>
   We will now look into how we can disable this periodic
@@ -269,17 +268,19 @@ dynamod -m 0 -d 0.5 -C 7 -o config.start.xml
   <div class="caption">
     The same configuration as in the movie above, but with the
     Boundary Conditions set to <b>None</b>.
-    <?php button("Show Modified Configuration","/pages/config.tut3.infinite.xml");?>
   </div>
 </div>
 <p>
   Here we can see that the current BCs are Periodic Boundary
-  Conditions (<b>PBC</b>). If you change the boundary condition type
-  attribute to <b>None</b>, the system will now be an infinite domain
-  without boundaries. The particles will be allowed to fly off in all
-  directions without constraint (see the video on the right), which is
-  very useful if you want to simulate a single isolated polymer, or
-  any system with gravity.
+  Conditions (<b>PBC</b>). This explains the "popping" of particles
+  near the edges of the simulation in the videos above, as particles
+  are popping from one side of the simulation to the other. If you
+  change the boundary condition type attribute to <b>None</b>, the
+  system will now be an infinite domain without boundaries. The
+  particles will be allowed to fly off in all directions without
+  constraint (see the video on the right), which is very useful if you
+  want to simulate a single isolated polymer, or any system with
+  gravity.
 </p>
 <p>
   But be warned, if you now try to convert back to periodic boundary
@@ -306,10 +307,10 @@ dynamod -m 0 -d 0.5 -C 7 -o config.start.xml
 <?php xmlXPathFile("pages/config.tut3.xml", "/DynamOconfig/Simulation/Genus/Species"); ?>
 <p>
   A single <b>Species</b> tag defines the mass and inertia tensor of a
-  collection of particles. It also defines the calculation of certain
-  unique properties of the particle. For example, it defines how the
-  particles are represented when visualised. It also defines the
-  excluded volume of each particle so that a packing fraction can be
+  collection of particles. It also defines certain unique properties
+  of the particle. For example, it defines how the particles are
+  represented when visualised. It also defines the excluded volume of
+  each particle so that a packing fraction can be
   calculated. Therefore, <u>each particle must belong
   to <b>exactly</b> one species</u>.
 </p>
@@ -317,7 +318,7 @@ dynamod -m 0 -d 0.5 -C 7 -o config.start.xml
   The obvious attributes of the <b>Species</b> tag are the <b>Mass</b>
   of the particles and the <b>Name</b> of
   the <b>Species</b>. <b>Name</b>s are used to identify particles when
-  reporting species specific results, such as diffusion coefficients,
+  reporting species-specific results, such as diffusion coefficients,
   radial distribution functions, and so on.
 <p>
   The <b>IntName</b> attribute specifies the name of
@@ -489,8 +490,7 @@ dynamod -m 0 -d 0.5 -C 7 -o config.start.xml
   <?php embedAJAXvideo("granularhardspheres", "d6M43_Nr4pQ", 400, 300); ?>
   <div class="caption">
     Modifying the <b>Interaction</b> to make a low density granular
-    gas. <?php button("Show Modified
-    Configuration","/pages/config.tut3.granular.xml");?>
+    gas.
   </div>
 </div>
 <p>
@@ -648,7 +648,6 @@ dynamod -m 0 -d 0.5 -C 7 -o config.start.xml
     Enabling gravity causes all the particles to fall, but with
     periodic boundary conditions there is nothing to arrest their
     descent.
-    <?php button("Show Modified Configuration","/pages/config.tut3.gravity.xml");?>
   </div>
 </div>
 <p>
