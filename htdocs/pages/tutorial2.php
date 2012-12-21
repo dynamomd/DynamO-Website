@@ -430,6 +430,18 @@ Simulation: Config written to config.end.xml<?php codeblockend("brush: plain;");
   data outputted by the dynarun command. In the following section we
   discuss the contents of the <em>output.xml.bz2</em> file.
 </p>
+<h2>Visualising the Simulation</h2>
+<p>
+  If you want to visualise a configuration or simulation, you replace
+  the <b>dynarun</b> program with the <b>dynavis</b> program like so:
+</p>
+<?php codeblockstart(); ?>dynavis config.equilibrated.xml -c 1000000 -o config.end.xml<?php codeblockend("brush: shell;"); ?>
+<p>
+  The simulation will load and the visualiser windows will appear. The
+  simulation will be paused at the start and you can un-pause it using
+  the visualiser controls. If you close the visualiser windows, the
+  simulation will automatically unpause and will carry on running.
+</p>
 <h1>Processing the Collected Data</h1>
 <p>
   <b>dynarun</b> has the ability to collect a wide range of properties
