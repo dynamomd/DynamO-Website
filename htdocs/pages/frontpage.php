@@ -16,10 +16,10 @@
   technique for particle simulation and has many advantages over the
   more traditional time-stepping approaches (such as those found in
   <a href="http://www.gromacs.org/">Gromacs</a>, <a href="http://web678.public1.linz.at/Drupal/?q=OpenSourceDEM">Liggghts</a>,
-  and <a href="http://www.ks.uiuc.edu/Research/namd/">NAMD</a>.
-  DynamO is both a reference implementation and a research platform
-  for Event-Driven particle techniques and so it implements the latest
-  advances in event-driven algorithms.
+  and <a href="http://www.ks.uiuc.edu/Research/namd/">NAMD</a>).
+  DynamO is a reference implementation of many established
+  event-driven models and a research platform for the latest advances
+  in event-driven algorithms.
 </p>
 <p>
   You can use DynamO as a molecular dynamics package to study model
