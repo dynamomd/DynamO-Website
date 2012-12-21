@@ -86,10 +86,10 @@ dynamod -m 0 -d 0.5 -C 7 -o config.start.xml
   Whenever some content has been omitted we will try to use
   &quot;...&quot; to indicate that there is some XML data which we
   have skipped. There is a <b>version</b> <i>attribute</i> in
-  the <b>DynamOconfig</b> <i>tag</i> which is used by DynamO to check
-  that the file format is the correct version before trying to load
-  it. This version number is only incremented when a major change in
-  the file format happens.
+  the <b>DynamOconfig</b> <i>tag</i> which is used by DynamO to warn
+  if the file format is out of date version while loading it. This
+  version number is only incremented when a major change in the file
+  format happens.
 </p>
 <p>
   Inside the root tags, are several other tags corresponding to
@@ -97,19 +97,19 @@ dynamod -m 0 -d 0.5 -C 7 -o config.start.xml
 </p>
 <?php xmlXPathFile("pages/config.tut3.xml", "/DynamOconfig", 2); ?>
 <p>
-  The <b>Simulation</b> tags contain most of the settings of the
-  simulation and their contents are discussed in detail below.
-  Beneath the <b>Simulation</b> tags lies the <b>Properties</b> tag.
-  You can see that the <b>Properties</b> tag is empty in this
-  configuration as it is only needed in polydisperse systems where
-  there are a large number of parameters to set for each particle. The
-  use of properties will be covered in a later tutorial, but for now
-  we can ignore them.
+  The <b>Simulation</b> tags at the top of the file contain the
+  majority of the settings of the simulation, such as the boundary
+  conditions and interactions.  Underneath the <b>Simulation</b> tags
+  lies the <b>Properties</b> tag.  You can see that
+  the <b>Properties</b> tag is empty in this configuration as it is
+  only needed in polydisperse systems where there are a large number
+  of parameters to set for each particle. The use of properties will
+  be covered in a later tutorial, but for now we can ignore them.
 </p>
 <p>
   The last set of tags are the <b>ParticleData</b> tag which contains
-  all of the individual particle's data and are discussed in the
-  following section.
+  all of the individual particle's data and is the first section
+  discussed in detail.
 </p>
 <h1>ParticleData</h1>
 <p>
@@ -134,28 +134,51 @@ dynamod -m 0 -d 0.5 -C 7 -o config.start.xml
   systems.
 </p>
 <p>
-  Inside the particle (<b>Pt</b>) <i>tag</i> there are two
+  Inside each particle (<b>Pt</b>) <i>tag</i> there are two
   enclosed <i>tags</i> called <b>P</b>
   and <b>V</b>. The <b>P</b> <i>tag</i> holds the position of a
   particle within the system and the <b>V</b> tag holds the particles
-  velocity. DynamO always outputs numerical values in scientific
-  notation to ensure little precision is lost when loading and saving.
+  velocity. You'll notice that DynamO always outputs numerical values
+  in scientific notation to ensure little precision is lost when
+  loading and saving.
 </p>
 <p>
-  You may notice that there is no mass or size of the particles
-  specified here. This is because of the general and unique functional
-  definition of &quot;properties&quot; of particles in DynamO. Roughly
-  speaking, the mass of a particle is defined by <b>Species</b> tags,
-  and its interaction properties, such as its diameter, are specified
-  in <b>Interaction</b>, <b>Global</b>, and <b>Local</b> tags which
-  are all inside the <b>Simulation</b> section. All of the tags inside
-  the <b>Simulation</b> tags are discussed in the following sections.
+  You should notice that the mass and size of the particles is not
+  specified here where you might expect it. This is because of the
+  general and unique functional definition of &quot;properties&quot;
+  of particles in DynamO. The problems they address are:
+</p>
+<ul>
+  <li>
+    As particles may have a varying set of properties such as
+    intertia, diameter, length, mass, and friction depending on the
+    system studied, you may have a greatly differing set of
+    "properties" to store for each type of system.
+  </li>
+  <li>
+    In many systems, the particles may all have the same mass or other
+    properties and it would waste memory to store this repeated
+    information for each particle.
+  </li>
+</ul>
+</p>
+<p>
+  Instead, in DynamO the properties of particles are defined where
+  they are needed and you can map one single value of a property onto
+  a range of particles. For example, if you use a hard
+  sphere <b>Interaction</b>, its inside the
+  corresponding <b>Interaction</b> tag where you have to specify the
+  diameter of the particle. The mass of a particle is defined when you
+  specify the <b>Species</b> of the particles. All of these tags are
+  inside the <b>Simulation</b> tags and are discussed in detail in the
+  following sections.
 </p>
 <h1>Simulation Tags</h1>
 <p>
   The <b>Simulation</b> tags are where the details of the system
   dynamics are stored. There are a huge number of settings that can be
-  adjusted here, so we will deal with each tag separately.
+  adjusted here, so we will deal with each tag separately and in
+  order.
 </p>
 <h2>Scheduler</h2>
 <p>
@@ -176,19 +199,21 @@ dynamod -m 0 -d 0.5 -C 7 -o config.start.xml
   on three-element Min-Max heaps for event sorting.
 </p>
 <p>
-  Instead of the <i>NeighbourList</i> type <b>Scheduler</b>, we could
-  use the <i>Dumb</i> type <b>Scheduler</b>. The <i>Dumb</i> type is
-  the simplest type of <b>Scheduler</b> as it doesn't use a neighbour
-  list but simply tests all pairs of particles for events. This
-  approach is very slow and it is only practical when developing new
-  types of <b>Interaction</b>s, or tracking down errors in the
-  Neighbour List implementation. If you try changing the Scheduler
-  type to Dumb in this example configuration you will notice the
-  simulator processes around $1/25^{th}$ of the events per second.
+  Instead of the "<i>NeighbourList</i>" <b>Type</b>
+  of <b>Scheduler</b>, we could instead use the
+  "<i>Dumb</i>" <b>Type</b>. The <i>Dumb</i> scheduler is the simplest
+  type of <b>Scheduler</b> as it doesn't use a neighbour list but
+  simply tests all pairs of particles for events. This approach is
+  very slow and it is only practical when developing new types
+  of <b>Interaction</b>s, or tracking down errors in the Neighbour
+  List implementation. If you try changing the Scheduler type to Dumb
+  in this example configuration you will notice the simulator
+  processes around $1/25^{th}$ of the events per second when compared
+  against the NeighbourList scheduler.
 </p>
-<h2>Simulation Size</h2>
+<h2>SimulationSize</h2>
 <p>
-  In the <b>Simulation</b> <i>tag</i> there is another <i>tag</i>
+  In the <b>Simulation</b> <i>tag</i> there is a <i>tag</i>
   called <b>SimulationSize</b> which holds the size of the primary
   simulation domain.
 </p>
@@ -196,10 +221,11 @@ dynamod -m 0 -d 0.5 -C 7 -o config.start.xml
 <p>
   Here we can see the simulation is performed in a
   $14\times14\times14$ domain. We will see in a moment that this
-  system has periodic boundary conditions, but even infinite
-  (non-periodic) systems must have some finite size specified for the
-  neighbourlist to function, so you will always see
-  a <b>SimulationSize</b> tag in your configurations.
+  system actually has periodic boundary conditions; however, even
+  truely infinite (non-periodic) systems must have some finite size
+  specified for the primary image for the neighbourlist to function,
+  so you always need a <b>SimulationSize</b> tag in your
+  configurations.
 </p>
 <div class="figure" style="clear:right; float:right;width:400px;">
   <?php embedAJAXvideo("hardspheresExpand", "-QbpKrtPvWU", 400, 300); ?>
@@ -221,18 +247,18 @@ dynamod -m 0 -d 0.5 -C 7 -o config.start.xml
 <p>
   If, instead of expanding, we tried to reduce the simulation domain
   we might find that we run into difficulties. This is because any
-  particles now outside the primary image will be &quot;folded&quot;
-  back into it, possibly causing overlapping particles and invalid
-  dynamics. With periodic boundary conditions, reducing the size of
-  the simulation is not simple and we have to look at more advanced
-  techniques such as compression.
+  particles now outside the new, smaller, primary image will be
+  &quot;folded&quot; back into it, possibly causing overlapping
+  particles and invalid dynamics. With periodic boundary conditions,
+  reducing the size of the simulation is not simple and we have to
+  look at more advanced techniques such as compression.
 </p>
 <p>
   We will now look into how we can disable this periodic
   &quot;folding&quot; completely in the following section on boundary
   conditions.
 </p>
-<h2>Boundary Conditions</h2>
+<h2>BC (Boundary Conditions)</h2>
 <p>
   Another mandatory tag within the <b>Simulation</b> tags is the
   Boundary Condition (<b>BC</b>) tag.
