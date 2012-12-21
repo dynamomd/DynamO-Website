@@ -339,10 +339,10 @@ dynamod -m 0 -d 0.5 -C 7 -o config.start.xml
   available and are useful when studying granular systems.
 </p>
 <p>
-  Finally, we come to the <b>Range</b> attribute, which is discussed
-  in the next section.
+  Finally, we come to the <b>IDRange</b> tags, which are discussed in
+  the next section.
 </p>
-<h2>Range Attributes</h2>
+<h2>IDRange</h2>
 <p>
   The <b>Range</b> attributes are perhaps the most unique and
   confusing part of the DynamO file format. However, they are
@@ -378,18 +378,7 @@ dynamod -m 0 -d 0.5 -C 7 -o config.start.xml
   maps on to is specified by the <b>Range</b> attribute. If we take a
   look at the example configuration file again:
 </p>
-<?php codeblockstart(); ?>
-<DynamOconfig version="1.5.0">
-  <Simulation>
-    ...
-    <Genus>
-      <Species Mass="1" Name="Bulk" IntName="Bulk" Type="Point" Range="All"/>
-    </Genus>
-    ...
-  </Simulation>
-  ...
-</DynamOconfig>
-<?php codeblockend("brush: xml;"); ?>
+<?php xmlXPathFile("pages/config.tut3.xml", "/DynamOconfig/Simulation/Genus/Species"); ?>
 <p>
   Here it is clear to see that the <b>Range</b> attribute has a value
   of &quot;All&quot;, which means all particles have the
@@ -409,16 +398,7 @@ dynamod -m 0 -d 0.5 -C 7 -o config.start.xml
   Another empty tag you will encounter in this configuration file is
   the <b>Topology</b> tag.
 </p>
-<?php codeblockstart(); ?>
-<DynamOconfig version="1.5.0">
-  <Simulation>
-    ...
-    <Topology/>
-    ...
-  </Simulation>
-  ...
-</DynamOconfig>
-<?php codeblockend("brush: xml;"); ?>
+<?php xmlXPathFile("pages/config.tut3.xml", "/DynamOconfig/Simulation/Topology"); ?>
 <p>
   This tag does not affect the dynamics at all. It is used as a way to
   mark out molecules or other multi-particle structures for monitoring
@@ -428,7 +408,7 @@ dynamod -m 0 -d 0.5 -C 7 -o config.start.xml
   This tag will become more useful when bonded interactions are
   introduced in a later tutorial on polymeric systems.
 </p>
-<h2>Interactions</h2>
+<h2>Interactions/Interaction</h2>
 <p>
   The next important tags in the file format are
   the <b>Interaction</b> tags. These tags are used to specify the
@@ -441,18 +421,7 @@ dynamod -m 0 -d 0.5 -C 7 -o config.start.xml
 <p>
   If we take a look at the example configuration file again, we have:
 </p>
-<?php codeblockstart(); ?>
-<DynamOconfig version="1.5.0">
-  <Simulation>
-    ...
-    <Interactions>
-      <Interaction Type="HardSphere" Diameter="1" Elasticity="1" Name="Bulk" Range="2All"/>
-    </Interactions>
-    ...
-  </Simulation>
-  ...
-</DynamOconfig>
-<?php codeblockend("brush: xml;"); ?>
+<?php xmlXPathFile("pages/config.tut3.xml", "/DynamOconfig/Simulation/Interactions"); ?>
 <p>
   Here we can see the <b>Type</b> attribute specifying that this is a
   hard sphere interaction. Hard spheres have a <b>Diameter</b>
@@ -469,23 +438,6 @@ dynamod -m 0 -d 0.5 -C 7 -o config.start.xml
   of <em>2All</em>, which specifies all pairs of particles.  Two
   particle ranges are covered in more detail in the next tutorial.
 </p>
-<p>
-  We can see the dramatic effect of some simple changes to the
-  <b>Interaction</b> by reducing the particle <b>Diameter</b>
-  and <b>Elasticity</b>:
-</p>
-<?php codeblockstart(); ?>
-<DynamOconfig version="1.5.0">
-  <Simulation>
-    ...
-    <Interactions>
-      <Interaction Type="HardSphere" Diameter="0.5" Elasticity="0.5" Name="Bulk" Range="2All"/>
-    </Interactions>
-    ...
-  </Simulation>
-  ...
-</DynamOconfig>
-<?php codeblockend("brush: xml;"); ?>
 <div class="figure" style="float:right;width:400px;">
   <?php embedAJAXvideo("granularhardspheres", "d6M43_Nr4pQ", 400, 300); ?>
   <div class="caption">
@@ -494,13 +446,16 @@ dynamod -m 0 -d 0.5 -C 7 -o config.start.xml
   </div>
 </div>
 <p>
-  By lowering the <b>Diameter</B> to a half of its previous value,
-  we've reduced the density of the system by a factor of $2^3=8$. If you
-  take a look at the video to the right you will see that this density
-  is comparable to the density of the system where we doubled the size
-  of the simulation domain (see the <b>SimulationSize</b> tag above);
-  However, in this case the particles are spread evenly about in space
-  at the start of the simulation. Please note that if you increase the
+  We can see the dramatic effect of some simple changes to the
+  <b>Interaction</b> by reducing the particle <b>Diameter</b> to 0.5
+  and the <b>Elasticity</b> to 0.5.  By lowering the <b>Diameter</B>
+  to a half of its previous value, we've reduced the density of the
+  system by a factor of $2^3=8$. If you take a look at the video to
+  the right you will see that this density is comparable to the
+  density of the system where we doubled the size of the simulation
+  domain (see the <b>SimulationSize</b> tag above); However, in this
+  case the particles are spread evenly about in space at the start of
+  the simulation. Please note that if you increase the
   <b>Diameter</b>, you may again cause overlaps and invalid dynamics!
 </p>
 <p>
@@ -521,16 +476,7 @@ dynamod -m 0 -d 0.5 -C 7 -o config.start.xml
 <p>
   In this simulation, we have an empty <b>Locals</b> tag:
 </p>
-<?php codeblockstart(); ?>
-<DynamOconfig version="1.5.0">
-  <Simulation>
-    ...
-    <Locals/>
-    ...
-  </Simulation>
-  ...
-</DynamOconfig>
-<?php codeblockend("brush: xml;"); ?>
+<?php xmlXPathFile("pages/config.tut3.xml", "/DynamOconfig/Simulation/Locals"); ?>
 <p>
   A <b>Local</b> is any possible event involving one particle which is
   localised in space. Typical examples of <b>Local</b>s are are walls,
@@ -551,18 +497,7 @@ dynamod -m 0 -d 0.5 -C 7 -o config.start.xml
   Boundary condition enforcers, but the most common <b>Global</b> used
   in configuration files <i>is</i> the neighbour list itself:
 </p>
-<?php codeblockstart(); ?>
-<DynamOconfig version="1.5.0">
-  <Simulation>
-    ...
-    <Globals>
-      <Global Type="Cells" Name="SchedulerNBList" NeighbourhoodRange="1.00000000000000e+00" Range="All"/>
-    </Globals>
-    ...
-  </Simulation>
-  ...
-</DynamOconfig>
-<?php codeblockend("brush: xml;"); ?>
+<?php xmlXPathFile("pages/config.tut3.xml", "/DynamOconfig/Simulation/Globals"); ?>
 <p>
   Neighbourlists are used by DynamO to efficiently detect which
   particles have a chance of interacting. This information is used to
@@ -599,16 +534,7 @@ dynamod -m 0 -d 0.5 -C 7 -o config.start.xml
   thermostats, umbrella potentials, snapshotting, simulation end
   conditions or temperature rescalers.
 </p>
-<?php codeblockstart(); ?>
-<DynamOconfig version="1.5.0">
-  <Simulation>
-    ...
-    <SystemEvents/>
-    ...
-  </Simulation>
-  ...
-</DynamOconfig>
-<?php codeblockend("brush: xml;"); ?>
+<?php xmlXPathFile("pages/config.tut3.xml", "/DynamOconfig/Simulation/Systems"); ?>
 <p>
   This configuration has no <b>System</b> events, but we will see the
   use of thermostats and rescalers in later tutorials.
@@ -617,15 +543,7 @@ dynamod -m 0 -d 0.5 -C 7 -o config.start.xml
 <p>
   Finally, the last tag to discuss is the <b>Dynamics</b> tag:
 </p>
-<?php codeblockstart(); ?>
-<DynamOconfig version="1.5.0">
-  <Simulation>
-    ...
-    <Dynamics Type="Newtonian"/>
-  </Simulation>
-  ...
-</DynamOconfig>
-<?php codeblockend("brush: xml;"); ?>
+<?php xmlXPathFile("pages/config.tut3.xml", "/DynamOconfig/Simulation/Dynamics"); ?>
 <p>
   Here you can change the fundamental dynamics of the system. For
   example, you might add a constant downwards force to all particles
@@ -634,12 +552,10 @@ dynamod -m 0 -d 0.5 -C 7 -o config.start.xml
 <?php codeblockstart(); ?>
 <DynamOconfig version="1.5.0">
   <Simulation>
-    ...
     <Dynamics Type="NewtonianGravity">
       <g x="0" y="-1" z="0"/>
     </Dynamics>
   </Simulation>
-  ...
 </DynamOconfig>
 <?php codeblockend("brush: xml;"); ?>
 <div class="figure" style="clear:right; float:right;width:400px;">
