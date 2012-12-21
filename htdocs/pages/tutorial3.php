@@ -336,18 +336,18 @@ dynamod -m 0 -d 0.5 -C 7 -o config.start.xml
   the particle has. A value of <i>Point</i> implies that this particle
   has no rotational degrees of freedom, such as atoms in molecular
   systems. Other values, such as spherical top or a full tensor are
-  available and are useful when studying granular systems.
+  available and are useful when studying granular systems, or
+  assymetric particles.
 </p>
 <p>
-  Finally, we come to the <b>IDRange</b> tags, which are discussed in
-  the next section.
+  Inside of the <b>Species</b> tag, there is an <b>IDRange</b> tag
+  which is used to specify which particles this species applies to.
 </p>
 <h2>IDRange</h2>
 <p>
-  The <b>Range</b> attributes are perhaps the most unique and
-  confusing part of the DynamO file format. However, they are
-  extremely powerful and a very elegant method for mapping properties
-  and interactions onto particles.
+  The <b>IDRange</b> tags are the most unique (and perhaps confusing)
+  part of the DynamO file format. However, they are extremely powerful
+  and elegant method for mapping properties onto particles.
 </p>
 <p>
   <i>&quot;Traditionally&quot;</i> in other particle simulators, each particle
@@ -368,30 +368,32 @@ dynamod -m 0 -d 0.5 -C 7 -o config.start.xml
   <img src="/images/range_explanation.png" width="456" height="179" alt="A graphic comparing the traditional method of storing redundant particle data, and the functional method" />
 </div>
 <p>
-  This &quot;functional&quot; mapping saves memory and the small computational
-  cost of using these definitions is nothing compared to the speed
-  increases due to the reduced use of the memory bandwidth.
+  This &quot;functional&quot; mapping saves memory and the small
+  computational cost of using these definitions is nothing compared to
+  the speed increases due to the reduced use of the memory bandwidth
+  and cache.
 </p>
 <p>
   But how does this work in DynamO? You might have guessed by now, the
   range of particle ID's that a property such as the <b>Species</b>
-  maps on to is specified by the <b>Range</b> attribute. If we take a
+  maps on to is specified by the <b>IDRange</b> tags. If we take a
   look at the example configuration file again:
 </p>
 <?php xmlXPathFile("pages/config.tut3.xml", "/DynamOconfig/Simulation/Genus/Species"); ?>
 <p>
-  Here it is clear to see that the <b>Range</b> attribute has a value
-  of &quot;All&quot;, which means all particles have the
-  same <b>Species</b> (and therefore mass, intertia tensor and
-  representative Interaction).  Multiple <b>Species</b> can be defined
-  in a straightforward way, and this is discussed in the next
-  tutorial.
+  Here it is clear to see that the <b>IDRange</b> tag has
+  a <b>Type</b> attribute equal to &quot;All&quot;, which means all
+  particles have the same <b>Species</b> (and therefore mass, intertia
+  tensor and representative <b>Interaction</b>).
+  Multiple <b>Species</b> can be defined in a straightforward way, and
+  this is discussed in the next tutorial when we consider a binary
+  mixture of spheres.
 </p>
 <p>
-  In later tutorials, we will see some more types of <b>Ranges</b> and
-  how they can be used. We will also see what to do when functional
-  definitions are difficult, such as in polydisperse systems where
-  every particle has a unique mass and size.
+  In later tutorials, we will see some more types of <b>IDRange</b>s
+  and how they can be used. We will also see what to do when
+  functional definitions are difficult, such as in polydisperse
+  systems where every particle has a unique mass and size.
 </p>
 <h2>Topology</h2>
 <p>
@@ -426,17 +428,9 @@ dynamod -m 0 -d 0.5 -C 7 -o config.start.xml
   Here we can see the <b>Type</b> attribute specifying that this is a
   hard sphere interaction. Hard spheres have a <b>Diameter</b>
   and <b>Elasticity</b> which are set by the appropriate
-  attributes. The <b>Interaction</b> has a <b>Name</b> which is used
-  to identify it (e.g, it is used in the <b>IntName</b> attribute of
-  the <b>Species</b> tag).
-</p>
-<p>
-  Finally, there is a <b>Range</b> attribute at the end of the
-  tag. <b>Interaction</b> <b>Range</b>s are unique in that they
-  specify <u>pairs</u> of particles, not just individual
-  particles. This is why the <b>Range</b> attribute has a value
-  of <em>2All</em>, which specifies all pairs of particles.  Two
-  particle ranges are covered in more detail in the next tutorial.
+  attributes. All <b>Interaction</b>s must have a <b>Name</b> which is
+  used to identify it (e.g, it is used in the <b>IntName</b> attribute
+  of the <b>Species</b> tag).
 </p>
 <div class="figure" style="float:right;width:400px;">
   <?php embedAJAXvideo("granularhardspheres", "d6M43_Nr4pQ", 400, 300); ?>
@@ -472,6 +466,18 @@ dynamod -m 0 -d 0.5 -C 7 -o config.start.xml
   available. These are grouped into <b>Locals</b>, <b>Globals</b>,
   and <b>System</b> events, which are discussed below.
 </p>
+<h2>IDPairRange</h2>
+<p>
+  There is an <b>IDPairRange</b> tag inside the <b>Interaction</b>
+  tags which is used to specify which particles this interaction
+  applies to. Although <b>IDPairRange</b>s are a similar concept to
+  <b>IDRange</b>s, they are unique in that they specify <u>pairs</u>
+  of particles, not just individual particles. The
+  <b>IDPairRange</b> <b>Type</b> attribute of <i>All</i> specifies all
+  pairs of particles interact this way. <b>IDPairRange</b>s and
+  multiple <b>Interaction</b>s are covered in more detail in the next
+  tutorial.
+</p>
 <h2>Locals</h2>
 <p>
   In this simulation, we have an empty <b>Locals</b> tag:
@@ -483,7 +489,7 @@ dynamod -m 0 -d 0.5 -C 7 -o config.start.xml
   triangle meshes and other fixed objects. The key part of the
   definition is that the events only occur if the particle is in a
   certain location in space. This means these events can be optimised
-  by inserting them into the neighbour list.
+  by inserting them into a neighbour list.
 </p>
 <p>
   Using <b>Locals</b> will be discussed in a later tutorial when we
@@ -494,7 +500,7 @@ dynamod -m 0 -d 0.5 -C 7 -o config.start.xml
   <b>Globals</b> are single particle events which can occur anywhere
   (i.e., they cannot be optimised by the use of neighbour
   lists). Examples of global events are Single Occupancy cells,
-  Boundary condition enforcers, but the most common <b>Global</b> used
+  boundary condition enforcers, but the most common <b>Global</b> used
   in configuration files <i>is</i> the neighbour list itself:
 </p>
 <?php xmlXPathFile("pages/config.tut3.xml", "/DynamOconfig/Simulation/Globals"); ?>
@@ -522,32 +528,45 @@ dynamod -m 0 -d 0.5 -C 7 -o config.start.xml
   neighbourlist to be used when detecting events.
 </p>
 <p>
-  There are a few more <b>Global</b> events available in DynamO, such as
-  single-occupancy cells or a waker for the sleeping particles
+  There are a few more <b>Global</b> events available in DynamO, such
+  as single-occupancy cells or a waker for the sleeping particles
   algorithm. However, the use of these events is rare and often
-  the <b>Globals</b> tag only contains a single neighbour list.
+  the <b>Globals</b> tag only contains the neighbour list.
+  <b>Global</b> event types also require a <b>IDRange</b> to specify
+  which particles it applies to. The neighbour list should apply to
+  all particles for the Neighbourlist scheduler to function.
 </p>
-<h2>Systems</h2>
+<h2>SystemEvents/System</h2>
 <p>
   Finally, <b>System</b> events comprise every other source of events
-  that does not fit into the above categories. These might be
+  which does not fit into the categories of
+  a <b>Interaction</b>, <b>Local</b>, or <b>Global</b>. These might be
   thermostats, umbrella potentials, snapshotting, simulation end
   conditions or temperature rescalers.
 </p>
-<?php xmlXPathFile("pages/config.tut3.xml", "/DynamOconfig/Simulation/Systems"); ?>
+<?php xmlXPathFile("pages/config.tut3.xml", "/DynamOconfig/Simulation/SystemEvents"); ?>
 <p>
   This configuration has no <b>System</b> events, but we will see the
-  use of thermostats and rescalers in later tutorials.
+  use of thermostats and rescalers in later tutorials on polymers.
 </p>
 <h2>Dynamics</h2>
+<div class="figure" style="clear:right; float:right;width:400px;">
+  <?php embedAJAXvideo("fallinghardspheres", "Hx6rcS-RAkU", 400, 300); ?>
+  <div class="caption">
+    Enabling gravity causes all the particles to fall, but with
+    periodic boundary conditions there is nothing to arrest their
+    descent.
+  </div>
+</div>
 <p>
   Finally, the last tag to discuss is the <b>Dynamics</b> tag:
 </p>
 <?php xmlXPathFile("pages/config.tut3.xml", "/DynamOconfig/Simulation/Dynamics"); ?>
 <p>
-  Here you can change the fundamental dynamics of the system. For
-  example, you might add a constant downwards force to all particles
-  to mimic gravity (see right).
+  The <b>Dynamics</b> tag controls the equations of motion of the
+  system. Any changes you make will alter the fundamental dynamics of
+  the system. For example, you might add a constant downwards force to
+  all particles to mimic the effect of gravity (see right).
 </p>
 <?php codeblockstart(); ?>
 <DynamOconfig version="1.5.0">
@@ -558,18 +577,16 @@ dynamod -m 0 -d 0.5 -C 7 -o config.start.xml
   </Simulation>
 </DynamOconfig>
 <?php codeblockend("brush: xml;"); ?>
-<div class="figure" style="clear:right; float:right;width:400px;">
-  <?php embedAJAXvideo("fallinghardspheres", "Hx6rcS-RAkU", 400, 300); ?>
-  <div class="caption">
-    Enabling gravity causes all the particles to fall, but with
-    periodic boundary conditions there is nothing to arrest their
-    descent.
-  </div>
-</div>
 <p>
-  You can also run compression simulations or use multicanonical
-  potentials to deform the energy landscape of the system through
-  the <b>Dynamics</b> tag.
+  This simulation is not particularly interesting as there are no
+  objects for the particles to fall on to, so the system simply
+  accelerates downwards.
+</p>
+<p>
+  By altering the <b>Dynamics</b> tag, you can run compression
+  simulations or use multicanonical potentials to deform the energy
+  landscape of the system. These are relatively advanced topics which
+  will be covered in a later tutorial.
 </p>
 <h1>Conclusion</h1>
 <p>
