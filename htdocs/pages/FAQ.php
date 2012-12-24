@@ -14,40 +14,59 @@
 </p>
 <h3>Q: What are the units of DynamO?</h3>
 <p>
-  The short answer is: whatever units you use!
+  The short answer is: whatever units you use in the input
+  configuration file.
 </p>
 <p>
-  The configuration files expose (almost) every parameter of the
-  system, so you set the units of the DynamO input, and this is
-  carried through to the output. You must be consistent in your choice
-  of units, so if the particle sizes are specified in Angstroms, your
-  simulation size/particle positions/etc must also be specified in
-  Angstroms. Otherwise, your units may be any scale at all.
+  The configuration files expose almost every parameter of the system
+  (see below about $k_B$), so whatever units you use to setup the
+  DynamO input, these are used as the units of the output. You must be
+  consistent in your choice of units, so if the particle sizes are
+  specified in Angstroms, your simulation size, particle positions,
+  and all other parameters with units of length must also be specified
+  in Angstroms. But, provided you are consistent in your choice of
+  units, you may use any set of units you like.
 </p>
 <p>
   There are two peculiarities which are discussed below:
 </p>
 <ul>
   <li>
-    The example configurations produced by the dynamod command must have
-    their own units,
-    and <a href="#q-what-units-does-the-dynamod-command-useproduce">these
-      are discussed in a following question</a>.
+    The example configurations produced by the dynamod command use the
+    natural set of dimensionless units for the system studied,
+    and <a href="#q-what-units-does-the-dynamod-command-useproduce">this
+    is discussed in more detail in the following question</a>.
   </li>
   <li>
-    In DynamO and in many other simulation packages (such as
+    <p>
+      In DynamO and in many other simulation packages (such as
       GROMACS), <a href="http://en.wikipedia.org/wiki/Boltzmann_constant">Boltzmann's
       constant</a> is assumed to be one $(k_B=1)$. Boltzmann's
-      constant is simply a unit conversion factor from units of
-      temperature to units of energy per particle, so it defines the
-      units of temperature. For most applications, you can just view
-      every temperature in the configuration file as actually being
-      the product $k_B\,T$; however, please remember that Boltzmann's
-      constant also crops up in all properties which are connected to
-      the temperature, such as the heat capacity and the thermal
-      conductivity. If you decide to use "real" units in your
-      simulations, you will need to correct for this assumption in
-      your results.
+      constant is actually a unit conversion factor used to convert
+      units of temperature into units of energy (per degree of
+      freedom). Therefore, when you choose the value of the Boltzmann
+      constant you are actually choosing the units of temperature of
+      the system.
+    </p>
+    <p>
+      For example, if the input of dynamo is specified in units of
+      meters/seconds/kilograms, then the units of the product,
+      $k_B\,T$, is actually Joules (per degree of freedom). If we set
+      $k_B=1$, then our units of temperature are then also Joules (per
+      degree of freedom). When presented like this it should be
+      apparent that Kelvin/Celcius/Farenheit are actually inconvenient
+      scales for molecular calculations, and that we should simply use
+      the natural unit of energy of the system.
+    </p>
+    <p>
+      For most applications, you can just view every temperature in
+      the configuration file as actually being the product $k_B\,T$;
+      however, please remember that Boltzmann's constant also crops up
+      in all properties which are connected to the temperature, such
+      as the heat capacity and the thermal conductivity. If you decide
+      to use "real" units in your simulations, you will need to
+      correct for this assumption in your results.
+    </p>
   </li>
 </ul>
 </p>

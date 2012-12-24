@@ -14,7 +14,7 @@
 </p>
 <p>
   In this appendix, a complete description of the file format is
-  presented. This reference documentation is relatively brief as an
+  presented. This reference documentation is terse as an
   <a href="/index.php/tutorial3">introduction to the file format is
   covered in tutorial 3</a>.
 </p>
