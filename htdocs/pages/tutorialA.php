@@ -49,8 +49,7 @@
   parts of it. In general, a DynamO output file will look something
   like this:
 </p>
-<?php codeblockstart(); ?>
-<?xml version="1.0"?>
+<?php codeblockstart(); echo "<?xml version=\"1.0\"?>\n"; ?>
 <OutputData>
   <Misc>
     <Density val="0.5"/>
@@ -112,8 +111,7 @@
   What if there are many tags all with the same name? How do we pick
   just one of them? Consider the truncated DynamO configuration file below:
 </p>
-<?php codeblockstart(); ?>
-<?xml version="1.0"?>
+<?php codeblockstart(); echo "<?xml version=\"1.0\"?>\n"; ?>
 <DynamOconfig version="1.5.0">
   <Simulation>...</Simulation>
   <Properties/>
