@@ -44,9 +44,12 @@
   to create a configuration file from scratch. It is much simpler and
   more convenient to take an existing configuration which is close to
   the system you wish to study and modify it as needed. Once you are
-  familiar with the file format you may then write your own tools in
-  the programming language of your choice to create your configuration
-  files.
+  familiar with the file format you may then write your own tools to
+  generate configuration files in the programming language of your
+  choice.
+</p>
+<p>
+  We need to find the 
 </p>
 <h1>Running the Simulation</h1>
 <h1>Processing the Results</h1>
