@@ -52,9 +52,9 @@
 <p>
   The user documentation for DynamO comes in the form of a set of
   tutorials, which take you through the basic topics and lead you onto
-  more advanced techniques. Afterwards there is a set of reference
-  appendices which cover everything else. Please click on any of the
-  links below to take a look
+  more advanced techniques. There is a set of reference appendices
+  below which cover the fine details not included in the
+  tutorials. Please click on any of the links below to take a look
 </p>
 <div style="clear:both;"></div>
 <?php button("Tutorial 1: Compiling DynamO from Source","/index.php/tutorial1");?>
@@ -63,6 +63,7 @@
 <?php button("Tutorial 4: Example: Multicomponent Square-Well Fluid","/index.php/tutorial4");?>
 <?php button("Appendix A: Parsing Output and Config Files","/index.php/tutorialA");?>
 <?php button("Appendix B: Frequently Asked Questions","/index.php/FAQ");?>
+<?php button("Appendix C: Configuration File Format Reference","/index.php/reference");?>
 <p>
   If what you need to simulate is not covered in the tutorials, but is
   listed in the <a href="/index.php/features">features</a>, please
