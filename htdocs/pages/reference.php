@@ -10,7 +10,7 @@
    ?>
 <?php printTOC(); ?>
 <p style="text-align:center; margin:15px; background-color:#FFD800; font-size:16pt; font-family:sans; line-height:40px;">
-  <b>This tutorial is currently being written, so it may be incomplete or contain errors.</b>
+  <b>This reference is currently being written and is incomplete.</b>
 </p>
 <p>
   In this appendix, a complete description of the file format is
@@ -19,5 +19,7 @@
   covered in tutorial 3</a>.
 </p>
 <h1>Scheduler</h1>
+<h2>"Dumb" Type</h2>
+<h2>"NeighbourList" Type</h2>
+<h2>"SystemOnly" Type</h2>
 <h1>Simulation Size</h1>
-  
