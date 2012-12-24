@@ -6,7 +6,7 @@
    header( 'Location: /index.php/404');
    return;
    }
-   $pagetitle="Tutorial 3: Exploring the Configuration File Format";
+   $pagetitle="Tutorial 3: Overview of the Configuration File Format";
    ?>
 <?php printTOC(); ?>
 <p>
