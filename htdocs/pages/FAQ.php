@@ -6,7 +6,7 @@
    header( 'Location: /index.php/404');
    return;
    }
-   $pagetitle="Appendix B: Frequently asked questions";
+   $pagetitle="Frequently asked questions";
    ?>
 <?php printTOC(); ?>
 <p>
@@ -14,8 +14,8 @@
 </p>
 <h3>Q: What are the units of DynamO?</h3>
 <p>
-  The short answer is: whatever units you use in the input
-  configuration file.
+  Short answer: whatever units you use in the input configuration
+  file.
 </p>
 <p>
   The configuration files expose almost every parameter of the system
@@ -72,7 +72,7 @@
 </p>
 <h3>Q: What units does the dynamod command use/produce?</h3>
 <p>
-  The short answer is: Whenever the <b>dynamod</b> command is used to
+  Short answer: Whenever the <b>dynamod</b> command is used to
   generate a configuration, it tries to use the most natural set of
   dimensionless units for that type of system. The results should then
   directly correspond to the typical units used in publications.

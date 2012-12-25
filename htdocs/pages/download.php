@@ -13,9 +13,9 @@
   3 of the GPL licence. On this page you
   can <a href="#source-code-downloads">download the source code</a> so
   you can compile DynamO yourself or, if you have Ubuntu linux, you
-  can use the <a href="#ubuntu">prebuilt packages</a>.
+  can use the <a href="#installing-on-ubuntu-and-later">prebuilt packages</a>.
 </p>
-<h1>Ubuntu</h1>
+<h1>Installing on Ubuntu 12.04 and later</h1>
 <p>
   DynamO is now extremely easy to install on Ubuntu. Although you can
   download individual packages by hand, the recommended installation
@@ -25,8 +25,11 @@
 </p>
 <h2>Stable Releases</h2>
 <p>
-  To add the stable DynamO PPA to your system just open a terminal
-  and run the following commands:
+  You can add the PPA by following the
+  instructions <a href="https://launchpad.net/~dynamomd/+archive/stable">on
+  the PPA site</a>, or by using the brief instructions here. To add
+  the stable DynamO PPA to your system just open a terminal and run
+  the following commands:
 </p>
 <?php codeblockstart(); ?>sudo add-apt-repository ppa:dynamomd/stable
 sudo apt-get update<?php codeblockend("brush: shell;"); ?>
@@ -44,7 +47,9 @@ sudo apt-get update<?php codeblockend("brush: shell;"); ?>
 </p>
 <p>
   To add the development packages, add the development PPA to your
-  system.
+  system. Full instructions can be found on
+  the <a href="https://launchpad.net/~dynamomd/+archive/dynamo-daily-ppa">PPA
+  site</a>, but a brief summary is given below.
 </p>
 <?php codeblockstart(); ?>sudo add-apt-repository ppa:dynamomd/dynamo-daily-ppa
 sudo apt-get update<?php codeblockend("brush: shell;"); ?>

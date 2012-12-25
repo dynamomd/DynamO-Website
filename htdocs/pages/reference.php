@@ -6,7 +6,7 @@
    header( 'Location: /index.php/404');
    return;
    }
-   $pagetitle="Appendix C: Configuration File Format Reference";
+   $pagetitle="Configuration File Format Reference";
    ?>
 <?php printTOC(); ?>
 <p style="text-align:center; margin:15px; background-color:#FFD800; font-size:16pt; font-family:sans; line-height:40px;">
@@ -22,4 +22,5 @@
 <h2>"Dumb" Type</h2>
 <h2>"NeighbourList" Type</h2>
 <h2>"SystemOnly" Type</h2>
+<h1>Sorter</h1>
 <h1>Simulation Size</h1>

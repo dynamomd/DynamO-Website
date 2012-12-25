@@ -8,76 +8,40 @@
    $pagetitle="Documentation";
  ?>
 <?php printTOC(); ?>
-<h1>The Basics</h1>
 <p>
-  All of the documentation of DynamO assumes that you have some
-  experience with both Linux and Molecular Dynamics simulation. Here
-  some resources are provided to help with these basics if you have no
-  prior experience in these topics.
+  All of the documentation of DynamO assumes the reader has some
+  experience with both Linux and Molecular Dynamics simulation. There
+  are some <a href="#recommended-resources">recommended resources</a>
+  listed below which can be used as references for any techniques
+  which are not clearly described in the documentation.
 </p>
-<p>
-  DynamO, like many Linux programs, is driven through a Command-Line
-  Interface (CLI). To be able to use DynamO, you will need to be
-  familiar with the Linux terminal. Take a look
-  at <a href="http://www.linuxcommand.org">this link</a> to learn more
-  about the terminal and how it works if you are at all unsure what
-  this means.
-</p>
-<p>
-  If you're looking for general documentation on Molecular Dynamics,
-  there are a few good introductory textbooks available. The
-  definitive text by Allen and Tildesley has always been very popular
-  with students and veterans alike.
-</p>
-<p style="text-align:center;">
-  <i><u>&quot;Computer Simulation of Liquids,&quot;
-  M. P. Allen, and D. J. Tildesley, 1989, Oxford Science Pub.</u></i>
-</p>
-<p>
-  A short summary of the basics, written by Allen
-  is <a href="http://www2.fz-juelich.de/nic-series/volume23/allen.pdf">also
-  available online</a> if you cannot find a copy of the book.
-</p>
-<p>
-  Although the fundamentals of Molecular Dynamics are always the same,
-  the event-driven techniques used in DynamO differ in implementation
-  from the techniques described in the resources above. These
-  differences are best described in the excellent book by Haile.
-</p>
-<p style="text-align:center;">
-  <i><u>&quot;Molecular Dynamics Simulation: Elementary Methods,&quot;
-  J. M. Haile, 1992, Wiley</u></i>
-</p>
-<h1>User Documentation/Tutorials</h1> 
+<h1>User Documentation</h1> 
 <p>
   The user documentation for DynamO comes in the form of a set of
-  tutorials, which take you through the basic topics and lead you onto
-  more advanced techniques. There is a set of reference appendices
-  below which cover the fine details not included in the
-  tutorials. Please click on any of the links below to take a look
+  tutorials which take you through the fundamentals and lead you into
+  more advanced applications of the code. There are also a set of
+  references which you can use to explore any system not directly
+  discussed in the tutorials. Some frequently asked questions are also
+  answered in the <a href="/index.php/FAQ">FAQ page</a>.  If the
+  system you wish to simulate is not covered in the tutorials, but is
+  supported in the <a href="/index.php/features">features</a>, please
+  feel free to
+  <a href="/index.php/support#contacting-the-developers">contact the
+  developers</a> for some advice.
 </p>
 <div style="clear:both;"></div>
+<h2>Tutorials</h2>
 <?php button("Tutorial 1: Compiling DynamO from Source","/index.php/tutorial1");?>
 <?php button("Tutorial 2: Introduction to the DynamO workflow","/index.php/tutorial2");?>
 <?php button("Tutorial 3: Overview of the Configuration File Format","/index.php/tutorial3");?>
 <?php button("Tutorial 4: Example: Multicomponent Square-Well Fluid","/index.php/tutorial4");?>
 <?php button("Appendix A: Parsing Output and Config Files","/index.php/tutorialA");?>
-<?php button("Appendix B: Frequently Asked Questions","/index.php/FAQ");?>
-<?php button("Appendix C: Configuration File Format Reference","/index.php/reference");?>
+<h2>References</h2>
+<?php button("Configuration File Format Reference","/index.php/reference");?>
+<?php button("Frequently Asked Questions","/index.php/FAQ");?>
 <p>
-  If what you need to simulate is not covered in the tutorials, but is
-  listed in the <a href="/index.php/features">features</a>, please
-  feel free to email the developers for some advice (see below).
 </p>
-<h1>Developer Documentation</h1>
-<p>
-  If you're looking to extend DynamO or to understand how it works,
-  you'll need to take a look at the source code. The DynamO API is
-  partially documented using Doxygen and a up to date version is
-  available at the link below.
-</p>
-<?php button("DynamO API Documentation","/doxygen");?>
-<h1>Publications/Citing DynamO</h1>
+<h1>Publications and Citing DynamO</h1>
 <p>
   If you find the DynamO useful and publish a paper using results
   obtained from DynamO, please help support it's development by citing
@@ -97,8 +61,8 @@
   <li>
     <a href="http://dx.doi.org/10.1103/PhysRevLett.108.098301">
       S. Mandal, M. Gross, D. Raabe, F. Varnik, "Heterogeneous Shear
-      in Hard Sphere Glasses," <i>Phys. Rev. Lett.<i>, <b>108</b>,
-      098301 (2012)
+      in Hard Sphere Glasses," <i>Phys. Rev. Lett.</i>, <b>108</b>,
+	  098301 (2012)
     </a>
   </li>
   <li>
@@ -151,5 +115,43 @@
     </a>
   </li>
 </ul>
-
+<p>
+  If you have any publications you want to be listed here please
+  <a href="/index.php/support#contacting-the-developers">contact the
+  developers</a>.
+</p>
+<h1>Recommended Resources</h1>
+<p>
+  DynamO, like many Linux programs, is driven through a Command-Line
+  Interface (CLI). To be able to use DynamO, you will need to be
+  familiar with the Linux terminal. Take a look
+  at <a href="http://www.linuxcommand.org">this link</a> to learn more
+  about the terminal and how it works if you are at all unsure what
+  this means.
+</p>
+<p>
+  If you're looking for general documentation on Molecular Dynamics,
+  there are a few good introductory textbooks available. The
+  definitive text by Allen and Tildesley has always been very popular
+  with students and veterans alike.
+</p>
+<p style="text-align:center;">
+  <i><u>&quot;Computer Simulation of Liquids,&quot;
+      M. P. Allen, and D. J. Tildesley, 1989, Oxford Science Pub.</u></i>
+</p>
+<p>
+  A short summary of the basics, also written by Allen,
+  is <a href="http://www2.fz-juelich.de/nic-series/volume23/allen.pdf">also
+    available online</a> if you cannot find a copy of the book.
+</p>
+<p>
+  Although the fundamentals of Molecular Dynamics are always the same,
+  the event-driven techniques used in DynamO differ in implementation
+  from the techniques described in the resources above. These
+  differences are best described in the excellent book by Haile.
+</p>
+<p style="text-align:center;">
+  <i><u>&quot;Molecular Dynamics Simulation: Elementary Methods,&quot;
+      J. M. Haile, 1992, Wiley</u></i>
+</p>
 

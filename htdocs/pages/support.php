@@ -17,9 +17,10 @@
   do this.
 </p>
 <p>
-  If you have a straightforward question, please check
+  If you think you have a straightforward question, please check
   the <a href="/index.php/documentation">online documentation</a>
-  first to see if it answers your questions.
+  first to see if it answers your questions. In particular, frequently
+  asked questions are answered in the <a href="/index.php/FAQ">FAQ</a>.
 </p>
 <h1>Reporting Bugs</h1>
 <p>
@@ -35,9 +36,8 @@
 </p>
 <h1>Contacting the Developers</h1>
 <p>
-  If you are having problems or you wish to contact the developers to
-  discuss possible collaborations, you can email your queries to the
-  following address:
+  You may also contact the developers with any other inquiry by
+  emailing the following address:
 </p>
 <?php button("support@dynamomd.org", "mailto:support@dynamomd.org");?>
 <p>
@@ -48,7 +48,7 @@
 <h1>Alternatives</h1>
 <p>
   If all else fails, there are some alternative event-driven packages
-  available and they are listed here:
+  (and groups) available and they are listed here:
 </p>
 <ul>
   <li>
