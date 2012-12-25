@@ -17,9 +17,8 @@
   new features to DynamO.
 </p>
 <p>
-  If you've already installed DynamO using the prebuilt packages and
-  you don't plan on modifying DynamO yourself, you can skip straight
-  to tutorial 2, which 
+  If you've already installed DynamO using the prebuilt packages, you
+  can skip straight to tutorial 2:
 </p>
 <?php button("Tutorial 2: Introduction to the DynamO workflow: Running a simulation of hard spheres","/index.php/tutorial2");?>
 <p>
