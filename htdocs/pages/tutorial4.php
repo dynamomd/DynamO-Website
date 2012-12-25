@@ -42,20 +42,34 @@
 <p>
   When you first start using DynamO, it is not really practical to try
   to create a configuration file from scratch. It is much simpler and
-  more convenient to take an existing configuration which is close to
-  the system you wish to study and modify it as needed. Once you are
-  familiar with the file format you may then write your own tools to
-  generate configuration files in the programming language of your
-  choice.
+  convenient to take an existing configuration, which is close to the
+  system you wish to study, and to modify it. Once you are familiar
+  with the file format you may then write your own tools to generate
+  configuration files in the programming language of your choice.
 </p>
 <p>
   We need to see what systems the <b>dynamod</b> command can prepare
   so that we can pick the most convenient starting point for the
-  system. All the DynamO programs have a built in help for their
-  options, which we can call up with the <i>--help</i> option.
+  multicomponent square-well system. We again query the available
+  options of the <b>dynamod</b> command using the <i>--help</i>
+  option:
 </p>
 <?php codeblockstart(); ?>dynamod --help<?php codeblockend("brush: shell;"); ?>
 <p>
+  A full listing of the options of the <b>dynamod</b> program is
+  outputted, and the start of the list of systems it can create/pack
+  should look like the following:
+</p>
+<?php codeblockstart(); ?>...
+Packer options:
+  -m [ --pack-mode ] arg Chooses the system to pack (construct)
+                         Packer Modes:
+                         0:  Monocomponent hard spheres
+                         1:  Mono/Multi-component square wells
+                         2:  Random walk of an isolated attractive polymer
+<?php codeblockend("brush: shell;"); ?>
+<p>
+  We see that square wells can be
 </p>
 <h1>Running the Simulation</h1>
 <h1>Processing the Results</h1>
