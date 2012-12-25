@@ -49,7 +49,13 @@
   choice.
 </p>
 <p>
-  We need to find the 
+  We need to see what systems the <b>dynamod</b> command can prepare
+  so that we can pick the most convenient starting point for the
+  system. All the DynamO programs have a built in help for their
+  options, which we can call up with the <i>--help</i> option.
+</p>
+<?php codeblockstart(); ?>dynamod --help<?php codeblockend("brush: shell;"); ?>
+<p>
 </p>
 <h1>Running the Simulation</h1>
 <h1>Processing the Results</h1>
