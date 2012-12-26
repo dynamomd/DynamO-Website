@@ -134,6 +134,9 @@ Mode 1: Mono/Multi-component square wells
   string option (<i>--s1</i>), but we'll create it by hand from the
   monocomponent system.
 </p>
+<p>
+  Lets make a starting configuration of
+</p>
 <h1>Compressing the Configuration</h1>
 <h1>Running the Simulation</h1>
 <h1>Processing the Results</h1>
