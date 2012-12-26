@@ -48,6 +48,8 @@
 </p>
 <img src="/images/sw.png" alt="A diagram of a square-well molecule including its parameters" width="650" height="232" style="display:block;margin:0 auto 0 auto;">
 <p>
+  where $u(r)$ is the interparticle 
+<p>
   Square-well molecules are simple models which display the two
   fundamental features of real molecules, a short range repulsion (due
   to overlapping electron clouds) and longer ranged attraction (due to
@@ -56,18 +58,22 @@
   $r=\lambda\,\sigma$, they enter the well and a momentum impulse
   increases their kinetic energy by $\varepsilon$ (they are attracted
   to each other). If they then hit the inner core at a distance of
-  $r=\sigma$ they will then bounce off it. Once they begin to retreat
-  from each other and again reach a distance of $r=\lambda\,\sigma$
-  they must have enough kinetic energy to escape the well and pay the
-  energy cost ($\varepsilon$), otherwise they will bounce off the
-  inside of the well.
+  $r=\sigma$ they will then be repulsed and will bounce off it. Once
+  they begin to retreat from each other and again reach a distance of
+  $r=\lambda\,\sigma$ they must have enough kinetic energy to escape
+  the well and pay the energy cost, $\varepsilon$, otherwise they will
+  bounce off the inside of the well.
 </p>
+<h2>The System Studied</h2>
 <p>
   We're going to study a binary mixture of square-well
   molecules. We'll have a larger species, A, and a smaller species,
-  B. The mixture we'll study has a hard-core diameter ratio of
+  B. The mixture we will study has a hard-core diameter ratio of
   $\sigma_A/\sigma_B=10$ and a mass ratio proportional to their
-  volumes $m_A/m_B=\sigma_A^3/\sigma_B^3=1000$.
+  volumes $m_A/m_B=\sigma_A^3/\sigma_B^3=1000$. Both molecules have
+  the same well-width factor $\lambda_A=\lambda_B=1.5$. We'll want to
+  study a mixture of $N=4000$ particles over a range of densities and
+  concentrations.
 </p>
 <h1>Setting up the Configuration File</h1>
 <p>
@@ -125,7 +131,8 @@ Mode 1: Mono/Multi-component square wells
 ...<?php codeblockend("brush: shell;"); ?>
 <p>
   This mode can create a multicomponent system for us using the first
-  string option (<i>--s1</i>), but we'll create it by hand.
+  string option (<i>--s1</i>), but we'll create it by hand from the
+  monocomponent system.
 </p>
 <h1>Compressing the Configuration</h1>
 <h1>Running the Simulation</h1>
