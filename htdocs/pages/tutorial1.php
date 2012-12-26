@@ -105,7 +105,7 @@ Once you have the source
 </p>
 <h1>Step 2: Compilation</h1>
 <p>
-  DynamO uses the modern, powerful, but quite complicated boost-build
+  DynamO uses the modern, powerful, but fairly complex boost-build
   system. Using the boost build system takes some getting used to;
   however, to make it easy to build DynamO there is a wrapper Makefile
   included in the sources.
@@ -116,7 +116,7 @@ Once you have the source
 </p>
 <?php codeblockstart(); ?>make<?php codeblockend("brush: shell;"); ?>
 <p>
-  This step can take a while as there are hundreds of source files to
+  This step will take a while as there are hundreds of source files to
   compile.
 </p>
 <p>
@@ -143,19 +143,19 @@ Once you have the source
 <p>
   If you are missing any of the boost libraries, then DynamO won't
   build at all. If you are missing any of Coil's dependencies you will
-  see [DynamO-Coil Integration : <b>no</b>]; however, DynamO will
+  see <br/>[DynamO-Coil Integration : <b>no</b>]<br/>However, DynamO will
   still build but without the visualizer support (the dynavis program
   will be missing).
 </p>
 <p>
   If you still have errors, take a look at the
-  <a href="/index.php/documentation">documentation</a> to find ways of
-  filing a bug report and how to contact the developers.
+  <a href="/index.php/support">support section of the site</a> to find
+  ways of filing a bug report and how to contact the developers.
 </p>
 <h1>Step 3: Installation</h1>
 <p>
-  Once the compilation has been successfully completed, everything you
-  need to use DynamO should be in the <em>bin</em> sub-directory.
+  Once the compilation has completed, everything you need to use
+  DynamO should be in the <em>bin</em> sub-directory.
 </p>
 <p>
   You can now install DynamO into your system (<em>/usr/bin</em>) using the
@@ -163,9 +163,8 @@ Once you have the source
 </p>
 <?php codeblockstart(); ?>sudo make install<?php codeblockend("brush: shell;"); ?>
 <p>
-  (Advanced users can copy the contents of <em>DynamO/bin</em>
-  wherever they like, or add it to their PATH variable, or just run
-  the executables from where they are)
+  Alternatively, you may just run the executables from where they
+  are or add the directory <em>DynamO/bin</em> to your PATH variable.
 </p>
 <p>
   Congratulations! You now have a working installation of DynamO. You

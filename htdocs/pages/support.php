@@ -5,7 +5,7 @@
    header( 'Location: /index.php/404');
    return;
    }
-   $pagetitle="Documentation";
+   $pagetitle="Support";
  ?>
 <?php printTOC(); ?>
 <p>
