@@ -38,18 +38,36 @@
   it provides you with all of the knowledge you need to study any
   multicomponent system.
 </p>
+<h2>About Square-Well Fluids</h2>
 <p>
   For the purpose of the tutorial, we'll want to simulate a mixture of
-  two species of square-well molecules. A square-well molecule is a
-  particle with a hard-core diameter of $\sigma$ which is surrounded
-  by an attractive well with a depth of $\varepsilon$ and a diameter
-  of $\lambda\,\sigma$. The diagram below
+  of square-well molecules. A square-well molecule is a particle which
+  has a hard-core diameter of $\sigma$ and is surrounded by an
+  attractive well with a diameter of $\lambda\,\sigma$ and a depth of
+  $\varepsilon$. These variables are illustrated in the diagram below:
 </p>
 <img src="/images/sw.png" alt="A diagram of a square-well molecule including its parameters" width="650" height="232" style="display:block;margin:0 auto 0 auto;">
 <p>
-  They
-  have a hard-core diameter ratio of 10:1 and a mass ratio
-  proportional to their volumes (1000:1).
+  Square-well molecules are simple models which display the two
+  fundamental features of real molecules, a short range repulsion (due
+  to overlapping electron clouds) and longer ranged attraction (due to
+  van-der-waals/london/dispersion forces). For example, when two
+  distant square-well particles approach a distance of
+  $r=\lambda\,\sigma$, they enter the well and a momentum impulse
+  increases their kinetic energy by $\varepsilon$ (they are attracted
+  to each other). If they then hit the inner core at a distance of
+  $r=\sigma$ they will then bounce off it. Once they begin to retreat
+  from each other and again reach a distance of $r=\lambda\,\sigma$
+  they must have enough kinetic energy to escape the well and pay the
+  energy cost ($\varepsilon$), otherwise they will bounce off the
+  inside of the well.
+</p>
+<p>
+  We're going to study a binary mixture of square-well
+  molecules. We'll have a larger species, A, and a smaller species,
+  B. The mixture we'll study has a hard-core diameter ratio of
+  $\sigma_A/\sigma_B=10$ and a mass ratio proportional to their
+  volumes $m_A/m_B=\sigma_A^3/\sigma_B^3=1000$.
 </p>
 <h1>Setting up the Configuration File</h1>
 <p>
