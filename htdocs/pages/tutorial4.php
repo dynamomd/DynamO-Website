@@ -107,7 +107,7 @@ Packer options:
 <?php codeblockend("brush: shell;"); ?>
 <p>
   We see that square-well fluids can be made using <b>dynamod</b>'s
-  packing mode 2. We can get some more information on this mode using
+  packing mode 1. We can get some more information on this mode using
   the following command:
 </p>
 <?php codeblockstart(); ?>dynamod -m 1 --help<?php codeblockend("brush: shell;"); ?>

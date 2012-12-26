@@ -13,8 +13,8 @@
   This tutorial covers the build requirements, compilation, and
   installation of the DynamO simulation package and its tools. It is
   highly recommended that you build your own version of DynamO if you
-  want to be able to make changes to the code or if you plan to add
-  new features to DynamO.
+  want to be able to make changes to the code (to add new features to
+  DynamO).
 </p>
 <p>
   If you've already installed DynamO using the prebuilt packages, you
@@ -46,21 +46,21 @@
   <li>
     <a href="http://gcc.gnu.org">gcc</a>
     and <a href="http://www.gnu.org/software/make/">make</a> - You
-    need a compiler and the make build system(<b>Ubuntu</b>:
-    build-essential).
+    need a compiler and the make build system.<br/><b>Ubuntu Package</b>:
+    build-essential.
   </li>
   <li>
     <a href="http://www.boost.org/">Boost Libraries</a> - DynamO uses
     many of the boost libraries (program_options, iostreams,
-    filesystem, math) and it is easiest to install them all (<b>Ubuntu
-    Package</b>: libboost-all-dev).
+    filesystem, math) and it is easiest to install them all.<br/><b>Ubuntu
+    Package</b>: libboost-all-dev.
   </li>
   <li>
     <a href="http://www.boost.org/boost-build2/">Boost Build</a> -
     DynamO uses the boost build system to manage the compilation and
-    it is usually included with the boost libraries (<b>Ubuntu
+    it is usually included with the boost libraries.<br/><b>Ubuntu
     Package</b>: libboost-dev, but it will be pulled in by the
-    libboost-all-dev above).
+    libboost-all-dev above.
   </li>
 </ul>
 <h2>Visualiser Requirements</h2>
@@ -75,21 +75,20 @@
     higher. Usually, this means using a AMD/ATI or Nvidia card with
     up-to-date drivers.
   </li>
-  <li><a href="http://www.gtkmm.org/">Gtkmm</a> (<b style="font-size:
-    16px;">Ubuntu Package</b>: libgtkmm-2.4-dev).
+  <li><a href="http://www.gtkmm.org/">Gtkmm</a>:<br/><b>Ubuntu Package</b>: libgtkmm-2.4-dev.
   </li>
   <li>
-    <a href="http://freeglut.sourceforge.net/">Freeglut</a> (<b>Ubuntu
-    Package</b>: freeglut3-dev).
+    <a href="http://freeglut.sourceforge.net/">Freeglut</a>:<br/><b>Ubuntu
+    Package</b>: freeglut3-dev.
   </li>
   <li>
-    <a href="http://glew.sourceforge.net/">GLEW</a> version 1.6+ (<b>Ubuntu Package</b>: libglew1.6-dev).
+    <a href="http://glew.sourceforge.net/">GLEW</a> version 1.6+.<br/><b>Ubuntu Package</b>: libglew1.6-dev.
   </li>
   <li>
     <a href="http://ffmpeg.org/">libavcodec</a> - (Optional) Allows
     you to record visualisations directly to a movie file. This may be
-    supplied by your systems FFMPEG package (<b>Ubuntu Package</b>:
-    libavcodec-dev).
+    supplied by your systems FFMPEG package.<br/><b>Ubuntu Package</b>:
+    libavcodec-dev.
   </li>
 </ul>
 <h1>Step 1: Downloading</h1>

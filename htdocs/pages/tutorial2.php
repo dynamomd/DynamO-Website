@@ -16,7 +16,7 @@
   understanding of the steps you carry out to run a simulation with
   DynamO. Later tutorials will go into the detail to show you how to
   simulate different systems and to process the output of DynamO to
-  collect publishable results.
+  collect results.
 </p>
 <div class="figure" style="clear:right; float:right;width:400px;">
   <?php embedAJAXvideo("hardspheres", "tn6Cz0tNPuU", 400, 250); ?>

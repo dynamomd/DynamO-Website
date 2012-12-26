@@ -53,9 +53,10 @@
 dynamod -m 0 -d 0.5 -C 7 -o config.start.xml
 <?php codeblockend("brush: shell;"); ?>
 <p>
-  <a href="/pages/config.tut3.xml">An example output is also available
-  here</a>. Please note that the output you generate using
-  <b>dynamod</b> will have different randomly-assigned-velocities than
+  <a href="/pages/config.tut3.xml">An example config.start.xml is also
+  available online here</a>. Please note that the output you generate
+  using
+  <b>dynamod</b> will have different randomly-assigned velocities than
   the example provided.
 </p>
 <p>
