@@ -38,6 +38,19 @@
   it provides you with all of the knowledge you need to study any
   multicomponent system.
 </p>
+<p>
+  For the purpose of the tutorial, we'll want to simulate a mixture of
+  two species of square-well molecules. A square-well molecule is a
+  particle with a hard-core diameter of $\sigma$ which is surrounded
+  by an attractive well with a depth of $\varepsilon$ and a diameter
+  of $\lambda\,\sigma$. The diagram below
+</p>
+<img src="/images/sw.png" alt="A diagram of a square-well molecule including its parameters" width="650" height="232" style="display:block;margin:0 auto 0 auto;">
+<p>
+  They
+  have a hard-core diameter ratio of 10:1 and a mass ratio
+  proportional to their volumes (1000:1).
+</p>
 <h1>Setting up the Configuration File</h1>
 <p>
   When you first start using DynamO, it is not really practical to try
@@ -69,7 +82,33 @@ Packer options:
                          2:  Random walk of an isolated attractive polymer
 <?php codeblockend("brush: shell;"); ?>
 <p>
-  We see that square wells can be
+  We see that square-well fluids can be made using <b>dynamod</b>'s
+  packing mode 2. We can get some more information on this mode using
+  the following command:
 </p>
+<?php codeblockstart(); ?>dynamod -m 1 --help<?php codeblockend("brush: shell;"); ?>
+<p>
+  And a detailed description of the modes options will be outputted on
+  screen:
+</p>
+<?php codeblockstart(); ?>...
+Mode 1: Mono/Multi-component square wells
+ Options
+  -C [ --NCells ] arg (=7)    Set the default number of lattice unit-cells in each direction.
+  -x [ --xcell ] arg          Number of unit-cells in the x dimension.
+  -y [ --ycell ] arg          Number of unit-cells in the y dimension.
+  -z [ --zcell ] arg          Number of unit-cells in the z dimension.
+  --rectangular-box           Set the simulation box to be rectangular so that the x,y,z cells also specify the simulation aspect ratio.
+  -d [ --density ] arg (=0.5) System density.
+  --i1 arg (=FCC)             Lattice type (0=FCC, 1=BCC, 2=SC)
+  --f1 arg (=1.5)             Well width factor (also known as lambda)
+  --f2 arg (=1)               Well Depth (negative values create square shoulders)
+  --s1 arg (monocomponent)    Instead of f1 and f2, you can specify a multicomponent system using this option. You need to pass the the parameters for each species as follows --s1 "diameter(d),lambda(l),mass(m),welldepth(e),molefrac(x):d,l,m,e,x[:...]"
+...<?php codeblockend("brush: shell;"); ?>
+<p>
+  This mode can create a multicomponent system for us using the first
+  string option (<i>--s1</i>), but we'll create it by hand.
+</p>
+<h1>Compressing the Configuration</h1>
 <h1>Running the Simulation</h1>
 <h1>Processing the Results</h1>
