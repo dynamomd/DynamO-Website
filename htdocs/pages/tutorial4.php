@@ -48,7 +48,8 @@
 </p>
 <img src="/images/sw.png" alt="A diagram of a square-well molecule including its parameters" width="650" height="232" style="display:block;margin:0 auto 0 auto;">
 <p>
-  where $u(r)$ is the interparticle 
+  where $u(r)$ is the interparticle potential (which is the potential
+  energy between two particles separated by a distance of $r$).
 <p>
   Square-well molecules are simple models which display the two
   fundamental features of real molecules, a short range repulsion (due
