@@ -40,10 +40,9 @@
 </div>
 <p>
   To explore the configuration file format, we will need to generate a
-  configuration.  We have chosen to look at the hard sphere
-  configuration again as it is one of the simplest configurations we
-  can generate with DynamO. More complex systems are explored in later
-  tutorials.
+  configuration.  We'll look at the hard-sphere configuration from the
+  <a href="/index.php/tutorial2">previous tutorial</a> as it is one of
+  the simplest configurations we can generate with DynamO.
 </p>
 <p>
   To begin, use <b>dynamod</b> to generate a hard sphere configuration
@@ -592,18 +591,11 @@ dynamod -m 0 -d 0.5 -C 7 -o config.start.xml
 <h1>Conclusion</h1>
 <p>
   In this lengthy tutorial we've covered the entire configuration file
-  format. This has introduced many concepts and terms which you may be
-  unfamiliar with. If you are looking for a good resource on
-  molecular-dynamics and event-driven simulation we can recommend the
-  following text:
+  format.  Now that we've covered the general workflow of using DynamO
+  in <a href="/index.php/tutorial2">tutorial 2</a>, and all of the
+  terminology and configuration file format in this tutorial, the
+  following tutorials will now focus on case studies of certain
+  systems and collecting data, beginning with the multicomponent
+  square-well fluid.
 </p>
-<p style="text-align:center;">
-  &quot;Molecular Dynamics Simulation: Elementary Methods,&quot;
-  J. M. Haile, 1992, Wiley
-</p>
-<p>
-  Now that we've covered the general workflow of using DynamO in
-  tutorial 2, and all of the terminology and configuration file format
-  in this tutorial, the following tutorials will now focus on case
-  studies of certain systems and collecting data.
-</p>
+<?php button("Tutorial 4: Example: Multicomponent Square-Well Fluid","/index.php/tutorial4");?>
