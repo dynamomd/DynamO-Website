@@ -72,8 +72,11 @@
   B. The mixture we will study has a hard-core diameter ratio of
   $\sigma_A/\sigma_B=10$ and a mass ratio proportional to their
   volumes $m_A/m_B=\sigma_A^3/\sigma_B^3=1000$. Both molecules have
-  the same well-width factor $\lambda_A=\lambda_B=1.5$. We'll want to
-  study a mixture of $N=4000$ particles over a range of densities and
+  the same well-width factor $\lambda_A=\lambda_B=1.5$. For
+  interactions between species we'll use the additive rule. For
+  example, between species A and B the interaction diameter is
+  $\sigma_{AB}=\left(\sigma_A+\sigma_B\right)/2$. We'll want to study
+  a mixture of $N=4000$ particles over a range of densities and
   concentrations.
 </p>
 <h1>Setting up the Configuration File</h1>
@@ -136,7 +139,17 @@ Mode 1: Mono/Multi-component square wells
   monocomponent system.
 </p>
 <p>
-  Lets make a starting configuration of
+  Lets start by making a monocomponent mixture of square-wells using
+  the following command:
+</p>
+<?php codeblockstart(); ?>dynamod -m 1 -C 10 -d 0.5 --i1 0 -r 1 -o config.start.xml<?php codeblockend("brush: shell;"); ?>
+<p style="font-family:monospaced;">
+  The options passed
+  are <a href="/index.php/tutorial2#initial-positions-and-crystals">discussed
+  in detail in tutorial 2</a>. The only differences are that the
+  number of particles has been increased to 4000 (<i>-C 10</i>), and
+  we're creating square-well molecules (<i>-m 1</i>) instead of hard
+  spheres.
 </p>
 <h1>Compressing the Configuration</h1>
 <h1>Running the Simulation</h1>
