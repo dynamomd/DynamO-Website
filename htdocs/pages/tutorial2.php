@@ -47,20 +47,39 @@
 <img src="/images/hardsphere.png" alt="The interparticle potential energy of a hard-sphere molecule" width="650" height="232" style="display:block;margin:0 auto 0 auto;">
 <p>
   where $u(r)$ is the interparticle potential (which is the potential
-  energy between two particles separated by a distance of $r$). As you
-  can see, the particles do not interact at separations greater than
-  the diameter of the molecule ($u(r)=0$ for $r\ge\sigma^+$) but the
-  infinite interaction energy of the hard core ($u(r)=+\infty$ for
-  $r\le\sigma^-$) makes it impossible for particles to overlap and
-  they will instead elastically bounce off of each other.
+  energy between two particles separated by a distance of
+  $r$). Particles do not interact at separations greater than the
+  diameter of the molecule ($u(r)=0$ for $r\ge\sigma^+$). The infinite
+  interaction energy of the hard core ($u(r)=+\infty$ for
+  $r\le\sigma^-$) also makes it energetically impossible for particles
+  to "overlap", therefore the particles will elastically bounce-off of
+  each other when they come into contact. This completes the brief
+  description of the how the hard-sphere particles interact and only
+  the boundary conditions need to be specified.
 </p>
 <p>
   When we want to study molecular fluids we often want the "bulk"
-  properties of the fluid (i.e., the properties of the fluid away from
-  any other influences like surface or boundary effects). To avoid
-  introducing boundaries in the
-  simulation, <a href="http://en.wikipedia.org/wiki/Periodic_boundary_conditions">periodic
-  boundary conditions</a> are used.
+  properties of the fluid. Effects like surface tension will have a
+  strong influence if there are any free surfaces or boundaries in
+  contact with the fluid as the systems simulated are relatively small
+  ($\approx10^5$ molecules). On the other hand, there must be some
+  boundary used to contain the fluid, as using an open system will
+  cause the fluid to either evaporate or form droplets, again with
+  surface effects. To avoid these surface
+  effects, <a href="http://en.wikipedia.org/wiki/Periodic_boundary_conditions">periodic
+  boundary conditions</a> are often used.  With periodic boundaries, a
+  small representative amount of fluid, called the "primary image," is
+  simulated. This primary image is then surrounded with periodic
+  images which are copies of the primary image as illustrated in the
+  figure below:
+</p>
+<img src="/images/PBC.png" alt="The interparticle potential energy of a hard-sphere molecule" width="650" height="293" style="display:block;margin:0 auto 0 auto;">
+<p>
+  These boundaries allow the approximation of an infinite fluid using
+  a small repeating image. This approximation is only appropriate for
+  large primary images as the periodicity adds additional correlations
+  to the system, but it is a convenient technique to avoid using real
+  boundaries, such as walls, to contain the system.
 </p>
 <div class="figure" style="clear:right; float:right;width:400px;">
   <?php embedAJAXvideo("hardspheres", "tn6Cz0tNPuU", 400, 250); ?>
