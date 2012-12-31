@@ -41,7 +41,7 @@
 <h2>About Square-Well Fluids</h2>
 <p>
   For the purpose of the tutorial, we'll want to simulate a mixture of
-  of square-well molecules. A square-well molecule is a particle which
+  square-well molecules. A square-well molecule is a particle which
   has a hard-core diameter of $\sigma$ and is surrounded by an
   attractive well with a diameter of $\lambda\,\sigma$ and a depth of
   $\varepsilon$. These variables are illustrated in the diagram below:
@@ -54,14 +54,17 @@
   Square-well molecules are simple models which display the two
   fundamental features of real molecules, a short range repulsion (due
   to overlapping electron clouds) and longer ranged attraction (due to
-  van-der-waals/london/dispersion forces). For example, when two
-  distant square-well particles approach a distance of
-  $r=\lambda\,\sigma$, they enter the well and a momentum impulse
-  increases their kinetic energy by $\varepsilon$ (they are attracted
-  to each other). If they then hit the inner core at a distance of
-  $r=\sigma$ they will then be repulsed and will bounce off it. Once
-  they begin to retreat from each other and again reach a distance of
-  $r=\lambda\,\sigma$ they must have enough kinetic energy to escape
+  van-der-waals/London/dispersion forces). For example, when two
+  distant square-well particles approach each other and reach a
+  separation of $r=\lambda\,\sigma$, they enter the well (or "capture"
+  each other) and a momentum impulse increases their kinetic energy by
+  $\varepsilon$ (they are attracted to each other). If they then
+  approach the inner core and reach a separation of $r=\sigma$, they
+  will be unable to pay the (infinite) energy cost to enter the core
+  and will instead elastically bounce off it. Once they begin to
+  retreat from each other (either by bouncing off the core or by
+  missing it) and once again reach a separation of
+  $r=\lambda\,\sigma$, they must have enough kinetic energy to escape
   the well and pay the energy cost, $\varepsilon$, otherwise they will
   bounce off the inside of the well.
 </p>
@@ -149,7 +152,55 @@ Mode 1: Mono/Multi-component square wells
   in detail in tutorial 2</a>. The only differences are that the
   number of particles has been increased to 4000 (<i>-C 10</i>), and
   we're creating square-well molecules (<i>-m 1</i>) instead of hard
-  spheres.
+  spheres. An example of the configuration
+  file <a href="/pages/config.tut4.mono.xml">is available here</a> (it
+  is a large XML file, so your browser may take some time to display
+  it).
+</p>
+<p>
+  This system has the 4000 particles we're looking for, but we'll need
+  to convert a fraction of these to another species to make the
+  multicomponent square-well system we wish to study. In the following
+  sections we look at what needs to be done to perform this
+  conversion, and learn how DynamO handles multiple interactions.
+</p>
+<h2>Adding a new Species</h2>
+<p>
+  If you open the <i>config.start.xml</i> file in a text editor,
+  you'll notice that there is only one <b>Species</b> defined:
+</p>
+<?php xmlXPathFile("pages/config.tut4.mono.xml", "/DynamOconfig/Simulation/Genus"); ?>
+<p>
+  If we want to study a multicomponent system we'll need to define at
+  least two species to specify the masses of the particles. If we want
+  to convert the first 100 particles in the configuration file to
+  species A and have the rest as species B, we can change the file to:
+</p>
+<?php xmlXPathFile("pages/config.tut4.binary.xml", "/DynamOconfig/Simulation/Genus"); ?>
+<p>
+  You'll notice that the <b>IDRange</b> of <b>Type</b> <i>"Ranged"</i>
+  is an inclusive range of particle ID's. The particle ID's start with
+  zero therefore the first <b>Species</b> tag corresponds to the first
+  100 particles in the configuration file.
+</p>
+<p>
+  Each particle must belong to exactly one species and each species
+  must have a representative <b>Interaction</b>, who's <i>name</i> is
+  specified by the <b>IntName</b> attribute. Obviously, we need to
+  define at least two interactions, called <i>"AAInteraction"</i> and
+  <i>"BBInteraction"</i>.
+</p>
+<h2>Setting up the Interactions</h2>
+<p>
+  In the basic file 
+</p>
+<?php xmlXPathFile("pages/config.tut4.mono.xml", "/DynamOconfig/Simulation/Interactions", 4, 2); ?>
+<p>
+  
+</p>
+<?php xmlXPathFile("pages/config.tut4.binary.xml", "/DynamOconfig/Simulation/Interactions", 4,3); ?>
+<p>
+  
 </p>
 <h1>Compressing the Configuration</h1>
 <h1>Running the Simulation</h1>
