@@ -38,7 +38,7 @@
   it provides you with all of the knowledge you need to study any
   multicomponent system.
 </p>
-<h2>About Square-Well Fluids</h2>
+<h1>About Square-Well Fluids</h1>
 <p>
   For the purpose of the tutorial, we'll want to simulate a mixture of
   square-well molecules. A square-well molecule is a particle which

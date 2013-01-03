@@ -28,21 +28,27 @@
   simulate different systems and to process the output of DynamO to
   collect results.
 </p>
-<h2>About the Simulated Hard-Sphere Fluid System</h2>
+<h2>About the Simulated Hard-Sphere Fluid</h2>
 <p>
-  In this tutorial a hard-sphere fluid is simulated which is a simple
-  molecular model used to capture the fundamental effects of
+  In this tutorial a hard-sphere fluid is simulated. A hard sphere is
+  a simple molecular model used to capture the fundamental effects of
   "excluded-volume" interactions. You may think of the hard-sphere
   fluid as an extension of the ideal-gas model, where each molecule
   now has a diameter, $\sigma$, and cannot overlap the volume of this
   diameter with the volume of other molecules. The effects of this
   additional "excluded volume" interaction is dramatic and leads to
   complex transport coefficients as a function of density and the
-  appearance of a fluid-solid freezing transition. In fact, the
-  structure of many real crystals is dominated by the repulsive
-  "excluded-volume" interactions caused by overlapping electron
-  clouds. The interparticle potential of this model is given in the
-  figure below:
+  appearance of a fluid-solid freezing transition. This model is too
+  simple to capture any complex temperature effects, such as a
+  liquid/gas phase transition, as it has no finite interaction
+  energies (unlike the <a href="/index.php/tutorial4">square-well
+  fluid in tutorial 4</a>). Despite its simplicity, the structure of
+  many real crystals is dominated by the repulsive "excluded-volume"
+  interactions caused by overlapping electron clouds which may be
+  effectively captured by the hard-sphere model. It is also at the
+  heart of kinetic theory which is the most successful attempt to
+  predict the transport properties of fluids. The interparticle
+  potential of this model is given in the figure below:
 </p>
 <img src="/images/hardsphere.png" alt="The interparticle potential energy of a hard-sphere molecule" width="650" height="232" style="display:block;margin:0 auto 0 auto;">
 <p>
