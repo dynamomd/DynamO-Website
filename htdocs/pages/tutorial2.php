@@ -47,8 +47,9 @@
   interactions caused by overlapping electron clouds which may be
   effectively captured by the hard-sphere model. It is also at the
   heart of kinetic theory which is the most successful attempt to
-  predict the transport properties of fluids. The interparticle
-  potential of this model is given in the figure below:
+  predict the transport properties of fluids from their molecular
+  interactions. The interparticle potential of this model is given in
+  the figure below:
 </p>
 <img src="/images/hardsphere.png" alt="The interparticle potential energy of a hard-sphere molecule" width="650" height="232" style="display:block;margin:0 auto 0 auto;">
 <p>
