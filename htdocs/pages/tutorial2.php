@@ -70,10 +70,11 @@
   strong influence if there are any free surfaces or boundaries in
   contact with the fluid as the systems simulated are relatively small
   ($\approx10^5$ molecules). On the other hand, there must be some
-  boundary used to contain the fluid, as using an open system will
-  cause the fluid to either evaporate or form droplets, again with
-  surface effects. To avoid these surface
-  effects, <a href="http://en.wikipedia.org/wiki/Periodic_boundary_conditions">periodic
+  boundary used to contain the fluid, as using an open (infinite size)
+  system will cause the fluid to either evaporate or form droplets,
+  again with surface effects. To avoid the effects of boundaries/walls
+  while still "containing" the
+  system, <a href="http://en.wikipedia.org/wiki/Periodic_boundary_conditions">periodic
   boundary conditions</a> are often used.  With periodic boundaries, a
   small representative amount of fluid, called the "primary image," is
   simulated. This primary image is then surrounded with periodic
@@ -83,10 +84,15 @@
 <img src="/images/PBC.png" alt="The interparticle potential energy of a hard-sphere molecule" width="650" height="293" style="display:block;margin:0 auto 0 auto;">
 <p>
   These boundaries allow the approximation of an infinite fluid using
-  a small repeating image. This approximation is only appropriate for
-  large primary images as the periodicity adds additional correlations
-  to the system, but it is a convenient technique to avoid using real
-  boundaries, such as walls, to contain the system.
+  a small repeating image. This is an approximation as the periodicity
+  adds additional correlations to the system, but it is a convenient
+  technique to avoid using real boundaries, such as walls, to contain
+  the system. When using periodic boundary conditions it is still
+  possible to simulate a two-phase system. Fortunately, the hard
+  sphere fluid only has a fluid-solid transition and, from experience,
+  it is exceptionally difficult to generate a stable liquid-solid
+  system so these "difficulties" can safely be ignored for this
+  tutorial.
 </p>
 <div class="figure" style="clear:right; float:right;width:400px;">
   <?php embedAJAXvideo("hardspheres", "tn6Cz0tNPuU", 400, 250); ?>
