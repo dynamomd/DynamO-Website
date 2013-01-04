@@ -35,9 +35,12 @@
 </p>
 <?php codeblockstart();?><IDRange Type="All"/><?php codeblockend("brush: xml;"); ?>
 <p>
-  <b>Full Attribute List</b>:
+  <b>Full Tag, Subtag, and Attribute List</b>:
   <ul>
-    <li>No additional attributes are available.</li>
+    <li>
+      <b>Type</b> <i>(attribute)</i>: Must have the value <i>"All"</i>
+      to select this range type.
+    </li>
   </ul>
 </p>
 <h2>Type="None"</h2>
@@ -49,9 +52,12 @@
 </p>
 <?php codeblockstart();?><IDRange Type="None"/><?php codeblockend("brush: xml;"); ?>
 <p>
-  <b>Full Attribute List</b>:
+  <b>Full Tag, Subtag, and Attribute List</b>:
   <ul>
-    <li>No additional attributes are available.</li>
+    <li>
+      <b>Type</b> <i>(attribute)</i>: Must have the
+      value <i>"None"</i> to select this range type.
+    </li>
   </ul>
 </p>
 <h2>Type="Ranged"</h2>
@@ -69,13 +75,19 @@
 </p>
 <?php codeblockstart();?><IDRange Type="Ranged" Start="0" End="5"/><?php codeblockend("brush: xml;"); ?>
 <p>
-  <b>Full Attribute List</b>:
+  <b>Full Tag, Subtag, and Attribute List</b>:
   <ul>
     <li>
-      <b>Start:</b> The first ID in the range.
+      <b>Type</b> <i>(attribute)</i>: Must have the
+      value <i>"Ranged"</i> to select this range type.
     </li>
     <li>
-      <b>End:</b> The last ID in the range.
+      <b>Start</b> <i>(attribute)</i>: The lowest value ID which is
+      inside the range.
+    </li>
+    <li>
+      <b>End</b> <i>(attribute)</i>: The highest value ID which is
+      inside the range.
     </li>
   </ul>
 </p>
@@ -99,9 +111,20 @@
 </IDRange>
 <?php codeblockend("brush: xml;"); ?>
 <p>
-  <b>Full Attribute List</b>:
+  <b>Full Tag, Subtag, and Attribute List</b>:
   <ul>
-    <li>No additional attributes are available.</li>
+    <li>
+      <b>Type</b> <i>(attribute)</i>: Must have the
+      value <i>"List"</i> to select this range type.
+    </li>
+    <li>
+      <b>ID</b> <i>(tag)</i>: A tag containing an ID/entry in the list.
+      <ul>
+	<li>
+	  <b>val</b> <i>(attribute)</i>: The ID of the entry.
+	</li>
+      </ul>
+    </li>
   </ul>
 </p>
 <h1>IDPairRange</h1>
