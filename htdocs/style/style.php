@@ -44,10 +44,11 @@ h1 {
 }
 
 h2 { 
-    font-size:16pt; 
+    font-size:14pt;
     display:block; 
     /* Android autofit bugfix */
     background-color: #ffffff;
+    border-bottom:1px solid;
 }
 
 li { 
