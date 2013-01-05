@@ -318,11 +318,35 @@
 <h2>Type="NeighbourList"</h2>
 <h2>Type="SystemOnly"</h2>
 <h1>Sorter</h1>
+<h1>SimulationSize</h1>
 <h1>Species</h1>
+<h1>BC</h1>
+<p>
+  The BC tag in the configuration file controls the boundary
+  conditions of the simulation.
+</p>
+<h2>Type="None"</h2>
+<p>
+  <b>Description:</b> This boundary condition actually corresponds to
+  an infinite system. The positions of the particles are not
+  restricted in any dimension.
+</p>
+<p>
+  <b>Example Usage:</b>
+</p>
+<?php codeblockstart();?><BC Type="None"/><?php codeblockend("brush: xml;"); ?>
+<p>
+  <b>Full Tag, Subtag, and Attribute List</b>:
+  <ul>
+    <li>
+      <b>Type</b> <i>(attribute)</i>: Must have the
+      value <i>"None"</i> to select this BC type.
+    </li>
+  </ul>
+</p>
 <h1>Interaction</h1>
 <h1>Local</h1>
 <h1>Global</h1>
-<h1>Simulation Size</h1>
 <h1>Pt (Particle)</h1>
 <p>
   A <b>Pt</b> or Particle tag represents the unique data of a single
