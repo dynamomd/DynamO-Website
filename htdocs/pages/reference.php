@@ -426,7 +426,8 @@
       particle image which is in the primary image (the "wrapped"
       particle position).  This behaviour may be disabled using
       the <i>--unwrapped</i> option of the dynamod and dynarun
-      commands.
+      commands (the particle positions correspond to the initial
+      particle image's final location).
       <ul>
 	<li>
 	  <b>x</b> <i>(attribute)</i>: The particles $x$-coordinate.
