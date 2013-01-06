@@ -314,11 +314,35 @@
   </ul>
 </p>
 <h1>Scheduler</h1>
-<h2>Type="Dumb"</h2>
-<h2>Type="NeighbourList"</h2>
-<h2>Type="SystemOnly"</h2>
 <h1>Sorter</h1>
 <h1>SimulationSize</h1>
+<p>
+  <b>Description:</b> The SimulationSize tag specifies the dimensions
+  of the primary image for periodic boundary conditions. When the
+  system is not periodic, it specifies the size of the tiled
+  neighbourlist.
+</p>
+<p>
+  <b>Example Usage:</b> This example specifies a $10\times10\times10$
+  primary image.
+</p>
+<?php codeblockstart();?>
+<SimulationSize x="10" y="10" z="10"/>
+<?php codeblockend("brush: xml;"); ?>
+<p>
+  <b>Full Tag, Subtag, and Attribute List</b>:
+  <ul>
+    <li>
+      <b>x</b> <i>(attribute)</i>: The size in the $x$ dimension.
+    </li>
+    <li>
+      <b>y</b> <i>(attribute)</i>: The size in the $y$ dimension.
+    </li>
+    <li>
+      <b>z</b> <i>(attribute)</i>: The size in the $z$ dimension.
+    </li>
+  </ul>
+</p>
 <h1>Species</h1>
 <h1>BC</h1>
 <p>
@@ -327,9 +351,9 @@
 </p>
 <h2>Type="None"</h2>
 <p>
-  <b>Description:</b> This boundary condition actually corresponds to
-  an infinite system. The positions of the particles are not
-  restricted in any dimension.
+  <b>Description:</b> The "None" boundary condition actually
+  corresponds to an infinite system, without boundaries. The positions
+  of the particles are not restricted in any dimension.
 </p>
 <p>
   <b>Example Usage:</b>
@@ -344,11 +368,93 @@
     </li>
   </ul>
 </p>
+<h2>Type="PBC"</h2>
+<p>
+  <b>Description:</b> The "PBC" boundary condition applies periodic
+  boundary conditions to every dimension. The positions of the
+  particles are wrapped to fit within the primary image, whose
+  dimensions are specified by
+  the <a href="#simulationsize">SimulationSize</a> tag.
+</p>
+<p>
+  <b>Example Usage:</b>
+</p>
+<?php codeblockstart();?><BC Type="PBC"/><?php codeblockend("brush: xml;"); ?>
+<p>
+  <b>Full Tag, Subtag, and Attribute List</b>:
+  <ul>
+    <li>
+      <b>Type</b> <i>(attribute)</i>: Must have the
+      value <i>"PBC"</i> to select this BC type.
+    </li>
+  </ul>
+</p>
 <h1>Interaction</h1>
 <h1>Local</h1>
 <h1>Global</h1>
 <h1>Pt (Particle)</h1>
 <p>
-  A <b>Pt</b> or Particle tag represents the unique data of a single
-  particle.
+  <b>Description:</b> A <b>Pt</b> or Particle tag represents the
+  unique data of a single particle. Each particle must have at least a
+  position and velocity tag, but it may also include additional
+  attributes and tags corresponding
+  to <a href="#properties">Properties</a>.
+</p>
+<p>
+  <b>Example Usage:</b>
+</p>
+<?php codeblockstart();?><Pt ID="0">
+  <P x="1.71513720091304e+00" y="5.49987913872954e+00" z="4.32598642635552e+00"/>
+  <V x="1.51174422678297e+00" y="-8.06881217863154e-01" z="-8.11332120569972e-01"/>
+</Pt>
+<?php codeblockend("brush: xml;"); ?>
+<p>
+  <b>Full Tag, Subtag, and Attribute List</b>:
+  <ul>
+    <li>
+      <b>ID</b> <i>(attribute)</i>: DynamO loads and assigns ID's to
+      particles in the order in which they appear in the configuration
+      file. This tag is therefore not read by DynamO, but is provided
+      in generated configuration files to make it easy to identify
+      particles.
+    </li>
+    <li>
+      <b>P</b> <i>(tag)</i>: This tag contains the position of the
+      particle. In systems with periodic boundary conditions, the
+      dynamod/dynarun commands will output the position of the
+      particle image which is in the primary image (the "wrapped"
+      particle position).  This behaviour may be disabled using
+      the <i>--unwrapped</i> option of the dynamod and dynarun
+      commands.
+      <ul>
+	<li>
+	  <b>x</b> <i>(attribute)</i>: The particles $x$-coordinate.
+	</li>
+	<li>
+	  <b>y</b> <i>(attribute)</i>: The particles $y$-coordinate.
+	</li>
+	<li>
+	  <b>z</b> <i>(attribute)</i>: The particles $z$-coordinate.
+	</li>
+      </ul>
+    </li>
+    <li>
+      <b>V</b> <i>(tag)</i>: This tag contains the velocity of the
+      particle.
+      <ul>
+	<li>
+	  <b>x</b> <i>(attribute)</i>: The $x$-component of the particle velocity.
+	</li>
+	<li>
+	  <b>y</b> <i>(attribute)</i>: The $y$-component of the particle velocity.
+	</li>
+	<li>
+	  <b>z</b> <i>(attribute)</i>: The $z$-component of the particle velocity.
+	</li>
+      </ul>
+    </li>
+  </ul>
+</p>
+<h1>Properties</h1>
+<p>
 </p>
