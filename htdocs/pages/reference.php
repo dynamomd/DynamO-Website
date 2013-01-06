@@ -320,7 +320,8 @@
   <b>Description:</b> The SimulationSize tag specifies the dimensions
   of the primary image for periodic boundary conditions. When the
   system is not periodic, it specifies the size of the tiled
-  neighbourlist.
+  neighbourlist (if one is used). If no neighbour list is used in an
+  infinite system, this tag has no effect.
 </p>
 <p>
   <b>Example Usage:</b> This example specifies a $10\times10\times10$
