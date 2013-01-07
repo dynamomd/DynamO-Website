@@ -13,10 +13,11 @@
   <b>This reference is currently being written and is incomplete.</b>
 </p>
 <p>
-  In this appendix, a complete description of the file format is
-  presented. This reference documentation is terse as an
-  <a href="/index.php/tutorial3">introduction to the file format is
-  covered in tutorial 3</a>.
+  In this reference a complete description of the file format is
+  presented. This reference documentation is terse as a general
+  introduction to the file format is covered
+  in <a href="/index.php/tutorial3">tutorial 3</a>. This documentation
+  is meant to serve as a complete guide to the options of DynamO.
 </p>
 <h1>Scheduler</h1>
 <p>
@@ -815,6 +816,65 @@
       this tag must be correct at all times otherwise errors in the
       dynamics will occur so take care when manually editing the
       configuration file.
+    </li>
+    <li>
+      <b>IDPairRange</b> <i>(tag)</i>: This IDPairRange tag specifies
+      the pairs of particles which interact using this
+      Interaction. See the <a href="#idpairrange">section on
+      IDPairRanges</a> for more information on the format of this tag.
+    </li>
+  </ul>
+</p>
+<h2>Type="SquareBond"</h2>
+<p>
+  <b>Description:</b> The "SquareBond" Interaction implements a
+  square-well potential with an infinite interaction energy. This
+  allows you to bond particles together to form polymeric structures.
+</p>
+<img src="/images/squarebond.png" alt="A diagram of a square-bond including its parameters" width="650" height="232" style="display:block;margin:0 auto 0 auto;">
+<p>
+  <b>Example Usage:</b>
+</p>
+<?php codeblockstart();?><Interaction Type="SquareBond" Diameter="1" Elasticity="1" Lambda="1.5" Name="Bulk">
+  <IDPairRange .../>
+</Interaction><?php codeblockend("brush: xml;"); ?>
+<p>
+  <b>Full Tag, Subtag, and Attribute List</b>:
+  <ul>
+    <li>
+      <b>Type</b> <i>(attribute)</i>: Must have the
+      value <i>"SquareBond"</i> to select this Interaction type.
+    </li>
+    <li>
+      <b>Diameter</b> <i>(attribute)</i>: The interaction diameter
+      ($\sigma$) of the particle pairs corresponding to this
+      Interaction. <br/> This attribute is a Property specifier with a
+      unit of length (see the <a href="#properties">section on
+      Properties</a> for more information).
+    </li>
+    <li>
+      <b>Elasticity</b> <i>(attribute)</i>: The elasticity of the
+      particle pairs corresponding to this Interaction. This value is
+      typically 1 for molecular systems and between zero and one for
+      granular systems. <br/> This attribute is a Property specifier
+      with dimensionless units (see the <a href="#properties">section
+      on Properties</a> for more information).
+    </li>
+    <li>
+      <b>Lambda</b> <i>(attribute)</i>: The bond-width factor
+      ($\lambda$) of the particle pairs corresponding to this
+      Interaction. Values below 1 are not valid. <br/> This attribute
+      is a Property specifier with dimensionless units (see
+      the <a href="#properties">section on Properties</a> for more
+      information).
+    </li>
+    <li>
+      <b>Name</b> <i>(attribute)</i>: The name of the
+      Interaction. This name is used to identify the Interaction in
+      the configuration file (e.g.,
+      see <a href="#species">Species</a>) and in the output generated
+      by the dynarun command. Each Interaction must have a name which
+      is unique.
     </li>
     <li>
       <b>IDPairRange</b> <i>(tag)</i>: This IDPairRange tag specifies
