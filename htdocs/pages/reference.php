@@ -18,6 +18,881 @@
   <a href="/index.php/tutorial3">introduction to the file format is
   covered in tutorial 3</a>.
 </p>
+<h1>Scheduler</h1>
+<p>
+  The Scheduler specifies how DynamO searches the simulation for
+  events. How the events are sorted is specified by the Sorter tag.
+</p>
+<h2>Type="Dumb"</h2>
+<p>
+  <b>Description:</b> The "Dumb" scheduler is the most basic and
+  slowest scheduler available. When particles undergo an event, the
+  Dumb scheduler tests for new events against all other particles in
+  the system (regardless of where they are). This cost scales linearly
+  with the system size ($\mathcal{O}(N)$), resulting in an overall
+  $\mathcal{O}(N^2)$ scaling of the computational cost. This Scheduler
+  type is only provided for debugging and testing purposes.
+</p>
+<p>
+  <b>Example Usage:</b>
+</p>
+<?php codeblockstart();?><Scheduler Type="Dumb">
+  <Sorter .../>
+</Scheduler><?php codeblockend("brush: xml;"); ?>
+<p>
+  <b>Full Tag, Subtag, and Attribute List</b>:
+  <ul>
+    <li>
+      <b>Type</b> <i>(attribute)</i>: Must have the
+      value <i>"Dumb"</i> to select this Scheduler type.
+    </li>
+    <li>
+      <b>Sorter</b> <i>(tag)</i>: This tag specifies the type of event
+      sorter used in the Scheduler. See the <a href="#sorter">section
+      on Sorters</a> for more information on this tag.
+    </li>
+  </ul>
+</p>
+<h2>Type="NeighbourList"</h2>
+<p>
+  <b>Description:</b> The "NeighbourList" scheduler uses a
+  NeighbourList to optimise the detection of events. When particles
+  undergo an event, the NeighbourList scheduler only tests for new
+  events against nearby particles. This cost is independent of the
+  system size ($\mathcal{O}(1)$), resulting in an overall linear
+  ($\mathcal{O}(N)$) scaling of the computational cost.
+</p>
+<p>
+  <b>Note:</b> The neighbour list used by the scheduler is not
+  actually provided by the Scheduler. There must be a Global
+  interaction available in the system which implements a
+  NeighbourList. This neighbour list must have the name attribute set
+  to "SchedulerNBList" to allow the NeighbourList Scheduler to
+  identify it.
+<p>
+<p>
+  <b>Example Usage:</b>
+</p>
+<?php codeblockstart();?><Scheduler Type="NeighbourList">
+  <Sorter .../>
+</Scheduler><?php codeblockend("brush: xml;"); ?>
+<p>
+  <b>Full Tag, Subtag, and Attribute List</b>:
+  <ul>
+    <li>
+      <b>Type</b> <i>(attribute)</i>: Must have the
+      value <i>"NeighbourList"</i> to select this Scheduler type.
+    </li>
+    <li>
+      <b>Sorter</b> <i>(tag)</i>: This tag specifies the type of event
+      sorter used in the Scheduler. See the <a href="#sorter">section
+      on Sorters</a> for more information on this tag.
+    </li>
+  </ul>
+</p>
+<h1>Sorter</h1>
+<p>
+  The Sorter tag specifies the method DynamO uses to sort events when
+  determining the next event to occur.
+</p>
+<h2>Type="CBT"</h2>
+<p>
+  <b>Description:</b> The "CBT" Sorter uses a STL priority queue for
+  each particle and inserts this into a Complete Binary Tree (CBT) to
+  sort the events. This type of Sorter is very robust to unusual
+  systems (such as systems with zero or one particle) but, as the
+  computational cost scales as $\mathcal{O}(\log_2(N)$ with the system
+  size, it is not the default Sorter used by DynamO.
+<p>
+<p>
+  <b>Example Usage:</b>
+</p>
+<?php codeblockstart();?><Sorter Type="CBT"/><?php codeblockend("brush: xml;"); ?>
+<p>
+  <b>Full Tag, Subtag, and Attribute List</b>:
+  <ul>
+    <li>
+      <b>Type</b> <i>(attribute)</i>: Must have the
+      value <i>"CBT"</i> to select this Sorter type.
+    </li>
+  </ul>
+</p>
+<h2>Type="BoundedPQMinMax3"</h2>
+<p>
+  <b>Description:</b> The "BoundedPQMinMax3" Sorter uses a bounded
+  MinMax heap of size 3 to sort particle events. These particle queues
+  are then presorted using a bounded priority queue. The earliest
+  entry in the bounded priority queue is then sorted using a Complete
+  Binary Tree. In this way, the lazy deletion scheme can be combined
+  with a fixed size event queue and a bounded priority queue to yield
+  a constant ($\mathcal{O}(1)$) scaling of the computational cost with
+  the system size. There are variants of this scheduler with different
+  sizes of the MinMax heaps ranging from 2 to 8 (e.g.,
+  "BoundedPQMinMax8" is also available). After many years of testing
+  this has proven to be the fastest and lowest memory event sorter for
+  a range of event-driven particle simulations. In small systems the
+  CBT Sorter is slightly faster and, depending on the system studied,
+  you may find the MinMax heap size might be increased or decreased to
+  increase performance.
+<p>
+<p>
+  <b>Example Usage:</b>
+</p>
+<?php codeblockstart();?><Sorter Type="BoundedPQMinMax3"/><?php codeblockend("brush: xml;"); ?>
+<p>
+  <b>Full Tag, Subtag, and Attribute List</b>:
+  <ul>
+    <li>
+      <b>Type</b> <i>(attribute)</i>: Must have the
+      value <i>"BoundedPQMinMax3"</i> to select this Sorter
+      type. Other variants from "BoundedPQMinMax2" to
+      "BoundedPQMinMax8" are also available.
+    </li>
+  </ul>
+</p>
+<h1>SimulationSize</h1>
+<p>
+  <b>Description:</b> The SimulationSize tag specifies the dimensions
+  of the primary image for periodic boundary conditions. When the
+  system is not periodic, it specifies the size of the tiled
+  neighbourlist (if one is used). If no neighbour list is used in an
+  infinite system, this tag has no effect.
+</p>
+<p>
+  <b>Example Usage:</b> This example specifies a $10\times10\times10$
+  primary image.
+</p>
+<?php codeblockstart();?>
+<SimulationSize x="10" y="10" z="10"/>
+<?php codeblockend("brush: xml;"); ?>
+<p>
+  <b>Full Tag, Subtag, and Attribute List</b>:
+  <ul>
+    <li>
+      <b>x</b> <i>(attribute)</i>: The size in the $x$ dimension.
+    </li>
+    <li>
+      <b>y</b> <i>(attribute)</i>: The size in the $y$ dimension.
+    </li>
+    <li>
+      <b>z</b> <i>(attribute)</i>: The size in the $z$ dimension.
+    </li>
+  </ul>
+</p>
+<h1>Species</h1>
+<p>
+  Species are vital tags used to specify the mass and inertia data of
+  a set of particles. They also provide a unique identifier/name for
+  groups of particles as each particle must belong to exactly one
+  species. Many output plugins use the species of a particle to
+  separate results (for example, a radial distribution function will
+  be generated for all pairings of species in the system) and they are
+  used by the visualiser to determine how to draw the particles.
+</p>
+<h2>Type="Point"</h2>
+<p>
+  <b>Description:</b> This Species type corresponds to point mass
+  (zero inertia) particles, but this type is also used in systems
+  where inertial data is unimportant (atomic or frictionless
+  systems). It is the simplest type of Species available.
+</p>
+<p>
+  <b>Example Usage:</b>
+</p>
+<?php codeblockstart();?><Species Mass="1" Name="Bulk" IntName="Bulk" Type="Point">
+  <IDRange .../>
+</Species><?php codeblockend("brush: xml;"); ?>
+<p>
+  <b>Full Tag, Subtag, and Attribute List</b>:
+  <ul>
+    <li>
+      <b>Type</b> <i>(attribute)</i>: Must have the
+      value <i>"Point"</i> to select this Species type.
+    </li>
+    <li>
+      <b>Mass</b> <i>(attribute)</i>: The mass of the particles
+      represented by this Species. <br/> This attribute is a Property
+      specifier (see the <a href="#properties">section on
+      Properties</a> for more information).
+    </li>
+    <li>
+      <b>Name</b> <i>(attribute)</i>: The name of the particles
+      represented by this Species. This is used in output, so species
+      "A" or "Carbon" are examples. If the system is monocomponent,
+      dynamod often uses the name "Bulk".
+    </li>
+    <li>
+      <b>IntName</b> <i>(attribute)</i>: The name of the Interaction
+      used to represent this species. This Interaction is used to
+      calculate the volume occupied by the Species and to draw the
+      Particles of the Species.
+    </li>
+    <li>
+      <b>IDRange</b> <i>(tag)</i>: A IDRange which specifies the
+      Particles represented by this Species tag. The IDRanges of each
+      Species must not overlap with any other Species in the
+      system. All particles must belong to exactly one Species.
+    </li>
+  </ul>
+</p>
+<h2>Type="FixedCollider"</h2>
+<p>
+  <b>Description:</b> This Species type corresponds to particles which
+  have infinite mass and no inertia tensor. This is useful for
+  particles which are used as the boundaries of a system (also called
+  a particle mesh).
+</p>
+<p>
+  <b>Example Usage:</b>
+</p>
+<?php codeblockstart();?><Species Name="Bulk" IntName="Bulk" Type="FixedCollider">
+  <IDRange .../>
+</Species><?php codeblockend("brush: xml;"); ?>
+<p>
+  <b>Full Tag, Subtag, and Attribute List</b>:
+  <ul>
+    <li>
+      <b>Type</b> <i>(attribute)</i>: Must have the
+      value <i>"FixedCollider"</i> to select this Species type.
+    </li>
+    <li>
+      <b>Name</b> <i>(attribute)</i>: The name of the particles
+      represented by this Species. This is used in output, so species
+      "A" or "Carbon" are examples. If the system is monocomponent,
+      dynamod often uses the name "Bulk".
+    </li>
+    <li>
+      <b>IntName</b> <i>(attribute)</i>: The name of the Interaction
+      used to represent this species. This Interaction is used to
+      calculate the volume occupied by the Species and to draw the
+      Particles of the Species.
+    </li>
+    <li>
+      <b>IDRange</b> <i>(tag)</i>: A IDRange which specifies the
+      Particles represented by this Species tag. The IDRanges of each
+      Species must not overlap with any other Species in the
+      system. All particles must belong to exactly one Species.
+    </li>
+  </ul>
+</p>
+<h2>Type="SphericalTop"</h2>
+<p>
+  <b>Description:</b> This Species type corresponds to particles where
+  the three principal momenta of inertia are identical. It is also
+  used in systems where only two of the principal momenta of inertia
+  are equal but the rotation is constrained such that the particle
+  cannot precess.
+</p>
+<p>
+  <b>Example Usage:</b>
+</p>
+<?php codeblockstart();?><Species Mass="1" Name="Bulk" IntName="Bulk"Type="SphericalTop">
+  <IDRange .../>
+</Species><?php codeblockend("brush: xml;"); ?>
+<p>
+  <b>Full Tag, Subtag, and Attribute List</b>:
+  <ul>
+    <li>
+      <b>Type</b> <i>(attribute)</i>: Must have the
+      value <i>"SphericalTop"</i> to select this Species type.
+    </li>
+    <li>
+      <b>Mass</b> <i>(attribute)</i>: The mass of the particles
+      represented by this Species. <br/> This attribute is a Property
+      specifier (see the <a href="#properties">section on
+      Properties</a> for more information).
+    </li>
+    <li>
+      <b>InertiaConstant</b> <i>(attribute)</i>: The value of the
+      principal momenta of inertia of the particles represented by
+      this Species. <br/> This attribute is a Property specifier (see
+      the <a href="#properties">section on Properties</a> for more
+      information).
+    </li>
+    <li>
+      <b>Name</b> <i>(attribute)</i>: The name of the particles
+      represented by this Species. This is used in output, so species
+      "A" or "Carbon" are examples. If the system is monocomponent,
+      dynamod often uses the name "Bulk".
+    </li>
+    <li>
+      <b>IntName</b> <i>(attribute)</i>: The name of the Interaction
+      used to represent this species. This Interaction is used to
+      calculate the volume occupied by the Species and to draw the
+      Particles of the Species.
+    </li>
+    <li>
+      <b>IDRange</b> <i>(tag)</i>: A IDRange which specifies the
+      Particles represented by this Species tag. The IDRanges of each
+      Species must not overlap with any other Species in the
+      system. All particles must belong to exactly one Species.
+    </li>
+  </ul>
+</p>
+<h1>BC</h1>
+<p>
+  The BC tag in the configuration file controls the boundary
+  conditions of the simulation.
+</p>
+<h2>Type="None"</h2>
+<p>
+  <b>Description:</b> The "None" boundary condition actually
+  corresponds to an infinite system, without boundaries. The positions
+  of the particles are not restricted in any dimension.
+</p>
+<p>
+  <b>Example Usage:</b>
+</p>
+<?php codeblockstart();?><BC Type="None"/><?php codeblockend("brush: xml;"); ?>
+<p>
+  <b>Full Tag, Subtag, and Attribute List</b>:
+  <ul>
+    <li>
+      <b>Type</b> <i>(attribute)</i>: Must have the
+      value <i>"None"</i> to select this BC type.
+    </li>
+  </ul>
+</p>
+<h2>Type="PBC"</h2>
+<p>
+  <b>Description:</b> The "PBC" boundary condition applies periodic
+  boundary conditions to every dimension. The positions of the
+  particles are wrapped to fit within the primary image, whose
+  dimensions are specified by
+  the <a href="#simulationsize">SimulationSize</a> tag.
+</p>
+<p>
+  <b>Example Usage:</b>
+</p>
+<?php codeblockstart();?><BC Type="PBC"/><?php codeblockend("brush: xml;"); ?>
+<p>
+  <b>Full Tag, Subtag, and Attribute List</b>:
+  <ul>
+    <li>
+      <b>Type</b> <i>(attribute)</i>: Must have the
+      value <i>"PBC"</i> to select this BC type.
+    </li>
+  </ul>
+</p>
+<h1>Interaction</h1>
+<p>
+  Interaction tags are used to specify how pairs of particles
+  interact. Every pairing of particles must have a corresponding
+  Interaction even if they don't interact (see <a href="#typenull">Null
+  Interactions</a>).
+</p>
+<p>
+  When DynamO tests for interactions/events between a pair of
+  particles, it moves through the list of interactions in the order in
+  which they are specified, testing if the ID's of the pair match the
+  Interaction's IDPairRange. Therefore, <b>the order in which
+  Interactions are listed in the configuration file is
+  important</b>. Interactions which are higher in the configuration
+  file will override matching Interactions which are lower down.
+</p>
+<h2>Type="Null"</h2>
+<p>
+  <b>Description:</b> The "Null" Interaction is used to mark particle
+  pairs out as non-interacting. All particle pairs must have a
+  corresponding Interaction defined, so this Interaction is the only
+  way to prevent events being generated for a set of particle pairs.
+</p>
+<p>
+  <b>Example Usage:</b>
+</p>
+<?php codeblockstart();?><Interaction Type="Null" Name="Bulk">
+  <IDPairRange .../>
+</Interaction><?php codeblockend("brush: xml;"); ?>
+<p>
+  <b>Full Tag, Subtag, and Attribute List</b>:
+  <ul>
+    <li>
+      <b>Type</b> <i>(attribute)</i>: Must have the
+      value <i>"Null"</i> to select this Interaction type.
+    </li>
+    <li>
+      <b>Name</b> <i>(attribute)</i>: The name of the
+      Interaction. This name is used to identify the Interaction in
+      the configuration file (e.g.,
+      see <a href="#species">Species</a>) and in the output generated
+      by the dynarun command. Each Interaction must have a name which
+      is unique.
+    </li>
+    <li>
+      <b>IDPairRange</b> <i>(tag)</i>: This IDPairRange tag specifies
+      the pairs of particles which interact using this
+      Interaction. See the <a href="#idpairrange">section on
+      IDPairRanges</a> for more information on the format of this tag.
+    </li>
+  </ul>
+</p>
+<h2>Type="HardSphere"</h2>
+<p>
+  <b>Description:</b> The "HardSphere" Interaction implements the hard
+  sphere interaction potential, illustrated in the figure below. This
+  is one of the simplest event-driven potentials available.
+</p>
+<img src="/images/hardsphere.png" alt="The interparticle potential energy of a hard-sphere molecule" width="650" height="232" style="display:block;margin:0 auto 0 auto;">
+<p>
+  <b>Example Usage:</b>
+</p>
+<?php codeblockstart();?><Interaction Type="HardSphere" Diameter="1" Elasticity="1" Name="Bulk">
+  <IDPairRange .../>
+</Interaction><?php codeblockend("brush: xml;"); ?>
+<p>
+  <b>Full Tag, Subtag, and Attribute List</b>:
+  <ul>
+    <li>
+      <b>Type</b> <i>(attribute)</i>: Must have the
+      value <i>"HardSphere"</i> to select this Interaction type.
+    </li>
+    <li>
+      <b>Diameter</b> <i>(attribute)</i>: The interaction diameter
+      ($\sigma$) of the particle pairs corresponding to this
+      Interaction. <br/> This attribute is a Property specifier with a
+      unit of length (see the <a href="#properties">section on
+      Properties</a> for more information).
+    </li>
+    <li>
+      <b>Elasticity</b> <i>(attribute)</i>: The elasticity of the
+      particle pairs corresponding to this Interaction. This value is
+      typically 1 for molecular systems and between zero and one for
+      granular systems. <br/> This attribute is a Property specifier
+      with dimensionless units (see the <a href="#properties">section
+      on Properties</a> for more information).
+    </li>
+    <li>
+      <b>Name</b> <i>(attribute)</i>: The name of the
+      Interaction. This name is used to identify the Interaction in
+      the configuration file (e.g.,
+      see <a href="#species">Species</a>) and in the output generated
+      by the dynarun command. Each Interaction must have a name which
+      is unique.
+    </li>
+    <li>
+      <b>IDPairRange</b> <i>(tag)</i>: This IDPairRange tag specifies
+      the pairs of particles which interact using this
+      Interaction. See the <a href="#idpairrange">section on
+      IDPairRanges</a> for more information on the format of this tag.
+    </li>
+  </ul>
+</p>
+<h2>Type="SquareWell"</h2>
+<p>
+  <b>Description:</b> The "SquareWell" Interaction implements the
+  square-well interaction potential, illustrated in the figure below. 
+</p>
+<img src="/images/sw.png" alt="A diagram of a square-well molecule including its parameters" width="650" height="232" style="display:block;margin:0 auto 0 auto;">
+<p>
+  <b>Example Usage:</b>
+</p>
+<?php codeblockstart();?><Interaction Type="SquareWell" Diameter="1" Elasticity="1" Lambda="1.5" WellDepth="1" Name="Bulk">
+  <IDPairRange .../>
+  <CaptureMap .../>
+</Interaction><?php codeblockend("brush: xml;"); ?>
+<p>
+  <b>Full Tag, Subtag, and Attribute List</b>:
+  <ul>
+    <li>
+      <b>Type</b> <i>(attribute)</i>: Must have the
+      value <i>"SquareWell"</i> to select this Interaction type.
+    </li>
+    <li>
+      <b>Diameter</b> <i>(attribute)</i>: The interaction diameter
+      ($\sigma$) of the particle pairs corresponding to this
+      Interaction. <br/> This attribute is a Property specifier with a
+      unit of length (see the <a href="#properties">section on
+      Properties</a> for more information).
+    </li>
+    <li>
+      <b>Elasticity</b> <i>(attribute)</i>: The elasticity of the
+      particle pairs corresponding to this Interaction. This value is
+      typically 1 for molecular systems and between zero and one for
+      granular systems. <br/> This attribute is a Property specifier
+      with dimensionless units (see the <a href="#properties">section
+      on Properties</a> for more information).
+    </li>
+    <li>
+      <b>Lambda</b> <i>(attribute)</i>: The well-width factor
+      ($\lambda$) of the particle pairs corresponding to this
+      Interaction. Values below 1 are not valid. <br/> This attribute
+      is a Property specifier with dimensionless units (see
+      the <a href="#properties">section on Properties</a> for more
+      information).
+    </li>
+    <li>
+      <b>WellDepth</b> <i>(attribute)</i>: The interaction energy
+      ($\varepsilon$) of the particle pairs corresponding to this
+      Interaction. <br/> This attribute is a Property specifier with a
+      unit of energy (see the <a href="#properties">section on
+      Properties</a> for more information).
+    </li>
+    <li>
+      <b>Name</b> <i>(attribute)</i>: The name of the
+      Interaction. This name is used to identify the Interaction in
+      the configuration file (e.g.,
+      see <a href="#species">Species</a>) and in the output generated
+      by the dynarun command. Each Interaction must have a name which
+      is unique.
+    </li>
+    <li>
+      <b>CaptureMap</b> <i>(tag)</i>: If present, the CaptureMap tag
+      should store the particle pairs which are within the well. If it
+      is not present, it will be automatically generated when the
+      configuration is next loaded by dynarun or dynamod. The data in
+      this tag must be correct at all times otherwise errors in the
+      dynamics will occur so take care when manually editing the
+      configuration file.
+    </li>
+    <li>
+      <b>IDPairRange</b> <i>(tag)</i>: This IDPairRange tag specifies
+      the pairs of particles which interact using this
+      Interaction. See the <a href="#idpairrange">section on
+      IDPairRanges</a> for more information on the format of this tag.
+    </li>
+  </ul>
+</p>
+<h2>Type="ParallelCubes"</h2>
+<div class="figure" style="width:266px; float:right;">
+  <?php embedAJAXvideo("parallelCubes_small", "B_qASDj9J8I", 266, 150); ?>
+  <div class="caption">
+    A simulation of Parallel hard cubes.
+  </div>
+</div>
+<p>
+  <b>Description:</b> The "ParallelCubes" Interaction implements the
+  hard cube interaction potential where the cubes do not rotate and
+  are axis-aligned (a video of this system is presented to the right).
+</p>
+<p>
+  <b>Example Usage:</b>
+</p>
+<?php codeblockstart();?><Interaction Type="ParallelCubes" Diameter="1" Elasticity="1" Name="Bulk">
+  <IDPairRange .../>
+</Interaction><?php codeblockend("brush: xml;"); ?>
+<p>
+  <b>Full Tag, Subtag, and Attribute List</b>:
+  <ul>
+    <li>
+      <b>Type</b> <i>(attribute)</i>: Must have the
+      value <i>"ParallelCubes"</i> to select this Interaction type.
+    </li>
+    <li>
+      <b>Diameter</b> <i>(attribute)</i>: The interaction diameter is
+      the length at which the particle pairs collide with this
+      Interaction (the length of a cube side). <br/> This attribute is
+      a Property specifier with a unit of length (see
+      the <a href="#properties">section on Properties</a> for more
+      information).
+    </li>
+    <li>
+      <b>Elasticity</b> <i>(attribute)</i>: The elasticity of the
+      particle pairs corresponding to this Interaction. This value is
+      typically 1 for molecular systems and between zero and one for
+      granular systems. <br/> This attribute is a Property specifier
+      with dimensionless units (see the <a href="#properties">section
+      on Properties</a> for more information).
+    </li>
+    <li>
+      <b>Name</b> <i>(attribute)</i>: The name of the
+      Interaction. This name is used to identify the Interaction in
+      the configuration file (e.g.,
+      see <a href="#species">Species</a>) and in the output generated
+      by the dynarun command. Each Interaction must have a name which
+      is unique.
+    </li>
+    <li>
+      <b>IDPairRange</b> <i>(tag)</i>: This IDPairRange tag specifies
+      the pairs of particles which interact using this
+      Interaction. See the <a href="#idpairrange">section on
+      IDPairRanges</a> for more information on the format of this tag.
+    </li>
+  </ul>
+</p>
+<h2>Type="Lines"</h2>
+<div class="figure" style="width:266px; vertical-align:middle; float:right;">
+  <?php embedAJAXvideo("thinHardLines", "hUVZxEhjoc0", 266, 150); ?>
+  <div class="caption">
+    A simulation of Infinitely-thin rods.
+  </div>
+</div>
+<p>
+  <b>Description:</b> The "Lines" Interaction implements the hard
+  infinitely-thin rods interaction potential (a video of this system
+  is presented to the right). 
+</p>
+<p>
+  <b>Example Usage:</b>
+</p>
+<?php codeblockstart();?><Interaction Type="Lines" Length="1" Elasticity="1" Name="Bulk">
+  <IDPairRange .../>
+</Interaction><?php codeblockend("brush: xml;"); ?>
+<p>
+  <b>Full Tag, Subtag, and Attribute List</b>:
+  <ul>
+    <li>
+      <b>Type</b> <i>(attribute)</i>: Must have the
+      value <i>"Lines"</i> to select this Interaction type.
+    </li>
+    <li>
+      <b>Length</b> <i>(attribute)</i>: The length of the lines. <br/>
+      This attribute is a Property specifier with a unit of length
+      (see the <a href="#properties">section on Properties</a> for
+      more information).
+    </li>
+    <li>
+      <b>Elasticity</b> <i>(attribute)</i>: The elasticity of the
+      particle pairs corresponding to this Interaction. This value is
+      typically 1 for molecular systems and between zero and one for
+      granular systems. <br/> This attribute is a Property specifier
+      with dimensionless units (see the <a href="#properties">section
+      on Properties</a> for more information).
+    </li>
+    <li>
+      <b>Name</b> <i>(attribute)</i>: The name of the
+      Interaction. This name is used to identify the Interaction in
+      the configuration file (e.g.,
+      see <a href="#species">Species</a>) and in the output generated
+      by the dynarun command. Each Interaction must have a name which
+      is unique.
+    </li>
+    <li>
+      <b>IDPairRange</b> <i>(tag)</i>: This IDPairRange tag specifies
+      the pairs of particles which interact using this
+      Interaction. See the <a href="#idpairrange">section on
+      IDPairRanges</a> for more information on the format of this tag.
+    </li>
+  </ul>
+</p>
+<h2>Type="Stepped"</h2>
+<p>
+  <b>Description:</b> The "Stepped" Interaction implements a generic
+  spherically-symmetric stepped potential. This can be used to
+  implement many simple systems (hard-spheres, square-wells) and many
+  complex systems such as a discontinuous Lennard-Jones potential.
+</p>
+<p>
+  <b>Example Usage:</b> A stepped approximation to the Lennard-Jones fluid.
+</p>
+<?php codeblockstart();?><Interaction Type="Stepped" Name="Bulk">
+  <Step R="2.30000000000000e+00" E="-6.00000000000000e-02"/>
+  <Step R="1.75000000000000e+00" E="-2.20000000000000e-01"/>
+  <Step R="1.45000000000000e+00" E="-5.50000000000000e-01"/>
+  <Step R="1.25000000000000e+00" E="-9.80000000000000e-01"/>
+  <Step R="1.05000000000000e+00" E="-4.70000000000000e-01"/>
+  <Step R="1.00000000000000e+00" E="7.60000000000000e-01"/>
+  <Step R="9.50000000000000e-01" E="3.81000000000000e+00"/>
+  <Step R="9.00000000000000e-01" E="1.09500000000000e+01"/>
+  <Step R="8.50000000000000e-01" E="2.75500000000000e+01"/>
+  <Step R="8.00000000000000e-01" E="6.67400000000000e+01"/>
+  <Step R="7.50000000000000e-01" E="1.00000000000000e+300"/>
+  <CaptureMap .../>
+  <IDPairRange .../>
+</Interaction><?php codeblockend("brush: xml;"); ?>
+<p>
+  <b>Full Tag, Subtag, and Attribute List</b>:
+  <ul>
+    <li>
+      <b>Type</b> <i>(attribute)</i>: Must have the
+      value <i>"Stepped"</i> to select this Interaction type.
+    </li>
+    <li>
+      <b>Name</b> <i>(attribute)</i>: The name of the
+      Interaction. This name is used to identify the Interaction in
+      the configuration file (e.g.,
+      see <a href="#species">Species</a>) and in the output generated
+      by the dynarun command. Each Interaction must have a name which
+      is unique.
+    </li>
+    <li>
+      <b>Step</b> <i>(tag)</i>: This tag specifies one step of the
+      potential. These steps may be in any order but they will be
+      sorted by DynamO on output by decreasing radius.
+      <ul>
+	<li>
+	  <b>R</b> <i>(attribute)</i>: The radius of the step.
+	</li>
+	<li>
+	  <b>E</b> <i>(attribute)</i>: The energy of the
+	  step. Infinite energies are not supported, but may
+	  effectively be implemented using a large value such as
+	  "1e300".
+	</li>
+      </ul>
+    </li>
+    <li>
+      <b>CaptureMap</b> <i>(tag)</i>: If present, the CaptureMap tag
+      should store the current step of any particle pairs which are
+      inside the Interaction range of the potential. If it is not
+      present, it will be automatically generated when the
+      configuration is next loaded by dynarun or dynamod. The data in
+      this tag must be correct at all times otherwise errors in the
+      dynamics will occur so take care when manually editing the
+      configuration file.
+    </li>
+    <li>
+      <b>IDPairRange</b> <i>(tag)</i>: This IDPairRange tag specifies
+      the pairs of particles which interact using this
+      Interaction. See the <a href="#idpairrange">section on
+      IDPairRanges</a> for more information on the format of this tag.
+    </li>
+  </ul>
+</p>
+<h2>Type="ThinThread"</h2>
+<p>
+  <b>Description:</b> The "ThinThread" Interaction implements a
+  square-well potential which has hysteresis. The particle behaves as
+  a hard sphere, but once a pair of particles collide with the hard
+  core, they enter the well. The energy of this well must be paid to
+  escape, thus the model loses energy each time particles enter the
+  well. Once particles escape the well, they must again collide with
+  the core before they can re-enter the well (as illustrated in the
+  figure below). This model may be used to model wet granulate and the
+  formation of liquid bridges as when wet granular particles contact
+  each other a liquid bridge stretches between them. Breaking this
+  bridge requires an amount of energy and distance to overcome the
+  surface tension (modelled by the well), but once the bridge is
+  broken the particles will only interact again at short distances.
+</p>
+<img src="/images/thinthread.png" alt="A diagram of a thin thread molecule including its parameters" width="650" height="232" style="display:block;margin:0 auto 0 auto;">
+<p>
+  <b>Example Usage:</b>
+</p>
+<?php codeblockstart();?><Interaction Type="ThinThread" Diameter="1" Elasticity="1" Lambda="1.5" WellDepth="1" Name="Bulk">
+  <IDPairRange .../>
+  <CaptureMap .../>
+</Interaction><?php codeblockend("brush: xml;"); ?>
+<p>
+  <b>Full Tag, Subtag, and Attribute List</b>:
+  <ul>
+    <li>
+      <b>Type</b> <i>(attribute)</i>: Must have the
+      value <i>"ThinThread"</i> to select this Interaction type.
+    </li>
+    <li>
+      <b>Diameter</b> <i>(attribute)</i>: The interaction diameter
+      ($\sigma$) of the particle pairs corresponding to this
+      Interaction. <br/> This attribute is a Property specifier with a
+      unit of length (see the <a href="#properties">section on
+      Properties</a> for more information).
+    </li>
+    <li>
+      <b>Elasticity</b> <i>(attribute)</i>: The elasticity of the
+      particle pairs corresponding to this Interaction. This value is
+      typically 1 for molecular systems and between zero and one for
+      granular systems. <br/> This attribute is a Property specifier
+      with dimensionless units (see the <a href="#properties">section
+      on Properties</a> for more information).
+    </li>
+    <li>
+      <b>Lambda</b> <i>(attribute)</i>: The well-width factor
+      ($\lambda$) of the particle pairs corresponding to this
+      Interaction. Values below 1 are not valid. <br/> This attribute
+      is a Property specifier with dimensionless units (see
+      the <a href="#properties">section on Properties</a> for more
+      information).
+    </li>
+    <li>
+      <b>WellDepth</b> <i>(attribute)</i>: The interaction energy
+      ($\varepsilon$) of the particle pairs corresponding to this
+      Interaction. <br/> This attribute is a Property specifier with a
+      unit of energy (see the <a href="#properties">section on
+      Properties</a> for more information).
+    </li>
+    <li>
+      <b>Name</b> <i>(attribute)</i>: The name of the
+      Interaction. This name is used to identify the Interaction in
+      the configuration file (e.g.,
+      see <a href="#species">Species</a>) and in the output generated
+      by the dynarun command. Each Interaction must have a name which
+      is unique.
+    </li>
+    <li>
+      <b>CaptureMap</b> <i>(tag)</i>: If present, the CaptureMap tag
+      should store the particle pairs which are within the well. If it
+      is not present, it will be automatically generated when the
+      configuration is next loaded by dynarun or dynamod. The data in
+      this tag must be correct at all times otherwise errors in the
+      dynamics will occur so take care when manually editing the
+      configuration file.
+    </li>
+    <li>
+      <b>IDPairRange</b> <i>(tag)</i>: This IDPairRange tag specifies
+      the pairs of particles which interact using this
+      Interaction. See the <a href="#idpairrange">section on
+      IDPairRanges</a> for more information on the format of this tag.
+    </li>
+  </ul>
+</p>
+<h1>Local</h1>
+<h1>Global</h1>
+<h1>Pt (Particle)</h1>
+<p>
+  <b>Description:</b> A <b>Pt</b> or Particle tag represents the
+  unique data of a single particle. Each particle must have at least a
+  position and velocity tag, but it may also include additional
+  attributes and tags corresponding
+  to <a href="#properties">Properties</a>.
+</p>
+<p>
+  <b>Example Usage:</b>
+</p>
+<?php codeblockstart();?><Pt ID="0">
+  <P x="1.71513720091304e+00" y="5.49987913872954e+00" z="4.32598642635552e+00"/>
+  <V x="1.51174422678297e+00" y="-8.06881217863154e-01" z="-8.11332120569972e-01"/>
+</Pt>
+<?php codeblockend("brush: xml;"); ?>
+<p>
+  <b>Full Tag, Subtag, and Attribute List</b>:
+  <ul>
+    <li>
+      <b>ID</b> <i>(attribute)</i>: DynamO loads and assigns ID's to
+      particles in the order in which they appear in the configuration
+      file. This tag is therefore not read by DynamO, but is provided
+      in generated configuration files to make it easy to identify
+      particles.
+    </li>
+    <li>
+      <b>P</b> <i>(tag)</i>: This tag contains the position of the
+      particle. In systems with periodic boundary conditions, the
+      dynamod/dynarun commands will output the position of the
+      particle image which is in the primary image (the "wrapped"
+      particle position).  This behaviour may be disabled using
+      the <i>--unwrapped</i> option of the dynamod and dynarun
+      commands (the particle positions correspond to the initial
+      particle image's final location).
+      <ul>
+	<li>
+	  <b>x</b> <i>(attribute)</i>: The particles $x$-coordinate.
+	</li>
+	<li>
+	  <b>y</b> <i>(attribute)</i>: The particles $y$-coordinate.
+	</li>
+	<li>
+	  <b>z</b> <i>(attribute)</i>: The particles $z$-coordinate.
+	</li>
+      </ul>
+    </li>
+    <li>
+      <b>V</b> <i>(tag)</i>: This tag contains the velocity of the
+      particle.
+      <ul>
+	<li>
+	  <b>x</b> <i>(attribute)</i>: The $x$-component of the particle velocity.
+	</li>
+	<li>
+	  <b>y</b> <i>(attribute)</i>: The $y$-component of the particle velocity.
+	</li>
+	<li>
+	  <b>z</b> <i>(attribute)</i>: The $z$-component of the particle velocity.
+	</li>
+      </ul>
+    </li>
+  </ul>
+</p>
+<h1>Properties</h1>
+<p>
+</p>
 <h1>IDRange</h1>
 <p>
   <b>IDRange</b>s are used to specify a range
@@ -312,559 +1187,4 @@
       Interval.
     </li>
   </ul>
-</p>
-<h1>Scheduler</h1>
-<p>
-  The Scheduler specifies how DynamO searches the simulation for
-  events. How the events are sorted is specified by the Sorter tag.
-</p>
-<h2>Type="Dumb"</h2>
-<p>
-  <b>Description:</b> The "Dumb" scheduler is the most basic and
-  slowest scheduler available. When particles undergo an event, the
-  Dumb scheduler tests for new events against all other particles in
-  the system (regardless of where they are). This cost scales linearly
-  with the system size ($\mathcal{O}(N)$), resulting in an overall
-  $\mathcal{O}(N^2)$ scaling of the computational cost. This Scheduler
-  type is only provided for debugging and testing purposes.
-</p>
-<p>
-  <b>Example Usage:</b>
-</p>
-<?php codeblockstart();?><Scheduler Type="Dumb">
-  <Sorter Type="BoundedPQMinMax3"/>
-</Scheduler><?php codeblockend("brush: xml;"); ?>
-<p>
-  <b>Full Tag, Subtag, and Attribute List</b>:
-  <ul>
-    <li>
-      <b>Type</b> <i>(attribute)</i>: Must have the
-      value <i>"Dumb"</i> to select this Scheduler type.
-    </li>
-    <li>
-      <b>Sorter</b> <i>(tag)</i>: This tag specifies the type of event
-      sorter used in the Scheduler. See the <a href="#sorter">section
-      on Sorters</a> for more information on this tag.
-    </li>
-  </ul>
-</p>
-<h2>Type="NeighbourList"</h2>
-<p>
-  <b>Description:</b> The "NeighbourList" scheduler uses a
-  NeighbourList to optimise the detection of events. When particles
-  undergo an event, the NeighbourList scheduler only tests for new
-  events against nearby particles. This cost is independent of the
-  system size ($\mathcal{O}(1)$), resulting in an overall linear
-  ($\mathcal{O}(N)$) scaling of the computational cost.
-</p>
-<p>
-  <b>Note:</b> The neighbour list used by the scheduler is not
-  actually provided by the Scheduler. There must be a Global
-  interaction available in the system which implements a
-  NeighbourList. This neighbour list must have the name attribute set
-  to "SchedulerNBList" to allow the NeighbourList Scheduler to
-  identify it.
-<p>
-<p>
-  <b>Example Usage:</b>
-</p>
-<?php codeblockstart();?><Scheduler Type="NeighbourList">
-  <Sorter Type="BoundedPQMinMax3"/>
-</Scheduler><?php codeblockend("brush: xml;"); ?>
-<p>
-  <b>Full Tag, Subtag, and Attribute List</b>:
-  <ul>
-    <li>
-      <b>Type</b> <i>(attribute)</i>: Must have the
-      value <i>"NeighbourList"</i> to select this Scheduler type.
-    </li>
-    <li>
-      <b>Sorter</b> <i>(tag)</i>: This tag specifies the type of event
-      sorter used in the Scheduler. See the <a href="#sorter">section
-      on Sorters</a> for more information on this tag.
-    </li>
-  </ul>
-</p>
-<h1>Sorter</h1>
-<p>
-  The Sorter tag specifies the method DynamO uses to sort events when
-  determining the next event to occur.
-</p>
-<h2>Type="CBT"</h2>
-<p>
-  <b>Description:</b> The "CBT" Sorter uses a STL priority queue for
-  each particle and inserts this into a Complete Binary Tree (CBT) to
-  sort the events. This type of Sorter is very robust to unusual
-  systems (such as systems with zero or one particle) but, as the
-  computational cost scales as $\mathcal{O}(\log_2(N)$ with the system
-  size, it is not the default Sorter used by DynamO.
-<p>
-<p>
-  <b>Example Usage:</b>
-</p>
-<?php codeblockstart();?><Sorter Type="CBT"/><?php codeblockend("brush: xml;"); ?>
-<p>
-  <b>Full Tag, Subtag, and Attribute List</b>:
-  <ul>
-    <li>
-      <b>Type</b> <i>(attribute)</i>: Must have the
-      value <i>"CBT"</i> to select this Sorter type.
-    </li>
-  </ul>
-</p>
-<h2>Type="BoundedPQMinMax3"</h2>
-<p>
-  <b>Description:</b> The "BoundedPQMinMax3" Sorter uses a bounded
-  MinMax heap of size 3 to sort particle events. These particle queues
-  are then presorted using a bounded priority queue. The earliest
-  entry in the bounded priority queue is then sorted using a Complete
-  Binary Tree. In this way, the lazy deletion scheme can be combined
-  with a fixed size event queue and a bounded priority queue to yield
-  a constant ($\mathcal{O}(1)$) scaling of the computational cost with
-  the system size. There are variants of this scheduler with different
-  sizes of the MinMax heaps ranging from 2 to 8 (e.g.,
-  "BoundedPQMinMax8" is also available). After many years of testing
-  this has proven to be the fastest and lowest memory event sorter for
-  a range of event-driven particle simulations. In small systems the
-  CBT Sorter is slightly faster and, depending on the system studied,
-  you may find the MinMax heap size might be increased or decreased to
-  increase performance.
-<p>
-<p>
-  <b>Example Usage:</b>
-</p>
-<?php codeblockstart();?><Sorter Type="BoundedPQMinMax3"/><?php codeblockend("brush: xml;"); ?>
-<p>
-  <b>Full Tag, Subtag, and Attribute List</b>:
-  <ul>
-    <li>
-      <b>Type</b> <i>(attribute)</i>: Must have the
-      value <i>"BoundedPQMinMax3"</i> to select this Sorter
-      type. Other variants from "BoundedPQMinMax2" to
-      "BoundedPQMinMax8" are also available.
-    </li>
-  </ul>
-</p>
-<h1>SimulationSize</h1>
-<p>
-  <b>Description:</b> The SimulationSize tag specifies the dimensions
-  of the primary image for periodic boundary conditions. When the
-  system is not periodic, it specifies the size of the tiled
-  neighbourlist (if one is used). If no neighbour list is used in an
-  infinite system, this tag has no effect.
-</p>
-<p>
-  <b>Example Usage:</b> This example specifies a $10\times10\times10$
-  primary image.
-</p>
-<?php codeblockstart();?>
-<SimulationSize x="10" y="10" z="10"/>
-<?php codeblockend("brush: xml;"); ?>
-<p>
-  <b>Full Tag, Subtag, and Attribute List</b>:
-  <ul>
-    <li>
-      <b>x</b> <i>(attribute)</i>: The size in the $x$ dimension.
-    </li>
-    <li>
-      <b>y</b> <i>(attribute)</i>: The size in the $y$ dimension.
-    </li>
-    <li>
-      <b>z</b> <i>(attribute)</i>: The size in the $z$ dimension.
-    </li>
-  </ul>
-</p>
-<h1>Species</h1>
-<p>
-  Species are vital tags used to specify the mass and inertia data of
-  a set of particles. They also provide a unique identifier/name for
-  groups of particles as each particle must belong to exactly one
-  species. Many output plugins use the species of a particle to
-  separate results (for example, a radial distribution function will
-  be generated for all pairings of species in the system) and they are
-  used by the visualiser to determine how to draw the particles.
-</p>
-<h2>Type="Point"</h2>
-<p>
-  <b>Description:</b> This Species type corresponds to point mass
-  (zero inertia) particles, but this type is also used in systems
-  where inertial data is unimportant (atomic or frictionless
-  systems). It is the simplest type of Species available.
-</p>
-<p>
-  <b>Example Usage:</b>
-</p>
-<?php codeblockstart();?><Species Mass="1" Name="Bulk" IntName="Bulk" Type="Point">
-  <IDRange Type="All"/>
-</Species><?php codeblockend("brush: xml;"); ?>
-<p>
-  <b>Full Tag, Subtag, and Attribute List</b>:
-  <ul>
-    <li>
-      <b>Type</b> <i>(attribute)</i>: Must have the
-      value <i>"Point"</i> to select this Species type.
-    </li>
-    <li>
-      <b>Mass</b> <i>(attribute)</i>: The mass of the particles
-      represented by this Species. <br/> This attribute is a Property
-      specifier (see the <a href="#properties">section on
-      Properties</a> for more information).
-    </li>
-    <li>
-      <b>Name</b> <i>(attribute)</i>: The name of the particles
-      represented by this Species. This is used in output, so species
-      "A" or "Carbon" are examples. If the system is monocomponent,
-      dynamod often uses the name "Bulk".
-    </li>
-    <li>
-      <b>IntName</b> <i>(attribute)</i>: The name of the Interaction
-      used to represent this species. This Interaction is used to
-      calculate the volume occupied by the Species and to draw the
-      Particles of the Species.
-    </li>
-    <li>
-      <b>IDRange</b> <i>(tag)</i>: A IDRange which specifies the
-      Particles represented by this Species tag. The IDRanges of each
-      Species must not overlap with any other Species in the
-      system. All particles must belong to exactly one Species.
-    </li>
-  </ul>
-</p>
-<h2>Type="FixedCollider"</h2>
-<p>
-  <b>Description:</b> This Species type corresponds to particles which
-  have infinite mass and no inertia tensor. This is useful for
-  particles which are used as the boundaries of a system (also called
-  a particle mesh).
-</p>
-<p>
-  <b>Example Usage:</b>
-</p>
-<?php codeblockstart();?><Species Name="Bulk" IntName="Bulk" Type="FixedCollider">
-  <IDRange Type="Ranged" Start="10" End="15"/>
-</Species><?php codeblockend("brush: xml;"); ?>
-<p>
-  <b>Full Tag, Subtag, and Attribute List</b>:
-  <ul>
-    <li>
-      <b>Type</b> <i>(attribute)</i>: Must have the
-      value <i>"FixedCollider"</i> to select this Species type.
-    </li>
-    <li>
-      <b>Name</b> <i>(attribute)</i>: The name of the particles
-      represented by this Species. This is used in output, so species
-      "A" or "Carbon" are examples. If the system is monocomponent,
-      dynamod often uses the name "Bulk".
-    </li>
-    <li>
-      <b>IntName</b> <i>(attribute)</i>: The name of the Interaction
-      used to represent this species. This Interaction is used to
-      calculate the volume occupied by the Species and to draw the
-      Particles of the Species.
-    </li>
-    <li>
-      <b>IDRange</b> <i>(tag)</i>: A IDRange which specifies the
-      Particles represented by this Species tag. The IDRanges of each
-      Species must not overlap with any other Species in the
-      system. All particles must belong to exactly one Species.
-    </li>
-  </ul>
-</p>
-<h2>Type="SphericalTop"</h2>
-<p>
-  <b>Description:</b> This Species type corresponds to particles where
-  the three principal momenta of inertia are identical. It is also
-  used in systems where only two of the principal momenta of inertia
-  are equal but the rotation is constrained such that the particle
-  cannot precess.
-</p>
-<p>
-  <b>Example Usage:</b>
-</p>
-<?php codeblockstart();?><Species Mass="1" Name="Bulk" IntName="Bulk"
-  Type="SphericalTop"> <IDRange Type="All"/>
-</Species><?php codeblockend("brush: xml;"); ?>
-<p>
-  <b>Full Tag, Subtag, and Attribute List</b>:
-  <ul>
-    <li>
-      <b>Type</b> <i>(attribute)</i>: Must have the
-      value <i>"SphericalTop"</i> to select this Species type.
-    </li>
-    <li>
-      <b>Mass</b> <i>(attribute)</i>: The mass of the particles
-      represented by this Species. <br/> This attribute is a Property
-      specifier (see the <a href="#properties">section on
-      Properties</a> for more information).
-    </li>
-    <li>
-      <b>InertiaConstant</b> <i>(attribute)</i>: The value of the
-      principal momenta of inertia of the particles represented by
-      this Species. <br/> This attribute is a Property specifier (see
-      the <a href="#properties">section on Properties</a> for more
-      information).
-    </li>
-    <li>
-      <b>Name</b> <i>(attribute)</i>: The name of the particles
-      represented by this Species. This is used in output, so species
-      "A" or "Carbon" are examples. If the system is monocomponent,
-      dynamod often uses the name "Bulk".
-    </li>
-    <li>
-      <b>IntName</b> <i>(attribute)</i>: The name of the Interaction
-      used to represent this species. This Interaction is used to
-      calculate the volume occupied by the Species and to draw the
-      Particles of the Species.
-    </li>
-    <li>
-      <b>IDRange</b> <i>(tag)</i>: A IDRange which specifies the
-      Particles represented by this Species tag. The IDRanges of each
-      Species must not overlap with any other Species in the
-      system. All particles must belong to exactly one Species.
-    </li>
-  </ul>
-</p>
-<h1>BC</h1>
-<p>
-  The BC tag in the configuration file controls the boundary
-  conditions of the simulation.
-</p>
-<h2>Type="None"</h2>
-<p>
-  <b>Description:</b> The "None" boundary condition actually
-  corresponds to an infinite system, without boundaries. The positions
-  of the particles are not restricted in any dimension.
-</p>
-<p>
-  <b>Example Usage:</b>
-</p>
-<?php codeblockstart();?><BC Type="None"/><?php codeblockend("brush: xml;"); ?>
-<p>
-  <b>Full Tag, Subtag, and Attribute List</b>:
-  <ul>
-    <li>
-      <b>Type</b> <i>(attribute)</i>: Must have the
-      value <i>"None"</i> to select this BC type.
-    </li>
-  </ul>
-</p>
-<h2>Type="PBC"</h2>
-<p>
-  <b>Description:</b> The "PBC" boundary condition applies periodic
-  boundary conditions to every dimension. The positions of the
-  particles are wrapped to fit within the primary image, whose
-  dimensions are specified by
-  the <a href="#simulationsize">SimulationSize</a> tag.
-</p>
-<p>
-  <b>Example Usage:</b>
-</p>
-<?php codeblockstart();?><BC Type="PBC"/><?php codeblockend("brush: xml;"); ?>
-<p>
-  <b>Full Tag, Subtag, and Attribute List</b>:
-  <ul>
-    <li>
-      <b>Type</b> <i>(attribute)</i>: Must have the
-      value <i>"PBC"</i> to select this BC type.
-    </li>
-  </ul>
-</p>
-<h1>Interaction</h1>
-<p>
-  Interaction tags are used to specify how pairs of particles
-  interact. 
-</p>
-<p>
-  When DynamO tests for interactions/events between a pair of
-  particles, it moves through the list of interactions in the order in
-  which they are specified, testing if the ID's of the pair match the
-  Interaction's IDPairRange. Therefore, <b>the order in which
-  Interactions are listed in the configuration file is
-  important</b>. Interactions which are higher in the configuration
-  file will override matching Interactions which are lower down.
-</p>
-<h2>Type="HardSphere"</h2>
-<p>
-  <b>Description:</b> The "HardSphere" Interaction implements the hard
-  sphere interaction potential, illustrated in the figure below. This
-  is one of the simplest event-driven potentials available.
-</p>
-<img src="/images/hardsphere.png" alt="The interparticle potential energy of a hard-sphere molecule" width="650" height="232" style="display:block;margin:0 auto 0 auto;">
-<p>
-  <b>Example Usage:</b>
-</p>
-<?php codeblockstart();?><Interaction Type="HardSphere" Diameter="1" Elasticity="1" Name="Bulk">
-  <IDPairRange Type="All"/>
-</Interaction><?php codeblockend("brush: xml;"); ?>
-<p>
-  <b>Full Tag, Subtag, and Attribute List</b>:
-  <ul>
-    <li>
-      <b>Type</b> <i>(attribute)</i>: Must have the
-      value <i>"HardSphere"</i> to select this Interaction type.
-    </li>
-    <li>
-      <b>Diameter</b> <i>(attribute)</i>: The interaction diameter
-      ($\sigma$) of the particle pairs corresponding to this
-      Interaction. <br/> This attribute is a Property specifier with a
-      unit of length (see the <a href="#properties">section on
-      Properties</a> for more information).
-    </li>
-    <li>
-      <b>Elasticity</b> <i>(attribute)</i>: The elasticity of the
-      particle pairs corresponding to this Interaction. This value is
-      typically 1 for molecular systems and between zero and one for
-      granular systems. <br/> This attribute is a Property specifier
-      with dimensionless units (see the <a href="#properties">section
-      on Properties</a> for more information).
-    </li>
-    <li>
-      <b>Name</b> <i>(attribute)</i>: The name of the
-      Interaction. This name is used to identify the Interaction in
-      the configuration file (e.g.,
-      see <a href="#species">Species</a>) and in the output generated
-      by the dynarun command. Each Interaction must have a name which
-      is unique.
-    </li>
-    <li>
-      <b>IDPairRange</b> <i>(tag)</i>: This tag uses an IDPairRange to
-      specify the pairs of particles which interact using this
-      Interaction. See the <a href="#idpairrange">section on
-      IDPairRanges</a> for more information on the format of this tag.
-    </li>
-  </ul>
-</p>
-<h2>Type="SquareWell"</h2>
-<p>
-  <b>Description:</b> The "SquareWell" Interaction implements the
-  square-well interaction potential, illustrated in the figure below. 
-</p>
-<img src="/images/sw.png" alt="A diagram of a square-well molecule including its parameters" width="650" height="232" style="display:block;margin:0 auto 0 auto;">
-<p>
-  <b>Example Usage:</b>
-</p>
-<?php codeblockstart();?><Interaction Type="SquareWell" Diameter="1" Elasticity="1" Lambda="1.5" WellDepth="1" Name="Bulk">
-  <IDPairRange Type="All"/>
-</Interaction><?php codeblockend("brush: xml;"); ?>
-<p>
-  <b>Full Tag, Subtag, and Attribute List</b>:
-  <ul>
-    <li>
-      <b>Type</b> <i>(attribute)</i>: Must have the
-      value <i>"SquareWell"</i> to select this Interaction type.
-    </li>
-    <li>
-      <b>Diameter</b> <i>(attribute)</i>: The interaction diameter
-      ($\sigma$) of the particle pairs corresponding to this
-      Interaction. <br/> This attribute is a Property specifier with a
-      unit of length (see the <a href="#properties">section on
-      Properties</a> for more information).
-    </li>
-    <li>
-      <b>Elasticity</b> <i>(attribute)</i>: The elasticity of the
-      particle pairs corresponding to this Interaction. This value is
-      typically 1 for molecular systems and between zero and one for
-      granular systems. <br/> This attribute is a Property specifier
-      with dimensionless units (see the <a href="#properties">section
-      on Properties</a> for more information).
-    </li>
-    <li>
-      <b>Lambda</b> <i>(attribute)</i>: The well-width factor
-      ($\lambda$) of the particle pairs corresponding to this
-      Interaction. Values below 1 are not valid. <br/> This attribute
-      is a Property specifier with dimensionless units (see
-      the <a href="#properties">section on Properties</a> for more
-      information).
-    </li>
-    <li>
-      <b>WellDepth</b> <i>(attribute)</i>: The interaction energy
-      ($\varepsilon$) of the particle pairs corresponding to this
-      Interaction. <br/> This attribute is a Property specifier with a
-      unit of energy (see the <a href="#properties">section on
-      Properties</a> for more information).
-    </li>
-    <li>
-      <b>Name</b> <i>(attribute)</i>: The name of the
-      Interaction. This name is used to identify the Interaction in
-      the configuration file (e.g.,
-      see <a href="#species">Species</a>) and in the output generated
-      by the dynarun command. Each Interaction must have a name which
-      is unique.
-    </li>
-    <li>
-      <b>IDPairRange</b> <i>(tag)</i>: This tag uses an IDPairRange to
-      specify the pairs of particles which interact using this
-      Interaction. See the <a href="#idpairrange">section on
-      IDPairRanges</a> for more information on the format of this tag.
-    </li>
-  </ul>
-</p>
-<h1>Local</h1>
-<h1>Global</h1>
-<h1>Pt (Particle)</h1>
-<p>
-  <b>Description:</b> A <b>Pt</b> or Particle tag represents the
-  unique data of a single particle. Each particle must have at least a
-  position and velocity tag, but it may also include additional
-  attributes and tags corresponding
-  to <a href="#properties">Properties</a>.
-</p>
-<p>
-  <b>Example Usage:</b>
-</p>
-<?php codeblockstart();?><Pt ID="0">
-  <P x="1.71513720091304e+00" y="5.49987913872954e+00" z="4.32598642635552e+00"/>
-  <V x="1.51174422678297e+00" y="-8.06881217863154e-01" z="-8.11332120569972e-01"/>
-</Pt>
-<?php codeblockend("brush: xml;"); ?>
-<p>
-  <b>Full Tag, Subtag, and Attribute List</b>:
-  <ul>
-    <li>
-      <b>ID</b> <i>(attribute)</i>: DynamO loads and assigns ID's to
-      particles in the order in which they appear in the configuration
-      file. This tag is therefore not read by DynamO, but is provided
-      in generated configuration files to make it easy to identify
-      particles.
-    </li>
-    <li>
-      <b>P</b> <i>(tag)</i>: This tag contains the position of the
-      particle. In systems with periodic boundary conditions, the
-      dynamod/dynarun commands will output the position of the
-      particle image which is in the primary image (the "wrapped"
-      particle position).  This behaviour may be disabled using
-      the <i>--unwrapped</i> option of the dynamod and dynarun
-      commands (the particle positions correspond to the initial
-      particle image's final location).
-      <ul>
-	<li>
-	  <b>x</b> <i>(attribute)</i>: The particles $x$-coordinate.
-	</li>
-	<li>
-	  <b>y</b> <i>(attribute)</i>: The particles $y$-coordinate.
-	</li>
-	<li>
-	  <b>z</b> <i>(attribute)</i>: The particles $z$-coordinate.
-	</li>
-      </ul>
-    </li>
-    <li>
-      <b>V</b> <i>(tag)</i>: This tag contains the velocity of the
-      particle.
-      <ul>
-	<li>
-	  <b>x</b> <i>(attribute)</i>: The $x$-component of the particle velocity.
-	</li>
-	<li>
-	  <b>y</b> <i>(attribute)</i>: The $y$-component of the particle velocity.
-	</li>
-	<li>
-	  <b>z</b> <i>(attribute)</i>: The $z$-component of the particle velocity.
-	</li>
-      </ul>
-    </li>
-  </ul>
-</p>
-<h1>Properties</h1>
-<p>
 </p>
