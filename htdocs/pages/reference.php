@@ -314,7 +314,137 @@
   </ul>
 </p>
 <h1>Scheduler</h1>
+<p>
+  The Scheduler specifies how DynamO searches the simulation for
+  events. How the events are sorted is specified by the Sorter tag.
+</p>
+<h2>Type="Dumb"</h2>
+<p>
+  <b>Description:</b> The "Dumb" scheduler is the most basic and
+  slowest scheduler available. When particles undergo an event, the
+  Dumb scheduler tests for new events against all other particles in
+  the system (regardless of where they are). This cost scales linearly
+  with the system size ($\mathcal{O}(N)$), resulting in an overall
+  $\mathcal{O}(N^2)$ scaling of the computational cost. This Scheduler
+  type is only provided for debugging and testing purposes.
+</p>
+<p>
+  <b>Example Usage:</b>
+</p>
+<?php codeblockstart();?><Scheduler Type="Dumb">
+  <Sorter Type="BoundedPQMinMax3"/>
+</Scheduler><?php codeblockend("brush: xml;"); ?>
+<p>
+  <b>Full Tag, Subtag, and Attribute List</b>:
+  <ul>
+    <li>
+      <b>Type</b> <i>(attribute)</i>: Must have the
+      value <i>"Dumb"</i> to select this Scheduler type.
+    </li>
+    <li>
+      <b>Sorter</b> <i>(tag)</i>: This tag specifies the type of event
+      sorter used in the Scheduler. See the <a href="#sorter">section
+      on Sorters</a> for more information on this tag.
+    </li>
+  </ul>
+</p>
+<h2>Type="NeighbourList"</h2>
+<p>
+  <b>Description:</b> The "NeighbourList" scheduler uses a
+  NeighbourList to optimise the detection of events. When particles
+  undergo an event, the NeighbourList scheduler only tests for new
+  events against nearby particles. This cost is independent of the
+  system size ($\mathcal{O}(1)$), resulting in an overall linear
+  ($\mathcal{O}(N)$) scaling of the computational cost.
+</p>
+<p>
+  <b>Note:</b> The neighbour list used by the scheduler is not
+  actually provided by the Scheduler. There must be a Global
+  interaction available in the system which implements a
+  NeighbourList. This neighbour list must have the name attribute set
+  to "SchedulerNBList" to allow the NeighbourList Scheduler to
+  identify it.
+<p>
+<p>
+  <b>Example Usage:</b>
+</p>
+<?php codeblockstart();?><Scheduler Type="NeighbourList">
+  <Sorter Type="BoundedPQMinMax3"/>
+</Scheduler><?php codeblockend("brush: xml;"); ?>
+<p>
+  <b>Full Tag, Subtag, and Attribute List</b>:
+  <ul>
+    <li>
+      <b>Type</b> <i>(attribute)</i>: Must have the
+      value <i>"NeighbourList"</i> to select this Scheduler type.
+    </li>
+    <li>
+      <b>Sorter</b> <i>(tag)</i>: This tag specifies the type of event
+      sorter used in the Scheduler. See the <a href="#sorter">section
+      on Sorters</a> for more information on this tag.
+    </li>
+  </ul>
+</p>
 <h1>Sorter</h1>
+<p>
+  The Sorter tag specifies the method DynamO uses to sort events when
+  determining the next event to occur.
+</p>
+<h2>Type="CBT"</h2>
+<p>
+  <b>Description:</b> The "CBT" Sorter uses a STL priority queue for
+  each particle and inserts this into a Complete Binary Tree (CBT) to
+  sort the events. This type of Sorter is very robust to unusual
+  systems (such as systems with zero or one particle) but, as the
+  computational cost scales as $\mathcal{O}(\log_2(N)$ with the system
+  size, it is not the default Sorter used by DynamO.
+<p>
+<p>
+  <b>Example Usage:</b>
+</p>
+<?php codeblockstart();?><Sorter Type="CBT"/><?php codeblockend("brush: xml;"); ?>
+<p>
+  <b>Full Tag, Subtag, and Attribute List</b>:
+  <ul>
+    <li>
+      <b>Type</b> <i>(attribute)</i>: Must have the
+      value <i>"CBT"</i> to select this Sorter type.
+    </li>
+  </ul>
+</p>
+<h2>Type="BoundedPQMinMax3"</h2>
+<p>
+  <b>Description:</b> The "BoundedPQMinMax3" Sorter uses a bounded
+  MinMax heap of size 3 to sort particle events. These particle queues
+  are then presorted using a bounded priority queue. The earliest
+  entry in the bounded priority queue is then sorted using a Complete
+  Binary Tree. In this way, the lazy deletion scheme can be combined
+  with a fixed size event queue and a bounded priority queue to yield
+  a constant ($\mathcal{O}(1)$) scaling of the computational cost with
+  the system size. There are variants of this scheduler with different
+  sizes of the MinMax heaps ranging from 2 to 8 (e.g.,
+  "BoundedPQMinMax8" is also available). After many years of testing
+  this has proven to be the fastest and lowest memory event sorter for
+  a range of EDMD simulations. In small systems the CBT Sorter is
+  slightly faster and, depending on the system studied, you may find
+  the MinMax heap size might be increased or decreased to increase
+  performance.
+<p>
+<p>
+  <b>Example Usage:</b>
+</p>
+<?php codeblockstart();?><Sorter Type="BoundedPQMinMax3"/><?php codeblockend("brush: xml;"); ?>
+<p>
+  <b>Full Tag, Subtag, and Attribute List</b>:
+  <ul>
+    <li>
+      <b>Type</b> <i>(attribute)</i>: Must have the
+      value <i>"BoundedPQMinMax3"</i> to select this Sorter
+      type. Other variants from "BoundedPQMinMax2" to
+      "BoundedPQMinMax8" are also available.
+    </li>
+  </ul>
+</p>
 <h1>SimulationSize</h1>
 <p>
   <b>Description:</b> The SimulationSize tag specifies the dimensions
@@ -345,6 +475,155 @@
   </ul>
 </p>
 <h1>Species</h1>
+<p>
+  Species are vital tags used to specify the mass and inertia data of
+  a set of particles. They also provide a unique identifier/name for
+  groups of particles as each particle must belong to exactly one
+  species. Many output plugins use the species of a particle to
+  separate results (for example, a radial distribution function will
+  be generated for all pairings of species in the system) and they are
+  used by the visualiser to determine how to draw the particles.
+</p>
+<h2>Type="Point"</h2>
+<p>
+  <b>Description:</b> This Species type corresponds to point mass
+  (zero inertia) particles, but this type is also used in systems
+  where inertial data is unimportant (atomic or frictionless
+  systems). It is the simplest type of Species available.
+</p>
+<p>
+  <b>Example Usage:</b>
+</p>
+<?php codeblockstart();?><Species Mass="1" Name="Bulk" IntName="Bulk" Type="Point">
+  <IDRange Type="All"/>
+</Species><?php codeblockend("brush: xml;"); ?>
+<p>
+  <b>Full Tag, Subtag, and Attribute List</b>:
+  <ul>
+    <li>
+      <b>Type</b> <i>(attribute)</i>: Must have the
+      value <i>"Point"</i> to select this Species type.
+    </li>
+    <li>
+      <b>Mass</b> <i>(attribute)</i>: The mass of the particles
+      represented by this Species. This attribute is a Property
+      specifier (see the <a href="#properties">section on
+      Properties</a> for more information).
+    </li>
+    <li>
+      <b>Name</b> <i>(attribute)</i>: The name of the particles
+      represented by this Species. This is used in output, so species
+      "A" or "Carbon" are examples. If the system is monocomponent,
+      dynamod often uses the name "Bulk".
+    </li>
+    <li>
+      <b>IntName</b> <i>(attribute)</i>: The name of the Interaction
+      used to represent this species. This Interaction is used to
+      calculate the volume occupied by the Species and to draw the
+      Particles of the Species.
+    </li>
+    <li>
+      <b>IDRange</b> <i>(tag)</i>: A IDRange which specifies the
+      Particles represented by this Species tag. The IDRanges of each
+      Species must not overlap with any other Species in the
+      system. All particles must belong to exactly one Species.
+    </li>
+  </ul>
+</p>
+<h2>Type="FixedCollider"</h2>
+<p>
+  <b>Description:</b> This Species type corresponds to particles which
+  have infinite mass and no inertia tensor. This is useful for
+  particles which are used as the boundaries of a system (also called
+  a particle mesh).
+</p>
+<p>
+  <b>Example Usage:</b>
+</p>
+<?php codeblockstart();?><Species Name="Bulk" IntName="Bulk" Type="FixedCollider">
+  <IDRange Type="Ranged" Start="10" End="15"/>
+</Species><?php codeblockend("brush: xml;"); ?>
+<p>
+  <b>Full Tag, Subtag, and Attribute List</b>:
+  <ul>
+    <li>
+      <b>Type</b> <i>(attribute)</i>: Must have the
+      value <i>"FixedCollider"</i> to select this Species type.
+    </li>
+    <li>
+      <b>Name</b> <i>(attribute)</i>: The name of the particles
+      represented by this Species. This is used in output, so species
+      "A" or "Carbon" are examples. If the system is monocomponent,
+      dynamod often uses the name "Bulk".
+    </li>
+    <li>
+      <b>IntName</b> <i>(attribute)</i>: The name of the Interaction
+      used to represent this species. This Interaction is used to
+      calculate the volume occupied by the Species and to draw the
+      Particles of the Species.
+    </li>
+    <li>
+      <b>IDRange</b> <i>(tag)</i>: A IDRange which specifies the
+      Particles represented by this Species tag. The IDRanges of each
+      Species must not overlap with any other Species in the
+      system. All particles must belong to exactly one Species.
+    </li>
+  </ul>
+</p>
+<h2>Type="SphericalTop"</h2>
+<p>
+  <b>Description:</b> This Species type corresponds to particles where
+  the three principal momenta of inertia are identical. It is also
+  used in systems where only two of the principal momenta of inertia
+  are equal but the rotation is constrained such that the particle
+  cannot precess.
+</p>
+<p>
+  <b>Example Usage:</b>
+</p>
+<?php codeblockstart();?><Species Mass="1" Name="Bulk" IntName="Bulk"
+  Type="SphericalTop"> <IDRange Type="All"/>
+</Species><?php codeblockend("brush: xml;"); ?>
+<p>
+  <b>Full Tag, Subtag, and Attribute List</b>:
+  <ul>
+    <li>
+      <b>Type</b> <i>(attribute)</i>: Must have the
+      value <i>"SphericalTop"</i> to select this Species type.
+    </li>
+    <li>
+      <b>Mass</b> <i>(attribute)</i>: The mass of the particles
+      represented by this Species. This attribute is a Property
+      specifier (see the <a href="#properties">section on
+      Properties</a> for more information).
+    </li>
+    <li>
+      <b>InertiaConstant</b> <i>(attribute)</i>: The value of the
+      principal momenta of inertia of the particles represented by
+      this Species. This attribute is a Property specifier (see
+      the <a href="#properties">section on Properties</a> for more
+      information).
+    </li>
+    <li>
+      <b>Name</b> <i>(attribute)</i>: The name of the particles
+      represented by this Species. This is used in output, so species
+      "A" or "Carbon" are examples. If the system is monocomponent,
+      dynamod often uses the name "Bulk".
+    </li>
+    <li>
+      <b>IntName</b> <i>(attribute)</i>: The name of the Interaction
+      used to represent this species. This Interaction is used to
+      calculate the volume occupied by the Species and to draw the
+      Particles of the Species.
+    </li>
+    <li>
+      <b>IDRange</b> <i>(tag)</i>: A IDRange which specifies the
+      Particles represented by this Species tag. The IDRanges of each
+      Species must not overlap with any other Species in the
+      system. All particles must belong to exactly one Species.
+    </li>
+  </ul>
+</p>
 <h1>BC</h1>
 <p>
   The BC tag in the configuration file controls the boundary
