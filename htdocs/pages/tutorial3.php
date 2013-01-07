@@ -599,3 +599,8 @@ dynamod -m 0 -d 0.5 -C 7 -o config.start.xml
   square-well fluid.
 </p>
 <?php button("Tutorial 4: Example: Multicomponent Square-Well Fluid","/index.php/tutorial4");?>
+<p>
+  If you want more information on the file format, please take a look
+  at the <a href="/index.php/reference">configuration file format
+  reference</a>.
+</p>
