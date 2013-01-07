@@ -330,7 +330,7 @@
     </li>
   </ul>
 </p>
-<h1>BC</h1>
+<h1>BC (Boundary Conditions)</h1>
 <p>
   The BC tag in the configuration file controls the boundary
   conditions of the simulation.
