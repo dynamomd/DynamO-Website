@@ -425,10 +425,10 @@
   sizes of the MinMax heaps ranging from 2 to 8 (e.g.,
   "BoundedPQMinMax8" is also available). After many years of testing
   this has proven to be the fastest and lowest memory event sorter for
-  a range of EDMD simulations. In small systems the CBT Sorter is
-  slightly faster and, depending on the system studied, you may find
-  the MinMax heap size might be increased or decreased to increase
-  performance.
+  a range of event-driven particle simulations. In small systems the
+  CBT Sorter is slightly faster and, depending on the system studied,
+  you may find the MinMax heap size might be increased or decreased to
+  increase performance.
 <p>
 <p>
   <b>Example Usage:</b>
@@ -506,7 +506,7 @@
     </li>
     <li>
       <b>Mass</b> <i>(attribute)</i>: The mass of the particles
-      represented by this Species. This attribute is a Property
+      represented by this Species. <br/> This attribute is a Property
       specifier (see the <a href="#properties">section on
       Properties</a> for more information).
     </li>
@@ -593,14 +593,14 @@
     </li>
     <li>
       <b>Mass</b> <i>(attribute)</i>: The mass of the particles
-      represented by this Species. This attribute is a Property
+      represented by this Species. <br/> This attribute is a Property
       specifier (see the <a href="#properties">section on
       Properties</a> for more information).
     </li>
     <li>
       <b>InertiaConstant</b> <i>(attribute)</i>: The value of the
       principal momenta of inertia of the particles represented by
-      this Species. This attribute is a Property specifier (see
+      this Species. <br/> This attribute is a Property specifier (see
       the <a href="#properties">section on Properties</a> for more
       information).
     </li>
@@ -670,6 +670,135 @@
   </ul>
 </p>
 <h1>Interaction</h1>
+<p>
+  Interaction tags are used to specify how pairs of particles
+  interact. 
+</p>
+<p>
+  When DynamO tests for interactions/events between a pair of
+  particles, it moves through the list of interactions in the order in
+  which they are specified, testing if the ID's of the pair match the
+  Interaction's IDPairRange. Therefore, <b>the order in which
+  Interactions are listed in the configuration file is
+  important</b>. Interactions which are higher in the configuration
+  file will override matching Interactions which are lower down.
+</p>
+<h2>Type="HardSphere"</h2>
+<p>
+  <b>Description:</b> The "HardSphere" Interaction implements the hard
+  sphere interaction potential, illustrated in the figure below. This
+  is one of the simplest event-driven potentials available.
+</p>
+<img src="/images/hardsphere.png" alt="The interparticle potential energy of a hard-sphere molecule" width="650" height="232" style="display:block;margin:0 auto 0 auto;">
+<p>
+  <b>Example Usage:</b>
+</p>
+<?php codeblockstart();?><Interaction Type="HardSphere" Diameter="1" Elasticity="1" Name="Bulk">
+  <IDPairRange Type="All"/>
+</Interaction><?php codeblockend("brush: xml;"); ?>
+<p>
+  <b>Full Tag, Subtag, and Attribute List</b>:
+  <ul>
+    <li>
+      <b>Type</b> <i>(attribute)</i>: Must have the
+      value <i>"HardSphere"</i> to select this Interaction type.
+    </li>
+    <li>
+      <b>Diameter</b> <i>(attribute)</i>: The interaction diameter
+      ($\sigma$) of the particle pairs corresponding to this
+      Interaction. <br/> This attribute is a Property specifier with a
+      unit of length (see the <a href="#properties">section on
+      Properties</a> for more information).
+    </li>
+    <li>
+      <b>Elasticity</b> <i>(attribute)</i>: The elasticity of the
+      particle pairs corresponding to this Interaction. This value is
+      typically 1 for molecular systems and between zero and one for
+      granular systems. <br/> This attribute is a Property specifier
+      with dimensionless units (see the <a href="#properties">section
+      on Properties</a> for more information).
+    </li>
+    <li>
+      <b>Name</b> <i>(attribute)</i>: The name of the
+      Interaction. This name is used to identify the Interaction in
+      the configuration file (e.g.,
+      see <a href="#species">Species</a>) and in the output generated
+      by the dynarun command. Each Interaction must have a name which
+      is unique.
+    </li>
+    <li>
+      <b>IDPairRange</b> <i>(tag)</i>: This tag uses an IDPairRange to
+      specify the pairs of particles which interact using this
+      Interaction. See the <a href="#idpairrange">section on
+      IDPairRanges</a> for more information on the format of this tag.
+    </li>
+  </ul>
+</p>
+<h2>Type="SquareWell"</h2>
+<p>
+  <b>Description:</b> The "SquareWell" Interaction implements the
+  square-well interaction potential, illustrated in the figure below. 
+</p>
+<img src="/images/sw.png" alt="A diagram of a square-well molecule including its parameters" width="650" height="232" style="display:block;margin:0 auto 0 auto;">
+<p>
+  <b>Example Usage:</b>
+</p>
+<?php codeblockstart();?><Interaction Type="SquareWell" Diameter="1" Elasticity="1" Lambda="1.5" WellDepth="1" Name="Bulk">
+  <IDPairRange Type="All"/>
+</Interaction><?php codeblockend("brush: xml;"); ?>
+<p>
+  <b>Full Tag, Subtag, and Attribute List</b>:
+  <ul>
+    <li>
+      <b>Type</b> <i>(attribute)</i>: Must have the
+      value <i>"SquareWell"</i> to select this Interaction type.
+    </li>
+    <li>
+      <b>Diameter</b> <i>(attribute)</i>: The interaction diameter
+      ($\sigma$) of the particle pairs corresponding to this
+      Interaction. <br/> This attribute is a Property specifier with a
+      unit of length (see the <a href="#properties">section on
+      Properties</a> for more information).
+    </li>
+    <li>
+      <b>Elasticity</b> <i>(attribute)</i>: The elasticity of the
+      particle pairs corresponding to this Interaction. This value is
+      typically 1 for molecular systems and between zero and one for
+      granular systems. <br/> This attribute is a Property specifier
+      with dimensionless units (see the <a href="#properties">section
+      on Properties</a> for more information).
+    </li>
+    <li>
+      <b>Lambda</b> <i>(attribute)</i>: The well-width factor
+      ($\lambda$) of the particle pairs corresponding to this
+      Interaction. Values below 1 are not valid. <br/> This attribute
+      is a Property specifier with dimensionless units (see
+      the <a href="#properties">section on Properties</a> for more
+      information).
+    </li>
+    <li>
+      <b>WellDepth</b> <i>(attribute)</i>: The interaction energy
+      ($\varepsilon$) of the particle pairs corresponding to this
+      Interaction. <br/> This attribute is a Property specifier with a
+      unit of energy (see the <a href="#properties">section on
+      Properties</a> for more information).
+    </li>
+    <li>
+      <b>Name</b> <i>(attribute)</i>: The name of the
+      Interaction. This name is used to identify the Interaction in
+      the configuration file (e.g.,
+      see <a href="#species">Species</a>) and in the output generated
+      by the dynarun command. Each Interaction must have a name which
+      is unique.
+    </li>
+    <li>
+      <b>IDPairRange</b> <i>(tag)</i>: This tag uses an IDPairRange to
+      specify the pairs of particles which interact using this
+      Interaction. See the <a href="#idpairrange">section on
+      IDPairRanges</a> for more information on the format of this tag.
+    </li>
+  </ul>
+</p>
 <h1>Local</h1>
 <h1>Global</h1>
 <h1>Pt (Particle)</h1>
