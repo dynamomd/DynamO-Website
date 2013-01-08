@@ -209,9 +209,11 @@
     </li>
     <li>
       <b>Mass</b> <i>(attribute)</i>: The mass of the particles
-      represented by this Species. <br/> This attribute is a Property
-      specifier (see the <a href="#properties">section on
-      Properties</a> for more information).
+      represented by this Species. 
+
+      <br/> This attribute is a <b>Property specifier</b> with units
+      of <b>Mass</b> (see the <a href="#properties">section on Properties</a>
+      for more information).
     </li>
     <li>
       <b>Name</b> <i>(attribute)</i>: The name of the particles
@@ -296,16 +298,18 @@
     </li>
     <li>
       <b>Mass</b> <i>(attribute)</i>: The mass of the particles
-      represented by this Species. <br/> This attribute is a Property
-      specifier (see the <a href="#properties">section on
+      represented by this Species.  
+
+      <br/> This attribute is a <b>Property specifier</b> with units
+      of <b>Mass</b> (see the <a href="#properties">section on
       Properties</a> for more information).
     </li>
     <li>
-      <b>InertiaConstant</b> <i>(attribute)</i>: The value of the
-      principal momenta of inertia of the particles represented by
-      this Species. <br/> This attribute is a Property specifier (see
-      the <a href="#properties">section on Properties</a> for more
-      information).
+      <b>InertiaConstant</b> <i>(attribute)</i>: The area factor of
+      the principal momenta of inertia of the particles represented by
+      this Species. This is value is multiplied by the mass of the
+      particle to obtain the value of the principal momenta of
+      inertia.
     </li>
     <li>
       <b>Name</b> <i>(attribute)</i>: The name of the particles
@@ -468,9 +472,11 @@
 <p>
   <b>Example Usage:</b>
 </p>
-<?php codeblockstart();?><Interaction Type="HardSphere" Diameter="1" Elasticity="1" Name="Bulk">
+<?php codeblockstart();?>
+<Interaction Type="HardSphere" Diameter="1" Elasticity="1" Name="Bulk">
   <IDPairRange .../>
-</Interaction><?php codeblockend("brush: xml;"); ?>
+</Interaction>
+<?php codeblockend("brush: xml;"); ?>
 <p>
   <b>Full Tag, Subtag, and Attribute List</b>:
   <ul>
@@ -481,17 +487,22 @@
     <li>
       <b>Diameter</b> <i>(attribute)</i>: The interaction diameter
       ($\sigma$) of the particle pairs corresponding to this
-      Interaction. <br/> This attribute is a Property specifier with a
-      unit of length (see the <a href="#properties">section on
+      Interaction. 
+
+      <br/> This attribute is a <b>Property specifier</b> with a unit
+      of <b>Length</b> (see the <a href="#properties">section on
       Properties</a> for more information).
     </li>
     <li>
       <b>Elasticity</b> <i>(attribute)</i>: The elasticity of the
       particle pairs corresponding to this Interaction. This value is
       typically 1 for molecular systems and between zero and one for
-      granular systems. <br/> This attribute is a Property specifier
-      with dimensionless units (see the <a href="#properties">section
-      on Properties</a> for more information).
+      granular systems. 
+
+      <br/> This attribute is a <b>Property specifier</b>
+      with <b>Dimensionless</b> units (see
+      the <a href="#properties">section on Properties</a> for more
+      information).
     </li>
     <li>
       <b>Name</b> <i>(attribute)</i>: The name of the
@@ -532,31 +543,39 @@
     <li>
       <b>Diameter</b> <i>(attribute)</i>: The interaction diameter
       ($\sigma$) of the particle pairs corresponding to this
-      Interaction. <br/> This attribute is a Property specifier with a
-      unit of length (see the <a href="#properties">section on
+      Interaction. 
+
+      <br/> This attribute is a <b>Property specifier</b> with a
+      unit of <b>Length</b> (see the <a href="#properties">section on
       Properties</a> for more information).
     </li>
     <li>
       <b>Elasticity</b> <i>(attribute)</i>: The elasticity of the
       particle pairs corresponding to this Interaction. This value is
       typically 1 for molecular systems and between zero and one for
-      granular systems. <br/> This attribute is a Property specifier
-      with dimensionless units (see the <a href="#properties">section
-      on Properties</a> for more information).
+      granular systems.
+      
+      <br/> This attribute is a <b>Property specifier</b> with
+      <b>Dimensionless</b> units (see the <a href="#properties">section on
+      Properties</a> for more information).
     </li>
     <li>
       <b>Lambda</b> <i>(attribute)</i>: The well-width factor
       ($\lambda$) of the particle pairs corresponding to this
-      Interaction. Values below 1 are not valid. <br/> This attribute
-      is a Property specifier with dimensionless units (see
+      Interaction. Values below 1 are not valid. 
+
+      <br/> This attribute is a <b>Property specifier</b> with
+      <b>Dimensionless</b> units (see
       the <a href="#properties">section on Properties</a> for more
       information).
     </li>
     <li>
       <b>WellDepth</b> <i>(attribute)</i>: The interaction energy
       ($\varepsilon$) of the particle pairs corresponding to this
-      Interaction. <br/> This attribute is a Property specifier with a
-      unit of energy (see the <a href="#properties">section on
+      Interaction. 
+
+      <br/> This attribute is a <b>Property specifier</b> with a unit
+      of <b>Energy</b> (see the <a href="#properties">section on
       Properties</a> for more information).
     </li>
     <li>
@@ -612,18 +631,22 @@
     <li>
       <b>Diameter</b> <i>(attribute)</i>: The interaction diameter is
       the length at which the particle pairs collide with this
-      Interaction (the length of a cube side). <br/> This attribute is
-      a Property specifier with a unit of length (see
-      the <a href="#properties">section on Properties</a> for more
-      information).
+      Interaction (the length of a cube side). 
+      
+      <br/> This attribute is a <b>Property specifier</b> with a unit of
+      <b>Length</b> (see the <a href="#properties">section on
+      Properties</a> for more information).
     </li>
     <li>
       <b>Elasticity</b> <i>(attribute)</i>: The elasticity of the
       particle pairs corresponding to this Interaction. This value is
       typically 1 for molecular systems and between zero and one for
-      granular systems. <br/> This attribute is a Property specifier
-      with dimensionless units (see the <a href="#properties">section
-      on Properties</a> for more information).
+      granular systems. 
+
+      <br/> This attribute is a <b>Property specifier</b>
+      with <b>Dimensionless</b> units (see
+      the <a href="#properties">section on Properties</a> for more
+      information).
     </li>
     <li>
       <b>Name</b> <i>(attribute)</i>: The name of the
@@ -667,18 +690,22 @@
       value <i>"Lines"</i> to select this Interaction type.
     </li>
     <li>
-      <b>Length</b> <i>(attribute)</i>: The length of the lines. <br/>
-      This attribute is a Property specifier with a unit of length
-      (see the <a href="#properties">section on Properties</a> for
-      more information).
+      <b>Length</b> <i>(attribute)</i>: The length of the lines. 
+
+      <br/> This attribute is a <b>Property specifier</b> with a unit
+      of <b>Length</b> (see the <a href="#properties">section on
+      Properties</a> for more information).
     </li>
     <li>
       <b>Elasticity</b> <i>(attribute)</i>: The elasticity of the
       particle pairs corresponding to this Interaction. This value is
       typically 1 for molecular systems and between zero and one for
-      granular systems. <br/> This attribute is a Property specifier
-      with dimensionless units (see the <a href="#properties">section
-      on Properties</a> for more information).
+      granular systems. 
+      
+      <br/> This attribute is a <b>Property specifier</b> with
+      <b>Dimensionless</b> units (see
+      the <a href="#properties">section on Properties</a> for more
+      information).
     </li>
     <li>
       <b>Name</b> <i>(attribute)</i>: The name of the
@@ -804,31 +831,40 @@
     <li>
       <b>Diameter</b> <i>(attribute)</i>: The interaction diameter
       ($\sigma$) of the particle pairs corresponding to this
-      Interaction. <br/> This attribute is a Property specifier with a
-      unit of length (see the <a href="#properties">section on
+      Interaction. 
+      
+      <br/> This attribute is a <b>Property specifier</b> with a unit
+      of <b>Length</b> (see the <a href="#properties">section on
       Properties</a> for more information).
     </li>
     <li>
       <b>Elasticity</b> <i>(attribute)</i>: The elasticity of the
       particle pairs corresponding to this Interaction. This value is
       typically 1 for molecular systems and between zero and one for
-      granular systems. <br/> This attribute is a Property specifier
-      with dimensionless units (see the <a href="#properties">section
-      on Properties</a> for more information).
+      granular systems. 
+
+      <br/> This attribute is a <b>Property specifier</b> with
+      <b>Dimensionless</b> units (see
+      the <a href="#properties">section on Properties</a> for more
+      information).
     </li>
     <li>
       <b>Lambda</b> <i>(attribute)</i>: The well-width factor
       ($\lambda$) of the particle pairs corresponding to this
-      Interaction. Values below 1 are not valid. <br/> This attribute
-      is a Property specifier with dimensionless units (see
+      Interaction. Values below 1 are not valid. 
+
+      <br/> This attribute is a <b>Property specifier</b> with
+      <b>Dimensionless</b> units (see
       the <a href="#properties">section on Properties</a> for more
       information).
     </li>
     <li>
       <b>WellDepth</b> <i>(attribute)</i>: The interaction energy
       ($\varepsilon$) of the particle pairs corresponding to this
-      Interaction. <br/> This attribute is a Property specifier with a
-      unit of energy (see the <a href="#properties">section on
+      Interaction. 
+
+      <br/> This attribute is a <b>Property specifier</b> with a unit
+      of <b>Energy</b> (see the <a href="#properties">section on
       Properties</a> for more information).
     </li>
     <li>
@@ -879,23 +915,30 @@
     <li>
       <b>Diameter</b> <i>(attribute)</i>: The interaction diameter
       ($\sigma$) of the particle pairs corresponding to this
-      Interaction. <br/> This attribute is a Property specifier with a
-      unit of length (see the <a href="#properties">section on
+      Interaction. 
+
+      <br/> This attribute is a <b>Property specifier</b> with a unit
+      of <b>Length</b> (see the <a href="#properties">section on
       Properties</a> for more information).
     </li>
     <li>
       <b>Elasticity</b> <i>(attribute)</i>: The elasticity of the
       particle pairs corresponding to this Interaction. This value is
       typically 1 for molecular systems and between zero and one for
-      granular systems. <br/> This attribute is a Property specifier
-      with dimensionless units (see the <a href="#properties">section
-      on Properties</a> for more information).
+      granular systems. 
+      
+      <br/> This attribute is a <b>Property specifier</b> with
+      <b>Dimensionless</b> units (see
+      the <a href="#properties">section on Properties</a> for more
+      information).
     </li>
     <li>
       <b>Lambda</b> <i>(attribute)</i>: The bond-width factor
       ($\lambda$) of the particle pairs corresponding to this
-      Interaction. Values below 1 are not valid. <br/> This attribute
-      is a Property specifier with dimensionless units (see
+      Interaction. Values below 1 are not valid. 
+
+      <br/> This attribute is a <b>Property specifier</b> with
+      <b>Dimensionless</b> units (see
       the <a href="#properties">section on Properties</a> for more
       information).
     </li>
@@ -953,18 +996,21 @@
       particles which interact with this wall. Although the diameter
       must be given here (to be consistent with Interactions), you
       should note that particles actually collide with the wall when
-      they reach a separation equal to half the diameter. <br/> This
-      attribute is a Property specifier with a unit of length (see
-      the <a href="#properties">section on Properties</a> for more
-      information).
+      they reach a separation equal to half the diameter. 
+
+      <br/> This attribute is a <b>Property specifier</b> with a unit
+      of <b>Length</b> (see the <a href="#properties">section on
+      Properties</a> for more information).
     </li>
     <li>
       <b>Elasticity</b> <i>(attribute)</i>: The elasticity of the
       particle collisions. This value is typically 1 for molecular
-      systems and between zero and one for granular systems. <br/>
-      This attribute is a Property specifier with dimensionless units
-      (see the <a href="#properties">section on Properties</a> for
-      more information).
+      systems and between zero and one for granular systems. 
+
+      <br/> This attribute is a <b>Property specifier</b> with
+      <b>Dimensionless</b> units (see
+      the <a href="#properties">section on Properties</a> for more
+      information).
     </li>
     <li>
       <b>Temperature</b> <i>(attribute)</i>: The temperature is an
@@ -1139,8 +1185,66 @@
 <h1>Properties</h1>
 <p>
   Properties are a mechanism for specifying large amounts of
-  information which vary on a per-particle basis.
+  information which vary on a per-particle basis. This is useful if
+  you have a polydisperse system, where each particle may have a unique
+  mass and diameter.
 </p>
+<p>
+  Properties must be defined in the Properties tag in the
+  configuration file. For example, if we wanted to define the mass and
+  diameter of each particle individually, we would define two
+  "PerParticle" Properties like so:
+</p>
+<?php codeblockstart();?>
+<Properties>
+  <Property Type="PerParticle" Name="D" Units="Length"/>
+  <Property Type="PerParticle" Name="M" Units="Mass"/>
+</Properties>
+<?php codeblockend("brush: xml;"); ?>
+<p>
+  Each Property defined has a "Name" attribute which allows any other
+  objects with a <b>Property specifier</b> in the configuration file
+  to refer to it. For example, a <a href="#typehardsphere">HardSphere
+  type Interaction</a> can refer to the "D" property above in its
+  Diameter attribute, like below.
+</p>
+<?php codeblockstart();?>
+<Interaction Type="HardSphere" Diameter="D" Elasticity="1" Name="Bulk">
+  <IDPairRange .../>
+</Interaction>
+<?php codeblockend("brush: xml;"); ?>
+<p>
+  You should note that the units of the Property must correspond to
+  the units of the property specifier. If you check
+  the <a href="#typehardsphere">HardSphere Interaction</a>
+  documentation, you can confirm that the Diameter attribute has units
+  of Length (The available units
+  include <b>Dimensionless</b>, <b>Length</b>, <b>Area</b>, <b>Volume</b>, <b>Time</b>, <b>Mass</b>,
+  and <b>Energy</b>). This Property name can also be reused in other
+  Property specifiers at the same time, such as in
+  a <a href="#typewall">Wall type Local</a>:
+</p>
+<?php codeblockstart();?><Local Type="Wall" Name="GroundPlate" Elasticity="1" Diameter="D">
+  ...
+</Local><?php codeblockend("brush: xml;"); ?>
+<p>
+  and in the <a href="#typepoint">Species definition</a>:
+</p>
+<?php codeblockstart();?><Species Mass="M" Name="Bulk" IntName="Bulk" Type="Point">
+  ...
+</Species><?php codeblockend("brush: xml;"); ?>
+<p>
+  Once the Property has been defined and referred to in other parts of
+  the configuration file, you must specify the value of the property
+  for each particle. This is done by adding an attribute to
+  the <a href="#pt-particle">Pt (particle) tags</a> with the same name
+  as the property. For example:
+</p>
+<?php codeblockstart();?><Pt ID="0" M="1.11" D="0.323451">
+  <P x="1.71513720091304e+00" y="5.49987913872954e+00" z="4.32598642635552e+00"/>
+  <V x="1.51174422678297e+00" y="-8.06881217863154e-01" z="-8.11332120569972e-01"/>
+</Pt>
+<?php codeblockend("brush: xml;"); ?>
 <h1>IDRange</h1>
 <p>
   <b>IDRange</b>s are used to specify a range
@@ -1156,7 +1260,9 @@
 <p>
   <b>Example Usage:</b>
 </p>
-<?php codeblockstart();?><IDRange Type="All"/><?php codeblockend("brush: xml;"); ?>
+<?php codeblockstart();?>
+<IDRange Type="All"/>
+<?php codeblockend("brush: xml;"); ?>
 <p>
   <b>Full Tag, Subtag, and Attribute List</b>:
   <ul>
