@@ -16,6 +16,10 @@
   in <a href="/index.php/tutorial3">tutorial 3</a>. This documentation
   is meant to serve as a complete guide to the options of DynamO.
 </p>
+<p>
+  In the following sections, the tags of the configuration file are
+  listed and all of the options are detailed for each tag type.
+</p>
 <h1>Scheduler</h1>
 <p>
   The Scheduler specifies how DynamO searches the simulation for

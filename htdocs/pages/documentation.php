@@ -38,6 +38,7 @@
 <?php button("Appendix A: Parsing Output and Config Files","/index.php/tutorialA");?>
 <h2>References</h2>
 <?php button("Configuration File Format Reference","/index.php/reference");?>
+<?php button("Output Plugin Reference","/index.php/outputplugins");?>
 <?php button("Frequently Asked Questions","/index.php/FAQ");?>
 <p>
 </p>
