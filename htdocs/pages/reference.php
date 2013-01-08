@@ -9,9 +9,6 @@
    $pagetitle="Configuration File Format Reference";
    ?>
 <?php printTOC(); ?>
-<p style="text-align:center; margin:15px; background-color:#FFD800; font-size:16pt; font-family:sans; line-height:40px;">
-  <b>This reference is currently being written and is incomplete.</b>
-</p>
 <p>
   In this reference a complete description of the file format is
   presented. This reference documentation is terse as a general
@@ -1141,6 +1138,8 @@
 </p>
 <h1>Properties</h1>
 <p>
+  Properties are a mechanism for specifying large amounts of
+  information which vary on a per-particle basis.
 </p>
 <h1>IDRange</h1>
 <p>
