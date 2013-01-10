@@ -78,6 +78,14 @@ dynarun config.xml -c 1000000 -L MFT:BinWidth=0.5,Length=100
   <Density val="0.5"/>
 </Misc>
 <?php codeblockend("brush: xml;"); ?>
+<p>
+  <b>Full Tag, Subtag, and Attribute List</b>:
+</p>
+<ul>
+  <li>
+    <b>val</b> <i>(attribute)</i>: The density of the system.
+  </li>
+</ul>
 <h3>Packing Fraction</h3>
 <p>
   This tag contains the volume of all particles divided by the volume
@@ -98,6 +106,14 @@ dynarun config.xml -c 1000000 -L MFT:BinWidth=0.5,Length=100
   <PackingFraction val="0.261799387799154"/>
 </Misc>
 <?php codeblockend("brush: xml;"); ?>
+<p>
+  <b>Full Tag, Subtag, and Attribute List</b>:
+</p>
+<ul>
+  <li>
+    <b>val</b> <i>(attribute)</i>: The packing fraction of the system.
+  </li>
+</ul>
 <h3>SpeciesCount</h3>
 <p>
   This tag contains the number
@@ -112,6 +128,15 @@ dynarun config.xml -c 1000000 -L MFT:BinWidth=0.5,Length=100
   <SpeciesCount val="1"/>
 </Misc>
 <?php codeblockend("brush: xml;"); ?>
+<p>
+  <b>Full Tag, Subtag, and Attribute List</b>:
+</p>
+<ul>
+  <li>
+    <b>val</b> <i>(attribute)</i>: The number of species in the
+    system.
+  </li>
+</ul>
 <h3>ParticleCount</h3>
 <p>
   This tag contains the number
@@ -126,6 +151,15 @@ dynarun config.xml -c 1000000 -L MFT:BinWidth=0.5,Length=100
   <ParticleCount val="1372"/>
 </Misc>
 <?php codeblockend("brush: xml;"); ?>
+<p>
+  <b>Full Tag, Subtag, and Attribute List</b>:
+</p>
+<ul>
+  <li>
+    <b>val</b> <i>(attribute)</i>: The number of particles in the
+    system.
+  </li>
+</ul>
 <h3>SystemMomentum</h3>
 <p>
   This tag contains the current and average momentum of the particles
@@ -148,6 +182,31 @@ dynarun config.xml -c 1000000 -L MFT:BinWidth=0.5,Length=100
   </SystemMomentum>
 </Misc>
 <?php codeblockend("brush: xml;"); ?>
+<p>
+  <b>Full Tag, Subtag, and Attribute List</b>:
+</p>
+<ul>
+  <li>
+    <b>Current</b> <i>(tag)</i>: The total momentum of the system at
+    the end of the simulation.
+    <ul>
+      <li>
+	<b>x</b>, <b>y</b>, <b>z</b>, <i>(attributes)</i>: The
+	components of the current momentum.
+      </li>
+    </ul>
+  </li>
+  <li>
+    <b>Average</b> <i>(tag)</i>: The time averaged total momentum of
+    the system.
+    <ul>
+      <li>
+	<b>x</b>, <b>y</b>, <b>z</b>, <i>(attributes)</i>: The
+	components of the average momentum.
+      </li>
+    </ul>
+  </li>
+</ul>
 <h3>Temperature</h3>
 <p>
   This tag contains the current and average temperature of the
@@ -168,17 +227,34 @@ dynarun config.xml -c 1000000 -L MFT:BinWidth=0.5,Length=100
   <Temperature Mean="1.00000000000002" MeanSqr="0.999999999999996" Current="1.00000000000001" Min="1.00000000000001" Max="1.00000000000001"/>
 </Misc>
 <?php codeblockend("brush: xml;"); ?>
+<h3>UConfigurational</h3>
+<p>
+  This tag contains the current and average temperature of the
+  particles in the system. This includes rotational degrees of freedom
+  (if present).
+
+  <br/> The average temperature is collected exactly (see the
+  <a href="#note-on-exact-time-averages-in-dynamo">note on exact
+  averages in DynamO</a>) and so this data is not valid
+  when <a href="/index.php/reference#typele">Lees-Edwards boundary
+  conditions</a> are applied.
+</p>
+<p>
+  <b>Example output</b>:
+</p>
+<?php codeblockstart();?>
+<Misc>
+  <UConfigurational Mean="0" MeanSqr="0" Current="0" Min="0" Max="0"/>
+</Misc>
+<?php codeblockend("brush: xml;"); ?>
 <h2>IntEnergyHist (Internal Energy Histogram)</h2>
 <p>
-  
 </p>
 <h2>MFT (Mean Free Time)</h2>
 <p>
-  
 </p>
 <h2>RadiusGyration</h2>
 <p>
-  
 </p>
 <h1>Note On Exact Time Averages In DynamO</h1>
 <p>
