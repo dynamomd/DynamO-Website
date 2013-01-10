@@ -51,7 +51,7 @@
     <li>
       <b>Sorter</b> <i>(tag)</i>: This tag specifies the type of event
       sorter used in the Scheduler. See the <a href="#sorter">section
-      on Sorters</a> for more information on this tag.
+	on Sorters</a> for more information on this tag.
     </li>
   </ul>
 </p>
@@ -71,7 +71,7 @@
   NeighbourList. This neighbour list must have the name attribute set
   to "SchedulerNBList" to allow the NeighbourList Scheduler to
   identify it.
-<p>
+</p>
 <p>
   <b>Example Usage:</b>
 </p>
@@ -88,7 +88,7 @@
     <li>
       <b>Sorter</b> <i>(tag)</i>: This tag specifies the type of event
       sorter used in the Scheduler. See the <a href="#sorter">section
-      on Sorters</a> for more information on this tag.
+	on Sorters</a> for more information on this tag.
     </li>
   </ul>
 </p>
@@ -136,7 +136,7 @@
   CBT Sorter is slightly faster and, depending on the system studied,
   you may find the MinMax heap size might be increased or decreased to
   increase performance.
-<p>
+</p>
 <p>
   <b>Example Usage:</b>
 </p>
@@ -306,7 +306,7 @@
 
       <br/> This attribute is a <b>Property specifier</b> with units
       of <b>Mass</b> (see the <a href="#properties">section on
-      Properties</a> for more information).
+	Properties</a> for more information).
     </li>
     <li>
       <b>InertiaConstant</b> <i>(attribute)</i>: The area factor of
@@ -419,15 +419,15 @@
   Interaction tags are used to specify how pairs of particles
   interact. Every pairing of particles must have a corresponding
   Interaction even if they don't interact (see <a href="#typenull">Null
-  Interactions</a>).
+    Interactions</a>).
 </p>
 <p>
   When DynamO tests for interactions/events between a pair of
   particles, it moves through the list of interactions in the order in
   which they are specified, testing if the ID's of the pair match the
   Interaction's IDPairRange. Therefore, <b>the order in which
-  Interactions are listed in the configuration file is
-  important</b>. Interactions which are higher in the configuration
+    Interactions are listed in the configuration file is
+    important</b>. Interactions which are higher in the configuration
   file will override matching Interactions which are lower down.
 </p>
 <h2>Type="Null"</h2>
@@ -462,7 +462,7 @@
       <b>IDPairRange</b> <i>(tag)</i>: This IDPairRange tag specifies
       the pairs of particles which interact using this
       Interaction. See the <a href="#idpairrange">section on
-      IDPairRanges</a> for more information on the format of this tag.
+	IDPairRanges</a> for more information on the format of this tag.
     </li>
   </ul>
 </p>
@@ -495,7 +495,7 @@
 
       <br/> This attribute is a <b>Property specifier</b> with a unit
       of <b>Length</b> (see the <a href="#properties">section on
-      Properties</a> for more information).
+	Properties</a> for more information).
     </li>
     <li>
       <b>Elasticity</b> <i>(attribute)</i>: The elasticity of the
@@ -520,7 +520,7 @@
       <b>IDPairRange</b> <i>(tag)</i>: This IDPairRange tag specifies
       the pairs of particles which interact using this
       Interaction. See the <a href="#idpairrange">section on
-      IDPairRanges</a> for more information on the format of this tag.
+	IDPairRanges</a> for more information on the format of this tag.
     </li>
   </ul>
 </p>
@@ -551,7 +551,7 @@
 
       <br/> This attribute is a <b>Property specifier</b> with a
       unit of <b>Length</b> (see the <a href="#properties">section on
-      Properties</a> for more information).
+	Properties</a> for more information).
     </li>
     <li>
       <b>Elasticity</b> <i>(attribute)</i>: The elasticity of the
@@ -561,7 +561,7 @@
       
       <br/> This attribute is a <b>Property specifier</b> with
       <b>Dimensionless</b> units (see the <a href="#properties">section on
-      Properties</a> for more information).
+	Properties</a> for more information).
     </li>
     <li>
       <b>Lambda</b> <i>(attribute)</i>: The well-width factor
@@ -580,7 +580,7 @@
 
       <br/> This attribute is a <b>Property specifier</b> with a unit
       of <b>Energy</b> (see the <a href="#properties">section on
-      Properties</a> for more information).
+	Properties</a> for more information).
     </li>
     <li>
       <b>Name</b> <i>(attribute)</i>: The name of the
@@ -603,7 +603,7 @@
       <b>IDPairRange</b> <i>(tag)</i>: This IDPairRange tag specifies
       the pairs of particles which interact using this
       Interaction. See the <a href="#idpairrange">section on
-      IDPairRanges</a> for more information on the format of this tag.
+	IDPairRanges</a> for more information on the format of this tag.
     </li>
   </ul>
 </p>
@@ -639,7 +639,7 @@
       
       <br/> This attribute is a <b>Property specifier</b> with a unit of
       <b>Length</b> (see the <a href="#properties">section on
-      Properties</a> for more information).
+	Properties</a> for more information).
     </li>
     <li>
       <b>Elasticity</b> <i>(attribute)</i>: The elasticity of the
@@ -664,7 +664,7 @@
       <b>IDPairRange</b> <i>(tag)</i>: This IDPairRange tag specifies
       the pairs of particles which interact using this
       Interaction. See the <a href="#idpairrange">section on
-      IDPairRanges</a> for more information on the format of this tag.
+	IDPairRanges</a> for more information on the format of this tag.
     </li>
   </ul>
 </p>
@@ -698,7 +698,7 @@
 
       <br/> This attribute is a <b>Property specifier</b> with a unit
       of <b>Length</b> (see the <a href="#properties">section on
-      Properties</a> for more information).
+	Properties</a> for more information).
     </li>
     <li>
       <b>Elasticity</b> <i>(attribute)</i>: The elasticity of the
@@ -723,7 +723,7 @@
       <b>IDPairRange</b> <i>(tag)</i>: This IDPairRange tag specifies
       the pairs of particles which interact using this
       Interaction. See the <a href="#idpairrange">section on
-      IDPairRanges</a> for more information on the format of this tag.
+	IDPairRanges</a> for more information on the format of this tag.
     </li>
   </ul>
 </p>
@@ -797,7 +797,7 @@
       <b>IDPairRange</b> <i>(tag)</i>: This IDPairRange tag specifies
       the pairs of particles which interact using this
       Interaction. See the <a href="#idpairrange">section on
-      IDPairRanges</a> for more information on the format of this tag.
+	IDPairRanges</a> for more information on the format of this tag.
     </li>
   </ul>
 </p>
@@ -839,7 +839,7 @@
       
       <br/> This attribute is a <b>Property specifier</b> with a unit
       of <b>Length</b> (see the <a href="#properties">section on
-      Properties</a> for more information).
+	Properties</a> for more information).
     </li>
     <li>
       <b>Elasticity</b> <i>(attribute)</i>: The elasticity of the
@@ -869,7 +869,7 @@
 
       <br/> This attribute is a <b>Property specifier</b> with a unit
       of <b>Energy</b> (see the <a href="#properties">section on
-      Properties</a> for more information).
+	Properties</a> for more information).
     </li>
     <li>
       <b>Name</b> <i>(attribute)</i>: The name of the
@@ -892,7 +892,7 @@
       <b>IDPairRange</b> <i>(tag)</i>: This IDPairRange tag specifies
       the pairs of particles which interact using this
       Interaction. See the <a href="#idpairrange">section on
-      IDPairRanges</a> for more information on the format of this tag.
+	IDPairRanges</a> for more information on the format of this tag.
     </li>
   </ul>
 </p>
@@ -923,7 +923,7 @@
 
       <br/> This attribute is a <b>Property specifier</b> with a unit
       of <b>Length</b> (see the <a href="#properties">section on
-      Properties</a> for more information).
+	Properties</a> for more information).
     </li>
     <li>
       <b>Elasticity</b> <i>(attribute)</i>: The elasticity of the
@@ -958,7 +958,7 @@
       <b>IDPairRange</b> <i>(tag)</i>: This IDPairRange tag specifies
       the pairs of particles which interact using this
       Interaction. See the <a href="#idpairrange">section on
-      IDPairRanges</a> for more information on the format of this tag.
+	IDPairRanges</a> for more information on the format of this tag.
     </li>
   </ul>
 </p>
@@ -1004,7 +1004,7 @@
 
       <br/> This attribute is a <b>Property specifier</b> with a unit
       of <b>Length</b> (see the <a href="#properties">section on
-      Properties</a> for more information).
+	Properties</a> for more information).
     </li>
     <li>
       <b>Elasticity</b> <i>(attribute)</i>: The elasticity of the
@@ -1109,7 +1109,7 @@
       considered to be in the neighbourhood of other particles or
       points. If the neighbour list is used by
       the <a href="#typeneighbourlist">"NeighbourList" type
-      Scheduler</a>, this distance should be at least equal to or
+	Scheduler</a>, this distance should be at least equal to or
       greater than the maximum Interaction distance in the system. If
       this tag is unset, the maximum interaction distance is
       automatically calculated.
@@ -1209,7 +1209,7 @@
   Each Property defined has a "Name" attribute which allows any other
   objects with a <b>Property specifier</b> in the configuration file
   to refer to it. For example, a <a href="#typehardsphere">HardSphere
-  type Interaction</a> can refer to the "D" property above in its
+    type Interaction</a> can refer to the "D" property above in its
   Diameter attribute, like below.
 </p>
 <?php codeblockstart();?>
@@ -1460,7 +1460,7 @@
       present and each specifies one of the IDRanges used to make the
       IDPairRange. The order in which the IDRanges are specifed is
       unimportant. See the <a href="#idrange">section on the available
-      IDRange types</a> for more information.
+	IDRange types</a> for more information.
     </li>
   </ul>
 </p>
@@ -1488,7 +1488,7 @@
     <li>
       <b>IDRange</b> <i>(tag)</i>: See
       the <a href="#idrange">section on the available IDRange
-      types</a> for more information.
+	types</a> for more information.
     </li>
   </ul>
 </p>
