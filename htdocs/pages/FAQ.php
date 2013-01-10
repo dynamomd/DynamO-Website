@@ -69,7 +69,6 @@
     </p>
   </li>
 </ul>
-</p>
 <h3>Q: What units does the dynamod command use/produce?</h3>
 <p>
   Short answer: Whenever the <b>dynamod</b> command is used to
