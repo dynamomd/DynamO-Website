@@ -43,18 +43,18 @@
 </Scheduler><?php codeblockend("brush: xml;"); ?>
 <p>
   <b>Full Tag, Subtag, and Attribute List</b>:
-  <ul>
-    <li>
-      <b>Type</b> <i>(attribute)</i>: Must have the
-      value <i>"Dumb"</i> to select this Scheduler type.
-    </li>
-    <li>
-      <b>Sorter</b> <i>(tag)</i>: This tag specifies the type of event
-      sorter used in the Scheduler. See the <a href="#sorter">section
-	on Sorters</a> for more information on this tag.
-    </li>
-  </ul>
 </p>
+<ul>
+  <li>
+    <b>Type</b> <i>(attribute)</i>: Must have the
+    value <i>"Dumb"</i> to select this Scheduler type.
+  </li>
+  <li>
+    <b>Sorter</b> <i>(tag)</i>: This tag specifies the type of event
+    sorter used in the Scheduler. See the <a href="#sorter">section
+      on Sorters</a> for more information on this tag.
+  </li>
+</ul>
 <h2>Type="NeighbourList"</h2>
 <p>
   <b>Description:</b> The "NeighbourList" scheduler uses a
@@ -80,18 +80,18 @@
 </Scheduler><?php codeblockend("brush: xml;"); ?>
 <p>
   <b>Full Tag, Subtag, and Attribute List</b>:
-  <ul>
-    <li>
-      <b>Type</b> <i>(attribute)</i>: Must have the
-      value <i>"NeighbourList"</i> to select this Scheduler type.
-    </li>
-    <li>
-      <b>Sorter</b> <i>(tag)</i>: This tag specifies the type of event
-      sorter used in the Scheduler. See the <a href="#sorter">section
-	on Sorters</a> for more information on this tag.
-    </li>
-  </ul>
 </p>
+<ul>
+  <li>
+    <b>Type</b> <i>(attribute)</i>: Must have the
+    value <i>"NeighbourList"</i> to select this Scheduler type.
+  </li>
+  <li>
+    <b>Sorter</b> <i>(tag)</i>: This tag specifies the type of event
+    sorter used in the Scheduler. See the <a href="#sorter">section
+      on Sorters</a> for more information on this tag.
+  </li>
+</ul>
 <h1>Sorter</h1>
 <p>
   The Sorter tag specifies the method DynamO uses to sort events when
