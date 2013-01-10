@@ -55,7 +55,119 @@ dynarun config.xml -c 1000000 -L MFT:BinWidth=0.5,Length=100
 </p>
 <h2>Misc Plugin</h2>
 <p>
+  The Misc plugin is loaded by default and contains properties which
+  are relatively cheap to collect. Fortunately, this includes the
+  majority of the output which it is possible to collect with
+  DynamO. The output tags of the Misc plugin and how they are
+  collected are discussed in the following subsections.
 </p>
+<h3>Density</h3>
+<p>
+  This tag contains the number of particles divided by the volume of
+  the primary image, evaluated at the end of the simulation. In
+  non-periodic systems, this value may not have any significance as
+  the primary image is not related to the dynamics. Effects such as
+  walls reducing the volume of the system accessible to a particle are
+  not included in this calculation.
+</p>
+<p>
+  <b>Example output</b>:
+</p>
+<?php codeblockstart();?>
+<Misc>
+  <Density val="0.5"/>
+</Misc>
+<?php codeblockend("brush: xml;"); ?>
+<h3>Packing Fraction</h3>
+<p>
+  This tag contains the volume of all particles divided by the volume
+  of the primary image, evaluated at the end of the simulation. In
+  non-periodic systems, this value may not have any significance as
+  the primary image is not related to the dynamics. Effects such as
+  walls reducing the volume of the system accessible to a particle are
+  not included in this calculation. The volume of each particle is
+  calculated from the representative interaction which is specified by
+  the particle's <a href="/index.php/reference#species">Species
+  tags</a>.
+</p>
+<p>
+  <b>Example output</b>:
+</p>
+<?php codeblockstart();?>
+<Misc>
+  <PackingFraction val="0.261799387799154"/>
+</Misc>
+<?php codeblockend("brush: xml;"); ?>
+<h3>SpeciesCount</h3>
+<p>
+  This tag contains the number
+  of <a href="/index.php/reference#species">Species</a> in the system,
+  evaluated at the end of the simulation.
+</p>
+<p>
+  <b>Example output</b>:
+</p>
+<?php codeblockstart();?>
+<Misc>
+  <SpeciesCount val="1"/>
+</Misc>
+<?php codeblockend("brush: xml;"); ?>
+<h3>ParticleCount</h3>
+<p>
+  This tag contains the number
+  of <a href="/index.php/reference#species">Particles</a> in the
+  system, evaluated at the end of the simulation.
+</p>
+<p>
+  <b>Example output</b>:
+</p>
+<?php codeblockstart();?>
+<Misc>
+  <ParticleCount val="1372"/>
+</Misc>
+<?php codeblockend("brush: xml;"); ?>
+<h3>SystemMomentum</h3>
+<p>
+  This tag contains the current and average momentum of the particles
+  in the system. 
+
+  <br/> The average momentum is collected exactly (see the
+  <a href="#note-on-exact-time-averages-in-dynamo">note on exact
+  averages in DynamO</a>) and so this data is not valid
+  when <a href="/index.php/reference#typele">Lees-Edwards boundary
+  conditions</a> are applied.
+</p>
+<p>
+  <b>Example output</b>:
+</p>
+<?php codeblockstart();?>
+<Misc>
+  <SystemMomentum>
+    <Current x="-1.02140518265514e-13" y="3.42226247340705e-14" z="-9.39248678832882e-14"/>
+    <Average x="-1.02140518265516e-13" y="3.42226247340696e-14" z="-9.39248678832878e-14"/>
+  </SystemMomentum>
+</Misc>
+<?php codeblockend("brush: xml;"); ?>
+<h3>Temperature</h3>
+<p>
+  This tag contains the current and average temperature of the
+  particles in the system. This includes rotational degrees of freedom
+  (if present).
+
+  <br/> The average temperature is collected exactly (see the
+  <a href="#note-on-exact-time-averages-in-dynamo">note on exact
+  averages in DynamO</a>) and so this data is not valid
+  when <a href="/index.php/reference#typele">Lees-Edwards boundary
+  conditions</a> are applied.
+</p>
+<p>
+  <b>Example output</b>:
+</p>
+<?php codeblockstart();?>
+<Misc>
+  <Temperature Mean="1.00000000000002" MeanSqr="0.999999999999996" Current="1.00000000000001" Min="1.00000000000001" Max="1.00000000000001"/>
+</Misc>
+<?php codeblockend("brush: xml;"); ?>
 <h2>IntEnergyHist (Internal Energy Histogram)</h2>
 <p>
   
@@ -66,5 +178,8 @@ dynarun config.xml -c 1000000 -L MFT:BinWidth=0.5,Length=100
 </p>
 <h2>RadiusGyration</h2>
 <p>
-
+  
+</p>
+<h1>Note On Exact Time Averages In DynamO</h1>
+<p>
 </p>
