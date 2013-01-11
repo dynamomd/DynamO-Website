@@ -165,7 +165,7 @@ dynarun config.xml -c 1000000 -L MFT:BinWidth=0.5,Length=100
   This tag contains the current and average momentum of the particles
   in the system. 
 
-  <br/> The average momentum is collected exactly (see the
+  <br/> The averages in this tag are collected exactly (see the
   <a href="#note-on-exact-time-averages-in-dynamo">note on exact
   averages in DynamO</a>) and so this data is not valid
   when <a href="/index.php/reference#typele">Lees-Edwards boundary
@@ -211,9 +211,12 @@ dynarun config.xml -c 1000000 -L MFT:BinWidth=0.5,Length=100
 <p>
   This tag contains the current and average temperature of the
   particles in the system. This includes rotational degrees of freedom
-  (if present).
+  (if present). As with all temperature values in DynamO, the
+  temperature reported is effectively the product, $k_B\,T$ (see
+  the <a href="/index.php/FAQ#q-what-are-the-units-of-dynamo">FAQ on
+  units</a>).
 
-  <br/> The average temperature is collected exactly (see the
+  <br/> The averages in this tag are collected exactly (see the
   <a href="#note-on-exact-time-averages-in-dynamo">note on exact
   averages in DynamO</a>) and so this data is not valid
   when <a href="/index.php/reference#typele">Lees-Edwards boundary
@@ -227,13 +230,37 @@ dynarun config.xml -c 1000000 -L MFT:BinWidth=0.5,Length=100
   <Temperature Mean="1.00000000000002" MeanSqr="0.999999999999996" Current="1.00000000000001" Min="1.00000000000001" Max="1.00000000000001"/>
 </Misc>
 <?php codeblockend("brush: xml;"); ?>
+<p>
+  <b>Full Tag, Subtag, and Attribute List</b>:
+</p>
+<ul>
+  <li>
+    <b>Mean</b> <i>(attribute)</i>: The time-averaged temperature,
+    $\left\langle k_B\,T\right\rangle$.
+  </li>
+  <li>
+    <b>MeanSqr</b> <i>(attribute)</i>: The time-averaged square of the
+    temperature, $\left\langle k_B^2\,T^2\right\rangle$. This can be
+    used to work out the standard deviation of the temperature using
+    the following formula: \[\sigma = \sqrt{\left\langle
+    k_B^2\,T^2\right\rangle - \left\langle k_B\,T\right\rangle^2}\]
+  </li>
+  <li>
+    <b>Current</b> <i>(attribute)</i>: The value of the temperature,
+    $k_B\,T$, at the end of the simulation.
+  </li>
+  <li>
+    <b>Min</b>, <b>Max</b> <i>(attributes)</i>: The minimum and
+    maximum values of the temperature during the simulation.
+  </li>
+</ul>
 <h3>UConfigurational</h3>
 <p>
-  This tag contains the current and average temperature of the
-  particles in the system. This includes rotational degrees of freedom
-  (if present).
+  This tag contains the interaction energy per particle. This is equal
+  to the excess internal energy (also known as the configurational
+  internal energy).
 
-  <br/> The average temperature is collected exactly (see the
+  <br/> The averages in this tag are collected exactly (see the
   <a href="#note-on-exact-time-averages-in-dynamo">note on exact
   averages in DynamO</a>) and so this data is not valid
   when <a href="/index.php/reference#typele">Lees-Edwards boundary
@@ -247,6 +274,33 @@ dynarun config.xml -c 1000000 -L MFT:BinWidth=0.5,Length=100
   <UConfigurational Mean="0" MeanSqr="0" Current="0" Min="0" Max="0"/>
 </Misc>
 <?php codeblockend("brush: xml;"); ?>
+<p>
+  <b>Full Tag, Subtag, and Attribute List</b>:
+</p>
+<ul>
+  <li>
+    <b>Mean</b> <i>(attribute)</i>: The time-averaged configurational
+    internal energy, $\left\langle U_{conf.}\right\rangle$.
+  </li>
+  <li>
+    <b>MeanSqr</b> <i>(attribute)</i>: The time-averaged square of the
+    configurational internal energy, $\left\langle
+    U_{conf.}^2\right\rangle$. This can be used to work out the
+    standard deviation of the configurational internal energy using
+    the following formula: \[\sigma = \sqrt{\left\langle
+    U_{conf.}^2\right\rangle - \left\langle U_{conf.}\right\rangle^2}\]
+  </li>
+  <li>
+    <b>Current</b> <i>(attribute)</i>: The value of the
+    configurational internal energy, $U_{conf.}$, at the end of the
+    simulation.
+  </li>
+  <li>
+    <b>Min</b>, <b>Max</b> <i>(attributes)</i>: The minimum and
+    maximum values of the configurational internal energy during the
+    simulation.
+  </li>
+</ul>
 <h2>IntEnergyHist (Internal Energy Histogram)</h2>
 <p>
 </p>
