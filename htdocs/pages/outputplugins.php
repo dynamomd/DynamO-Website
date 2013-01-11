@@ -20,7 +20,8 @@
   By default, DynamO loads the <a href="#misc-plugin">Misc output
   plugin</a> which collects a wide range of data. However, if there is
   any output which requires a large computational cost to collect,
-  this must be enabled manually.
+  this must be enabled manually. This is discussed in the following
+  section:
 </p>
 <h1>Loading Plugins</h1>
 <p>
@@ -48,7 +49,7 @@ dynarun config.xml -c 1000000 -L IntEnergyHist:BinWidth=0.1
 <?php codeblockstart(); ?>
 dynarun config.xml -c 1000000 -L MFT:BinWidth=0.5,Length=100
 <?php codeblockend("brush: shell;"); ?>
-<h1>Available Plugins</h1>
+<h1>Plugins</h1>
 <p>
   In the following sections, the options and output of each output
   plugin are listed.
@@ -64,11 +65,10 @@ dynarun config.xml -c 1000000 -L MFT:BinWidth=0.5,Length=100
 <h3>Density</h3>
 <p>
   This tag contains the number of particles divided by the volume of
-  the primary image, evaluated at the end of the simulation. In
-  non-periodic systems, this value may not have any significance as
-  the primary image is not related to the dynamics. Effects such as
-  walls reducing the volume of the system accessible to a particle are
-  not included in this calculation.
+  the primary image. In non-periodic systems, this value may not have
+  any significance as the primary image is not related to the
+  dynamics. Effects such as walls reducing the volume of the system
+  accessible to a particle are not included in this calculation.
 </p>
 <p>
   <b>Example output</b>:
@@ -89,14 +89,13 @@ dynarun config.xml -c 1000000 -L MFT:BinWidth=0.5,Length=100
 <h3>Packing Fraction</h3>
 <p>
   This tag contains the volume of all particles divided by the volume
-  of the primary image, evaluated at the end of the simulation. In
-  non-periodic systems, this value may not have any significance as
-  the primary image is not related to the dynamics. Effects such as
-  walls reducing the volume of the system accessible to a particle are
-  not included in this calculation. The volume of each particle is
-  calculated from the representative interaction which is specified by
-  the particle's <a href="/index.php/reference#species">Species
-  tags</a>.
+  of the primary image. In non-periodic systems, this value may not
+  have any significance as the primary image is not related to the
+  dynamics. Effects such as walls reducing the volume of the system
+  accessible to a particle are not included in this calculation. The
+  volume of each particle is calculated from the representative
+  interaction which is specified by the
+  particle's <a href="/index.php/reference#species">Species tags</a>.
 </p>
 <p>
   <b>Example output</b>:
@@ -117,8 +116,7 @@ dynarun config.xml -c 1000000 -L MFT:BinWidth=0.5,Length=100
 <h3>SpeciesCount</h3>
 <p>
   This tag contains the number
-  of <a href="/index.php/reference#species">Species</a> in the system,
-  evaluated at the end of the simulation.
+  of <a href="/index.php/reference#species">Species</a> in the system.
 </p>
 <p>
   <b>Example output</b>:
@@ -141,7 +139,7 @@ dynarun config.xml -c 1000000 -L MFT:BinWidth=0.5,Length=100
 <p>
   This tag contains the number
   of <a href="/index.php/reference#species">Particles</a> in the
-  system, evaluated at the end of the simulation.
+  system.
 </p>
 <p>
   <b>Example output</b>:
@@ -188,7 +186,7 @@ dynarun config.xml -c 1000000 -L MFT:BinWidth=0.5,Length=100
 <ul>
   <li>
     <b>Current</b> <i>(tag)</i>: The total momentum of the system at
-    the end of the simulation.
+    the moment the output is written out
     <ul>
       <li>
 	<b>x</b>, <b>y</b>, <b>z</b>, <i>(attributes)</i>: The
@@ -209,10 +207,10 @@ dynarun config.xml -c 1000000 -L MFT:BinWidth=0.5,Length=100
 </ul>
 <h3>Temperature</h3>
 <p>
-  This tag contains the current and average temperature of the
-  particles in the system. This includes rotational degrees of freedom
-  (if present). As with all temperature values in DynamO, the
-  temperature reported is effectively the product, $k_B\,T$ (see
+  This tag contains the temperature of the particles in the
+  system. This includes rotational degrees of freedom (if present). As
+  with all temperature values in DynamO, the temperature reported is
+  effectively the product, $k_B\,T$ (see
   the <a href="/index.php/FAQ#q-what-are-the-units-of-dynamo">FAQ on
   units</a>).
 
@@ -247,7 +245,7 @@ dynarun config.xml -c 1000000 -L MFT:BinWidth=0.5,Length=100
   </li>
   <li>
     <b>Current</b> <i>(attribute)</i>: The value of the temperature,
-    $k_B\,T$, at the end of the simulation.
+    $k_B\,T$, at the moment the output is written out.
   </li>
   <li>
     <b>Min</b>, <b>Max</b> <i>(attributes)</i>: The minimum and
@@ -292,8 +290,8 @@ dynarun config.xml -c 1000000 -L MFT:BinWidth=0.5,Length=100
   </li>
   <li>
     <b>Current</b> <i>(attribute)</i>: The value of the
-    configurational internal energy, $U_{conf.}$, at the end of the
-    simulation.
+    configurational internal energy, $U_{conf.}$, at the moment the
+    output is written out.
   </li>
   <li>
     <b>Min</b>, <b>Max</b> <i>(attributes)</i>: The minimum and
