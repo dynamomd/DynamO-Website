@@ -102,3 +102,26 @@
   sets the mass and diameter of particles to be equal to 1, as this is
   the natural dimensionless units of the system.
 </p>
+<h3>Q: How does DynamO collect exact time-averages?</h3>
+<p>
+  Short answer: Many properties have a constant value between events,
+  and so the exact time average may be calculated using the following
+  formula:
+
+  \[\left\langle A\right\rangle=t_{sim}^{-1}\sum_i^{N_\text{events}}
+  A(t_i)(t_{i+1}-t_i)\]
+
+  where $t_i$ is the time of the $i$th event, $A$ is the property
+  being averaged and $A(t_i)$ is its value immediately after the $i$th
+  event. The total length of the simulation is given by
+
+  \[t_{sim}=\sum_i^{N_\text{events}} (t_{i+1}-t_{i})\]
+</p>
+<p>
+  For example, in systems <b>without</b> gravity and <b>without</b>
+  shearing boundary conditions, the velocities of all particles is
+  constant between events. If we calculate the kinetic energy at the
+  start of the simulation, the only changes will occur during the
+  execution of an event. It is then very simple to collect exact
+  time-averages using the equation above.
+</p>

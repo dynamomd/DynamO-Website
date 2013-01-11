@@ -17,11 +17,26 @@
   plugins of DynamO, and how to load them is presented.
 </p>
 <p>
-  By default, DynamO loads the <a href="#misc-plugin">Misc output
-  plugin</a> which collects a wide range of data. However, if there is
-  any output which requires a large computational cost to collect,
-  this must be enabled manually. This is discussed in the following
-  section:
+  Output plugins are routines which can be activated in DynamO to
+  collect measurements on the simulation <i>while it is
+  running</i>. Although most static/structural properties can be
+  measured from the configuration files, dynamical properties must be
+  measured using output plugins. There are a wide range of properties
+  which can be measured by DynamO, from transport properties
+  (viscosity, mutual diffusion, thermal conductivity) to internal
+  energy histograms.
+</p>
+<p>
+  All data collected by active output plugins is written into a single
+  XML file at the end of a simulation (<i>output.xml.bz2</i> by
+  default).
+</p>
+<p>
+  DynamO loads the <a href="#misc-plugin">Misc output plugin</a>
+  automatically as it samples a wide range of properties of the system
+  which are computationally inexpensive to collect; however, all other
+  output plugins must be enabled manually. This is discussed in the
+  following section:
 </p>
 <h1>Loading Plugins</h1>
 <p>
@@ -44,11 +59,16 @@ dynarun config.xml -c 1000000 -L IntEnergyHist:BinWidth=0.1
 <?php codeblockend("brush: shell;"); ?>
 <p>
   If you need to specify multiple options, you must use a comma to
-  delimit options:
+  delimit options. For example, the <a href="#mft-mean-free-time">mean
+  free time plugin</a> has two options which can be set like so:
 </p>
 <?php codeblockstart(); ?>
 dynarun config.xml -c 1000000 -L MFT:BinWidth=0.5,Length=100
 <?php codeblockend("brush: shell;"); ?>
+<p>
+  The options and the generated output of all available output plugins
+  is detailed below.
+</p>
 <h1>Plugins</h1>
 <p>
   In the following sections, the options and output of each output
@@ -56,9 +76,9 @@ dynarun config.xml -c 1000000 -L MFT:BinWidth=0.5,Length=100
 </p>
 <h2>Misc Plugin</h2>
 <p>
-  The Misc plugin is loaded by default and contains properties which
-  are relatively cheap to collect. Fortunately, this includes the
-  majority of the output which it is possible to collect with
+  The Misc plugin is loaded automatically and contains properties
+  which are relatively cheap to collect. Fortunately, this includes
+  the majority of the output which it is possible to collect with
   DynamO. The output tags of the Misc plugin and how they are
   collected are discussed in the following subsections.
 </p>
@@ -164,8 +184,8 @@ dynarun config.xml -c 1000000 -L MFT:BinWidth=0.5,Length=100
   in the system. 
 
   <br/> The averages in this tag are collected exactly (see the
-  <a href="#note-on-exact-time-averages-in-dynamo">note on exact
-  averages in DynamO</a>) and so this data is not valid
+  <a href="/index.php/FAQ#q-how-does-dynamo-collect-exact-timeaverages">FAQ
+  on exact averages in DynamO</a>) and so this data is not valid
   when <a href="/index.php/reference#typele">Lees-Edwards boundary
   conditions</a> are applied.
 </p>
@@ -215,8 +235,8 @@ dynarun config.xml -c 1000000 -L MFT:BinWidth=0.5,Length=100
   units</a>).
 
   <br/> The averages in this tag are collected exactly (see the
-  <a href="#note-on-exact-time-averages-in-dynamo">note on exact
-  averages in DynamO</a>) and so this data is not valid
+  <a href="/index.php/FAQ#q-how-does-dynamo-collect-exact-timeaverages">FAQ
+  on exact averages in DynamO</a>) and so this data is not valid
   when <a href="/index.php/reference#typele">Lees-Edwards boundary
   conditions</a> are applied.
 </p>
@@ -259,8 +279,8 @@ dynarun config.xml -c 1000000 -L MFT:BinWidth=0.5,Length=100
   internal energy).
 
   <br/> The averages in this tag are collected exactly (see the
-  <a href="#note-on-exact-time-averages-in-dynamo">note on exact
-  averages in DynamO</a>) and so this data is not valid
+  <a href="/index.php/FAQ#q-how-does-dynamo-collect-exact-timeaverages">FAQ
+  on exact averages in DynamO</a>) and so this data is not valid
   when <a href="/index.php/reference#typele">Lees-Edwards boundary
   conditions</a> are applied.
 </p>
@@ -286,7 +306,8 @@ dynarun config.xml -c 1000000 -L MFT:BinWidth=0.5,Length=100
     U_{conf.}^2\right\rangle$. This can be used to work out the
     standard deviation of the configurational internal energy using
     the following formula: \[\sigma = \sqrt{\left\langle
-    U_{conf.}^2\right\rangle - \left\langle U_{conf.}\right\rangle^2}\]
+    U_{conf.}^2\right\rangle - \left\langle
+    U_{conf.}\right\rangle^2}\]
   </li>
   <li>
     <b>Current</b> <i>(attribute)</i>: The value of the
@@ -306,8 +327,5 @@ dynarun config.xml -c 1000000 -L MFT:BinWidth=0.5,Length=100
 <p>
 </p>
 <h2>RadiusGyration</h2>
-<p>
-</p>
-<h1>Note On Exact Time Averages In DynamO</h1>
 <p>
 </p>
