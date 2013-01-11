@@ -9,6 +9,9 @@
    $pagetitle="Configuration File Format Reference";
    ?>
 <?php printTOC(); ?>
+<p style="text-align:center; margin:15px; background-color:#FFD800; font-size:16pt; font-family:sans; line-height:40px;">
+  <b>This reference is currently being written and is incomplete.</b>
+</p>
 <p>
   In this reference a complete description of the file format is
   presented. This reference documentation is terse as a general
@@ -335,6 +338,12 @@
     system. All particles must belong to exactly one Species.
   </li>
 </ul>
+<h1>Topology</h1>
+<p>
+  Topology tags are used to specify structures in the configuration
+  file, such as molecules, so they may be marked out for data
+  collection.
+</p>
 <h1>BC (Boundary Conditions)</h1>
 <p>
   The BC tag in the configuration file controls the boundary
@@ -1122,6 +1131,15 @@
     information on the format of this tag.
   </li>
 </ul>
+<h1>System</h1>
+<p>
+  System tags represent events which do not fit into the categories of
+  Global, Local, or Interaction. 
+</p>
+<h1>Dynamics</h1>
+<p>
+  The Dynamics tag specifies the fundamental dynamics of the system.
+</p>
 <h1>Pt (Particle)</h1>
 <p>
   <b>Description:</b> A <b>Pt</b> or Particle tag represents the
