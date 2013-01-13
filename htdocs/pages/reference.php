@@ -9,24 +9,148 @@
    $pagetitle="Configuration File Format Reference";
    ?>
 <?php printTOC(); ?>
-<p style="text-align:center; margin:15px; background-color:#FFD800; font-size:16pt; font-family:sans; line-height:40px;">
-  <b>This reference is currently being written and is incomplete.</b>
-</p>
 <p>
   In this reference a complete description of the file format is
-  presented. This reference documentation is terse as a general
-  introduction to the file format is covered
-  in <a href="/index.php/tutorial3">tutorial 3</a>. This documentation
-  is meant to serve as a complete guide to the options of DynamO.
+  presented. The introductory documentation in this reference is terse
+  as <a href="/index.php/tutorial3">a general introduction to the file
+  format is covered in tutorial 3</a>. 
 </p>
 <p>
   In the following sections, the tags of the configuration file are
-  listed and all of the options are detailed for each tag type.
+  listed and all of the options are detailed for each tag type. Below
+  is a hyperlinked hierarchy of the tags in the configuration file.
 </p>
-<h1>Scheduler</h1>
+<style>
+  #taglist ul li { 
+  list-style:circle; 
+  list-style-position:inside;
+  font-weight:bold;
+  padding-left:5px;
+  margin-top:5px;
+  }
+  #taglist ul {
+  padding-left: 15px;
+  }
+</style>
+<div id="taglist">
+  <ul>
+    <li>
+      DynamOconfig
+      <ul>
+	<li>
+	  Simulation
+	  <ul>
+	    <li>
+	      <a href="#scheduler">Scheduler</a>
+	      <ul>
+		<li>
+		  <a href="#sorter">Sorter</a>
+		</li>
+	      </ul>
+	    </li>
+	    <li>
+	      <a href="#simulationsize">SimulationSize</a>
+	    </li>
+	    <li>
+	      Genus
+	      <ul>
+		<li>
+		  <a href="#species">Species</a>
+		  <ul>
+		    <li>
+		      <a href="#idrange">IDRange</a>
+		    </li>
+		  </ul>
+		</li>
+	      </ul>
+	    </li>
+	    <li>
+	      <a href="#bc">BC</a>
+	    </li>
+	    <li>
+	      <a href="#topology">Topology</a>
+	    </li>
+	    <li>
+	      Interactions
+	      <ul>
+		<li>
+		  <a href="#interaction">Interaction</a>
+		  <ul>
+		    <li>
+		      <a href="#idpairrange">IDPairRange</a>
+		    </li>
+		  </ul>
+		</li>
+	      </ul>
+	    </li>
+	    <li>
+	      Locals
+	      <ul>
+		<li>
+		  <a href="#local">Local</a>
+		  <ul>
+		    <li>
+		      <a href="#idrange">IDRange</a>
+		    </li>
+		  </ul>
+		</li>
+	      </ul>
+	    </li>
+	    <li>
+	      Globals
+	      <ul>
+		<li>
+		  <a href="#global">Global</a>
+		  <ul>
+		    <li>
+		      <a href="#idrange">IDRange</a>
+		    </li>
+		  </ul>
+		</li>
+	      </ul>
+	    </li>
+	    <li>
+	      SystemEvents
+	      <ul>
+		<li>
+		  <a href="#system">System</a>
+		  <ul>
+		    <li>
+		      <a href="#idrange">IDRange</a>
+		    </li>
+		  </ul>
+		</li>
+	      </ul>
+	    </li>
+	    <li>
+	      <a href="#dynamics">Dynamics</a>
+	    </li>
+	  </ul>
+	</li>
+	<li>
+	  Properties
+	  <ul>
+	    <li>
+	      <a href="#property">Property</a>
+	    </li>
+	  </ul>
+	</li>
+	<li>
+	  ParticleData
+	  <ul>
+	    <li>
+	      <a href="#pt">Pt</a>
+	    </li>
+	  </ul>
+	</li>
+      </ul>
+    </li>
+  </ul>
+</div>
+<h1><a id="scheduler"></a>Scheduler</h1>
 <p>
   The Scheduler specifies how DynamO searches the simulation for
-  events. How the events are sorted is specified by the Sorter tag.
+  events. How the events are sorted is specified by the <a href="#sorter">Sorter</a> tag.
 </p>
 <h2>Type="Dumb"</h2>
 <p>
@@ -53,7 +177,7 @@
     value <i>"Dumb"</i> to select this Scheduler type.
   </li>
   <li>
-    <b>Sorter</b> <i>(tag)</i>: This tag specifies the type of event
+    <b><a href="#sorter">Sorter</a></b> <i>(tag)</i>: This tag specifies the type of event
     sorter used in the Scheduler. See the <a href="#sorter">section
       on Sorters</a> for more information on this tag.
   </li>
@@ -69,7 +193,7 @@
 </p>
 <p>
   <b>Note:</b> The neighbour list used by the scheduler is not
-  actually provided by the Scheduler. There must be a Global
+  actually provided by the Scheduler. There must be a <a href="#global">Global</a>
   interaction available in the system which implements a
   NeighbourList. This neighbour list must have the name attribute set
   to "SchedulerNBList" to allow the NeighbourList Scheduler to
@@ -90,12 +214,12 @@
     value <i>"NeighbourList"</i> to select this Scheduler type.
   </li>
   <li>
-    <b>Sorter</b> <i>(tag)</i>: This tag specifies the type of event
+    <b><a href="#sorter">Sorter</a></b> <i>(tag)</i>: This tag specifies the type of event
     sorter used in the Scheduler. See the <a href="#sorter">section
       on Sorters</a> for more information on this tag.
   </li>
 </ul>
-<h1>Sorter</h1>
+<h1><a id="sorter"></a>Sorter</h1>
 <p>
   The Sorter tag specifies the method DynamO uses to sort events when
   determining the next event to occur.
@@ -155,7 +279,7 @@
     "BoundedPQMinMax8" are also available.
   </li>
 </ul>
-<h1>SimulationSize</h1>
+<h1><a id="simulationsize"></a>SimulationSize</h1>
 <p>
   <b>Description:</b> The SimulationSize tag specifies the dimensions
   of the primary image for periodic boundary conditions. When the
@@ -184,7 +308,7 @@
     <b>z</b> <i>(attribute)</i>: The size in the $z$ dimension.
   </li>
 </ul>
-<h1>Species</h1>
+<h1><a id="species"></a>Species</h1>
 <p>
   Species are vital tags used to specify the mass and inertia data of
   a set of particles. They also provide a unique identifier/name for
@@ -220,7 +344,7 @@
     represented by this Species. 
 
     <br/> This attribute is a <b>Property specifier</b> with units
-    of <b>Mass</b> (see the <a href="#properties">section on Properties</a>
+    of <b>Mass</b> (see the <a href="#property">section on Properties</a>
     for more information).
   </li>
   <li>
@@ -230,13 +354,13 @@
     dynamod often uses the name "Bulk".
   </li>
   <li>
-    <b>IntName</b> <i>(attribute)</i>: The name of the Interaction
-    used to represent this species. This Interaction is used to
+    <b>IntName</b> <i>(attribute)</i>: The name of the <a href="#interaction">Interaction</a>
+    used to represent this species. This <a href="#interaction">Interaction</a> is used to
     calculate the volume occupied by the Species and to draw the
     Particles of the Species.
   </li>
   <li>
-    <b>IDRange</b> <i>(tag)</i>: A IDRange which specifies the
+    <b><a href="#idrange">IDRange</a></b> <i>(tag)</i>: A <a href="#idrange">IDRange</a> which specifies the
     Particles represented by this Species tag. The IDRanges of each
     Species must not overlap with any other Species in the
     system. All particles must belong to exactly one Species.
@@ -270,13 +394,13 @@
     dynamod often uses the name "Bulk".
   </li>
   <li>
-    <b>IntName</b> <i>(attribute)</i>: The name of the Interaction
-    used to represent this species. This Interaction is used to
+    <b>IntName</b> <i>(attribute)</i>: The name of the <a href="#interaction">Interaction</a>
+    used to represent this species. This <a href="#interaction">Interaction</a> is used to
     calculate the volume occupied by the Species and to draw the
     Particles of the Species.
   </li>
   <li>
-    <b>IDRange</b> <i>(tag)</i>: A IDRange which specifies the
+    <b><a href="#idrange">IDRange</a></b> <i>(tag)</i>: A <a href="#idrange">IDRange</a> which specifies the
     Particles represented by this Species tag. The IDRanges of each
     Species must not overlap with any other Species in the
     system. All particles must belong to exactly one Species.
@@ -309,7 +433,7 @@
     represented by this Species.  
 
     <br/> This attribute is a <b>Property specifier</b> with units
-    of <b>Mass</b> (see the <a href="#properties">section on
+    of <b>Mass</b> (see the <a href="#property">section on
       Properties</a> for more information).
   </li>
   <li>
@@ -326,26 +450,19 @@
     dynamod often uses the name "Bulk".
   </li>
   <li>
-    <b>IntName</b> <i>(attribute)</i>: The name of the Interaction
-    used to represent this species. This Interaction is used to
+    <b>IntName</b> <i>(attribute)</i>: The name of the <a href="#interaction">Interaction</a>
+    used to represent this species. This <a href="#interaction">Interaction</a> is used to
     calculate the volume occupied by the Species and to draw the
     Particles of the Species.
   </li>
   <li>
-    <b>IDRange</b> <i>(tag)</i>: A IDRange which specifies the
+    <b><a href="#idrange">IDRange</a></b> <i>(tag)</i>: A <a href="#idrange">IDRange</a> which specifies the
     Particles represented by this Species tag. The IDRanges of each
     Species must not overlap with any other Species in the
     system. All particles must belong to exactly one Species.
   </li>
 </ul>
-<h1>Topology</h1>
-<p>
-  Topology tags are used to specify structures in the configuration
-  file, such as molecules, so they may be marked out for data
-  collection. This tag is only for specialised use cases and is not
-  yet documented.
-</p>
-<h1>BC (Boundary Conditions)</h1>
+<h1><a id="bc"></a>BC (Boundary Conditions)</h1>
 <p>
   The BC tag in the configuration file controls the boundary
   conditions of the simulation.
@@ -424,7 +541,14 @@
     time).
   </li>
 </ul>
-<h1>Interaction</h1>
+<h1><a id="topology"></a>Topology</h1>
+<p>
+  Topology tags are used to specify structures in the configuration
+  file, such as molecules, so they may be marked out for data
+  collection. This tag is only for specialised use cases and is not
+  yet documented.
+</p>
+<h1><a id="interaction"></a>Interaction</h1>
 <p>
   Interaction tags are used to specify how pairs of particles
   interact. Every pairing of particles must have a corresponding
@@ -435,9 +559,9 @@
   When DynamO tests for interactions/events between a pair of
   particles, it moves through the list of interactions in the order in
   which they are specified, testing if the ID's of the pair match the
-  Interaction's IDPairRange. Therefore, <b>the order in which
-    Interactions are listed in the configuration file is
-    important</b>. Interactions which are higher in the configuration
+  Interaction's <a href="#idpairrange">IDPairRange</a>. Therefore, <b>the
+  order in which Interactions are listed in the configuration file is
+  important</b>. Interactions which are higher in the configuration
   file will override matching Interactions which are lower down.
 </p>
 <h2>Type="Null"</h2>
@@ -470,7 +594,7 @@
     is unique.
   </li>
   <li>
-    <b>IDPairRange</b> <i>(tag)</i>: This IDPairRange tag specifies
+    <b><a href="#idpairrange">IDPairRange</a></b> <i>(tag)</i>: This <a href="#idpairrange">IDPairRange</a> tag specifies
     the pairs of particles which interact using this
     Interaction. See the <a href="#idpairrange">section on
       IDPairRanges</a> for more information on the format of this tag.
@@ -505,7 +629,7 @@
     Interaction. 
 
     <br/> This attribute is a <b>Property specifier</b> with a unit
-    of <b>Length</b> (see the <a href="#properties">section on
+    of <b>Length</b> (see the <a href="#property">section on
       Properties</a> for more information).
   </li>
   <li>
@@ -516,7 +640,7 @@
 
     <br/> This attribute is a <b>Property specifier</b>
     with <b>Dimensionless</b> units (see
-    the <a href="#properties">section on Properties</a> for more
+    the <a href="#property">section on Properties</a> for more
     information).
   </li>
   <li>
@@ -528,7 +652,7 @@
     is unique.
   </li>
   <li>
-    <b>IDPairRange</b> <i>(tag)</i>: This IDPairRange tag specifies
+    <b><a href="#idpairrange">IDPairRange</a></b> <i>(tag)</i>: This <a href="#idpairrange">IDPairRange</a> tag specifies
     the pairs of particles which interact using this
     Interaction. See the <a href="#idpairrange">section on
       IDPairRanges</a> for more information on the format of this tag.
@@ -561,7 +685,7 @@
     Interaction. 
 
     <br/> This attribute is a <b>Property specifier</b> with a
-    unit of <b>Length</b> (see the <a href="#properties">section on
+    unit of <b>Length</b> (see the <a href="#property">section on
       Properties</a> for more information).
   </li>
   <li>
@@ -571,7 +695,7 @@
     granular systems.
     
     <br/> This attribute is a <b>Property specifier</b> with
-    <b>Dimensionless</b> units (see the <a href="#properties">section on
+    <b>Dimensionless</b> units (see the <a href="#property">section on
       Properties</a> for more information).
   </li>
   <li>
@@ -581,7 +705,7 @@
 
     <br/> This attribute is a <b>Property specifier</b> with
     <b>Dimensionless</b> units (see
-    the <a href="#properties">section on Properties</a> for more
+    the <a href="#property">section on Properties</a> for more
     information).
   </li>
   <li>
@@ -590,7 +714,7 @@
     Interaction. 
 
     <br/> This attribute is a <b>Property specifier</b> with a unit
-    of <b>Energy</b> (see the <a href="#properties">section on
+    of <b>Energy</b> (see the <a href="#property">section on
       Properties</a> for more information).
   </li>
   <li>
@@ -611,7 +735,7 @@
     configuration file.
   </li>
   <li>
-    <b>IDPairRange</b> <i>(tag)</i>: This IDPairRange tag specifies
+    <b><a href="#idpairrange">IDPairRange</a></b> <i>(tag)</i>: This <a href="#idpairrange">IDPairRange</a> tag specifies
     the pairs of particles which interact using this
     Interaction. See the <a href="#idpairrange">section on
       IDPairRanges</a> for more information on the format of this tag.
@@ -649,7 +773,7 @@
     Interaction (the length of a cube side). 
     
     <br/> This attribute is a <b>Property specifier</b> with a unit of
-    <b>Length</b> (see the <a href="#properties">section on
+    <b>Length</b> (see the <a href="#property">section on
       Properties</a> for more information).
   </li>
   <li>
@@ -660,7 +784,7 @@
 
     <br/> This attribute is a <b>Property specifier</b>
     with <b>Dimensionless</b> units (see
-    the <a href="#properties">section on Properties</a> for more
+    the <a href="#property">section on Properties</a> for more
     information).
   </li>
   <li>
@@ -672,7 +796,7 @@
     is unique.
   </li>
   <li>
-    <b>IDPairRange</b> <i>(tag)</i>: This IDPairRange tag specifies
+    <b><a href="#idpairrange">IDPairRange</a></b> <i>(tag)</i>: This <a href="#idpairrange">IDPairRange</a> tag specifies
     the pairs of particles which interact using this
     Interaction. See the <a href="#idpairrange">section on
       IDPairRanges</a> for more information on the format of this tag.
@@ -708,7 +832,7 @@
     <b>Length</b> <i>(attribute)</i>: The length of the lines. 
 
     <br/> This attribute is a <b>Property specifier</b> with a unit
-    of <b>Length</b> (see the <a href="#properties">section on
+    of <b>Length</b> (see the <a href="#property">section on
       Properties</a> for more information).
   </li>
   <li>
@@ -719,7 +843,7 @@
     
     <br/> This attribute is a <b>Property specifier</b> with
     <b>Dimensionless</b> units (see
-    the <a href="#properties">section on Properties</a> for more
+    the <a href="#property">section on Properties</a> for more
     information).
   </li>
   <li>
@@ -731,7 +855,7 @@
     is unique.
   </li>
   <li>
-    <b>IDPairRange</b> <i>(tag)</i>: This IDPairRange tag specifies
+    <b><a href="#idpairrange">IDPairRange</a></b> <i>(tag)</i>: This <a href="#idpairrange">IDPairRange</a> tag specifies
     the pairs of particles which interact using this
     Interaction. See the <a href="#idpairrange">section on
       IDPairRanges</a> for more information on the format of this tag.
@@ -805,7 +929,7 @@
     configuration file.
   </li>
   <li>
-    <b>IDPairRange</b> <i>(tag)</i>: This IDPairRange tag specifies
+    <b><a href="#idpairrange">IDPairRange</a></b> <i>(tag)</i>: This <a href="#idpairrange">IDPairRange</a> tag specifies
     the pairs of particles which interact using this
     Interaction. See the <a href="#idpairrange">section on
       IDPairRanges</a> for more information on the format of this tag.
@@ -849,7 +973,7 @@
     Interaction. 
     
     <br/> This attribute is a <b>Property specifier</b> with a unit
-    of <b>Length</b> (see the <a href="#properties">section on
+    of <b>Length</b> (see the <a href="#property">section on
       Properties</a> for more information).
   </li>
   <li>
@@ -860,7 +984,7 @@
 
     <br/> This attribute is a <b>Property specifier</b> with
     <b>Dimensionless</b> units (see
-    the <a href="#properties">section on Properties</a> for more
+    the <a href="#property">section on Properties</a> for more
     information).
   </li>
   <li>
@@ -870,7 +994,7 @@
 
     <br/> This attribute is a <b>Property specifier</b> with
     <b>Dimensionless</b> units (see
-    the <a href="#properties">section on Properties</a> for more
+    the <a href="#property">section on Properties</a> for more
     information).
   </li>
   <li>
@@ -879,7 +1003,7 @@
     Interaction. 
 
     <br/> This attribute is a <b>Property specifier</b> with a unit
-    of <b>Energy</b> (see the <a href="#properties">section on
+    of <b>Energy</b> (see the <a href="#property">section on
       Properties</a> for more information).
   </li>
   <li>
@@ -900,7 +1024,7 @@
     configuration file.
   </li>
   <li>
-    <b>IDPairRange</b> <i>(tag)</i>: This IDPairRange tag specifies
+    <b><a href="#idpairrange">IDPairRange</a></b> <i>(tag)</i>: This <a href="#idpairrange">IDPairRange</a> tag specifies
     the pairs of particles which interact using this
     Interaction. See the <a href="#idpairrange">section on
       IDPairRanges</a> for more information on the format of this tag.
@@ -933,7 +1057,7 @@
     Interaction. 
 
     <br/> This attribute is a <b>Property specifier</b> with a unit
-    of <b>Length</b> (see the <a href="#properties">section on
+    of <b>Length</b> (see the <a href="#property">section on
       Properties</a> for more information).
   </li>
   <li>
@@ -944,7 +1068,7 @@
     
     <br/> This attribute is a <b>Property specifier</b> with
     <b>Dimensionless</b> units (see
-    the <a href="#properties">section on Properties</a> for more
+    the <a href="#property">section on Properties</a> for more
     information).
   </li>
   <li>
@@ -954,7 +1078,7 @@
 
     <br/> This attribute is a <b>Property specifier</b> with
     <b>Dimensionless</b> units (see
-    the <a href="#properties">section on Properties</a> for more
+    the <a href="#property">section on Properties</a> for more
     information).
   </li>
   <li>
@@ -966,13 +1090,13 @@
     is unique.
   </li>
   <li>
-    <b>IDPairRange</b> <i>(tag)</i>: This IDPairRange tag specifies
+    <b><a href="#idpairrange">IDPairRange</a></b> <i>(tag)</i>: This <a href="#idpairrange">IDPairRange</a> tag specifies
     the pairs of particles which interact using this
     Interaction. See the <a href="#idpairrange">section on
       IDPairRanges</a> for more information on the format of this tag.
   </li>
 </ul>
-<h1>Local</h1>
+<h1><a id="local"></a>Local</h1>
 <p>
   Locals are sources of events which involve a single particle and
   only occur in restricted regions of the simulation. The standard
@@ -1014,7 +1138,7 @@
     they reach a separation equal to half the diameter. 
 
     <br/> This attribute is a <b>Property specifier</b> with a unit
-    of <b>Length</b> (see the <a href="#properties">section on
+    of <b>Length</b> (see the <a href="#property">section on
       Properties</a> for more information).
   </li>
   <li>
@@ -1024,7 +1148,7 @@
 
     <br/> This attribute is a <b>Property specifier</b> with
     <b>Dimensionless</b> units (see
-    the <a href="#properties">section on Properties</a> for more
+    the <a href="#property">section on Properties</a> for more
     information).
   </li>
   <li>
@@ -1042,9 +1166,9 @@
     unique.
   </li>
   <li>
-    <b>IDRange</b> <i>(tag)</i>: This IDRange tag specifies the
+    <b><a href="#idrange">IDRange</a></b> <i>(tag)</i>: This <a href="#idrange">IDRange</a> tag specifies the
     particles which interact using this Local. See
-    the <a href="#idpairrange">section on IDPairRanges</a> for more
+    the <a href="#idrange">section on IDRanges</a> for more
     information on the format of this tag.
   </li>
   <li>
@@ -1078,7 +1202,7 @@
     </ul>
   </li>
 </ul>
-<h1>Global</h1>
+<h1><a id="global"></a>Global</h1>
 <p>
   Globals are events which always affect a particle, regardless of its
   location in the system. The most common type of Global used is the
@@ -1089,7 +1213,7 @@
   <b>Description:</b> The "Cells" Global implements a cellular
   neighbour list, which may be used by the Scheduler to optimise the
   simulation. The neighbourlist will track all particles that match
-  its IDRange and can provide information on which tracked particles
+  its <a href="#idrange">IDRange</a> and can provide information on which tracked particles
   are within the neighbourhood of other particles or points.
 </p>
 <p>
@@ -1121,21 +1245,21 @@
     points. If the neighbour list is used by
     the <a href="#typeneighbourlist">"NeighbourList" type
       Scheduler</a>, this distance should be at least equal to or
-    greater than the maximum Interaction distance in the system. If
+    greater than the maximum <a href="#interaction">Interaction</a> distance in the system. If
     this tag is unset, the maximum interaction distance is
     automatically calculated.
   </li>
   <li>
-    <b>IDRange</b> <i>(tag)</i>: This IDRange tag specifies the
+    <b><a href="#idrange">IDRange</a></b> <i>(tag)</i>: This <a href="#idrange">IDRange</a> tag specifies the
     particles which are tracked in the cellular neighbour list. See
-    the <a href="#idpairrange">section on IDPairRanges</a> for more
+    the <a href="#idrange">section on IDRanges</a> for more
     information on the format of this tag.
   </li>
 </ul>
-<h1>System</h1>
+<h1><a id="system"></a>System</h1>
 <p>
   System tags represent events which do not fit into the categories of
-  Global, Local, or Interaction. 
+  <a href="#global">Global</a>, <a href="#local">Local</a>, or <a href="#interaction">Interaction</a>. 
 </p>
 <h2>Type="Andersen"</h2>
 <p>
@@ -1171,7 +1295,7 @@
 <ul>
   <li>
     <b>Type</b> <i>(attribute)</i>: Must have the
-    value <i>"Andersen"</i> to select this Global type.
+    value <i>"Andersen"</i> to select this System type.
   </li>
   <li>
     <b>Name</b> <i>(attribute)</i>: The name of the System event. This
@@ -1199,13 +1323,13 @@
     SetPoint fraction of events.
   </li>
   <li>
-    <b>IDRange</b> <i>(tag)</i>: This IDRange tag specifies the
+    <b><a href="#idrange">IDRange</a></b> <i>(tag)</i>: This <a href="#idrange">IDRange</a> tag specifies the
     particles to which the thermostat is applied. See
-    the <a href="#idpairrange">section on IDPairRanges</a> for more
+    the <a href="#idrange">section on IDRanges</a> for more
     information on the format of this tag.
   </li>
 </ul>
-<h1>Dynamics</h1>
+<h1><a id="dynamics"></a>Dynamics</h1>
 <p>
   The Dynamics tag specifies the equations of motion of the
   system. The standard variant is the "Newtonian" type, but there are
@@ -1381,13 +1505,76 @@
     </ul>
   </li>
 </ul>
-<h1>Pt (Particle)</h1>
+<h1><a id="properties"></a>Properties</h1>
+<p>
+  Properties are a mechanism for specifying large amounts of
+  information which vary on a per-particle basis. This is useful if
+  you have a polydisperse system, where each particle may have a unique
+  mass and diameter.
+</p>
+<p>
+  Properties must be defined in the Properties tag in the
+  configuration file. For example, if we wanted to define the mass and
+  diameter of each particle individually, we would define two
+  "PerParticle" Properties like so:
+</p>
+<?php codeblockstart();?>
+<Properties>
+  <Property Type="PerParticle" Name="D" Units="Length"/>
+  <Property Type="PerParticle" Name="M" Units="Mass"/>
+</Properties>
+<?php codeblockend("brush: xml;"); ?>
+<p>
+  Each Property defined has a "Name" attribute which allows any other
+  objects with a <b>Property specifier</b> in the configuration file
+  to refer to it. For example, a <a href="#typehardsphere">HardSphere
+    type Interaction</a> can refer to the "D" property above in its
+  Diameter attribute, like below.
+</p>
+<?php codeblockstart();?>
+<Interaction Type="HardSphere" Diameter="D" Elasticity="1" Name="Bulk">
+  <IDPairRange .../>
+</Interaction>
+<?php codeblockend("brush: xml;"); ?>
+<p>
+  You should note that the units of the Property must correspond to
+  the units of the property specifier. If you check
+  the <a href="#typehardsphere">HardSphere Interaction</a>
+  documentation, you can confirm that the Diameter attribute has units
+  of Length (The available units
+  include <b>Dimensionless</b>, <b>Length</b>, <b>Area</b>, <b>Volume</b>, <b>Time</b>, <b>Mass</b>,
+  and <b>Energy</b>). This Property name can also be reused in other
+  Property specifiers at the same time, such as in
+  a <a href="#typewall">Wall type Local</a>:
+</p>
+<?php codeblockstart();?><Local Type="Wall" Name="GroundPlate" Elasticity="1" Diameter="D">
+  ...
+</Local><?php codeblockend("brush: xml;"); ?>
+<p>
+  and in the <a href="#typepoint">Species definition</a>:
+</p>
+<?php codeblockstart();?><Species Mass="M" Name="Bulk" IntName="Bulk" Type="Point">
+  ...
+</Species><?php codeblockend("brush: xml;"); ?>
+<p>
+  Once the Property has been defined and referred to in other parts of
+  the configuration file, you must specify the value of the property
+  for each particle. This is done by adding an attribute to
+  the <a href="#pt">Pt (particle) tags</a> with the same name
+  as the property. For example:
+</p>
+<?php codeblockstart();?><Pt ID="0" M="1.11" D="0.323451">
+  <P x="1.71513720091304e+00" y="5.49987913872954e+00" z="4.32598642635552e+00"/>
+  <V x="1.51174422678297e+00" y="-8.06881217863154e-01" z="-8.11332120569972e-01"/>
+</Pt>
+<?php codeblockend("brush: xml;"); ?>
+<h1><a id="pt"></a>Pt (Particle)</h1>
 <p>
   <b>Description:</b> A <b>Pt</b> or Particle tag represents the
   unique data of a single particle. Each particle must have at least a
   position and velocity tag, but it may also include additional
   attributes and tags corresponding
-  to <a href="#properties">Properties</a>.
+  to <a href="#property">Properties</a>.
 </p>
 <p>
   <b>Example Usage:</b>
@@ -1445,75 +1632,13 @@
     </ul>
   </li>
 </ul>
-<h1>Properties</h1>
-<p>
-  Properties are a mechanism for specifying large amounts of
-  information which vary on a per-particle basis. This is useful if
-  you have a polydisperse system, where each particle may have a unique
-  mass and diameter.
-</p>
-<p>
-  Properties must be defined in the Properties tag in the
-  configuration file. For example, if we wanted to define the mass and
-  diameter of each particle individually, we would define two
-  "PerParticle" Properties like so:
-</p>
-<?php codeblockstart();?>
-<Properties>
-  <Property Type="PerParticle" Name="D" Units="Length"/>
-  <Property Type="PerParticle" Name="M" Units="Mass"/>
-</Properties>
-<?php codeblockend("brush: xml;"); ?>
-<p>
-  Each Property defined has a "Name" attribute which allows any other
-  objects with a <b>Property specifier</b> in the configuration file
-  to refer to it. For example, a <a href="#typehardsphere">HardSphere
-    type Interaction</a> can refer to the "D" property above in its
-  Diameter attribute, like below.
-</p>
-<?php codeblockstart();?>
-<Interaction Type="HardSphere" Diameter="D" Elasticity="1" Name="Bulk">
-  <IDPairRange .../>
-</Interaction>
-<?php codeblockend("brush: xml;"); ?>
-<p>
-  You should note that the units of the Property must correspond to
-  the units of the property specifier. If you check
-  the <a href="#typehardsphere">HardSphere Interaction</a>
-  documentation, you can confirm that the Diameter attribute has units
-  of Length (The available units
-  include <b>Dimensionless</b>, <b>Length</b>, <b>Area</b>, <b>Volume</b>, <b>Time</b>, <b>Mass</b>,
-  and <b>Energy</b>). This Property name can also be reused in other
-  Property specifiers at the same time, such as in
-  a <a href="#typewall">Wall type Local</a>:
-</p>
-<?php codeblockstart();?><Local Type="Wall" Name="GroundPlate" Elasticity="1" Diameter="D">
-  ...
-</Local><?php codeblockend("brush: xml;"); ?>
-<p>
-  and in the <a href="#typepoint">Species definition</a>:
-</p>
-<?php codeblockstart();?><Species Mass="M" Name="Bulk" IntName="Bulk" Type="Point">
-  ...
-</Species><?php codeblockend("brush: xml;"); ?>
-<p>
-  Once the Property has been defined and referred to in other parts of
-  the configuration file, you must specify the value of the property
-  for each particle. This is done by adding an attribute to
-  the <a href="#pt-particle">Pt (particle) tags</a> with the same name
-  as the property. For example:
-</p>
-<?php codeblockstart();?><Pt ID="0" M="1.11" D="0.323451">
-  <P x="1.71513720091304e+00" y="5.49987913872954e+00" z="4.32598642635552e+00"/>
-  <V x="1.51174422678297e+00" y="-8.06881217863154e-01" z="-8.11332120569972e-01"/>
-</Pt>
-<?php codeblockend("brush: xml;"); ?>
-<h1>IDRange</h1>
+<h1><a id="idrange"></a>IDRange</h1>
 <p>
   <b>IDRange</b>s are used to specify a range
-  of <a href="#pt-particle">Particle</a> IDs. These are used in
-  Species, Local, Global and Topology objects to specify the 
-  set of particles to which they apply.
+  of <a href="#pt">Particle</a> IDs. These are used in
+  <a href="#species">Species</a>, <a href="#local">Local</a>, <a href="#global">Global</a>
+  and <a href="#topology">Topology</a> objects to specify the set of
+  particles to which they apply.
 </p>
 <h2>Type="All"</h2>
 <p>
@@ -1646,10 +1771,10 @@
     describe the IDRanges to be combined.
   </li>
 </ul>
-<h1>IDPairRange</h1>
+<h1><a id="idpairrange"></a>IDPairRange</h1>
 <p>
   <b>IDPairRange</b>s are used to specify the pairs of particles to
-  which an Interaction applies. Each IDPairRange represent a
+  which an <a href="#interaction">Interaction</a> applies. Each IDPairRange represent a
   collection or set of ID pairs.
 </p>
 <h2>Type="All"</h2>
@@ -1826,9 +1951,9 @@
   to bond sequential particle IDs into linear chains.
 </p>
 <p>
-  <b>Example Usage:</b> If the example below was used with a square
-  bond Interaction, it would bond a set of particles together into
-  chains of 4.
+  <b>Example Usage:</b> If the example below was used with
+  a <a href="#typesquarebond">square-bond Interaction</a>, it would
+  bond a set of particles together into chains of 4.
   
   This example matches the particle pairings (0,1), (1,2), (2,3) and
   (4,5), (5,6), (6,7). As IDPairRanges are symmetric, the pairings
