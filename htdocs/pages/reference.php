@@ -1207,8 +1207,76 @@
 </ul>
 <h1>Dynamics</h1>
 <p>
-  The Dynamics tag specifies the fundamental dynamics of the system.
+  The Dynamics tag specifies the equations of motion of the
+  system. The standard variant is the "Newtonian" type, but there are
+  other types available which allow the addition of an external force
+  such as gravity.
 </p>
+<h2>Type="Newtonian"</h2>
+<p>
+  <b>Description:</b> The "Newtonian" Dynamics type is the standard
+  Dynamics implementation in DynamO. All particles are moving under
+  standard Newtonian dynamics, without the influence of external
+  forces.
+</p>
+<p>
+  <b>Example Usage:</b>
+</p>
+<?php codeblockstart();?>
+<Dynamics Type="Newtonian"/>
+<?php codeblockend("brush: xml;"); ?>
+<p>
+  <b>Full Tag, Subtag, and Attribute List</b>:
+</p>
+<ul>
+  <li>
+    <b>Type</b> <i>(attribute)</i>: Must have the
+    value <i>"Newtonian"</i> to select this Dynamics type.
+  </li>
+</ul>
+<h2>Type="NewtonianGravity"</h2>
+<p>
+  <b>Description:</b> The "NewtonianGravity" Dynamics type allows an
+  external acceleration to be included in the dynamics.
+</p>
+<p>
+  <b>Example Usage:</b>
+</p>
+<?php codeblockstart();?>
+<Dynamics Type="NewtonianGravity" ElasticV="1.0">
+  <g x="0" y="-1" z="0"/>
+</Dynamics>
+<?php codeblockend("brush: xml;"); ?>
+<p>
+  <b>Full Tag, Subtag, and Attribute List</b>:
+</p>
+<ul>
+  <li>
+    <b>Type</b> <i>(attribute)</i>: Must have the
+    value <i>"NewtonianGravity"</i> to select this Dynamics type.
+  </li>
+  <li>
+    <b>ElasticV</b> <i>(attribute)</i>: An optional tag. If this tag
+    is present, this tag specifies the velocity below which particle
+    interactions will be turned elastic (used to prevent inelastic
+    collapse).
+  </li>
+  <li>
+    <b>tc</b> <i>(attribute)</i>: An optional tag. If this tag is
+    present, this tag specifies the minimum re-collision rate which
+    turns an interaction elastic (used to prevent inelastic collapse).
+  </li>
+  <li>
+    <b>g</b> <i>(tag)</i>: A tag specifying the vector of the external
+    acceleration.
+    <ul>
+      <li>
+	<b>x</b>, <b>y</b>, <b>z</b>, <i>(attributes)</i>: The
+	components of the external acceleration.
+      </li>
+    </ul>
+  </li>
+</ul>
 <h1>Pt (Particle)</h1>
 <p>
   <b>Description:</b> A <b>Pt</b> or Particle tag represents the
