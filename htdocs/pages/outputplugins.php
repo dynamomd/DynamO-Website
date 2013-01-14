@@ -6,7 +6,7 @@
    header( 'Location: /index.php/404');
    return;
    }
-   $pagetitle="Configuration File Format Reference";
+   $pagetitle="Output Plugin/File Reference";
    ?>
 <?php printTOC(); ?>
 <p style="text-align:center; margin:15px; background-color:#FFD800; font-size:16pt; font-family:sans; line-height:40px;">
@@ -310,7 +310,7 @@ dynarun config.xml -c 1000000 -L MFT:BinWidth=0.5,Length=100
 </p>
 <?php codeblockstart();?>
 <Misc>
-  <UConfigurational Mean="0" MeanSqr="0" Current="0" Min="0" Max="0"/>
+  <UConfigurational Mean="-7047.30749520661" MeanSqr="49679058.1379387" Current="-7340" Min="-8232" Max="-6912"/>
 </Misc>
 <?php codeblockend("brush: xml;"); ?>
 <p>
@@ -337,8 +337,128 @@ dynarun config.xml -c 1000000 -L MFT:BinWidth=0.5,Length=100
   </li>
   <li>
     <b>Min</b>, <b>Max</b> <i>(attributes)</i>: The minimum and
-    maximum values of the configurational internal energy during the
-    simulation.
+    maximum values of the configurational internal energy reached
+    during the simulation.
+  </li>
+</ul>
+<h3>ResidualHeatCapacity</h3>
+<p>
+  This tag is provided for convenience. It contains the excess heat
+  capacity, calculated from the fluctuations of the configurational
+  internal energy using the following expression:
+  
+  \[\frac{C_v^{ex.}}{k_B}=\frac{\left\langle U_{conf.}^2\right\rangle
+  - \left\langle U_{conf.}\right\rangle^2}{k_B^2\,T^2}\]
+  
+  To calculate the full heat capacity of the system, the ideal gas
+  contribution must be added:
+
+  \[\frac{C_v}{k_B}=\frac{C_v^{ex.}}{k_B} +N\frac{f}{2}\] 
+
+  where $f$ is the degrees of freedom of the particle.
+  <br/>
+  <b>Note</b>: This expression and the values reported are only valid
+  in the canonical (NVT) ensemble.
+</p>
+<p>
+  <b>Example output</b>:
+</p>
+<?php codeblockstart();?>
+<Misc>
+  <ResidualHeatCapacity Value="80608.2639343955"/>
+</Misc>
+<?php codeblockend("brush: xml;"); ?>
+<p>
+  <b>Full Tag, Subtag, and Attribute List</b>:
+</p>
+<ul>
+  <li>
+    <b>Value</b> <i>(attribute)</i>: The calculated excess
+    heat capacity $(C_v^{ex.}/k_B)$.
+  </li>
+</ul>
+<h3>Pressure</h3>
+<p>
+  This tag contains the full pressure tensor for the system, worked
+  out using the virial expression:
+  
+  \[\mathbf{P}=\mathbf{P}^{kinetic}+\mathbf{P}^{interaction}\]
+  
+  where the kinetic pressure is given by:
+  
+  \[\mathbf{P}^{kinetic}=\frac{1}{V}\sum_i^N m_i\,\mathbf{v}_i\mathbf{v}_i\]
+  
+  where $m_i$ is the mass of particle $i$.  Please note that
+  $\mathbf{v}_i\mathbf{v}_i$ is a dyadic product which yields a matrix
+  result. The contribution to the pressure due to interactions is
+  given by:
+
+  \[\mathbf{P}^{interaction}=\frac{1}{V\,t_{sim}}\sum_{ij}^{event} \Delta \mathbf{p}_i\mathbf{r}_{ij}\]
+
+  where $t_{sim}$ is the total simulation time, the summation is over
+  each two-particle event
+  (<a href="/index.php/reference#interaction">Interaction</a>), $i$
+  and $j$ indicate the two particles involved in the event,
+  $\Delta\mathbf{p}_i$ is the momentum impulse on particle $i$, and
+  $\mathbf{r}_{ij}=\mathbf{r}_{i} - \mathbf{r}_{j}$ is the separation
+  vector between the interacting particles. The hydrostatic pressure
+  can be computed from the trace of the pressure tensor:
+  
+  \[p=\mathrm{tr}(\mathbf{P})/3=\left(P_{xx}+P_{yy}+P_{zz}\right)/3\]
+</p>
+<p>
+  <b>Example output</b>:
+</p>
+<?php codeblockstart();?>
+<Misc>
+  <Pressure Avg="-1.92667849178502">
+    <Tensor>
+-1.92776085293681 -0.027284740627551 -0.0330674943624325 
+-0.027284740627551 -1.91924243731331 -0.0444242381174982 
+-0.0330674943624326 -0.0444242381174982 -1.93303218510494 
+    </Tensor>
+    <InteractionContribution>
+-2.13900845558922 -0.0269634925340249 -0.032459636868961 
+-0.0269634925340249 -2.13348059155252 -0.0441115524879792 
+-0.032459636868961 -0.0441115524879792 -2.14406792617732 
+    </InteractionContribution>
+  </Pressure>
+</Misc>
+<?php codeblockend("brush: xml;"); ?>
+<p>
+  <b>Full Tag, Subtag, and Attribute List</b>:
+</p>
+<ul>
+  <li>
+    <b>Avg</b> <i>(attribute)</i>: This attribute contains the
+    hydrostatic pressure, $p$, computed from the trace of the pressure
+    tensor.
+  </li>
+  <li>
+    <b>Tensor</b> <i>(tag)</i>: This tag contains the full pressure
+    tensor, $\mathbf{P}$, with the components written out as follows:
+
+    \[\begin{align}
+    \begin{matrix}
+    P_{xx} & P_{xy} & P_{xz}\\
+    P_{yx} & P_{yy} & P_{yz}\\
+    P_{zx} & P_{zy} & P_{zz}
+    \end{matrix}
+    \end{align}\]
+  </li>
+  <li>
+    <b>InteractionContribution</b> <i>(tag)</i>: This tag only
+    contains the interaction contributions to the pressure tensor
+    ($\mathbf{P}^{interaction}$), with the components written out as
+    follows:
+    
+    \[\begin{align}
+    \begin{matrix}
+    P_{xx}^{interaction} & P_{xy}^{interaction} & P_{xz}^{interaction}\\
+    P_{yx}^{interaction} & P_{yy}^{interaction} & P_{yz}^{interaction}\\
+    P_{zx}^{interaction} & P_{zy}^{interaction} & P_{zz}^{interaction}
+    \end{matrix}
+    \end{align}\]
   </li>
 </ul>
 <h2>IntEnergyHist (Internal Energy Histogram)</h2>
