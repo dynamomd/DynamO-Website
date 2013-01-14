@@ -461,6 +461,258 @@ dynarun config.xml -c 1000000 -L MFT:BinWidth=0.5,Length=100
     \end{align}\]
   </li>
 </ul>
+<h3><a id="duration"></a>Duration</h3>
+<p>
+  This tag contains information on the duration of the simulation
+  (from the perspective of the model, not the user).  See
+  the <a href="#timing">Timing</a> tag for information on the
+  calculation time of the simulation.
+</p>
+<p>
+  <b>Example output</b>:
+</p>
+<?php codeblockstart();?>
+<Misc>
+  <Duration Events="1059702" OneParticleEvents="0" TwoParticleEvents="1059702" VirtualEvents="1" Time="59.348997249289"/>
+</Misc>
+<?php codeblockend("brush: xml;"); ?>
+<p>
+  <b>Full Tag, Subtag, and Attribute List</b>:
+</p>
+<ul>
+  <li>
+    <b>Events</b> <i>(attribute)</i>: The total number of events
+    executed.
+  </li>
+  <li>
+    <b>OneParticleEvents</b> <i>(attribute)</i>: The total number of
+    events involving a single
+    particle. All <a href="/index.php/reference#local">Local</a>
+    and <a href="/index.php/reference#global">Global</a>s only
+    generate single-particle
+    events. <a href="/index.php/reference#system">System</a> events
+    may produce a mixture of single and two particle events at once.
+  </li>
+  <li>
+    <b>TwoParticleEvents</b> <i>(attribute)</i>: The total number of
+    events involving a pair of
+    particles. All <a href="/index.php/reference#interaction">Interaction</a>s
+    generate two-particle events
+    . <a href="/index.php/reference#system">System</a> events may
+    produce a mixture of single and two particle events at once.
+  </li>
+  <li>
+    <b>VirtualEvents</b> <i>(attribute)</i>: Virtual events are used
+    to recalculate the future event list for a particle, and can arise
+    from any part of DynamO, from the Scheduler to
+    Interactions/Globals/Locals/Systems.
+  </li>
+  <li>
+    <b>Time</b> <i>(attribute)</i>: The total time the simulated was
+    executed for, in simulation units.
+  </li>
+</ul>
+<h3>EventCounters</h3>
+<p>
+  This tag contains more detailed information on the types of events
+  which have occurred during the simulation.
+</p>
+<p>
+  <b>Example output</b>:
+</p>
+<?php codeblockstart();?>
+<Misc>
+  <EventCounters>
+    <Entry Type="Interaction" Name="Bulk" Event="BOUNCE" Count="1636222"/>
+    <Entry Type="System" Name="Thermostat" Event="GAUSSIAN" Count="136876"/>
+    <Entry Type="Global" Name="PBCSentinel" Event="VIRTUAL" Count="14"/>
+    ...
+  </EventCounters>
+</Misc>
+<?php codeblockend("brush: xml;"); ?>
+<p>
+  <b>Full Tag, Subtag, and Attribute List</b>:
+</p>
+<ul>
+  <li>
+    <b>Entry</b> <i>(tag)</i>: This tag contains attributes which
+    describe the event type and the number of times it has occurred.
+    <ul>
+      <li>
+	<b>Type</b> <i>(attribute)</i>: May be "Interaction", "Local",
+	"Global", "System" depending on the source of the event.
+      </li>
+      <li>
+	<b>Name</b> <i>(attribute)</i>: The name of the
+	Interaction/Local/Global/System which is the source of the
+	event.
+      </li>
+      <li>
+	<b>Event</b> <i>(attribute)</i>: The event "type" within the
+	event source. For example, the square-well Interaction has
+	Bounce, Capture, Release and Core events depending on where
+	the event occurred in the potential.
+      </li>
+      <li>
+	<b>Count</b> <i>(attribute)</i>: The number of times the event
+	was observed in the simulation.
+      </li>
+    </ul>
+  </li>
+</ul>
+<h3><a id="timing"></a>Timing</h3>
+<p>
+  This tag contains information on the calculation time of the
+  simulation. See the <a href="#duration">Duration</a> tag for more
+  information on the "simulated" timing.
+</p>
+<p>
+  <b>Example output</b>:
+</p>
+<?php codeblockstart();?>
+<Misc>
+  <Timing Start="Mon Jan 14 20:26:37 2013 " End="Mon Jan 14 20:26:59 2013 " EventsPerSec="49262.070727909" SimTimePerSec="2.75894031681944"/>
+</Misc>
+<?php codeblockend("brush: xml;"); ?>
+<p>
+  <b>Full Tag, Subtag, and Attribute List</b>:
+</p>
+<ul>
+  <li>
+    <b>Start</b> <i>(attribute)</i>: The date and time that the simulation
+    began to run (post-initialisation).
+  </li>
+  <li>
+    <b>End</b> <i>(attribute)</i>: The date and time that the simulation
+    wrote-out this file (typically during at the end of the run).
+  </li>
+  <li>
+    <b>EventsPerSec</b> <i>(attribute)</i>: The events executed per second
+    of calculation. Probably the best indicator of the calculation
+    "speed".
+  </li>
+  <li>
+    <b>SimTimePerSec</b> <i>(attribute)</i>: The simulation time executed
+    per second of calculation.
+  </li>
+</ul>
+<h3>totMeanFreeTime</h3>
+<p>
+  This tag contains the overall mean free time of a particle. This is
+  calculated from the counts of the one-particle ($N_{1}^{events}$)
+  and two-particle ($N_{2}^{events}$) event counts using the following
+  formula:
+
+  \[ t_{mft} = t_{sim}\,N/\left(2\,N_{2}^{events} + N_{1}^{events}\right)\]
+</p>
+<p>
+  <b>Example output</b>:
+</p>
+<?php codeblockstart();?>
+<Misc>
+  <totMeanFreeTime val="0.0384196803563759"/>
+</Misc>
+<?php codeblockend("brush: xml;"); ?>
+<p>
+  <b>Full Tag, Subtag, and Attribute List</b>:
+</p>
+<ul>
+  <li>
+    <b>val</b> <i>(attribute)</i>: The mean free time, $t_{mft}$.
+  </li>
+</ul>
+<h3>NegativeTimeEvents</h3>
+<p>
+  This tag contains the total number of events executed where the time
+  was earlier than the current time (a negative time until the event
+  occurred). This used to be a good indicator if the simulation was
+  unstable due to accessing an invalid state; however, the
+  introduction of the stable EDMD algorithm has made this tag largely
+  obsolete.
+</p>
+<p>
+  <b>Example output</b>:
+</p>
+<?php codeblockstart();?>
+<Misc>
+  <NegativeTimeEvents Count="0"/>
+</Misc>
+<?php codeblockend("brush: xml;"); ?>
+<p>
+  <b>Full Tag, Subtag, and Attribute List</b>:
+</p>
+<ul>
+  <li>
+    <b>Count</b> <i>(attribute)</i>: The number of events executed with a time in the past.
+  </li>
+</ul>
+<h3>Memusage</h3>
+<p>
+  This tag contains the best estimate DynamO can make of the memory
+  used by DynamO at the last event executed in the simulation. Due to
+  the way this information is obtained, its estimate of the maximum
+  memory usage at that time.
+</p>
+<p>
+  <b>Example output</b>:
+</p>
+<?php codeblockstart();?>
+<Misc>
+  <Memusage MaxKiloBytes="6580"/>
+</Misc>
+<?php codeblockend("brush: xml;"); ?>
+<p>
+  <b>Full Tag, Subtag, and Attribute List</b>:
+</p>
+<ul>
+  <li>
+    <b>MaxKiloBytes</b> <i>(attribute)</i>: The memory used by the
+    simulation at the time the output file was written out.
+  </li>
+</ul>
+<h3>ThermalConductivity</h3>
+<p>
+  This tag contains the Einstein correlation function which can be
+  used to obtain estimates for the mainstream definition of the
+  thermal conductivity of a fluid. The correlator used here is:
+
+  \[t\,\textbf{L}_{qq} (\Delta t) = \frac{1}{2\,V\,k_B^2\,T^2}\left\langle \left[\phi_{q}(t_0+\Delta t) - \phi_{q}(t_0)\right]^2\right\rangle_{t_0} \]
+
+  where the angle brackets $\langle\rangle_{t_0}$ denote an averaging
+  over the time origin, $t_0$, and $\phi_{q}(t)$ is the microscopic
+  heat flux evaluated at a time $t$, given by:
+  
+  \[\phi_{q}(t) = \mathbf{v}\]
+
+  <br/>
+  <b>Note</b>: This expression is only valid in the microcanonical
+  ensemble (NVE) and is currently only valid for hard sphere systems.
+</p>
+<p>
+  <b>Example output</b>:
+</p>
+<?php codeblockstart();?>
+<Misc>
+    <ThermalConductivity>
+      <Correlator>
+0 0 0 0 0
+1 59 3.65611579164476 3.95102401183708 3.10818958034339
+2 58 6.66422300757686 10.2522327519284 5.65382677461933
+...
+      </Correlator>
+    </ThermalConductivity>
+</Misc>
+<?php codeblockend("brush: xml;"); ?>
+<p>
+  <b>Full Tag, Subtag, and Attribute List</b>:
+</p>
+<ul>
+  <li>
+    <b>Correlator</b> <i>(tag)</i>: The correlation data, outputted in
+    columns which are: <br/> $t \qquad Count \qquad t\,L_{qq,x}(t) \qquad
+    t\,L_{qq,y}(t) \qquad t\,L_{qq,z}(t)$.
+  </li>
+</ul>
 <h2>IntEnergyHist (Internal Energy Histogram)</h2>
 <p>
 </p>
