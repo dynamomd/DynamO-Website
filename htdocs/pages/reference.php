@@ -16,9 +16,10 @@
   format is covered in tutorial 3</a>. 
 </p>
 <p>
-  In the following sections, the tags of the configuration file are
-  listed and all of the options are detailed for each tag type. Below
-  is a hyperlinked hierarchy of the tags in the configuration file.
+  In the following sections, all of the available tags of the
+  configuration file are listed and all of the options are detailed
+  for each tag type. Below is a hyperlinked hierarchy of the tags in
+  the configuration file.
 </p>
 <style>
   #taglist ul li { 
@@ -32,13 +33,14 @@
   padding-left: 15px;
   }
 </style>
+<h1>General Structure</h1>
 <div id="taglist">
   <ul>
     <li>
-      DynamOconfig
+      DynamOconfig<sup>1</sup>
       <ul>
 	<li>
-	  Simulation
+	  Simulation<sup>1</sup>
 	  <ul>
 	    <li>
 	      <a href="#scheduler">Scheduler</a>
@@ -52,7 +54,7 @@
 	      <a href="#simulationsize">SimulationSize</a>
 	    </li>
 	    <li>
-	      Genus
+	      Genus<sup>1</sup>
 	      <ul>
 		<li>
 		  <a href="#species">Species</a>
@@ -71,7 +73,7 @@
 	      <a href="#topology">Topology</a>
 	    </li>
 	    <li>
-	      Interactions
+	      Interactions<sup>1</sup>
 	      <ul>
 		<li>
 		  <a href="#interaction">Interaction</a>
@@ -84,7 +86,7 @@
 	      </ul>
 	    </li>
 	    <li>
-	      Locals
+	      Locals<sup>1</sup>
 	      <ul>
 		<li>
 		  <a href="#local">Local</a>
@@ -97,7 +99,7 @@
 	      </ul>
 	    </li>
 	    <li>
-	      Globals
+	      Globals<sup>1</sup>
 	      <ul>
 		<li>
 		  <a href="#global">Global</a>
@@ -110,7 +112,7 @@
 	      </ul>
 	    </li>
 	    <li>
-	      SystemEvents
+	      SystemEvents<sup>1</sup>
 	      <ul>
 		<li>
 		  <a href="#system">System</a>
@@ -128,7 +130,7 @@
 	  </ul>
 	</li>
 	<li>
-	  Properties
+	  Properties<sup>1</sup>
 	  <ul>
 	    <li>
 	      <a href="#property">Property</a>
@@ -136,7 +138,7 @@
 	  </ul>
 	</li>
 	<li>
-	  ParticleData
+	  ParticleData<sup>1</sup>
 	  <ul>
 	    <li>
 	      <a href="#pt">Pt</a>
@@ -147,6 +149,10 @@
     </li>
   </ul>
 </div>
+<p>
+  <sup>1</sup>These tags are only container tags, and do not have any
+  options.
+</p>
 <h1><a id="scheduler"></a>Scheduler</h1>
 <p>
   The Scheduler specifies how DynamO searches the simulation for
@@ -1505,12 +1511,12 @@
     </ul>
   </li>
 </ul>
-<h1><a id="properties"></a>Properties</h1>
+<h1><a id="property"></a>Property</h1>
 <p>
-  Properties are a mechanism for specifying large amounts of
+  Property tags are a mechanism for specifying large amounts of
   information which vary on a per-particle basis. This is useful if
-  you have a polydisperse system, where each particle may have a unique
-  mass and diameter.
+  you have a polydisperse system, where each particle may have a
+  unique mass and diameter.
 </p>
 <p>
   Properties must be defined in the Properties tag in the
