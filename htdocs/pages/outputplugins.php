@@ -72,7 +72,8 @@ dynarun config.xml -c 1000000 -L MFT:BinWidth=0.5,Length=100
 <h1>Plugins</h1>
 <p>
   In the following sections, the options and output of each output
-  plugin are listed.
+  plugin are listed along with details on the calculation of the
+  properties.
 </p>
 <h2>Misc Plugin</h2>
 <p>
@@ -86,9 +87,10 @@ dynarun config.xml -c 1000000 -L MFT:BinWidth=0.5,Length=100
 <p>
   This tag contains the number of particles divided by the volume of
   the primary image. In non-periodic systems, this value may not have
-  any significance as the primary image is not related to the
-  dynamics. Effects such as walls reducing the volume of the system
-  accessible to a particle are not included in this calculation.
+  any significance as the primary image is not related to the dynamics
+  of the system. Complex boundary effects, such as walls reducing the
+  accessible volume of the system, are not included in this
+  calculation.
 </p>
 <p>
   <b>Example output</b>:
@@ -103,18 +105,19 @@ dynarun config.xml -c 1000000 -L MFT:BinWidth=0.5,Length=100
 </p>
 <ul>
   <li>
-    <b>val</b> <i>(attribute)</i>: The density of the system.
+    <b>val</b> <i>(attribute)</i>: The number density of the system
+    ($N/V$).
   </li>
 </ul>
 <h3>Packing Fraction</h3>
 <p>
-  This tag contains the volume of all particles divided by the volume
-  of the primary image. In non-periodic systems, this value may not
-  have any significance as the primary image is not related to the
-  dynamics. Effects such as walls reducing the volume of the system
-  accessible to a particle are not included in this calculation. The
-  volume of each particle is calculated from the representative
-  interaction which is specified by the
+  This tag contains the excluded volume of all particles divided by
+  the volume of the primary image. In non-periodic systems, this value
+  may not have any significance as the primary image is not related to
+  the dynamics of the system. Complex boundary effects, such as walls
+  reducing the accessible volume of the system, are not included in
+  this calculation. The volume of each particle is calculated from the
+  representative interaction which is specified by the
   particle's <a href="/index.php/reference#species">Species tags</a>.
 </p>
 <p>
@@ -180,14 +183,16 @@ dynarun config.xml -c 1000000 -L MFT:BinWidth=0.5,Length=100
 </ul>
 <h3>SystemMomentum</h3>
 <p>
-  This tag contains the current and average momentum of the particles
-  in the system. 
+  This tag contains the current and average momentum of all of the
+  particles in the system.
 
   <br/> The averages in this tag are collected exactly (see the
   <a href="/index.php/FAQ#q-how-does-dynamo-collect-exact-timeaverages">FAQ
   on exact averages in DynamO</a>) and so this data is not valid
   when <a href="/index.php/reference#typele">Lees-Edwards boundary
-  conditions</a> are applied.
+  conditions</a> are applied (or currently in systems with
+  gravity, <a href="https://github.com/toastedcrumpets/DynamO/issues/22">see
+  issue #22</a>).
 </p>
 <p>
   <b>Example output</b>:
@@ -206,7 +211,7 @@ dynarun config.xml -c 1000000 -L MFT:BinWidth=0.5,Length=100
 <ul>
   <li>
     <b>Current</b> <i>(tag)</i>: The total momentum of the system at
-    the moment the output is written out
+    the moment the output is written out.
     <ul>
       <li>
 	<b>x</b>, <b>y</b>, <b>z</b>, <i>(attributes)</i>: The
@@ -215,7 +220,7 @@ dynarun config.xml -c 1000000 -L MFT:BinWidth=0.5,Length=100
     </ul>
   </li>
   <li>
-    <b>Average</b> <i>(tag)</i>: The time averaged total momentum of
+    <b>Average</b> <i>(tag)</i>: The time-averaged total momentum of
     the system.
     <ul>
       <li>
@@ -238,7 +243,21 @@ dynarun config.xml -c 1000000 -L MFT:BinWidth=0.5,Length=100
   <a href="/index.php/FAQ#q-how-does-dynamo-collect-exact-timeaverages">FAQ
   on exact averages in DynamO</a>) and so this data is not valid
   when <a href="/index.php/reference#typele">Lees-Edwards boundary
-  conditions</a> are applied.
+  conditions</a> are applied (or currently in systems with
+  gravity, <a href="https://github.com/toastedcrumpets/DynamO/issues/22">see
+  issue #22</a>).
+</p>
+<p>
+  The temperature is calculated using the standard equipartition
+  expression:
+  
+  \[k_B\,T=\frac{2}{N\,f}\sum_i^N E_i^{kinetic}\]
+  
+  where $E_i^{kinetic}$ is the kinetic energy of particle $i$
+  (including rotational energy) and $f$ is the degrees of freedom of
+  the particle. $f$ is automatically set to $f=3$ in systems without
+  rotational degrees of freedom and to $f=5$ in systems with
+  rotational degrees of freedom.
 </p>
 <p>
   <b>Example output</b>:
@@ -282,7 +301,9 @@ dynarun config.xml -c 1000000 -L MFT:BinWidth=0.5,Length=100
   <a href="/index.php/FAQ#q-how-does-dynamo-collect-exact-timeaverages">FAQ
   on exact averages in DynamO</a>) and so this data is not valid
   when <a href="/index.php/reference#typele">Lees-Edwards boundary
-  conditions</a> are applied.
+  conditions</a> are applied (or currently in systems with
+  gravity, <a href="https://github.com/toastedcrumpets/DynamO/issues/22">see
+  issue #22</a>).
 </p>
 <p>
   <b>Example output</b>:
