@@ -674,19 +674,79 @@ dynarun config.xml -c 1000000 -L MFT:BinWidth=0.5,Length=100
 <p>
   This tag contains the Einstein correlation function which can be
   used to obtain estimates for the mainstream definition of the
-  thermal conductivity of a fluid. The correlator used here is:
+  thermal conductivity of a fluid, $\mathbf{L}_{qq}$. The correlator
+  used here is:
 
-  \[t\,\textbf{L}_{qq} (\Delta t) = \frac{1}{2\,V\,k_B^2\,T^2}\left\langle \left[\phi_{q}(t_0+\Delta t) - \phi_{q}(t_0)\right]^2\right\rangle_{t_0} \]
+  \[\Delta t\,\mathbf{L}_{qq} (\Delta t) =
+  \frac{1}{2\,V\,k_B^2\,T^2}\left\langle \left[\phi_{q}(t_0,\Delta
+  t)\right]^2\right\rangle_{t_0} \]
 
-  where the angle brackets $\langle\rangle_{t_0}$ denote an averaging
-  over the time origin, $t_0$, and $\phi_{q}(t)$ is the microscopic
-  heat flux evaluated at a time $t$, given by:
+  where $\Delta t$ is the correlation time, the angle brackets
+  $\langle\rangle_{t_0}$ denote an averaging over the time origin,
+  $t_0$, and $\phi_{q}(t)$ is the integral of the microscopic heat
+  flux from $t_0$ to $t_0+\Delta t$. For discontinuous systems, this
+  is most conveniently evaluated using the following expression:
   
-  \[\phi_{q}(t) = \mathbf{v}\]
+  \[\phi_{q}(t_0, \Delta t) = \left[\int_{t_0}^{t_0+\Delta t}
+  \sum_i^N\mathbf{v}_i\,e_i\,{\rm d}t\right] +
+  \left[\sum_{i,j}^{events\in[t_0,t_0+\Delta
+  t]}\mathbf{r}_{ij}\,\Delta e_i\right]\]
+  
+  where $e_i$ is the internal energy of particle $i$ (interaction
+  energies should be equally split between the interacting pair). The
+  leftmost term in square brackets contains the free streaming
+  contribution and the sum is over all particles. The rightmost term
+  contains the contribution due to interactions, and the sum is over
+  all two-particle events in the time $[t_0,t_0+\Delta t]$, each
+  involving a particle $i$ and $j$.
 
   <br/>
-  <b>Note</b>: This expression is only valid in the microcanonical
-  ensemble (NVE) and is currently only valid for hard sphere systems.
+  <b>Note</b>: This form is only valid in the micro-canonical ensemble
+  (NVE).  The current implementation is also only valid for hard
+  sphere systems, as it uses the approximation $e_i\approx m\,v^2_i/2$
+  (see <a href="https://github.com/toastedcrumpets/DynamO/issues/23">issue
+  #23</a> on the bug tracker).
+</p>
+<p>
+  As with all of the Green-Kubo/Einstein relationships for the
+  transport coefficients, the desired (hydrodynamic) values are the
+  infinite time correlation values:
+
+  \[\mathbf{L}_{qq} = \lim_{\Delta t\to\infty} \mathbf{L}_{qq}(\Delta
+  t)\]
+
+  A convenient way to extrapolate to the long time value is to plot
+  $\Delta t\,L_{qq,x}(\Delta t)$ versus $\Delta t$. The slope of this
+  plot is then the transport coefficient, and a straight line can be
+  regressed to the long time section of the plot to extrapolate the
+  value.
+</p>
+<p>
+  The notes below attempt to explain that a lot of judgement is needed
+  when evaluation correlation functions. There is only a "window" of
+  correlation times which can be used to extract the transport
+  coefficients.
+  
+  <br/><b>Note 1</b>: In periodic systems, correlation functions
+  should be studied only up to the sound-wave traversal time of the
+  box, otherwise additional correlations will appear due to the
+  "artificial" periodicity of the system.
+
+  <br/><b>Note 2</b>: At increasingly long correlation times, the
+  number of samples of the correlation function obtained from a single
+  simulation will decrease. Therefore, long time values will have poor
+  statistics (which should be avoided if possible).
+
+  <br/><b>Note 3</b>: At short times, molecular processes will
+  strongly influence the correlation function. For example, take a
+  linear/chain polymer. At short times, energy might rapidly travel
+  down the chain.  This will make it look like there's a high thermal
+  conductivity at short times; however, the energy will not easily
+  transfer away from the molecule and may travel back up the
+  chain. This "return" of the energy will cause the thermal
+  conductivity to decrease sharply at short times. You must therefore
+  use a sufficiently long correlation time to allow these microscopic
+  processes to decay.
 </p>
 <p>
   <b>Example output</b>:
@@ -709,8 +769,25 @@ dynarun config.xml -c 1000000 -L MFT:BinWidth=0.5,Length=100
 <ul>
   <li>
     <b>Correlator</b> <i>(tag)</i>: The correlation data, outputted in
-    columns which are: <br/> $t \qquad Count \qquad t\,L_{qq,x}(t) \qquad
-    t\,L_{qq,y}(t) \qquad t\,L_{qq,z}(t)$.
+    columns which are:
+
+    \[\Delta t \qquad Count \qquad \Delta t\,L_{qq,x}(\Delta t) \qquad
+    \Delta t\,L_{qq,y}(t) \qquad \Delta t\,L_{qq,z}(t)\] 
+
+    where
+    
+    <br/>$\Delta t$ is the correlation time.
+
+    <br/>$Count$ is the number of samples at that correlation time.
+    
+    <br/>$\Delta t\,L_{qq,x}$ is the time-dependent transport
+    coefficient, measured in the $x$-direction.
+
+    <br/>$\Delta t\,L_{qq,y}$ is the time-dependent transport
+    coefficient, measured in the $y$-direction.
+
+    <br/>$\Delta t\,L_{qq,z}$ is the time-dependent transport
+    coefficient, measured in the $z$-direction.
   </li>
 </ul>
 <h2>IntEnergyHist (Internal Energy Histogram)</h2>
