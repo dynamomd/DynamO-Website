@@ -772,7 +772,7 @@ dynarun config.xml -c 1000000 -L MFT:BinWidth=0.5,Length=100
     columns which are:
 
     \[\Delta t \qquad Count \qquad \Delta t\,L_{qq,x}(\Delta t) \qquad
-    \Delta t\,L_{qq,y}(t) \qquad \Delta t\,L_{qq,z}(t)\] 
+    \Delta t\,L_{qq,y}(\Delta t) \qquad \Delta t\,L_{qq,z}(\Delta t)\] 
 
     where
     
@@ -780,13 +780,13 @@ dynarun config.xml -c 1000000 -L MFT:BinWidth=0.5,Length=100
 
     <br/>$Count$ is the number of samples at that correlation time.
     
-    <br/>$\Delta t\,L_{qq,x}$ is the time-dependent transport
+    <br/>$\Delta t\,L_{qq,x}(\Delta t)$ is the time-dependent transport
     coefficient, measured in the $x$-direction.
 
-    <br/>$\Delta t\,L_{qq,y}$ is the time-dependent transport
+    <br/>$\Delta t\,L_{qq,y}(\Delta t)$ is the time-dependent transport
     coefficient, measured in the $y$-direction.
 
-    <br/>$\Delta t\,L_{qq,z}$ is the time-dependent transport
+    <br/>$\Delta t\,L_{qq,z}(\Delta t)$ is the time-dependent transport
     coefficient, measured in the $z$-direction.
   </li>
 </ul>
