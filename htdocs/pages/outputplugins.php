@@ -670,7 +670,7 @@ dynarun config.xml -c 1000000 -L MFT:BinWidth=0.5,Length=100
     simulation at the time the output file was written out.
   </li>
 </ul>
-<h3>ThermalConductivity</h3>
+<h3><a id="thermalconductivity"></a>ThermalConductivity</h3>
 <p>
   This tag contains the Einstein correlation function which can be
   used to obtain estimates for the mainstream definition of the
@@ -683,7 +683,7 @@ dynarun config.xml -c 1000000 -L MFT:BinWidth=0.5,Length=100
 
   where $\Delta t$ is the correlation time, the angle brackets
   $\langle\rangle_{t_0}$ denote an averaging over the time origin,
-  $t_0$, and $\phi_{q}(t)$ is the integral of the microscopic heat
+  $t_0$, and $\phi_{q}(t_0,\Delta t)$ is the integral of the microscopic heat
   flux from $t_0$ to $t_0+\Delta t$. For discontinuous systems, this
   is most conveniently evaluated using the following expression:
   
@@ -699,18 +699,28 @@ dynarun config.xml -c 1000000 -L MFT:BinWidth=0.5,Length=100
   contains the contribution due to interactions, and the sum is over
   all two-particle events in the time $[t_0,t_0+\Delta t]$, each
   involving a particle $i$ and $j$.
-
-  <br/>
-  <b>Note</b>: This form is only valid in the micro-canonical ensemble
-  (NVE).  The current implementation is also only valid for hard
-  sphere systems, as it uses the approximation $e_i\approx m\,v^2_i/2$
+</p>
+<p>
+  You should note that $\mathbf{L}_{qq}$ is a vector quantity, and so
+  three values of the thermal conductivity are measured. These
+  correspond to the transport in the $x$, $y$, and $z$-directions. If
+  your system is isotropic, you may just average the three values to
+  improve your statistics.
+</p>
+<p>
+  <b>Restrictions</b>: This form is only valid in the micro-canonical
+  ensemble (NVE).  The current implementation is also only valid
+  for systems with no interaction energies (athermal systems) and
+  without rotational degrees of freedom (such as the hard sphere
+  fluid), as it uses the approximation $e_i\approx m\,v^2_i/2$
   (see <a href="https://github.com/toastedcrumpets/DynamO/issues/23">issue
   #23</a> on the bug tracker).
 </p>
 <p>
-  As with all of the Green-Kubo/Einstein relationships for the
-  transport coefficients, the desired (hydrodynamic) values are the
-  infinite time correlation values:
+  <b><a id="extrapolationofcorrelators"></a>Extrapolation to the infinite time limit</b>: As with all of the
+  Green-Kubo/Einstein relationships for the transport coefficients,
+  the desired (hydrodynamic) values are the infinite time correlation
+  values:
 
   \[\mathbf{L}_{qq} = \lim_{\Delta t\to\infty} \mathbf{L}_{qq}(\Delta
   t)\]
@@ -722,8 +732,9 @@ dynarun config.xml -c 1000000 -L MFT:BinWidth=0.5,Length=100
   value.
 </p>
 <p>
-  The notes below attempt to explain that a lot of judgement is needed
-  when evaluation correlation functions. There is only a "window" of
+  <b><a id="generalnotesoncorrlations"></a>General notes on evaluating correlation functions</b>: The notes
+  below attempt to explain that a lot of judgement is needed when
+  evaluation correlation functions. There is only a "window" of
   correlation times which can be used to extract the transport
   coefficients.
   
@@ -753,14 +764,14 @@ dynarun config.xml -c 1000000 -L MFT:BinWidth=0.5,Length=100
 </p>
 <?php codeblockstart();?>
 <Misc>
-    <ThermalConductivity>
-      <Correlator>
+  <ThermalConductivity>
+    <Correlator>
 0 0 0 0 0
 1 59 3.65611579164476 3.95102401183708 3.10818958034339
 2 58 6.66422300757686 10.2522327519284 5.65382677461933
 ...
-      </Correlator>
-    </ThermalConductivity>
+    </Correlator>
+  </ThermalConductivity>
 </Misc>
 <?php codeblockend("brush: xml;"); ?>
 <p>
@@ -782,12 +793,286 @@ dynarun config.xml -c 1000000 -L MFT:BinWidth=0.5,Length=100
     
     <br/>$\Delta t\,L_{qq,x}(\Delta t)$ is the time-dependent transport
     coefficient, measured in the $x$-direction.
+  </li>
+</ul>
+<h3>Viscosity</h3>
+<p>
+  This tag contains the Einstein correlation function which can be
+  used to obtain estimates for the shear and bulk viscosity of the
+  fluid. Please see the section
+  on <a href="#thermalconductivity">ThermalConductivity</a> for most
+  of the notation used here. The correlator used here is:
 
-    <br/>$\Delta t\,L_{qq,y}(\Delta t)$ is the time-dependent transport
-    coefficient, measured in the $y$-direction.
+  \[\Delta t\,\mathbf{L}_{\eta\eta} (\Delta t) =
+  \frac{1}{2\,V\,k_B\,T}\left(\left\langle \left[\phi_{\eta}(t_0,\Delta
+  t)\right]^2\right\rangle_{t_0} - \left[\Delta t\,V\,\mathbf{P}\right]^2\right) \]
 
-    <br/>$\Delta t\,L_{qq,z}(\Delta t)$ is the time-dependent transport
-    coefficient, measured in the $z$-direction.
+  where $\phi_{\eta}(t_0, \Delta t)$ is the integral of the
+  microscopic stress flux.  For discontinuous systems, this is most
+  conveniently evaluated using the following expression:
+  
+  \[\phi_{\eta}(t_0, \Delta t) = \left[\int_{t_0}^{t_0+\Delta t}
+  \sum_i^Nm_i\,\mathbf{v}_i\,\mathbf{v}_i\,{\rm d}t\right] +
+  \left[\sum_{i,j}^{events\in[t_0,t_0+\Delta
+  t]}\mathbf{r}_{ij}\,m_i\,\Delta \mathbf{v}_i\right]\]
+  
+  The leftmost term in square brackets contains the free streaming
+  contribution and the sum is over all particles. The rightmost term
+  contains the contribution due to interactions, and the sum is over
+  all two-particle events in the time $[t_0,t_0+\Delta t]$, each
+  involving a particle $i$ and $j$.
+</p>
+<p>
+  You should note that $\mathbf{L}_{\eta\eta}$ is a matrix quantity, and so
+  there are 9 measured values. For example, the $L_{\eta\eta,xy}$
+  element correspons to the transport of $x$-momentum in $y$-direction
+  and vice-versa. In isotropic systems, there are only two important
+  phenomological coefficients: the shear viscosity, $\eta$, and the
+  bulk viscosity, $\kappa$. These are related to
+  $\mathbf{L}_{\eta\eta}$ by the following expressions:
+  
+  \[\eta = L_{\eta\eta,xy} = L_{\eta\eta,xz} = L_{\eta\eta,yz}\] 
+
+  \[\frac{4}{3}\eta + \kappa = L_{\eta\eta,xx} = L_{\eta\eta,yy} = L_{\eta\eta,zz} \]
+</p>
+<p>
+  <b>Restrictions</b>: This correlator is valid in all molecular
+  systems.
+</p>
+<p>
+  <b>Extrapolation to the infinite time limit</b>:
+  See <a href="#extrapolationofcorrelators">the notes in the
+  ThermalConductivity section</a>.
+</p>
+<p>
+  <b>General notes on evaluating correlation functions</b>:
+  See <a href="#generalnotesoncorrlations">the notes in the
+  ThermalConductivity section</a>.
+</p>
+<p>
+  <b>Example output</b>:
+</p>
+<?php codeblockstart();?>
+<Misc>
+  <Viscosity>
+    <Correlator>
+0 0 0 0 0 0 0 0 0 0 0
+1.20049009599756 116 8.37184016842046 1.62337026137236 2.1589088807082 1.62337026137236 8.42188561600556 1.5159625309261 2.1589088807082 1.5159625309261 7.01773169575511 
+2.40098019199512 115 20.6408557061605 3.07915750482858 5.12305796346685 3.07915750482858 20.121862094858 3.29182185206649 5.12305796346685 3.2918218520665 16.8444542050959 
+...
+    </Correlator>
+  </Viscosity>
+</Misc>
+<?php codeblockend("brush: xml;"); ?>
+<p>
+  <b>Full Tag, Subtag, and Attribute List</b>:
+</p>
+<ul>
+  <li>
+    <b>Correlator</b> <i>(tag)</i>: The correlation data, outputted in
+    columns which are:
+
+    \[\Delta t \qquad Count 
+    \qquad \Delta t\,L_{\eta\eta,xx}(\Delta t)
+    \qquad \Delta t\,L_{\eta\eta,xy}(\Delta t)
+    \qquad \Delta t\,L_{\eta\eta,xz}(\Delta t)
+    \qquad \Delta t\,L_{\eta\eta,yx}(\Delta t)
+    \qquad \Delta t\,L_{\eta\eta,yy}(\Delta t)
+    \qquad \Delta t\,L_{\eta\eta,yz}(\Delta t)
+    \qquad \Delta t\,L_{\eta\eta,zx}(\Delta t)
+    \qquad \Delta t\,L_{\eta\eta,zy}(\Delta t)
+    \qquad \Delta t\,L_{\eta\eta,zz}(\Delta t)
+    \] 
+
+    where
+    
+    <br/>$\Delta t$ is the correlation time.
+
+    <br/>$Count$ is the number of samples at that correlation time.
+    
+    <br/>$\Delta t\,L_{\eta\eta,xy}(\Delta t)$ is the $xy$-component
+    of the time-dependent transport coefficient.
+  </li>
+</ul>
+<h3>MutualDiffusion</h3>
+<p>
+  This tag contains the Einstein correlation function which can be
+  used to obtain estimates for the mutual diffusion coefficients of
+  the fluid. Please see the previous sections for most of the notation
+  used here. The correlator used here is:
+
+  \[\Delta t\,\mathbf{L}_{ab} (\Delta t) =
+  \frac{1}{2\,V\,k_B\,T}\left\langle \left[\phi_{a}(t_0,\Delta
+  t)\right] \left[\phi_{b}(t_0,\Delta
+  t)\right]\right\rangle_{t_0} \]
+
+  where $\phi_{a}(t_0, \Delta t)$ is the integral of the microscopic
+  flux of Species $a$.  For discontinuous systems, this is most
+  conveniently evaluated using the following expression:
+
+  \[\phi_{a}(t_0, \Delta t) = \int_{t_0}^{t_0+\Delta t}
+  \left(\sum_{i\in a} m_i\,\mathbf{v}_i - c_a \sum_i^N
+  m_i\,\mathbf{v}_i\right){\rm d}t \]
+
+  The leftmost sum is only over the particles which belong to Species
+  $a$ and the rightmost sum is over all particles. The variable $c_a$
+  is the mass fraction of the species given by
+  
+  \[c_a = \left(\sum_{i\in a} m_i\right) / \left(\sum_i^N m_i\right)\]
+</p>
+<p>
+  You should note that $\mathbf{L}_{ab}$ is a vector quantity, and so there
+  are 3 measured values. These correspond to the transport in the $x$,
+  $y$, and $z$-directions. If your system is isotropic, you may just
+  average the three values to improve your statistics. For each
+  pairing of Species in the system, there is a corresponding mutual
+  diffusion coefficient to measure the diffusion of one Species
+  through the other. You should note that $L_{ab}=L_{ba}$, so DynamO
+  only collects one half of all of these pairings.
+</p>
+<p>
+  <b>Restrictions</b>: This correlator is valid in all molecular
+  systems.
+</p>
+<p>
+  <b>Extrapolation to the infinite time limit</b>:
+  See <a href="#extrapolationofcorrelators">the notes in the
+  ThermalConductivity section</a>.
+</p>
+<p>
+  <b>General notes on evaluating correlation functions</b>:
+  See <a href="#generalnotesoncorrlations">the notes in the
+  ThermalConductivity section</a>.
+</p>
+<p>
+  <b>Example output</b>:
+</p>
+<?php codeblockstart();?>
+<Misc>
+  <MutualDiffusion>
+    <Correlator Species1="Bulk" Species2="Bulk">
+0 0 0 0 0
+1.20049009599756 116 4.34711745476417e-29 1.04569539768932e-28 1.01913292670329e-28 
+2.40098019199512 115 1.73926903951606e-28 4.20033393703228e-28 4.07395327680373e-28 
+...
+    </Correlator>
+  </MutualDiffusion>
+</Misc>
+<?php codeblockend("brush: xml;"); ?>
+<p>
+  <b>Full Tag, Subtag, and Attribute List</b>:
+</p>
+<ul>
+  <li>
+    <b>Species1</b> <i>(attribute)</i>: The name of the first species
+    (species $a$ in $L_{ab}$).
+  </li>
+  <li>
+    <b>Species2</b> <i>(attribute)</i>: The name of the second species
+    (species $b$ in $L_{ab}$).
+  </li>
+  <li>
+    <b>Correlator</b> <i>(tag)</i>: The correlation data, outputted in
+    columns which are:
+
+    \[\Delta t \qquad Count 
+    \qquad \Delta t\,L_{ab,x}(\Delta t)
+    \qquad \Delta t\,L_{ab,y}(\Delta t)
+    \qquad \Delta t\,L_{ab,z}(\Delta t)
+    \] 
+
+    where
+    
+    <br/>$\Delta t$ is the correlation time.
+
+    <br/>$Count$ is the number of samples at that correlation time.
+    
+    <br/>$\Delta t\,L_{ab,x}(\Delta t)$ is the $x$-component of the
+    time-dependent transport coefficient.
+  </li>
+</ul>
+<h3>ThermalDiffusion</h3>
+<p>
+  This tag contains the Einstein correlation function which can be
+  used to obtain estimates for the thermal diffusion coefficients of
+  the fluid. Please see the previous sections for most of the notation
+  used here. The correlator used here is:
+
+  \[\Delta t\,\mathbf{L}_{aq} (\Delta t) =
+  \frac{1}{2\,V\,k_B\,T}\left\langle \left[\phi_{a}(t_0,\Delta
+  t)\right] \left[\phi_{q}(t_0,\Delta t)\right]\right\rangle_{t_0} \]
+
+  where $\phi_{a}(t_0, \Delta t)$ is the integral of the microscopic
+  flux of Species $a$ and $\phi_{q}(t_0, \Delta t)$ is the integral of
+  the microscopic heat flux. These are evaluated using the expressions
+  given in the previous sections
+  on <a href="#thermalconductivity">ThermalConductivity</a>
+  and <a href="#mutualdiffusion">MutualDiffusion</a>.
+</p>
+<p>
+  You should note that $\mathbf{L}_{aq}$ is a vector quantity, and so
+  there are 3 measured values. These correspond to the transport in
+  the $x$, $y$, and $z$-directions. If your system is isotropic, you
+  may just average the three values to improve your statistics. For
+  each Species in the system, there is a corresponding thermal
+  diffusion coefficient. You should note that $L_{aq}=L_{qa}$.
+</p>
+<p>
+  <b>Restrictions</b>: All restrictions to the
+  <a href="#thermalconductivity">ThermalConductivity correlator</a>
+  apply here.
+</p>
+<p>
+  <b>Extrapolation to the infinite time limit</b>:
+  See <a href="#extrapolationofcorrelators">the notes in the
+  ThermalConductivity section</a>.
+</p>
+<p>
+  <b>General notes on evaluating correlation functions</b>:
+  See <a href="#generalnotesoncorrlations">the notes in the
+  ThermalConductivity section</a>.
+</p>
+<p>
+  <b>Example output</b>:
+</p>
+<?php codeblockstart();?>
+<Misc>
+    <ThermalDiffusion>
+      <Correlator Species="Bulk">
+0 0 0 0 0
+1.20049009599756 116 -3.8143162695225e-16 -1.34206107826795e-15 -1.47527366687156e-15 
+2.40098019199512 115 -1.24651298193849e-15 -5.21423877223736e-15 -5.52897720662611e-15 
+...
+    </Correlator>
+  </ThermalDiffusion>
+</Misc>
+<?php codeblockend("brush: xml;"); ?>
+<p>
+  <b>Full Tag, Subtag, and Attribute List</b>:
+</p>
+<ul>
+  <li>
+    <b>Species</b> <i>(attribute)</i>: The name of the species
+    (species $a$ in $L_{aq}$).
+  </li>
+  <li>
+    <b>Correlator</b> <i>(tag)</i>: The correlation data, outputted in
+    columns which are:
+
+    \[\Delta t \qquad Count 
+    \qquad \Delta t\,L_{aq,x}(\Delta t)
+    \qquad \Delta t\,L_{aq,y}(\Delta t)
+    \qquad \Delta t\,L_{aq,z}(\Delta t)
+    \] 
+
+    where
+    
+    <br/>$\Delta t$ is the correlation time.
+
+    <br/>$Count$ is the number of samples at that correlation time.
+    
+    <br/>$\Delta t\,L_{aq,x}(\Delta t)$ is the $x$-component of the
+    time-dependent transport coefficient.
   </li>
 </ul>
 <h2>IntEnergyHist (Internal Energy Histogram)</h2>
