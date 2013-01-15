@@ -37,7 +37,7 @@
 <div id="taglist">
   <ul>
     <li>
-      DynamOconfig<sup>1</sup>
+      DynamOconfig
       <ul>
 	<li>
 	  Simulation<sup>1</sup>
@@ -151,7 +151,7 @@
 </div>
 <p>
   <sup>1</sup>These tags are only container tags, and do not have any
-  options.
+  attributes.
 </p>
 <h1><a id="scheduler"></a>Scheduler</h1>
 <p>
