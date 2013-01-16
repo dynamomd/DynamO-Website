@@ -113,7 +113,7 @@ dynarun config.xml -c 1000000 -L MFT:BinWidth=0.5,Length=100
   reducing the accessible volume of the system, are not included in
   this calculation. The volume of each particle is calculated from the
   representative interaction which is specified by the
-  particle's <a href="/index.php/reference#species">Species tags</a>.
+  particle's <a href="/index.php/reference#species">Species</a> tags.
 </p>
 <p>
   <b>Example output</b>:
@@ -388,7 +388,8 @@ dynarun config.xml -c 1000000 -L MFT:BinWidth=0.5,Length=100
   result. The contribution to the pressure due to interactions is
   given by:
 
-  \[\mathbf{P}^{interaction}=\frac{1}{V\,t_{sim}}\sum_{ij}^{event} \Delta \mathbf{p}_i\mathbf{r}_{ij}\]
+  \[\mathbf{P}^{interaction}=\frac{1}{V\,t_{sim}}\sum_{ij}^{event}
+  \Delta \mathbf{p}_i\mathbf{r}_{ij}\]
 
   where $t_{sim}$ is the total simulation time, the summation is over
   each two-particle event
@@ -638,7 +639,8 @@ dynarun config.xml -c 1000000 -L MFT:BinWidth=0.5,Length=100
 </p>
 <ul>
   <li>
-    <b>Count</b> <i>(attribute)</i>: The number of events executed with a time in the past.
+    <b>Count</b> <i>(attribute)</i>: The number of events executed
+    with a time in the past.
   </li>
 </ul>
 <h2>Memusage</h2>
@@ -678,9 +680,10 @@ dynarun config.xml -c 1000000 -L MFT:BinWidth=0.5,Length=100
 
   where $\Delta t$ is the correlation time, the angle brackets
   $\langle\rangle_{t_0}$ denote an averaging over the time origin,
-  $t_0$, and $\phi_{q}(t_0,\Delta t)$ is the integral of the microscopic heat
-  flux from $t_0$ to $t_0+\Delta t$. For discontinuous systems, this
-  is most conveniently evaluated using the following expression:
+  $t_0$, and $\phi_{q}(t_0,\Delta t)$ is the integral of the
+  microscopic heat flux from $t_0$ to $t_0+\Delta t$. For
+  discontinuous systems, this is most conveniently evaluated using the
+  following expression:
   
   \[\phi_{q}(t_0, \Delta t) = \left[\int_{t_0}^{t_0+\Delta t}
   \sum_i^N\mathbf{v}_i\,e_i\,{\rm d}t\right] +
@@ -712,10 +715,10 @@ dynarun config.xml -c 1000000 -L MFT:BinWidth=0.5,Length=100
   #23</a> on the bug tracker).
 </p>
 <p>
-  <b><a id="extrapolationofcorrelators"></a>Extrapolation to the infinite time limit</b>: As with all of the
-  Green-Kubo/Einstein relationships for the transport coefficients,
-  the desired (hydrodynamic) values are the infinite time correlation
-  values:
+  <b><a id="extrapolationofcorrelators"></a>Extrapolation to the
+  infinite time limit</b>: As with all of the Green-Kubo/Einstein
+  relationships for the transport coefficients, the desired
+  (hydrodynamic) values are the infinite time correlation values:
 
   \[\mathbf{L}_{qq} = \lim_{\Delta t\to\infty} \mathbf{L}_{qq}(\Delta
   t)\]
@@ -727,11 +730,11 @@ dynarun config.xml -c 1000000 -L MFT:BinWidth=0.5,Length=100
   value.
 </p>
 <p>
-  <b><a id="generalnotesoncorrlations"></a>General notes on evaluating correlation functions</b>: The notes
-  below attempt to explain that a lot of judgement is needed when
-  evaluation correlation functions. There is only a "window" of
-  correlation times which can be used to extract the transport
-  coefficients.
+  <b><a id="generalnotesoncorrlations"></a>General notes on evaluating
+  correlation functions</b>: The notes below attempt to explain that a
+  lot of judgement is needed when evaluation correlation
+  functions. There is only a "window" of correlation times which can
+  be used to extract the transport coefficients.
   
   <br/><b>Note 1</b>: In periodic systems, correlation functions
   should be studied only up to the sound-wave traversal time of the
@@ -799,8 +802,9 @@ dynarun config.xml -c 1000000 -L MFT:BinWidth=0.5,Length=100
   of the notation used here. The correlator used here is:
 
   \[\Delta t\,\mathbf{L}_{\eta\eta} (\Delta t) =
-  \frac{1}{2\,V\,k_B\,T}\left(\left\langle \left[\phi_{\eta}(t_0,\Delta
-  t)\right]^2\right\rangle_{t_0} - \left[\Delta t\,V\,\mathbf{P}\right]^2\right) \]
+  \frac{1}{2\,V\,k_B\,T}\left(\left\langle
+  \left[\phi_{\eta}(t_0,\Delta t)\right]^2\right\rangle_{t_0} -
+  \left[\Delta t\,V\,\mathbf{P}\right]^2\right) \]
 
   where $\phi_{\eta}(t_0, \Delta t)$ is the integral of the
   microscopic stress flux.  For discontinuous systems, this is most
@@ -897,33 +901,37 @@ dynarun config.xml -c 1000000 -L MFT:BinWidth=0.5,Length=100
   used here. The correlator used here is:
 
   \[\Delta t\,\mathbf{L}_{ab} (\Delta t) =
-  \frac{1}{2\,V\,k_B\,T}\left\langle \left[\phi_{a}(t_0,\Delta
-  t)\right] \left[\phi_{b}(t_0,\Delta
-  t)\right]\right\rangle_{t_0} \]
+  \frac{1}{2\,V\,k_B\,T}\left\langle \phi_{a}(t_0,\Delta
+  t)\,\phi_{b}(t_0,\Delta
+  t)\right\rangle_{t_0} \]
 
   where $\phi_{a}(t_0, \Delta t)$ is the integral of the microscopic
-  flux of Species $a$.  For discontinuous systems, this is most
-  conveniently evaluated using the following expression:
+  flux of <a href="/index.php/reference#species">Species</a> $a$.
+  For discontinuous systems, this is most conveniently evaluated using
+  the following expression:
 
   \[\phi_{a}(t_0, \Delta t) = \int_{t_0}^{t_0+\Delta t}
   \left(\sum_{i\in a} m_i\,\mathbf{v}_i - c_a \sum_i^N
   m_i\,\mathbf{v}_i\right){\rm d}t \]
 
-  The leftmost sum is only over the particles which belong to Species
-  $a$ and the rightmost sum is over all particles. The variable $c_a$
-  is the mass fraction of the species given by
+  The leftmost sum is only over the particles which belong
+  to <a href="/index.php/reference#species">Species</a> $a$ and
+  the rightmost sum is over all particles. The variable $c_a$ is the
+  mass fraction of the species given by
   
   \[c_a = \left(\sum_{i\in a} m_i\right) / \left(\sum_i^N m_i\right)\]
 </p>
 <p>
-  You should note that $\mathbf{L}_{ab}$ is a vector quantity, and so there
-  are 3 measured values. These correspond to the transport in the $x$,
-  $y$, and $z$-directions. If your system is isotropic, you may just
-  average the three values to improve your statistics. For each
-  pairing of Species in the system, there is a corresponding mutual
-  diffusion coefficient to measure the diffusion of one Species
-  through the other. You should note that $L_{ab}=L_{ba}$, so DynamO
-  only collects one half of all of these pairings.
+  You should note that $\mathbf{L}_{ab}$ is a vector quantity, and so
+  there are 3 measured values. These correspond to the transport in
+  the $x$, $y$, and $z$-directions. If your system is isotropic, you
+  may just average the three values to improve your statistics. For
+  each pairing of <a href="/index.php/reference#species">Species</a>
+  in the system, there is a corresponding mutual diffusion coefficient
+  to measure the diffusion of
+  one <a href="/index.php/reference#species">Species</a> through
+  the other. You should note that $L_{ab}=L_{ba}$, so DynamO only
+  collects one half of all of these pairings.
 </p>
 <p>
   <b>Restrictions</b>: This correlator is valid in all molecular
@@ -959,11 +967,13 @@ dynarun config.xml -c 1000000 -L MFT:BinWidth=0.5,Length=100
 </p>
 <ul>
   <li>
-    <b>Species1</b> <i>(attribute)</i>: The name of the first species
+    <b>Species1</b> <i>(attribute)</i>: The name of the
+    first <a href="/index.php/reference#species">Species</a>
     (species $a$ in $L_{ab}$).
   </li>
   <li>
-    <b>Species2</b> <i>(attribute)</i>: The name of the second species
+    <b>Species2</b> <i>(attribute)</i>: The name of the
+    second <a href="/index.php/reference#species">Species</a>
     (species $b$ in $L_{ab}$).
   </li>
   <li>
@@ -994,13 +1004,14 @@ dynarun config.xml -c 1000000 -L MFT:BinWidth=0.5,Length=100
   used here. The correlator used here is:
 
   \[\Delta t\,\mathbf{L}_{aq} (\Delta t) =
-  \frac{1}{2\,V\,k_B\,T}\left\langle \left[\phi_{a}(t_0,\Delta
-  t)\right] \left[\phi_{q}(t_0,\Delta t)\right]\right\rangle_{t_0} \]
+  \frac{1}{2\,V\,k_B\,T}\left\langle \phi_{a}(t_0,\Delta
+  t)\,\phi_{q}(t_0,\Delta t)\right\rangle_{t_0} \]
 
   where $\phi_{a}(t_0, \Delta t)$ is the integral of the microscopic
-  flux of Species $a$ and $\phi_{q}(t_0, \Delta t)$ is the integral of
-  the microscopic heat flux. These are evaluated using the expressions
-  given in the previous sections
+  flux of <a href="/index.php/reference#species">Species</a> $a$
+  and $\phi_{q}(t_0, \Delta t)$ is the integral of the microscopic
+  heat flux. These are evaluated using the expressions given in the
+  previous sections
   on <a href="#thermalconductivity">ThermalConductivity</a>
   and <a href="#mutualdiffusion">MutualDiffusion</a>.
 </p>
@@ -1009,8 +1020,9 @@ dynarun config.xml -c 1000000 -L MFT:BinWidth=0.5,Length=100
   there are 3 measured values. These correspond to the transport in
   the $x$, $y$, and $z$-directions. If your system is isotropic, you
   may just average the three values to improve your statistics. For
-  each Species in the system, there is a corresponding thermal
-  diffusion coefficient. You should note that $L_{aq}=L_{qa}$.
+  each <a href="/index.php/reference#species">Species</a> in the
+  system, there is a corresponding thermal diffusion coefficient. You
+  should note that $L_{aq}=L_{qa}$.
 </p>
 <p>
   <b>Restrictions</b>: All restrictions to the
@@ -1047,8 +1059,10 @@ dynarun config.xml -c 1000000 -L MFT:BinWidth=0.5,Length=100
 </p>
 <ul>
   <li>
-    <b>Species</b> <i>(attribute)</i>: The name of the species
-    (species $a$ in $L_{aq}$).
+    <b>Species</b> <i>(attribute)</i>: The name of
+    the <a href="/index.php/reference#species">Species</a>
+    (<a href="/index.php/reference#species">Species</a> $a$ in
+    $L_{aq}$).
   </li>
   <li>
     <b>Correlator</b> <i>(tag)</i>: The correlation data, outputted in
