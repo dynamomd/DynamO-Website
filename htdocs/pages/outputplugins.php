@@ -1181,42 +1181,42 @@ dynarun config.xml -c 1000000 -L MFT:BinWidth=0.5,Length=100
 <?php codeblockend("brush: xml;"); ?>
 <p>
   <b>Full Tag, Subtag, and Attribute List</b>:
-  <ul>
-    <li>
-      <b>BinWidth</b> <i>(attribute)</i>: The width of the energy
-      bins.
-    </li>
-    <li>
-      <b>HistogramWeighted</b> <i>(tag)</i>: Contains the
-      time-weighted histogram data, outputted in columns which are:
-      
-      \[U_{conf.} \qquad P(U_{conf.})\] 
-      
-      where $P(U_{conf.})$ is the probability of observing the excess
-      internal energy $U_{conf.}$.
-      <ul>
-	<li>
-	  <b>TotalWeight</b> <i>(attribute)</i>: This corresponds to
-	  the total time the histogram was collected for. This should
-	  also correspond to the Time attribute of
-	  the <a href="#duration">Duration tag in the Misc plugin</a>.
-	</li>
-	<li>
-	  <b>Dimension</b> <i>(attribute)</i>: The dimensionality of
-	  the histogram (this is a one-dimensional histogram).
-	</li>
-	<li>
-	  <b>BinWidth</b> <i>(attribute)</i>: The width of the energy
-	  bins.
-	</li>
-	<li>
-	  <b>AverageVal</b> <i>(attribute)</i>: The average excess
-	  internal energy of the system. This should also correspond
-	  to the Average attribute of
-	  the <a href="#uconfigurational">UConfigurational tag in the
-	  Misc plugin</a>.
-	</li>
-      </ul>
-    </li>
-  </ul>
 </p>
+<ul>
+  <li>
+    <b>BinWidth</b> <i>(attribute)</i>: The width of the energy
+    bins.
+  </li>
+  <li>
+    <b>HistogramWeighted</b> <i>(tag)</i>: Contains the
+    time-weighted histogram data, outputted in columns which are:
+    
+    \[U_{conf.} \qquad P(U_{conf.})\] 
+    
+    where $P(U_{conf.})$ is the probability of observing the excess
+    internal energy $U_{conf.}$.
+    <ul>
+      <li>
+	<b>TotalWeight</b> <i>(attribute)</i>: This corresponds to
+	the total time the histogram was collected for. This should
+	also correspond to the Time attribute of
+	the <a href="#duration">Duration tag in the Misc plugin</a>.
+      </li>
+      <li>
+	<b>Dimension</b> <i>(attribute)</i>: The dimensionality of
+	the histogram (this is a one-dimensional histogram).
+      </li>
+      <li>
+	<b>BinWidth</b> <i>(attribute)</i>: The width of the energy
+	bins.
+      </li>
+      <li>
+	<b>AverageVal</b> <i>(attribute)</i>: The average excess
+	internal energy of the system. This should also correspond
+	to the Average attribute of
+	the <a href="#uconfigurational">UConfigurational tag in the
+	  Misc plugin</a>.
+      </li>
+    </ul>
+  </li>
+</ul>
