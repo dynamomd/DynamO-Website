@@ -7,7 +7,8 @@
    return;
    }
    $pagetitle="Configuration File Format Reference";
-   ?>
+   $pagecss="#taglist ul {padding-left: 15px;} #taglist li {list-style:disc; list-style-position:inside; font-weight:bold; padding-left:5px; margin-top:5px;}";
+?>
 <?php printTOC(); ?>
 <p>
   In this reference a complete description of the file format is
@@ -23,19 +24,7 @@
 </p>
 <h1>General Structure</h1>
 <div id="taglist">
-  <style scoped="scoped">
-    ul li { 
-    list-style:circle; 
-    list-style-position:inside;
-    font-weight:bold;
-    padding-left:5px;
-    margin-top:5px;
-    }
-    ul {
-    padding-left: 15px;
-    }
-  </style>
-  <ul>
+  <ul style="padding-left: 15px;list-style:circle; list-style-position:inside; font-weight:bold; padding-left:5px; margin-top:5px;">
     <li>
       DynamOconfig
       <ul>

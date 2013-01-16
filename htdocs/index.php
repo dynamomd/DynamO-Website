@@ -88,10 +88,12 @@ function printTOC()
    echo "TABLEOFCONTENTSMARKER";
  }
 
-$html5video = false;
+$containsvideo = false;
 
 function embedAJAXvideo($filename, $youtubecode, $width, $height)
 {
+   global $containsvideo;
+   $containsvideo = true;
    $playtop=(intval($height) - 31) * 0.5;
    $playleft=(intval($width) - 31) * 0.5;
    echo "<div class=\"video-container\" style=\"width:".$width."px;height:".$height."px;background-image:url('/videos/".$filename.".jpg')\" id=\"".$filename."video\" onclick=\"delayedLoadOfVideo('".$filename."video', '".$height."', '".$width."', '".$youtubecode."')\"><div class=\"play-button\" style=\"top:".$playtop."px; left:".$playleft."px;\"></div></div>";
@@ -112,7 +114,6 @@ if (!file_exists("pages/".$page.".php"))
 $syntaxhighlighter=0;
 $mathjax=0;
 $in_template=1;
-
 
 ob_start();
 include_once("pages/".$page.".php");
@@ -229,6 +230,7 @@ if ($TOC)
       var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
       })();
     </script>
+    <?php if ($containsvideo) { ?>
     <script type="text/javascript">
       var tag = document.createElement('script');
       tag.src = "//www.youtube.com/iframe_api";
@@ -258,6 +260,7 @@ if ($TOC)
         });
       }
     </script>
+    <?php } if (isset($pagecss)) { echo "<style>".$pagecss."</style>";} ?>
   </head>
   <body>
     <!-- SPACER TO COUNTER DODGY PAGE MARGIN INTERACTIONS -->
@@ -323,36 +326,6 @@ if ($TOC)
         }
       });
     </script>
-    <?php } ?>
-    
-    <?php if ($html5video) { ?>
-    <!-- FULLSCREEN HTML 5 VIDEO BUTTONS -->
-    <script>
-/*!
-* screenfull.js
-* v1.0.0 - 2012-05-02
-* https://github.com/sindresorhus/screenfull.js
-* (c) Sindre Sorhus; MIT License
-*/
-(function(a,b){"use strict";var c=typeof Element!="undefined"&&"ALLOW_KEYBOARD_INPUT"in Element,d=function(){var a=[["requestFullscreen","exitFullscreen","fullscreenchange","fullscreen","fullscreenElement","fullscreenerror"],["webkitRequestFullScreen","webkitCancelFullScreen","webkitfullscreenchange","webkitIsFullScreen","webkitCurrentFullScreenElement","webkitfullscreenerror"],["mozRequestFullScreen","mozCancelFullScreen","mozfullscreenchange","mozFullScreen","mozFullScreenElement","mozfullscreenerror"]],c=0,d=a.length,e={},f,g;for(;c<d;c++){f=a[c];if(f&&f[1]in b){for(c=0,g=f.length;c<g;c++)e[a[0][c]]=f[c];return e}}return!1}(),e={isFullscreen:b[d.fullscreen],element:b[d.fullscreenElement],request:function(a){var e=d.requestFullscreen;a=a||b.documentElement,a[e](c&&Element.ALLOW_KEYBOARD_INPUT),b.isFullscreen||a[e]()},exit:function(){b[d.exitFullscreen]()},toggle:function(a){this.isFullscreen?this.exit():this.request(a)},onchange:function(){},onerror:function(){}};if(!d){a.screenfull=null;return}b.addEventListener(d.fullscreenchange,function(a){e.isFullscreen=b[d.fullscreen],e.element=b[d.fullscreenElement],e.onchange.call(e,a)}),b.addEventListener(d.fullscreenerror,function(a){e.onerror.call(e,a)}),a.screenfull=e})(window,document);
-    </script>
-    <script>
-if (document.getElementsByClassName)
-{
-    var fullscreen_objects = document.getElementsByClassName("video-container");
-    for (var i = fullscreen_objects.length - 1; i >= 0; i--)
-    {
-	var d = document.createElement("div");
-	d.className="fullscreen-button";
-	fullscreen_objects[i].appendChild(d);
-	
-	d.addEventListener('click', function() {
-	    if (!screenfull.isFullscreen)
-		screenfull.toggle(this.parentNode.getElementsByTagName('video')[0]);
-	});
-    }
-}
-    </script>
-    <?php } ?>
+    <?php } ?>    
   </body>
 </html>
