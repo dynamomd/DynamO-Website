@@ -50,6 +50,7 @@
 <p>
   where $u(r)$ is the interparticle potential (which is the potential
   energy between two particles separated by a distance of $r$).
+</p>
 <p>
   Square-well molecules are simple models which display the two
   fundamental features of real molecules, a short range repulsion (due
@@ -68,6 +69,8 @@
   the well and pay the energy cost, $\varepsilon$, otherwise they will
   bounce off the inside of the well.
 </p>
+<img src="/images/swcomparison.png" alt="A diagram of a square-well molecule including its parameters" width="650" height="232" style="display:block;margin:0 auto 0 auto;">
+
 <h2>The System Studied</h2>
 <p>
   We're going to study a binary mixture of square-well
