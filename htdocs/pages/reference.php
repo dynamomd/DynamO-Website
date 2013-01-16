@@ -21,20 +21,20 @@
   for each tag type. Below is a hyperlinked hierarchy of the tags in
   the configuration file.
 </p>
-<style>
-  #taglist ul li { 
-  list-style:circle; 
-  list-style-position:inside;
-  font-weight:bold;
-  padding-left:5px;
-  margin-top:5px;
-  }
-  #taglist ul {
-  padding-left: 15px;
-  }
-</style>
 <h1>General Structure</h1>
 <div id="taglist">
+  <style scoped="scoped">
+    ul li { 
+    list-style:circle; 
+    list-style-position:inside;
+    font-weight:bold;
+    padding-left:5px;
+    margin-top:5px;
+    }
+    ul {
+    padding-left: 15px;
+    }
+  </style>
   <ul>
     <li>
       DynamOconfig
