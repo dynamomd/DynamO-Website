@@ -66,16 +66,11 @@ dynarun config.xml -c 1000000 -L IntEnergyHist:BinWidth=0.1
 dynarun config.xml -c 1000000 -L MFT:BinWidth=0.5,Length=100
 <?php codeblockend("brush: shell;"); ?>
 <p>
-  The options and the generated output of all available output plugins
-  is detailed below.
-</p>
-<h1>Plugins</h1>
-<p>
   In the following sections, the options and output of each output
   plugin are listed along with details on the calculation of the
   properties.
 </p>
-<h2>Misc Plugin</h2>
+<h1>Misc Plugin</h1>
 <p>
   The Misc plugin is loaded automatically and contains properties
   which are relatively cheap to collect. Fortunately, this includes
@@ -83,7 +78,7 @@ dynarun config.xml -c 1000000 -L MFT:BinWidth=0.5,Length=100
   DynamO. The output tags of the Misc plugin and how they are
   collected are discussed in the following subsections.
 </p>
-<h3>Density</h3>
+<h2>Density</h2>
 <p>
   This tag contains the number of particles divided by the volume of
   the primary image. In non-periodic systems, this value may not have
@@ -109,7 +104,7 @@ dynarun config.xml -c 1000000 -L MFT:BinWidth=0.5,Length=100
     ($N/V$).
   </li>
 </ul>
-<h3>Packing Fraction</h3>
+<h2>Packing Fraction</h2>
 <p>
   This tag contains the excluded volume of all particles divided by
   the volume of the primary image. In non-periodic systems, this value
@@ -136,7 +131,7 @@ dynarun config.xml -c 1000000 -L MFT:BinWidth=0.5,Length=100
     <b>val</b> <i>(attribute)</i>: The packing fraction of the system.
   </li>
 </ul>
-<h3>SpeciesCount</h3>
+<h2>SpeciesCount</h2>
 <p>
   This tag contains the number
   of <a href="/index.php/reference#species">Species</a> in the system.
@@ -158,7 +153,7 @@ dynarun config.xml -c 1000000 -L MFT:BinWidth=0.5,Length=100
     system.
   </li>
 </ul>
-<h3>ParticleCount</h3>
+<h2>ParticleCount</h2>
 <p>
   This tag contains the number
   of <a href="/index.php/reference#species">Particles</a> in the
@@ -181,7 +176,7 @@ dynarun config.xml -c 1000000 -L MFT:BinWidth=0.5,Length=100
     system.
   </li>
 </ul>
-<h3>SystemMomentum</h3>
+<h2>SystemMomentum</h2>
 <p>
   This tag contains the current and average momentum of all of the
   particles in the system.
@@ -230,7 +225,7 @@ dynarun config.xml -c 1000000 -L MFT:BinWidth=0.5,Length=100
     </ul>
   </li>
 </ul>
-<h3>Temperature</h3>
+<h2>Temperature</h2>
 <p>
   This tag contains the temperature of the particles in the
   system. This includes rotational degrees of freedom (if present). As
@@ -291,7 +286,7 @@ dynarun config.xml -c 1000000 -L MFT:BinWidth=0.5,Length=100
     maximum values of the temperature during the simulation.
   </li>
 </ul>
-<h3>UConfigurational</h3>
+<h2>UConfigurational</h2>
 <p>
   This tag contains the interaction energy per particle. This is equal
   to the excess internal energy (also known as the configurational
@@ -341,7 +336,7 @@ dynarun config.xml -c 1000000 -L MFT:BinWidth=0.5,Length=100
     during the simulation.
   </li>
 </ul>
-<h3>ResidualHeatCapacity</h3>
+<h2>ResidualHeatCapacity</h2>
 <p>
   This tag is provided for convenience. It contains the excess heat
   capacity, calculated from the fluctuations of the configurational
@@ -377,7 +372,7 @@ dynarun config.xml -c 1000000 -L MFT:BinWidth=0.5,Length=100
     heat capacity $(C_v^{ex.}/k_B)$.
   </li>
 </ul>
-<h3>Pressure</h3>
+<h2>Pressure</h2>
 <p>
   This tag contains the full pressure tensor for the system, worked
   out using the virial expression:
@@ -461,7 +456,7 @@ dynarun config.xml -c 1000000 -L MFT:BinWidth=0.5,Length=100
     \end{align}\]
   </li>
 </ul>
-<h3><a id="duration"></a>Duration</h3>
+<h2><a id="duration"></a>Duration</h2>
 <p>
   This tag contains information on the duration of the simulation
   (from the perspective of the model, not the user).  See
@@ -512,7 +507,7 @@ dynarun config.xml -c 1000000 -L MFT:BinWidth=0.5,Length=100
     executed for, in simulation units.
   </li>
 </ul>
-<h3>EventCounters</h3>
+<h2>EventCounters</h2>
 <p>
   This tag contains more detailed information on the types of events
   which have occurred during the simulation.
@@ -560,7 +555,7 @@ dynarun config.xml -c 1000000 -L MFT:BinWidth=0.5,Length=100
     </ul>
   </li>
 </ul>
-<h3><a id="timing"></a>Timing</h3>
+<h2><a id="timing"></a>Timing</h2>
 <p>
   This tag contains information on the calculation time of the
   simulation. See the <a href="#duration">Duration</a> tag for more
@@ -596,7 +591,7 @@ dynarun config.xml -c 1000000 -L MFT:BinWidth=0.5,Length=100
     per second of calculation.
   </li>
 </ul>
-<h3>totMeanFreeTime</h3>
+<h2>totMeanFreeTime</h2>
 <p>
   This tag contains the overall mean free time of a particle. This is
   calculated from the counts of the one-particle ($N_{1}^{events}$)
@@ -621,7 +616,7 @@ dynarun config.xml -c 1000000 -L MFT:BinWidth=0.5,Length=100
     <b>val</b> <i>(attribute)</i>: The mean free time, $t_{mft}$.
   </li>
 </ul>
-<h3>NegativeTimeEvents</h3>
+<h2>NegativeTimeEvents</h2>
 <p>
   This tag contains the total number of events executed where the time
   was earlier than the current time (a negative time until the event
@@ -646,7 +641,7 @@ dynarun config.xml -c 1000000 -L MFT:BinWidth=0.5,Length=100
     <b>Count</b> <i>(attribute)</i>: The number of events executed with a time in the past.
   </li>
 </ul>
-<h3>Memusage</h3>
+<h2>Memusage</h2>
 <p>
   This tag contains the best estimate DynamO can make of the memory
   used by DynamO at the last event executed in the simulation. Due to
@@ -670,7 +665,7 @@ dynarun config.xml -c 1000000 -L MFT:BinWidth=0.5,Length=100
     simulation at the time the output file was written out.
   </li>
 </ul>
-<h3><a id="thermalconductivity"></a>ThermalConductivity</h3>
+<h2><a id="thermalconductivity"></a>ThermalConductivity</h2>
 <p>
   This tag contains the Einstein correlation function which can be
   used to obtain estimates for the mainstream definition of the
@@ -795,7 +790,7 @@ dynarun config.xml -c 1000000 -L MFT:BinWidth=0.5,Length=100
     coefficient, measured in the $x$-direction.
   </li>
 </ul>
-<h3>Viscosity</h3>
+<h2>Viscosity</h2>
 <p>
   This tag contains the Einstein correlation function which can be
   used to obtain estimates for the shear and bulk viscosity of the
@@ -894,7 +889,7 @@ dynarun config.xml -c 1000000 -L MFT:BinWidth=0.5,Length=100
     of the time-dependent transport coefficient.
   </li>
 </ul>
-<h3>MutualDiffusion</h3>
+<h2>MutualDiffusion</h2>
 <p>
   This tag contains the Einstein correlation function which can be
   used to obtain estimates for the mutual diffusion coefficients of
@@ -991,7 +986,7 @@ dynarun config.xml -c 1000000 -L MFT:BinWidth=0.5,Length=100
     time-dependent transport coefficient.
   </li>
 </ul>
-<h3>ThermalDiffusion</h3>
+<h2>ThermalDiffusion</h2>
 <p>
   This tag contains the Einstein correlation function which can be
   used to obtain estimates for the thermal diffusion coefficients of
@@ -1075,12 +1070,12 @@ dynarun config.xml -c 1000000 -L MFT:BinWidth=0.5,Length=100
     time-dependent transport coefficient.
   </li>
 </ul>
-<h2>IntEnergyHist (Internal Energy Histogram)</h2>
+<h1>IntEnergyHist Plugin</h1>
 <p>
 </p>
-<h2>MFT (Mean Free Time)</h2>
+<h1>MFT Plugin</h1>
 <p>
 </p>
-<h2>RadiusGyration</h2>
+<h1>RadiusGyration Plugin</h1>
 <p>
 </p>

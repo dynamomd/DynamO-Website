@@ -35,20 +35,26 @@ body {
 }
 
 h1 { 
-    font-size:18pt;
+    font-size:1.5em;
     border-bottom:2px solid;
     display:block;
     clear:left;
+    margin-top:1.5em;
     /* Android autofit bugfix */
     background-color: #ffffff;
 }
 
 h2 { 
-    font-size:14pt;
+    font-size:1em;
+    margin-top:1.5em;
     display:block; 
     /* Android autofit bugfix */
     background-color: #ffffff;
     border-bottom:1px solid;
+}
+
+h3 {
+    
 }
 
 li { 

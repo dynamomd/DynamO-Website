@@ -12,7 +12,7 @@
 <p>
   Here are a list of frequently asked questions and their answers.
 </p>
-<h3>Q: What are the units of DynamO?</h3>
+<h1>Q: What are the units of DynamO?</h1>
 <p>
   Short answer: whatever units you use in the input configuration
   file.
@@ -69,7 +69,7 @@
     </p>
   </li>
 </ul>
-<h3>Q: What units does the dynamod command use/produce?</h3>
+<h1>Q: What units does the dynamod command use/produce?</h1>
 <p>
   Short answer: Whenever the <b>dynamod</b> command is used to
   generate a configuration, it tries to use the most natural set of
@@ -102,7 +102,7 @@
   sets the mass and diameter of particles to be equal to 1, as this is
   the natural dimensionless units of the system.
 </p>
-<h3>Q: How does DynamO collect exact time-averages?</h3>
+<h1>Q: How does DynamO collect exact time-averages?</h1>
 <p>
   Short answer: Many properties have a constant value between events,
   and so the exact time average may be calculated using the following
