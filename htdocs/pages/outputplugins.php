@@ -78,14 +78,13 @@ dynarun config.xml -c 1000000 -L MFT:BinWidth=0.5,Length=100
   DynamO. The output tags of the Misc plugin and how they are
   collected are discussed in the following subsections.
 </p>
+<p>
+  <b>Options</b>: There are no options for this plugin.
+</p>
 <h2>Density</h2>
 <p>
   This tag contains the number of particles divided by the volume of
-  the primary image. In non-periodic systems, this value may not have
-  any significance as the primary image is not related to the dynamics
-  of the system. Complex boundary effects, such as walls reducing the
-  accessible volume of the system, are not included in this
-  calculation.
+  the primary image.
 </p>
 <p>
   <b>Example output</b>:
@@ -104,16 +103,20 @@ dynarun config.xml -c 1000000 -L MFT:BinWidth=0.5,Length=100
     ($N/V$).
   </li>
 </ul>
+<p>
+  <b>Restrictions</b>: In non-periodic systems, this value may not have
+  any significance as the primary image is not related to the dynamics
+  of the system. Complex boundary effects, such as walls reducing the
+  accessible volume of the system, are not included in this
+  calculation.
+</p>
 <h2>Packing Fraction</h2>
 <p>
   This tag contains the excluded volume of all particles divided by
-  the volume of the primary image. In non-periodic systems, this value
-  may not have any significance as the primary image is not related to
-  the dynamics of the system. Complex boundary effects, such as walls
-  reducing the accessible volume of the system, are not included in
-  this calculation. The volume of each particle is calculated from the
-  representative interaction which is specified by the
-  particle's <a href="/index.php/reference#species">Species</a> tags.
+  the volume of the primary image.  The volume of each particle is
+  calculated from the representative interaction which is specified by
+  the particle's <a href="/index.php/reference#species">Species</a>
+  tags.
 </p>
 <p>
   <b>Example output</b>:
@@ -131,6 +134,13 @@ dynarun config.xml -c 1000000 -L MFT:BinWidth=0.5,Length=100
     <b>val</b> <i>(attribute)</i>: The packing fraction of the system.
   </li>
 </ul>
+<p>
+  <b>Restrictions</b>: In non-periodic systems, this value may not
+  have any significance as the primary image is not related to the
+  dynamics of the system. Complex boundary effects, such as walls
+  reducing the accessible volume of the system, are not included in
+  this calculation.
+</p>
 <h2>SpeciesCount</h2>
 <p>
   This tag contains the number
@@ -153,6 +163,9 @@ dynarun config.xml -c 1000000 -L MFT:BinWidth=0.5,Length=100
     system.
   </li>
 </ul>
+<p>
+  <b>Restrictions</b>: None.
+</p>
 <h2>ParticleCount</h2>
 <p>
   This tag contains the number
@@ -176,18 +189,13 @@ dynarun config.xml -c 1000000 -L MFT:BinWidth=0.5,Length=100
     system.
   </li>
 </ul>
+<p>
+  <b>Restrictions</b>: None.
+</p>
 <h2>SystemMomentum</h2>
 <p>
   This tag contains the current and average momentum of all of the
-  particles in the system.
-
-  <br/> The averages in this tag are collected exactly (see the
-  <a href="/index.php/FAQ#q-how-does-dynamo-collect-exact-timeaverages">FAQ
-  on exact averages in DynamO</a>) and so this data is not valid
-  when <a href="/index.php/reference#typele">Lees-Edwards boundary
-  conditions</a> are applied (or currently in systems with
-  gravity, <a href="https://github.com/toastedcrumpets/DynamO/issues/22">see
-  issue #22</a>).
+  particles in the system.  
 </p>
 <p>
   <b>Example output</b>:
@@ -225,6 +233,16 @@ dynarun config.xml -c 1000000 -L MFT:BinWidth=0.5,Length=100
     </ul>
   </li>
 </ul>
+<p>
+  <b>Restrictions</b>: The averages in this tag are collected exactly
+  (see the
+  <a href="/index.php/FAQ#q-how-does-dynamo-collect-exact-timeaverages">FAQ
+  on exact averages in DynamO</a>) and so this data is not valid
+  when <a href="/index.php/reference#typele">Lees-Edwards boundary
+  conditions</a> are applied (or currently in systems with
+  gravity, <a href="https://github.com/toastedcrumpets/DynamO/issues/22">see
+  issue #22</a>).
+</p>
 <h2>Temperature</h2>
 <p>
   This tag contains the temperature of the particles in the
@@ -233,14 +251,6 @@ dynarun config.xml -c 1000000 -L MFT:BinWidth=0.5,Length=100
   effectively the product, $k_B\,T$ (see
   the <a href="/index.php/FAQ#q-what-are-the-units-of-dynamo">FAQ on
   units</a>).
-
-  <br/> The averages in this tag are collected exactly (see the
-  <a href="/index.php/FAQ#q-how-does-dynamo-collect-exact-timeaverages">FAQ
-  on exact averages in DynamO</a>) and so this data is not valid
-  when <a href="/index.php/reference#typele">Lees-Edwards boundary
-  conditions</a> are applied (or currently in systems with
-  gravity, <a href="https://github.com/toastedcrumpets/DynamO/issues/22">see
-  issue #22</a>).
 </p>
 <p>
   The temperature is calculated using the standard equipartition
@@ -286,19 +296,21 @@ dynarun config.xml -c 1000000 -L MFT:BinWidth=0.5,Length=100
     maximum values of the temperature during the simulation.
   </li>
 </ul>
-<h2>UConfigurational</h2>
 <p>
-  This tag contains the interaction energy of the system. This is
-  equal to the excess internal energy (also known as the
-  configurational internal energy).
-
-  <br/> The averages in this tag are collected exactly (see the
+  <b>Restrictions</b>: The averages in this tag are collected exactly
+  (see the
   <a href="/index.php/FAQ#q-how-does-dynamo-collect-exact-timeaverages">FAQ
   on exact averages in DynamO</a>) and so this data is not valid
   when <a href="/index.php/reference#typele">Lees-Edwards boundary
   conditions</a> are applied (or currently in systems with
   gravity, <a href="https://github.com/toastedcrumpets/DynamO/issues/22">see
   issue #22</a>).
+</p>
+<h2><a id="uconfigurational"></a>UConfigurational</h2>
+<p>
+  This tag contains the interaction energy of the system. This is
+  equal to the excess internal energy (also known as the
+  configurational internal energy).
 </p>
 <p>
   <b>Example output</b>:
@@ -336,6 +348,16 @@ dynarun config.xml -c 1000000 -L MFT:BinWidth=0.5,Length=100
     during the simulation.
   </li>
 </ul>
+<p>
+  <b>Restrictions</b>: The averages in this tag are collected exactly
+  (see the
+  <a href="/index.php/FAQ#q-how-does-dynamo-collect-exact-timeaverages">FAQ
+  on exact averages in DynamO</a>) and so this data is not valid
+  when <a href="/index.php/reference#typele">Lees-Edwards boundary
+  conditions</a> are applied (or currently in systems with
+  gravity, <a href="https://github.com/toastedcrumpets/DynamO/issues/22">see
+  issue #22</a>).
+</p>
 <h2>ResidualHeatCapacity</h2>
 <p>
   This tag is provided for convenience. It contains the excess heat
@@ -352,8 +374,7 @@ dynarun config.xml -c 1000000 -L MFT:BinWidth=0.5,Length=100
 
   where $f$ is the degrees of freedom of the particle.
   <br/>
-  <b>Note</b>: This expression and the values reported are only valid
-  in the canonical (NVT) ensemble.
+  <b>Note</b>: 
 </p>
 <p>
   <b>Example output</b>:
@@ -372,6 +393,12 @@ dynarun config.xml -c 1000000 -L MFT:BinWidth=0.5,Length=100
     heat capacity $(C_v^{ex.}/k_B)$.
   </li>
 </ul>
+<p>
+  <b>Restrictions</b>: This expression and the values reported are
+  only valid in the canonical (NVT) ensemble. The restrictions on
+  the <a href="#uconfigurational">UConfigurational</a> plugin also
+  apply.
+</p>
 <h2>Pressure</h2>
 <p>
   This tag contains the full pressure tensor for the system, worked
@@ -446,17 +473,19 @@ dynarun config.xml -c 1000000 -L MFT:BinWidth=0.5,Length=100
     <b>InteractionContribution</b> <i>(tag)</i>: This tag only
     contains the interaction contributions to the pressure tensor
     ($\mathbf{P}^{interaction}$), with the components written out as
-    follows:
-    
-    \[\begin{align}
-    \begin{matrix}
-    P_{xx}^{interaction} & P_{xy}^{interaction} & P_{xz}^{interaction}\\
-    P_{yx}^{interaction} & P_{yy}^{interaction} & P_{yz}^{interaction}\\
-    P_{zx}^{interaction} & P_{zy}^{interaction} & P_{zz}^{interaction}
-    \end{matrix}
-    \end{align}\]
+    above.
   </li>
 </ul>
+<p>
+  <b>Restrictions</b>: The averages in this tag are collected exactly
+  (see the
+  <a href="/index.php/FAQ#q-how-does-dynamo-collect-exact-timeaverages">FAQ
+  on exact averages in DynamO</a>) and so this data is not valid
+  when <a href="/index.php/reference#typele">Lees-Edwards boundary
+  conditions</a> are applied (or currently in systems with
+  gravity, <a href="https://github.com/toastedcrumpets/DynamO/issues/22">see
+  issue #22</a>).
+</p>
 <h2><a id="duration"></a>Duration</h2>
 <p>
   This tag contains information on the duration of the simulation
@@ -508,6 +537,9 @@ dynarun config.xml -c 1000000 -L MFT:BinWidth=0.5,Length=100
     executed for, in simulation units.
   </li>
 </ul>
+<p>
+  <b>Restrictions</b>: None.
+</p>
 <h2>EventCounters</h2>
 <p>
   This tag contains more detailed information on the types of events
@@ -556,6 +588,9 @@ dynarun config.xml -c 1000000 -L MFT:BinWidth=0.5,Length=100
     </ul>
   </li>
 </ul>
+<p>
+  <b>Restrictions</b>: None.
+</p>
 <h2><a id="timing"></a>Timing</h2>
 <p>
   This tag contains information on the calculation time of the
@@ -592,6 +627,9 @@ dynarun config.xml -c 1000000 -L MFT:BinWidth=0.5,Length=100
     per second of calculation.
   </li>
 </ul>
+<p>
+  <b>Restrictions</b>: None.
+</p>
 <h2>totMeanFreeTime</h2>
 <p>
   This tag is provided for convenience and contains the overall mean
@@ -617,6 +655,11 @@ dynarun config.xml -c 1000000 -L MFT:BinWidth=0.5,Length=100
     <b>val</b> <i>(attribute)</i>: The mean free time, $t_{mft}$.
   </li>
 </ul>
+<p>
+  <b>Restrictions</b>: Virtual events are not counted in this value,
+  therfore it is not a direct measurement of the computational cost of
+  simulating the system.
+</p>
 <h2>NegativeTimeEvents</h2>
 <p>
   This tag contains the total number of events executed where the time
@@ -643,6 +686,9 @@ dynarun config.xml -c 1000000 -L MFT:BinWidth=0.5,Length=100
     with a time in the past.
   </li>
 </ul>
+<p>
+  <b>Restrictions</b>: None.
+</p>
 <h2>Memusage</h2>
 <p>
   This tag contains the best estimate DynamO can make of the memory
@@ -667,6 +713,9 @@ dynarun config.xml -c 1000000 -L MFT:BinWidth=0.5,Length=100
     simulation at the time the output file was written out.
   </li>
 </ul>
+<p>
+  <b>Restrictions</b>: None.
+</p>
 <h2><a id="thermalconductivity"></a>ThermalConductivity</h2>
 <p>
   This tag contains the Einstein correlation function which can be
@@ -704,15 +753,6 @@ dynarun config.xml -c 1000000 -L MFT:BinWidth=0.5,Length=100
   correspond to the transport in the $x$, $y$, and $z$-directions. If
   your system is isotropic, you may just average the three values to
   improve your statistics.
-</p>
-<p>
-  <b>Restrictions</b>: This form is only valid in the micro-canonical
-  ensemble (NVE).  The current implementation is also only valid
-  for systems with no interaction energies (athermal systems) and
-  without rotational degrees of freedom (such as the hard sphere
-  fluid), as it uses the approximation $e_i\approx m\,v^2_i/2$
-  (see <a href="https://github.com/toastedcrumpets/DynamO/issues/23">issue
-  #23</a> on the bug tracker).
 </p>
 <p>
   <b><a id="extrapolationofcorrelators"></a>Extrapolation to the
@@ -793,6 +833,15 @@ dynarun config.xml -c 1000000 -L MFT:BinWidth=0.5,Length=100
     coefficient, measured in the $x$-direction.
   </li>
 </ul>
+<p>
+  <b>Restrictions</b>: This form is only valid in the micro-canonical
+  ensemble (NVE).  The current implementation is also only valid
+  for systems with no interaction energies (athermal systems) and
+  without rotational degrees of freedom (such as the hard sphere
+  fluid), as it uses the approximation $e_i\approx m\,v^2_i/2$
+  (see <a href="https://github.com/toastedcrumpets/DynamO/issues/23">issue
+  #23</a> on the bug tracker).
+</p>
 <h2>Viscosity</h2>
 <p>
   This tag contains the Einstein correlation function which can be
@@ -833,10 +882,6 @@ dynarun config.xml -c 1000000 -L MFT:BinWidth=0.5,Length=100
   \[\eta = L_{\eta\eta,xy} = L_{\eta\eta,xz} = L_{\eta\eta,yz}\] 
 
   \[\frac{4}{3}\eta + \kappa = L_{\eta\eta,xx} = L_{\eta\eta,yy} = L_{\eta\eta,zz} \]
-</p>
-<p>
-  <b>Restrictions</b>: This correlator is valid in all molecular
-  systems.
 </p>
 <p>
   <b>Extrapolation to the infinite time limit</b>:
@@ -893,7 +938,11 @@ dynarun config.xml -c 1000000 -L MFT:BinWidth=0.5,Length=100
     of the time-dependent transport coefficient.
   </li>
 </ul>
-<h2>MutualDiffusion</h2>
+<p>
+  <b>Restrictions</b>: This correlator is valid in all molecular
+  systems.
+</p>
+<h2><a id="mutualdiffusion"></a>MutualDiffusion</h2>
 <p>
   This tag contains the Einstein correlation function which can be
   used to obtain estimates for the mutual diffusion coefficients of
@@ -996,6 +1045,10 @@ dynarun config.xml -c 1000000 -L MFT:BinWidth=0.5,Length=100
     time-dependent transport coefficient.
   </li>
 </ul>
+<p>
+  <b>Restrictions</b>: This correlator is valid in all molecular
+  systems.
+</p>
 <h2>ThermalDiffusion</h2>
 <p>
   This tag contains the Einstein correlation function which can be
@@ -1023,11 +1076,6 @@ dynarun config.xml -c 1000000 -L MFT:BinWidth=0.5,Length=100
   each <a href="/index.php/reference#species">Species</a> in the
   system, there is a corresponding thermal diffusion coefficient. You
   should note that $L_{aq}=L_{qa}$.
-</p>
-<p>
-  <b>Restrictions</b>: All restrictions to the
-  <a href="#thermalconductivity">ThermalConductivity correlator</a>
-  apply here.
 </p>
 <p>
   <b>Extrapolation to the infinite time limit</b>:
@@ -1084,12 +1132,91 @@ dynarun config.xml -c 1000000 -L MFT:BinWidth=0.5,Length=100
     time-dependent transport coefficient.
   </li>
 </ul>
+<p>
+  <b>Restrictions</b>: All restrictions to the
+  <a href="#thermalconductivity">ThermalConductivity</a>
+  and <a href="#mutualdiffusion">MutualDiffusion</a> correlators apply here.
+</p>
 <h1>IntEnergyHist Plugin</h1>
 <p>
+  The internal energy histogram plugin collects the exact histogram of
+  the time the system spent in each accessible excess internal energy
+  (see the <a href="#uconfigurational">UConfigurational</a> plugin for
+  more information on this value).
 </p>
-<h1>MFT Plugin</h1>
 <p>
+  <b>Example usage</b>:
 </p>
-<h1>RadiusGyration Plugin</h1>
+<?php codeblockstart();?>
+-L IntEnergyHist:BinWidth=0.5
+<?php codeblockend("brush: shell;"); ?>
 <p>
+  <b>Options</b>:
+  <ul>
+    <li>
+      <b>BinWidth</b>: The width of the energy histogram bins. The
+      first bin is centred about zero and all other bins are spaced at
+      integer BinWidth energy offsets.
+
+      You can use a small bin width to ensure that all accessed
+      energies are captured and this shouldn't result in a huge
+      performance hit.
+    </li>
+  </ul>
+</p>
+<p>
+  <b>Example output</b>:
+</p>
+<?php codeblockstart();?>
+<EnergyHist BinWidth="1">
+  <HistogramWeighted TotalWeight="304.576171140717" Dimension="1" BinWidth="1" AverageVal="-7579.03906905185">
+-8231 5.45152795515402e-05
+-8230 4.7338829008711e-06
+-8229 2.8123254892883e-06
+-8228 2.01957587904452e-06
+-8227 2.49918411825278e-08
+...
+  </HistogramWeighted>
+</EnergyHist>
+<?php codeblockend("brush: xml;"); ?>
+<p>
+  <b>Full Tag, Subtag, and Attribute List</b>:
+  <ul>
+    <li>
+      <b>BinWidth</b> <i>(attribute)</i>: The width of the energy
+      bins.
+    </li>
+    <li>
+      <b>HistogramWeighted</b> <i>(tag)</i>: Contains the
+      time-weighted histogram data, outputted in columns which are:
+      
+      \[U_{conf.} \qquad P(U_{conf.})\] 
+      
+      where $P(U_{conf.})$ is the probability of observing the excess
+      internal energy $U_{conf.}$.
+      <ul>
+	<li>
+	  <b>TotalWeight</b> <i>(attribute)</i>: This corresponds to
+	  the total time the histogram was collected for. This should
+	  also correspond to the Time attribute of
+	  the <a href="#duration">Duration tag in the Misc plugin</a>.
+	</li>
+	<li>
+	  <b>Dimension</b> <i>(attribute)</i>: The dimensionality of
+	  the histogram (this is a one-dimensional histogram).
+	</li>
+	<li>
+	  <b>BinWidth</b> <i>(attribute)</i>: The width of the energy
+	  bins.
+	</li>
+	<li>
+	  <b>AverageVal</b> <i>(attribute)</i>: The average excess
+	  internal energy of the system. This should also correspond
+	  to the Average attribute of
+	  the <a href="#uconfigurational">UConfigurational tag in the
+	  Misc plugin</a>.
+	</li>
+      </ul>
+    </li>
+  </ul>
 </p>
