@@ -1152,18 +1152,18 @@ dynarun config.xml -c 1000000 -L MFT:BinWidth=0.5,Length=100
 <?php codeblockend("brush: shell;"); ?>
 <p>
   <b>Options</b>:
-  <ul>
-    <li>
-      <b>BinWidth</b>: The width of the energy histogram bins. The
-      first bin is centred about zero and all other bins are spaced at
-      integer BinWidth energy offsets.
-
-      You can use a small bin width to ensure that all accessed
-      energies are captured and this shouldn't result in a huge
-      performance hit.
-    </li>
-  </ul>
 </p>
+<ul>
+  <li>
+    <b>BinWidth</b>: The width of the energy histogram bins. The
+    first bin is centred about zero and all other bins are spaced at
+    integer BinWidth energy offsets.
+
+    You can use a small bin width to ensure that all accessed
+    energies are captured and this shouldn't result in a huge
+    performance hit.
+  </li>
+</ul>
 <p>
   <b>Example output</b>:
 </p>
