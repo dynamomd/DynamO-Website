@@ -288,9 +288,9 @@ dynarun config.xml -c 1000000 -L MFT:BinWidth=0.5,Length=100
 </ul>
 <h2>UConfigurational</h2>
 <p>
-  This tag contains the interaction energy per particle. This is equal
-  to the excess internal energy (also known as the configurational
-  internal energy).
+  This tag contains the interaction energy of the system. This is
+  equal to the excess internal energy (also known as the
+  configurational internal energy).
 
   <br/> The averages in this tag are collected exactly (see the
   <a href="/index.php/FAQ#q-how-does-dynamo-collect-exact-timeaverages">FAQ
@@ -389,7 +389,7 @@ dynarun config.xml -c 1000000 -L MFT:BinWidth=0.5,Length=100
   given by:
 
   \[\mathbf{P}^{interaction}=\frac{1}{V\,t_{sim}}\sum_{ij}^{event}
-  \Delta \mathbf{p}_i\mathbf{r}_{ij}\]
+  \Delta \mathbf{p}_i\,\mathbf{r}_{ij}\]
 
   where $t_{sim}$ is the total simulation time, the summation is over
   each two-particle event
@@ -594,10 +594,10 @@ dynarun config.xml -c 1000000 -L MFT:BinWidth=0.5,Length=100
 </ul>
 <h2>totMeanFreeTime</h2>
 <p>
-  This tag contains the overall mean free time of a particle. This is
-  calculated from the counts of the one-particle ($N_{1}^{events}$)
-  and two-particle ($N_{2}^{events}$) event counts using the following
-  formula:
+  This tag is provided for convenience and contains the overall mean
+  free time of a particle. This is calculated from the counts of the
+  one-particle ($N_{1}^{events}$) and two-particle ($N_{2}^{events}$)
+  event counts using the following formula:
 
   \[ t_{mft} = t_{sim}\,N/\left(2\,N_{2}^{events} + N_{1}^{events}\right)\]
 </p>
@@ -647,8 +647,8 @@ dynarun config.xml -c 1000000 -L MFT:BinWidth=0.5,Length=100
 <p>
   This tag contains the best estimate DynamO can make of the memory
   used by DynamO at the last event executed in the simulation. Due to
-  the way this information is obtained, its estimate of the maximum
-  memory usage at that time.
+  the way this information is obtained, it is the upper limit of the
+  memory in use at that time, and the actual utilisation may be lower.
 </p>
 <p>
   <b>Example output</b>:
