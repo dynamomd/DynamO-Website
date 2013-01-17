@@ -193,32 +193,42 @@ Mode 1: Mono/Multi-component square wells
 </p>
 <?php xmlXPathFile("pages/config.tut4.mono.xml", "/DynamOconfig/Simulation/Genus"); ?>
 <p>
-  If we want to study a multicomponent system we'll need to define at
-  least two species to specify the masses of the particles. If we want
-  to convert the first 100 particles in the configuration file to
-  species A and have the rest as species B, we can change the file to:
+  If we want to study a binary system, we'll need to define two
+  species to be able to identify the two types of particles in the
+  output. Using two species also provides a convenient way to specify
+  the two masses of the two types of particles. Lets assume we want to
+  convert the first 100 particles in the configuration file to species
+  A and have the rest as species B, we can change the file to:
 </p>
 <?php xmlXPathFile("pages/config.tut4.binary.xml", "/DynamOconfig/Simulation/Genus"); ?>
 <p>
   You'll notice that the <b>IDRange</b> of <b>Type</b> <i>"Ranged"</i>
   is an inclusive range of particle ID's. The particle ID's start with
   zero therefore the first <b>Species</b> tag corresponds to the first
-  100 particles in the configuration file.
+  100 particles in the configuration file.  For more information on
+  the "Ranged" <b>IDRange</b> tag, please see the reference:
 </p>
+<?php button("Reference entry for <i>\"Ranged\"</i> Type <b>IDRange</b>","/index.php/reference#typeranged");?>
 <p>
-  Each particle must belong to exactly one species and each species
-  must have a representative <b>Interaction</b>, who's <i>name</i> is
-  specified by the <b>IntName</b> attribute. Obviously, we need to
-  define at least two interactions, called <i>"AAInteraction"</i> and
-  <i>"BBInteraction"</i>.
+  If we consult
+  the <a href="/index.php/reference#species">documentation for the
+  Species tag</a>, we see that each particle must belong to exactly
+  one Species and each Species must have a
+  representative <b>Interaction</b>, who's <i>name</i> is specified by
+  the <b>IntName</b> attribute. This Interaction is used to describe
+  particles in the Species for visualisation and for calculation of
+  properties such as its excluded volume. Obviously, we need to define
+  at least two interactions, called <i>"AAInteraction"</i> and
+  <i>"BBInteraction"</i> which describe the two types of particles in
+  the system. In the next section we'll take a look at setting all of
+  the Interactions of the system up.
 </p>
 <h2>Setting up the Interactions</h2>
 <p>
-  In the basic file 
+  In the original file, only one Interaction is defined:
 </p>
 <?php xmlXPathFile("pages/config.tut4.mono.xml", "/DynamOconfig/Simulation/Interactions", 4, 2); ?>
 <p>
-  
 </p>
 <?php xmlXPathFile("pages/config.tut4.binary.xml", "/DynamOconfig/Simulation/Interactions", 4,3); ?>
 <p>
