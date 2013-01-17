@@ -647,7 +647,6 @@ tags","/index.php/reference#simulationsize");?>
 </p>
 <?php button("Reference entry for <b>Dynamics</b>
 	      tags","/index.php/reference#dynamics");?>
-</p>
 <h1>Conclusion</h1>
 <p>
   In this lengthy tutorial we've covered the entire configuration file
