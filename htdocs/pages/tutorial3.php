@@ -28,7 +28,10 @@
 </p>
 <p>
   In the following sections, we will explore a configuration file and
-  test the effects of changing some settings.
+  test the effects of changing some settings. For more information on
+  any of the sections below, please take a look at
+  the <a href="/index.php/reference">reference documentation for the
+  configuration file format</a>.
 </p>
 <h1>The Example Configuration</h1>
 <div class="figure" style="clear:right; float:right;width:400px;">
@@ -139,8 +142,11 @@ dynamod -m 0 -d 0.5 -C 7 -o config.start.xml
   particle within the system and the <b>V</b> tag holds the particles
   velocity. You'll notice that DynamO always outputs numerical values
   in scientific notation to ensure little precision is lost when
-  loading and saving.
+  loading and saving. For more information on the <b>Pt</b> tag,
+  please see the reference:
 </p>
+<?php button("Reference entry for <b>Pt</b>
+tags","/index.php/reference#pt");?>
 <p>
   You should notice that the mass and size of the particles is not
   specified here where you might expect it. This is because of the
@@ -160,7 +166,6 @@ dynamod -m 0 -d 0.5 -C 7 -o config.start.xml
     information for each particle.
   </li>
 </ul>
-</p>
 <p>
   Instead, in DynamO the properties of particles are defined where
   they are needed and you can map one single value of a property onto
@@ -186,9 +191,10 @@ dynamod -m 0 -d 0.5 -C 7 -o config.start.xml
 </p>
 <?php xmlXPathFile("pages/config.tut3.xml", "/DynamOconfig/Simulation/Scheduler"); ?>
 <p>
-  The <b>Scheduler</b> tags contain the settings for the event scheduler and
-  event sorter, which are the parts of DynamO responsible for
-  determining which event happens next in the simulation. 
+  The <b>Scheduler</b> tags contain the settings for the event
+  Scheduler and the event Sorter, which are the parts of DynamO
+  responsible for determining which event happens next in the
+  simulation.
   <u>Changing the <b>Scheduler</b> settings should never affect the
   results DynamO generates</u>. However, optimal settings will greatly
   increase DynamO's calculation speed. The <b>Scheduler</b> tags will
@@ -210,6 +216,14 @@ dynamod -m 0 -d 0.5 -C 7 -o config.start.xml
   processes around $1/25^{th}$ of the events per second when compared
   against the NeighbourList scheduler.
 </p>
+<p>
+ For more information on the <b>Scheduler</b> or <b>Sorter</b> tags
+ and the available <i>Type</i>s, please see the reference:
+</p>
+<?php button("Reference entry for <b>Scheduler</b>
+tags","/index.php/reference#scheduler");?>
+<?php button("Reference entry for <b>Sorter</b>
+tags","/index.php/reference#sorter");?>
 <h2>SimulationSize</h2>
 <p>
   In the <b>Simulation</b> <i>tag</i> there is a <i>tag</i>
@@ -252,6 +266,12 @@ dynamod -m 0 -d 0.5 -C 7 -o config.start.xml
   will have to look at more advanced techniques such as compression if
   we want to increase a configuration's density.
 </p>
+<p>
+  For more information on the <b>SimulationSize</b> tag, please see
+  the reference:
+</p>
+<?php button("Reference entry for <b>SimulationSize</b>
+tags","/index.php/reference#simulationsize");?>
 <p>
   We will now look into how we can disable this periodic
   &quot;folding&quot; completely in the following section on boundary
@@ -296,8 +316,12 @@ dynamod -m 0 -d 0.5 -C 7 -o config.start.xml
 <p>
   There are also Lees-Edwards shearing boundary conditions available
   in DynamO (<b>Type</b>=&quot;<i>LE</i>&quot;) which will be
-  discussed in a later tutorial.
+  discussed in a later tutorial.  For more information on
+  the <b>BC</b> tag and the available <i>Type</i>s, please see the
+  reference:
 </p>
+<?php button("Reference entry for <b>BC</b>
+	      tags","/index.php/reference#bc");?>
 <h2>Genus/Species</h2>
 <p>
   The next set of tags in the <b>Simulation</b> section are
@@ -337,11 +361,15 @@ dynamod -m 0 -d 0.5 -C 7 -o config.start.xml
   has no rotational degrees of freedom, such as atoms in molecular
   systems. Other values, such as spherical top or a full tensor are
   available and are useful when studying granular systems, or
-  assymetric particles.
+  assymetric particles. For more information on the <b>Species</b> tag
+  and the available <i>Type</i>s, please see the reference:
 </p>
+<?php button("Reference entry for <b>Species</b>
+	      tags","/index.php/reference#species");?>
 <p>
   Inside of the <b>Species</b> tag, there is an <b>IDRange</b> tag
-  which is used to specify which particles this species applies to.
+  which is used to specify which particles this species applies
+  to. <b>IDRange</b> are discussed in the following section.
 </p>
 <h2>IDRange</h2>
 <p>
@@ -387,8 +415,11 @@ dynamod -m 0 -d 0.5 -C 7 -o config.start.xml
   tensor and representative <b>Interaction</b>).
   Multiple <b>Species</b> can be defined in a straightforward way, and
   this is discussed in the next tutorial when we consider a binary
-  mixture of spheres.
+  mixture of spheres. For more information on the <b>IDRange</b> tag
+  and the available <i>Type</i>s, please see the reference:
 </p>
+<?php button("Reference entry for <b>IDRange</b>
+	      tags","/index.php/reference#idrange");?>
 <p>
   In later tutorials, we will see some more types of <b>IDRange</b>s
   and how they can be used. We will also see what to do when
@@ -408,8 +439,11 @@ dynamod -m 0 -d 0.5 -C 7 -o config.start.xml
   particles in each polymer in your molecular simulation so that you
   can calculate a molecular (instead of atomic) diffusion coefficient.
   This tag will become more useful when bonded interactions are
-  introduced in a later tutorial on polymeric systems.
+  introduced in a later tutorial on polymeric systems. For more
+  information on the <b>Topology</b> tag, please see the reference:
 </p>
+<?php button("Reference entry for <b>Topology</b>
+	      tags","/index.php/reference#topology");?>
 <h2>Interactions/Interaction</h2>
 <p>
   The next important tags in the file format are
@@ -460,6 +494,12 @@ dynamod -m 0 -d 0.5 -C 7 -o config.start.xml
   characteristic of granular systems.
 </p>
 <p>
+ For more information on the <b>Interaction</b> tag and the
+ available <i>Type</i>s, please see the reference:
+</p>
+<?php button("Reference entry for <b>Interaction</b>
+	      tags","/index.php/reference#interaction");?>
+<p>
   We have now covered the primary type of events (two
   particle <b>Interaction</b> events) which will occur in our
   simulations but there are many other possible event types
@@ -476,8 +516,11 @@ dynamod -m 0 -d 0.5 -C 7 -o config.start.xml
   <b>IDPairRange</b> <b>Type</b> attribute of <i>All</i> specifies all
   pairs of particles interact this way. <b>IDPairRange</b>s and
   multiple <b>Interaction</b>s are covered in more detail in the next
-  tutorial.
+  tutorial. A complete description of the <b>IDPairRange</b> tag and
+  all of the available <i>Type</i>s is available in the reference:
 </p>
+<?php button("Reference entry for <b>IDPairRange</b>
+	      tags","/index.php/reference#idpairrange");?>
 <h2>Locals</h2>
 <p>
   In this simulation, we have an empty <b>Locals</b> tag:
@@ -493,8 +536,12 @@ dynamod -m 0 -d 0.5 -C 7 -o config.start.xml
 </p>
 <p>
   Using <b>Locals</b> will be discussed in a later tutorial when we
-  study walls and triangle meshes.
+  study walls and triangle meshes.  For more information on
+  the <b>Local</b> tag and the available <i>Type</i>s, please see the
+  reference:
 </p>
+<?php button("Reference entry for <b>Local</b>
+	      tags","/index.php/reference#local");?>
 <h2>Globals</h2>
 <p>
   <b>Globals</b> are single particle events which can occur anywhere
@@ -533,9 +580,13 @@ dynamod -m 0 -d 0.5 -C 7 -o config.start.xml
   algorithm. However, the use of these events is rare and often
   the <b>Globals</b> tag only contains the neighbour list.
   <b>Global</b> event types also require a <b>IDRange</b> to specify
-  which particles it applies to. The neighbour list should apply to
-  all particles for the Neighbourlist scheduler to function.
+  which particles it applies to. <p> Using <b>Locals</b> will be
+  discussed in a later tutorial when we study walls and triangle
+  meshes.  For more information on the <b>Global</b> tag and the
+  available <i>Type</i>s, please see the reference:
 </p>
+<?php button("Reference entry for <b>Global</b>
+	      tags","/index.php/reference#global");?>
 <h2>SystemEvents/System</h2>
 <p>
   Finally, <b>System</b> events comprise every other source of events
@@ -547,8 +598,12 @@ dynamod -m 0 -d 0.5 -C 7 -o config.start.xml
 <?php xmlXPathFile("pages/config.tut3.xml", "/DynamOconfig/Simulation/SystemEvents"); ?>
 <p>
   This configuration has no <b>System</b> events, but we will see the
-  use of thermostats and rescalers in later tutorials on polymers.
+  use of thermostats and rescalers in later tutorials on polymers. For
+  more information on the <b>System</b> tag and the
+  available <i>Type</i>s, please see the reference:
 </p>
+<?php button("Reference entry for <b>System</b>
+	      tags","/index.php/reference#system");?>
 <h2>Dynamics</h2>
 <div class="figure" style="clear:right; float:right;width:400px;">
   <?php embedAJAXvideo("fallinghardspheres", "Hx6rcS-RAkU", 400, 300); ?>
@@ -586,7 +641,12 @@ dynamod -m 0 -d 0.5 -C 7 -o config.start.xml
   By altering the <b>Dynamics</b> tag, you can run compression
   simulations or use multicanonical potentials to deform the energy
   landscape of the system. These are relatively advanced topics which
-  will be covered in a later tutorial.
+  will be covered in a later tutorial. For more information on
+  the <b>Dynamics</b> tag and the available <i>Type</i>s, please see
+  the reference:
+</p>
+<?php button("Reference entry for <b>Dynamics</b>
+	      tags","/index.php/reference#dynamics");?>
 </p>
 <h1>Conclusion</h1>
 <p>
@@ -594,13 +654,8 @@ dynamod -m 0 -d 0.5 -C 7 -o config.start.xml
   format.  Now that we've covered the general workflow of using DynamO
   in <a href="/index.php/tutorial2">tutorial 2</a>, and all of the
   terminology and configuration file format in this tutorial, the
-  following tutorials will now focus on case studies of certain
-  systems and collecting data, beginning with the multicomponent
-  square-well fluid.
+  following tutorials can focus on case studies of certain systems and
+  collecting data, beginning with the multicomponent square-well
+  fluid.
 </p>
 <?php button("Tutorial 4: Example: Multicomponent Square-Well Fluid","/index.php/tutorial4");?>
-<p>
-  If you want more information on the file format, please take a look
-  at the <a href="/index.php/reference">configuration file format
-  reference</a>.
-</p>
