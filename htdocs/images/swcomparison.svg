@@ -11,13 +11,13 @@
    xmlns:xlink="http://www.w3.org/1999/xlink"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
-   width="251.58165"
-   height="122.04022"
+   width="251"
+   height="126"
    id="svg2"
    version="1.1"
    inkscape:version="0.48.3.1 r9886"
-   sodipodi:docname="sw.svg"
-   inkscape:export-filename="/var/www/htdocs/images/sw.png"
+   sodipodi:docname="swcomparison.svg"
+   inkscape:export-filename="/var/www/localhost/htdocs/images/swcomparison.png"
    inkscape:export-xdpi="153.90865"
    inkscape:export-ydpi="153.90865">
   <sodipodi:namedview
@@ -28,15 +28,15 @@
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
      inkscape:zoom="2.8"
-     inkscape:cx="208.83216"
-     inkscape:cy="36.039626"
+     inkscape:cx="122.93694"
+     inkscape:cy="-5.0318042"
      inkscape:document-units="px"
      inkscape:current-layer="layer1"
      showgrid="false"
-     inkscape:window-width="1920"
-     inkscape:window-height="1025"
+     inkscape:window-width="1280"
+     inkscape:window-height="977"
      inkscape:window-x="-2"
-     inkscape:window-y="-3"
+     inkscape:window-y="24"
      inkscape:window-maximized="1"
      fit-margin-top="0"
      fit-margin-left="0"
@@ -194,7 +194,7 @@
     </rdf:RDF>
   </metadata>
   <g
-     transform="translate(-165.4496,-142.25243)"
+     transform="translate(-165.4496,-138.29265)"
      inkscape:label="Layer 1"
      inkscape:groupmode="layer"
      id="layer1">
@@ -206,7 +206,7 @@
        sodipodi:nodetypes="ccc" />
     <path
        style="fill:none;stroke:#000000;stroke-width:2;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;marker-end:url(#Arrow2Mend-3)"
-       d="m 410,187.36219 -60,-1e-5 0,45 -105,0 0,-75"
+       d="m 410,187.36219 -60,-1e-5 0,45 -105,0 0,-87.14286"
        id="path2989"
        inkscape:connector-curvature="0"
        sodipodi:nodetypes="ccccc" />
@@ -290,74 +290,97 @@
       </g>
     </g>
     <path
-       sodipodi:nodetypes="cc"
-       style="fill:none;stroke:#000000;stroke-width:2;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:2, 6;stroke-dashoffset:0"
-       d="m 185,187.36219 165,0"
-       id="path4030"
-       inkscape:connector-curvature="0" />
-    <g
-       ns0:text="$+\\infty$"
-       ns0:preamble="/home/mjki2mb2/inkscape_preamble.tex"
-       transform="matrix(1.5,0,0,1.5,-86.930166,-43.074772)"
-       id="g4113">
-      <defs
-         id="defs4115">
-        <g
-           id="g4117">
-          <symbol
-             style="overflow:visible"
-             overflow="visible"
-             id="textext-a65272d1-0">
-            <path
-               inkscape:connector-curvature="0"
-               style="stroke:none"
-               d="m 4.078125,-2.296875 2.78125,0 C 7,-2.296875 7.1875,-2.296875 7.1875,-2.5 7.1875,-2.6875 7,-2.6875 6.859375,-2.6875 l -2.78125,0 0,-2.796875 c 0,-0.140625 0,-0.328125 -0.203125,-0.328125 -0.203125,0 -0.203125,0.1875 -0.203125,0.328125 l 0,2.796875 -2.78125,0 c -0.140625,0 -0.328125,0 -0.328125,0.1875 0,0.203125 0.1875,0.203125 0.328125,0.203125 l 2.78125,0 0,2.796875 c 0,0.140625 0,0.328125 0.203125,0.328125 0.203125,0 0.203125,-0.1875 0.203125,-0.328125 z m 0,0"
-               id="path4120" />
-          </symbol>
-          <symbol
-             style="overflow:visible"
-             overflow="visible"
-             id="textext-a65272d1-1">
-            <path
-               inkscape:connector-curvature="0"
-               style="stroke:none"
-               d="M 5.0625,-2.703125 C 4.53125,-3.375 4.40625,-3.53125 4.09375,-3.78125 c -0.5625,-0.453125 -1.109375,-0.625 -1.625,-0.625 -1.15625,0 -1.921875,1.09375 -1.921875,2.265625 0,1.140625 0.734375,2.25 1.890625,2.25 1.140625,0 1.96875,-0.90625 2.453125,-1.703125 0.546875,0.671875 0.65625,0.828125 0.96875,1.078125 0.5625,0.453125 1.125,0.625 1.625,0.625 1.171875,0 1.921875,-1.09375 1.921875,-2.265625 0,-1.140625 -0.734375,-2.25 -1.875,-2.25 -1.15625,0 -1.984375,0.90625 -2.46875,1.703125 z m 0.265625,0.34375 c 0.40625,-0.71875 1.140625,-1.734375 2.265625,-1.734375 1.0625,0 1.59375,1.046875 1.59375,1.9375 0,0.984375 -0.671875,1.78125 -1.546875,1.78125 C 7.0625,-0.375 6.625,-0.78125 6.40625,-1 6.15625,-1.265625 5.9375,-1.578125 5.328125,-2.359375 z m -0.6875,0.421875 c -0.40625,0.71875 -1.15625,1.734375 -2.28125,1.734375 -1.046875,0 -1.59375,-1.046875 -1.59375,-1.9375 0,-0.984375 0.671875,-1.78125 1.546875,-1.78125 0.578125,0 1.03125,0.40625 1.234375,0.625 0.25,0.265625 0.484375,0.578125 1.09375,1.359375 z m 0,0"
-               id="path4123" />
-          </symbol>
-        </g>
-      </defs>
-      <g
-         id="textext-a65272d1-2">
-        <g
-           style="fill:#000000;fill-opacity:1"
-           id="g4126">
-          <use
-             height="113.24416"
-             width="263.2991"
-             xlink:href="#textext-a65272d1-0"
-             x="223.43201"
-             y="134.765"
-             id="use4128" />
-        </g>
-        <g
-           style="fill:#000000;fill-opacity:1"
-           id="g4130">
-          <use
-             height="113.24416"
-             width="263.2991"
-             xlink:href="#textext-a65272d1-1"
-             x="231.181"
-             y="134.765"
-             id="use4132" />
-        </g>
-      </g>
-    </g>
-    <path
        style="fill:none;stroke:#800000;stroke-width:2;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
-       d="m 78.18312,1.3910125 c 0,0 10,94.9999995 40,94.9999995 40.99458,0 49.64286,-44.821428 140,-48.749999"
+       d="m 78.18312,1.3910125 c 0,0 16.071429,98.2142855 46.07143,98.2142855 40.99458,0 43.57143,-48.035714 133.92857,-51.964285"
        id="path3149"
        inkscape:connector-curvature="0"
        transform="translate(151.81688,140.97118)"
        sodipodi:nodetypes="csc" />
+    <path
+       style="fill:none;stroke:#800000;stroke-width:2;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:2, 4;stroke-dashoffset:0"
+       d="m 277.23531,143.22122 0,103.21429"
+       id="path3034"
+       inkscape:connector-curvature="0"
+       sodipodi:nodetypes="cc" />
+    <text
+       xml:space="preserve"
+       style="font-size:14px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#800000;fill-opacity:1;stroke:none;font-family:Bitstream Charter;-inkscape-font-specification:Bitstream Charter"
+       x="217.73688"
+       y="-152.01857"
+       id="text3858"
+       sodipodi:linespacing="125%"
+       transform="matrix(0.31970627,0.9475167,-0.9475167,0.31970627,0,0)"><tspan
+         sodipodi:role="line"
+         id="tspan3860"
+         x="217.73688"
+         y="-152.01857">Repulsion</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:14px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#800000;fill-opacity:1;stroke:none;font-family:Bitstream Charter;-inkscape-font-specification:Bitstream Charter"
+       x="283.62305"
+       y="303.12131"
+       id="text3862"
+       sodipodi:linespacing="125%"
+       transform="matrix(0.96302914,-0.26939726,0.26939726,0.96302914,0,0)"><tspan
+         sodipodi:role="line"
+         id="tspan3864"
+         x="283.62305"
+         y="303.12131">Attraction</tspan></text>
+    <g
+       id="g3919"
+       transform="translate(1.0714286,-0.71428571)">
+      <text
+         transform="matrix(0,-1,1,0,0,0)"
+         sodipodi:linespacing="125%"
+         id="text3866-8"
+         y="256.82108"
+         x="-186.3163"
+         style="font-size:14px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:center;line-height:125%;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#ffffff;fill-opacity:1;stroke:#ffffff;stroke-width:2;stroke-miterlimit:4;stroke-dasharray:none;font-family:Bitstream Charter;-inkscape-font-specification:Bitstream Charter"
+         xml:space="preserve"><tspan
+           id="tspan3870-8"
+           y="256.82108"
+           x="-186.3163"
+           sodipodi:role="line">Repulsive core</tspan></text>
+      <text
+         transform="matrix(0,-1,1,0,0,0)"
+         sodipodi:linespacing="125%"
+         id="text3866"
+         y="256.82108"
+         x="-186.3163"
+         style="font-size:14px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:center;line-height:125%;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;font-family:Bitstream Charter;-inkscape-font-specification:Bitstream Charter"
+         xml:space="preserve"><tspan
+           id="tspan3870"
+           y="256.82108"
+           x="-186.3163"
+           sodipodi:role="line">Repulsive core</tspan></text>
+    </g>
+    <g
+       id="g3913"
+       transform="translate(-1.4285714,0)">
+      <text
+         transform="matrix(0,-1,1,0,0,0)"
+         sodipodi:linespacing="125%"
+         id="text3874-4"
+         y="347.26273"
+         x="-230.57066"
+         style="font-size:14px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#ffffff;fill-opacity:1;stroke:#ffffff;stroke-width:2;stroke-miterlimit:4;stroke-dasharray:none;font-family:Bitstream Charter;-inkscape-font-specification:Bitstream Charter"
+         xml:space="preserve"><tspan
+           y="347.26273"
+           x="-230.57066"
+           id="tspan3876-5"
+           sodipodi:role="line">Attractive Well</tspan></text>
+      <text
+         transform="matrix(0,-1,1,0,0,0)"
+         sodipodi:linespacing="125%"
+         id="text3874"
+         y="347.26273"
+         x="-230.57066"
+         style="font-size:14px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Bitstream Charter;-inkscape-font-specification:Bitstream Charter"
+         xml:space="preserve"><tspan
+           y="347.26273"
+           x="-230.57066"
+           id="tspan3876"
+           sodipodi:role="line">Attractive Well</tspan></text>
+    </g>
   </g>
 </svg>

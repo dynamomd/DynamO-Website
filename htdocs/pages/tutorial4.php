@@ -55,21 +55,40 @@
   Square-well molecules are simple models which display the two
   fundamental features of real molecules, a short range repulsion (due
   to overlapping electron clouds) and longer ranged attraction (due to
-  van-der-waals/London/dispersion forces). For example, when two
-  distant square-well particles approach each other and reach a
-  separation of $r=\lambda\,\sigma$, they enter the well (or "capture"
-  each other) and a momentum impulse increases their kinetic energy by
-  $\varepsilon$ (they are attracted to each other). If they then
-  approach the inner core and reach a separation of $r=\sigma$, they
-  will be unable to pay the (infinite) energy cost to enter the core
-  and will instead elastically bounce off it. Once they begin to
-  retreat from each other (either by bouncing off the core or by
-  missing it) and once again reach a separation of
-  $r=\lambda\,\sigma$, they must have enough kinetic energy to escape
-  the well and pay the energy cost, $\varepsilon$, otherwise they will
-  bounce off the inside of the well.
+  van-der-waals/London/dispersion forces). A comparison of the
+  square-well model (<span style="font-weight:bold; color:#000;">black</span>) and a "realistic" interatomic potential
+  (<span style="font-weight:bold; color:#800;">red</span>) is given in the figure below:
 </p>
-<img src="/images/swcomparison.png" alt="A diagram of a square-well molecule including its parameters" width="650" height="232" style="display:block;margin:0 auto 0 auto;">
+<img src="/images/swcomparison.png" alt="A diagram of a square-well molecule including its parameters" width="429" height="215" style="display:block;margin:0 auto 0 auto;">
+<p>
+  It is clear that the square-well potential is a rough approximation
+  of the "realistic" potential, but its dynamics are not immediately
+  clear. With the "realistic" potential, it is easy to see how a pair
+  of particles might "fall down" the potential and attract or repulse
+  each other, but how does this behaviour appear in the square-well
+  model?  When two distant square-well particles approach each other
+  and reach a separation of $r=\lambda\,\sigma$, they enter the well
+  (or "capture" each other) and a momentum impulse increases their
+  kinetic energy by $\varepsilon$ (they are attracted to each
+  other). If they then approach the inner core and reach a separation
+  of $r=\sigma$, they will be unable to pay the infinite energy cost
+  to enter the core and will instead elastically bounce off it. Once
+  they begin to retreat from each other (either by bouncing off the
+  core or by missing it) and reach a separation of
+  $r=\lambda\,\sigma$, they must have enough kinetic energy in the
+  direction of the well to escape it and pay the energy cost,
+  $\varepsilon$, otherwise they will bounce off the inside of the well
+  (both are attractive interactions).
+</p>
+<p>
+  If we used more steps to more accurately approximate the "realistic"
+  potential, we can quite quickly capture the full behaviour of the
+  smooth/"realistic" potential. However, the square-well model is so
+  interesting because it is so simple! If we can understand the
+  fundamental behaviour of square-well molecules, the fundamental
+  behaviour of realistic potentials will also be explained without the
+  additional complexity.
+</p>
 
 <h2>The System Studied</h2>
 <p>
@@ -150,7 +169,7 @@ Mode 1: Mono/Multi-component square wells
 </p>
 <?php codeblockstart(); ?>dynamod -m 1 -C 10 -d 0.5 --i1 0 -r 1 -o config.start.xml<?php codeblockend("brush: shell;"); ?>
 <p style="font-family:monospaced;">
-  The options passed
+  The options passed here
   are <a href="/index.php/tutorial2#initial-positions-and-crystals">discussed
   in detail in tutorial 2</a>. The only differences are that the
   number of particles has been increased to 4000 (<i>-C 10</i>), and
