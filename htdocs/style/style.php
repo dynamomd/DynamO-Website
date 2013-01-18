@@ -120,12 +120,22 @@ li {
 
 #w3footerlogoHTML, #w3footerlogoCSS {
     border:0;
-    float:right;
     width:88px; 
     height:31px; 
     position:absolute;
     top:5px;
     background-image: url(csssprites.png); 
+}
+
+#mathjaxfooterlogo {
+    border:0;
+    width:127px; 
+    height:31px; 
+    position:absolute;
+    top:5px;
+    background-image: url(csssprites.png); 
+    background-position: -305px 0;
+    right:221px;
 }
 
 #w3footerlogoHTML {

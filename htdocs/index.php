@@ -287,6 +287,9 @@ if ($TOC)
     <!-- FOOTER -->
     <div id="footer" class="rounded">
       Copyright &copy; Marcus Bannerman 2008-<?php echo date("Y"); ?>
+      <?php if ($mathjax) { ?>
+      <a href="http://www.mathjax.org/" id="mathjaxfooterlogo"></a>
+      <?php } ?>
       <a href="http://validator.w3.org/check?uri=referer" id="w3footerlogoHTML"></a>
       <a href="http://jigsaw.w3.org/css-validator/check/referer" id="w3footerlogoCSS"></a>
     </div>
