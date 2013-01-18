@@ -200,11 +200,12 @@ Mode 1: Mono/Multi-component square wells
 <?php xmlXPathFile("pages/config.tut4.mono.xml", "/DynamOconfig/Simulation/Genus"); ?>
 <p>
   If we want to study a binary system, we'll need to define two
-  species to be able to identify the two types of particles in the
-  output. Using two species also provides a convenient way to specify
-  the two masses of the two types of particles. Lets assume we want to
-  convert the first 100 particles in the configuration file to species
-  A and have the rest as species B, we can change the file to:
+  Species to be able to identify the two types of particles in the
+  output. Using two Species also provides a convenient way to specify
+  the two different masses of the two types of particles. Lets assume
+  we want to convert the first 100 particles in the configuration file
+  to Species "A" and have the rest as Species "B", we can change the
+  file to:
 </p>
 <?php xmlXPathFile("pages/config.tut4.binary.xml", "/DynamOconfig/Simulation/Genus"); ?>
 <p>
