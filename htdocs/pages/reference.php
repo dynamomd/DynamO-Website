@@ -653,7 +653,7 @@
       IDPairRanges</a> for more information on the format of this tag.
   </li>
 </ul>
-<h2>Type="SquareWell"</h2>
+<h2><a id="typesquarewell"></a>Type="SquareWell"</h2>
 <p>
   <b>Description:</b> The "SquareWell" Interaction implements the
   square-well interaction potential, illustrated in the figure below. 
