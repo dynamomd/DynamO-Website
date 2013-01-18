@@ -36,7 +36,11 @@
 <p>
   Although this tutorial looks at a multicomponent square-well fluid,
   it provides you with all of the knowledge you need to study any
-  multicomponent system.
+  multicomponent system. In the following section, we motivate the
+  square-well model and discuss its importance as a simplifed model of
+  atomic interactions. The remaining sections describe how to
+  implement a simulation of a binary (two-component) mixture of square-well
+  particles.
 </p>
 <h1>About Square-Well Fluids</h1>
 <p>
@@ -56,8 +60,10 @@
   fundamental features of real molecules, a short range repulsion (due
   to overlapping electron clouds) and longer ranged attraction (due to
   van-der-waals/London/dispersion forces). A comparison of the
-  square-well model (<span style="font-weight:bold; color:#000;">black</span>) and a "realistic" interatomic potential
-  (<span style="font-weight:bold; color:#800;">red</span>) is given in the figure below:
+  square-well model (<span style="font-weight:bold;
+  color:#000;">black</span>) and a "realistic" interatomic potential
+  (<span style="font-weight:bold; color:#800;">red</span>) is given in
+  the figure below:
 </p>
 <img src="/images/swcomparison.png" alt="A diagram of a square-well molecule including its parameters" width="429" height="215" style="display:block;margin:0 auto 0 auto;">
 <p>
@@ -194,11 +200,12 @@ Mode 1: Mono/Multi-component square wells
 <?php xmlXPathFile("pages/config.tut4.mono.xml", "/DynamOconfig/Simulation/Genus"); ?>
 <p>
   If we want to study a binary system, we'll need to define two
-  species to be able to identify the two types of particles in the
-  output. Using two species also provides a convenient way to specify
-  the two masses of the two types of particles. Lets assume we want to
-  convert the first 100 particles in the configuration file to species
-  A and have the rest as species B, we can change the file to:
+  Species to be able to identify the two types of particles in the
+  output. Using two Species also provides a convenient way to specify
+  the two different masses of the two types of particles. Lets assume
+  we want to convert the first 100 particles in the configuration file
+  to Species "A" and have the rest as Species "B", we can change the
+  file to:
 </p>
 <?php xmlXPathFile("pages/config.tut4.binary.xml", "/DynamOconfig/Simulation/Genus"); ?>
 <p>
@@ -220,15 +227,20 @@ Mode 1: Mono/Multi-component square wells
   properties such as its excluded volume. Obviously, we need to define
   at least two interactions, called <i>"AAInteraction"</i> and
   <i>"BBInteraction"</i> which describe the two types of particles in
-  the system. In the next section we'll take a look at setting all of
-  the Interactions of the system up.
+  the system. In the next section we'll take a look at setting up all
+  of the Interactions of the system.
 </p>
 <h2>Setting up the Interactions</h2>
 <p>
-  In the original file, only one Interaction is defined:
+  In the original file, only one <a href="/index.php/reference#typesquarewell">square-well
+  Type <b>Interaction</b></a> is defined:
 </p>
 <?php xmlXPathFile("pages/config.tut4.mono.xml", "/DynamOconfig/Simulation/Interactions", 4, 2); ?>
 <p>
+  Here, we will use three seperate <b>Interaction</b> tags to input
+  the parameters of the three types of interactions between all
+  species (A-A, A-B, and B-B). Later in the tutorial, we will show how
+  to use properties to achieve the same effect using
 </p>
 <?php xmlXPathFile("pages/config.tut4.binary.xml", "/DynamOconfig/Simulation/Interactions", 4,3); ?>
 <p>
