@@ -232,19 +232,33 @@ Mode 1: Mono/Multi-component square wells
 </p>
 <h2>Setting up the Interactions</h2>
 <p>
-  In the original file, only one <a href="/index.php/reference#typesquarewell">square-well
+  In the original file, only
+  one <a href="/index.php/reference#typesquarewell">square-well
   Type <b>Interaction</b></a> is defined:
 </p>
 <?php xmlXPathFile("pages/config.tut4.mono.xml", "/DynamOconfig/Simulation/Interactions", 4, 2); ?>
 <p>
   Here, we will use three seperate <b>Interaction</b> tags to input
   the parameters of the three types of interactions between all
-  species (A-A, A-B, and B-B). Later in the tutorial, we will show how
-  to use properties to achieve the same effect using
+  species (A-A, A-B, and B-B). An example implementation is given
+  below:
 </p>
 <?php xmlXPathFile("pages/config.tut4.binary.xml", "/DynamOconfig/Simulation/Interactions", 4,3); ?>
 <p>
-  
+  The first Interaction entry handles the interactions between Species
+  A particles. A
+  special <a href="/index.php/reference#typesingle">"Single" type
+  IDPairRange</a> is used to convert a single IDRange, which
+  identifies all of the type A particles, into a IDPairRange
+  describing all pairings of type A particles. This interaction
+  represents the type A particles, as it has their diameter and well
+  width. Therefore, the name attribute of the Interaction has been set
+  to "AAInteraction" to correspond with the Species IntName
+  attribute.
+</p>
+<p>
+  The second Interaction entry corresponds to the inter-Species
+  Interactions between type A and type B particles.
 </p>
 <h1>Compressing the Configuration</h1>
 <h1>Running the Simulation</h1>
