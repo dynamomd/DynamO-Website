@@ -1808,7 +1808,7 @@
     value <i>"None"</i> to select this range type.
   </li>
 </ul>
-<h2>Type="Pair"</h2>
+<h2><a id="typepair"></a>Type="Pair"</h2>
 <p>
   <b>Description:</b> This creates a IDPairRange from two
   IDRanges. Each particle ID in the first range is paired with all of
@@ -1843,7 +1843,7 @@
       IDRange types</a> for more information.
   </li>
 </ul>
-<h2>Type="Single"</h2>
+<h2><a id="typesingle"></a>Type="Single"</h2>
 <p>
   <b>Description:</b> This creates a IDPairRange from one
   IDRange. Every particle ID in the IDRange is paired with every other

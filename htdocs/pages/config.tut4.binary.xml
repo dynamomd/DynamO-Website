@@ -9,7 +9,7 @@
       <Species Mass="1" Name="A" IntName="AAInteraction" Type="Point">
         <IDRange Type="Ranged" Start="0" End="99"/>
       </Species>
-      <Species Mass="1" Name="B" IntName="BBInteraction" Type="Point">
+      <Species Mass="0.001" Name="B" IntName="BBInteraction" Type="Point">
         <IDRange Type="Ranged" Start="100" End="3999"/>
       </Species>
     </Genus>

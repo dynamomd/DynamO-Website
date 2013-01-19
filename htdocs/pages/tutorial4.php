@@ -209,11 +209,26 @@ Mode 1: Mono/Multi-component square wells
 </p>
 <?php xmlXPathFile("pages/config.tut4.binary.xml", "/DynamOconfig/Simulation/Genus"); ?>
 <p>
-  You'll notice that the <b>IDRange</b> of <b>Type</b> <i>"Ranged"</i>
-  is an inclusive range of particle ID's. The particle ID's start with
-  zero therefore the first <b>Species</b> tag corresponds to the first
-  100 particles in the configuration file.  For more information on
-  the "Ranged" <b>IDRange</b> tag, please see the reference:
+  You should notice that we've reduced the mass of the smaller
+  particles (type B) to match the ratio $m_A/m_B=1000$. This implies
+  that we'll also need to effectively shrink the diameter of the
+  particles which are becoming Species B. Instead, we could have
+  increased the mass of the larger particles (type A) to satisfy this
+  ratio; but this would have meant that we would also have to increase
+  their diameter. The problem with increasing diameters of particles
+  by hand is that you may accidentally cause nearby particles to
+  overlap. We must be careful to avoid creating overlapping cores, as
+  the dynamics are undefined in these cases. Although DynamO is
+  extremely stable and may eventually resolve these overlaps, it is
+  not guaranteed in all cases.
+</p>
+<p>
+  You should also notice that the <b>IDRange</b>
+  of <b>Type</b> <i>"Ranged"</i> is an inclusive range of particle
+  ID's. The particle ID's start with zero therefore the
+  first <b>Species</b> tag corresponds to the first 100 particles in
+  the configuration file.  For more information on the
+  "Ranged" <b>IDRange</b> tag, please see the reference:
 </p>
 <?php button("Reference entry for <i>\"Ranged\"</i> Type <b>IDRange</b>","/index.php/reference#typeranged");?>
 <p>
@@ -224,7 +239,7 @@ Mode 1: Mono/Multi-component square wells
   representative <b>Interaction</b>, who's <i>name</i> is specified by
   the <b>IntName</b> attribute. This Interaction is used to describe
   particles in the Species for visualisation and for calculation of
-  properties such as its excluded volume. Obviously, we need to define
+  properties such as its excluded volume. Here we will need to define
   at least two interactions, called <i>"AAInteraction"</i> and
   <i>"BBInteraction"</i> which describe the two types of particles in
   the system. In the next section we'll take a look at setting up all
@@ -238,27 +253,96 @@ Mode 1: Mono/Multi-component square wells
 </p>
 <?php xmlXPathFile("pages/config.tut4.mono.xml", "/DynamOconfig/Simulation/Interactions", 4, 2); ?>
 <p>
-  Here, we will use three seperate <b>Interaction</b> tags to input
+  Here, we will use three separate <b>Interaction</b> tags to input
   the parameters of the three types of interactions between all
-  species (A-A, A-B, and B-B). An example implementation is given
-  below:
+  species (A-A, A-B, and B-B). We were very careful to shrink the mass
+  of type "B" particles, so that the large particles have a diameter
+  of $\sigma_A=1$ and the small particles a diameter of
+  $\sigma_B=0.1$. An example implementation is given below:
 </p>
 <?php xmlXPathFile("pages/config.tut4.binary.xml", "/DynamOconfig/Simulation/Interactions", 4,3); ?>
 <p>
   The first Interaction entry handles the interactions between Species
-  A particles. A
+  "A" particles. A
   special <a href="/index.php/reference#typesingle">"Single" type
   IDPairRange</a> is used to convert a single IDRange, which
   identifies all of the type A particles, into a IDPairRange
-  describing all pairings of type A particles. This interaction
-  represents the type A particles, as it has their diameter and well
-  width. Therefore, the name attribute of the Interaction has been set
-  to "AAInteraction" to correspond with the Species IntName
-  attribute.
+  describing all pairings of type A particles. This Interaction is
+  also used to represent the type A particles, as it has their
+  diameter and well width. Therefore, the name attribute of the
+  Interaction has been set to "AAInteraction" to correspond with the
+  Species IntName attribute.
 </p>
+<?php button("Reference entry for <i>\"Single\"</i> Type <b>IDPairRange</b>","/index.php/reference#typesingle");?>
 <p>
   The second Interaction entry corresponds to the inter-Species
-  Interactions between type A and type B particles.
+  Interactions between type "A" and type "B" particles. Here, another
+  type of IDPairRange is used which takes two IDRanges and creates a
+  IDPairRange which matches all pairings between them. The diameter of
+  the Interaction is worked out using the additive rule:
+
+  \[\sigma_{AB}=\left(\sigma_A+\sigma_B\right)/2=\left(1+0.1\right)/2=0.55\]
+
+  Technically, the Lambda is also calculated using the additive rule,
+  but as both Species have the same Lambda value we have
+  $\lambda_{AB}=\lambda_A=\lambda_B=1.5$.
+</p>
+<?php button("Reference entry for <i>\"Pair\"</i> Type <b>IDPairRange</b>","/index.php/reference#typepair");?>
+<p>
+  The final Interaction represents the intra-Species interactions
+  between the type "B" particles. Surprisingly, this has an "All" type
+  IDPairRange tag which maps to all possible pairings of particles in
+  the system. This works due to the way that DynamO searches for
+  Interactions. DynamO moves down the list of Interactions <u>in
+  order</u> testing against each Interaction for a match. The first
+  match is the one that is returned! So, this last tag actually
+  matches all pairs, except for those that match above. The only pairs
+  which are left are the B-B pairings.
+</p>
+<p>
+  We could also use the following IDPairRange instead of the "All" type:
+</p>
+<?php codeblockstart(); ?>
+<IDPairRange Type="Single">
+  <IDRange Type="Ranged" Start="100" End="3999"/>
+</IDPairRange>
+<?php codeblockend("brush: xml;"); ?>
+<p>
+  However, using the "All" type is simpler. A general rule for DynamO
+  is that the simplest configuration files are the fastest. Another
+  good reason for using the catch-"All" Interaction in the end, rather
+  than something more specific, is that in complex systems with
+  unusual Interaction IDPairRanges, it can be quite hard to define
+  which particles are actually left over. Using an "All" rule at the
+  end and catching the complex interactions first makes it simple to
+  implement.
+</p>
+<h3>About CaptureMap Tags</h3>
+<p>
+  You should notice that the CaptureMap tag in the original
+  mono-component configuration file has been deleted and that the new
+  Interaction tags do not contain them. CaptureMaps are used by DynamO
+  to track which particles are currently interacting with other
+  particles using that
+  Interaction. For <a href="/index.php/reference#typesquarewell">SquareWell
+  type Interactions</a>, the capture map records all pairs of
+  particles who are inside each others well. This information must be
+  saved and loaded with the configuration file as, if a particle is on
+  the edge of the well, it is impossible to determine if they are
+  captured or not from their position alone.
+</p>
+<p>
+  Whenever we change a configuration file by hand, its very likely
+  that we will invalidate any capture maps inside the file. For
+  example, here we've split the original Interaction into three new
+  ones. We also changed the parameters of some of the Interactions, so
+  particles which are registered as captured may now actually lie
+  outside the well.
+</p>
+<p>
+  The simplest thing to do here is to delete the CaptureMap tags. This
+  forces DynamO to rebuild them when it next loads the configuration
+  file. 
 </p>
 <h1>Compressing the Configuration</h1>
 <h1>Running the Simulation</h1>
