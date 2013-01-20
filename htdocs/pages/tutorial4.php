@@ -223,7 +223,11 @@ Mode 1: Mono/Multi-component square wells
   overlap. We must be careful to avoid creating overlapping cores, as
   the dynamics are undefined in these cases. Although DynamO is
   extremely stable and may eventually resolve these overlaps, it is
-  not guaranteed in all cases.
+  not guaranteed in all cases. We always try to keep one mass scale
+  and one length scale set at unity, as this corresponds to a set of
+  reduced units (see
+  the <a href="/index.php/FAQ#q-what-units-does-the-dynamod-command-useproduce">FAQ
+  on the units of DynamO</a>)
 </p>
 <p>
   You should also notice that the <b>IDRange</b>
@@ -259,8 +263,9 @@ Mode 1: Mono/Multi-component square wells
   Here, we will use three separate <b>Interaction</b> tags to input
   the parameters of the three types of interactions between all
   species (A-A, A-B, and B-B). We were very careful to shrink the mass
-  of type "B" particles, so that the large particles have a diameter
-  of $\sigma_A=1$ and the small particles a diameter of
+  of type "B" particles so that, to satisfy the ratio
+  $\sigma_A/\sigma_B=10$, the large particles have a diameter of
+  $\sigma_A=1$ and the small particles a diameter of
   $\sigma_B=0.1$. An example implementation is given below:
 </p>
 <?php xmlXPathFile("pages/config.tut4.binary.xml", "/DynamOconfig/Simulation/Interactions", 4,3); ?>
