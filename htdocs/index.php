@@ -24,7 +24,7 @@ function echoXML($xmlnode, $spacing, $max_depth, $max_children)
  }
 
  if ($xmlnode->count()){
-  //Print the node's children
+  //Print the node's children and text
   echo ">\n";
   if ($max_depth == 1){
    //This node has children, but the maximum depth has been reached
@@ -41,7 +41,12 @@ function echoXML($xmlnode, $spacing, $max_depth, $max_children)
   }
  echo str_repeat("  ", $spacing)."</".$xmlnode->getName().">\n";
  } else {
- echo "/>\n";
+   $text = trim($xmlnode);
+   if (empty($text)) {
+     echo "/>\n";
+   } else {
+   echo ">\n".$text."\n".str_repeat("  ", $spacing)."</".$xmlnode->getName().">\n";
+   }
  }
 }
 

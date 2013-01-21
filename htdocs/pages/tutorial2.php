@@ -331,7 +331,7 @@ Mode 0: Monocomponent hard spheres
   hand, we want to be able to "pack" the particles as close together
   as possible so that we can generate high density configurations
   easily. Obviously we cannot just randomly drop particles as this
-  will quickly lead to overlaps in even low density systems.
+  will quickly lead to overlaps, even in low density systems.
 </p>
 <p>
   What we're looking for is a regular structure, or lattice, which
@@ -488,9 +488,10 @@ Simulation: Config written to config.equilibrated.xml<?php codeblockend("brush: 
   From previous experience, $10^6$ events is more than enough to
   equilibrate this small system of 1372 particles. If we were
   uncertain about the equilibration of this system, we might monitor
-  the mean free time (and other properties) and check it reaches a
-  steady value. The configuration from this equilibration run is used
-  as the input to a new "production" run using the following command:
+  the mean free time (and other properties) and check they reach a
+  steady value. The final configuration from this "equilibration" run
+  is now used as the input to a new "production" run using the
+  following command:
 </p>
 <?php codeblockstart(); ?>dynarun config.equilibrated.xml -c 1000000 -o config.end.xml<?php codeblockend("brush: shell;"); ?>
 <p></p>
@@ -568,14 +569,11 @@ Simulation: Config written to config.end.xml<?php codeblockend("brush: plain;");
 </p>
 <?php xmlXPathFile("pages/tutorial2output.xml", "//Pressure"); ?>
 <p>
-  The pressure is calculated using
-  the <a href="http://www.sklogwiki.org/SklogWiki/index.php/Pressure#Virial_pressure">virial
-  expression</a>. The isotropic pressure,
-  $p=\left(P_{xx}+P_{yy}+P_{zz}\right)/3$, is available as
-  the <b>Avg</b> attribute of the <b>Pressure</b> tag, but the full
-  pressure tensor, $\mathbf{P}$, is enclosed in the <b>Tensor</b>
-  tags. The pressure values are just written out as a set of space
-  separated values which are arranged as follows:
+  The hydraulic pressure, $p=\left(P_{xx}+P_{yy}+P_{zz}\right)/3$, is
+  available as the <b>Avg</b> attribute of the <b>Pressure</b> tag,
+  but the full pressure tensor, $\mathbf{P}$, is enclosed in
+  the <b>Tensor</b> tags. The pressure values are just written out as
+  a set of space separated values which are arranged as follows:
 </p>
 $$
 \begin{align}
@@ -599,11 +597,15 @@ $$
   fluid has an ideal heat capacity and internal energy. At the bottom
   of the file are correlation data for the thermal conductivity
   (<b>ThermalConductivity</b> tag) and other transport properties, but
-  these will be covered in later tutorials.
+  these will be covered in later tutorials. If you want more
+  information on the available output and how it is calculated, please
+  take a look at the output plugin reference documentation using the
+  button below.
 </p> 
+<?php button("Output plugin reference documentation","/index.php/outputplugins");?>
 <h1>In Summary</h1>
 <p>
-  We've covered how to create an initial configuration,
+  We've covered how to create an initial configuration
   using <b>dynamod</b> and how to "run" this configuration for a fixed
   number of events using <b>dynarun</b>. Finally, we started to take a
   look at some of the data that <b>dynarun</b> collects automatically.
@@ -611,12 +613,6 @@ $$
 <p>
   This is just the tip of the iceberg as far as what is possible. In
   the next tutorial, we will take a look at more complex systems and
-  <a href="/index.php/tutorial3">how to edit the configuration files
-  by hand</a> to generate them. Later tutorials will cover loading
-  output plug-ins to collect more interesting information, and how to
-  process complex properties such as the thermal conductivity and
-  viscosity. We will also show how to use compression dynamics to
-  generate dense configurations of arbitrary systems and we can also
-  learn to use the visualiser to render the results of the
-  simulations.
+  how to edit the configuration files by hand to generate them.
 </p>
+<?php button("Tutorial 3: Overview of the Configuration File Format","/index.php/tutorial3");?>

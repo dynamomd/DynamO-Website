@@ -227,7 +227,7 @@ li {
 /* Button */
 .button { text-align:center; margin: 15px 0; }
 
-.button a:hover { background-color: <?php echo $hoverbutton;?>; }
+.button a:hover { background-color: #ccddcc; }
 
 .button a {
     border:2px solid;
