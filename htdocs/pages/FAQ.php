@@ -105,17 +105,21 @@
 <h1>Q: How does DynamO collect exact time-averages?</h1>
 <p>
   Short answer: Many properties have a constant value between events,
-  and so the exact time average may be calculated using the following
-  formula:
+  and so the following equation for the time average can be solved
+  analytically:
 
-  \[\left\langle A\right\rangle=t_{sim}^{-1}\sum_i^{N_\text{events}}
-  A(t_i)(t_{i+1}-t_i)\]
+  \[\left\langle A\right\rangle=t_{sim}^{-1}\int_0^{t_{sim}}A(t)\,{\rm d}t\]
+  
+  where $A(t)$ is the value of the property being averaged at a time
+  $t$ and $t_{sim}$ is the duration of the simulation. If $N_{events}$
+  occur during the simulation and the property $A$ only changes during
+  events, the integration becomes a sum:
 
-  where $t_i$ is the time of the $i$th event, $A$ is the property
-  being averaged and $A(t_i)$ is its value immediately after the $i$th
-  event. The total length of the simulation is given by
-
-  \[t_{sim}=\sum_i^{N_\text{events}} (t_{i+1}-t_{i})\]
+  \[\left\langle A\right\rangle=t_{sim}^{-1}\sum_{i=1}^{N_{events}}A(t_{i-1})\left(t_i-t_{i-1}\right)\]
+  
+  where $t_i$ is the time of the $i$th event, $t_0=0$ by definition,
+  and $A(t_i)$ is the value of the property just after the $i$th
+  event.
 </p>
 <p>
   For example, in systems <b>without</b> gravity and <b>without</b>
