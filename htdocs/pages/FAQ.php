@@ -111,21 +111,29 @@
   \[\left\langle A\right\rangle=t_{sim}^{-1}\int_0^{t_{sim}}A(t)\,{\rm d}t\]
   
   where $A(t)$ is the value of the property being averaged at a time
-  $t$ and $t_{sim}$ is the duration of the simulation. If $N_{events}$
-  occur during the simulation and the property $A$ only changes during
-  events, the integration becomes a sum:
+  $t$ and $t_{sim}$ is the duration of the simulation. 
+</p>
+<p>
+  If $N_{events}$ occur during the duration of the simulation, and the
+  property $A$ only changes during events, the integration can be
+  rewritten as a sum:
 
   \[\left\langle A\right\rangle=t_{sim}^{-1}\sum_{i=1}^{N_{events}}A(t_{i-1})\left(t_i-t_{i-1}\right)\]
   
   where $t_i$ is the time of the $i$th event, $t_0=0$ by definition,
   and $A(t_i)$ is the value of the property just after the $i$th
-  event.
+  event.  It is easy to collect an exact time average using this
+  expression.
 </p>
 <p>
   For example, in systems <b>without</b> gravity and <b>without</b>
-  shearing boundary conditions, the velocities of all particles is
+  shearing boundary conditions, the velocities of all particles are
   constant between events. If we calculate the kinetic energy at the
   start of the simulation, the only changes will occur during the
   execution of an event. It is then very simple to collect exact
-  time-averages using the equation above.
+  time-averages using the equation above. However, in gravity and in
+  shearing systems the particles velocities change with time causing
+  the kinetic energy to vary between events. Some of these changes can
+  also be integrated exactly, but at the moment DynamO does not do
+  this.
 </p>

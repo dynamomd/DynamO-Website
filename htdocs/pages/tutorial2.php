@@ -586,6 +586,11 @@ P_{zx} & P_{zy} & P_{zz}
 \end{align}
 $$
 <p>
+  More information on the pressure tag is available in the reference
+  documentation:
+</p>
+<?php button("Misc Output plugin Pressure tag reference documentation","/index.php/outputplugins#pressure");?>
+<p>
   There are some other properties available, such as the
   configurational internal energy and residual heat capacity:
 </p>
@@ -597,8 +602,8 @@ $$
   fluid has an ideal heat capacity and internal energy. At the bottom
   of the file are correlation data for the thermal conductivity
   (<b>ThermalConductivity</b> tag) and other transport properties, but
-  these will be covered in later tutorials. If you want more
-  information on the available output and how it is calculated, please
+  these will be covered in later tutorials.  If you want more
+  information on these tags or the available output plugins, please
   take a look at the output plugin reference documentation using the
   button below.
 </p> 
