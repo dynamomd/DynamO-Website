@@ -19,6 +19,15 @@
 </p>
 <div style="clear:both;text-align:center;">
 <div class="figure" style="width:533px; vertical-align:middle;">
+  <?php embedAJAXvideo("leesedwards", "diXFTqiCXaQ", 533, 300); ?>
+  <div class="caption">
+    This is a live simulation of a granular hard-sphere system being
+    sheared using Lees-Edwards boundary conditions. Although there are
+    16k particles in the main image, at the end of the video over 4
+    million particles are being rendered in realtime.
+  </div>
+</div>
+<div class="figure" style="width:533px; vertical-align:middle;">
   <?php embedAJAXvideo("snowmen", "zAC4PgtUwU4", 533, 300); ?>
   <div class="caption">
     This is a simulation of a snowmen molecules. Snowmen molecules can
