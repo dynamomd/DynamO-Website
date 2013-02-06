@@ -63,6 +63,12 @@
     libboost-all-dev above.
   </li>
 </ul>
+<p>
+  If you cannot install a recent version of Boost or Boost Build on
+  the computer due to missing rights or out-of-date packages, please
+  see the <a href="#installing-on-a-cluster">section on installing on
+  a cluster</a> below.
+</p>
 <h2>Visualiser Requirements</h2>
 <p>
   These programs and libraries only need to be installed if you want
@@ -207,3 +213,29 @@ sudo make install<?php codeblockend("brush: shell;"); ?>
   extra sanity checks. These executables have the suffix "<em>_d</em>"
   (dynamod_d and dynarun_d) to indicate they're the debugging version.
 </p>
+<h1>Installing on a Cluster</h1>
+<p>
+  When you try to install DynamO on a cluster, you usually run into
+  two main problems:
+</p>
+<ul>
+  <li>
+    You cannot install boost or boost build so you cannot meet the
+    prerequisites for building DynamO.
+  </li>
+  <li>
+    You cannot install the boost libraries on every node, so you need
+    a version of DynamO which will run anywhere, regardless if the
+    required libraries are available.
+  </li>
+</ul>
+<p>
+  Fortunately, both of these problems can be worked around. To get
+  around the build requirements, we can install the boost libraries
+  and boost build in our home directory. First, download an up-to-date
+  copy of the boost libraries from
+  the <a href="http://www.boost.org/users/download/">main boost
+  site</a>. At the time of writing this is version 1.53. I use the
+  wget utility to download it from the terminal
+</p>
+<?php codeblockstart(); ?>wget http://downloads.sourceforge.net/project/boost/boost/1.53.0/boost_1_53_0.tar.bz2<?php codeblockend("brush: shell;"); ?>
