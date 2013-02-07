@@ -215,28 +215,17 @@ sudo make install<?php codeblockend("brush: shell;"); ?>
 </p>
 <h1>Installing on a Cluster</h1>
 <p>
-  When you try to install DynamO on a cluster, you usually run into
-  two main problems:
-</p>
-<ul>
-  <li>
-    You cannot install boost or boost build so you cannot meet the
-    prerequisites for building DynamO.
-  </li>
-  <li>
-    You cannot install the boost libraries on every node, so you need
-    a version of DynamO which will run anywhere, regardless if the
-    required libraries are available.
-  </li>
-</ul>
-<p>
-  Fortunately, both of these problems can be worked around. To get
-  around the build requirements, we can install the boost libraries
-  and boost build in our home directory. First, download an up-to-date
-  copy of the boost libraries from
-  the <a href="http://www.boost.org/users/download/">main boost
+  When you try to install DynamO on a cluster, you usually cannot
+  install boost or boost build so you cannot meet the prerequisites
+  for building DynamO. This is because the cluster is a little
+  out-of-date or you are normal user and do not have the rights to
+  install software. Fortunately, this problem can be worked around as
+  we can install the boost libraries and boost build in our home
+  directory. First, download an up-to-date copy of the boost libraries
+  from the <a href="http://www.boost.org/users/download/">main boost
   site</a>. At the time of writing this is version 1.53. I use the
-  wget utility to download it from the terminal into my home directory:
+  wget utility to download it from the terminal into my home
+  directory:
 </p>
 <?php codeblockstart(); ?>wget http://downloads.sourceforge.net/project/boost/boost/1.53.0/boost_1_53_0.tar.bz2<?php codeblockend("brush: shell;"); ?>
 <p>
@@ -244,7 +233,49 @@ sudo make install<?php codeblockend("brush: shell;"); ?>
   it. The following command will do the trick.
 </p>
 <?php codeblockstart(); ?>tar -xf boost_1_53_0.tar.bz2<?php codeblockend("brush: shell;"); ?>
+<p>q You should now have a <i>boost_1_53_0</i> directory in your home
+  directory. Just in case you need to upgrade boost in the future, I
+  would rename the directory to something more generic:
+</p>
+<?php codeblockstart(); ?>mv boost_1_53_0 boost<?php codeblockend("brush: shell;"); ?>
 <p>
-  You should now have a <i>boost_1_53_0</i> directory in your home
-  directory
+  Next we need to build the boost-build system. Change into the boost
+  directory and run the <i>bootstrap.sh</i> script:
+</p>
+<?php codeblockstart(); ?>cd boost
+./bootstrap.sh<?php codeblockend("brush: shell;"); ?>
+<p>
+  Once its finished bootstrapping the boost build system, you should
+  now have the <i>bjam</i> executable in the current directory. Now
+  we're ready to build the boost libraries using the bjam command.
+</p>
+<?php codeblockstart(); ?>bjam<?php codeblockend("brush: shell;"); ?>
+<p>
+  If everything goes well, you should have a message informing you
+  that the libraries are in <i>stage/lib</i> and the headers are in
+  the current directory. We've successfully compiled boost on the
+  cluster. All that remains is to set up boost build to run outside
+  the <i>boost</i> directory, and to set up the compiler link and
+  include paths.
+</p>
+<p>
+  These paths are all set using environmental variables. The following
+  commands will set them in the BASH environment:
+</p>
+<?php codeblockstart(); ?>export BOOST_BUILD_PATH=~/boost/tools/build/v2/
+export CPATH=~/boost/:$CPATH
+export LIBRARY_PATH=~/boost/stage/lib/:$LIBRARY_PATH<?php codeblockend("brush: shell;"); ?>
+<p>
+  If you want to make these changes permanent, you'll need to add the
+  commands above to your <i>.bashrc</i> file. With these set,
+  everything is now ready for you to build DynamO. Change into
+  the <i>dynamo</i> source directory and run the bjam program.
+</p>
+<?php codeblockstart(); ?>cd /path/to/dynamo/sources
+~/boost/bjam install<?php codeblockend("brush: shell;"); ?>
+<p>
+  If this completes successfully, you should now have a set of dynamo
+  executables in the <i>bin</i> subdirectory of the DynamO
+  sources. You should be able to run these executables on any node
+  too, as the boost libraries are statically linked by default.
 </p>
