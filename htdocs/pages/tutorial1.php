@@ -236,6 +236,15 @@ sudo make install<?php codeblockend("brush: shell;"); ?>
   copy of the boost libraries from
   the <a href="http://www.boost.org/users/download/">main boost
   site</a>. At the time of writing this is version 1.53. I use the
-  wget utility to download it from the terminal
+  wget utility to download it from the terminal into my home directory:
 </p>
 <?php codeblockstart(); ?>wget http://downloads.sourceforge.net/project/boost/boost/1.53.0/boost_1_53_0.tar.bz2<?php codeblockend("brush: shell;"); ?>
+<p>
+  Once it has finished downloading, you need to untar it to work with
+  it. The following command will do the trick.
+</p>
+<?php codeblockstart(); ?>tar -xf boost_1_53_0.tar.bz2<?php codeblockend("brush: shell;"); ?>
+<p>
+  You should now have a <i>boost_1_53_0</i> directory in your home
+  directory
+</p>
