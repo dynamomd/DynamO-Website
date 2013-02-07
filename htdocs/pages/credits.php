@@ -43,11 +43,6 @@
     Zon</a>, is used as the basis for most vector operations.
   </li>
   <li>
-    Callbacks are implemented
-    using <a href="http://www.codeproject.com/KB/cpp/FastDelegate.aspx">FastDelegates</a>
-    , provided by Don Clugston.
-  </li>
-  <li>
     XML parsing uses <a href="http://rapidxml.sourceforge.net/">RapidXML</a>.
   </li>
   <li>
