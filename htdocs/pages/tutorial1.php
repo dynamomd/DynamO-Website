@@ -65,9 +65,9 @@
 </ul>
 <p>
   If you cannot install a recent version of Boost or Boost Build on
-  the computer due to missing rights or out-of-date packages, please
-  see the <a href="#installing-on-a-cluster">section on installing on
-  a cluster</a> below.
+  the computer (either due to insufficient user rights or out-of-date
+  packages), please see the section on <a href="#with-boost">using a
+  local Boost installation</a> below.
 </p>
 <h2>Visualiser Requirements</h2>
 <p>
@@ -213,27 +213,33 @@ sudo make install<?php codeblockend("brush: shell;"); ?>
   extra sanity checks. These executables have the suffix "<em>_d</em>"
   (dynamod_d and dynarun_d) to indicate they're the debugging version.
 </p>
-<h1>Installing on a Cluster</h1>
+<h1><a id="with-boost"></a>Using a local Boost installation</h1>
 <p>
-  When you try to install DynamO on a cluster, you usually cannot
-  install boost or boost build so you cannot meet the prerequisites
-  for building DynamO. This is because the cluster is a little
-  out-of-date or you are normal user and do not have the rights to
-  install software. Fortunately, this problem can be worked around as
-  we can install the boost libraries and boost build in our home
-  directory. First, download an up-to-date copy of the boost libraries
-  from the <a href="http://www.boost.org/users/download/">main boost
+  In some environments it can be difficult to meet the installation
+  requirements of DynamO. For example, on HPC resources you usually
+  cannot install a recent boost version or install boost build. This
+  is because the cluster is a little out-of-date or you are normal
+  user and do not have the rights to install software. Fortunately,
+  this problem can be worked around as we can install the boost
+  libraries and boost build in our home directory. This is known as
+  using a local Boost installation.
+</p>
+<p>
+  First, download an up-to-date copy of the boost libraries from
+  the <a href="http://www.boost.org/users/download/">main boost
   site</a>. At the time of writing this is version 1.53. I use the
-  wget utility to download it from the terminal into my home
-  directory:
+  <i>wget</i> program to download it from the terminal into my home
+  directory on the cluster:
 </p>
 <?php codeblockstart(); ?>wget http://downloads.sourceforge.net/project/boost/boost/1.53.0/boost_1_53_0.tar.bz2<?php codeblockend("brush: shell;"); ?>
 <p>
-  Once it has finished downloading, you need to untar it to work with
-  it. The following command will do the trick.
+  Once it has finished downloading, you need to untar the Boost
+  sources into a directory before you can compile them. The following
+  command will do the trick.
 </p>
 <?php codeblockstart(); ?>tar -xf boost_1_53_0.tar.bz2<?php codeblockend("brush: shell;"); ?>
-<p>q You should now have a <i>boost_1_53_0</i> directory in your home
+<p>
+  You should now have a <i>boost_1_53_0</i> directory in your home
   directory. Just in case you need to upgrade boost in the future, I
   would rename the directory to something more generic:
 </p>
@@ -249,7 +255,7 @@ sudo make install<?php codeblockend("brush: shell;"); ?>
   now have the <i>bjam</i> executable in the current directory. Now
   we're ready to build the boost libraries using the bjam command.
 </p>
-<?php codeblockstart(); ?>bjam<?php codeblockend("brush: shell;"); ?>
+<?php codeblockstart(); ?>./bjam<?php codeblockend("brush: shell;"); ?>
 <p>
   If everything goes well, you should have a message informing you
   that the libraries are in <i>stage/lib</i> and the headers are in
@@ -269,7 +275,7 @@ export LIBRARY_PATH=~/boost/stage/lib/:$LIBRARY_PATH<?php codeblockend("brush: s
   If you want to make these changes permanent, you'll need to add the
   commands above to your <i>.bashrc</i> file. With these set,
   everything is now ready for you to build DynamO. Change into
-  the <i>dynamo</i> source directory and run the bjam program.
+  the <i>dynamo</i> source directory and run the <i>bjam</i> program.
 </p>
 <?php codeblockstart(); ?>cd /path/to/dynamo/sources
 ~/boost/bjam install<?php codeblockend("brush: shell;"); ?>
