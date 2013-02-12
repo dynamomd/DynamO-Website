@@ -477,13 +477,14 @@ dynarun config.xml -c 1000000 -L MFT:BinWidth=0.5,Length=100
   </li>
 </ul>
 <p>
-  <b>Restrictions</b>: The averages in this tag are collected exactly
-  (see the
+  <b>Restrictions</b>: The kinetic pressure averages are collected
+  exactly (see the
   <a href="/index.php/FAQ#q-how-does-dynamo-collect-exact-timeaverages">FAQ
-  on exact averages in DynamO</a>) and so this data is not valid
+  on exact averages in DynamO</a>) and so only
+  the <b>InteractionContribution</b> data is valid
   when <a href="/index.php/reference#typele">Lees-Edwards boundary
-  conditions</a> are applied (or currently in systems with
-  gravity, <a href="https://github.com/toastedcrumpets/DynamO/issues/22">see
+  conditions</a> are applied or in systems with gravity
+  (<a href="https://github.com/toastedcrumpets/DynamO/issues/22">see
   issue #22</a>).
 </p>
 <h2><a id="duration"></a>Duration</h2>
