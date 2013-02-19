@@ -67,7 +67,9 @@ dynamod -m 0 -d 0.5 -C 7 -o config.start.xml
   click <a href="/pages/config.tut3.xml">this link for the example
   output</a> you will see that web browsers will present the contents
   of an XML file nicely, but to edit it you will need to save it and
-  open the file again inside a text editor.
+  open the file again inside a text editor (see
+  the <a href="/index.php/FAQ#q-you-say-i-can-edit-the-configuration-files-using-my-favourite-text-editor-how">FAQ
+  for more information</a>).
 </p>
 <h1>General Layout</h1>
 <p>

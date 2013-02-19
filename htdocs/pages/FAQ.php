@@ -137,3 +137,22 @@
   also be integrated exactly, but at the moment DynamO does not do
   this.
 </p>
+<h1>Q: You say I can edit the configuration files using my favourite text editor? How?</h1>
+<p>
+  Short answer: Most modern text editors bundled with Linux such
+  as <a href="http://kate-editor.org/">Kate</a>
+  or <a href="http://projects.gnome.org/gedit/">GEdit</a> (my personal
+  choice is
+  <a href="http://www.gnu.org/software/emacs/">emacs</a>) support
+  opening xml files and will even highlight them for you. Just open
+  them using either the open file dialog or by calling the editor from
+  the command line. For example, to open a compressed configuration
+  file from the terminal to edit it using Kate, just write:
+</p>
+<?php codeblockstart(); ?>kate config.out.xml.bz2<?php codeblockend("brush: shell;"); ?>
+<p>
+  DynamO writes out a compressed xml files by default (indicated by
+  the extension <i>.bz2</i>). Luckily, most text editors will happily
+  uncompress and recompress the file for you if you just open it
+  directly, as shown above.
+</p>
