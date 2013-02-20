@@ -239,7 +239,7 @@ wget http://downloads.sourceforge.net/project/boost/boost/1.53.0/boost_1_53_0.ta
   sources into a directory before you can compile them. The following
   command will do the trick.
 </p>
-<?php codeblockstart(); ?>tar -xf boost_1_53_0.tar.bz2<?php codeblockend("brush: shell;"); ?>
+<?php codeblockstart(); ?>tar -xjf boost_1_53_0.tar.bz2<?php codeblockend("brush: shell;"); ?>
 <p>
   You should now have a <i>boost_1_53_0</i> directory in your home
   directory. Just in case you need to upgrade boost in the future, I
