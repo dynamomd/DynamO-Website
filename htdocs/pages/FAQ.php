@@ -191,6 +191,6 @@ BoundedPQ: Exception Events = 0<?php codeblockend("brush: shell;"); ?>
   This is usually due to your computer running the open-source drivers
   which are currently a little behind in implementing recent versions
   of OpenGL. They are catching up quickly but it will be 2014 or
-  possibly later before OpenGL 3.3 is support. In the meantime we
-  highly recommend that you use the binary drivers.
+  possibly later before OpenGL 3.3 is fully supported. In the meantime
+  we highly recommend that you use the binary drivers.
 </p>
