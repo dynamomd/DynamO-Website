@@ -194,3 +194,15 @@ BoundedPQ: Exception Events = 0<?php codeblockend("brush: shell;"); ?>
   possibly later before OpenGL 3.3 is fully supported. In the meantime
   we highly recommend that you use the binary drivers.
 </p>
+<h1>Q: The Andersen thermostat is giving me a non-zero system momentum
+average. Is this an error?</h1>
+<p>
+  Short answer: Probably not. The Andersen thermostat allows the
+  system momentum to fluctuate about zero. This can lead to some
+  suprisingly large values of the total momentum.
+</p>
+<p>
+  Please
+  see <a href="https://github.com/toastedcrumpets/DynamO/issues/29">issue
+  #29 in the github tracker</a> for more information.
+</p>
