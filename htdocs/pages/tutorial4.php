@@ -372,7 +372,7 @@ Mode 1: Mono/Multi-component square wells
   <img src="/images/tut4_uncompressed.png" alt="An image of the low-density binary square-well system" width="400" height="300" style="float:right;margin:15px;">
   <div class="caption">
     The low-density binary square-well system.<br/>
-    <a href="config.tut4.binary.xml">View configuration file</a>
+    <a href="/pages/config.tut4.binary.xml">View configuration file</a>
   </div>
 </div>
 <p>
@@ -394,6 +394,18 @@ Mode 1: Mono/Multi-component square wells
   time. At the end of the growth run, the dimensions are all rescaled
   so that the particles have the same initial size, but the simulation
   box has shrunk proportionally.
+</p>
+<p>
+  To carry out the compression, use the <i>engine</i> option
+  of <b>dynarun</b> to use the compression engine. You also set the
+  end point of the compression using either
+  the <i>--target-pack-frac</i> or the <i>--target-density</i> option.
+</p>
+<?php codeblockstart(); ?>dynarun config.start.xml --engine=3 --target-pack-frac 0.3<?php codeblockend("brush: shell;"); ?>
+<p>
+  A video of the compression run is given to the right.  During the
+  compression, the system is heating up and the particles are moving
+  faster.
 </p>
 <h1>Running the Simulation</h1>
 <h1>Processing the Results</h1>
