@@ -368,10 +368,10 @@ Mode 1: Mono/Multi-component square wells
   configuration file.
 </p>
 <h1><a id="compressing"></a>Compressing the Configuration</h1>
-<div class="figure" style="clear:right; float:right;width:430px;">
-  <img src="/images/tut4_uncompressed.png" alt="An image of the low-density binary square-well system" width="400" height="300" style="float:right;margin:15px;">
+<div class="figure" style="clear:right; float:right;width:400px;">
+  <?php embedAJAXvideo("tut4_compression", "x62zeoF457w", 400, 225); ?>
   <div class="caption">
-    The low-density binary square-well system.<br/>
+    The low-density binary square-well system under compression.<br/>
     <a href="/pages/config.tut4.binary.xml">View configuration file</a>
   </div>
 </div>
