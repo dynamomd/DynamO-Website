@@ -227,17 +227,19 @@ sudo make install<?php codeblockend("brush: shell;"); ?>
 <p>
   First, download an up-to-date copy of the boost libraries from
   the <a href="http://www.boost.org/users/download/">main boost
-  site</a>. At the time of writing this is version 1.53. I use the
+  site</a> into your home directory. At the time of writing this is
+  version 1.53. I use the
   <i>wget</i> program to download it from the terminal into my home
   directory on the cluster:
 </p>
-<?php codeblockstart(); ?>wget http://downloads.sourceforge.net/project/boost/boost/1.53.0/boost_1_53_0.tar.bz2<?php codeblockend("brush: shell;"); ?>
+<?php codeblockstart(); ?>cd ~
+wget http://downloads.sourceforge.net/project/boost/boost/1.53.0/boost_1_53_0.tar.bz2<?php codeblockend("brush: shell;"); ?>
 <p>
   Once it has finished downloading, you need to untar the Boost
   sources into a directory before you can compile them. The following
   command will do the trick.
 </p>
-<?php codeblockstart(); ?>tar -xf boost_1_53_0.tar.bz2<?php codeblockend("brush: shell;"); ?>
+<?php codeblockstart(); ?>tar -xjf boost_1_53_0.tar.bz2<?php codeblockend("brush: shell;"); ?>
 <p>
   You should now have a <i>boost_1_53_0</i> directory in your home
   directory. Just in case you need to upgrade boost in the future, I
@@ -248,7 +250,7 @@ sudo make install<?php codeblockend("brush: shell;"); ?>
   Next we need to build the boost-build system. Change into the boost
   directory and run the <i>bootstrap.sh</i> script:
 </p>
-<?php codeblockstart(); ?>cd boost
+<?php codeblockstart(); ?>cd ~/boost
 ./bootstrap.sh<?php codeblockend("brush: shell;"); ?>
 <p>
   Once its finished bootstrapping the boost build system, you should
@@ -259,26 +261,23 @@ sudo make install<?php codeblockend("brush: shell;"); ?>
 <p>
   If everything goes well, you should have a message informing you
   that the libraries are in <i>stage/lib</i> and the headers are in
-  the current directory. We've successfully compiled boost on the
-  cluster. All that remains is to set up boost build to run outside
-  the <i>boost</i> directory, and to set up the compiler link and
-  include paths.
+  the current directory. If some libraries fail to build, DynamO will
+  still probably build just fine as only two compiled boost libraries
+  are used. All that remains is to use boost build to compile
+  DynamO. We have to set some extra variables to allow bjam to run
+  outside the <i>boost</i> directory, and to set up the compiler link
+  and include paths for the boost libraries. We can do this by using
+  the following bjam command:
 </p>
+<?php codeblockstart(); ?>cd /path/to/dynamo/sources
+BOOST_BUILD_PATH=~/boost/tools/build/v2/ ~/boost/bjam install include=~/boost/ linkflags="-L ~/boost/stage/lib/"<?php codeblockend("brush: shell;"); ?>
 <p>
-  These paths are all set using environmental variables. The following
-  commands will set them in the BASH environment:
+  If you want to make these variables permanent you can set this all
+  up by adding the commands below to your <i>.bashrc</i> file:
 </p>
 <?php codeblockstart(); ?>export BOOST_BUILD_PATH=~/boost/tools/build/v2/
 export CPATH=~/boost/:$CPATH
 export LIBRARY_PATH=~/boost/stage/lib/:$LIBRARY_PATH<?php codeblockend("brush: shell;"); ?>
-<p>
-  If you want to make these changes permanent, you'll need to add the
-  commands above to your <i>.bashrc</i> file. With these set,
-  everything is now ready for you to build DynamO. Change into
-  the <i>dynamo</i> source directory and run the <i>bjam</i> program.
-</p>
-<?php codeblockstart(); ?>cd /path/to/dynamo/sources
-~/boost/bjam install<?php codeblockend("brush: shell;"); ?>
 <p>
   If this completes successfully, you should now have a set of dynamo
   executables in the <i>bin</i> subdirectory of the DynamO

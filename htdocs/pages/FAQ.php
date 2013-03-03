@@ -137,3 +137,72 @@
   also be integrated exactly, but at the moment DynamO does not do
   this.
 </p>
+<h1>Q: You say I can edit the configuration files using my favourite text editor? How?</h1>
+<p>
+  Short answer: Most modern text editors bundled with Linux such
+  as <a href="http://kate-editor.org/">Kate</a>
+  or <a href="http://projects.gnome.org/gedit/">GEdit</a> (my personal
+  choice is
+  <a href="http://www.gnu.org/software/emacs/">emacs</a>) support
+  opening xml files and will even highlight them for you. Just open
+  them using either the open file dialog or by calling the editor from
+  the command line. For example, to open a compressed configuration
+  file from the terminal to edit it using Kate, just write:
+</p>
+<?php codeblockstart(); ?>kate config.out.xml.bz2<?php codeblockend("brush: shell;"); ?>
+<p>
+  DynamO writes out a compressed xml files by default (indicated by
+  the extension <i>.bz2</i>). Luckily, most text editors will happily
+  uncompress and recompress the file for you if you just open it
+  directly, as shown above.
+</p>
+<h1>Q: When I try to run dynavis I get a GLXBadFBConfig error, what is wrong?</h1>
+<p>
+  Short answer: Your graphics card or drivers don't support OpenGL
+  3.3, you need to upgrade your drivers.
+</p>
+<p>
+  This error usually appears right at the start, and looks like:
+</p>
+<?php codeblockstart(); ?>dynarun  Copyright (C) 2011  Marcus N Campbell Bannerman
+This program comes with ABSOLUTELY NO WARRANTY.
+This is free software, and you are welcome to redistribute it
+under certain conditions. See the licence you obtained with
+the code
+Simulation: Reading the XML input file into memory
+Simulation: Parsing the raw XML
+Simulation: Loading tags from the XML
+CellNeighbourList: Cells Loaded
+NbListScheduler: Neighbour List Scheduler Algorithmn Loaded
+Dynamics: Loading Particle Data
+Dynamics: Particle count 1372
+SystemInteraction: System halt set for 1.79769e+308
+The program 'dynavis' received an X Window System error.
+This probably reflects a bug in the program.
+The error was 'GLXBadFBConfig'.
+  (Details: serial 34 error_code 181 request_code 154 minor_code 34)
+  (Note to programmers: normally, X errors are reported asynchronously;
+   that is, you will receive the error a while after causing it.
+   To debug your program, run it with the --sync command line
+   option to change this behavior. You can then get a meaningful
+   backtrace from your debugger if you break on the gdk_x_error() function.)
+BoundedPQ: Exception Events = 0<?php codeblockend("brush: shell;"); ?>
+<p>
+  This is usually due to your computer running the open-source drivers
+  which are currently a little behind in implementing recent versions
+  of OpenGL. They are catching up quickly but it will be 2014 or
+  possibly later before OpenGL 3.3 is fully supported. In the meantime
+  we highly recommend that you use the binary drivers.
+</p>
+<h1>Q: The Andersen thermostat is giving me a non-zero system momentum
+average. Is this an error?</h1>
+<p>
+  Short answer: Probably not. The Andersen thermostat allows the
+  system momentum to fluctuate about zero. This can lead to some
+  suprisingly large values of the total momentum.
+</p>
+<p>
+  Please
+  see <a href="https://github.com/toastedcrumpets/DynamO/issues/29">issue
+  #29 in the github tracker</a> for more information.
+</p>
