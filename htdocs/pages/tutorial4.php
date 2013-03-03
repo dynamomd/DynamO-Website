@@ -368,5 +368,32 @@ Mode 1: Mono/Multi-component square wells
   configuration file.
 </p>
 <h1><a id="compressing"></a>Compressing the Configuration</h1>
+<div class="figure" style="clear:right; float:right;width:430px;">
+  <img src="/images/tut4_uncompressed.png" alt="An image of the low-density binary square-well system" width="400" height="300" style="float:right;margin:15px;">
+  <div class="caption">
+    The low-density binary square-well system.<br/>
+    <a href="config.tut4.binary.xml">View configuration file</a>
+  </div>
+</div>
+<p>
+  To create the binary system we had to shrink one set of particles to
+  avoid causing any overlaps or invalid states. Unfortunately, this
+  results in a low-density configuration (see right). The low-density
+  behaviour of fluids is fairly well-understood (as it approaches an
+  ideal gas). Most of the interesting behaviour we wish to explore
+  through simulation appears at higher densities, so we need a method
+  to generate high-density systems.
+</p>
+<p>
+  To access high density systems while avoiding invalid states, DynamO
+  implements the linear compression algorithm first proposed by
+  Woodcock[<a href="http://dx.doi.org/10.1111/j.1749-6632.1981.tb55667.x">paper</a>],
+  but later popularised by Lubachevsky and
+  Stillinger[<a href="http://dx.doi.org/10.1007/BF01054337">paper</a>]. This
+  is a mode of simulation where all particles grow in size over
+  time. At the end of the growth run, the dimensions are all rescaled
+  so that the particles have the same initial size, but the simulation
+  box has shrunk proportionally.
+</p>
 <h1>Running the Simulation</h1>
 <h1>Processing the Results</h1>
