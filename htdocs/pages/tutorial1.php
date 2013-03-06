@@ -270,7 +270,18 @@ wget http://downloads.sourceforge.net/project/boost/boost/1.53.0/boost_1_53_0.ta
   the following bjam command:
 </p>
 <?php codeblockstart(); ?>cd /path/to/dynamo/sources
-BOOST_BUILD_PATH=~/boost/tools/build/v2/ ~/boost/bjam install include=~/boost/ linkflags="-L ~/boost/stage/lib/"<?php codeblockend("brush: shell;"); ?>
+BOOST_BUILD_PATH=~/boost/tools/build/v2/ ~/boost/bjam install link=static include=~/boost/ linkflags="-L ~/boost/stage/lib/"<?php codeblockend("brush: shell;"); ?>
+<p>
+  The option <i>link=static</i> ensures that the boost libraries are
+  linked statically so that you can run DynamO even when the boost
+  libraries are not installed (e.g., on compute nodes).  
+</p>
+<p>
+  If this completes successfully, you should now have a set of dynamo
+  executables in the <i>bin</i> subdirectory of the DynamO
+  sources. You should be able to run these executables on any node
+  too, as the boost libraries are statically linked by default.
+</p>
 <p>
   If you want to make these variables permanent you can set this all
   up by adding the commands below to your <i>.bashrc</i> file:
@@ -278,9 +289,3 @@ BOOST_BUILD_PATH=~/boost/tools/build/v2/ ~/boost/bjam install include=~/boost/ l
 <?php codeblockstart(); ?>export BOOST_BUILD_PATH=~/boost/tools/build/v2/
 export CPATH=~/boost/:$CPATH
 export LIBRARY_PATH=~/boost/stage/lib/:$LIBRARY_PATH<?php codeblockend("brush: shell;"); ?>
-<p>
-  If this completes successfully, you should now have a set of dynamo
-  executables in the <i>bin</i> subdirectory of the DynamO
-  sources. You should be able to run these executables on any node
-  too, as the boost libraries are statically linked by default.
-</p>
