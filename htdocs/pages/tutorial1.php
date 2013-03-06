@@ -23,7 +23,7 @@
 <?php button("Tutorial 2: Introduction to the DynamO workflow: Running a simulation of hard spheres","/index.php/tutorial2");?>
 <p>
 </p>
-<h1>Step 0: Build Requirements</h1>
+<h1>Step 0: Build requirements</h1>
 <p>
   Currently, DynamO will only compile and run on <b>Gnu/Linux</b>
   based systems (e.g., Ubuntu/Gentoo/RedHat/Suse) and there are no
@@ -37,7 +37,7 @@
   optional dependencies which, if they're installed, will activate
   extra features such as saving visualisations directly to video.
 </p>
-<h2>Essential Libraries</h2>
+<h2>Essential libraries</h2>
 <p>
   These programs and libraries <b>must</b> be installed if you want to
   compile DynamO:
@@ -69,7 +69,7 @@
   packages), please see the section on <a href="#with-boost">using a
   local Boost installation</a> below.
 </p>
-<h2>Visualiser Requirements</h2>
+<h2>Visualiser requirements</h2>
 <p>
   These programs and libraries only need to be installed if you want
   to use the visualiser supplied with DynamO:
@@ -198,7 +198,7 @@ sudo make install<?php codeblockend("brush: shell;"); ?>
 <p>
   and you should now have an up-to-date set of executables installed!
 </p>
-<h1>Building Debugging Executables</h1>
+<h1>Building debugging executables</h1>
 <p>
   If you're having some trouble with DynamO, you can build a debug
   version of the simulator once a normal version has been built. This

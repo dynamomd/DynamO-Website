@@ -1256,7 +1256,7 @@
   System tags represent events which do not fit into the categories of
   <a href="#global">Global</a>, <a href="#local">Local</a>, or <a href="#interaction">Interaction</a>. 
 </p>
-<h2>Type="Andersen"</h2>
+<h2><a id="typeandersen"></a>Type="Andersen"</h2>
 <p>
   <b>Description:</b> The "Andersen" System implements an Andersen
   thermostat. An Andersen thermostat functions by randomly reassigning

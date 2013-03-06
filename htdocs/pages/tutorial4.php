@@ -29,7 +29,15 @@
     configuration file.</a>
   </li>
   <li>
-    <a href="#compressing">How to compress a simulation to higher densities.</a>
+    <a href="#compressing">How to compress a simulation to higher
+    densities.</a>
+  </li>
+  <li>
+    <a href="#rescalingthermostat">How to rescale the temperature in a
+    configuration.</a>
+  </li>
+  <li>
+    <a href="#rescalingthermostat">How to add a thermostat.</a>
   </li>
   <li>
     How to process collected data, including transport coefficients,
@@ -45,7 +53,7 @@
   implement a simulation of a binary (two-component) mixture of square-well
   particles.
 </p>
-<h1><a id="aboutsquarewellfluids"></a>About Square-Well Fluids</h1>
+<h1><a id="aboutsquarewellfluids"></a>About square-well fluids</h1>
 <p>
   For the purpose of the tutorial, we'll want to simulate a mixture of
   square-well molecules. A square-well molecule is a particle which
@@ -99,7 +107,7 @@
   additional complexity.
 </p>
 
-<h2>The System Studied</h2>
+<h2>The system studied</h2>
 <p>
   We're going to study a binary mixture of square-well
   molecules. We'll have a larger species, A, and a smaller species,
@@ -113,7 +121,7 @@
   a mixture of $N=4000$ particles over a range of densities and
   concentrations.
 </p>
-<h1><a id="settingup"></a>Setting up the Configuration File</h1>
+<h1><a id="settingup"></a>Setting up the configuration file</h1>
 <p>
   When you first start using DynamO, it is not really practical to try
   to create a configuration file from scratch. It is much simpler and
@@ -340,7 +348,7 @@ Mode 1: Mono/Multi-component square wells
   specified will not make much difference to the performance of
   DynamO, so use whatever is most convenient for you.
 </p>
-<h3>About CaptureMap Tags</h3>
+<h3>About CaptureMap tags</h3>
 <p>
   You should notice that the <b>CaptureMap</b> tag in the original
   mono-component configuration file has been deleted and that the new
@@ -367,7 +375,7 @@ Mode 1: Mono/Multi-component square wells
   tags. This forces DynamO to rebuild them when it next loads the
   configuration file.
 </p>
-<h1><a id="compressing"></a>Compressing the Configuration</h1>
+<h1><a id="compressing"></a>Compressing the configuration</h1>
 <div class="figure" style="clear:right; float:right;width:400px;">
   <?php embedAJAXvideo("tut4_compression", "x62zeoF457w", 400, 225); ?>
   <div class="caption">
@@ -401,11 +409,69 @@ Mode 1: Mono/Multi-component square wells
   end point of the compression using either
   the <i>--target-pack-frac</i> or the <i>--target-density</i> option.
 </p>
-<?php codeblockstart(); ?>dynarun config.start.xml --engine=3 --target-pack-frac 0.3<?php codeblockend("brush: shell;"); ?>
+<?php codeblockstart(); ?>dynarun config.start.xml --engine=3 --target-pack-frac 0.3 -o config.compressed.xml<?php codeblockend("brush: shell;"); ?>
 <p>
-  A video of the compression run is given to the right.  During the
-  compression, the system is heating up and the particles are moving
-  faster.
+  A video of the compression run is given to the right. The simulation
+  ends automatically once the target number density or packing
+  fraction is reached. It is most convenient to work in packing
+  fractions as almost all systems have a maximum packing fraction near
+  the mono-component hard sphere limit of
+  $\pi\,\sqrt{2}/6\approx0.74048$, thus a system with a packing
+  fraction near 0.6-0.7 is always a high-density system. The number
+  densities on the other hand have a varying range of values.
 </p>
-<h1>Running the Simulation</h1>
-<h1>Processing the Results</h1>
+<h1><a id="rescalingthermostat"></a>Rescaling velocities and adding a thermostat</h1>
+<p>
+  During compression you should be able to observe that the system is
+  heating up (due to the work performed) and the particles are moving
+  faster. This will cause the compression to slow down and you may
+  consider stopping the compression periodically to scale down the
+  temperature. To alter the current temperature of a configuration
+  file we can use the following dynamod command:
+</p>
+<?php codeblockstart(); ?>dynamod config.compressed.xml -r 1 -o config.rescaled.xml<?php codeblockend("brush: shell;"); ?>
+<p>
+  This will rescale the velocities of the particles in the system so
+  that the current temperature is 1 (set by the <i>-r</i> option).
+</p>
+<p>
+  Temperature is a measure of the kinetic energy of a particle system
+  but there are other stores of energy, such as the interaction or
+  configurational energy. In square well systems, particles inside
+  another particle's well have an additional negative potential energy
+  in addition to their kinetic energy. After you have rescaled the
+  temperature and begin to simulate the system again, the particles
+  may move in or out of square-wells. This motion will convert energy
+  between potential and kinetic and the temperature will again
+  change. If we want to measure the system at a fixed temperature, we
+  will need to add a thermostat to hold the system at the temperature.
+</p>
+<p>
+  To add a thermostat, again use the dynamod tool:
+</p>
+<?php codeblockstart(); ?>dynamod config.rescaled.xml -T 1.0 -o config.thermostatted.xml<?php codeblockend("brush: shell;"); ?>
+<p>
+  This will add
+  an <a href="/index.php/reference#typeandersen">Andersen
+  thermostat</a> to the system with a target temperature of 1 (set by
+  the <i>-T</i> argument). This thermostat will eventually bring the
+  system to the specified temperature, even with changes in the
+  configurational energy.
+</p>
+<p>
+  <b>Note</b>: If you wish to change the thermostat temperature at a
+  later time, you can either use dynamod on the configuration again:
+</p>
+<?php codeblockstart(); ?>dynamod config.thermostatted.xml -T 4.0 -o config.thermostatted.xml<?php codeblockend("brush: shell;"); ?>
+<p>
+  Or you can open up the configuration file in a text editor, and edit
+  the <a href="/index.php/reference#typeandersen">Andersen type
+  System</a> event:
+</p>
+<?php codeblockstart();?>
+<System Type="Andersen" Name="Thermostat" MFT="1.0" Temperature="1.0" SetPoint="0.05" SetFrequency="100">
+  <IDRange Type="All"/>
+</System>
+<?php codeblockend("brush: xml;"); ?>
+<h1>Running the simulation</h1>
+<h1>Processing the results</h1>

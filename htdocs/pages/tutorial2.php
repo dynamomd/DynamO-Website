@@ -28,7 +28,7 @@
   simulate different systems and to process the output of DynamO to
   collect results.
 </p>
-<h2>About the Simulated Hard-Sphere Fluid</h2>
+<h2>About the simulated hard-sphere fluid</h2>
 <p>
   In this tutorial a hard-sphere fluid is simulated. A hard sphere is
   a simple molecular model used to capture the fundamental effects of
@@ -102,7 +102,7 @@
     Configuration","/pages/config.tut3.xml");?>
   </div>
 </div>
-<h2>Video of the Simulation</h2>
+<h2>Video of the simulation</h2>
 <p>
   A video of initial configuration and equilibration which you will
   perform in this tutorial is presented to the right.  At the start of
@@ -134,7 +134,7 @@
 <p>
   Let's take a look at how this simulation was performed in DynamO...
 </p>
-<h1>Verifying the DynamO Installation</h1>
+<h1>Verifying the DynamO installation</h1>
 <p>
   Please ensure that you have already installed DynamO, either by
   using the precompiled packages in
@@ -171,7 +171,7 @@ Usage : dynamod <OPTIONS>...[CONFIG FILE]
   If you do see the output above, it means you're now ready to setup
   and run your first DynamO simulation...
 </p>
-<h1>In Brief</h1> 
+<h1>In brief</h1> 
 <p>
   There are only three commands to cover in this tutorial, so we'll
   cover them briefly and then go into each command in detail. 
@@ -199,7 +199,7 @@ dynarun config.equilibrated.xml -c 1000000 -o config.end.xml
   (-c -o -m) control? We'll look at each command individually in the
   following sections.
 </p>
-<h1>Configuration Files and Dynamod</h1>
+<h1>Configuration files and dynamod</h1>
 <p>
   The first step in the brief example was to create the
   initial <b>configuration file</b>, called <em>config.start.xml</em>,
@@ -211,7 +211,7 @@ dynarun config.equilibrated.xml -c 1000000 -o config.end.xml
   of DynamO, which are the main input and output of DynamO, and how to
   generate configuration files using <b>dynamod</b>.
 </p>
-<h2>About the Configuration File</h2>
+<h2>About the configuration file</h2>
 <p>
   Before we can run any simulations with DynamO, we must write or
   generate a configuration file. A configuration file is a single file
@@ -240,7 +240,7 @@ dynarun config.equilibrated.xml -c 1000000 -o config.end.xml
   generate from scratch. So lets take a look at how we can generate an
   basic example configuration file to start us off.
 </p>
-<h2>Generating Configuration Files</h2>
+<h2>Generating configuration files</h2>
 <p>
   <b>dynamod</b> is a program designed to generate example
   configuration files, or to manipulate existing configuration
@@ -309,7 +309,7 @@ Mode 0: Monocomponent hard spheres
   particles and their placement, and these are discussed in the next
   section.
 </p>
-<h2>Initial Positions and Crystals</h2>
+<h2>Initial positions and crystals</h2>
 <div class="figure" style="float:right; width:400px;">
   <a href="/images/tut1_initialpos.jpg">
     <img height="400" width="400" alt="Image of hard spheres arranged in an FCC lattice." src="/images/tut1_initialpos.jpg"/>
@@ -378,7 +378,7 @@ Mode 0: Monocomponent hard spheres
   the <em>--density</em> option, or <em>-d</em> for short (by default
   we have <em>-d 0.5</em>).
 </p>
-<h2>In Summary</h2>
+<h2>In summary</h2>
 <p>
   To conclude this part, we'll quickly summarise the description of
   each of the options passed to dynamod:
@@ -424,7 +424,7 @@ Mode 0: Monocomponent hard spheres
   the <a href="/pages/config.tut3.xml">contents of the configuration
   file</a>, but the configuration file will be explained in more
   detail in the <a href="index.php/tutorial2">next tutorial</a>.
-<h1>Running the Simulation</h1>
+<h1>Running the simulation</h1>
 <p>
   The most complex part of this tutorial is now over. All that remains
   is to take this initial starting configuration file and actually run
@@ -503,7 +503,7 @@ Simulation: Config written to config.end.xml<?php codeblockend("brush: plain;");
   data outputted by the dynarun command. In the following section we
   discuss the contents of the <em>output.xml.bz2</em> file.
 </p>
-<h2>Visualising the Simulation</h2>
+<h2>Visualising the simulation</h2>
 <p>
   If you want to visualise a configuration or simulation, you replace
   the <b>dynarun</b> program with the <b>dynavis</b> program like so:
@@ -515,7 +515,7 @@ Simulation: Config written to config.end.xml<?php codeblockend("brush: plain;");
   the visualiser controls. If you close the visualiser windows, the
   simulation will automatically unpause and will carry on running.
 </p>
-<h1>Processing the Collected Data</h1>
+<h1>Processing the collected data</h1>
 <p>
   <b>dynarun</b> has the ability to collect a wide range of properties
   for molecular and granular systems. These include complex properties
@@ -608,7 +608,7 @@ $$
   button below.
 </p> 
 <?php button("Output plugin reference documentation","/index.php/outputplugins");?>
-<h1>In Summary</h1>
+<h1>In summary</h1>
 <p>
   We've covered how to create an initial configuration
   using <b>dynamod</b> and how to "run" this configuration for a fixed
