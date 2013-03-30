@@ -56,9 +56,9 @@
     collection of event driven potentials and Thermodynamic
     Perturbation Theory (TPT) which can be used to accurately estimate
     the thermophysical properties of compounds. The results are
-    extremely impressive, although it appears that the fine details on
-    the potentials used are not readily available and the code is
-    unavailable, except via a web interface.</li>
+    extremely impressive and details on the potential parameters are
+    reported in publications. The code appears to be unavailable but
+    simulations can be requested through a web interface.</li>
   <li>
     <a href="http://cims.nyu.edu/~donev/Packing/PackLSD/Instructions.html">PackLSD </a>
     (or an <a href="http://cherrypit.princeton.edu/Packing/C++/">older
