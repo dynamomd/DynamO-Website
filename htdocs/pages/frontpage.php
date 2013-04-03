@@ -13,8 +13,9 @@
 <p>
   DynamO is a free and open-source event-driven particle
   simulator. Event-driven simulation is a fast and <u>analytical</u>
-  technique for particle simulation and has many advantages over the
-  more traditional time-stepping approaches (such as those found in
+  technique for particle simulation and is an alternative approach to
+  the more traditional time-stepping approaches (such as those found
+  in
   <a href="http://www.gromacs.org/">Gromacs</a>, <a href="http://web678.public1.linz.at/Drupal/?q=OpenSourceDEM">Liggghts</a>,
   and <a href="http://www.ks.uiuc.edu/Research/namd/">NAMD</a>).
   DynamO is a reference implementation of many established
