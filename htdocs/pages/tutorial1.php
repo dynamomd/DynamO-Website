@@ -100,15 +100,23 @@
 <h1>Step 1: Downloading</h1>
 <p>
   Take a look at the download page for full instructions on how to
-  download a copy of the DynamO source code.   The recommended method is to use git to download the source, which
-  would look like this:
+  download a copy of the DynamO source code.  The recommended method
+  is to use git to download the source, which would look like this:
 </p>
-<?php codeblockstart(); ?>git clone https://github.com/toastedcrumpets/DynamO.git
-cd DynamO<?php codeblockend("brush: shell;"); ?>
+<?php codeblockstart(); ?>git clone https://github.com/toastedcrumpets/DynamO.git<?php codeblockend("brush: shell;"); ?>
 <p>
-Once you have the source
-  code, change into the directory ready to start the build. 
+  If this command fails, it could be because you don't have an
+  internet connection or you are behind a proxy. Please ensure that
+  your proxy details are correctly set up in git (e.g. for Aberdeen
+  university clusters and computers you will need to set the proxy
+  using the following command, <i>git config --global http.proxy
+  http://proxy.abdn.ac.uk:8080</i>).
 </p>
+<p>
+  Once you have the source code, change into the directory ready to
+  start the build.
+</p>
+<?php codeblockstart(); ?>cd DynamO<?php codeblockend("brush: shell;"); ?>
 <h1>Step 2: Compilation</h1>
 <p>
   DynamO uses the modern, powerful, but fairly complex boost-build
