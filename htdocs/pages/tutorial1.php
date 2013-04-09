@@ -110,11 +110,14 @@
   your proxy details are correctly set up in git (e.g. for Aberdeen
   university clusters and computers you will need to set the proxy
   using the following command, <i>git config --global http.proxy
-  http://proxy.abdn.ac.uk:8080</i>).
+  http://proxy.abdn.ac.uk:8080</i>). If you have an old version of git
+  (such as the tom cluster in Manchester), you can try using the git
+  protocal using the following command:
 </p>
+<?php codeblockstart(); ?>git clone git://github.com/toastedcrumpets/DynamO.git<?php codeblockend("brush: shell;"); ?>
 <p>
-  Once you have the source code, change into the directory ready to
-  start the build.
+  One of the above commands should allow you to download the source
+  code so now change into the directory ready to start the build.
 </p>
 <?php codeblockstart(); ?>cd DynamO<?php codeblockend("brush: shell;"); ?>
 <h1>Step 2: Compilation</h1>
