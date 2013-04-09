@@ -263,13 +263,16 @@ wget http://downloads.sourceforge.net/project/boost/boost/1.53.0/boost_1_53_0.ta
   that the libraries are in <i>stage/lib</i> and the headers are in
   the current directory. If some libraries fail to build, DynamO will
   still probably build just fine as only two compiled boost libraries
-  are used. All that remains is to use boost build to compile
-  DynamO. We have to set some extra variables to allow bjam to run
-  outside the <i>boost</i> directory, and to set up the compiler link
-  and include paths for the boost libraries. We can do this by using
-  the following bjam command:
+  are used. All that remains is to download a copy of DynamO, and use
+  boost build to compile it. We have to set some extra variables to
+  allow the bjam program we just built to run outside the <i>boost</i>
+  directory, and to set up the compiler link and include paths for the
+  boost libraries. We can do all of this by using the following
+  commands:
 </p>
-<?php codeblockstart(); ?>cd /path/to/dynamo/sources
+<?php codeblockstart(); ?>cd ~/
+git clone https://github.com/toastedcrumpets/DynamO.git
+cd ~/DynamO/
 BOOST_BUILD_PATH=~/boost/tools/build/v2/ ~/boost/bjam install link=static include=~/boost/ linkflags="-L ~/boost/stage/lib/"<?php codeblockend("brush: shell;"); ?>
 <p>
   The option <i>link=static</i> ensures that the boost libraries are
@@ -283,8 +286,9 @@ BOOST_BUILD_PATH=~/boost/tools/build/v2/ ~/boost/bjam install link=static includ
   too, as the boost libraries are statically linked by default.
 </p>
 <p>
-  If you want to make these variables permanent you can set this all
-  up by adding the commands below to your <i>.bashrc</i> file:
+  <b>Optional</b>: If you want to make these variables permanent you
+  can set this all up by adding the commands below to
+  your <i>.bashrc</i> file:
 </p>
 <?php codeblockstart(); ?>export BOOST_BUILD_PATH=~/boost/tools/build/v2/
 export CPATH=~/boost/:$CPATH
