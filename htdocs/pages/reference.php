@@ -70,6 +70,9 @@
 		    <li>
 		      <a href="#idpairrange">IDPairRange</a>
 		    </li>
+		    <li>
+		      <a href="#potential">Potential</a>
+		    </li>
 		  </ul>
 		</li>
 	      </ul>
@@ -108,6 +111,9 @@
 		  <ul>
 		    <li>
 		      <a href="#idrange">IDRange</a>
+		    </li>
+		    <li>
+		      <a href="#potential">Potential</a>
 		    </li>
 		  </ul>
 		</li>
@@ -858,29 +864,25 @@
 </ul>
 <h2>Type="Stepped"</h2>
 <p>
-  <b>Description:</b> The "Stepped" Interaction implements a generic
-  spherically-symmetric stepped potential. This can be used to
-  implement many simple systems (hard-spheres, square-wells) and many
-  complex systems such as a discontinuous Lennard-Jones potential.
+  <b>Description:</b> The "Stepped" Interaction wraps a generic
+  spherically-symmetric stepped <a href="#potential">Potential</a> and
+  uses it for two-particle interactions. This can be used to implement
+  many simple systems (hard-spheres, square-wells) and many complex
+  systems such as a discontinuous Lennard-Jones potential. An
+  alternative approach is to use a <a href="#typeumbrella">"Umbrella"
+  System event</a> to bind collections of particles together using
+  a <a href="#potential">Potential</a>.
 </p>
 <p>
-  <b>Example Usage:</b> A stepped approximation to the Lennard-Jones fluid.
+  <b>Example Usage:</b> Generic wrapping of a <a href="#potential">Potential</a>.
 </p>
-<?php codeblockstart();?><Interaction Type="Stepped" Name="Bulk">
-  <Step R="2.30000000000000e+00" E="-6.00000000000000e-02"/>
-  <Step R="1.75000000000000e+00" E="-2.20000000000000e-01"/>
-  <Step R="1.45000000000000e+00" E="-5.50000000000000e-01"/>
-  <Step R="1.25000000000000e+00" E="-9.80000000000000e-01"/>
-  <Step R="1.05000000000000e+00" E="-4.70000000000000e-01"/>
-  <Step R="1.00000000000000e+00" E="7.60000000000000e-01"/>
-  <Step R="9.50000000000000e-01" E="3.81000000000000e+00"/>
-  <Step R="9.00000000000000e-01" E="1.09500000000000e+01"/>
-  <Step R="8.50000000000000e-01" E="2.75500000000000e+01"/>
-  <Step R="8.00000000000000e-01" E="6.67400000000000e+01"/>
-  <Step R="7.50000000000000e-01" E="1.00000000000000e+300"/>
-  <CaptureMap .../>
+<?php codeblockstart();?>
+<Interaction Type="Stepped" Name="Bulk" LengthScale="1" EnergyScale="1">
   <IDPairRange .../>
-</Interaction><?php codeblockend("brush: xml;"); ?>
+  <Potential .../>
+  <CaptureMap .../>
+</Interaction>
+<?php codeblockend("brush: xml;"); ?>
 <p>
   <b>Full Tag, Subtag, and Attribute List</b>:
 </p>
@@ -898,20 +900,34 @@
     is unique.
   </li>
   <li>
-    <b>Step</b> <i>(tag)</i>: This tag specifies one step of the
-    potential. These steps may be in any order but they will be
-    sorted by DynamO on output by decreasing radius.
-    <ul>
-      <li>
-	<b>R</b> <i>(attribute)</i>: The radius of the step.
-      </li>
-      <li>
-	<b>E</b> <i>(attribute)</i>: The energy of the
-	step. Infinite energies are not supported, but may
-	effectively be implemented using a large value such as
-	"1e300".
-      </li>
-    </ul>
+    <b>LengthScale</b> <i>(attribute)</i>: The length scale by which
+    the <a href="#potential">Potential</a> is scaled for each
+    particle. For example, if
+    a <a href="#typelennardjonespotential">Lennard-Jones type
+    Potential</a> is used, this sets the $\sigma$ value for each
+    particle.
+    
+    <br/> This attribute is a <b>Property specifier</b> with a unit
+    of <b>Length</b> (see the <a href="#property">section on
+      Properties</a> for more information).
+  </li>
+  <li>
+    <b>EnergyScale</b> <i>(attribute)</i>: The energy scale by which
+    the <a href="#potential">Potential</a> is scaled for each
+    particle. For example, if
+    a <a href="#typelennardjonespotential">Lennard-Jones type
+    Potential</a> is used, this sets the $\varepsilon$ value for each
+    particle.
+    
+    <br/> This attribute is a <b>Property specifier</b> with a unit
+    of <b>Length</b> (see the <a href="#property">section on
+      Properties</a> for more information).
+  </li>
+  <li>
+    <b>Potential</b> <i>(tag)</i>:
+    The <a href="#potential">Potential</a> tag specifies the stepped
+    potential used for this interaction. Please see the section on
+    the <a href="#potential">Potential</a> tag for more information.
   </li>
   <li>
     <b>CaptureMap</b> <i>(tag)</i>: If present, the CaptureMap tag
@@ -1324,6 +1340,7 @@
     information on the format of this tag.
   </li>
 </ul>
+<h2><a id="typeumbrella"></a>Type="Umbrella"</h2>
 <h1><a id="dynamics"></a>Dynamics</h1>
 <p>
   The Dynamics tag specifies the equations of motion of the
@@ -1502,16 +1519,48 @@
 </ul>
 <h1><a id="property"></a>Property</h1>
 <p>
-  Property tags are a mechanism for specifying large amounts of
-  information which vary on a per-particle basis. This is useful if
-  you have a polydisperse system, where each particle may have a
-  unique mass and diameter.
+  Property tags are a mechanism which allows you to specify large
+  amounts of information which may or may not vary on a per-particle
+  basis. For example, if every Particle in the system is
+  a <a href="#typehardsphere">HardSphere type Interaction</a> with the
+  same diameter of 1.5, you might use the following Interaction:
 </p>
+<?php codeblockstart();?>
+<Interaction Type="HardSphere" Diameter="1.5" Elasticity="1" Name="Bulk">
+  <IDPairRange .../>
+</Interaction>
+<?php codeblockend("brush: xml;"); ?>
 <p>
-  Properties must be defined in the Properties tag in the
-  configuration file. For example, if we wanted to define the mass and
-  diameter of each particle individually, we would define two
-  "PerParticle" Properties like so:
+  This is called a <i>numeric</i> property where the value of the
+  property specifier (in this case the Diameter attribute value) is
+  the value of the property. But what if you want a polydisperse
+  system, where each particle may have a unique mass and diameter? In
+  this case we would use <i>named Properties</i>:
+</p>
+<?php codeblockstart();?>
+<Interaction Type="HardSphere" Diameter="D" Elasticity="1" Name="Bulk">
+  <IDPairRange .../>
+</Interaction>
+<?php codeblockend("brush: xml;"); ?>
+<p>
+  Here we've used the name "D" to refer to a new named
+  Property. Whenever DynamO encounters a property specifier, such as
+  the Diameter attribute above, and fails to convert it directly into
+  a floating-point number due to the presence of letters in its name,
+  it assumes that the property is a named property.  This named
+  property can also be reused in other property specifiers at the same
+  time, such as in a <a href="#typewall">Wall type Local</a>:
+</p>
+<?php codeblockstart();?><Local Type="Wall" Name="GroundPlate" Elasticity="1" Diameter="D">
+  ...
+</Local><?php codeblockend("brush: xml;"); ?>
+<p>
+  And now both the Wall Local and the Hardsphere Interaction will use
+  the same diameter for each particle. Each named Property must be
+  defined in the Properties tag in the configuration file. For
+  example, if we wanted to define the mass and diameter of each
+  particle individually, we would define two "PerParticle" Properties
+  like so:
 </p>
 <?php codeblockstart();?>
 <Properties>
@@ -1520,49 +1569,38 @@
 </Properties>
 <?php codeblockend("brush: xml;"); ?>
 <p>
-  Each Property defined has a "Name" attribute which allows any other
-  objects with a <b>Property specifier</b> in the configuration file
-  to refer to it. For example, a <a href="#typehardsphere">HardSphere
-    type Interaction</a> can refer to the "D" property above in its
-  Diameter attribute, like below.
-</p>
-<?php codeblockstart();?>
-<Interaction Type="HardSphere" Diameter="D" Elasticity="1" Name="Bulk">
-  <IDPairRange .../>
-</Interaction>
-<?php codeblockend("brush: xml;"); ?>
-<p>
   You should note that the units of the Property must correspond to
   the units of the property specifier. If you check
   the <a href="#typehardsphere">HardSphere Interaction</a>
   documentation, you can confirm that the Diameter attribute has units
   of Length (The available units
   include <b>Dimensionless</b>, <b>Length</b>, <b>Area</b>, <b>Volume</b>, <b>Time</b>, <b>Mass</b>,
-  and <b>Energy</b>). This Property name can also be reused in other
-  Property specifiers at the same time, such as in
-  a <a href="#typewall">Wall type Local</a>:
-</p>
-<?php codeblockstart();?><Local Type="Wall" Name="GroundPlate" Elasticity="1" Diameter="D">
-  ...
-</Local><?php codeblockend("brush: xml;"); ?>
+  and <b>Energy</b>). 
 <p>
-  and in the <a href="#typepoint">Species definition</a>:
+  We can use a named property in the<a href="#typepoint">Species
+  definition</a> to use this new per-particle mass:
 </p>
 <?php codeblockstart();?><Species Mass="M" Name="Bulk" IntName="Bulk" Type="Point">
   ...
 </Species><?php codeblockend("brush: xml;"); ?>
 <p>
-  Once the Property has been defined and referred to in other parts of
-  the configuration file, you must specify the value of the property
-  for each particle. This is done by adding an attribute to
-  the <a href="#pt">Pt (particle) tags</a> with the same name
-  as the property. For example:
+  Once the per-particle Property has been defined and referred to in
+  other parts of the configuration file, you must specify the value of
+  the property for each particle. This is done by adding an attribute
+  to the <a href="#pt">Pt (particle) tags</a> with the same name as
+  the property. For example:
 </p>
 <?php codeblockstart();?><Pt ID="0" M="1.11" D="0.323451">
   <P x="1.71513720091304e+00" y="5.49987913872954e+00" z="4.32598642635552e+00"/>
   <V x="1.51174422678297e+00" y="-8.06881217863154e-01" z="-8.11332120569972e-01"/>
 </Pt>
 <?php codeblockend("brush: xml;"); ?>
+<p>
+  At the moment, there is only the PerParticle type of named property,
+  and every single particle must have the corresponding property
+  attribute (in the example above, each <b>Pt</b> tag must have
+  a <b>D</b> and <b>M</b> attribute).
+</p>
 <h1><a id="pt"></a>Pt (Particle)</h1>
 <p>
   <b>Description:</b> A <b>Pt</b> or Particle tag represents the
@@ -1627,6 +1665,81 @@
     </ul>
   </li>
 </ul>
+<h1><a id="potential"></a>Potential</h1>
+<p>
+  The Potential tag represents a collection of discontinuities and
+  energies which make up a stepped potential. The location of these
+  steps may be manually entered using
+  the <a href="#typesteppedpotential">"Stepped" type</a> or
+  automatically generated, such as in
+  the <a href="#typelennardjonespotential">Lennard-Jones type</a>.
+</p>
+<h2><a id="typesteppedpotential"></a>Type="Stepped"</h2>
+<p>
+  <b>Description:</b> This Potential type allows a stepped potential
+  to be directly entered in. This is the most general stepped
+  potential available, but requires manual entry of the potential.
+</p>
+<p>
+  <b>Example Usage:</b> An implementation of the sixth hand stepped
+  approximation of the Lennard-Jones potential reported
+  by <a href="http://link.aip.org/link/doi/10.1063/1.456811">Chapela
+  et al. (1989)</a>:
+</p>
+<?php codeblockstart();?>
+<Potential Type="Stepped" Direction="Left">
+  <Step R="2.3" E="-0.06"/>
+  <Step R="1.75" E="-0.22"/>
+  <Step R="1.45" E="-0.55"/>
+  <Step R="1.25" E="-0.98"/>
+  <Step R="1.05" E="-0.47"/>
+  <Step R="1.0" E="0.76"/>
+  <Step R="0.95" E="3.81"/>
+  <Step R="0.9" E="10.95"/>
+  <Step R="0.85" E="27.55"/>
+  <Step R="0.80" E="66.74"/>
+  <Step R="0.75" E="1.0e+300"/>
+</Potential>
+<?php codeblockend("brush: xml;"); ?>
+<p>
+  <b>Full Tag, Subtag, and Attribute List</b>:
+</p>
+<ul>
+  <li>
+    <b>Type</b> <i>(attribute)</i>: Must have the
+    value <i>"Stepped"</i> to select this Dynamics type.
+  </li>
+  <li>
+    <b>Direction</b> <i>(attribute)</i>: This sets the direction of
+    the stepping.  <br/> For example, for potentials which have zero
+    interaction energy at long distances, the "Left" direction is the
+    most convenient. The Lennard-Jones potential is an example of such
+    a potential. In this case, each <b>Step</b> tag specifies a
+    location of a discontinuity and the energy on its left hand side
+    ($r^-$). The outermost step is assumed to have an energy of zero.
+    <br/> A spring potential is an example where the "Right" direction
+    is most convenient as it has zero interaction energy at $r=0$. In
+    this case, each <b>Step</b> tag specifies a location of a
+    discontinuity and the energy on its right hand side ($r^+$).
+  </li>
+  <li>
+    <b>Step</b> <i>(tag)</i>: This tag represents a single
+    discontinuity/step of the stepped potential. On load these steps
+    are sorted by their <b>R</b> value.
+    <ul>
+      <li>
+	<b>R</b> <i>(attribute)</i>: The radial separation of the
+	discontinuity.
+      </li>
+      <li>
+	<b>E</b> <i>(attribute)</i>: The energy of the potential on
+	either the left or right hand side of the discontinuity
+	(depending on the Direction).
+      </li>
+    </ul>
+  </li>
+</ul>
+<h2><a id="typelennardjonespotential"></a>Type="LennardJones"</h2>
 <h1><a id="idrange"></a>IDRange</h1>
 <p>
   <b>IDRange</b>s are used to specify a range
