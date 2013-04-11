@@ -15,12 +15,17 @@
   standard steps or "workflow" of working with DynamO is to:
 </p>
 <ol>
-  <li>Create an initial configuration of particles and
-  interactions.</li>
-  <li>Simulate the initial configuration's motion through time to
-  allow it to come into equilibrium.</li>
-  <li>Continue simulating the now equilibrated configuration to
-  collect data.</li>
+  <li>
+    Create an initial configuration of particles and interactions.
+  </li>
+  <li>
+    Simulate the initial configuration's motion through time to allow
+    it to come into equilibrium.
+  </li>
+  <li>
+    Continue simulating the now equilibrated configuration to collect
+    data.
+  </li>
 </ol>
 <p>
   This tutorial will give you a general understanding of these steps
@@ -28,7 +33,7 @@
   simulate different systems and to process the output of DynamO to
   collect results.
 </p>
-<h2>About the simulated hard-sphere fluid</h2>
+<h1>About the simulated hard-sphere fluid</h1>
 <p>
   In this tutorial a hard-sphere fluid is simulated. A hard sphere is
   a simple molecular model used to capture the fundamental effects of
