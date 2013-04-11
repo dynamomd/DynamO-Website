@@ -1620,11 +1620,11 @@
 </Interaction>
 <?php codeblockend("brush: xml;"); ?>
 <p>
-  This is called a <i>numeric</i> property where the value of the
-  property specifier (in this case the Diameter attribute value) is
-  the value of the property. But what if you want a polydisperse
-  system, where each particle may have a unique mass and diameter? In
-  this case we would use <i>named Properties</i>:
+  The values of the <i>Diameter</i> and <i>Elasticity</i> are called
+  a <i>numeric</i> properties where the value of the property
+  specifier is the value of the property. But what if you want a
+  polydisperse system, where each particle may have a unique mass and
+  diameter? In this case we would use <i>named Properties</i>:
 </p>
 <?php codeblockstart();?>
 <Interaction Type="HardSphere" Diameter="D" Elasticity="1" Name="Bulk">
@@ -1666,7 +1666,7 @@
   include <b>Dimensionless</b>, <b>Length</b>, <b>Area</b>, <b>Volume</b>, <b>Time</b>, <b>Mass</b>,
   and <b>Energy</b>). 
 <p>
-  We can use a named property in the<a href="#typepoint">Species
+  We can use a named property in the <a href="#typepoint">Species
   definition</a> to use this new per-particle mass:
 </p>
 <?php codeblockstart();?><Species Mass="M" Name="Bulk" IntName="Bulk" Type="Point">
@@ -1680,8 +1680,8 @@
   the property. For example:
 </p>
 <?php codeblockstart();?><Pt ID="0" M="1.11" D="0.323451">
-  <P x="1.71513720091304e+00" y="5.49987913872954e+00" z="4.32598642635552e+00"/>
-  <V x="1.51174422678297e+00" y="-8.06881217863154e-01" z="-8.11332120569972e-01"/>
+  <P .../>
+  <V .../>
 </Pt>
 <?php codeblockend("brush: xml;"); ?>
 <p>
@@ -1800,16 +1800,20 @@
   </li>
   <li>
     <b>Direction</b> <i>(attribute)</i>: This sets the direction of
-    the stepping.  <br/> For example, for potentials which have zero
+    the stepping.
+    <br/>
+    For example, for potentials which have zero
     interaction energy at long distances, the "Left" direction is the
     most convenient. The Lennard-Jones potential is an example of such
     a potential. In this case, each <b>Step</b> tag specifies a
     location of a discontinuity and the energy on its left hand side
     ($r^-$). The outermost step is assumed to have an energy of zero.
-    <br/> A spring potential is an example where the "Right" direction
+    <br/>
+    A spring potential is an example where the "Right" direction
     is most convenient as it has zero interaction energy at $r=0$. In
     this case, each <b>Step</b> tag specifies a location of a
-    discontinuity and the energy on its right hand side ($r^+$).
+    discontinuity and the energy on its right hand side ($r^+$). The
+    innermost step has a energy of zero
   </li>
   <li>
     <b>Step</b> <i>(tag)</i>: This tag represents a single

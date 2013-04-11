@@ -31,7 +31,7 @@
   test the effects of changing some settings. For more information on
   any of the sections below, please take a look at
   the <a href="/index.php/reference">reference documentation for the
-  configuration file format</a>.
+    configuration file format</a>.
 </p>
 <h1>The example configuration</h1>
 <div class="figure" style="clear:right; float:right;width:400px;">
@@ -56,7 +56,7 @@ dynamod -m 0 -d 0.5 -C 7 -o config.start.xml
 <?php codeblockend("brush: shell;"); ?>
 <p>
   <a href="/pages/config.tut3.xml">An example config.start.xml is also
-  available online here</a>. Please note that the output you generate
+    available online here</a>. Please note that the output you generate
   using
   <b>dynamod</b> will have different randomly-assigned velocities than
   the example provided.
@@ -65,11 +65,11 @@ dynamod -m 0 -d 0.5 -C 7 -o config.start.xml
   XML files can be opened and edited by your favourite text editor or
   opened in read only format by any web browser. If you
   click <a href="/pages/config.tut3.xml">this link for the example
-  output</a> you will see that web browsers will present the contents
+    output</a> you will see that web browsers will present the contents
   of an XML file nicely, but to edit it you will need to save it and
   open the file again inside a text editor (see
   the <a href="/index.php/FAQ#q-you-say-i-can-edit-the-configuration-files-using-my-favourite-text-editor-how">FAQ
-  for more information</a>).
+    for more information</a>).
 </p>
 <h1>General layout</h1>
 <p>
@@ -129,8 +129,8 @@ dynamod -m 0 -d 0.5 -C 7 -o config.start.xml
   an <b>ID</b> <i>attribute</i>, which is a unique number used to help
   you identify the particle. This ID number is not read by DynamO when
   it loads the configuration file. <u>DynamO currently loads and
-  assigns ID's to the particles in the order they appear in the
-  configuration file</u>. The ID is only written there for your
+    assigns ID's to the particles in the order they appear in the
+    configuration file</u>. The ID is only written there for your
   reference of the ID numbers DynamO used in the simulation that
   produced this file. This may have to change in the future if DynamO
   ever supports particle insertion and deletion, but for now this
@@ -148,7 +148,7 @@ dynamod -m 0 -d 0.5 -C 7 -o config.start.xml
   please see the reference:
 </p>
 <?php button("Reference entry for <b>Pt</b>
-tags","/index.php/reference#pt");?>
+	      tags","/index.php/reference#pt");?>
 <p>
   You should notice that the mass and size of the particles is not
   specified here where you might expect it. This is because of the
@@ -183,8 +183,8 @@ tags","/index.php/reference#pt");?>
 <p>
   The <b>Simulation</b> tags are where the details of the system
   dynamics are stored. There are a huge number of settings that can be
-  adjusted here, so we will deal with each tag separately and in
-  order.
+  adjusted here, so we will deal with each tag separately and in the
+  order in which they appear in the configuration file.
 </p>
 <h2>Scheduler</h2>
 <p>
@@ -198,7 +198,7 @@ tags","/index.php/reference#pt");?>
   responsible for determining which event happens next in the
   simulation.
   <u>Changing the <b>Scheduler</b> settings should never affect the
-  results DynamO generates</u>. However, optimal settings will greatly
+    results DynamO generates</u>. However, optimal settings will greatly
   increase DynamO's calculation speed. The <b>Scheduler</b> tags will
   almost always look as they do above, as these are the optimal
   settings for most simple systems. These settings are to use a
@@ -219,13 +219,13 @@ tags","/index.php/reference#pt");?>
   against the NeighbourList scheduler.
 </p>
 <p>
- For more information on the <b>Scheduler</b> or <b>Sorter</b> tags
- and the available <i>Type</i>s, please see the reference:
+  For more information on the <b>Scheduler</b> or <b>Sorter</b> tags
+  and the available <i>Type</i>s, please see the reference:
 </p>
 <?php button("Reference entry for <b>Scheduler</b>
-tags","/index.php/reference#scheduler");?>
+	      tags","/index.php/reference#scheduler");?>
 <?php button("Reference entry for <b>Sorter</b>
-tags","/index.php/reference#sorter");?>
+	      tags","/index.php/reference#sorter");?>
 <h2>SimulationSize</h2>
 <p>
   In the <b>Simulation</b> <i>tag</i> there is a <i>tag</i>
@@ -273,7 +273,7 @@ tags","/index.php/reference#sorter");?>
   the reference:
 </p>
 <?php button("Reference entry for <b>SimulationSize</b>
-tags","/index.php/reference#simulationsize");?>
+	      tags","/index.php/reference#simulationsize");?>
 <p>
   We will now look into how we can disable this periodic
   &quot;folding&quot; completely in the following section on boundary
@@ -338,7 +338,7 @@ tags","/index.php/reference#simulationsize");?>
   represented when visualised. It also defines the excluded volume of
   each particle so that a packing fraction can be
   calculated. Therefore, <u>each particle must belong
-  to <b>exactly</b> one species</u>.
+    to <b>exactly</b> one species</u>.
 </p>
 <p>
   The obvious attributes of the <b>Species</b> tag are the <b>Mass</b>
@@ -371,7 +371,7 @@ tags","/index.php/reference#simulationsize");?>
 <p>
   Inside of the <b>Species</b> tag, there is an <b>IDRange</b> tag
   which is used to specify which particles this species applies
-  to. <b>IDRange</b> are discussed in the following section.
+  to. <b>IDRange</b>s are discussed in the following section.
 </p>
 <h2>IDRange</h2>
 <p>
@@ -454,7 +454,7 @@ tags","/index.php/reference#simulationsize");?>
   whatever). The key definition of an <b>Interaction</b> is an event
   which involves two-particles. Therefore, every two particle event is
   specified here, and <u>every pair of particles must have a
-  corresponding <b>Interaction!</b></u>
+    corresponding <b>Interaction!</b></u>
 </p>
 <p>
   If we take a look at the example configuration file again, we have:
@@ -479,25 +479,27 @@ tags","/index.php/reference#simulationsize");?>
   We can see the dramatic effect of some simple changes to the
   <b>Interaction</b> by reducing the particle <b>Diameter</b> to 0.5
   and the <b>Elasticity</b> to 0.5.  By lowering the <b>Diameter</B>
-  to a half of its previous value, we've reduced the density of the
-  system by a factor of $2^3=8$. If you take a look at the video to
-  the right you will see that this density is comparable to the
-  density of the system where we doubled the size of the simulation
-  domain (see the <b>SimulationSize</b> tag above); However, in this
-  case the particles are spread evenly about in space at the start of
-  the simulation. Please note that if you increase the
-  <b>Diameter</b>, you may again cause overlaps and invalid dynamics!
+  to a half of its previous value, we've reduced the dimensionless
+  density of the system by a factor of $2^3=8$. If you take a look at
+  the video to the right you will see that this density is comparable
+  to the density of the system where we doubled the size of the
+  simulation domain (see the <b>SimulationSize</b> tag above);
+  However, in this case the particles are spread evenly about in space
+  at the start of the simulation. Please note that if you try to
+  increase the
+  <b>Diameter</b> again after running the simulation, you may again
+  cause overlaps and invalid dynamics!
 </p>
 <p>
-  By lowering the <b>Elasticty</b>, we have created a <i>granular</i>
-  system. In granular systems, inelastic interactions remove energy
-  over time and the system begins to slow down. You can also see a
-  hint of clustering in the video to the right, which is another
-  characteristic of granular systems.
+  By lowering the <b>Elasticty</b>, we have also created
+  a <i>granular</i> system. In granular systems, inelastic
+  interactions remove energy over time and the system begins to slow
+  down. You can also see a hint of clustering in the video to the
+  right, which is another characteristic of granular systems.
 </p>
 <p>
- For more information on the <b>Interaction</b> tag and the
- available <i>Type</i>s, please see the reference:
+  For more information on the <b>Interaction</b> tag and the
+  available <i>Type</i>s, please see the reference:
 </p>
 <?php button("Reference entry for <b>Interaction</b>
 	      tags","/index.php/reference#interaction");?>
@@ -582,17 +584,18 @@ tags","/index.php/reference#simulationsize");?>
   algorithm. However, the use of these events is rare and often
   the <b>Globals</b> tag only contains the neighbour list.
   <b>Global</b> event types also require a <b>IDRange</b> to specify
-  which particles it applies to. <p> Using <b>Locals</b> will be
-  discussed in a later tutorial when we study walls and triangle
-  meshes.  For more information on the <b>Global</b> tag and the
+  which particles it applies to. 
+</p>
+<p>
+  For more information on the <b>Global</b> tag and the
   available <i>Type</i>s, please see the reference:
 </p>
 <?php button("Reference entry for <b>Global</b>
 	      tags","/index.php/reference#global");?>
 <h2>SystemEvents/System</h2>
 <p>
-  Finally, <b>System</b> events comprise every other source of events
-  which does not fit into the categories of
+  <b>System</b> events comprise every other source of events which
+  does not fit into the categories of
   a <b>Interaction</b>, <b>Local</b>, or <b>Global</b>. These might be
   thermostats, umbrella potentials, snapshotting, simulation end
   conditions or temperature rescalers.
@@ -637,13 +640,14 @@ tags","/index.php/reference#simulationsize");?>
 <p>
   This simulation is not particularly interesting as there are no
   objects for the particles to fall on to, so the system simply
-  accelerates downwards.
+  accelerates downwards. We would need to add a wall at the bottom for
+  the particles to collide with to make this more interesting.
 </p>
 <p>
   By altering the <b>Dynamics</b> tag, you can run compression
   simulations or use multicanonical potentials to deform the energy
   landscape of the system. These are relatively advanced topics which
-  will be covered in a later tutorial. For more information on
+  will be covered in later tutorials. For more information on
   the <b>Dynamics</b> tag and the available <i>Type</i>s, please see
   the reference:
 </p>
