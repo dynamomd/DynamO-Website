@@ -61,9 +61,9 @@
   where $u(r)$ is the interparticle potential (which is the potential
   energy between two particles separated by a distance of
   $r$). Particles do not interact at separations greater than the
-  diameter of the molecule ($u(r)=0$ for $r\ge\sigma^+$). The infinite
-  interaction energy of the hard core ($u(r)=+\infty$ for
-  $r\le\sigma^-$) also makes it energetically impossible for particles
+  diameter of the molecule ($u(r)=0$ for $r\in[\sigma,\,\infty]$). The
+  infinite interaction energy of the hard core ($u(r)=+\infty$ for
+  $r\in[0,\,\sigma]$) makes it energetically impossible for particles
   to "overlap", therefore the particles will elastically bounce-off of
   each other when they come into contact. This completes the brief
   description of the how the hard-sphere particles interact and only
@@ -448,8 +448,8 @@ Mode 0: Monocomponent hard spheres
   and runs it for 10<sup>6</sup> events/collisions <i>(-c
   1000000)</i>, before putting the final configuration
   in <em>config.equilibrated.xml</em>. We specify the duration of the
-  simulation in collisions as DynamO is an event-driven simulator, and
-  the natural unit of computation is an event. You may specify the
+  simulation in events as DynamO is an event-driven simulator, and the
+  natural unit of computation is an event. You may specify the
   duration in units of time using the <em>-h</em> option like so:
 </p>
 <?php codeblockstart(); ?>dynarun config.start.xml -f 190 -o config.equilibrated.xml<?php codeblockend("brush: shell;"); ?>
