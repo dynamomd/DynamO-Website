@@ -321,8 +321,8 @@ Mode 1: Mono/Multi-component square wells
   pairs which are left are the B-B pairings.
 </p>
 <p>
-  We could also use the following <b>IDPairRange</b> instead of the
-  "All" type:
+  In the third <b>Interaction</b>, we could have also used the
+  following <b>IDPairRange</b> instead of the "All" type:
 </p>
 <?php codeblockstart(); ?>
 <IDPairRange Type="Single">
@@ -330,12 +330,9 @@ Mode 1: Mono/Multi-component square wells
 </IDPairRange>
 <?php codeblockend("brush: xml;"); ?>
 <p>
-  However, using the <i>"All"</i> type is simpler. A general rule for
-  DynamO is that the simplest configuration files are the
-  fastest. Another good reason for using the
-  catch-<i>"All"</i> <b>Interaction</b> in the end, rather than
-  something more specific, is that in complex systems with
-  unusual <b>Interaction</b> <b>IDPairRange</b>s, it can be quite hard
+  A good reason for using the catch-<i>"All"</i> <b>Interaction</b> in
+  the end is that in complex systems with
+  unusual <b>Interaction</b> <b>IDPairRange</b>s it can be quite hard
   to define which particles are actually left over. Using
   an <i>"All"</i> rule at the end and catching the complex
   interactions first makes it simpler to implement.
@@ -344,9 +341,12 @@ Mode 1: Mono/Multi-component square wells
   Although the example <b>Interaction</b>s listed above are suitable
   for our system, it is obvious there is more than one way to specify
   the
-  <b>Interaction</b>s. In general, the way in which the <b>Interaction</b>s are
-  specified will not make much difference to the performance of
-  DynamO, so use whatever is most convenient for you.
+  <b>Interaction</b>s. For example, we could specify the <i>B-B</i>
+  Interaction first instead. A general rule for DynamO is that the
+  simplest configuration files are the fastest but the way in which
+  the <b>Interaction</b>s are specified will usually not make much
+  difference to the performance of DynamO, so use whatever is most
+  convenient for you.
 </p>
 <h3>About CaptureMap tags</h3>
 <p>
@@ -373,7 +373,9 @@ Mode 1: Mono/Multi-component square wells
 <p>
   The simplest thing to do here is to delete the <b>CaptureMap</b>
   tags. This forces DynamO to rebuild them when it next loads the
-  configuration file.
+  configuration file. You should note that deleting the CaptureMap
+  might cause the potential energy of the system to change slightly,
+  so it should be avoided if energy conservation is desired.
 </p>
 <h1><a id="compressing"></a>Compressing the configuration</h1>
 <div class="figure" style="clear:right; float:right;width:400px;">
@@ -414,10 +416,10 @@ Mode 1: Mono/Multi-component square wells
   A video of the compression run is given to the right. The simulation
   ends automatically once the target number density or packing
   fraction is reached. It is most convenient to work in packing
-  fractions as almost all systems have a maximum packing fraction near
-  the mono-component hard sphere limit of
+  fractions as almost all systems have a maximum packing fraction
+  somewhere near the mono-component hard sphere limit of
   $\pi\,\sqrt{2}/6\approx0.74048$, thus a system with a packing
-  fraction near 0.6-0.7 is always a high-density system. The number
+  fraction near 0.6-0.7 is usually a high-density system. The number
   densities on the other hand have a varying range of values.
 </p>
 <h1><a id="rescalingthermostat"></a>Rescaling velocities and adding a thermostat</h1>
