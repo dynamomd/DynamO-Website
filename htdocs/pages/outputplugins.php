@@ -778,25 +778,28 @@ dynarun config.xml -c 1000000 -L MFT:BinWidth=0.5,Length=100
   be used to extract the transport coefficients.
   
   <br/><b>Note 1</b>: In periodic systems, correlation functions
-  should be studied only up to the sound-wave traversal time of the
-  box, otherwise additional correlations will appear due to the
-  "artificial" periodicity of the system.
+  should be studied only up to one sound-wave traversal time of the
+  periodic image, otherwise additional correlations will appear due to
+  the "artificial" periodicity of the system.
 
   <br/><b>Note 2</b>: At increasingly long correlation times, the
   number of samples of the correlation function obtained from a single
   simulation will decrease. Therefore, long time values will have poor
   statistics (which should be avoided if possible).
 
-  <br/><b>Note 3</b>: At short times, molecular processes will
-  strongly influence the correlation function. For example, take a
-  linear/chain polymer. At short times, energy might rapidly travel
-  down the chain.  This will make it look like there's a high thermal
-  conductivity at short times; however, the energy will not easily
-  transfer away from the molecule and may travel back up the
-  chain. This "return" of the energy will cause the thermal
-  conductivity to decrease sharply at short times. You must therefore
-  use a sufficiently long correlation time to allow these microscopic
-  processes to decay.
+  <br/><b>Note 3</b>: At short times, molecular processes such as bond
+  vibrations or local density fluctuations will strongly influence the
+  correlation function. For example, take a linear/chain polymer. At
+  short times, energy might rapidly diffuse up and down the polymer.
+  This will make it look like there's a high thermal conductivity at
+  short times; however, the energy will not easily transfer away from
+  the polymer as this requires the slower inter-polmer interactions to
+  occur. The energy diffusing up and down the polymer has a high
+  chance of returning to its starting point. This "return" of the
+  energy will cause the thermal conductivity to decrease sharply at
+  slightly longer times. You must therefore use a sufficiently long
+  correlation time to allow these microscopic processes to average out
+  so that you can capture the true long-time behaviour of the fluid.
 </p>
 <p>
   <b>Example output</b>:
@@ -872,17 +875,20 @@ dynarun config.xml -c 1000000 -L MFT:BinWidth=0.5,Length=100
   involving a particle $i$ and $j$.
 </p>
 <p>
-  You should note that $\mathbf{L}_{\eta\eta}$ is a matrix quantity, and so
-  there are 9 measured values. For example, the $L_{\eta\eta,xy}$
-  element correspons to the transport of $x$-momentum in $y$-direction
-  and vice-versa. In isotropic systems, there are only two important
-  phenomological coefficients: the shear viscosity, $\eta$, and the
-  bulk viscosity, $\kappa$. These are related to
-  $\mathbf{L}_{\eta\eta}$ by the following expressions:
-  
-  \[\eta = L_{\eta\eta,xy} = L_{\eta\eta,xz} = L_{\eta\eta,yz}\] 
-
-  \[\frac{4}{3}\eta + \kappa = L_{\eta\eta,xx} = L_{\eta\eta,yy} = L_{\eta\eta,zz} \]
+  You should note that $\mathbf{L}_{\eta\eta}$ is a matrix quantity,
+  and so there are 9 measured values. For example, the
+  $L_{\eta\eta,xy}$ element correspons to the transport of
+  $x$-momentum in $y$-direction and vice-versa. In isotropic systems,
+  there are only two important phenomological coefficients related to
+  momentum diffusion: the shear viscosity, $\eta$, and the bulk
+  viscosity, $\kappa$. These are related to $\mathbf{L}_{\eta\eta}$ by
+  the following expressions:
+</p>  
+\[\eta = L_{\eta\eta,xy} = L_{\eta\eta,xz} = L_{\eta\eta,yx} = L_{\eta\eta,yz}= L_{\eta\eta,zx} = L_{\eta\eta,zy}\] 
+\[\frac{4}{3}\eta + \kappa = L_{\eta\eta,xx} = L_{\eta\eta,yy} = L_{\eta\eta,zz} \]
+<p>
+  In isotropic systems we can then average each of the above
+  direction to get an
 </p>
 <p>
   <b>Extrapolation to the infinite time limit</b>:
