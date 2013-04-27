@@ -409,7 +409,10 @@ Mode 1: Mono/Multi-component square wells
   To carry out the compression, use the <i>engine</i> option
   of <b>dynarun</b> to use the compression engine. You also set the
   end point of the compression using either
-  the <i>--target-pack-frac</i> or the <i>--target-density</i> option.
+  the <i>--target-pack-frac</i> or the <i>--target-density</i>
+  option. If you don't use these options, the compression will keep
+  running and you'll have to manually stop the simulation by pressing
+  ctrl-c.
 </p>
 <?php codeblockstart(); ?>dynarun config.start.xml --engine=3 --target-pack-frac 0.3 -o config.compressed.xml<?php codeblockend("brush: shell;"); ?>
 <p>
@@ -419,17 +422,22 @@ Mode 1: Mono/Multi-component square wells
   fractions as almost all systems have a maximum packing fraction
   somewhere near the mono-component hard sphere limit of
   $\pi\,\sqrt{2}/6\approx0.74048$, thus a system with a packing
-  fraction near 0.6-0.7 is usually a high-density system. The number
-  densities on the other hand have a varying range of values.
+  fraction near 0.6-0.7 is usually a high-density system regardless of
+  the interactions. The number densities on the other hand have a
+  varying range of values. In this system, once compression is
+  complete, the packing fraction of 0.3 has a reduced number density
+  of 22.058.
 </p>
 <h1><a id="rescalingthermostat"></a>Rescaling velocities and adding a thermostat</h1>
 <p>
-  During compression you should be able to observe that the system is
-  heating up (due to the work performed) and the particles are moving
-  faster. This will cause the compression to slow down and you may
-  consider stopping the compression periodically to scale down the
-  temperature. To alter the current temperature of a configuration
-  file we can use the following dynamod command:
+  During compression you should be able to observe that the system's
+  temperature and internal energy is changing. This is due to the
+  increased interactions between particles as the density is increased
+  and the work performed by compression. This will cause the
+  compression to slow down and you may consider stopping the
+  compression periodically to scale up/down the temperature. To alter
+  the current temperature of a configuration file we can use the
+  following dynamod command:
 </p>
 <?php codeblockstart(); ?>dynamod config.compressed.xml -r 1 -o config.rescaled.xml<?php codeblockend("brush: shell;"); ?>
 <p>
@@ -446,7 +454,8 @@ Mode 1: Mono/Multi-component square wells
   may move in or out of square-wells. This motion will convert energy
   between potential and kinetic and the temperature will again
   change. If we want to measure the system at a fixed temperature, we
-  will need to add a thermostat to hold the system at the temperature.
+  will need to add a thermostat to hold the system at the desired
+  temperature.
 </p>
 <p>
   To add a thermostat, again use the dynamod tool:
