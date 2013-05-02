@@ -221,6 +221,10 @@ if ($TOC)
     <meta name="author" content="Marcus Bannerman" />
     <meta name="google-site-verification" content="atSxig_hk_QoQxF4dobExHXxGUIt57ToZf3g_welkB0" />
     <link rel="stylesheet" type="text/css" href="/style/style.css" />
+    <?php if ($syntaxhighlighter) { ?>
+    <link href="/syntaxhighlighter/styles/shThemeDynamO.css" type="text/css" rel="stylesheet" />
+    <link href="/syntaxhighlighter/styles/shCore.css" type="text/css" rel="stylesheet" />
+    <?php } ?>
     <!--[if lt IE 10]><link rel="stylesheet" href="/style/ie-css3-support.css" type="text/css"/><![endif]-->
     <link rel="icon" type="image/png" href="/images/favicon.png" />
     <title>DynamO: <?php echo $pagetitle; ?></title>
@@ -305,8 +309,6 @@ if ($TOC)
     <!-- JAVASCRIPT -->
     <!-- SYNTAXHIGHLIGHTER -->
     <?php if ($syntaxhighlighter) { ?>
-    <link href="/syntaxhighlighter/styles/shThemeDynamO.css" type="text/css" rel="stylesheet" />
-    <link href="/syntaxhighlighter/styles/shCore.css" type="text/css" rel="stylesheet" />
     <script type="text/javascript" src="/syntaxhighlighter/scripts/shCore.js"></script>
     <script type="text/javascript" src="/syntaxhighlighter/scripts/shAutoloader.js"></script>
     <script type="text/javascript">
