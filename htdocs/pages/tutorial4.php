@@ -33,11 +33,11 @@
     densities.</a>
   </li>
   <li>
-    <a href="#rescalingthermostat">How to rescale the temperature in a
+    <a href="#rescaling">How to rescale the temperature in a
     configuration.</a>
   </li>
   <li>
-    <a href="#rescalingthermostat">How to add a thermostat.</a>
+    <a href="#thermostat">How to add a thermostat.</a>
   </li>
   <li>
     How to process collected data, including transport coefficients,
@@ -426,36 +426,47 @@ Mode 1: Mono/Multi-component square wells
   the interactions. The number densities on the other hand have a
   varying range of values. In this system, once compression is
   complete, the packing fraction of 0.3 has a reduced number density
-  of 22.058.
+  of 22.058. We will now finish setting up the system by looking at
+  controlling the temperature of the system.
 </p>
-<h1><a id="rescalingthermostat"></a>Rescaling velocities and adding a thermostat</h1>
+<h1><a id="rescaling"></a>Rescaling velocities to set the temperature</h1>
 <p>
   During compression you should be able to observe that the system's
-  temperature and internal energy is changing. This is due to the
-  increased interactions between particles as the density is increased
-  and the work performed by compression. This will cause the
-  compression to slow down and you may consider stopping the
-  compression periodically to scale up/down the temperature. To alter
-  the current temperature of a configuration file we can use the
-  following dynamod command:
+  temperature and internal energy is changing significantly. This is
+  due to the change in internal energy due to density changes as well
+  as any work performed by the compression process. In repulsive
+  systems this work causes heating, resulting in more events per unit
+  of simulation time, which in turn will cause the compression to slow
+  down. You may consider stopping the compression periodically to
+  scale down the temperature to try to accelerate the compression
+  process. To alter the current temperature of a configuration file we
+  can use the following dynamod command:
 </p>
 <?php codeblockstart(); ?>dynamod config.compressed.xml -r 1 -o config.rescaled.xml<?php codeblockend("brush: shell;"); ?>
 <p>
   This will rescale the velocities of the particles in the system so
-  that the current temperature is 1 (set by the <i>-r</i> option).
+  that the current temperature is 1 (set by the <i>-r</i>
+  option). Rescaling the temperature once after compression exactly
+  sets the temperature in "hard" systems such as those only
+  using <a href="/index.php/reference#typehardsphere">hard-sphere</a>/<a href="/index.php/reference#typeparallelcubes">parallel-cube</a>/<a href="/index.php/reference#typelines">hard-lines</a>
+  systems. These systems have the internal energy of an ideal gas,
+  therefore the temperature does not change with time (except if it is
+  compressed). In systems such as the square-well fluid studied here,
+  we will need to use a thermostat to control the temperature.
 </p>
+<h1><a id="thermostat"></a>Adding a thermostat</h1>
 <p>
   Temperature is a measure of the kinetic energy of a particle system
   but there are other stores of energy, such as the interaction or
   configurational energy. In square well systems, particles inside
   another particle's well have an additional negative potential energy
   in addition to their kinetic energy. After you have rescaled the
-  temperature and begin to simulate the system again, the particles
-  may move in or out of square-wells. This motion will convert energy
-  between potential and kinetic and the temperature will again
-  change. If we want to measure the system at a fixed temperature, we
-  will need to add a thermostat to hold the system at the desired
-  temperature.
+  temperature and begin to simulate the system again, particle pairs
+  may move in or out of each other's square-well. This motion will
+  convert energy between potential and kinetic and the temperature
+  will again change. If we want to measure the system at a set
+  temperature, we will need to add a thermostat to hold the system at
+  the desired temperature.
 </p>
 <p>
   To add a thermostat, again use the dynamod tool:
@@ -467,7 +478,7 @@ Mode 1: Mono/Multi-component square wells
   thermostat</a> to the system with a target temperature of 1 (set by
   the <i>-T</i> argument). This thermostat will eventually bring the
   system to the specified temperature, even with changes in the
-  configurational energy.
+  configurational energy, by randomly reassigning particle velocities.
 </p>
 <p>
   <b>Note</b>: If you wish to change the thermostat temperature at a
@@ -484,5 +495,10 @@ Mode 1: Mono/Multi-component square wells
   <IDRange Type="All"/>
 </System>
 <?php codeblockend("brush: xml;"); ?>
+<p>
+  Now that we have set the density of the system and found a way to
+  control its temperature, we can create a state point (simulation
+  with a set temperature and density) and investigate its properties.
+</p>
 <h1>Running the simulation</h1>
 <h1>Processing the results</h1>
