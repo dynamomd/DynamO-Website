@@ -206,3 +206,26 @@ average. Is this an error?</h1>
   see <a href="https://github.com/toastedcrumpets/DynamO/issues/29">issue
   #29 in the github tracker</a> for more information.
 </p>
+<h1>Q: How do I stop dynarun during a simulation?</h1>
+<p>
+  Short answer: Press ctrl-c in the terminal you are running dynarun
+  in, then press "s" and enter.
+</p>
+<p>
+  If dynarun recieves a SIGINT (which can be created using ctrl-c),
+  the first time it recieves one it will try to present a menu to the
+  user to allow them to either shutdown the simulation, peek at the
+  data collected so far, or to look at any live statistics of the
+  simulation. An example of the menu is presented below.
+</p>
+<?php codeblockstart(); ?>
+Tue 09:55, Events 100k, t 19.0976, <MFT> 0.131009, T 1, U 0
+^C
+Caught SIGINT, notifying running simulation...
+
+<S>hutdown or <P>eek at data output:
+<?php codeblockend("brush: shell;"); ?>
+<p>
+  If dynarun recieves a second SIGINT, it will immediately
+  exit the program and no data is saved.
+</p>

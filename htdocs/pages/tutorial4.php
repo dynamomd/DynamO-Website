@@ -367,8 +367,8 @@ Mode 1: Mono/Multi-component square wells
   that we will invalidate any capture maps inside the file. For
   example, here we've split the original <b>Interaction</b> into three
   new ones. We also changed the parameters of some of
-  the <b>Interaction</b>s, so particles which are registered as
-  captured may now actually lie outside the well.
+  the <b>Interaction</b>s, so particle pairs which were registered as
+  captured may now actually lie outside their new well.
 </p>
 <p>
   The simplest thing to do here is to delete the <b>CaptureMap</b>
@@ -376,6 +376,14 @@ Mode 1: Mono/Multi-component square wells
   configuration file. You should note that deleting the CaptureMap
   might cause the potential energy of the system to change slightly,
   so it should be avoided if energy conservation is desired.
+</p>
+<h2>Summary and example low-density binary configuration</h2>
+<p>
+  The configuration has now been modified to a two-component
+  square-well system and an example of the finished
+  configuration <a href="/pages/config.tut4.binary.xml">is available
+  here</a>. We'll now look at converting this into a high density
+  configuration and how to thermostat the temperature.
 </p>
 <h1><a id="compressing"></a>Compressing the configuration</h1>
 <div class="figure" style="clear:right; float:right;width:400px;">
@@ -418,29 +426,53 @@ Mode 1: Mono/Multi-component square wells
 <p>
   A video of the compression run is given to the right. The simulation
   ends automatically once the target number density or packing
-  fraction is reached. It is most convenient to work in packing
-  fractions as almost all systems have a maximum packing fraction
-  somewhere near the mono-component hard sphere limit of
-  $\pi\,\sqrt{2}/6\approx0.74048$, thus a system with a packing
-  fraction near 0.6-0.7 is usually a high-density system regardless of
-  the interactions. The number densities on the other hand have a
-  varying range of values. In this system, once compression is
-  complete, the packing fraction of 0.3 has a reduced number density
-  of 22.058. We will now finish setting up the system by looking at
-  controlling the temperature of the system.
+  fraction is reached which may take some time. If the system appears
+  to get "stuck" (the simulation time is not increasing), then it
+  might be wise to stop the compression
+  run, <a href="#rescaling">rescale the particle velocities</a>, and
+  to run a normal simulation for a while to allow the system to relax.
+</p>
+<p>
+  <b>Note on using packing fractions:</b> It is most convenient to
+  work in packing fractions instead of densities as almost all systems
+  have a maximum packing fraction somewhere near the mono-component
+  hard sphere limit of $\eta^{max}_{HS}=\pi\,\sqrt{2}/6\approx0.74$, thus a system
+  with a packing fraction near 0.6-0.7 is usually a high-density
+  system regardless of the interactions. The number densities on the
+  other hand have a varying range of values depending on the unit
+  length scale and particle sizes. In the system studied here, once
+  compression is complete, the packing fraction of $\eta=0.3$ has a reduced
+  number density of $\rho\approx22$ whereas the mono-component hard
+  sphere system has a maximum number density of
+  $\rho_{HS}^{max}=\sqrt{2}\approx1.41$.
+</p>
+<p>
+  We will now finish setting up the system by looking at how we might
+  control the temperature of the system.
 </p>
 <h1><a id="rescaling"></a>Rescaling velocities to set the temperature</h1>
 <p>
   During compression you should be able to observe that the system's
-  temperature and internal energy is changing significantly. This is
+  temperature and internal energy is varying significantly. This is
   due to the change in internal energy due to density changes as well
   as any work performed by the compression process. In repulsive
-  systems this work causes heating, resulting in more events per unit
-  of simulation time, which in turn will cause the compression to slow
-  down. You may consider stopping the compression periodically to
-  scale down the temperature to try to accelerate the compression
-  process. To alter the current temperature of a configuration file we
-  can use the following dynamod command:
+  systems, this work always causes heating resulting in faster moving
+  particles and more events per unit of simulation time. This will
+  cause the compression to slow down as the simulation has to process
+  more events per unit of expansion. In attractive systems, the system
+  may cool or heat on compression, but even cooling is problematic if
+  the system becomes glassy or "stuck" due to its reduced kinetic
+  energy.
+</p>
+<p>
+  You may consider stopping the compression periodically to scale down
+  the temperature to try to accelerate the compression process. You
+  can find out how
+  to <a href="/index.php/FAQ#q-how-do-i-stop-dynarun-during-a-simulation">stop
+  any simulation while it is running in this FAQ</a>. In some systems
+  a compression will cause the system to cool down. To alter the
+  current temperature of a configuration file we can use the following
+  dynamod command:
 </p>
 <?php codeblockstart(); ?>dynamod config.compressed.xml -r 1 -o config.rescaled.xml<?php codeblockend("brush: shell;"); ?>
 <p>
@@ -451,7 +483,7 @@ Mode 1: Mono/Multi-component square wells
   using <a href="/index.php/reference#typehardsphere">hard-sphere</a>/<a href="/index.php/reference#typeparallelcubes">parallel-cube</a>/<a href="/index.php/reference#typelines">hard-lines</a>
   systems. These systems have the internal energy of an ideal gas,
   therefore the temperature does not change with time (except if it is
-  compressed). In systems such as the square-well fluid studied here,
+  compressed). In systems such as the square-well fluid studied here
   we will need to use a thermostat to control the temperature.
 </p>
 <h1><a id="thermostat"></a>Adding a thermostat</h1>
@@ -462,7 +494,7 @@ Mode 1: Mono/Multi-component square wells
   another particle's well have an additional negative potential energy
   in addition to their kinetic energy. After you have rescaled the
   temperature and begin to simulate the system again, particle pairs
-  may move in or out of each other's square-well. This motion will
+  may move in or out of each others square-well. This motion will
   convert energy between potential and kinetic and the temperature
   will again change. If we want to measure the system at a set
   temperature, we will need to add a thermostat to hold the system at
@@ -501,4 +533,12 @@ Mode 1: Mono/Multi-component square wells
   with a set temperature and density) and investigate its properties.
 </p>
 <h1>Running the simulation</h1>
+<p>
+  In summary so far, we've created a monocomponent square-well system
+  using dynamod, modified it by hand into a two-component system,
+  compressed the configuration, and then added a thermostat to control
+  the temperature. 
+</p>
 <h1>Processing the results</h1>
+<p>
+</p>
