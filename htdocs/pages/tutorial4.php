@@ -53,6 +53,7 @@
   implement a simulation of a binary (two-component) mixture of square-well
   particles.
 </p>
+
 <h1><a id="aboutsquarewellfluids"></a>About square-well fluids</h1>
 <p>
   For the purpose of the tutorial, we'll want to simulate a mixture of
@@ -107,7 +108,7 @@
   additional complexity.
 </p>
 
-<h2>The system studied</h2>
+<h1>The whole tutorial in brief</h2>
 <p>
   We're going to study a binary mixture of square-well
   molecules. We'll have a larger species, A, and a smaller species,
@@ -119,7 +120,24 @@
   example, between species A and B the interaction diameter is
   $\sigma_{AB}=\left(\sigma_A+\sigma_B\right)/2$. We'll want to study
   a mixture of $N=4000$ particles over a range of densities and
-  concentrations.
+  concentrations. The dynamod/dynarun commands are
+</p>
+<?php codeblockstart(); ?>
+#Create the monocomponent system
+dynamod -m 1 -C 10 -d 0.5 --i1 0 -r 1 -o config.start.xml
+#Now edit config.start.xml by hand to convert it into a multicomponent system
+#Compress the multicomponent system to a higher density
+dynarun config.start.xml --engine=3 --target-pack-frac 0.3 -o config.compressed.xml
+#Rescale the velocities to set the current temperature to 1
+dynamod config.compressed.xml -r 1 -o config.rescaled.xml
+#Add a thermostat
+dynamod config.rescaled.xml -T 1.0 -o config.thermostatted.xml
+#Equilibrate the system
+#Run the simulation
+<?php codeblockend("brush: shell;"); ?>
+<p>
+  We'll now look in detail at these commands, in particular how the
+  configuration file was edited by hand into a multicomponent system.
 </p>
 <h1><a id="settingup"></a>Setting up the configuration file</h1>
 <p>
@@ -128,7 +146,9 @@
   convenient to take an existing configuration, which is close to the
   system you wish to study, and to modify it. Once you are familiar
   with the file format you may then write your own tools to generate
-  configuration files in the programming language of your choice.
+  configuration files in the programming language of your choice (see
+  <a href="/index.php/tutorialA">Appendix A</a> for more information
+  on this).
 </p>
 <p>
   We need to see what systems the <b>dynamod</b> command can prepare

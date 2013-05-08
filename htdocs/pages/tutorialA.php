@@ -10,7 +10,7 @@
    ?>
 <?php printTOC(); ?>
 <p>
-  This tutorial is designed to help people interface DynamO with other
+  This appendix is designed to help people interface DynamO with other
   pieces of software, or to write tools to process the results of
   simulations. It demonstrates several ways in which you can parse the
   XML which makes up the configuration and output files, to either
@@ -23,10 +23,11 @@
   files.</u></b>
 </p>
 <p>
-  The file formats themselves will be covered in more depth in a
-  future tutorial.  Before reading this tutorial it would be best to
-  already be familiar with how DynamO operates and have a good idea
-  what information you'd like to extract.
+  The file format itself is covered in more depth
+  in <a href="/index.php/tutorial3">this tutorial</a>.  Before reading
+  this appendix it would be best to already be familiar with how
+  DynamO operates and have a good idea what information you'd like to
+  extract.
 </p>
 <h1>XPath Expressions</h1>
 <p>
