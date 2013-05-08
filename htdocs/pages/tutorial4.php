@@ -191,11 +191,11 @@ Mode 1: Mono/Multi-component square wells
   in detail in tutorial 2</a>. The only differences are that the
   number of particles has been increased to 4000 (<i>-C 10</i>), and
   we're creating square-well molecules (<i>-m 1</i>) instead of hard
-  spheres. An example of the configuration
-  file <a href="/pages/config.tut4.mono.xml">is available here</a> (it
+  spheres. An example of the configuration file is available below (it
   is a large XML file, so your browser may take some time to display
   it).
 </p>
+<?php button("Example monocomponent configuration","/pages/config.tut4.mono.xml");?>
 <p>
   This system has the 4000 particles we're looking for, but we'll need
   to convert a fraction of these to another species to make the
@@ -377,12 +377,15 @@ Mode 1: Mono/Multi-component square wells
   might cause the potential energy of the system to change slightly,
   so it should be avoided if energy conservation is desired.
 </p>
-<h2>Summary and example low-density binary configuration</h2>
+<h2>Summary and finished example</h2>
 <p>
   The configuration has now been modified to a two-component
   square-well system and an example of the finished
-  configuration <a href="/pages/config.tut4.binary.xml">is available
-  here</a>. We'll now look at converting this into a high density
+  configuration is available below. 
+</p>
+<?php button("Example low-density binary configuration","/pages/config.tut4.binary.xml");?>
+<p>
+  We'll now look at converting this into a high density
   configuration and how to thermostat the temperature.
 </p>
 <h1><a id="compressing"></a>Compressing the configuration</h1>
@@ -424,6 +427,10 @@ Mode 1: Mono/Multi-component square wells
 </p>
 <?php codeblockstart(); ?>dynarun config.start.xml --engine=3 --target-pack-frac 0.3 -o config.compressed.xml<?php codeblockend("brush: shell;"); ?>
 <p>
+  Please see <a href="/index.php/FAQ#packingfraction">this FAQ</a> on why we decided to set the packing fraction,
+  not the number density of the system.
+</p>
+<p>
   A video of the compression run is given to the right. The simulation
   ends automatically once the target number density or packing
   fraction is reached which may take some time. If the system appears
@@ -431,20 +438,6 @@ Mode 1: Mono/Multi-component square wells
   might be wise to stop the compression
   run, <a href="#rescaling">rescale the particle velocities</a>, and
   to run a normal simulation for a while to allow the system to relax.
-</p>
-<p>
-  <b>Note on using packing fractions:</b> It is most convenient to
-  work in packing fractions instead of densities as almost all systems
-  have a maximum packing fraction somewhere near the mono-component
-  hard sphere limit of $\eta^{max}_{HS}=\pi\,\sqrt{2}/6\approx0.74$, thus a system
-  with a packing fraction near 0.6-0.7 is usually a high-density
-  system regardless of the interactions. The number densities on the
-  other hand have a varying range of values depending on the unit
-  length scale and particle sizes. In the system studied here, once
-  compression is complete, the packing fraction of $\eta=0.3$ has a reduced
-  number density of $\rho\approx22$ whereas the mono-component hard
-  sphere system has a maximum number density of
-  $\rho_{HS}^{max}=\sqrt{2}\approx1.41$.
 </p>
 <p>
   We will now finish setting up the system by looking at how we might
@@ -468,7 +461,7 @@ Mode 1: Mono/Multi-component square wells
   You may consider stopping the compression periodically to scale down
   the temperature to try to accelerate the compression process. You
   can find out how
-  to <a href="/index.php/FAQ#q-how-do-i-stop-dynarun-during-a-simulation">stop
+  to <a href="/index.php/FAQ#stoppausepeek">stop
   any simulation while it is running in this FAQ</a>. In some systems
   a compression will cause the system to cool down. To alter the
   current temperature of a configuration file we can use the following

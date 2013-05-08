@@ -206,17 +206,18 @@ average. Is this an error?</h1>
   see <a href="https://github.com/toastedcrumpets/DynamO/issues/29">issue
   #29 in the github tracker</a> for more information.
 </p>
-<h1>Q: How do I stop dynarun during a simulation?</h1>
+<h1><a id="stoppausepeek"></a>Q: How do I stop/pause/output-data during a simulation?</h1>
 <p>
   Short answer: Press ctrl-c in the terminal you are running dynarun
   in, then press "s" and enter.
 </p>
 <p>
-  If dynarun recieves a SIGINT (which can be created using ctrl-c),
-  the first time it recieves one it will try to present a menu to the
-  user to allow them to either shutdown the simulation, peek at the
-  data collected so far, or to look at any live statistics of the
-  simulation. An example of the menu is presented below.
+  If dynarun recieves a SIGINT (which can be created in a terminal by
+  pressing ctrl-c), the first time it recieves one it will try to
+  present a menu to the user to allow them to either shutdown the
+  simulation, peek at the data collected so far, or to look at any
+  live statistics of the simulation. An example of the menu is
+  presented below.
 </p>
 <?php codeblockstart(); ?>
 Tue 09:55, Events 100k, t 19.0976, <MFT> 0.131009, T 1, U 0
@@ -226,6 +227,52 @@ Caught SIGINT, notifying running simulation...
 <S>hutdown or <P>eek at data output:
 <?php codeblockend("brush: shell;"); ?>
 <p>
-  If dynarun recieves a second SIGINT, it will immediately
-  exit the program and no data is saved.
+  While this menu is displayed, dynarun is paused and waiting for
+  input.  If dynarun recieves a second SIGINT (ctrl-c) while waiting
+  for a response, it will immediately exit the program and no data is
+  saved.
 </p>
+<p>
+  If you press "s" or "S" then press return or enter, dynamo will set
+  the simulation to shutdown after the next event. This causes dynarun
+  to exit normally, writing out the configuration file and any
+  collected data as though it had naturally reached the end of a
+  simulation.
+</p>
+<p>
+  If you press "p" or "P" followed by enter, dynamo will write out the
+  collected data of the simulation to a file called
+  peek.data.xml.bz2. This allows you to "peek" at the results
+  collected so far without stopping the simulation.
+</p>
+<p>
+  Any other key followed by enter or return will cause dynamo to
+  continue the simulation without any changes.
+</p>
+<h1><a id="packingfraction"></a>Q: Why do many simulations use packing
+fraction ($\eta$) instead of number density ($\rho$)?</h1>
+<p>
+  Short answer: Volume fraction has reasonably well-established bounds
+  whereas number densities depend strongly on the polydispersity of
+  the system.
+</p>
+<p>
+  It is most convenient to work in packing fractions instead of
+  densities as almost all systems have a maximum packing fraction
+  somewhere near the mono-component hard sphere limit of
+  $\eta^{max}_{HS}=\pi\,\sqrt{2}/6\approx0.74$, thus a system with a
+  packing fraction near 0.6-0.7 is usually a high-density system
+  regardless of the interactions. Number densities on the other hand
+  have a varying range of values depending on the unit length scale
+  and particle sizes. 
+</p>
+<p>
+  For example, in the system studied
+  in <a href="/index.php/tutorial4">tutorial 4</a>, once compression
+  is complete, the packing fraction of $\eta=0.3$ has a reduced number
+  density of $\rho\approx22$ whereas the mono-component hard sphere
+  system has a maximum number density of
+  $\rho_{HS}^{max}=\sqrt{2}\approx1.41$. Thus we cannot immediately
+  estimate what a "high" number density is for a polydisperse system.
+</p>
+
