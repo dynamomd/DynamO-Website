@@ -73,6 +73,9 @@
 		    <li>
 		      <a href="#potential">Potential</a>
 		    </li>
+		    <li>
+		      <a href="#capturemap">CaptureMap</a>
+		    </li>
 		  </ul>
 		</li>
 	      </ul>
@@ -844,7 +847,8 @@
     configuration is next loaded by dynarun or dynamod. The data in
     this tag must be correct at all times otherwise errors in the
     dynamics will occur so take care when manually editing the
-    configuration file.
+    configuration file. See the reference entry
+    on <a href="#capturemap">CaptureMap</a> for more details.
   </li>
   <li>
     <b><a href="#idpairrange">IDPairRange</a></b> <i>(tag)</i>: This <a href="#idpairrange">IDPairRange</a> tag specifies
@@ -1044,11 +1048,12 @@
     <b>CaptureMap</b> <i>(tag)</i>: If present, the CaptureMap tag
     should store the current step of any particle pairs which are
     inside the Interaction range of the potential. If it is not
-    present, it will be automatically generated when the
-    configuration is next loaded by dynarun or dynamod. The data in
-    this tag must be correct at all times otherwise errors in the
-    dynamics will occur so take care when manually editing the
-    configuration file.
+    present, it will be automatically generated when the configuration
+    is next loaded by dynarun or dynamod. The data in this tag must be
+    correct at all times otherwise errors in the dynamics will occur
+    so take care when manually editing the configuration file. See the
+    reference entry on <a href="#capturemap">CaptureMap</a> for more
+    details.
   </li>
   <li>
     <b><a href="#idpairrange">IDPairRange</a></b> <i>(tag)</i>: This <a href="#idpairrange">IDPairRange</a> tag specifies
@@ -1143,7 +1148,8 @@
     configuration is next loaded by dynarun or dynamod. The data in
     this tag must be correct at all times otherwise errors in the
     dynamics will occur so take care when manually editing the
-    configuration file.
+    configuration file. See the reference entry
+    on <a href="#capturemap">CaptureMap</a> for more details.
   </li>
   <li>
     <b><a href="#idpairrange">IDPairRange</a></b> <i>(tag)</i>: This <a href="#idpairrange">IDPairRange</a> tag specifies
@@ -1218,6 +1224,35 @@
       IDPairRanges</a> for more information on the format of this tag.
   </li>
 </ul>
+<h2><a id="capturemap"></a>CaptureMap</h2>
+<p>
+  <b>CaptureMap</b>s are used by DynamO to track which particles are
+  currently interacting with other particles using that
+  <b>Interaction</b>. For example,
+  the <a href="#typesquarewell">SquareWell
+  type <b>Interaction</b>s</a> uses the capture map to record all
+  pairs of particles who are inside each others attractive well. This
+  information must be saved and loaded with the configuration file as,
+  if a particle is on the edge of the well, it is impossible to
+  determine if they are captured or not from their position
+  alone. Without using a <b>CaptureMap</b>, this ambiguity would lead to the
+  simulation either losing or gaining energy after a save/load.
+</p>
+<p>
+  If DynamO does not see a <b>CaptureMap</b> in the configuration
+  file, but the <b>Interaction</b> requires one it will automatically
+  calculate the <b>CaptureMap</b> from the particle positions.
+</p>
+<p>
+  Whenever we change a configuration file by hand, its very likely
+  that we will invalidate any data stored within <b>CaptureMap</b>
+  tags inside the file.  The simplest way of correcting this error is
+  to delete the <b>CaptureMap</b> tags. This forces DynamO to rebuild
+  them when it next loads the configuration file. You should note that
+  deleting the CaptureMap might cause the potential energy of the
+  system to change slightly, so it should be avoided if energy
+  conservation is desired.
+</p>
 <h1><a id="local"></a>Local</h1>
 <p>
   Locals are sources of events for particles where each event only

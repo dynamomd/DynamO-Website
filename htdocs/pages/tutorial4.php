@@ -329,31 +329,13 @@ Mode 1: Mono/Multi-component square wells
 <p>
   You should notice that the <b>CaptureMap</b> tag in the original
   mono-component configuration file has been deleted and that the new
-  <b>Interaction</b> tags do not contain them. <b>CaptureMap</b>s are
-  used by DynamO to track which particles are currently interacting
-  with other particles using that
-  <b>Interaction</b>. For <a href="/index.php/reference#typesquarewell">SquareWell
-  type <b>Interaction</b>s</a>, the capture map records all pairs of
-  particles who are inside each others well. This information must be
-  saved and loaded with the configuration file as, if a particle is on
-  the edge of the well, it is impossible to determine if they are
-  captured or not from their position alone.
+  <b>Interaction</b> tags do not contain them. This is deliberate as
+  we want DynamO to rebuild the <b>CaptureMap</b> as we have changed the
+  <b>Interaction</b> parameters. For more information
+  on <b>CaptureMap</b>s and why deleting it is required, please see
+  the reference linked below.
 </p>
-<p>
-  Whenever we change a configuration file by hand, its very likely
-  that we will invalidate any capture maps inside the file. For
-  example, here we've split the original <b>Interaction</b> into three
-  new ones. We also changed the parameters of some of
-  the <b>Interaction</b>s, so particle pairs which were registered as
-  captured may now actually lie outside their new well.
-</p>
-<p>
-  The simplest thing to do here is to delete the <b>CaptureMap</b>
-  tags. This forces DynamO to rebuild them when it next loads the
-  configuration file. You should note that deleting the CaptureMap
-  might cause the potential energy of the system to change slightly,
-  so it should be avoided if energy conservation is desired.
-</p>
+<?php button("Reference entry for <b>CaptureMap</b>","/index.php/reference#capturemap");?>
 <h2>Summary and finished example</h2>
 <p>
   The configuration has now been modified to a two-component
