@@ -495,7 +495,33 @@
   dimensions are specified by
   the <a href="#simulationsize">SimulationSize</a> tag.
 </p>
-<img src="/images/PBC.png" alt="An illustration of the periodic boundary condition" width="650" height="293" style="display:block;margin:0 auto 0 auto;">
+<p>
+  When we want to study molecular fluids we often want the "bulk"
+  properties of the fluid. Effects like surface tension will have a
+  strong influence if there are any free surfaces or boundaries in
+  contact with the fluid, as systems simulated are usually relatively
+  small ($\approx10^5$ molecules). On the other hand, there must be
+  some boundary used to contain the fluid, as using an open (infinite
+  size) system will cause the fluid to either evaporate or form
+  droplets, again with surface effects. To avoid the effects of
+  boundaries/walls while still "containing" the
+  system, <a href="http://en.wikipedia.org/wiki/Periodic_boundary_conditions">periodic
+  boundary conditions</a> are often used.  With periodic boundaries, a
+  small representative amount of fluid, called the "primary image," is
+  simulated. This primary image is then surrounded with periodic
+  images which are copies of the primary image as illustrated in the
+  figure below:
+</p>
+<img src="/images/PBC.png" alt="The interparticle potential energy of a hard-sphere molecule" width="650" height="293" style="display:block;margin:0 auto 0 auto;">
+<p>
+  These boundaries allow the approximation of an infinite fluid using
+  a small repeating image. This is an approximation as the periodicity
+  adds additional correlations to the system, but it is a convenient
+  technique to avoid using real boundaries such as walls to contain
+  the system. When using periodic boundary conditions it is still
+  possible to enter into two-phases if the simulation has attractive
+  interactions, so care must still be taken.
+</p>
 <p>
   <b>Example Usage:</b>
 </p>
@@ -604,11 +630,44 @@
 </ul>
 <h2>Type="HardSphere"</h2>
 <p>
-  <b>Description:</b> The "HardSphere" Interaction implements the hard
-  sphere interaction potential, illustrated in the figure below. This
-  is one of the simplest event-driven potentials available.
+  <b>Description:</b> The "HardSphere" Interaction implements the
+  hard-sphere interaction potential. This is one of the simplest
+  event-driven potentials available.
+</p>
+<p>
+  A hard sphere is a simple molecular model used to capture the
+  fundamental effects of "excluded-volume" interactions. You may think
+  of the hard-sphere fluid as an extension of the ideal-gas model,
+  where each molecule now has a diameter, $\sigma$, and cannot overlap
+  the volume of this diameter with the volume of other molecules. The
+  parameters of this model are illustrated below:
 </p>
 <img src="/images/hardsphere.png" alt="The interparticle potential energy of a hard-sphere molecule" width="650" height="232" style="display:block;margin:0 auto 0 auto;">
+<p>
+  where $u(r)$ is the interparticle potential (which is the potential
+  energy between two particles separated by a distance of
+  $r$). Particles do not interact at separations greater than the
+  diameter of the molecule ($u(r)=0$ for $r\in[\sigma,\,\infty]$). The
+  infinite interaction energy of the hard core ($u(r)=+\infty$ for
+  $r\in[0,\,\sigma]$) makes it energetically impossible for particles
+  to "overlap", therefore the particles will elastically bounce-off of
+  each other when they come into contact.
+</p>
+<p>
+  The effects of this additional "excluded volume" interaction is
+  dramatic and leads to complex transport coefficients as a function of
+  density and the appearance of a fluid-solid freezing transition. This
+  model is too simple to capture any complex temperature effects, such
+  as a liquid/gas phase transition, as it has no finite interaction
+  energies (unlike the <a href="#typesquarewell">square-well
+    fluid</a>). Despite its simplicity, the structure of many real
+  crystals is dominated by the repulsive "excluded-volume" interactions
+  caused by overlapping electron clouds which may be effectively
+  captured by the hard-sphere model. It is also at the heart of kinetic
+  theory which is the most successful attempt to predict the transport
+  properties of fluids from their molecular interactions. The
+  interparticle potential of this model is given in the figure below:
+</p>
 <p>
   <b>Example Usage:</b>
 </p>
@@ -665,7 +724,58 @@
   <b>Description:</b> The "SquareWell" Interaction implements the
   square-well interaction potential, illustrated in the figure below. 
 </p>
+<p>
+  A square-well molecule is a particle which has a hard-core diameter
+  of $\sigma$ and is surrounded by an attractive well with a diameter
+  of $\lambda\,\sigma$ and a depth of $\varepsilon$. These variables
+  are illustrated in the diagram below:
+</p>
 <img src="/images/sw.png" alt="A diagram of a square-well molecule including its parameters" width="650" height="232" style="display:block;margin:0 auto 0 auto;">
+<p>
+  where $u(r)$ is the interparticle potential (which is the potential
+  energy between two particles separated by a distance of $r$).
+</p>
+<p>
+  Square-well molecules are simple models which display the two
+  fundamental features of real molecules, a short range repulsion (due
+  to overlapping electron clouds) and longer ranged attraction (due to
+  van-der-waals/London/dispersion forces). A comparison of the
+  square-well model (<span style="font-weight:bold;
+  color:#000;">black</span>) and a "realistic" interatomic potential
+  (<span style="font-weight:bold; color:#800;">red</span>) is given in
+  the figure below:
+</p>
+<img src="/images/swcomparison.png" alt="A diagram of a square-well molecule including its parameters" width="429" height="215" style="display:block;margin:0 auto 0 auto;">
+<p>
+  It is clear that the square-well potential is a rough approximation
+  of the "realistic" potential, but its dynamics are not immediately
+  clear. With the "realistic" potential, it is easy to see how a pair
+  of particles might "fall down" the potential and attract or repulse
+  each other, but how does this behaviour appear in the square-well
+  model?  When two distant square-well particles approach each other
+  and reach a separation of $r=\lambda\,\sigma$, they enter the well
+  (or "capture" each other) and a momentum impulse increases their
+  kinetic energy by $\varepsilon$ (they are attracted to each
+  other). If they then approach the inner core and reach a separation
+  of $r=\sigma$, they will be unable to pay the infinite energy cost
+  to enter the core and will instead elastically bounce off it. Once
+  they begin to retreat from each other (either by bouncing off the
+  core or by missing it) and reach a separation of
+  $r=\lambda\,\sigma$, they must have enough kinetic energy in the
+  direction of the well to escape it and pay the energy cost,
+  $\varepsilon$, otherwise they will bounce off the inside of the well
+  (both are attractive interactions).
+</p>
+<p>
+  If we used more steps to more accurately approximate the "realistic"
+  potential (see the <a href="#typesteppedpotential">"Stepped" type
+  Interaction</a>), we can quite quickly capture the full behaviour of
+  the smooth/"realistic" potential. However, the square-well model is
+  so interesting because it is so simple! If we can understand the
+  fundamental behaviour of square-well molecules, the fundamental
+  behaviour of realistic potentials will also be explained without the
+  additional complexity.
+</p>
 <p>
   <b>Example Usage:</b>
 </p>
@@ -1644,7 +1754,7 @@
   ...
 </Local><?php codeblockend("brush: xml;"); ?>
 <p>
-  And now both the Wall Local and the Hardsphere Interaction will use
+  And now both the Wall Local and the HardSphere Interaction will use
   the same diameter for each particle. Each named Property must be
   defined in the Properties tag in the configuration file. For
   example, if we wanted to define the mass and diameter of each

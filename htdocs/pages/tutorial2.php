@@ -37,67 +37,20 @@
 <p>
   In this tutorial a hard-sphere fluid is simulated. A hard sphere is
   a simple molecular model used to capture the fundamental effects of
-  "excluded-volume" interactions. You may think of the hard-sphere
-  fluid as an extension of the ideal-gas model, where each molecule
-  now has a diameter, $\sigma$, and cannot overlap the volume of this
-  diameter with the volume of other molecules. The effects of this
-  additional "excluded volume" interaction is dramatic and leads to
-  complex transport coefficients as a function of density and the
-  appearance of a fluid-solid freezing transition. This model is too
-  simple to capture any complex temperature effects, such as a
-  liquid/gas phase transition, as it has no finite interaction
-  energies (unlike the <a href="/index.php/tutorial4">square-well
-  fluid in tutorial 4</a>). Despite its simplicity, the structure of
-  many real crystals is dominated by the repulsive "excluded-volume"
-  interactions caused by overlapping electron clouds which may be
-  effectively captured by the hard-sphere model. It is also at the
-  heart of kinetic theory which is the most successful attempt to
-  predict the transport properties of fluids from their molecular
-  interactions. The interparticle potential of this model is given in
-  the figure below:
+  "excluded-volume" interactions, and a complete discussion of it is
+  given in the reference entry below.
 </p>
-<img src="/images/hardsphere.png" alt="The interparticle potential energy of a hard-sphere molecule" width="650" height="232" style="display:block;margin:0 auto 0 auto;">
+<?php button("Reference entry for <i>\"HardSphere\"</i> Type <b>Interactions</b>","/index.php/reference#typehardsphere");?>
 <p>
-  where $u(r)$ is the interparticle potential (which is the potential
-  energy between two particles separated by a distance of
-  $r$). Particles do not interact at separations greater than the
-  diameter of the molecule ($u(r)=0$ for $r\in[\sigma,\,\infty]$). The
-  infinite interaction energy of the hard core ($u(r)=+\infty$ for
-  $r\in[0,\,\sigma]$) makes it energetically impossible for particles
-  to "overlap", therefore the particles will elastically bounce-off of
-  each other when they come into contact. This completes the brief
-  description of the how the hard-sphere particles interact and only
-  the boundary conditions need to be specified.
+  We will use periodic boundary conditions for the simulation, and these are described in
+  the following reference entry.
 </p>
+<?php button("Reference entry for <i>\"PBC\"</i> Type <b>BoundaryConditions</b>","/index.php/reference#typepbc");?>
 <p>
-  When we want to study molecular fluids we often want the "bulk"
-  properties of the fluid. Effects like surface tension will have a
-  strong influence if there are any free surfaces or boundaries in
-  contact with the fluid as the systems simulated are relatively small
-  ($\approx10^5$ molecules). On the other hand, there must be some
-  boundary used to contain the fluid, as using an open (infinite size)
-  system will cause the fluid to either evaporate or form droplets,
-  again with surface effects. To avoid the effects of boundaries/walls
-  while still "containing" the
-  system, <a href="http://en.wikipedia.org/wiki/Periodic_boundary_conditions">periodic
-  boundary conditions</a> are often used.  With periodic boundaries, a
-  small representative amount of fluid, called the "primary image," is
-  simulated. This primary image is then surrounded with periodic
-  images which are copies of the primary image as illustrated in the
-  figure below:
-</p>
-<img src="/images/PBC.png" alt="The interparticle potential energy of a hard-sphere molecule" width="650" height="293" style="display:block;margin:0 auto 0 auto;">
-<p>
-  These boundaries allow the approximation of an infinite fluid using
-  a small repeating image. This is an approximation as the periodicity
-  adds additional correlations to the system, but it is a convenient
-  technique to avoid using real boundaries, such as walls, to contain
-  the system. When using periodic boundary conditions it is still
-  possible to simulate a two-phase system. Fortunately, the hard
-  sphere fluid only has a fluid-solid transition and, from experience,
-  it is exceptionally difficult to generate a stable liquid-solid
-  system so these "difficulties" can safely be ignored for this
-  tutorial.
+  These reference entries give a brief description of the how
+  hard-sphere particles interact and how periodic boundary conditions
+  are used to contain the system. We'll now look at the simulation
+  itself.
 </p>
 <div class="figure" style="clear:right; float:right;width:400px;">
   <?php embedAJAXvideo("hardspheres", "tn6Cz0tNPuU", 400, 250); ?>
