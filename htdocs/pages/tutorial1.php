@@ -324,7 +324,8 @@ src/dynamo/jamfile:45: in modules.load
 <p>
   This error is because your boost/bjam installation is too old to
   support the "check-target-builds" feature which DynamO uses to check
-  that all of its dependencies are installed. You will need to
+  that all of its dependencies are installed. This feature has been in
+  boost-build since at least mid-2010, so you will need to
   either <a href="#with-boost">use a local boost installation</a> or
   update to a newer linux release.
 </p>
