@@ -304,7 +304,7 @@ BOOST_BUILD_PATH=~/boost/tools/build/v2/ ~/boost/bjam install link=static includ
 <?php codeblockstart(); ?>export BOOST_BUILD_PATH=~/boost/tools/build/v2/
 export CPATH=~/boost/:$CPATH
 export LIBRARY_PATH=~/boost/stage/lib/:$LIBRARY_PATH<?php codeblockend("brush: shell;"); ?>
-<h1>Troubleshooting</h>
+<h1>Troubleshooting</h1>
 <p>
   Here, common build errors will be discussed.
 </p>
