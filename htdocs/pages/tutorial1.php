@@ -284,11 +284,12 @@ wget http://downloads.sourceforge.net/project/boost/boost/1.53.0/boost_1_53_0.ta
 <?php codeblockstart(); ?>cd ~/
 git clone https://github.com/toastedcrumpets/DynamO.git
 cd ~/DynamO/
-BOOST_BUILD_PATH=~/boost/tools/build/v2/ ~/boost/bjam install link=static include=~/boost/ linkflags="-L ~/boost/stage/lib/"<?php codeblockend("brush: shell;"); ?>
+BOOST_BUILD_PATH=~/boost/tools/build/v2/ ~/boost/bjam install link=static runtime-link=static include=~/boost/ linkflags="-L ~/boost/stage/lib/"<?php codeblockend("brush: shell;"); ?>
 <p>
-  The option <i>link=static</i> ensures that the boost libraries are
-  linked statically so that you can run DynamO even when the boost
-  libraries are not installed (e.g., on compute nodes).  
+  The option <i>link=static</i> and <i>runtime-link=static</i> ensures
+  that the boost libraries are linked statically so that you can run
+  DynamO even when the boost libraries are not installed (e.g., on
+  compute nodes).
 </p>
 <p>
   If this completes successfully, you should now have a set of dynamo
