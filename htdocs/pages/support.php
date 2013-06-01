@@ -89,6 +89,12 @@
     brownian dynamics, and also has its own 3D visualizer.
   </li>
   <li>
+    <a href="http://people.cas.uab.edu/~khu/gt/Hardballs">Hardballs</a>:
+    <br /> This appears to be the start of a general EDMD simulation
+    code, most results are for 2D systems but there are some fairly
+    general collision routines implemented.
+  </li>
+  <li>
     <a href="http://www.lps.ens.fr/~krauth/index.php/Bernard_Krauth_Wilson_2009">Event-Chain
       Algorithm:</a> <br />A remarkable event-driven algorithm capable
       of evolving discrete and continuous potential
