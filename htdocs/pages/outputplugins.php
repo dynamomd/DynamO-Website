@@ -1227,3 +1227,71 @@ dynarun config.xml -c 1000000 -L MFT:BinWidth=0.5,Length=100
     </ul>
   </li>
 </ul>
+<h1>MSD Plugin</h1>
+<p>
+  The MSD plugin calculates the Mean Standard Displacement of
+  different species and structures over the entire length of the
+  simulation, which can be used to estimate their diffusion
+  coefficients.
+</p>
+<p>
+  <b>Example usage</b>:
+</p>
+<?php codeblockstart();?>
+-L MSD
+<?php codeblockend("brush: shell;"); ?>
+<p>
+  <b>Options</b>:
+</p>
+<p>
+  <b>Example output</b>:
+</p>
+<?php codeblockstart();?>
+<MSD>
+  <Species Name="Bulk" val="218.539491598976" diffusionCoeff="0.250540360762613"/>
+</MSD>
+<?php codeblockend("brush: xml;"); ?>
+<p>
+  <b>Full Tag, Subtag, and Attribute List</b>:
+</p>
+<ul>
+  <li>
+    <b>Species</b> <i>(tag)</i>: This tag contains the mean standard
+    displacement of the species on average, along with a calculation
+    of the diffusion coefficient from the MSD.
+    <ul>
+      <li>
+	<b>Name</b> <i>(attribute)</i>: The name of the species that
+	the MSD and diffusion coefficient are calculated for.
+      </li>
+      <li>
+	<b>val</b> <i>(attribute)</i>: The average value of the mean
+	square displacement for each particle in the species.
+	
+	\[\left\langle \left[{\bf r}(t)-{\bf
+	r}(0)\right]^2\right\rangle\] 
+
+	where the angle brackets indicate an average over all
+	particles in the species, ${\bf r}(t)$ is the location of the
+	particle at the end of the simulation (at time $t$), and ${\bf
+	r}(0)$ is the particle position at the start of the
+	simulation.
+      </li>
+      <li>
+	<b>diffusionCoeff</b> <i>(attribute)</i>: The diffusion
+	coefficient calculated by 
+
+	\[D=\frac{\left\langle \left[{\bf r}(t)-{\bf
+	r}(0)\right]^2\right\rangle}{6\,t}\]
+	
+	where $t$ is the duration of the simulation.
+      </li>
+    </ul>
+  </li>
+  <li>
+    <b>Structure</b> <i>(tag)</i>: This tag is identical to the
+    Species tag above but corresponds to the particles within a
+    defined Structure in the simulation. For information on the
+    contents of this tag please see the Species tag above.
+  </li>
+</ul>
