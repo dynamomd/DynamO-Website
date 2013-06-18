@@ -1449,6 +1449,13 @@
   the <b>SetPoint</b>.
 </p>
 <p>
+  If you want the mean free time to remain fixed during a simulation
+  and want to disable the frequency control please ensure that you do
+  not define the <b>SetFrequency</b> or
+  <b>SetPoint</b> attributes. If either attribute is missing the
+  frequency control will be disabled.
+</p>
+<p>
   <b>Example Usage:</b>
 </p>
 <?php codeblockstart();?>
@@ -1471,23 +1478,27 @@
   </li>
   <li>
     <b>MFT</b> <i>(attribute)</i>: The current mean free time over
-    which the thermostat is applied. This is the overall mean free
-    time of the thermostat (<b>not</b> the mean free time per
-    particle).
+    which the thermostat is applied. Please note, this is the
+    mean free time of the thermostat <b>not</b> the mean free time
+    per particle.
   </li>
   <li>
     <b>Temperature</b> <i>(attribute)</i>: The temperature ($k_B\,T$)
     of the thermostat.
   </li>
   <li>
-    <b>SetPoint</b> <i>(attribute)</i>: The target fraction of events
-    which should be applications of the thermostat. This is
-    effectively the damping constant of the thermostat.
+    <b>SetPoint</b> <i>(attribute)</i>: This attribute is optional and
+    only takes effect if the <b>SetFrequency</b> attribute is also
+    defined. The target fraction of events which should be
+    applications of the thermostat. This is effectively the damping
+    constant of the thermostat.
   </li>
   <li>
-    <b>SetFrequency</b> <i>(attribute)</i>: The thermostat mean free
-    time is adjusted every SetFrequency events to attempt to match the
-    SetPoint fraction of events.
+    <b>SetFrequency</b> <i>(attribute)</i>: This attribute is optional
+    and only takes effect if the <b>SetPoint</b> attribute is also
+    defined. The thermostat mean free time is adjusted every
+    SetFrequency events to attempt to match the SetPoint fraction of
+    events.
   </li>
   <li>
     <b><a href="#idrange">IDRange</a></b> <i>(tag)</i>: This <a href="#idrange">IDRange</a> tag specifies the
