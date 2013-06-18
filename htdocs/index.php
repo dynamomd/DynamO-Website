@@ -280,6 +280,8 @@ if ($TOC)
       <a href="/" id="sitelogo" ></a>
     </div>
 
+    <a href="https://github.com/toastedcrumpets/DynamO/"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_red_aa0000.png" alt="Fork me on GitHub"></a>
+
     <!-- MENU -->
     <div id="menu">
       <!-- There can be no spaces between these elements, due to the treatment of the anchor tag as a word and the automatic kerning of html -->
