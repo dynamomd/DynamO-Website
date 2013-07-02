@@ -19,6 +19,13 @@
 </p>
 <div style="clear:both;text-align:center;">
 <div class="figure" style="width:533px; vertical-align:middle;">
+  <?php embedAJAXvideo("drum", "_ksRY7SPHIU", 533, 300); ?>
+  <div class="caption">
+    A simulation of a rolling drum which may be used as the starting
+    point for the model of a kiln or a ball mill.
+  </div>
+</div>
+<div class="figure" style="width:533px; vertical-align:middle;">
   <?php embedAJAXvideo("leesedwards", "diXFTqiCXaQ", 533, 300); ?>
   <div class="caption">
     This is a live simulation of a granular hard-sphere system being
