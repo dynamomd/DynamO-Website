@@ -322,6 +322,14 @@
   be generated for all pairings of species in the system) and they are
   used by the visualiser to determine how to draw the particles.
 </p>
+<p>
+  Particles will have rotational degrees of freedom if they have a
+  Species which provides a non-zero inertia tensor
+  (e.g. <a href="#typesphericaltop">"SphericalTop"</a>). Other Species
+  types such as <a href="#typepoint">"Point"</a>
+  and <a href="#typefixedcollider">"FixedCollider"</a> will avoid the
+  computational overhead of tracking the rotation of the particles.
+</p>
 <h2>Type="Point"</h2>
 <p>
   <b>Description:</b> This Species type corresponds to point mass
@@ -421,7 +429,7 @@
 <p>
   <b>Example Usage:</b>
 </p>
-<?php codeblockstart();?><Species Mass="1" Name="Bulk" IntName="Bulk"Type="SphericalTop">
+<?php codeblockstart();?><Species Mass="1" Name="Bulk" IntName="Bulk"Type="SphericalTop" InertiaConstant="0.1">
   <IDRange .../>
 </Species><?php codeblockend("brush: xml;"); ?>
 <p>
@@ -441,11 +449,14 @@
       Properties</a> for more information).
   </li>
   <li>
-    <b>InertiaConstant</b> <i>(attribute)</i>: The area factor of
-    the principal momenta of inertia of the particles represented by
-    this Species. This is value is multiplied by the mass of the
-    particle to obtain the value of the principal momenta of
-    inertia.
+    <b>InertiaConstant</b> <i>(attribute)</i>: The area factor of the
+    principal momenta of inertia of the particles represented by this
+    Species. This is value is multiplied by the mass of the particle
+    to obtain the value of the principal momenta of inertia.For a
+    solid sphere this value should be $\sigma^2/10$ where $\sigma$ is
+    the particle
+    diameter. <a href="http://en.wikipedia.org/wiki/List_of_moments_of_inertia">A
+    list of inertia constants is available at wikipedia</a>.
   </li>
   <li>
     <b>Name</b> <i>(attribute)</i>: The name of the particles
@@ -675,7 +686,7 @@
   <b>Example Usage:</b>
 </p>
 <?php codeblockstart();?>
-<Interaction Type="HardSphere" Diameter="1" Elasticity="1" Name="Bulk">
+<Interaction Type="HardSphere" Diameter="1" Name="Bulk">
   <IDPairRange .../>
 </Interaction>
 <?php codeblockend("brush: xml;"); ?>
@@ -697,10 +708,32 @@
       Properties</a> for more information).
   </li>
   <li>
-    <b>Elasticity</b> <i>(attribute)</i>: The elasticity of the
-    particle pairs corresponding to this Interaction. This value is
+    <b>Elasticity</b> <i>(attribute)</i>: This is an optional
+    attribute. The elasticity controls the dissipation of
+    translational energy between interacting particles.  This value is
     typically 1 for molecular systems and between zero and one for
-    granular systems. 
+    granular systems. If the attribute is unset, it is equivalent
+    to <i>Elasticity="1"</i>.
+
+    <br/> This attribute is a <b>Property specifier</b>
+    with <b>Dimensionless</b> units (see
+    the <a href="#property">section on Properties</a> for more
+    information).
+  </li>
+  <li>
+    <b>TangentialElasticity</b> <i>(attribute)</i>: This is an
+    optional attribute. The tangential elasticity controls the
+    dissipation/generation of energy between interacting particles in
+    the tangential/rotational direction and is typically in the range
+    $[-1,1]$. If the tangential elasticity is one, there is no
+    tangential interaction, whereas <i>TangentialElasticity="-1"</i>
+    corresponds to a complete reversal of the relative surface
+    velocities. It is important to note that setting
+    the <i>TangentialElasticity</i> attribute requires that the
+    particles have a <a href="#species">Species</a> with inertia
+    information. If the attribute is unset then rotational dynamics
+    are ignored and the particles can have
+    any <a href="#species">Species</a> type.
 
     <br/> This attribute is a <b>Property specifier</b>
     with <b>Dimensionless</b> units (see
