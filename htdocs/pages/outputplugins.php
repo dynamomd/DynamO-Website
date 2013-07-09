@@ -534,7 +534,7 @@ dynarun config.xml -c 1000000 -L MFT:BinWidth=0.5,Length=100
     Interactions/Globals/Locals/Systems.
   </li>
   <li>
-    <b>Time</b> <i>(attribute)</i>: The total time the simulated was
+    <b>Time</b> <i>(attribute)</i>: The total time the simulation was
     executed for, in simulation units.
   </li>
 </ul>
