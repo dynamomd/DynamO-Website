@@ -9,7 +9,7 @@
    $pagetitle="Configuration File Format Reference";
    $pagecss="#taglist ul {padding-left: 15px;} #taglist li {list-style:disc; list-style-position:inside; font-weight:bold; padding-left:5px; margin-top:5px;}";
 ?>
-<script language="javascript"> 
+<script> 
 function toggle_visibility(elementname) {
 	var ele = document.getElementById(elementname);
 	if(ele.style.display == "block") {
@@ -709,23 +709,23 @@ function toggle_visibility(elementname) {
     $\boldsymbol{v}_j=\boldsymbol{v}_i-\boldsymbol{v}_{ij}$, we have
     
     \[\begin{align}
-    \boldsymbol{v}_j'-\boldsymbol{v}_j&=\boldsymbol{v}_i'-\boldsymbol{v}_i - \boldsymbol{v}_{ij}'+\boldsymbol{v}_{ij}
+    \boldsymbol{v}_j'-\boldsymbol{v}_j&amp;=\boldsymbol{v}_i'-\boldsymbol{v}_i - \boldsymbol{v}_{ij}'+\boldsymbol{v}_{ij}
     \end{align}\]
     
     where the primes denote post-collision values.  Using the conservation
     of momentum, we can write
     
     \[\begin{align}
-    m_i\,\boldsymbol{v}_i'+m_j\,\boldsymbol{v}_j'&=m_i\,\boldsymbol{v}_i+m_j\,\boldsymbol{v}_j\\
-    \boldsymbol{v}_i'-\boldsymbol{v}_i&=-\frac{m_j}{m_i}\left(\boldsymbol{v}_j'-\boldsymbol{v}_j\right)
+    m_i\,\boldsymbol{v}_i'+m_j\,\boldsymbol{v}_j'&amp;=m_i\,\boldsymbol{v}_i+m_j\,\boldsymbol{v}_j\\
+    \boldsymbol{v}_i'-\boldsymbol{v}_i&amp;=-\frac{m_j}{m_i}\left(\boldsymbol{v}_j'-\boldsymbol{v}_j\right)
     \end{align}\]
 
     where $m_i$ is the mass of particle $i$.  Using the first equation to
     eliminate $\boldsymbol{v}_j$ terms, we have
 
     \[\begin{align}
-    \boldsymbol{v}_i'-\boldsymbol{v}_i&=-\frac{m_j}{m_i}\left(\boldsymbol{v}_i'-\boldsymbol{v}_i - \boldsymbol{v}_{ij}'+\boldsymbol{v}_{ij}\right)\\
-    &=m_i^{-1}\,\mu\left(\boldsymbol{v}_{ij}'-\boldsymbol{v}_{ij}\right)
+    \boldsymbol{v}_i'-\boldsymbol{v}_i&amp;=-\frac{m_j}{m_i}\left(\boldsymbol{v}_i'-\boldsymbol{v}_i - \boldsymbol{v}_{ij}'+\boldsymbol{v}_{ij}\right)\\
+    &amp;=m_i^{-1}\,\mu\left(\boldsymbol{v}_{ij}'-\boldsymbol{v}_{ij}\right)
     \end{align}\]
 
     where $\mu_{ij}=\frac{m_i\,m_j}{(m_i+m_j)}$ is the reduced
@@ -735,8 +735,8 @@ function toggle_visibility(elementname) {
     have:
 
     \[\begin{align*}
-    \left[\boldsymbol{v}_{ij}'\right]_\parallel&=-\varepsilon\left[\boldsymbol{v}_{ij}\right]_\parallel &
-    \left[\boldsymbol{v}_{ij}'\right]_\perp&=\left[\boldsymbol{v}_{ij}\right]_\perp
+    \left[\boldsymbol{v}_{ij}'\right]_\parallel&amp;=-\varepsilon\left[\boldsymbol{v}_{ij}\right]_\parallel &amp;
+    \left[\boldsymbol{v}_{ij}'\right]_\perp&amp;=\left[\boldsymbol{v}_{ij}\right]_\perp
     \end{align*}\]
 
     where $\varepsilon$ is the elasticity/coefficient of restitution and
@@ -757,26 +757,26 @@ function toggle_visibility(elementname) {
     This leads to the final expressions for smooth particles:
 
     \[\begin{align}
-    \boldsymbol{v}_i'-\boldsymbol{v}_i&=-m_i^{-1}\,\mu_{ij}(1+\varepsilon)\left(\hat{\boldsymbol{r}}_{ij}\cdot\boldsymbol{v}_{ij}\right)\hat{\boldsymbol{r}}_{ij}\\
-    \boldsymbol{v}_j'-\boldsymbol{v}_j&=+m_j^{-1}\,\mu_{ij}(1+\varepsilon)\left(\hat{\boldsymbol{r}}_{ij}\cdot\boldsymbol{v}_{ij}\right)\hat{\boldsymbol{r}}_{ij}
+    \boldsymbol{v}_i'-\boldsymbol{v}_i&amp;=-m_i^{-1}\,\mu_{ij}(1+\varepsilon)\left(\hat{\boldsymbol{r}}_{ij}\cdot\boldsymbol{v}_{ij}\right)\hat{\boldsymbol{r}}_{ij}\\
+    \boldsymbol{v}_j'-\boldsymbol{v}_j&amp;=+m_j^{-1}\,\mu_{ij}(1+\varepsilon)\left(\hat{\boldsymbol{r}}_{ij}\cdot\boldsymbol{v}_{ij}\right)\hat{\boldsymbol{r}}_{ij}
     \end{align}\]
 
     In rough systems, particles will change rotation due to
     interactions. To define the dynamics in such a system we need to
     consider the relative surface velocity at the point of contact,
     $\boldsymbol{g}_{ij}$, calculated as follows \[\begin{align*}
-    \boldsymbol{g}_{ij}&=\left(\boldsymbol{v}_i-\boldsymbol{\omega}_i\times
+    \boldsymbol{g}_{ij}&amp;=\left(\boldsymbol{v}_i-\boldsymbol{\omega}_i\times
     R_i\,\hat{\boldsymbol{r}}_{ij}\right)-\left(\boldsymbol{v}_j+\boldsymbol{\omega}_j\times
     R_j\hat{\boldsymbol{r}}_{ij}\right)\\
-    &=\boldsymbol{v}_{ij}-\left(R_i\,\boldsymbol{\omega}_i+R_j\,\boldsymbol{\omega}_j\right)\times\hat{\boldsymbol{r}}_{ij}
+    &amp;=\boldsymbol{v}_{ij}-\left(R_i\,\boldsymbol{\omega}_i+R_j\,\boldsymbol{\omega}_j\right)\times\hat{\boldsymbol{r}}_{ij}
     \end{align*}\] where $\boldsymbol{\omega}_j$ is the angular velocity
     and $R_i$ is the radus of particle $i$. In this case, we can define a
     normal and a tangential coefficient of restitution as follows
 
     \[\begin{align}
-    \left[\boldsymbol{g}_{ij}\right]_\parallel'&=-\varepsilon^n\left[\boldsymbol{g}_{ij}\right]_\parallel
-    &
-    \left[\boldsymbol{g}_{ij}\right]_\perp'&=\varepsilon^t\left[\boldsymbol{g}_{ij}\right]_\perp
+    \left[\boldsymbol{g}_{ij}\right]_\parallel'&amp;=-\varepsilon^n\left[\boldsymbol{g}_{ij}\right]_\parallel
+    &amp;
+    \left[\boldsymbol{g}_{ij}\right]_\perp'&amp;=\varepsilon^t\left[\boldsymbol{g}_{ij}\right]_\perp
     \end{align}\] 
 
     where
@@ -788,9 +788,9 @@ function toggle_visibility(elementname) {
     these definitions lead to the following expressions
 
     \[\begin{align*}
-    \hat{\boldsymbol{r}}_{ij}\left(\hat{\boldsymbol{r}}_{ij}\cdot\left[\boldsymbol{g}_{ij}'-\boldsymbol{g}_{ij}\right]\right)&=-(1+\varepsilon^n)\hat{\boldsymbol{r}}_{ij}\left(\hat{\boldsymbol{r}}_{ij}\cdot\boldsymbol{g}_{ij}\right)
-    &
-    \hat{\boldsymbol{r}}_{ij}\times\left(\hat{\boldsymbol{r}}_{ij}\times\left[\boldsymbol{g}_{ij}'-\boldsymbol{g}_{ij}\right]\right)&=(\varepsilon^t-1)\hat{\boldsymbol{r}}_{ij}\times\left(\hat{\boldsymbol{r}}_{ij}\times\boldsymbol{g}_{ij}\right)
+    \hat{\boldsymbol{r}}_{ij}\left(\hat{\boldsymbol{r}}_{ij}\cdot\left[\boldsymbol{g}_{ij}'-\boldsymbol{g}_{ij}\right]\right)&amp;=-(1+\varepsilon^n)\hat{\boldsymbol{r}}_{ij}\left(\hat{\boldsymbol{r}}_{ij}\cdot\boldsymbol{g}_{ij}\right)
+    &amp;
+    \hat{\boldsymbol{r}}_{ij}\times\left(\hat{\boldsymbol{r}}_{ij}\times\left[\boldsymbol{g}_{ij}'-\boldsymbol{g}_{ij}\right]\right)&amp;=(\varepsilon^t-1)\hat{\boldsymbol{r}}_{ij}\times\left(\hat{\boldsymbol{r}}_{ij}\times\boldsymbol{g}_{ij}\right)
     \end{align*}\]
 
     We need to find an expression which closes the linear momentum balance
@@ -803,8 +803,8 @@ function toggle_visibility(elementname) {
     will have two separate angular-momentum conservation rules:
 
     \[\begin{align*}
-    m_i\,R_i\,\hat{\boldsymbol{r}}_{ij}\times\boldsymbol{v}_i' + \boldsymbol{I}_i\cdot\boldsymbol{\omega}_i' &= m_i\,R_i\,\hat{\boldsymbol{r}}_{ij}\times\boldsymbol{v}_i + \boldsymbol{I}_i\cdot\boldsymbol{\omega}_i\\
-    m_j\,R_j\,\hat{\boldsymbol{r}}_{ij}\times\boldsymbol{v}_j' - \boldsymbol{I}_j\cdot\boldsymbol{\omega}_j' &= m_j\,R_j\,\hat{\boldsymbol{r}}_{ij}\times\boldsymbol{v}_j - \boldsymbol{I}_j\cdot\boldsymbol{\omega}_j
+    m_i\,R_i\,\hat{\boldsymbol{r}}_{ij}\times\boldsymbol{v}_i' + \boldsymbol{I}_i\cdot\boldsymbol{\omega}_i' &amp;= m_i\,R_i\,\hat{\boldsymbol{r}}_{ij}\times\boldsymbol{v}_i + \boldsymbol{I}_i\cdot\boldsymbol{\omega}_i\\
+    m_j\,R_j\,\hat{\boldsymbol{r}}_{ij}\times\boldsymbol{v}_j' - \boldsymbol{I}_j\cdot\boldsymbol{\omega}_j' &amp;= m_j\,R_j\,\hat{\boldsymbol{r}}_{ij}\times\boldsymbol{v}_j - \boldsymbol{I}_j\cdot\boldsymbol{\omega}_j
     \end{align*}\]
 
     For symmetric objects we have an isotropic inertia tensor
@@ -813,8 +813,8 @@ function toggle_visibility(elementname) {
     like so
 
     \[\begin{align*}
-    \boldsymbol{\omega}_i'- \boldsymbol{\omega}_i&=- R_i^{-1}\tilde{I}_i^{-1}\left[\hat{\boldsymbol{r}}_{ij}\times\left(\boldsymbol{v}_i' -\boldsymbol{v}_i\right)\right]\\
-    \boldsymbol{\omega}_j'- \boldsymbol{\omega}_j &= + R_j^{-1}\tilde{I}_j^{-1}\left[\hat{\boldsymbol{r}}_{ij}\times\left(\boldsymbol{v}_j' -\boldsymbol{v}_j\right)\right]
+    \boldsymbol{\omega}_i'- \boldsymbol{\omega}_i&amp;=- R_i^{-1}\tilde{I}_i^{-1}\left[\hat{\boldsymbol{r}}_{ij}\times\left(\boldsymbol{v}_i' -\boldsymbol{v}_i\right)\right]\\
+    \boldsymbol{\omega}_j'- \boldsymbol{\omega}_j &amp;= + R_j^{-1}\tilde{I}_j^{-1}\left[\hat{\boldsymbol{r}}_{ij}\times\left(\boldsymbol{v}_j' -\boldsymbol{v}_j\right)\right]
     \end{align*}\]
 
     We need to find the post-collision linear velocities to close these
@@ -822,18 +822,18 @@ function toggle_visibility(elementname) {
     velocity at the surface as follows
 
     \[\begin{align*}
-    \boldsymbol{g}_{ij}&=\left(\boldsymbol{v}_i-\boldsymbol{\omega}_i\times
+    \boldsymbol{g}_{ij}&amp;=\left(\boldsymbol{v}_i-\boldsymbol{\omega}_i\times
     R_i\,\hat{\boldsymbol{r}}_{ij}\right)-\left(\boldsymbol{v}_j+\boldsymbol{\omega}_j\times
     R_j\hat{\boldsymbol{r}}_{ij}\right)\\
-    &=\boldsymbol{v}_{ij}-\left(R_i\,\boldsymbol{\omega}_i+R_j\,\boldsymbol{\omega}_j\right)\times\hat{\boldsymbol{r}}_{ij}
+    &amp;=\boldsymbol{v}_{ij}-\left(R_i\,\boldsymbol{\omega}_i+R_j\,\boldsymbol{\omega}_j\right)\times\hat{\boldsymbol{r}}_{ij}
     \end{align*}\]
 
     Finding the post collision value of this 
 
     \[\begin{align*}
-    \boldsymbol{g}_{ij}'&=\boldsymbol{v}_{ij}'-\left(R_i\,\boldsymbol{\omega}_i'+R_j\,\boldsymbol{\omega}_j'\right)\times\hat{\boldsymbol{r}}_{ij}\\
-    &=\boldsymbol{v}_{ij}' - \left(R_i\left(\boldsymbol{\omega}_i - R_i^{-1}\,\tilde{I}_i^{-1}\left[\hat{\boldsymbol{r}}_{ij}\times\left(\boldsymbol{v}_i' -\boldsymbol{v}_i\right)\right]\right)+R_j\left(\boldsymbol{\omega}_j + R_j^{-1}\,\tilde{I}_j^{-1}\left[\hat{\boldsymbol{r}}_{ij}\times\left(\boldsymbol{v}_j' -\boldsymbol{v}_j\right)\right]\right)\right)\times\hat{\boldsymbol{r}}_{ij}\\
-    &=\boldsymbol{v}_{ij}'-\left(R_i\,\boldsymbol{\omega}_i +
+    \boldsymbol{g}_{ij}'&amp;=\boldsymbol{v}_{ij}'-\left(R_i\,\boldsymbol{\omega}_i'+R_j\,\boldsymbol{\omega}_j'\right)\times\hat{\boldsymbol{r}}_{ij}\\
+    &amp;=\boldsymbol{v}_{ij}' - \left(R_i\left(\boldsymbol{\omega}_i - R_i^{-1}\,\tilde{I}_i^{-1}\left[\hat{\boldsymbol{r}}_{ij}\times\left(\boldsymbol{v}_i' -\boldsymbol{v}_i\right)\right]\right)+R_j\left(\boldsymbol{\omega}_j + R_j^{-1}\,\tilde{I}_j^{-1}\left[\hat{\boldsymbol{r}}_{ij}\times\left(\boldsymbol{v}_j' -\boldsymbol{v}_j\right)\right]\right)\right)\times\hat{\boldsymbol{r}}_{ij}\\
+    &amp;=\boldsymbol{v}_{ij}'-\left(R_i\,\boldsymbol{\omega}_i +
     R_j\,\boldsymbol{\omega}_j\right)\times\hat{\boldsymbol{r}}_{ij} +
     \left(\tilde{I}_i^{-1}\left[\hat{\boldsymbol{r}}_{ij}\times\left(\boldsymbol{v}_i'
     -\boldsymbol{v}_i\right)\right]
@@ -845,12 +845,12 @@ function toggle_visibility(elementname) {
     all particles have the same reduced moment of inertia, we have
 
     \[\begin{align*}
-    \boldsymbol{g}_{ij}'-\boldsymbol{g}_{ij}&=\boldsymbol{v}_{ij}'-\boldsymbol{v}_{ij}+
+    \boldsymbol{g}_{ij}'-\boldsymbol{g}_{ij}&amp;=\boldsymbol{v}_{ij}'-\boldsymbol{v}_{ij}+
     \tilde{I}^{-1}\left(\left[\hat{\boldsymbol{r}}_{ij}\times\left(\boldsymbol{v}_i'
     -\boldsymbol{v}_i\right)\right]
     -\left[\hat{\boldsymbol{r}}_{ij}\times\left(\boldsymbol{v}_j'
     -\boldsymbol{v}_j\right)\right]\right)\times\hat{\boldsymbol{r}}_{ij}\\
-    &=\boldsymbol{v}_{ij}'-\boldsymbol{v}_{ij}-
+    &amp;=\boldsymbol{v}_{ij}'-\boldsymbol{v}_{ij}-
     \tilde{I}^{-1}\,\hat{\boldsymbol{r}}_{ij}\times\left[\hat{\boldsymbol{r}}_{ij}\times\left(\boldsymbol{v}_{ij}'
     -\boldsymbol{v}_{ij}\right)\right]
     \end{align*}\]
@@ -867,7 +867,7 @@ function toggle_visibility(elementname) {
     Taking the vector product instead and we have
 
     \[\begin{align*}
-    \hat{\boldsymbol{r}}_{ij}\times\left[\boldsymbol{g}_{ij}'-\boldsymbol{g}_{ij}\right]  &=\hat{\boldsymbol{r}}_{ij}\times\left[\boldsymbol{v}_{ij}'-\boldsymbol{v}_{ij}\right]-
+    \hat{\boldsymbol{r}}_{ij}\times\left[\boldsymbol{g}_{ij}'-\boldsymbol{g}_{ij}\right]  &amp;=\hat{\boldsymbol{r}}_{ij}\times\left[\boldsymbol{v}_{ij}'-\boldsymbol{v}_{ij}\right]-
     \tilde{I}^{-1}\hat{\boldsymbol{r}}_{ij}\times\left[\hat{\boldsymbol{r}}_{ij}\times\left[\hat{\boldsymbol{r}}_{ij}\times\left(\boldsymbol{v}_{ij}'
     -\boldsymbol{v}_{ij}\right)\right]\right]
     \end{align*}\]
@@ -878,10 +878,10 @@ function toggle_visibility(elementname) {
 
     \[\begin{align}
     \hat{\boldsymbol{r}}_{ij}\times\left[\boldsymbol{g}_{ij}'-\boldsymbol{g}_{ij}\right]
-    &=\hat{\boldsymbol{r}}_{ij}\times\left[\boldsymbol{v}_{ij}'-\boldsymbol{v}_{ij}\right]+
+    &amp;=\hat{\boldsymbol{r}}_{ij}\times\left[\boldsymbol{v}_{ij}'-\boldsymbol{v}_{ij}\right]+
     \tilde{I}^{-1}\,\hat{\boldsymbol{r}}_{ij}\times\left(\boldsymbol{v}_{ij}'
     -\boldsymbol{v}_{ij}\right)\nonumber\\
-    \hat{\boldsymbol{r}}_{ij}\times\left[\boldsymbol{v}_{ij}'-\boldsymbol{v}_{ij}\right]&=\left(1+\tilde{I}^{-1}\right)^{-1}\hat{\boldsymbol{r}}_{ij}\times\left[\boldsymbol{g}_{ij}'-\boldsymbol{g}_{ij}\right]
+    \hat{\boldsymbol{r}}_{ij}\times\left[\boldsymbol{v}_{ij}'-\boldsymbol{v}_{ij}\right]&amp;=\left(1+\tilde{I}^{-1}\right)^{-1}\hat{\boldsymbol{r}}_{ij}\times\left[\boldsymbol{g}_{ij}'-\boldsymbol{g}_{ij}\right]
     \end{align}\]
 
     Noting again that in general we have
@@ -889,21 +889,21 @@ function toggle_visibility(elementname) {
     we can write
 
     \[\begin{align}
-    \boldsymbol{v}_{ij}'-\boldsymbol{v}_{ij}&=\hat{\boldsymbol{r}}_{ij}\left(\hat{\boldsymbol{r}}_{ij}\cdot(\boldsymbol{v}_{ij}'-\boldsymbol{v}_{ij})\right) -\hat{\boldsymbol{r}}_{ij}\times\left[\hat{\boldsymbol{r}}_{ij}\times\left(\boldsymbol{v}_{ij}'-\boldsymbol{v}_{ij}\right)\right]\\
-    &=\hat{\boldsymbol{r}}_{ij}\left(\hat{\boldsymbol{r}}_{ij}\cdot\left(\boldsymbol{g}_{ij}'-\boldsymbol{g}_{ij}\right)\right) -\left(1+\tilde{I}^{-1}\right)^{-1}\hat{\boldsymbol{r}}_{ij}\times\left[\hat{\boldsymbol{r}}_{ij}\times\left[\boldsymbol{g}_{ij}'-\boldsymbol{g}_{ij}\right]\right]
+    \boldsymbol{v}_{ij}'-\boldsymbol{v}_{ij}&amp;=\hat{\boldsymbol{r}}_{ij}\left(\hat{\boldsymbol{r}}_{ij}\cdot(\boldsymbol{v}_{ij}'-\boldsymbol{v}_{ij})\right) -\hat{\boldsymbol{r}}_{ij}\times\left[\hat{\boldsymbol{r}}_{ij}\times\left(\boldsymbol{v}_{ij}'-\boldsymbol{v}_{ij}\right)\right]\\
+    &amp;=\hat{\boldsymbol{r}}_{ij}\left(\hat{\boldsymbol{r}}_{ij}\cdot\left(\boldsymbol{g}_{ij}'-\boldsymbol{g}_{ij}\right)\right) -\left(1+\tilde{I}^{-1}\right)^{-1}\hat{\boldsymbol{r}}_{ij}\times\left[\hat{\boldsymbol{r}}_{ij}\times\left[\boldsymbol{g}_{ij}'-\boldsymbol{g}_{ij}\right]\right]
     \end{align}\]
 
     Inserting in the coefficients of restitution, we have
 
     \[\begin{align}
-    \boldsymbol{v}_{ij}'-\boldsymbol{v}_{ij}&=-(1+\varepsilon^n)\hat{\boldsymbol{r}}_{ij}\left(\hat{\boldsymbol{r}}_{ij}\cdot\boldsymbol{g}_{ij}\right) -\left(1+\tilde{I}^{-1}\right)^{-1}(\varepsilon^t-1)\hat{\boldsymbol{r}}_{ij}\times\left(\hat{\boldsymbol{r}}_{ij}\times\boldsymbol{g}_{ij}\right)
+    \boldsymbol{v}_{ij}'-\boldsymbol{v}_{ij}&amp;=-(1+\varepsilon^n)\hat{\boldsymbol{r}}_{ij}\left(\hat{\boldsymbol{r}}_{ij}\cdot\boldsymbol{g}_{ij}\right) -\left(1+\tilde{I}^{-1}\right)^{-1}(\varepsilon^t-1)\hat{\boldsymbol{r}}_{ij}\times\left(\hat{\boldsymbol{r}}_{ij}\times\boldsymbol{g}_{ij}\right)
     \end{align}\]
 
     Using this we can complete the expression for the linear velocity
     change:
 
     \[\begin{align}
-    \boldsymbol{v}_i'-\boldsymbol{v}_i&=-m_i^{-1}\,\mu_{ij}\left((1+\varepsilon^n)
+    \boldsymbol{v}_i'-\boldsymbol{v}_i&amp;=-m_i^{-1}\,\mu_{ij}\left((1+\varepsilon^n)
     \hat{\boldsymbol{r}}_{ij}\left(\hat{\boldsymbol{r}}_{ij}\cdot\boldsymbol{g}_{ij}\right)
     +\left(1+\tilde{I}^{-1}\right)^{-1}(\varepsilon^t-1)
     \hat{\boldsymbol{r}}_{ij}\times\left(\hat{\boldsymbol{r}}_{ij}\times\boldsymbol{g}_{ij}\right)\right)
@@ -913,11 +913,11 @@ function toggle_visibility(elementname) {
     we have
 
     \[\begin{align*}
-    \boldsymbol{\omega}_i'- \boldsymbol{\omega}_i&=- R_i^{-1}\tilde{I}_i^{-1}\left[\hat{\boldsymbol{r}}_{ij}\times\left(\boldsymbol{v}_i' -\boldsymbol{v}_i\right)\right]\\
-    &=
+    \boldsymbol{\omega}_i'- \boldsymbol{\omega}_i&amp;=- R_i^{-1}\tilde{I}_i^{-1}\left[\hat{\boldsymbol{r}}_{ij}\times\left(\boldsymbol{v}_i' -\boldsymbol{v}_i\right)\right]\\
+    &amp;=
     m_i^{-1}\,\mu_{ij}\,R_i^{-1}\left(1+\tilde{I}\right)^{-1}(\varepsilon^t-1)\hat{\boldsymbol{r}}_{ij}\times\left[
     \hat{\boldsymbol{r}}_{ij}\times\left(\hat{\boldsymbol{r}}_{ij}\times\boldsymbol{g}_{ij}\right)\right]\\
-    &=
+    &amp;=
     -m_i^{-1}\,\mu_{ij}\,R_i^{-1}\left(1+\tilde{I}\right)^{-1}(\varepsilon^t-1)\hat{\boldsymbol{r}}_{ij}\times\boldsymbol{g}_{ij}
     \end{align*}\]
 
@@ -928,20 +928,20 @@ function toggle_visibility(elementname) {
 </div>
 <p>
   \[\begin{align*}
-  \boldsymbol{v}_i'-\boldsymbol{v}_i&=-\frac{\mu_{ij}}{m_i}\left((1+\varepsilon^n)
+  \boldsymbol{v}_i'-\boldsymbol{v}_i&amp;=-\frac{\mu_{ij}}{m_i}\left((1+\varepsilon^n)
   \hat{\boldsymbol{r}}_{ij}\left(\hat{\boldsymbol{r}}_{ij}\cdot\boldsymbol{g}_{ij}\right)
   +\frac{\varepsilon^t-1}{1+\tilde{I}^{-1}}
   \hat{\boldsymbol{r}}_{ij}\times\left(\hat{\boldsymbol{r}}_{ij}\times\boldsymbol{g}_{ij}\right)\right)\\
-  \boldsymbol{v}_j'-\boldsymbol{v}_j&=\frac{\mu_{ij}}{m_j}\left((1+\varepsilon^n)
+  \boldsymbol{v}_j'-\boldsymbol{v}_j&amp;=\frac{\mu_{ij}}{m_j}\left((1+\varepsilon^n)
   \hat{\boldsymbol{r}}_{ij}\left(\hat{\boldsymbol{r}}_{ij}\cdot\boldsymbol{g}_{ij}\right)
   +\frac{\varepsilon^t-1}{1+\tilde{I}^{-1}}
   \hat{\boldsymbol{r}}_{ij}\times\left(\hat{\boldsymbol{r}}_{ij}\times\boldsymbol{g}_{ij}\right)\right)\\
   \boldsymbol{\omega}_i'-
-  \boldsymbol{\omega}_i&=-\frac{\mu_{ij}(\varepsilon^t-1)}{m_i\,R_i\left(1+\tilde{I}\right)}
+  \boldsymbol{\omega}_i&amp;=-\frac{\mu_{ij}(\varepsilon^t-1)}{m_i\,R_i\left(1+\tilde{I}\right)}
   \hat{\boldsymbol{r}}_{ij}\times\boldsymbol{g}_{ij}
   \\
   \boldsymbol{\omega}_j'-
-  \boldsymbol{\omega}_j&=-\frac{\mu_{ij}(\varepsilon^t-1)}{m_j\,R_j\left(1+\tilde{I}\right)}\hat{\boldsymbol{r}}_{ij}\times\boldsymbol{g}_{ij}
+  \boldsymbol{\omega}_j&amp;=-\frac{\mu_{ij}(\varepsilon^t-1)}{m_j\,R_j\left(1+\tilde{I}\right)}\hat{\boldsymbol{r}}_{ij}\times\boldsymbol{g}_{ij}
   \end{align*}\]
 
   where $\varepsilon^n$ and $\varepsilon^t$ are the normal and
