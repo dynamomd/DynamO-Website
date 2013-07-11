@@ -9,6 +9,17 @@
    $pagetitle="Configuration File Format Reference";
    $pagecss="#taglist ul {padding-left: 15px;} #taglist li {list-style:disc; list-style-position:inside; font-weight:bold; padding-left:5px; margin-top:5px;}";
 ?>
+<script language="javascript"> 
+function toggle_visibility(elementname) {
+	var ele = document.getElementById(elementname);
+	if(ele.style.display == "block") {
+    		ele.style.display = "none";
+  	}
+	else {
+		ele.style.display = "block";
+	}
+} 
+</script>
 <?php printTOC(); ?>
 <p>
   In this reference a complete description of the file format is
@@ -683,6 +694,260 @@
   interparticle potential of this model is given in the figure below:
 </p>
 <p>
+  <b>Collision Rule:</b> To perform an interaction we need a collision
+  rule which calculates the post-collision velocities of the two
+  particles undergoing the Interaction. The collision rule expresses the
+  post-collision velocities in terms of the pre-collision values.
+</p>
+<div style="background:#eeeeee;  border:2px solid #000000; position:relative; padding-top:30px;" class="rounded">
+  <a style="background:#ffffff; display:block; position:absolute; padding:5px 5px 5px 5px; left:0;top:0; border-radius:15px 0 15px 0; border-right:2px solid #000000;border-bottom:2px solid #000000;" href="javascript:toggle_visibility('hardspherederivation')">Show/hide derivation of collision rule</a>
+  <p id="hardspherederivation" style="background:#eeeeee; display:none">
+    Using the definition of the relative velocity
+    $\boldsymbol{v}_{ij}=\boldsymbol{v}_{i}-\boldsymbol{v}_{j}$ of two
+    particles $i$ and $j$, and the identities
+    $\boldsymbol{v}_i=\boldsymbol{v}_{ij}+\boldsymbol{v}_j$ and
+    $\boldsymbol{v}_j=\boldsymbol{v}_i-\boldsymbol{v}_{ij}$, we have
+    
+    \[\begin{align}
+    \boldsymbol{v}_j'-\boldsymbol{v}_j&=\boldsymbol{v}_i'-\boldsymbol{v}_i - \boldsymbol{v}_{ij}'+\boldsymbol{v}_{ij}
+    \end{align}\]
+    
+    where the primes denote post-collision values.  Using the conservation
+    of momentum, we can write
+    
+    \[\begin{align}
+    m_i\,\boldsymbol{v}_i'+m_j\,\boldsymbol{v}_j'&=m_i\,\boldsymbol{v}_i+m_j\,\boldsymbol{v}_j\\
+    \boldsymbol{v}_i'-\boldsymbol{v}_i&=-\frac{m_j}{m_i}\left(\boldsymbol{v}_j'-\boldsymbol{v}_j\right)
+    \end{align}\]
+
+    where $m_i$ is the mass of particle $i$.  Using the first equation to
+    eliminate $\boldsymbol{v}_j$ terms, we have
+
+    \[\begin{align}
+    \boldsymbol{v}_i'-\boldsymbol{v}_i&=-\frac{m_j}{m_i}\left(\boldsymbol{v}_i'-\boldsymbol{v}_i - \boldsymbol{v}_{ij}'+\boldsymbol{v}_{ij}\right)\\
+    &=m_i^{-1}\,\mu\left(\boldsymbol{v}_{ij}'-\boldsymbol{v}_{ij}\right)
+    \end{align}\]
+
+    where $\mu_{ij}=\frac{m_i\,m_j}{(m_i+m_j)}$ is the reduced
+    mass. Therefore we can calculate the post-collision velocities of the
+    particles if we know the change in the relative velocities. For smooth
+    particles the velocities only change along the line of contact, and we
+    have:
+
+    \[\begin{align*}
+    \left[\boldsymbol{v}_{ij}'\right]_\parallel&=-\varepsilon\left[\boldsymbol{v}_{ij}\right]_\parallel &
+    \left[\boldsymbol{v}_{ij}'\right]_\perp&=\left[\boldsymbol{v}_{ij}\right]_\perp
+    \end{align*}\]
+
+    where $\varepsilon$ is the elasticity/coefficient of restitution and
+    the subscript $\parallel$ and $\perp$ denote the components parallel
+    and perpendicular to the line of contact. These are calculated like so
+    $\boldsymbol{v}_{ij,\parallel}=\hat{\boldsymbol{r}}_{ij}\left(\hat{\boldsymbol{r}}_{ij}\cdot\boldsymbol{v}_{ij}\right)$
+    and
+    $\boldsymbol{v}_{ij,\perp}=-\hat{\boldsymbol{r}}_{ij}\times\left(\hat{\boldsymbol{r}}_{ij}\times\boldsymbol{v}_{ij}\right)$
+    where $\hat{\boldsymbol{r}}_{ij}$ is the unit vector in the direction of the
+    relative separation at contact, $\boldsymbol{r}_{ij}=\boldsymbol{r}_i-\boldsymbol{r}_j$, and
+    $\boldsymbol{r}_i$ is the position of particle $i$.. Combining these rules
+    results in the following expression
+
+    \[\begin{align*}
+    \boldsymbol{v}_{ij}'-\boldsymbol{v}_{ij}=-(1+\varepsilon)\left(\hat{\boldsymbol{r}}_{ij}\cdot\boldsymbol{v}_{ij}\right)\hat{\boldsymbol{r}}_{ij}
+    \end{align*}\]
+
+    This leads to the final expressions for smooth particles:
+
+    \[\begin{align}
+    \boldsymbol{v}_i'-\boldsymbol{v}_i&=-m_i^{-1}\,\mu_{ij}(1+\varepsilon)\left(\hat{\boldsymbol{r}}_{ij}\cdot\boldsymbol{v}_{ij}\right)\hat{\boldsymbol{r}}_{ij}\\
+    \boldsymbol{v}_j'-\boldsymbol{v}_j&=+m_j^{-1}\,\mu_{ij}(1+\varepsilon)\left(\hat{\boldsymbol{r}}_{ij}\cdot\boldsymbol{v}_{ij}\right)\hat{\boldsymbol{r}}_{ij}
+    \end{align}\]
+
+    In rough systems, particles will change rotation due to
+    interactions. To define the dynamics in such a system we need to
+    consider the relative surface velocity at the point of contact,
+    $\boldsymbol{g}_{ij}$, calculated as follows \[\begin{align*}
+    \boldsymbol{g}_{ij}&=\left(\boldsymbol{v}_i-\boldsymbol{\omega}_i\times
+    R_i\,\hat{\boldsymbol{r}}_{ij}\right)-\left(\boldsymbol{v}_j+\boldsymbol{\omega}_j\times
+    R_j\hat{\boldsymbol{r}}_{ij}\right)\\
+    &=\boldsymbol{v}_{ij}-\left(R_i\,\boldsymbol{\omega}_i+R_j\,\boldsymbol{\omega}_j\right)\times\hat{\boldsymbol{r}}_{ij}
+    \end{align*}\] where $\boldsymbol{\omega}_j$ is the angular velocity
+    and $R_i$ is the radus of particle $i$. In this case, we can define a
+    normal and a tangential coefficient of restitution as follows
+
+    \[\begin{align}
+    \left[\boldsymbol{g}_{ij}\right]_\parallel'&=-\varepsilon^n\left[\boldsymbol{g}_{ij}\right]_\parallel
+    &
+    \left[\boldsymbol{g}_{ij}\right]_\perp'&=\varepsilon^t\left[\boldsymbol{g}_{ij}\right]_\perp
+    \end{align}\] 
+
+    where
+    $\boldsymbol{g}_{ij,\parallel}=\hat{\boldsymbol{r}}_{ij}\left(\hat{\boldsymbol{r}}_{ij}\cdot\boldsymbol{g}_{ij}\right)$
+    and
+    $\boldsymbol{g}_{ij,\perp}=-\hat{\boldsymbol{r}}_{ij}\times\left(\hat{\boldsymbol{r}}_{ij}\times\boldsymbol{g}_{ij}\right)$. Noting
+    that
+    $\boldsymbol{x}=\hat{\boldsymbol{e}}(\hat{\boldsymbol{e}}\cdot\boldsymbol{x})-\hat{\boldsymbol{e}}\times\left(\hat{\boldsymbol{e}}\times\boldsymbol{x}\right)$,
+    these definitions lead to the following expressions
+
+    \[\begin{align*}
+    \hat{\boldsymbol{r}}_{ij}\left(\hat{\boldsymbol{r}}_{ij}\cdot\left[\boldsymbol{g}_{ij}'-\boldsymbol{g}_{ij}\right]\right)&=-(1+\varepsilon^n)\hat{\boldsymbol{r}}_{ij}\left(\hat{\boldsymbol{r}}_{ij}\cdot\boldsymbol{g}_{ij}\right)
+    &
+    \hat{\boldsymbol{r}}_{ij}\times\left(\hat{\boldsymbol{r}}_{ij}\times\left[\boldsymbol{g}_{ij}'-\boldsymbol{g}_{ij}\right]\right)&=(\varepsilon^t-1)\hat{\boldsymbol{r}}_{ij}\times\left(\hat{\boldsymbol{r}}_{ij}\times\boldsymbol{g}_{ij}\right)
+    \end{align*}\]
+
+    We need to find an expression which closes the linear momentum balance
+    by providing a relationship between  $\boldsymbol{v}_{ij}'-\boldsymbol{v}_{ij}$ and
+    $\boldsymbol{g}_{ij}'-\boldsymbol{g}_{ij}$, as well as determining how the angular velocity
+    changes. Beginning with the angular velocity, we take the contact
+    point as the origin about which the angular momentum is defined. We
+    then note that all contact forces act through the origin and see that
+    angular velocity is conserved for both particles separately. Thus we
+    will have two separate angular-momentum conservation rules:
+
+    \[\begin{align*}
+    m_i\,R_i\,\hat{\boldsymbol{r}}_{ij}\times\boldsymbol{v}_i' + \boldsymbol{I}_i\cdot\boldsymbol{\omega}_i' &= m_i\,R_i\,\hat{\boldsymbol{r}}_{ij}\times\boldsymbol{v}_i + \boldsymbol{I}_i\cdot\boldsymbol{\omega}_i\\
+    m_j\,R_j\,\hat{\boldsymbol{r}}_{ij}\times\boldsymbol{v}_j' - \boldsymbol{I}_j\cdot\boldsymbol{\omega}_j' &= m_j\,R_j\,\hat{\boldsymbol{r}}_{ij}\times\boldsymbol{v}_j - \boldsymbol{I}_j\cdot\boldsymbol{\omega}_j
+    \end{align*}\]
+
+    For symmetric objects we have an isotropic inertia tensor
+    $\boldsymbol{I}_i=I_i\,\boldsymbol{1}$, and can define a reduced moment of inertia as
+    $\tilde{I}_i=I_i/m_i\,R_i^2$ and can rearrange these two equations
+    like so
+
+    \[\begin{align*}
+    \boldsymbol{\omega}_i'- \boldsymbol{\omega}_i&=- R_i^{-1}\tilde{I}_i^{-1}\left[\hat{\boldsymbol{r}}_{ij}\times\left(\boldsymbol{v}_i' -\boldsymbol{v}_i\right)\right]\\
+    \boldsymbol{\omega}_j'- \boldsymbol{\omega}_j &= + R_j^{-1}\tilde{I}_j^{-1}\left[\hat{\boldsymbol{r}}_{ij}\times\left(\boldsymbol{v}_j' -\boldsymbol{v}_j\right)\right]
+    \end{align*}\]
+
+    We need to find the post-collision linear velocities to close these
+    expressions. We can define the pre and post collision relative
+    velocity at the surface as follows
+
+    \[\begin{align*}
+    \boldsymbol{g}_{ij}&=\left(\boldsymbol{v}_i-\boldsymbol{\omega}_i\times
+    R_i\,\hat{\boldsymbol{r}}_{ij}\right)-\left(\boldsymbol{v}_j+\boldsymbol{\omega}_j\times
+    R_j\hat{\boldsymbol{r}}_{ij}\right)\\
+    &=\boldsymbol{v}_{ij}-\left(R_i\,\boldsymbol{\omega}_i+R_j\,\boldsymbol{\omega}_j\right)\times\hat{\boldsymbol{r}}_{ij}
+    \end{align*}\]
+
+    Finding the post collision value of this 
+
+    \[\begin{align*}
+    \boldsymbol{g}_{ij}'&=\boldsymbol{v}_{ij}'-\left(R_i\,\boldsymbol{\omega}_i'+R_j\,\boldsymbol{\omega}_j'\right)\times\hat{\boldsymbol{r}}_{ij}\\
+    &=\boldsymbol{v}_{ij}' - \left(R_i\left(\boldsymbol{\omega}_i - R_i^{-1}\,\tilde{I}_i^{-1}\left[\hat{\boldsymbol{r}}_{ij}\times\left(\boldsymbol{v}_i' -\boldsymbol{v}_i\right)\right]\right)+R_j\left(\boldsymbol{\omega}_j + R_j^{-1}\,\tilde{I}_j^{-1}\left[\hat{\boldsymbol{r}}_{ij}\times\left(\boldsymbol{v}_j' -\boldsymbol{v}_j\right)\right]\right)\right)\times\hat{\boldsymbol{r}}_{ij}\\
+    &=\boldsymbol{v}_{ij}'-\left(R_i\,\boldsymbol{\omega}_i +
+    R_j\,\boldsymbol{\omega}_j\right)\times\hat{\boldsymbol{r}}_{ij} +
+    \left(\tilde{I}_i^{-1}\left[\hat{\boldsymbol{r}}_{ij}\times\left(\boldsymbol{v}_i'
+    -\boldsymbol{v}_i\right)\right]
+    -\tilde{I}_j^{-1}\left[\hat{\boldsymbol{r}}_{ij}\times\left(\boldsymbol{v}_j'
+    -\boldsymbol{v}_j\right)\right]\right)\times\hat{\boldsymbol{r}}_{ij}
+    \end{align*}\]
+
+    Subtracting the pre-collision value from this value, and assuming that
+    all particles have the same reduced moment of inertia, we have
+
+    \[\begin{align*}
+    \boldsymbol{g}_{ij}'-\boldsymbol{g}_{ij}&=\boldsymbol{v}_{ij}'-\boldsymbol{v}_{ij}+
+    \tilde{I}^{-1}\left(\left[\hat{\boldsymbol{r}}_{ij}\times\left(\boldsymbol{v}_i'
+    -\boldsymbol{v}_i\right)\right]
+    -\left[\hat{\boldsymbol{r}}_{ij}\times\left(\boldsymbol{v}_j'
+    -\boldsymbol{v}_j\right)\right]\right)\times\hat{\boldsymbol{r}}_{ij}\\
+    &=\boldsymbol{v}_{ij}'-\boldsymbol{v}_{ij}-
+    \tilde{I}^{-1}\,\hat{\boldsymbol{r}}_{ij}\times\left[\hat{\boldsymbol{r}}_{ij}\times\left(\boldsymbol{v}_{ij}'
+    -\boldsymbol{v}_{ij}\right)\right]
+    \end{align*}\]
+
+    Now that we have the relationship between $\boldsymbol{g}_{ij}'-\boldsymbol{g}_{ij}$
+    and $\boldsymbol{v}_{ij}'-\boldsymbol{v}_{ij}$, we look to insert the coefficients of
+    restitution. We notice that the second term is perpendicular to
+    $\hat{\boldsymbol{r}}_{ij}$, therefore we have
+
+    \[\begin{align}
+    \hat{\boldsymbol{r}}_{ij}\cdot\left(\boldsymbol{v}_{ij}'-\boldsymbol{v}_{ij}\right) = \hat{\boldsymbol{r}}_{ij}\cdot\left(\boldsymbol{g}_{ij}'-\boldsymbol{g}_{ij}\right)
+    \end{align}\]
+
+    Taking the vector product instead and we have
+
+    \[\begin{align*}
+    \hat{\boldsymbol{r}}_{ij}\times\left[\boldsymbol{g}_{ij}'-\boldsymbol{g}_{ij}\right]  &=\hat{\boldsymbol{r}}_{ij}\times\left[\boldsymbol{v}_{ij}'-\boldsymbol{v}_{ij}\right]-
+    \tilde{I}^{-1}\hat{\boldsymbol{r}}_{ij}\times\left[\hat{\boldsymbol{r}}_{ij}\times\left[\hat{\boldsymbol{r}}_{ij}\times\left(\boldsymbol{v}_{ij}'
+    -\boldsymbol{v}_{ij}\right)\right]\right]
+    \end{align*}\]
+
+    we note that
+    $\hat{\boldsymbol{e}}\times\left(\hat{\boldsymbol{e}}\times\left(\hat{\boldsymbol{e}}\times\boldsymbol{x}\right)\right)=-\hat{\boldsymbol{e}}\times\boldsymbol{x}$,
+    giving
+
+    \[\begin{align}
+    \hat{\boldsymbol{r}}_{ij}\times\left[\boldsymbol{g}_{ij}'-\boldsymbol{g}_{ij}\right]
+    &=\hat{\boldsymbol{r}}_{ij}\times\left[\boldsymbol{v}_{ij}'-\boldsymbol{v}_{ij}\right]+
+    \tilde{I}^{-1}\,\hat{\boldsymbol{r}}_{ij}\times\left(\boldsymbol{v}_{ij}'
+    -\boldsymbol{v}_{ij}\right)\nonumber\\
+    \hat{\boldsymbol{r}}_{ij}\times\left[\boldsymbol{v}_{ij}'-\boldsymbol{v}_{ij}\right]&=\left(1+\tilde{I}^{-1}\right)^{-1}\hat{\boldsymbol{r}}_{ij}\times\left[\boldsymbol{g}_{ij}'-\boldsymbol{g}_{ij}\right]
+    \end{align}\]
+
+    Noting again that in general we have
+    $\boldsymbol{x}=\hat{\boldsymbol{e}}(\hat{\boldsymbol{e}}\cdot\boldsymbol{x})-\hat{\boldsymbol{e}}\times\left(\hat{\boldsymbol{e}}\times\boldsymbol{x}\right)$, and 
+    we can write
+
+    \[\begin{align}
+    \boldsymbol{v}_{ij}'-\boldsymbol{v}_{ij}&=\hat{\boldsymbol{r}}_{ij}\left(\hat{\boldsymbol{r}}_{ij}\cdot(\boldsymbol{v}_{ij}'-\boldsymbol{v}_{ij})\right) -\hat{\boldsymbol{r}}_{ij}\times\left[\hat{\boldsymbol{r}}_{ij}\times\left(\boldsymbol{v}_{ij}'-\boldsymbol{v}_{ij}\right)\right]\\
+    &=\hat{\boldsymbol{r}}_{ij}\left(\hat{\boldsymbol{r}}_{ij}\cdot\left(\boldsymbol{g}_{ij}'-\boldsymbol{g}_{ij}\right)\right) -\left(1+\tilde{I}^{-1}\right)^{-1}\hat{\boldsymbol{r}}_{ij}\times\left[\hat{\boldsymbol{r}}_{ij}\times\left[\boldsymbol{g}_{ij}'-\boldsymbol{g}_{ij}\right]\right]
+    \end{align}\]
+
+    Inserting in the coefficients of restitution, we have
+
+    \[\begin{align}
+    \boldsymbol{v}_{ij}'-\boldsymbol{v}_{ij}&=-(1+\varepsilon^n)\hat{\boldsymbol{r}}_{ij}\left(\hat{\boldsymbol{r}}_{ij}\cdot\boldsymbol{g}_{ij}\right) -\left(1+\tilde{I}^{-1}\right)^{-1}(\varepsilon^t-1)\hat{\boldsymbol{r}}_{ij}\times\left(\hat{\boldsymbol{r}}_{ij}\times\boldsymbol{g}_{ij}\right)
+    \end{align}\]
+
+    Using this we can complete the expression for the linear velocity
+    change:
+
+    \[\begin{align}
+    \boldsymbol{v}_i'-\boldsymbol{v}_i&=-m_i^{-1}\,\mu_{ij}\left((1+\varepsilon^n)
+    \hat{\boldsymbol{r}}_{ij}\left(\hat{\boldsymbol{r}}_{ij}\cdot\boldsymbol{g}_{ij}\right)
+    +\left(1+\tilde{I}^{-1}\right)^{-1}(\varepsilon^t-1)
+    \hat{\boldsymbol{r}}_{ij}\times\left(\hat{\boldsymbol{r}}_{ij}\times\boldsymbol{g}_{ij}\right)\right)
+    \end{align}\]
+
+    Inserting this into the expression for the change in angular velocity,
+    we have
+
+    \[\begin{align*}
+    \boldsymbol{\omega}_i'- \boldsymbol{\omega}_i&=- R_i^{-1}\tilde{I}_i^{-1}\left[\hat{\boldsymbol{r}}_{ij}\times\left(\boldsymbol{v}_i' -\boldsymbol{v}_i\right)\right]\\
+    &=
+    m_i^{-1}\,\mu_{ij}\,R_i^{-1}\left(1+\tilde{I}\right)^{-1}(\varepsilon^t-1)\hat{\boldsymbol{r}}_{ij}\times\left[
+    \hat{\boldsymbol{r}}_{ij}\times\left(\hat{\boldsymbol{r}}_{ij}\times\boldsymbol{g}_{ij}\right)\right]\\
+    &=
+    -m_i^{-1}\,\mu_{ij}\,R_i^{-1}\left(1+\tilde{I}\right)^{-1}(\varepsilon^t-1)\hat{\boldsymbol{r}}_{ij}\times\boldsymbol{g}_{ij}
+    \end{align*}\]
+
+    The corresponding rules for particle $j$ follow with similar
+    reasoning or through relabing and noting that
+    $\boldsymbol{g}_{ji}=-\boldsymbol{g}_{ij}$. In summary, we have
+  </p>
+</div>
+<p>
+  \[\begin{align*}
+  \boldsymbol{v}_i'-\boldsymbol{v}_i&=-\frac{\mu_{ij}}{m_i}\left((1+\varepsilon^n)
+  \hat{\boldsymbol{r}}_{ij}\left(\hat{\boldsymbol{r}}_{ij}\cdot\boldsymbol{g}_{ij}\right)
+  +\frac{\varepsilon^t-1}{1+\tilde{I}^{-1}}
+  \hat{\boldsymbol{r}}_{ij}\times\left(\hat{\boldsymbol{r}}_{ij}\times\boldsymbol{g}_{ij}\right)\right)\\
+  \boldsymbol{v}_j'-\boldsymbol{v}_j&=\frac{\mu_{ij}}{m_j}\left((1+\varepsilon^n)
+  \hat{\boldsymbol{r}}_{ij}\left(\hat{\boldsymbol{r}}_{ij}\cdot\boldsymbol{g}_{ij}\right)
+  +\frac{\varepsilon^t-1}{1+\tilde{I}^{-1}}
+  \hat{\boldsymbol{r}}_{ij}\times\left(\hat{\boldsymbol{r}}_{ij}\times\boldsymbol{g}_{ij}\right)\right)\\
+  \boldsymbol{\omega}_i'-
+  \boldsymbol{\omega}_i&=-\frac{\mu_{ij}(\varepsilon^t-1)}{m_i\,R_i\left(1+\tilde{I}\right)}
+  \hat{\boldsymbol{r}}_{ij}\times\boldsymbol{g}_{ij}
+  \\
+  \boldsymbol{\omega}_j'-
+  \boldsymbol{\omega}_j&=-\frac{\mu_{ij}(\varepsilon^t-1)}{m_j\,R_j\left(1+\tilde{I}\right)}\hat{\boldsymbol{r}}_{ij}\times\boldsymbol{g}_{ij}
+  \end{align*}\]
+
+  where $\varepsilon^n$ and $\varepsilon^t$ are the normal and
+  tangential coefficient of elasticity respectively.
+</p>
+<p>
   <b>Example Usage:</b>
 </p>
 <?php codeblockstart();?>
@@ -709,7 +974,7 @@
   </li>
   <li>
     <b>Elasticity</b> <i>(attribute)</i>: This is an optional
-    attribute. The elasticity controls the dissipation of
+    attribute. The elasticity, $\varepsilon^n$, controls the dissipation of
     translational energy between interacting particles.  This value is
     typically 1 for molecular systems and between zero and one for
     granular systems. If the attribute is unset, it is equivalent
@@ -722,17 +987,17 @@
   </li>
   <li>
     <b>TangentialElasticity</b> <i>(attribute)</i>: This is an
-    optional attribute. The tangential elasticity controls the
-    dissipation/generation of energy between interacting particles in
-    the tangential/rotational direction and is typically in the range
-    $[-1,1]$. If the tangential elasticity is one, there is no
-    tangential interaction, whereas <i>TangentialElasticity="-1"</i>
-    corresponds to a complete reversal of the relative surface
-    velocities. It is important to note that setting
-    the <i>TangentialElasticity</i> attribute requires that the
-    particles have a <a href="#species">Species</a> with inertia
-    information. If the attribute is unset then rotational dynamics
-    are ignored and the particles can have
+    optional attribute. The tangential elasticity, $\varepsilon^t$,
+    controls the dissipation/generation of energy between interacting
+    particles in the tangential/rotational direction and is typically
+    in the range $[-1,1]$. If the tangential elasticity is one, there
+    is no tangential interaction,
+    whereas <i>TangentialElasticity="-1"</i> corresponds to a complete
+    reversal of the relative surface velocities. It is important to
+    note that setting the <i>TangentialElasticity</i> attribute
+    requires that the particles have a <a href="#species">Species</a>
+    with inertia information. If the attribute is unset then
+    rotational dynamics are ignored and the particles can have
     any <a href="#species">Species</a> type.
 
     <br/> This attribute is a <b>Property specifier</b>
