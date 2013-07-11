@@ -728,7 +728,7 @@ function toggle_visibility(elementname) {
     &amp;=m_i^{-1}\,\mu\left(\boldsymbol{v}_{ij}'-\boldsymbol{v}_{ij}\right)
     \end{align}\]
 
-    where $\mu_{ij}=\frac{m_i\,m_j}{(m_i+m_j)}$ is the reduced
+    where $\mu_{ij}=\frac{1.0}{(m_i^{-1}+m_j^{-1})}$ is the reduced
     mass. Therefore we can calculate the post-collision velocities of the
     particles if we know the change in the relative velocities. For smooth
     particles the velocities only change along the line of contact, and we
