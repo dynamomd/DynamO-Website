@@ -945,7 +945,9 @@ function toggle_visibility(elementname) {
   \end{align*}\]
 
   where $\varepsilon^n$ and $\varepsilon^t$ are the normal and
-  tangential coefficient of elasticity respectively.
+  tangential coefficient of elasticity respectively. See the
+  derivation above for more information on the symbols and their
+  meaning.
 </p>
 <p>
   <b>Example Usage:</b>
