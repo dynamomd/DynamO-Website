@@ -1945,7 +1945,12 @@ function toggle_visibility(elementname) {
   <li>
     <b>tc</b> <i>(attribute)</i>: An optional tag. If this tag is
     present, this tag specifies the minimum re-collision rate which
-    turns an interaction elastic (used to prevent inelastic collapse).
+    turns an interaction elastic (used to prevent inelastic
+    collapse). For more information
+    see <a href="http://dx.doi.org/10.1007/s100350050017">this
+    paper</a>
+    (also <a href="http://arxiv.org/abs/cond-mat/9810009">available on
+    arxiv</a>).
   </li>
   <li>
     <b>g</b> <i>(tag)</i>: A tag specifying the vector of the external
