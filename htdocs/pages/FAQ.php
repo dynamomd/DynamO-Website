@@ -56,7 +56,7 @@
       degree of freedom). When presented like this it should be
       apparent that Kelvin/Celcius/Farenheit are actually inconvenient
       scales for molecular calculations, and that we should simply use
-      the natural unit of energy of the system.
+      the natural unit of energy of the system by setting $k_B=1$.
     </p>
     <p>
       For most applications, you can just view every temperature in
@@ -77,30 +77,49 @@
   directly correspond to the typical units used in publications.
 </p>
 <p>
-  For example, in the hard sphere system, the natural unit of length
-  is the particle diameter, $\sigma$. The natural unit of mass is the
-  mass of a single particle, $m$. The natural unit of time is more
-  difficult to choose but we can pick a unit of energy and, through
-  the definition of unit length and mass, use it to set the unit of
-  time. The only property which has units of energy in the hard sphere
-  system is the temperature $k_B\,T$. Therefore, the natural unit of
-  time is $\sqrt{m\,\sigma^2 /k_B\,T}$! If we use these units of
-  length, mass, and time to reduce our system into dimensionless
-  units, we find that the temperature, particle diameter, and particle
-  mass always go to 1. In fact,
+  For example, in a
+  mono-component <a href="/index.php/reference#typehardsphere">hard
+  sphere system</a>, the natural unit of length is the particle
+  diameter, $\sigma$. The natural unit of mass is the mass of a single
+  particle, $m$. The natural unit of time is more difficult to choose
+  but we can pick a unit of energy and, through the definition of unit
+  length and mass, use it to set the unit of time. The only property
+  which has units of energy in the hard sphere system is the
+  temperature $k_B\,T$. Therefore, the natural unit of time is
+  $\sqrt{m\,\sigma^2 /k_B\,T}$! If we use these units of length
+  ($\sigma=1$), mass ($m=1$), and time ($\sqrt{m\,\sigma^2
+  /k_B\,T}=1$) to reduce our system into dimensionless units, we find
+  that the temperature, particle diameter, and particle mass always go
+  to 1. In fact,
   this <a href="http://en.wikipedia.org/wiki/Dimensional_analysis">dimensional
   analysis</a> of the system reveals that the only remaining
-  parameters are the number of particles, $N$, and the volume of the
-  system, $V$. Typically, the volume of the system is expressed
-  through the reduced number density
+  independent parameters of the system are the number of particles,
+  $N$, and the volume of the system, $V$. Typically, the volume of the
+  system is expressed through the reduced number density
   $\rho^*=\sigma^3\,N/V$. Therefore, the only parameters ever varied
-  in a study of monocomponent hard-sphere systems are the density and
-  the particle count.
+  in a study of monocomponent hard-sphere systems are the dimensionlessdensity
+  $\rho^*$ and the particle count.
 </p>
 <p>
   The <b>dynamod</b> mode for creating hard sphere systems therefore
   sets the mass and diameter of particles to be equal to 1, as this is
   the natural dimensionless units of the system.
+</p>
+<p>
+  If we look at
+  mono-component <a href="/index.php/reference#typesquarewell">square-well
+  systems</a> we now have two properties with units of energy (and
+  therefore time), the temperature $k_B\,T$ and the well-depth
+  $\varepsilon$. It is common to select the well-depth as the unit of
+  energy ($\varepsilon=1$), which results in an additional independent
+  parameter $k_B\,T/\varepsilon$ on top of the parameters used for
+  hard-spheres ($N$ and $\rho^*$). In this case, the unit of time is
+  $\sqrt{m\,\sigma^2 /\varepsilon}$.
+</p>
+<p>
+  The <b>dynamod</b> mode for creating square-well systems therefore
+  sets the mass, diameter, and well depth of all particles to be equal
+  to 1, as this is the natural dimensionless units of the system.
 </p>
 <h1>Q: How does DynamO collect exact time-averages?</h1>
 <p>
