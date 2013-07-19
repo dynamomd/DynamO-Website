@@ -70,8 +70,8 @@
   We're going to study a binary mixture of square-well
   molecules. We'll have a larger species, A, and a smaller species,
   B. The mixture we will study has a hard-core diameter ratio of
-  $\sigma_A/\sigma_B=10$ and a mass ratio proportional to their
-  volumes $m_A/m_B=\sigma_A^3/\sigma_B^3=1000$. Both molecules have
+  $\sigma_A/\sigma_B=2$ and a mass ratio proportional to their
+  volumes $m_A/m_B=\sigma_A^3/\sigma_B^3=8$. Both molecules have
   the same well-width factor $\lambda_A=\lambda_B=1.5$. For
   interactions between species we'll use the additive rule. For
   example, between species A and B the interaction diameter is
@@ -82,16 +82,27 @@
 <?php codeblockstart(); ?>
 #Create the monocomponent system
 dynamod -m 1 -C 10 -d 0.5 --i1 0 -r 1 -o config.start.xml
+
 #Now edit config.start.xml by hand to convert it into a multicomponent system
+#...
+
 #Compress the multicomponent system to a higher density
-dynarun config.start.xml --engine=3 --target-pack-frac 0.3 -o config.compressed.xml
-#Rescale the velocities to set the current temperature to 1
-dynamod config.compressed.xml -r 1 -o config.rescaled.xml
-#Add a thermostat
-dynamod config.rescaled.xml -T 1.0 -o config.thermostatted.xml
-#Equilibrate the system
-dynarun config.thermostatted.xml -c 1000000 -o config.equilibrated.xml
-#Run the simulation
+dynarun config.start.xml --engine=3 --target-pack-frac 0.1 -o config.compressed.xml
+
+#Add a thermostat, to allow us to control the temperature
+dynamod config.compressed.xml -T 1.0 -o config.thermostatted.xml
+
+#Equilibrate the system using the thermostat to set the temperature
+dynarun config.thermostatted.xml -c 1000000 -o config.equilibrated.thermostatted.xml
+
+#Disable the thermostat again, so that we might collect accurate dynamical information
+dynamod -T 0 config.equilibrated.thermostatted.xml -o config.equilibrated.xml
+
+#Run the simulation again to ensure it is relaxed/equilibrated from disabling the thermostatt
+dynarun config.equilibrated.xml -c 1000000 -o config.equilibrated.xml
+
+#Now collect data on the system
+dynarun config.equilibrated.xml -c 1000000 -o config.final.xml
 <?php codeblockend("brush: shell;"); ?>
 <p>
   We'll now look in detail at these commands, in particular how the
@@ -199,7 +210,7 @@ Mode 1: Mono/Multi-component square wells
 <?php xmlXPathFile("pages/config.tut4.binary.xml", "/DynamOconfig/Simulation/Genus"); ?>
 <p>
   You should notice that we've reduced the mass of the smaller
-  particles (type B) to match the ratio $m_A/m_B=1000$. This implies
+  particles (type B) to match the ratio $m_A/m_B=8$. This implies
   that we'll also need to effectively shrink the diameter of the
   particles which are becoming <b>Species</b> B. Instead, we could have
   increased the mass of the larger particles (type A) to satisfy this
@@ -218,9 +229,9 @@ Mode 1: Mono/Multi-component square wells
 <p>
   You should also notice that the <b>IDRange</b>
   of <b>Type</b> <i>"Ranged"</i> is an inclusive range of particle
-  ID's. The particle ID's start with zero therefore the
-  first <b>Species</b> tag corresponds to the first 100 particles in
-  the configuration file.  For more information on the
+  ID's. The particle ID's start with zero and end on 99; therefore,
+  the first <b>Species</b> tag corresponds to the first 100 particles
+  in the configuration file.  For more information on the
   <i>"Ranged"</i> <b>IDRange</b> tag, please see the reference:
 </p>
 <?php button("Reference entry for <i>\"Ranged\"</i> Type <b>IDRange</b>","/index.php/reference#typeranged");?>
@@ -250,9 +261,9 @@ Mode 1: Mono/Multi-component square wells
   the parameters of the three types of interactions between all
   species (A-A, A-B, and B-B). We were very careful to shrink the mass
   of type "B" particles so that, to satisfy the ratio
-  $\sigma_A/\sigma_B=10$, the large particles have a diameter of
+  $\sigma_A/\sigma_B=2$, the large particles have a diameter of
   $\sigma_A=1$ and the small particles a diameter of
-  $\sigma_B=0.1$. An example implementation using these diameters is
+  $\sigma_B=0.5$. An example implementation using these diameters is
   given below:
 </p>
 <?php xmlXPathFile("pages/config.tut4.binary.xml", "/DynamOconfig/Simulation/Interactions", 4,3); ?>
@@ -279,7 +290,7 @@ Mode 1: Mono/Multi-component square wells
   diameter of the <b>Interaction</b> is worked out using the additive
   rule:
 
-  \[\sigma_{AB}=\left(\sigma_A+\sigma_B\right)/2=\left(1+0.1\right)/2=0.55\]
+  \[\sigma_{AB}=\left(\sigma_A+\sigma_B\right)/2=\left(1+0.5\right)/2=0.75\]
 
   Technically, the Lambda is also calculated using the additive rule,
   but as both <b>Species</b> have the same Lambda value we have
@@ -352,22 +363,24 @@ Mode 1: Mono/Multi-component square wells
 <div class="figure" style="clear:right; float:right;width:400px;">
   <?php embedAJAXvideo("tut4_compression", "x62zeoF457w", 400, 225); ?>
   <div class="caption">
-    The low-density binary square-well system under compression.<br/>
+    A 10:1 size-ratio low-density binary square-well system under
+    compression.<br/>
     <a href="/pages/config.tut4.binary.xml">View configuration file</a>
   </div>
 </div>
 <p>
   To create the binary system we had to shrink one set of particles to
   avoid causing any overlaps or invalid states. Unfortunately, this
-  results in a low-density configuration (see right). The low-density
-  behaviour of fluids is fairly well-understood (as it approaches an
-  ideal gas). Most of the interesting behaviour we wish to explore
-  through simulation appears at higher densities, so we need a method
-  to generate high-density systems.
+  results in a low-density configuration (for example see right). The
+  low-density behaviour of fluids is fairly well-understood as it
+  approaches that of an ideal gas. Most of the interesting behaviour
+  we wish to explore through simulation appears at higher densities,
+  so we need a method to generate high-density systems.
 </p>
 <p>
-  To access high density systems while avoiding invalid states, DynamO
-  implements the linear compression algorithm first proposed by
+  To access high density systems while avoiding generating invalid
+  states, DynamO implements the linear compression algorithm first
+  proposed by
   Woodcock[<a href="http://dx.doi.org/10.1111/j.1749-6632.1981.tb55667.x">paper</a>],
   but later popularised by Lubachevsky and
   Stillinger[<a href="http://dx.doi.org/10.1007/BF01054337">paper</a>]. This
@@ -382,8 +395,8 @@ Mode 1: Mono/Multi-component square wells
   end point of the compression using either
   the <i>--target-pack-frac</i> or the <i>--target-density</i>
   option. If you don't use these options, the compression will keep
-  running and you'll have to manually stop the simulation by pressing
-  ctrl-c.
+  running and you'll have to manually stop the simulation
+  by <a href="/index.php/FAQ#stoppausepeek">pressing ctrl-c</a>.
 </p>
 <?php codeblockstart(); ?>dynarun config.start.xml --engine=3 --target-pack-frac 0.3 -o config.compressed.xml<?php codeblockend("brush: shell;"); ?>
 <p>
@@ -413,17 +426,16 @@ Mode 1: Mono/Multi-component square wells
   particles and more events per unit of simulation time. This will
   cause the compression to slow down as the simulation has to process
   more events per unit of expansion. In attractive systems, the system
-  may cool or heat on compression, but even cooling is problematic if
-  the system becomes glassy or "stuck" due to its reduced kinetic
-  energy.
+  may cool or heat on compression
+  (see <a href="http://en.wikipedia.org/wiki/Joule%E2%80%93Thomson_effect">Joule-Thomson
+  effect</a>), but even cooling is problematic if the system becomes
+  glassy or "stuck" due to its reduced kinetic energy.
 </p>
 <p>
-  You may consider stopping the compression periodically to scale down
+  You may consider stopping the compression periodically to rescale
   the temperature to try to accelerate the compression process. You
-  can find out how
-  to <a href="/index.php/FAQ#stoppausepeek">stop
-  any simulation while it is running in this FAQ</a>. In some systems
-  a compression will cause the system to cool down. To alter the
+  can find out how to <a href="/index.php/FAQ#stoppausepeek">stop any
+  simulation while it is running in this FAQ</a>.  To alter the
   current temperature of a configuration file we can use the following
   dynamod command:
 </p>
@@ -432,7 +444,7 @@ Mode 1: Mono/Multi-component square wells
   This will rescale the velocities of the particles in the system so
   that the current temperature is 1 (set by the <i>-r</i>
   option). Rescaling the temperature once after compression exactly
-  sets the temperature in "hard" systems such as those only
+  sets the temperature in "hard" systems such as the
   using <a href="/index.php/reference#typehardsphere">hard-sphere</a>/<a href="/index.php/reference#typeparallelcubes">parallel-cube</a>/<a href="/index.php/reference#typelines">hard-lines</a>
   systems. These systems have the internal energy of an ideal gas,
   therefore the temperature does not change with time (except if it is
@@ -471,9 +483,11 @@ Mode 1: Mono/Multi-component square wells
 </p>
 <?php codeblockstart(); ?>dynamod config.thermostatted.xml -T 4.0 -o config.thermostatted.xml<?php codeblockend("brush: shell;"); ?>
 <p>
-  Or you can open up the configuration file in a text editor, and edit
+  You can even use <b>dynamod</b> remove the thermostatt by using a
+  temperature of zero (<i>-T 0</i>). Alternatively, you can open up
+  the configuration file in a text editor, and edit
   the <a href="/index.php/reference#typeandersen">Andersen type
-  System</a> event:
+  System</a> event by hand:
 </p>
 <?php codeblockstart();?>
 <System Type="Andersen" Name="Thermostat" MFT="1.0" Temperature="1.0" SetPoint="0.05" SetFrequency="100">

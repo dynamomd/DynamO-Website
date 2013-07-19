@@ -9,7 +9,7 @@
       <Species Mass="1" Name="A" IntName="AAInteraction" Type="Point">
         <IDRange Type="Ranged" Start="0" End="99"/>
       </Species>
-      <Species Mass="0.001" Name="B" IntName="BBInteraction" Type="Point">
+      <Species Mass="0.125" Name="B" IntName="BBInteraction" Type="Point">
         <IDRange Type="Ranged" Start="100" End="3999"/>
       </Species>
     </Genus>
@@ -21,13 +21,13 @@
 	  <IDRange Type="Ranged" Start="0" End="99"/>
 	</IDPairRange>
       </Interaction>
-      <Interaction Type="SquareWell" Diameter="0.55" Elasticity="1" Lambda="1.5" WellDepth="1" Name="ABInteraction">
+      <Interaction Type="SquareWell" Diameter="0.75" Elasticity="1" Lambda="1.5" WellDepth="1" Name="ABInteraction">
         <IDPairRange Type="Pair">
 	  <IDRange Type="Ranged" Start="0" End="99"/>
 	  <IDRange Type="Ranged" Start="100" End="3999"/>
 	</IDPairRange>
       </Interaction>
-      <Interaction Type="SquareWell" Diameter="0.1" Elasticity="1" Lambda="1.5" WellDepth="1" Name="BBInteraction">
+      <Interaction Type="SquareWell" Diameter="0.5" Elasticity="1" Lambda="1.5" WellDepth="1" Name="BBInteraction">
         <IDPairRange Type="All"/>
       </Interaction>
     </Interactions>
