@@ -9,11 +9,12 @@
    $pagetitle="Output Plugin/File Reference";
    ?>
 <?php printTOC(); ?>
-<p style="text-align:center; margin:15px; background-color:#FFD800; font-size:16pt; font-family:sans; line-height:40px;">
-  <b>This reference is currently being written and is incomplete.</b>
+<p style="text-align:center; margin:15px; background-color:#FFD800; font-family:sans; line-height:40px;">
+  <b>This reference is incomplete as some output plugins are not yet
+  documented.</b>
 </p>
 <p>
-  In this reference a complete description of the available output
+  In this reference a description of the available output
   plugins of DynamO, and how to load them is presented.
 </p>
 <p>
