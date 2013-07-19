@@ -90,6 +90,7 @@ dynamod config.compressed.xml -r 1 -o config.rescaled.xml
 #Add a thermostat
 dynamod config.rescaled.xml -T 1.0 -o config.thermostatted.xml
 #Equilibrate the system
+dynarun config.thermostatted.xml -c 1000000 -o config.equilibrated.xml
 #Run the simulation
 <?php codeblockend("brush: shell;"); ?>
 <p>
