@@ -699,9 +699,7 @@ function toggle_visibility(elementname) {
   particles undergoing the Interaction. The collision rule expresses the
   post-collision velocities in terms of the pre-collision values.
 </p>
-<div style="background:#eeeeee;  border:2px solid #000000; position:relative; padding-top:30px;" class="rounded">
-  <a style="background:#ffffff; display:block; position:absolute; padding:5px 5px 5px 5px; left:0;top:0; border-radius:15px 0 15px 0; border-right:2px solid #000000;border-bottom:2px solid #000000;" href="javascript:toggle_visibility('hardspherederivation')">Show/hide derivation of collision rule</a>
-  <p id="hardspherederivation" style="background:#eeeeee; display:none">
+<?php showhidestart(); ?>
     Using the definition of the relative velocity
     $\boldsymbol{v}_{ij}=\boldsymbol{v}_{i}-\boldsymbol{v}_{j}$ of two
     particles $i$ and $j$, and the identities
@@ -948,7 +946,7 @@ function toggle_visibility(elementname) {
   tangential coefficient of elasticity respectively. See the
   derivation above for more information on the symbols and their
   meaning.
-</p>
+<?php showhideend("Show/hide derivation of collision rule"); ?>
 <p>
   <b>Example Usage:</b>
 </p>
