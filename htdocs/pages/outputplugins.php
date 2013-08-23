@@ -10,8 +10,6 @@
    ?>
 <?php printTOC(); ?>
 <p style="text-align:center; margin:15px; background-color:#FFD800; font-family:sans; line-height:40px;">
-  <b>This reference is incomplete as some output plugins are not yet
-  documented.</b>
 </p>
 <p>
   In this reference a description of the available output
@@ -1238,10 +1236,12 @@ dynarun config.xml -c 1000000 -L MFT:BinWidth=0.5,Length=100
 </ul>
 <h2>MSD</h2>
 <p>
-  The MSD plugin calculates the Mean Standard Displacement of
-  different species and structures over the entire length of the
-  simulation, which can be used to estimate their diffusion
-  coefficients.
+  The MSD plugin calculates the Mean Square Displacement (MSD) of
+  different Species and Structures from their initial locations at the
+  start of the simulation. This can be used to quickly estimate the
+  diffusion coefficients of these objects.
+  The <a href="#msdcorrelator">MSDCorrelator</a> plugin collects the
+  evolution of the MSD over time if more detail is needed.
 </p>
 <p>
   <b>Example usage</b>:
@@ -1304,6 +1304,21 @@ dynarun config.xml -c 1000000 -L MFT:BinWidth=0.5,Length=100
     contents of this tag please see the Species tag above.
   </li>
 </ul>
+<h2>Trajectory</h2>
+<p>
+  The Trajectory plugin records the full sequence of processed events
+  to a log file (<i>trajectory.out</i>). This plugin is used to debug
+  errors in the detection, scheduling, and execution of events.
+</p>
+<p>
+  <b>Example usage</b>:
+</p>
+<?php codeblockstart();?>
+-L Trajectory
+<?php codeblockend("brush: shell;"); ?>
+<p>
+  <b>Options</b>: There are no options for this plugin.
+</p>
 <h1>Ticker Type Plugins</h1>
 <p>
   Ticker-type plugins only measure properties at specified intervals
@@ -1595,7 +1610,10 @@ number of Structures in the Topology.
 \[D_\alpha=\lim_{\Delta t\to\infty}\frac{\left\langle \left[{\bf r}(t+\Delta t)-{\bf r}(t)\right]^2\right\rangle_{t,\alpha}}{2\,d\,t}\]
 <p>
   where $d=3$ is the dimensionality of the system and $D_\alpha$ is
-  the diffusion coefficient of species $\alpha$.
+  the diffusion coefficient of species
+  $\alpha$. The <a href="#msd">MSD</a> plugin will calculate a
+  prediction of the diffusion coefficient using the full time of the
+  simulation.
 </p>
 <p>
   <b>Example usage</b>:
