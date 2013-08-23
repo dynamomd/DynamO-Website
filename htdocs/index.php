@@ -26,7 +26,7 @@ function showhideend($name)
 <div style="background:#eeeeee;  border:2px solid #000000; position:relative; padding-top:30px;" class="rounded">
   <a style="background:#ffffff; display:block; position:absolute; padding:5px 5px 5px 5px; left:0;top:0; border-radius:15px 0 15px 0; border-right:2px solid #000000;border-bottom:2px solid #000000;" href="javascript:toggle_visibility('<?php echo $unique_identifier;?>')"><?php echo $name; ?></a>
   <p id="<?php echo $unique_identifier; ?>" style="background:#eeeeee; display:none">
-<?php echo $code;?> </p> <?php
+<?php echo $code;?> </p></div> <?php
  }
 
 function echoXML($xmlnode, $spacing, $max_depth, $max_children)

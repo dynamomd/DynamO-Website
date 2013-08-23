@@ -922,8 +922,7 @@ function toggle_visibility(elementname) {
     The corresponding rules for particle $j$ follow with similar
     reasoning or through relabing and noting that
     $\boldsymbol{g}_{ji}=-\boldsymbol{g}_{ij}$. In summary, we have
-  </p>
-</div>
+<?php showhideend("Show/hide derivation of collision rule"); ?>
 <p>
   \[\begin{align*}
   \boldsymbol{v}_i'-\boldsymbol{v}_i&amp;=-\frac{\mu_{ij}}{m_i}\left((1+\varepsilon^n)
@@ -946,7 +945,7 @@ function toggle_visibility(elementname) {
   tangential coefficient of elasticity respectively. See the
   derivation above for more information on the symbols and their
   meaning.
-<?php showhideend("Show/hide derivation of collision rule"); ?>
+</p>
 <p>
   <b>Example Usage:</b>
 </p>

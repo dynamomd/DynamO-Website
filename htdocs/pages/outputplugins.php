@@ -71,7 +71,15 @@ dynarun config.xml -c 1000000 -L MFT:BinWidth=0.5,Length=100
   plugin are listed along with details on the calculation of the
   properties.
 </p>
-<h1>Misc Plugin</h1>
+<h1>Standard Type Plugins</h1>
+<p>
+  Standard-type plugins collect statistics continuously throughout a
+  simulation. Therefore, you must run a simulation to obtain sensible
+  results for most of the reported values. Most properties measured,
+  such as temperature and mean free times, are collected through these
+  types of plugins.
+</p>
+<h2>Misc Plugin</h2>
 <p>
   The Misc plugin is loaded automatically and contains properties
   which are relatively cheap to collect. Fortunately, this includes
@@ -82,7 +90,7 @@ dynarun config.xml -c 1000000 -L MFT:BinWidth=0.5,Length=100
 <p>
   <b>Options</b>: There are no options for this plugin.
 </p>
-<h2>Density</h2>
+<h3>Density</h3>
 <p>
   This tag contains the number of particles divided by the volume of
   the primary image.
@@ -111,7 +119,7 @@ dynarun config.xml -c 1000000 -L MFT:BinWidth=0.5,Length=100
   accessible volume of the system, are not included in this
   calculation.
 </p>
-<h2>Packing Fraction</h2>
+<h3>Packing Fraction</h3>
 <p>
   This tag contains the excluded volume of all particles divided by
   the volume of the primary image.  The volume of each particle is
@@ -142,7 +150,7 @@ dynarun config.xml -c 1000000 -L MFT:BinWidth=0.5,Length=100
   reducing the accessible volume of the system, are not included in
   this calculation.
 </p>
-<h2>SpeciesCount</h2>
+<h3>SpeciesCount</h3>
 <p>
   This tag contains the number
   of <a href="/index.php/reference#species">Species</a> in the system.
@@ -167,7 +175,7 @@ dynarun config.xml -c 1000000 -L MFT:BinWidth=0.5,Length=100
 <p>
   <b>Restrictions</b>: None.
 </p>
-<h2>ParticleCount</h2>
+<h3>ParticleCount</h3>
 <p>
   This tag contains the number
   of <a href="/index.php/reference#species">Particles</a> in the
@@ -193,7 +201,7 @@ dynarun config.xml -c 1000000 -L MFT:BinWidth=0.5,Length=100
 <p>
   <b>Restrictions</b>: None.
 </p>
-<h2>SystemMomentum</h2>
+<h3>SystemMomentum</h3>
 <p>
   This tag contains the current and average momentum of all of the
   particles in the system.  
@@ -244,7 +252,7 @@ dynarun config.xml -c 1000000 -L MFT:BinWidth=0.5,Length=100
   gravity, <a href="https://github.com/toastedcrumpets/DynamO/issues/22">see
   issue #22</a>).
 </p>
-<h2>Temperature</h2>
+<h3>Temperature</h3>
 <p>
   This tag contains the temperature of the particles in the
   system. This includes rotational degrees of freedom (if present). As
@@ -307,7 +315,7 @@ dynarun config.xml -c 1000000 -L MFT:BinWidth=0.5,Length=100
   gravity, <a href="https://github.com/toastedcrumpets/DynamO/issues/22">see
   issue #22</a>).
 </p>
-<h2><a id="uconfigurational"></a>UConfigurational</h2>
+<h3><a id="uconfigurational"></a>UConfigurational</h3>
 <p>
   This tag contains the interaction energy of the system. This is
   equal to the excess internal energy (also known as the
@@ -359,7 +367,7 @@ dynarun config.xml -c 1000000 -L MFT:BinWidth=0.5,Length=100
   gravity, <a href="https://github.com/toastedcrumpets/DynamO/issues/22">see
   issue #22</a>).
 </p>
-<h2>ResidualHeatCapacity</h2>
+<h3>ResidualHeatCapacity</h3>
 <p>
   This tag is provided for convenience. It contains the excess heat
   capacity, calculated from the fluctuations of the configurational
@@ -400,7 +408,7 @@ dynarun config.xml -c 1000000 -L MFT:BinWidth=0.5,Length=100
   the <a href="#uconfigurational">UConfigurational</a> plugin also
   apply.
 </p>
-<h2><a id="pressure"></a>Pressure</h2>
+<h3><a id="pressure"></a>Pressure</h3>
 <p>
   This tag contains the full pressure tensor for the system, worked
   out using the virial expression:
@@ -488,7 +496,7 @@ dynarun config.xml -c 1000000 -L MFT:BinWidth=0.5,Length=100
   (<a href="https://github.com/toastedcrumpets/DynamO/issues/22">see
   issue #22</a>).
 </p>
-<h2><a id="duration"></a>Duration</h2>
+<h3><a id="duration"></a>Duration</h3>
 <p>
   This tag contains information on the duration of the simulation
   (from the perspective of the model, not the user).  See
@@ -542,7 +550,7 @@ dynarun config.xml -c 1000000 -L MFT:BinWidth=0.5,Length=100
 <p>
   <b>Restrictions</b>: None.
 </p>
-<h2>EventCounters</h2>
+<h3>EventCounters</h3>
 <p>
   This tag contains more detailed information on the types of events
   which have occurred during the simulation.
@@ -593,7 +601,7 @@ dynarun config.xml -c 1000000 -L MFT:BinWidth=0.5,Length=100
 <p>
   <b>Restrictions</b>: None.
 </p>
-<h2><a id="timing"></a>Timing</h2>
+<h3><a id="timing"></a>Timing</h3>
 <p>
   This tag contains information on the calculation time of the
   simulation. See the <a href="#duration">Duration</a> tag for more
@@ -632,7 +640,7 @@ dynarun config.xml -c 1000000 -L MFT:BinWidth=0.5,Length=100
 <p>
   <b>Restrictions</b>: None.
 </p>
-<h2>totMeanFreeTime</h2>
+<h3>totMeanFreeTime</h3>
 <p>
   This tag is provided for convenience and contains the overall mean
   free time of a particle. This is calculated from the counts of the
@@ -662,7 +670,7 @@ dynarun config.xml -c 1000000 -L MFT:BinWidth=0.5,Length=100
   therfore it is not a direct measurement of the computational cost of
   simulating the system.
 </p>
-<h2>NegativeTimeEvents</h2>
+<h3>NegativeTimeEvents</h3>
 <p>
   This tag contains the total number of events executed where the time
   was earlier than the current time (a negative time until the event
@@ -691,7 +699,7 @@ dynarun config.xml -c 1000000 -L MFT:BinWidth=0.5,Length=100
 <p>
   <b>Restrictions</b>: None.
 </p>
-<h2>Memusage</h2>
+<h3>Memusage</h3>
 <p>
   This tag contains the best estimate DynamO can make of the memory
   used by DynamO at the last event executed in the simulation. Due to
@@ -718,7 +726,7 @@ dynarun config.xml -c 1000000 -L MFT:BinWidth=0.5,Length=100
 <p>
   <b>Restrictions</b>: None.
 </p>
-<h2><a id="thermalconductivity"></a>ThermalConductivity</h2>
+<h3><a id="thermalconductivity"></a>ThermalConductivity</h3>
 <p>
   This tag contains the Einstein correlation function which can be
   used to obtain estimates for the mainstream definition of the
@@ -847,7 +855,7 @@ dynarun config.xml -c 1000000 -L MFT:BinWidth=0.5,Length=100
   (see <a href="https://github.com/toastedcrumpets/DynamO/issues/23">issue
   #23</a> on the bug tracker).
 </p>
-<h2>Viscosity</h2>
+<h3>Viscosity</h3>
 <p>
   This tag contains the Einstein correlation function which can be
   used to obtain estimates for the shear and bulk viscosity of the
@@ -950,7 +958,7 @@ dynarun config.xml -c 1000000 -L MFT:BinWidth=0.5,Length=100
   <b>Restrictions</b>: This correlator is valid in all molecular
   systems.
 </p>
-<h2><a id="mutualdiffusion"></a>MutualDiffusion</h2>
+<h3><a id="mutualdiffusion"></a>MutualDiffusion</h3>
 <p>
   This tag contains the Einstein correlation function which can be
   used to obtain estimates for the mutual diffusion coefficients of
@@ -1057,7 +1065,7 @@ dynarun config.xml -c 1000000 -L MFT:BinWidth=0.5,Length=100
   <b>Restrictions</b>: This correlator is valid in all molecular
   systems.
 </p>
-<h2>ThermalDiffusion</h2>
+<h3>ThermalDiffusion</h3>
 <p>
   This tag contains the Einstein correlation function which can be
   used to obtain estimates for the thermal diffusion coefficients of
@@ -1145,7 +1153,7 @@ dynarun config.xml -c 1000000 -L MFT:BinWidth=0.5,Length=100
   <a href="#thermalconductivity">ThermalConductivity</a>
   and <a href="#mutualdiffusion">MutualDiffusion</a> correlators apply here.
 </p>
-<h1>IntEnergyHist Plugin</h1>
+<h2>IntEnergyHist Plugin</h2>
 <p>
   The internal energy histogram plugin collects the exact histogram of
   the time the system spent in each accessible excess internal energy
@@ -1159,7 +1167,7 @@ dynarun config.xml -c 1000000 -L MFT:BinWidth=0.5,Length=100
 -L IntEnergyHist:BinWidth=0.5
 <?php codeblockend("brush: shell;"); ?>
 <p>
-  <b>Options</b>:
+  <b>Options</b>: There are no options for this plugin.
 </p>
 <ul>
   <li>
@@ -1228,7 +1236,7 @@ dynarun config.xml -c 1000000 -L MFT:BinWidth=0.5,Length=100
     </ul>
   </li>
 </ul>
-<h1>MSD Plugin</h1>
+<h2>MSD Plugin</h2>
 <p>
   The MSD plugin calculates the Mean Standard Displacement of
   different species and structures over the entire length of the
@@ -1242,7 +1250,7 @@ dynarun config.xml -c 1000000 -L MFT:BinWidth=0.5,Length=100
 -L MSD
 <?php codeblockend("brush: shell;"); ?>
 <p>
-  <b>Options</b>:
+  <b>Options</b>: There are no options for this plugin.
 </p>
 <p>
   <b>Example output</b>:
@@ -1296,3 +1304,136 @@ dynarun config.xml -c 1000000 -L MFT:BinWidth=0.5,Length=100
     contents of this tag please see the Species tag above.
   </li>
 </ul>
+<h1>Ticker Type Plugins</h1>
+<p>
+  Ticker-type plugins only measure properties at specified intervals
+  of simulation time. An example of such a property is
+  the <a href="#radialdistribution">RadialDistribution</a> plugin.
+</p>
+<p>
+  Each ticker type plugin will take a measurement at the very start of
+  the simulation and then at an interval $\Delta t_{ticker}$. By
+  default, $\Delta t_{ticker}$ is set to the mean free time of the
+  last simulation that the configuration file was run in or a value of 1
+  if the configuration file has not been run before.
+</p>
+<p>
+  You can set the ticker time by hand (if you are using a ticker-type
+  plugin) using the <i>-t</i> option of dynarun/dynavis:
+</p>
+<?php codeblockstart(); ?>
+dynarun -L RadialDistribution -t 0.131 -c 1000000 config.out.xml.bz2
+<?php codeblockend("brush: shell;"); ?>
+<p>
+  And the Radial Distribution will be sampled every 0.131 units of
+  simulation time until the simulation is stopped after $10^6$
+  events. Please note that all ticker-type plugins are collected at
+  the same time.
+</p>
+<p>
+  Ticker-type plugins can be used to collect statistics on a
+  configuration by simply running a simulation of zero time. E.g.  
+</p>
+<?php codeblockstart(); ?>
+dynarun -L RadialDistribution -c 0 config.out.xml.bz2
+<?php codeblockend("brush: shell;"); ?>
+<p>
+  This will initialise a simulation, run the collection of the output
+  plugin once and halt immediately.
+</p>
+<h2 id="radialdistribution">RadialDistribution Plugin</h2>
+<p>
+  The RadialDistribution plugin calculates the radial distribution
+  function for all pairings
+  of <a href="/index.php/reference#species">Species</a> in the
+  system. During a simulation, a histogram of the distance between two
+  species of particles is collected. At the end of the simulation,
+  this is converted into the radial distribution using the following
+  expression:
+</p>
+\[g_{\alpha,\beta}(r)=\frac{V}{N_{ticks}\,N_\alpha\,N_\beta\,V_{shell}(r)}\mathcal{H}_{\alpha,\beta}(r)\]
+<p>
+where $\mathcal{H}_{\alpha,\beta}(r)$ is the histogram/count of
+particles of species $\beta$ at a distance of $r$ around particles of
+species $\alpha$ and $V_{shell}(r)=\pi\left(4\,\Delta r\,r^2 + \Delta
+r^3 / 3\right)$ is the volume of the spherical shell of thickness
+$\Delta r$ centered about a distance of $r$.
+</p>
+<p>
+  <b>Example usage</b>:
+</p>
+<?php codeblockstart();?>
+-L RadialDistribution:BinWidth=0.01,Length=5
+<?php codeblockend("brush: shell;"); ?>
+<p>
+  <b>Options</b>:
+</p>
+<ul>
+  <li>
+    <b>BinWidth</b> <i>default [0.01]</i>: The width of the histogram
+    bins ($\Delta r$) used to collect the radial distribution
+    function.
+  </li>
+  <li>
+    <b>Length</b> <i>default [Smallest dimension of
+    the <a href="/index.php/reference#simulationsize">SimulationSize</a>]</i>:
+    The maximum distance between particles which is included in the
+    histogram. Please note,
+    in <a href="/index.php/reference#typepbc">periodic systems</a>,
+    values larger than the default value (smallest dimension of the
+    system size) will have incorrect values as only the nearest
+    periodic image is sampled.
+  </li>
+  <li>
+    <b>SampleEnergy</b> <i>default [disabled]</i>: If this tag is
+    specified, the radial distribution function will only be collected
+    if the <a href="#uconfigurational">configurational energy</a> is
+    within a distance of SampleEnergyWidth, centered about
+    SampleEnergy.
+  </li>
+  <li>
+    <b>SampleEnergyWidth</b> <i>default [1]</i>: This option is only
+    loaded or required if the SampleEnergy option has been specified.
+  </li>
+</ul>
+<p>
+  <b>Example output</b>:
+</p>
+<?php codeblockstart();?>
+<RadialDistribution SampleCount="29">
+  <Species Name1="Bulk" Name2="Bulk">
+0.10000000000000001 0
+0.20000000000000001 0
+...
+  </Species>
+</RadialDistribution>
+<?php codeblockend("brush: xml;"); ?>
+<p>
+  <b>Full Tag, Subtag, and Attribute List</b>:
+</p>
+<ul>
+  <li>
+    <b>Species</b> <i>(tag)</i>: Each Species tag contains the radial
+    distribution function between two different species. The collected data is
+    presented in two columns:
+    \[r \qquad g_{\alpha,\beta}(r)\] 
+    <ul>
+      <li>
+	<b>Name1</b> <i>(attribute)</i>: This is the name of the
+	species of the particle at the origin of the radial
+	distribution function ($\alpha$).
+      </li>
+      <li>
+	<b>Name2</b> <i>(attribute)</i>: This is the name of the
+	species of the particles surrounding the particle at the
+	origin ($\beta$).
+      </li>
+    </ul>
+  </li>
+</ul>
+<p>
+  <b>Restrictions</b>: At discontinuities in the potential, the $g(r)$
+  function is also discontinuous. If you want to correctly capture
+  these discontinuities, you must calculate the values of $g(r)$
+  either side of the discontinuity using event rates.
+</p>
