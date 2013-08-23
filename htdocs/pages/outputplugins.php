@@ -1446,14 +1446,14 @@ number of samples/ticks used to collect the histogram.
   <a href="/index.php/reference#species">Species</a> in the
   system. The velocity autocorrelation function is the following function
 </p>
-\[\Psi(\Delta t)=\left\langle\mathbf{v}(t)\cdot\mathbf{v}(t+\Delta
-t)\right\rangle\]
+\[\Psi_\alpha(\Delta t)=\left\langle\mathbf{v}(t)\cdot\mathbf{v}(t+\Delta
+t)\right\rangle_{t,\alpha}\]
 <p>
   As this is implemented as a ticker property, we only evaluate the
   VACF at discrete points in time. The implementation is as follows:
 </p>
 \[\begin{align}
-\Psi_{\alpha}(i\Delta t)&=\left\langle\mathbf{v}(t)\cdot\mathbf{v}(t+i\Delta t)\right\rangle
+\Psi_{\alpha}(i\Delta t)&=\left\langle\mathbf{v}(t)\cdot\mathbf{v}(t+i\Delta t)\right\rangle_{t,\alpha}
 \\
 &=N_{ticks}^{-1}\sum_{j}^{N_{ticks}}N_\alpha^{-1}\sum_k^\alpha \mathbf{v}_k(t_j)\cdot\mathbf{v}_k(t_{j+i})
 \end{align}\]
@@ -1462,10 +1462,12 @@ where $\Delta t$ is the tick interval/time, $N_{ticks}$ is the number
 of samples/ticks used to collect the correlator, $N_\alpha$ is the
 number of particles of species $\alpha$, $v_k(t_j)$ is the velocity of
 the $k^{th}$ particle of species $\alpha$ at the time of the $j^{th}$
-tick/sample. If a <a href="/index.php/reference#species">Topology</a>
-is defined in the configuration file, the VACF of this will also be
-calculated and here $\alpha$ will correspond to the Topology, and
-$N_\alpha$ is the number of Structures in the Topology.
+tick/sample. The subscript $t,\alpha$ implies the average is over
+origin times $t$ and all particles of species $\alpha$. If
+a <a href="/index.php/reference#species">Topology</a> is defined in
+the configuration file, the VACF of this will also be calculated and
+here $\alpha$ will correspond to the Topology, and $N_\alpha$ is the
+number of Structures in the Topology.
 </p>
 <p>
   The VACF is usually of interest as its integral is directly related
@@ -1510,6 +1512,7 @@ $N_\alpha$ is the number of Structures in the Topology.
     <Structure Name="Ring">
 0 2.9826740342384427e-30
 0.13112226096298976 2.9760224150436483e-30
+...
     </Structure>
   </Topology>
 </VACF>
@@ -1556,9 +1559,122 @@ $N_\alpha$ is the number of Structures in the Topology.
     </ul>
   </li>
 </ul>
+<h2 id="msdcorrelator">MSDCorrelator</h2>
 <p>
-  <b>Restrictions</b>: At discontinuities in the potential, the $g(r)$
-  function is also discontinuous. If you want to correctly capture
-  these discontinuities, you must calculate the values of $g(r)$
-  either side of the discontinuity using event rates.
+  The MSDCorrelator plugin calculates the Mean Square Displacement
+  (MSD) as a function of time for all
+  <a href="/index.php/reference#species">Species</a> in the
+  system. The MSD Correlator is the following function
 </p>
+\[\Psi(\Delta t) = \left\langle \left[{\bf r}(t+\Delta t)-{\bf r}(t)\right]^2\right\rangle_{t,\alpha}\]
+<p>
+  As this is implemented as a ticker property, we only evaluate the
+  MSD at discrete points in time. The implementation is as follows:
+</p>
+\[\begin{align}
+\Psi_{\alpha}(i\Delta t)&=\left\langle \left[{\bf r}(t+i\Delta t)-{\bf r}(t)\right]^2\right\rangle_{t,\alpha}
+\\
+&=N_{ticks}^{-1}\sum_{j}^{N_{ticks}}N_\alpha^{-1}\sum_k^\alpha \left[{\bf r}_k(t_j)-{\bf r}_k(t_{j+i})\right]^2
+\end{align}\]
+<p>
+where $\Delta t$ is the tick interval/time, $N_{ticks}$ is the number
+of samples/ticks used to collect the correlator, $N_\alpha$ is the
+number of particles of species $\alpha$, ${\bf r}_k(t_j)$ is the
+position of the $k^{th}$ particle of species $\alpha$ at the time of
+the $j^{th}$ tick/sample. The subscript $t,\alpha$ implies the average
+is over origin times $t$ and all particles of species $\alpha$. If
+a <a href="/index.php/reference#species">Topology</a> is defined in
+the configuration file, the MSD of this will also be calculated and
+here $\alpha$ will correspond to the Topology, and $N_\alpha$ is the
+number of Structures in the Topology.
+</p>
+<p>
+  The MSD is usually of interest as its gradient is directly related
+  to the diffusion coefficient:
+</p>
+\[D_\alpha=\lim_{\Delta t\to\infty}\frac{\left\langle \left[{\bf r}(t+\Delta t)-{\bf r}(t)\right]^2\right\rangle_{t,\alpha}}{2\,d\,t}\]
+<p>
+  where $d=3$ is the dimensionality of the system and $D_\alpha$ is
+  the diffusion coefficient of species $\alpha$.
+</p>
+<p>
+  <b>Example usage</b>:
+</p>
+<?php codeblockstart();?>
+-L MSDCorrelator:Length=100
+<?php codeblockend("brush: shell;"); ?>
+<p>
+  <b>Options</b>:
+</p>
+<ul>
+  <li>
+    <b>Length</b> <i>default [50]</i>: The length is the number of
+    samples used in a single correlator, or the maximum value of
+    $j$. The maximum time of the correlator is then $j_{max}\,\Delta
+    t$, where $\Delta t$ is the tick interval.
+  </li>
+</ul>
+<p>
+  <b>Example output</b>:
+</p>
+<?php codeblockstart();?>
+<MSDCorrelator>
+  <Particles>
+    <Species Name="Bulk">
+0 0
+0.13112226096298976 1.5495530734986163
+0.26224452192597952 0.8305040521045054
+...
+    </Species>
+  </Particles>
+  <Topology>
+    <Structure Name="Ring">
+0 2.9826740342384427e-30
+0.13112226096298976 2.9760224150436483e-30
+...
+    </Structure>
+  </Topology>
+</MSDCorrelator>
+<?php codeblockend("brush: xml;"); ?>
+<p>
+  <b>Full Tag, Subtag, and Attribute List</b>:
+</p>
+<ul>
+  <li>
+    <b>Particles</b> <i>(tag)</i>: This tag encloses all the single
+    particle MSD correlation functions for each Species.
+    <ul>
+      <li>
+	<b>Species</b> <i>(tag)</i>: This tag contains the MSD
+	correlator data for a single species. The columns of data have
+	the following format: \[t \qquad \Psi_{\alpha}(t) \]
+      </li>
+      <ul>
+	<li>
+	  <b>Name</b> <i>(attribute)</i>: The name of
+	  the <a href="/index.php/reference#species">Species</a>
+	  $\alpha$.
+	</li>
+      </ul>
+    </ul>
+  </li>
+  <li>
+    <b>Topology</b> <i>(tag)</i>: This tag encloses all the
+    multi-particle MSD correlation functions calculated from
+    <a href="/index.php/reference#topology">Topology</a> entries.
+    <ul>
+      <li>
+	<b>Structure</b> <i>(tag)</i>: This tag contains the MSD
+	correlator data for a single Structure. The columns of data
+	have the following format: \[t \qquad \Psi_{\alpha}(t) \]
+      </li>
+      <ul>
+	<li>
+	  <b>Name</b> <i>(attribute)</i>: The name of
+	  the <a href="/index.php/reference#species">Structure</a>
+	  $\alpha$.
+	</li>
+      </ul>
+    </ul>
+  </li>
+</ul>
