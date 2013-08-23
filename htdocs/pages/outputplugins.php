@@ -79,7 +79,7 @@ dynarun config.xml -c 1000000 -L MFT:BinWidth=0.5,Length=100
   such as temperature and mean free times, are collected through these
   types of plugins.
 </p>
-<h2>Misc Plugin</h2>
+<h2>Misc</h2>
 <p>
   The Misc plugin is loaded automatically and contains properties
   which are relatively cheap to collect. Fortunately, this includes
@@ -1153,7 +1153,7 @@ dynarun config.xml -c 1000000 -L MFT:BinWidth=0.5,Length=100
   <a href="#thermalconductivity">ThermalConductivity</a>
   and <a href="#mutualdiffusion">MutualDiffusion</a> correlators apply here.
 </p>
-<h2>IntEnergyHist Plugin</h2>
+<h2>IntEnergyHist</h2>
 <p>
   The internal energy histogram plugin collects the exact histogram of
   the time the system spent in each accessible excess internal energy
@@ -1236,7 +1236,7 @@ dynarun config.xml -c 1000000 -L MFT:BinWidth=0.5,Length=100
     </ul>
   </li>
 </ul>
-<h2>MSD Plugin</h2>
+<h2>MSD</h2>
 <p>
   The MSD plugin calculates the Mean Standard Displacement of
   different species and structures over the entire length of the
@@ -1341,7 +1341,7 @@ dynarun -L RadialDistribution -c 0 config.out.xml.bz2
   This will initialise a simulation, run the collection of the output
   plugin once and halt immediately.
 </p>
-<h2 id="radialdistribution">RadialDistribution Plugin</h2>
+<h2 id="radialdistribution">RadialDistribution</h2>
 <p>
   The RadialDistribution plugin calculates the radial distribution
   function for all pairings
@@ -1351,13 +1351,15 @@ dynarun -L RadialDistribution -c 0 config.out.xml.bz2
   this is converted into the radial distribution using the following
   expression:
 </p>
-\[g_{\alpha,\beta}(r)=\frac{V}{N_{ticks}\,N_\alpha\,N_\beta\,V_{shell}(r)}\mathcal{H}_{\alpha,\beta}(r)\]
+\[g_{\alpha,\beta}(r)=\frac{V}{N_{ticks}\,N_\alpha\,\left(N_\beta-\delta_{\alpha,\beta}\right)\,V_{shell}(r)}\mathcal{H}_{\alpha,\beta}(r)\]
 <p>
 where $\mathcal{H}_{\alpha,\beta}(r)$ is the histogram/count of
 particles of species $\beta$ at a distance of $r$ around particles of
-species $\alpha$ and $V_{shell}(r)=\pi\left(4\,\Delta r\,r^2 + \Delta
-r^3 / 3\right)$ is the volume of the spherical shell of thickness
-$\Delta r$ centered about a distance of $r$.
+species $\alpha$, $V_{shell}(r)=\pi\left(4\,\Delta r\,r^2 + \Delta r^3
+/ 3\right)$ is the volume of the spherical shell of thickness $\Delta
+r$ centered about a distance of $r$, $\delta_{\alpha\beta}$ is the
+kronecker delta function, and $N_{ticks}$ is the
+number of samples/ticks used to collect the histogram.
 </p>
 <p>
   <b>Example usage</b>:
@@ -1428,6 +1430,129 @@ $\Delta r$ centered about a distance of $r$.
 	species of the particles surrounding the particle at the
 	origin ($\beta$).
       </li>
+    </ul>
+  </li>
+</ul>
+<p>
+  <b>Restrictions</b>: At discontinuities in the potential, the $g(r)$
+  function is also discontinuous. If you want to correctly capture
+  these discontinuities, you must calculate the values of $g(r)$
+  either side of the discontinuity using event rates.
+</p>
+<h2 id="vacf">VACF</h2>
+<p>
+  The VACF plugin calculates the Velocity AutoCorrelation Function
+  (VACF) for all
+  <a href="/index.php/reference#species">Species</a> in the
+  system. The velocity autocorrelation function is the following function
+</p>
+\[\Psi(\Delta t)=\left\langle\mathbf{v}(t)\cdot\mathbf{v}(t+\Delta
+t)\right\rangle\]
+<p>
+  As this is implemented as a ticker property, we only evaluate the
+  VACF at discrete points in time. The implementation is as follows:
+</p>
+\[\begin{align}
+\Psi_{\alpha}(i\Delta t)&=\left\langle\mathbf{v}(t)\cdot\mathbf{v}(t+i\Delta t)\right\rangle
+\\
+&=N_{ticks}^{-1}\sum_{j}^{N_{ticks}}N_\alpha^{-1}\sum_k^\alpha \mathbf{v}_k(t_j)\cdot\mathbf{v}_k(t_{j+i})
+\end{align}\]
+<p>
+where $\Delta t$ is the tick interval/time, $N_{ticks}$ is the number
+of samples/ticks used to collect the correlator, $N_\alpha$ is the
+number of particles of species $\alpha$, $v_k(t_j)$ is the velocity of
+the $k^{th}$ particle of species $\alpha$ at the time of the $j^{th}$
+tick/sample. If a <a href="/index.php/reference#species">Topology</a>
+is defined in the configuration file, the VACF of this will also be
+calculated and here $\alpha$ will correspond to the Topology, and
+$N_\alpha$ is the number of Structures in the Topology.
+</p>
+<p>
+  The VACF is usually of interest as its integral is directly related
+  to the diffusion coefficient:
+</p>
+\[d\,D_\alpha = \int_0^\infty \Psi_{\alpha}(t)\,{\rm d}t\]
+<p>
+  where $d=3$ is the dimensionality of the system and $D_\alpha$ is
+  the diffusion coefficient of species $\alpha$.
+</p>
+<p>
+  <b>Example usage</b>:
+</p>
+<?php codeblockstart();?>
+-L VACF:Length=100
+<?php codeblockend("brush: shell;"); ?>
+<p>
+  <b>Options</b>:
+</p>
+<ul>
+  <li>
+    <b>Length</b> <i>default [50]</i>: The length is the number of
+    samples used in a single correlator, or the maximum value of
+    $j$. The maximum time of the correlator is then $j_{max}\,\Delta
+    t$, where $\Delta t$ is the tick interval.
+  </li>
+</ul>
+<p>
+  <b>Example output</b>:
+</p>
+<?php codeblockstart();?>
+<VACF>
+  <Particles>
+    <Species Name="Bulk">
+0 0
+0.13112226096298976 1.5495530734986163
+0.26224452192597952 0.8305040521045054
+...
+    </Species>
+  </Particles>
+  <Topology>
+    <Structure Name="Ring">
+0 2.9826740342384427e-30
+0.13112226096298976 2.9760224150436483e-30
+    </Structure>
+  </Topology>
+</VACF>
+<?php codeblockend("brush: xml;"); ?>
+<p>
+  <b>Full Tag, Subtag, and Attribute List</b>:
+</p>
+<ul>
+  <li>
+    <b>Particles</b> <i>(tag)</i>: This tag encloses all the single particle
+    VACF functions for each Species.
+    <ul>
+      <li>
+	<b>Species</b> <i>(tag)</i>: This tag contains the VACF data
+	for a single species. The columns of data have the following format:
+	\[t \qquad \Psi_{\alpha}(t) \]
+      </li>
+      <ul>
+	<li>
+	  <b>Name</b> <i>(attribute)</i>: The name of
+	  the <a href="/index.php/reference#species">Species</a>
+	  $\alpha$.
+	</li>
+      </ul>
+    </ul>
+  </li>
+  <li>
+    <b>Topology</b> <i>(tag)</i>: This tag encloses all the
+    multi-particle VACF functions calculated from
+    <a href="/index.php/reference#topology">Topology</a> entries.
+    <ul>
+      <li>
+	<b>Structure</b> <i>(tag)</i>: This tag contains the VACF data
+	for a single Structure. The columns of data have the following
+	format: \[t \qquad \Psi_{\alpha}(t) \]
+      </li>
+      <ul>
+	<li>
+	  <b>Name</b> <i>(attribute)</i>: The name of
+	  the <a href="/index.php/reference#species">Structure</a>
+	  $\alpha$.
+	</li>
+      </ul>
     </ul>
   </li>
 </ul>
