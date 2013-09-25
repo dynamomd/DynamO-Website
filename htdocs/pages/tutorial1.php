@@ -11,14 +11,16 @@
 <?php printTOC(); ?>
 <p>
   This tutorial covers the build requirements, compilation, and
-  installation of the DynamO simulation package and its tools. It is
-  highly recommended that you build your own version of DynamO if you
-  want to be able to make changes to the code (to add new features to
-  DynamO).
+  installation of the DynamO simulation package and its tools. <b>You
+  do not need to build your own version of DynamO if you are on
+  Ubuntu!</b>; however, you need to build your own version of DynamO
+  if you want to be able to make changes to the code (to add new
+  features to DynamO).
 </p>
 <p>
-  If you've already installed DynamO using the prebuilt packages, you
-  can skip straight to tutorial 2:
+  If you've already installed DynamO using
+  the <a href="/index.php/download">prebuilt packages</a>, you can
+  skip straight to tutorial 2:
 </p>
 <?php button("Tutorial 2: Introduction to the DynamO workflow: Running a simulation of hard spheres","/index.php/tutorial2");?>
 <p>

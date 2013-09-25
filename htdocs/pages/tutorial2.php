@@ -12,103 +12,20 @@
 <p>
   In this tutorial, the basic steps of working with DynamO are
   introduced by performing a simulation of a hard sphere fluid.
-</p> 
-<p>
-  When performing a simulation, the standard steps, or "workflow", is:
-</p>
-<ol>
-  <li>
-    Create an initial "configuration" file, which is the starting
-    point of the simulation. This file contains a description of all
-    particles and their interactions.
-  </li>
-  <li>
-    Use the initial configuration file as the start of a simulation to
-    allow the configuration to relax and come into equilibrium. The
-    output of this stage is an "equilibrated" configuration file.
-  </li>
-  <li>
-    Use the equilibrated configuration as the start of a simulation to
-    collect data.
-  </li>
-</ol>
-<p>
-  This tutorial will give you a general understanding of these steps
-  and later tutorials will go into more detail to show you how to
-  simulate different systems and to process the output of DynamO to
-  collect results.
-</p>
-<h1>About the simulated hard-sphere fluid</h1>
-<div class="figure" style="clear:right; float:right;width:400px;">
-  <?php embedAJAXvideo("hardspheres", "tn6Cz0tNPuU", 400, 250); ?>
-  <div class="caption">
-    A video of the hard sphere system which is generated and simulated
-    in this tutorial.  <?php button("Show
-    Configuration","/pages/config.tut3.xml");?>
-  </div>
-</div>
-<p>
-  In this tutorial
-  a <a href="/index.php/reference#typehardsphere">hard-sphere
-  fluid</a> is simulated. A hard sphere is a simple molecular model
-  used to capture the fundamental effects of "excluded-volume"
-  interactions and more details are given in
-  the <a href="/index.php/reference#typehardsphere">reference</a>.
 </p>
 <p>
-  A video of the initial configuration and equilibration performed in
-  this tutorial is presented to the right.  At the start of the video,
-  the hard spheres are shown in their initial configuration. The
-  particles are placed on a lattice and assigned random
-  velocities. The particles are then coloured by their ID number and
-  the simulation is "run".
-</p>
-<p>
-  In the video you may notice some particles popping in and out of
-  view, these are particles which are moving from one side of the
-  simulation volume to the other when they pass through the periodic
-  boundary condition (you can see some red particles disappear on the
-  left and instantaneously reappear on the right). Periodic boundary
-  conditions allow us to simulate a small amount of fluid as though it
-  is in an infinite/bulk system (more details in
-  the <a href="/index.php/reference#typepbc">reference</a>).
-</p>
-<p>
-  As the simulation proceeds, the initial lattice structure rapidly
-  disappears. However, it is obvious from the clear colour banding
-  that the particles have not actually moved very far from their
-  initial positions. The system still has a "memory" of its initial
-  configuration and we will need to equilibrate the system before we
-  collect data.
-</p>
-<p>
-  To equilibrate the system, the simulation is then set to run at full
-  speed for a few thousand collisions and then slowed down again to
-  take a look at the results. We can see that the simulation has
-  equilibrated well and the coloured particles are well mixed. This
-  system is now ready to sample "equilibrium" data from.
-</p>
-<p>
-  Let's take a look at how this simulation was performed in DynamO...
-</p>
-<h1>Verifying the DynamO installation</h1>
-<p>
-  Please ensure that you have already installed DynamO, either by
-  using the precompiled packages in
+  You will need to have access to an installed copy of DynamO, either
+  by using the precompiled packages in
   the <a href="/index.php/download">download section of the site</a>
   or by following the <a href="/index.php/tutorial1">previous
-  tutorial</a> to compile and install your own copy of DynamO.
-</p>
-<p>
-  We'll start off by testing if you successfully compiled and
-  installed DynamO. Open up a terminal and run the following command:
+  tutorial</a> to compile and install your own copy of DynamO. You can
+  check if dynamo works by opening a terminal and typing the following
+  command:
 </p>
 <?php codeblockstart(); ?>dynamod<?php codeblockend("brush: shell;"); ?>
 <p>
-  If you compiled DynamO yourself, you may need to change this path to
-  wherever you installed the dynamo binaries. If everything is working
-  correctly, you should see the copyright notice and the descriptions
-  of the options of the dynamod program:
+   If everything is working correctly, you should see the copyright
+  notice and the descriptions of the options of the dynamod program:
 </p>
 <?php codeblockstart(); ?>dynamod  Copyright (C) 2011  Marcus N Campbell Bannerman
 This program comes with ABSOLUTELY NO WARRANTY.
@@ -124,11 +41,85 @@ Usage : dynamod <OPTIONS>...[CONFIG FILE]
   the <a href="/index.php/tutorial1">previous tutorial</a> and recheck
   the output of the <b>make</b> command.
 </p>
+<h1>About this tutorial</h1>
 <p>
-  If you do see the output above, it means you're now ready to setup
-  and run your first DynamO simulation...
+  When performing a molecular dynamics simulation with DynamO, the
+  standard steps, or "workflow", is to:
 </p>
-<h1>In brief</h1> 
+<ol>
+  <li>
+    Create an initial "configuration" file, which is the starting
+    point of the simulation. This file contains a description of all
+    particles and their interactions.
+  </li>
+  <li>
+    Use the initial configuration file as the start of a simulation to
+    allow the configuration to relax and come into equilibrium. The
+    output of this stage is an "equilibrated" configuration file.
+  </li>
+  <li>
+    Use the equilibrated configuration as the start of a simulation to
+    collect data. You will generate a final configuration file, which
+    can be used as the starting point for other simulations, and an
+    output file, containing all the data collected by DynamO.
+  </li>
+</ol>
+<p>
+  This tutorial will give you a general understanding of these steps
+  and later tutorials will go into more detail to show you how to
+  simulate different systems and to process the output of DynamO to
+  collect results.
+</p>
+<div class="figure" style="clear:right; float:right;width:400px;">
+  <?php embedAJAXvideo("hardspheres", "tn6Cz0tNPuU", 400, 250); ?>
+  <div class="caption">
+    A video of the hard sphere system which is generated and simulated
+    in this tutorial.  <?php button("Show
+    Configuration","/pages/config.tut3.xml");?>
+  </div>
+</div>
+<p>
+  In this tutorial you will simulate a hard-sphere fluid. The hard
+  sphere is a simple molecular model used to capture the fundamental
+  effects of "excluded-volume" interactions (see
+  the <a href="/index.php/reference#typehardsphere">reference</a>
+  entry for more details).  A video of the initial configuration and
+  equilibration performed in this tutorial is presented to the right.
+  At the start of the video, the hard spheres are shown in their
+  initial configuration. The particles are placed on a lattice and
+  assigned random velocities. The particles are then coloured by their
+  ID number and the simulation is "run".
+</p>
+<p>
+  In the video you may notice some particles popping in and out of
+  view, these are particles which are moving from one side of the
+  simulation volume to the other when they pass through the periodic
+  boundary condition (you can see some red particles disappear on the
+  left and instantaneously reappear on the right). We use periodic
+  boundary conditions as they allow us to simulate a small amount of
+  fluid as though it is part of an infinite/bulk system (see
+  the <a href="/index.php/reference#typepbc">reference</a> entry for
+  more details).
+</p>
+<p>
+  As the simulation proceeds, the initial lattice structure rapidly
+  disappears. However, it is obvious from the clear colour banding
+  that the particles have not actually moved very far from their
+  initial positions. The system still has a "memory" of its initial
+  configuration and we will need to equilibrate the system before we
+  can collect data.
+</p>
+<p>
+  To equilibrate the system, the simulation is then set to run at full
+  speed for a few thousand collisions and then slowed down again to
+  take a look at the results. We can see that the simulation has
+  equilibrated well and the coloured particles are well mixed. This
+  system is now ready to sample "equilibrium" data from.
+</p>
+<p>
+  Let's take a look at how this simulation was performed in DynamO...
+</p>
+<h2>Quick overview of commands</h2> 
 <p>
   There are only three commands to cover in this tutorial, so we'll
   cover them briefly and then go into each command in detail. 
@@ -381,7 +372,7 @@ Mode 0: Monocomponent hard spheres
   the <a href="/pages/config.tut3.xml">contents of the configuration
   file</a>, but the configuration file will be explained in more
   detail in the <a href="index.php/tutorial2">next tutorial</a>.
-<h1>Running the simulation</h1>
+<h1>Running the simulation using dynarun</h1>
 <p>
   The most complex part of this tutorial is now over. All that remains
   is to take this initial starting configuration file and actually run
@@ -417,19 +408,19 @@ Mode 0: Monocomponent hard spheres
   from <b>dynarun</b> informing you of its progress in the simulation:
 </p>
 <?php codeblockstart(); ?>...
-Wed 16:36, ETA 11s, Events 100k, t 19.0446, <MFT> 0.130646, <T> 1, U 0
-Wed 16:36, ETA 10s, Events 200k, t 37.9629, <MFT> 0.130213, <T> 1, U 0
+ETA 15s, Events 100k, t 19.0566, <MFT> 0.130728, T 1, U 0
+ETA 14s, Events 200k, t 38.0891, <MFT> 0.130645, T 1, U 0
 ...<?php codeblockend("brush: plain;"); ?>
 <p>
-  The first column is telling you the time the output was written to
-  screen, an estimate of how much longer the simulation will take
-  (ETA), how many events have been executed already, and how much
-  simulation time has passed. The average mean free time (MFT), the
-  average temperature (T) and internal energy (U) are also outputted
-  to help you track the equilibration of the system. These values
-  should approach a constant value as the system reaches
-  equilibrium. Once the simulation is over, you'll see that the final
-  configuration is written out to <em>config.equilibrated.xml</em>:
+  In order, the columns are: an estimate of how much longer the
+  simulation will take (ETA), how many events have been executed
+  already, and how much simulation time has passed. The average mean
+  free time (MFT), the average temperature (T) and internal energy (U)
+  are also outputted to help you track the equilibration of the
+  system. These values should fluctuate around a fixed value once the
+  system reaches equilibrium. Once the simulation is over, you'll see
+  that the final configuration is written out
+  to <em>config.equilibrated.xml</em>:
 </p>
 <?php codeblockstart(); ?>Simulation: Output written to output.xml.bz2
 Simulation: Config written to config.equilibrated.xml<?php codeblockend("brush: plain;"); ?>
