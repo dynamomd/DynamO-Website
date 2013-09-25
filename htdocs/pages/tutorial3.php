@@ -10,10 +10,10 @@
    ?>
 <?php printTOC(); ?>
 <p>
-  In this tutorial we will start to explore the file format of DynamO,
-  learn all of the DynamO terminology, and begin to introduce how you
-  might set up any simulation you like by changing/creating a
-  configuration file.
+  This tutorial is on the configuration file format of DynamO and
+  helps explain all of the DynamO terminology. You need to understand
+  the configuration file to understand how you might set up any
+  simulation you like by changing/creating a configuration file.
 </p>
 <p>
   Understanding the configuration file format is key to understanding
@@ -33,7 +33,7 @@
   the <a href="/index.php/reference">reference documentation for the
     configuration file format</a>.
 </p>
-<h1>The example configuration</h1>
+<h2>The example configuration</h2>
 <div class="figure" style="clear:right; float:right;width:400px;">
   <?php embedAJAXvideo("hardspheres", "tn6Cz0tNPuU", 400, 250); ?>
   <div class="caption">
@@ -42,22 +42,19 @@
   </div>
 </div>
 <p>
-  To explore the configuration file format, we will need to generate a
-  configuration.  We'll look at the hard-sphere configuration from the
+  We'll be taking a look at the hard-sphere configuration from the
   <a href="/index.php/tutorial2">previous tutorial</a> as it is one of
-  the simplest configurations we can generate with DynamO.
-</p>
-<p>
-  To begin, use <b>dynamod</b> to generate a hard sphere configuration
-  like so:
+  the simplest configurations we can generate with DynamO.  You can
+  use <b>dynamod</b> to generate this hard sphere configuration like
+  so:
 </p>
 <?php codeblockstart(); ?>
 dynamod -m 0 -d 0.5 -C 7 -o config.start.xml
 <?php codeblockend("brush: shell;"); ?>
 <p>
-  <a href="/pages/config.tut3.xml">An example config.start.xml is also
-    available online here</a>. Please note that the output you generate
-  using
+  An example config.start.xml is also available online
+    <a href="/pages/config.tut3.xml">here</a>. Please note that the
+    output you generate using
   <b>dynamod</b> will have different randomly-assigned velocities than
   the example provided.
 </p>
