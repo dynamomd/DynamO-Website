@@ -127,9 +127,8 @@ Usage : dynamod <OPTIONS>...[CONFIG FILE]
 <p>
   Let us say that you want to run a hard-sphere simulation of 1372
   particles. These particles should be packed together at a reduced
-  density of 0.5 and have a reduced temperature of 1 (the values of
-  these reduced parameters may look peculiar, but they're in the
-  natural dimensionless units of hard spheres, see
+  density of 0.5 and have a reduced temperature of 1 (if these values
+  look peculiar, please see
   the <a href="/index.php/FAQ#q-what-are-the-units-of-dynamo">FAQ on
   the units of DynamO</a>).  You want to create the system, and then
   run it for $10^6$ collisions to equilibrate, then carry on and run
@@ -470,9 +469,10 @@ Simulation: Config written to config.end.xml<?php codeblockend("brush: plain;");
   such as transport coefficients (viscosity, thermal conductivity, and
   mutual/thermal diffusion) along with more traditional properties
   such as radial distribution functions, power loss, pressure tensors
-  and much more. Some analysis of the more complex properties will be
-  covered in the following tutorials, but there are some basic
-  properties which we'll cover in this tutorial. 
+  and much more (see the <a href="/index.php/outputplugins">output
+  plugin reference</a> for more details). Some analysis of the more
+  complex properties will be covered in the following tutorials, but
+  there are some basic properties which we'll cover in this tutorial.
 </p>
 <p>
   Any data collected on the simulation by <b>dynarun</b> is outputted
@@ -534,10 +534,10 @@ P_{zx} & P_{zy} & P_{zz}
 \end{align}
 $$
 <p>
-  More information on the pressure tag is available in the reference
-  documentation:
+  More information on the pressure tag is available in
+  the <a href="/index.php/outputplugins#pressure">reference
+  documentation</a>:
 </p>
-<?php button("Misc Output plugin Pressure tag reference documentation","/index.php/outputplugins#pressure");?>
 <p>
   There are some other properties available, such as the
   configurational internal energy and residual heat capacity:
