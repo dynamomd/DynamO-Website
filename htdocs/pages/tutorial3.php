@@ -139,13 +139,13 @@ dynamod -m 0 -d 0.5 -C 7 -o config.start.xml
   enclosed <i>tags</i> called <b>P</b>
   and <b>V</b>. The <b>P</b> <i>tag</i> holds the position of a
   particle within the system and the <b>V</b> tag holds the particles
-  velocity. You'll notice that DynamO always outputs numerical values
-  in scientific notation to ensure little precision is lost when
-  loading and saving. For more information on the <b>Pt</b> tag,
-  please see the reference:
+  velocity. You'll notice that DynamO sometimes outputs numerical
+  values in scientific notation to ensure that no precision is lost
+  when loading and saving configurations. For more information on
+  the <b>Pt</b> tag, please see <a href="/index.php/reference#pt">the
+  reference</a>:
 </p>
-<?php button("Reference entry for <b>Pt</b>
-	      tags","/index.php/reference#pt");?>
+<?php button("Reference entry for <b>Pt</b> tags","");?>
 <p>
   You should notice that the mass and size of the particles is not
   specified here where you might expect it. This is because of the
