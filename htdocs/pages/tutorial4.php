@@ -404,7 +404,8 @@ Mode 1: Mono/Multi-component square wells
   not the number density of the system.
 </p>
 <p>
-  A video of the compression run is given to the right. The simulation
+  A video of an example compression run is given to the right (its a
+  10:1 size ratio system to exaggerate the effect). The simulation
   ends automatically once the target number density or packing
   fraction is reached which may take some time. If the system appears
   to get "stuck" (the simulation time is not increasing), then it
@@ -479,7 +480,7 @@ Mode 1: Mono/Multi-component square wells
 </p>
 <p>
   <b>Note</b>: If you wish to change the thermostat temperature at a
-  later time, you can either use dynamod on the configuration again:
+  later time, you can use the dynamod on the configuration again:
 </p>
 <?php codeblockstart(); ?>dynamod config.thermostatted.xml -T 4.0 -o config.thermostatted.xml<?php codeblockend("brush: shell;"); ?>
 <p>
@@ -507,9 +508,7 @@ Mode 1: Mono/Multi-component square wells
   be sure is to track properties and test that they reach a steady
   state value.
 </p>
-<p>
-  Still writing
-</p>
 <h1>Processing the results</h1>
 <p>
+  Still writing
 </p>
