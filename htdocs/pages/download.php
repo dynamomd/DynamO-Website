@@ -101,7 +101,9 @@
   site</a>, but a brief summary is given below.
 </p>
 <?php codeblockstart(); ?>sudo add-apt-repository ppa:dynamomd/dynamo-daily-ppa
-sudo apt-get update<?php codeblockend("brush: shell;"); ?>
+sudo apt-get update
+sudo apt-get install dynamo-core dynamo-tools dynamo-visualisation
+<?php codeblockend("brush: shell;"); ?>
 <p>
   <b> Warning!</b>  If the development PPA is installed, it will
   override the stable PPA.
