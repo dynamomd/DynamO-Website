@@ -344,17 +344,6 @@ dynamod -m 0 -d 0.5 -C 7 -o config.start.xml
   reporting species-specific results, such as diffusion coefficients,
   radial distribution functions, and so on.
 <p>
-  The <b>IntName</b> attribute specifies the name of
-  the <b>Interaction</b> (see below) that can be used to visualise
-  this particle. For example, if the <b>Interaction</b> named
-  &quot;Bulk&quot; was a hard-sphere interaction, spheres would be
-  used to draw the particle. If it was a hard line or parallel cube
-  Interaction, lines or cubes respectively would be used to render
-  them. This interaction is also queried for the excluded volume of
-  each particle of the <b>Species</b>, for example when calculating
-  the packing fraction of the system.
-</p>
-<p>
   The <b>Type</b> parameter specifies the class of inertia tensor that
   the particle has. A value of <i>Point</i> implies that this particle
   has no rotational degrees of freedom, such as atoms in molecular
@@ -411,11 +400,11 @@ dynamod -m 0 -d 0.5 -C 7 -o config.start.xml
   Here it is clear to see that the <b>IDRange</b> tag has
   a <b>Type</b> attribute equal to &quot;All&quot;, which means all
   particles have the same <b>Species</b> (and therefore mass, intertia
-  tensor and representative <b>Interaction</b>).
-  Multiple <b>Species</b> can be defined in a straightforward way, and
-  this is discussed in the next tutorial when we consider a binary
-  mixture of spheres. For more information on the <b>IDRange</b> tag
-  and the available <i>Type</i>s, please see the reference:
+  tensor).  Multiple <b>Species</b> can be defined in a
+  straightforward way, and this is discussed in the next tutorial when
+  we consider a binary mixture of spheres. For more information on
+  the <b>IDRange</b> tag and the available <i>Type</i>s, please see
+  the reference:
 </p>
 <?php button("Reference entry for <b>IDRange</b>
 	      tags","/index.php/reference#idrange");?>

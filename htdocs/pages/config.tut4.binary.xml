@@ -6,10 +6,10 @@
     </Scheduler>
     <SimulationSize x="19.999999999999996" y="19.999999999999996" z="19.999999999999996"/>
     <Genus>
-      <Species Mass="1" Name="A" IntName="AAInteraction" Type="Point">
+      <Species Mass="1" Name="A" Type="Point">
         <IDRange Type="Ranged" Start="0" End="99"/>
       </Species>
-      <Species Mass="0.125" Name="B" IntName="BBInteraction" Type="Point">
+      <Species Mass="0.125" Name="B" Type="Point">
         <IDRange Type="Ranged" Start="100" End="3999"/>
       </Species>
     </Genus>

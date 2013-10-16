@@ -351,7 +351,7 @@ function toggle_visibility(elementname) {
 <p>
   <b>Example Usage:</b>
 </p>
-<?php codeblockstart();?><Species Mass="1" Name="Bulk" IntName="Bulk" Type="Point">
+<?php codeblockstart();?><Species Mass="1" Name="Bulk" Type="Point">
   <IDRange .../>
 </Species><?php codeblockend("brush: xml;"); ?>
 <p>
@@ -377,12 +377,6 @@ function toggle_visibility(elementname) {
     dynamod often uses the name "Bulk".
   </li>
   <li>
-    <b>IntName</b> <i>(attribute)</i>: The name of the <a href="#interaction">Interaction</a>
-    used to represent this species. This <a href="#interaction">Interaction</a> is used to
-    calculate the volume occupied by the Species and to draw the
-    Particles of the Species.
-  </li>
-  <li>
     <b><a href="#idrange">IDRange</a></b> <i>(tag)</i>: A <a href="#idrange">IDRange</a> which specifies the
     Particles represented by this Species tag. The IDRanges of each
     Species must not overlap with any other Species in the
@@ -399,7 +393,7 @@ function toggle_visibility(elementname) {
 <p>
   <b>Example Usage:</b>
 </p>
-<?php codeblockstart();?><Species Name="Bulk" IntName="Bulk" Type="FixedCollider">
+<?php codeblockstart();?><Species Name="Bulk" Type="FixedCollider">
   <IDRange .../>
 </Species><?php codeblockend("brush: xml;"); ?>
 <p>
@@ -415,12 +409,6 @@ function toggle_visibility(elementname) {
     represented by this Species. This is used in output, so species
     "A" or "Carbon" are examples. If the system is monocomponent,
     dynamod often uses the name "Bulk".
-  </li>
-  <li>
-    <b>IntName</b> <i>(attribute)</i>: The name of the <a href="#interaction">Interaction</a>
-    used to represent this species. This <a href="#interaction">Interaction</a> is used to
-    calculate the volume occupied by the Species and to draw the
-    Particles of the Species.
   </li>
   <li>
     <b><a href="#idrange">IDRange</a></b> <i>(tag)</i>: A <a href="#idrange">IDRange</a> which specifies the
@@ -440,7 +428,7 @@ function toggle_visibility(elementname) {
 <p>
   <b>Example Usage:</b>
 </p>
-<?php codeblockstart();?><Species Mass="1" Name="Bulk" IntName="Bulk"Type="SphericalTop" InertiaConstant="0.1">
+<?php codeblockstart();?><Species Mass="1" Name="Bulk" Type="SphericalTop" InertiaConstant="0.1">
   <IDRange .../>
 </Species><?php codeblockend("brush: xml;"); ?>
 <p>
@@ -474,12 +462,6 @@ function toggle_visibility(elementname) {
     represented by this Species. This is used in output, so species
     "A" or "Carbon" are examples. If the system is monocomponent,
     dynamod often uses the name "Bulk".
-  </li>
-  <li>
-    <b>IntName</b> <i>(attribute)</i>: The name of the <a href="#interaction">Interaction</a>
-    used to represent this species. This <a href="#interaction">Interaction</a> is used to
-    calculate the volume occupied by the Species and to draw the
-    Particles of the Species.
   </li>
   <li>
     <b><a href="#idrange">IDRange</a></b> <i>(tag)</i>: A <a href="#idrange">IDRange</a> which specifies the
@@ -1005,18 +987,17 @@ function toggle_visibility(elementname) {
     information).
   </li>
   <li>
-    <b>Name</b> <i>(attribute)</i>: The name of the
-    Interaction. This name is used to identify the Interaction in
-    the configuration file (e.g.,
-    see <a href="#species">Species</a>) and in the output generated
-    by the dynarun command. Each Interaction must have a name which
-    is unique.
+    <b>Name</b> <i>(attribute)</i>: The name of the Interaction. This
+    name is used to identify the Interaction in the output generated
+    by the dynarun command. Each Interaction must have a name which is
+    unique.
   </li>
   <li>
-    <b><a href="#idpairrange">IDPairRange</a></b> <i>(tag)</i>: This <a href="#idpairrange">IDPairRange</a> tag specifies
-    the pairs of particles which interact using this
-    Interaction. See the <a href="#idpairrange">section on
-      IDPairRanges</a> for more information on the format of this tag.
+    <b><a href="#idpairrange">IDPairRange</a></b> <i>(tag)</i>:
+    This <a href="#idpairrange">IDPairRange</a> tag specifies the
+    pairs of particles which interact using this Interaction. See
+    the <a href="#idpairrange">section on IDPairRanges</a> for more
+    information on the format of this tag.
   </li>
 </ul>
 <h2><a id="typesquarewell"></a>Type="SquareWell"</h2>
@@ -1130,12 +1111,10 @@ function toggle_visibility(elementname) {
       Properties</a> for more information).
   </li>
   <li>
-    <b>Name</b> <i>(attribute)</i>: The name of the
-    Interaction. This name is used to identify the Interaction in
-    the configuration file (e.g.,
-    see <a href="#species">Species</a>) and in the output generated
-    by the dynarun command. Each Interaction must have a name which
-    is unique.
+    <b>Name</b> <i>(attribute)</i>: The name of the Interaction. This
+    name is used to identify the Interaction in the output generated
+    by the dynarun command. Each Interaction must have a name which is
+    unique.
   </li>
   <li>
     <b>CaptureMap</b> <i>(tag)</i>: If present, the CaptureMap tag
@@ -1201,12 +1180,10 @@ function toggle_visibility(elementname) {
     information).
   </li>
   <li>
-    <b>Name</b> <i>(attribute)</i>: The name of the
-    Interaction. This name is used to identify the Interaction in
-    the configuration file (e.g.,
-    see <a href="#species">Species</a>) and in the output generated
-    by the dynarun command. Each Interaction must have a name which
-    is unique.
+    <b>Name</b> <i>(attribute)</i>: The name of the Interaction. This
+    name is used to identify the Interaction in the output generated
+    by the dynarun command. Each Interaction must have a name which is
+    unique.
   </li>
   <li>
     <b><a href="#idpairrange">IDPairRange</a></b> <i>(tag)</i>: This <a href="#idpairrange">IDPairRange</a> tag specifies
@@ -1260,12 +1237,10 @@ function toggle_visibility(elementname) {
     information).
   </li>
   <li>
-    <b>Name</b> <i>(attribute)</i>: The name of the
-    Interaction. This name is used to identify the Interaction in
-    the configuration file (e.g.,
-    see <a href="#species">Species</a>) and in the output generated
-    by the dynarun command. Each Interaction must have a name which
-    is unique.
+    <b>Name</b> <i>(attribute)</i>: The name of the Interaction. This
+    name is used to identify the Interaction in the output generated
+    by the dynarun command. Each Interaction must have a name which is
+    unique.
   </li>
   <li>
     <b><a href="#idpairrange">IDPairRange</a></b> <i>(tag)</i>: This <a href="#idpairrange">IDPairRange</a> tag specifies
@@ -1304,12 +1279,10 @@ function toggle_visibility(elementname) {
     value <i>"Stepped"</i> to select this Interaction type.
   </li>
   <li>
-    <b>Name</b> <i>(attribute)</i>: The name of the
-    Interaction. This name is used to identify the Interaction in
-    the configuration file (e.g.,
-    see <a href="#species">Species</a>) and in the output generated
-    by the dynarun command. Each Interaction must have a name which
-    is unique.
+    <b>Name</b> <i>(attribute)</i>: The name of the Interaction. This
+    name is used to identify the Interaction in the output generated
+    by the dynarun command. Each Interaction must have a name which is
+    unique.
   </li>
   <li>
     <b>LengthScale</b> <i>(attribute)</i>: The length scale by which
@@ -1431,12 +1404,10 @@ function toggle_visibility(elementname) {
       Properties</a> for more information).
   </li>
   <li>
-    <b>Name</b> <i>(attribute)</i>: The name of the
-    Interaction. This name is used to identify the Interaction in
-    the configuration file (e.g.,
-    see <a href="#species">Species</a>) and in the output generated
-    by the dynarun command. Each Interaction must have a name which
-    is unique.
+    <b>Name</b> <i>(attribute)</i>: The name of the Interaction. This
+    name is used to identify the Interaction in the output generated
+    by the dynarun command. Each Interaction must have a name which is
+    unique.
   </li>
   <li>
     <b>CaptureMap</b> <i>(tag)</i>: If present, the CaptureMap tag
@@ -1507,12 +1478,10 @@ function toggle_visibility(elementname) {
     information).
   </li>
   <li>
-    <b>Name</b> <i>(attribute)</i>: The name of the
-    Interaction. This name is used to identify the Interaction in
-    the configuration file (e.g.,
-    see <a href="#species">Species</a>) and in the output generated
-    by the dynarun command. Each Interaction must have a name which
-    is unique.
+    <b>Name</b> <i>(attribute)</i>: The name of the Interaction. This
+    name is used to identify the Interaction in the output generated
+    by the dynarun command. Each Interaction must have a name which is
+    unique.
   </li>
   <li>
     <b><a href="#idpairrange">IDPairRange</a></b> <i>(tag)</i>: This <a href="#idpairrange">IDPairRange</a> tag specifies
@@ -2127,7 +2096,7 @@ function toggle_visibility(elementname) {
   We can use a named property in the <a href="#typepoint">Species
   definition</a> to use this new per-particle mass:
 </p>
-<?php codeblockstart();?><Species Mass="M" Name="Bulk" IntName="Bulk" Type="Point">
+<?php codeblockstart();?><Species Mass="M" Name="Bulk" Type="Point">
   ...
 </Species><?php codeblockend("brush: xml;"); ?>
 <p>

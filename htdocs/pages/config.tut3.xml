@@ -6,7 +6,7 @@
     </Scheduler>
     <SimulationSize x="13.999999999999998" y="13.999999999999998" z="13.999999999999998"/>
     <Genus>
-      <Species Mass="1" Name="Bulk" IntName="Bulk" Type="Point">
+      <Species Mass="1" Name="Bulk" Type="Point">
         <IDRange Type="All"/>
       </Species>
     </Genus>
