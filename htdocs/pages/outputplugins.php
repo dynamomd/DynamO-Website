@@ -121,9 +121,11 @@ dynarun config.xml -c 1000000 -L MFT:BinWidth=0.5,Length=100
 <p>
   This tag contains the excluded volume of all particles divided by
   the volume of the primary image.  The volume of each particle is
-  calculated from the representative interaction which is specified by
-  the particle's <a href="/index.php/reference#species">Species</a>
-  tags.
+  calculated from
+  the <a href="/index.php/reference#interaction">Interaction</a> which
+  is specified by the
+  <a href="/index.php/reference#selfinteractions">particle's
+  self-interaction</a>.
 </p>
 <p>
   <b>Example output</b>:

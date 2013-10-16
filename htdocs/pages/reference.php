@@ -586,9 +586,10 @@ function toggle_visibility(elementname) {
 <p>
   Interaction tags are used to specify how pairs of particles interact
   and generate Interaction events. Every possible pairing of particles
-  <b>must</b> have a corresponding Interaction even if they don't
-  interact (see <a href="#typenull">Null Interactions</a> for how to
-  specify non-interacting pairs).
+  (including self pairings)
+  <b>must</b> have a corresponding Interaction, even if they don't
+  interact. If you don't want them to interact at all, you must use a
+  <a href="#typenull">Null Interaction</a>.
 </p>
 <p>
   When DynamO tests for interactions/events between a pair of
@@ -598,6 +599,12 @@ function toggle_visibility(elementname) {
   order in which Interactions are listed in the configuration file is
   important</b>. Interactions which are higher in the configuration
   file will override matching Interactions which are lower down.
+</p>
+<p><a id="selfinteractions"></a>
+  Each particle must also have an Interaction which maps to an
+  Interaction with itself. This self-Interaction does not generate
+  events, but is used to draw the particle and to calculate properties
+  such as the excluded volume.
 </p>
 <h2>Type="Null"</h2>
 <p>
