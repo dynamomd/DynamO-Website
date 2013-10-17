@@ -180,8 +180,7 @@ dynamod -m 0 -d 0.5 -C 7 -o config.start.xml
 <p>
   The <b>Simulation</b> tags are where the details of the system
   dynamics are stored. There are a huge number of settings that can be
-  adjusted here, so we will deal with each tag separately and in the
-  order in which they appear in the configuration file.
+  adjusted here, so we will deal with each tag separately.
 </p>
 <h2>Scheduler</h2>
 <p>
@@ -414,24 +413,6 @@ dynamod -m 0 -d 0.5 -C 7 -o config.start.xml
   functional definitions are difficult, such as in polydisperse
   systems where every particle has a unique mass and size.
 </p>
-<h2>Topology</h2>
-<p>
-  Another empty tag you will encounter in this configuration file is
-  the <b>Topology</b> tag.
-</p>
-<?php xmlXPathFile("pages/config.tut3.xml", "/DynamOconfig/Simulation/Topology"); ?>
-<p>
-  This tag does not affect the dynamics at all. It is used as a way to
-  mark out molecules or other multi-particle structures for monitoring
-  and collection of data. For example, you might create a list of the
-  particles in each polymer in your molecular simulation so that you
-  can calculate a molecular (instead of atomic) diffusion coefficient.
-  This tag will become more useful when bonded interactions are
-  introduced in a later tutorial on polymeric systems. For more
-  information on the <b>Topology</b> tag, please see the reference:
-</p>
-<?php button("Reference entry for <b>Topology</b>
-	      tags","/index.php/reference#topology");?>
 <h2>Interactions/Interaction</h2>
 <p>
   The next important tags in the file format are
@@ -511,90 +492,6 @@ dynamod -m 0 -d 0.5 -C 7 -o config.start.xml
 </p>
 <?php button("Reference entry for <b>IDPairRange</b>
 	      tags","/index.php/reference#idpairrange");?>
-<h2>Locals</h2>
-<p>
-  In this simulation, we have an empty <b>Locals</b> tag:
-</p>
-<?php xmlXPathFile("pages/config.tut3.xml", "/DynamOconfig/Simulation/Locals"); ?>
-<p>
-  A <b>Local</b> is any possible event involving one particle which is
-  localised in space. Typical examples of <b>Local</b>s are are walls,
-  triangle meshes and other fixed objects. The key part of the
-  definition is that the events only occur if the particle is in a
-  certain location in space. This means these events can be optimised
-  by inserting them into a neighbour list.
-</p>
-<p>
-  Using <b>Locals</b> will be discussed in a later tutorial when we
-  study walls and triangle meshes.  For more information on
-  the <b>Local</b> tag and the available <i>Type</i>s, please see the
-  reference:
-</p>
-<?php button("Reference entry for <b>Local</b>
-	      tags","/index.php/reference#local");?>
-<h2>Globals</h2>
-<p>
-  <b>Globals</b> are single particle events which can occur anywhere
-  (i.e., they cannot be optimised by the use of neighbour
-  lists). Examples of global events are Single Occupancy cells,
-  boundary condition enforcers, but the most common <b>Global</b> used
-  in configuration files <i>is</i> the neighbour list itself:
-</p>
-<?php xmlXPathFile("pages/config.tut3.xml", "/DynamOconfig/Simulation/Globals"); ?>
-<p>
-  Neighbourlists are used by DynamO to efficiently detect which
-  particles have a chance of interacting. This information is used to
-  then build a list of all possible events for each particle. If the
-  neighbourlist is incorrectly setup, the simulation may produce
-  overlaps and errors or it may run slowly.
-</p>
-<p>
-  This <b>Global</b> is a celluar neighbourlist
-  (<b>Type</b>=&quot;<i>Cells</i>&quot;), which is set to track all
-  pairs of particles within a distance of at least 1. This distance is
-  specified by the <b>NeighbourhoodRange</b> attribute and must be at
-  least as big as the maximum interaction distance in the system. If
-  it is smaller, DynamO might not test an interaction until it already
-  has happened. DynamO should detect this error and report it when
-  loading the configuration file.
-</p>
-<p>
-  This neighbour list has a special <b>Name</b>
-  (<i>SchedulerNBList</i>) which is used by
-  the <i>NeighbourList</i> <b>Scheduler</b> to identify it as the
-  neighbourlist to be used when detecting events.
-</p>
-<p>
-  There are a few more <b>Global</b> events available in DynamO, such
-  as single-occupancy cells or a waker for the sleeping particles
-  algorithm. However, the use of these events is rare and often
-  the <b>Globals</b> tag only contains the neighbour list.
-  <b>Global</b> event types also require a <b>IDRange</b> to specify
-  which particles it applies to. 
-</p>
-<p>
-  For more information on the <b>Global</b> tag and the
-  available <i>Type</i>s, please see the reference:
-</p>
-<?php button("Reference entry for <b>Global</b>
-	      tags","/index.php/reference#global");?>
-<h2>SystemEvents/System</h2>
-<p>
-  <b>System</b> events comprise every other source of events which
-  does not fit into the categories of
-  a <b>Interaction</b>, <b>Local</b>, or <b>Global</b>. These might be
-  thermostats, umbrella potentials, snapshotting, simulation end
-  conditions or temperature rescalers.
-</p>
-<?php xmlXPathFile("pages/config.tut3.xml", "/DynamOconfig/Simulation/SystemEvents"); ?>
-<p>
-  This configuration has no <b>System</b> events, but we will see the
-  use of thermostats and rescalers in later tutorials on polymers. For
-  more information on the <b>System</b> tag and the
-  available <i>Type</i>s, please see the reference:
-</p>
-<?php button("Reference entry for <b>System</b>
-	      tags","/index.php/reference#system");?>
 <h2>Dynamics</h2>
 <div class="figure" style="clear:right; float:right;width:400px;">
   <?php embedAJAXvideo("fallinghardspheres", "Hx6rcS-RAkU", 400, 300); ?>
@@ -605,7 +502,7 @@ dynamod -m 0 -d 0.5 -C 7 -o config.start.xml
   </div>
 </div>
 <p>
-  Finally, the last tag to discuss is the <b>Dynamics</b> tag:
+  Finally, the last none-empty tag to discuss is the <b>Dynamics</b> tag:
 </p>
 <?php xmlXPathFile("pages/config.tut3.xml", "/DynamOconfig/Simulation/Dynamics"); ?>
 <p>
@@ -639,6 +536,53 @@ dynamod -m 0 -d 0.5 -C 7 -o config.start.xml
 </p>
 <?php button("Reference entry for <b>Dynamics</b>
 	      tags","/index.php/reference#dynamics");?>
+<h2>Unused/Empty Tags</h2>
+<p>
+  In this simple system, there are several unused/empty tags,
+  including the <b>Topology</b>, <b>Locals</b>, <b>Globals</b>,
+  and <b>SystemEvents</b> tags. These are only useful if looking at a
+  more complex systems with polymers, walls, or thermostats. Here,
+  we'll just quickly introduce each tag and link to their
+  configuration reference section.
+</p>
+<p>
+  The <b>Topology</b> tag actually does not affect the dynamics of the
+  system. It is only used as a way to mark out molecules or other
+  multi-particle structures for monitoring and collection of data. For
+  example, you might create a list of the particles in each polymer in
+  your molecular simulation so that you can calculate a molecular
+  (instead of atomic) diffusion coefficient.  This tag will become
+  more useful when bonded interactions are introduced in a later
+  tutorial on polymeric systems. For more information on
+  the <b>Topology</b> tag, please see the reference:
+</p>
+<?php button("Reference entry for <b>Topology</b> tags","/index.php/reference#topology");?>
+<p>
+  A <b>Local</b> is any possible event involving one particle which is
+  localised in space. Typical examples of <b>Local</b>s are are walls,
+  triangle meshes and other fixed objects. The key part of the
+  definition is that the events only occur if the particle is in a
+  certain location in space. This means these events can be optimised
+  by inserting them into a neighbour list.
+</p>
+<?php button("Reference entry for <b>Local</b> tags","/index.php/reference#local");?>
+<p>
+  <b>Globals</b> are single particle events which can occur anywhere
+  (i.e., they cannot be optimised by the use of neighbour
+  lists). Examples of global events are Single Occupancy cells,
+  boundary condition enforcers, but the most common <b>Global</b> used
+  in configuration files is the neighbour list.
+</p>
+<?php button("Reference entry for <b>Global</b> tags","/index.php/reference#global");?>
+<p>
+  <b>SystemEvents</b> comprise every other source of events which does
+  not fit into the categories of a <b>Interaction</b>, <b>Local</b>,
+  or <b>Global</b>. These might be thermostats, umbrella potentials,
+  snapshotting, simulation end conditions or temperature rescalers.
+  This configuration has no <b>System</b> events, but we will see the
+  use of thermostats in the next tutorial.
+</p>
+<?php button("Reference entry for <b>System</b> tags","/index.php/reference#system");?>
 <h1>Conclusion</h1>
 <p>
   In this lengthy tutorial we've covered the entire configuration file
