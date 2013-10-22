@@ -2490,7 +2490,7 @@ function toggle_visibility(elementname) {
   particle in the IDRange.
 </p>
 <p>
-  <b>Example Usage:</b> This example pairs particle IDs 0, 1, and 2.
+  <b>Example Usage:</b> This example pairs particle IDs 0-0, 0-1, 0-2, 1-1, 1-2, and 2-2.
 </p>
 <?php codeblockstart();?>
 <IDPairRange Type="Single">
@@ -2504,6 +2504,33 @@ function toggle_visibility(elementname) {
   <li>
     <b>Type</b> <i>(attribute)</i>: Must have the
     value <i>"Single"</i> to select this range type.
+  </li>
+  <li>
+    <b>IDRange</b> <i>(tag)</i>: See
+    the <a href="#idrange">section on the available IDRange
+      types</a> for more information.
+  </li>
+</ul>
+<h2><a id="typeself"></a>Type="Self"</h2>
+<p>
+  <b>Description:</b> This creates a IDPairRange from one
+  IDRange. Every particle ID in the IDRange is paired with itself.
+</p>
+<p>
+  <b>Example Usage:</b> This example pairs particle IDs 0-0, 1-1, and 2-2.
+</p>
+<?php codeblockstart();?>
+<IDPairRange Type="Self">
+  <IDRange Type="Ranged" Start="0" End="2"/>
+</IDPairRange>
+<?php codeblockend("brush: xml;"); ?>
+<p>
+  <b>Full Tag, Subtag, and Attribute List</b>:
+</p>
+<ul>
+  <li>
+    <b>Type</b> <i>(attribute)</i>: Must have the
+    value <i>"Self"</i> to select this range type.
   </li>
   <li>
     <b>IDRange</b> <i>(tag)</i>: See
