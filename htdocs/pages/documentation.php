@@ -60,6 +60,13 @@
 </p>
 <ul>
   <li>
+    <a href="http://dx.doi.org/10.1103/PhysRevE.88.022129">
+      S. Mandal, V. Chikkadi, B. Nienhuis, D. Raabe, P. Schall,
+      F. Varnik, "Heterogeneous Shear in Hard Sphere
+      Glasses," <i>Phys. Rev. E</i>, <b>88</b>, 022129 (2013)
+    </a>
+  </li>
+  <li>
     <a href="http://dx.doi.org/10.1103/PhysRevLett.108.098301">
       S. Mandal, M. Gross, D. Raabe, F. Varnik, "Heterogeneous Shear
       in Hard Sphere Glasses," <i>Phys. Rev. Lett.</i>, <b>108</b>,
