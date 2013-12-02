@@ -46,7 +46,7 @@
 </p>
 <ul>
     <li>
-      <b>dynamo-1-4-0:</b> This is the most recent stable release, the
+      <b>v1-5-0:</b> This is the most recent stable release, the
       code is as stable as possible and has been thoroughly tested for
       bugs, but it may miss recently added features.
     </li>
@@ -67,7 +67,7 @@
   (master), just check it out by running the following command in the
   DynamO directory:
 </p>
-<?php codeblockstart(); ?>git checkout dynamo-1-4-0<?php codeblockend("brush: shell;"); ?>
+<?php codeblockstart(); ?>git checkout v1-5-0<?php codeblockend("brush: shell;"); ?>
 <p>
   Now that you've downloaded the source code, you can follow the tutorial on how to compile DynamO:
 </p>
@@ -80,7 +80,7 @@
   one of the links below.
 </p>
 <?php button("Download Latest Development Branch","https://github.com/toastedcrumpets/DynamO/zipball/master");?>
-<!---<?php button("Download Stable Version 1.4.0","https://github.com/toastedcrumpets/DynamO/zipball/dynamo-1-4-0");?>---!>
+<!---<?php button("Download Stable Version 1.5.0","https://github.com/toastedcrumpets/DynamO/zipball/v1-5-0");?>---!>
 <h1 id="prebuilt">Installing on Ubuntu 12.04 and later</h1>
 <p>
   DynamO is now extremely easy to install on Ubuntu. Although you can
