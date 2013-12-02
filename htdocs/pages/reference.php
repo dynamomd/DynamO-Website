@@ -330,8 +330,7 @@ function toggle_visibility(elementname) {
   groups of particles as each particle must belong to exactly one
   species. Many output plugins use the species of a particle to
   separate results (for example, a radial distribution function will
-  be generated for all pairings of species in the system) and they are
-  used by the visualiser to determine how to draw the particles.
+  be generated for all pairings of species in the system).
 </p>
 <p>
   Particles will have rotational degrees of freedom if they have a
@@ -585,26 +584,31 @@ function toggle_visibility(elementname) {
 <h1><a id="interaction"></a>Interaction</h1>
 <p>
   Interaction tags are used to specify how pairs of particles interact
-  and generate Interaction events. Every possible pairing of particles
+  and generate Interaction events.
+</p>
+<p>
+  <b>Each pair of Particle ID's must have a corresponding
+  Interaction.</b>  <br/> Every possible pairing of particles
   (including self pairings)
   <b>must</b> have a corresponding Interaction, even if they don't
   interact. If you don't want them to interact at all, you must use a
   <a href="#typenull">Null Interaction</a>.
 </p>
 <p>
-  When DynamO tests for interactions/events between a pair of
-  particles, it moves through the list of interactions in the order in
-  which they are specified, testing if the ID's of the pair match the
-  Interaction's <a href="#idpairrange">IDPairRange</a>. Therefore, <b>the
-  order in which Interactions are listed in the configuration file is
-  important</b>. Interactions which are higher in the configuration
-  file will override matching Interactions which are lower down.
+  <b>The order in which Interactions are listed in the configuration
+    file is important.</b><br/> When DynamO tests for
+    interactions/events between a pair of particles, it moves through
+    the list of interactions in the order in which they are specified,
+    testing if the ID's of the pair match the
+    Interaction's <a href="#idpairrange">IDPairRange</a>. Interactions
+    which are higher in the configuration file will override matching
+    Interactions which are lower down.
 </p>
 <p><a id="selfinteractions"></a>
-  Each particle must also have an Interaction which maps to an
-  Interaction with itself. This self-Interaction does not generate
-  events, but is used to draw the particle and to calculate properties
-  such as the excluded volume.
+  <b>Each particle must also have a self-Interaction</b>.<br/> This
+  self-Interaction does not generate events, but is used to decide how
+  to draw the particle in the visualiser and to calculate some single
+  particle properties, such as the excluded volume.
 </p>
 <h2>Type="Null"</h2>
 <p>
@@ -707,8 +711,9 @@ function toggle_visibility(elementname) {
     \boldsymbol{v}_i'-\boldsymbol{v}_i&amp;=-\frac{m_j}{m_i}\left(\boldsymbol{v}_j'-\boldsymbol{v}_j\right)
     \end{align}\]
 
-    where $m_i$ is the mass of particle $i$.  Using the first equation to
-    eliminate $\boldsymbol{v}_j$ terms, we have
+    where $m_i$ is the mass of particle $i$.  Using the equation
+    derived from the conservation of momentum to eliminate
+    $\boldsymbol{v}_j$ terms, we have
 
     \[\begin{align}
     \boldsymbol{v}_i'-\boldsymbol{v}_i&amp;=-\frac{m_j}{m_i}\left(\boldsymbol{v}_i'-\boldsymbol{v}_i - \boldsymbol{v}_{ij}'+\boldsymbol{v}_{ij}\right)\\
@@ -726,16 +731,18 @@ function toggle_visibility(elementname) {
     \left[\boldsymbol{v}_{ij}'\right]_\perp&amp;=\left[\boldsymbol{v}_{ij}\right]_\perp
     \end{align*}\]
 
-    where $\varepsilon$ is the elasticity/coefficient of restitution and
-    the subscript $\parallel$ and $\perp$ denote the components parallel
-    and perpendicular to the line of contact. These are calculated like so
+    where $\varepsilon$ is the elasticity/coefficient of restitution
+    and the subscript $\parallel$ and $\perp$ denote the components
+    parallel and perpendicular to the line of contact. These are
+    calculated like so
     $\boldsymbol{v}_{ij,\parallel}=\hat{\boldsymbol{r}}_{ij}\left(\hat{\boldsymbol{r}}_{ij}\cdot\boldsymbol{v}_{ij}\right)$
     and
     $\boldsymbol{v}_{ij,\perp}=-\hat{\boldsymbol{r}}_{ij}\times\left(\hat{\boldsymbol{r}}_{ij}\times\boldsymbol{v}_{ij}\right)$
-    where $\hat{\boldsymbol{r}}_{ij}$ is the unit vector in the direction of the
-    relative separation at contact, $\boldsymbol{r}_{ij}=\boldsymbol{r}_i-\boldsymbol{r}_j$, and
-    $\boldsymbol{r}_i$ is the position of particle $i$.. Combining these rules
-    results in the following expression
+    where $\hat{\boldsymbol{r}}_{ij}$ is the unit vector in the
+    direction of the relative separation at contact,
+    $\boldsymbol{r}_{ij}=\boldsymbol{r}_i-\boldsymbol{r}_j$, and
+    $\boldsymbol{r}_i$ is the position of particle $i$. Combining
+    these rules results in the following expression
 
     \[\begin{align*}
     \boldsymbol{v}_{ij}'-\boldsymbol{v}_{ij}=-(1+\varepsilon)\left(\hat{\boldsymbol{r}}_{ij}\cdot\boldsymbol{v}_{ij}\right)\hat{\boldsymbol{r}}_{ij}
@@ -1059,10 +1066,10 @@ function toggle_visibility(elementname) {
   potential (see the <a href="#typesteppedpotential">"Stepped" type
   Interaction</a>), we can quite quickly capture the full behaviour of
   the smooth/"realistic" potential. However, the square-well model is
-  so interesting because it is so simple! If we can understand the
+  so interesting because it is so simple! We can make progress in
+  understanding it theoretically and, if we can understand the
   fundamental behaviour of square-well molecules, the fundamental
-  behaviour of realistic potentials will also be explained without the
-  additional complexity.
+  behaviour of realistic potentials can also be explained.
 </p>
 <p>
   <b>Example Usage:</b>

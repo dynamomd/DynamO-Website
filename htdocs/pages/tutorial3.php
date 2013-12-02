@@ -11,27 +11,25 @@
 <?php printTOC(); ?>
 <p>
   This tutorial is on the configuration file format of DynamO and
-  helps explain all of the DynamO terminology. You need to understand
-  the configuration file to understand how you might set up any
-  simulation you like by changing/creating a configuration file.
+  helps explain all of the DynamO terminology. You will need to
+  understand the configuration files of DynamO to understand how you
+  might set up any simulation you like by changing/creating a
+  configuration file.
 </p>
 <p>
-  Understanding the configuration file format is key to understanding
-  how to setup and use DynamO, even if the <b>dynamod</b> tool already
-  generates the systems you're interested in. Almost every parameter
-  of a simulation, apart from its duration, is set inside the
-  configuration file, so you will at least need to be able to read the
-  configuration file to check these settings, even if you don't intend
+  Every parameter of a simulation, apart from its duration, is set
+  inside the configuration file, so you need to be able to read the
+  configuration file to check these settings even if you don't intend
   to change them. The configuration file format is also key to
   understanding the DynamO code and documentation as it introduces all
   of the terminology and concepts you'll need in the later tutorials.
 </p>
 <p>
-  In the following sections, we will explore a configuration file and
-  test the effects of changing some settings. For more information on
-  any of the sections below, please take a look at
-  the <a href="/index.php/reference">reference documentation for the
-    configuration file format</a>.
+  In the following sections, we will create an example configuration
+  file, explore it, and test the effects of changing some
+  settings. For more information on any of the sections below, please
+  take a look at the <a href="/index.php/reference">reference
+  documentation for the configuration file format</a>.
 </p>
 <h2>The example configuration</h2>
 <div class="figure" style="clear:right; float:right;width:400px;">
@@ -259,10 +257,10 @@ dynamod -m 0 -d 0.5 -C 7 -o config.start.xml
   we might find that we run into difficulties. This is because any
   particles now outside the new, smaller, primary image will be
   &quot;folded&quot; back into it, possibly causing overlapping
-  particles and invalid dynamics. With periodic boundary conditions,
-  reducing the size of the simulation is not straightforward and we
-  will have to look at more advanced techniques such as compression if
-  we want to increase a configuration's density.
+  particles. With periodic boundary conditions, reducing the size of
+  the simulation is not straightforward and we will have to look at
+  more advanced techniques such as compression if we want to increase
+  a configuration's density.
 </p>
 <p>
   For more information on the <b>SimulationSize</b> tag, please see
@@ -306,9 +304,8 @@ dynamod -m 0 -d 0.5 -C 7 -o config.start.xml
   particle positions will be &quot;folded&quot; back into the primary
   simulation domain specified by the <b>SimulationSize</b> tag (a
   cubic $14\times14\times14$ volume). This &quot;folding&quot; will
-  probably result in overlapping particles leading to invalid
-  dynamics, so you need to be careful when changing Boundary
-  Conditions from <i>None</i> back to
+  probably result in overlapping particles, so you need to be careful
+  when changing Boundary Conditions from <i>None</i> back to
   <i>PBC</i>.
 </p>
 <p>
@@ -329,12 +326,9 @@ dynamod -m 0 -d 0.5 -C 7 -o config.start.xml
 <?php xmlXPathFile("pages/config.tut3.xml", "/DynamOconfig/Simulation/Genus/Species"); ?>
 <p>
   A single <b>Species</b> tag defines the mass and inertia tensor of a
-  collection of particles. It also defines certain unique properties
-  of the particle. For example, it defines how the particles are
-  represented when visualised. It also defines the excluded volume of
-  each particle so that a packing fraction can be
-  calculated. Therefore, <u>each particle must belong
-    to <b>exactly</b> one species</u>.
+  collection of particles. These are unique properties of the
+  particle; therefore, <u>each particle must belong to <b>exactly</b>
+  one species</u>.
 </p>
 <p>
   The obvious attributes of the <b>Species</b> tag are the <b>Mass</b>
@@ -361,8 +355,8 @@ dynamod -m 0 -d 0.5 -C 7 -o config.start.xml
 <h2>IDRange</h2>
 <p>
   The <b>IDRange</b> tags are the most unique (and perhaps confusing)
-  part of the DynamO file format. However, they are extremely powerful
-  and elegant method for mapping properties onto particles.
+  part of the DynamO file format. However, they are a extremely
+  powerful method for mapping properties onto particles.
 </p>
 <p>
   <i>&quot;Traditionally&quot;</i> in other particle simulators, each particle
@@ -432,8 +426,7 @@ dynamod -m 0 -d 0.5 -C 7 -o config.start.xml
   hard sphere interaction. Hard spheres have a <b>Diameter</b>
   and <b>Elasticity</b> which are set by the appropriate
   attributes. All <b>Interaction</b>s must have a <b>Name</b> which is
-  used to identify it (e.g, it is used in the <b>IntName</b> attribute
-  of the <b>Species</b> tag).
+  used to identify it.
 </p>
 <div class="figure" style="float:right;width:400px;">
   <?php embedAJAXvideo("granularhardspheres", "d6M43_Nr4pQ", 400, 300); ?>
@@ -455,7 +448,7 @@ dynamod -m 0 -d 0.5 -C 7 -o config.start.xml
   at the start of the simulation. Please note that if you try to
   increase the
   <b>Diameter</b> again after running the simulation, you may again
-  cause overlaps and invalid dynamics!
+  cause overlaps!
 </p>
 <p>
   By lowering the <b>Elasticty</b>, we have also created
@@ -502,7 +495,8 @@ dynamod -m 0 -d 0.5 -C 7 -o config.start.xml
   </div>
 </div>
 <p>
-  Finally, the last none-empty tag to discuss is the <b>Dynamics</b> tag:
+  Finally, the last non-empty tag to discuss is the <b>Dynamics</b>
+  tag:
 </p>
 <?php xmlXPathFile("pages/config.tut3.xml", "/DynamOconfig/Simulation/Dynamics"); ?>
 <p>
@@ -568,10 +562,10 @@ dynamod -m 0 -d 0.5 -C 7 -o config.start.xml
 <?php button("Reference entry for <b>Local</b> tags","/index.php/reference#local");?>
 <p>
   <b>Globals</b> are single particle events which can occur anywhere
-  (i.e., they cannot be optimised by the use of neighbour
-  lists). Examples of global events are Single Occupancy cells,
-  boundary condition enforcers, but the most common <b>Global</b> used
-  in configuration files is the neighbour list.
+  (i.e., they cannot be optimised by the use of neighbour lists). A
+  typical example of a Global is the Neighbour list, but this is
+  usually hidden by default. Other examples of global events are
+  Single Occupancy cells and boundary condition enforcers.
 </p>
 <?php button("Reference entry for <b>Global</b> tags","/index.php/reference#global");?>
 <p>

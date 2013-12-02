@@ -198,6 +198,25 @@ li {
     background-color:#ccddee;
  }
 
+#TOC ol {
+    /* Android autofit bugfix */
+    list-style-type: square;
+    background-color:#ccddee;
+    padding-left:15px;
+ }
+
+#TOC ol ol {
+    list-style-type: disc;
+    background-color:#ccddee;
+    padding-left:20px;
+ }
+
+#TOC ol ol ol {
+    list-style-type: circle;
+    background-color:#ccddee;
+    padding-left:20px;
+ }
+
 #TOC #header {
     float:right;
     font-weight:bold;

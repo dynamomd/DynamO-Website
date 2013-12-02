@@ -27,7 +27,7 @@
    If everything is working correctly, you should see the copyright
   notice and the descriptions of the options of the dynamod program:
 </p>
-<?php codeblockstart(); ?>dynamod  Copyright (C) 2011  Marcus N Campbell Bannerman
+<?php codeblockstart(); ?>dynamod  Copyright (C) 2013  Marcus N Campbell Bannerman
 This program comes with ABSOLUTELY NO WARRANTY.
 This is free software, and you are welcome to redistribute it
 under certain conditions. See the licence you obtained with
@@ -66,9 +66,7 @@ Usage : dynamod <OPTIONS>...[CONFIG FILE]
 </ol>
 <p>
   This tutorial will give you a general understanding of these steps
-  and later tutorials will go into more detail to show you how to
-  simulate different systems and to process the output of DynamO to
-  collect results.
+  and later tutorials will go into the details.
 </p>
 <div class="figure" style="clear:right; float:right;width:400px;">
   <?php embedAJAXvideo("hardspheres", "tn6Cz0tNPuU", 400, 250); ?>
@@ -414,11 +412,11 @@ ETA 14s, Events 200k, t 38.0891, <MFT> 0.130645, T 1, U 0
   In order, the columns are: an estimate of how much longer the
   simulation will take (ETA), how many events have been executed
   already, and how much simulation time has passed. The average mean
-  free time (MFT), the average temperature (T) and internal energy (U)
-  are also outputted to help you track the equilibration of the
-  system. These values should fluctuate around a fixed value once the
-  system reaches equilibrium. Once the simulation is over, you'll see
-  that the final configuration is written out
+  free time (MFT), the average temperature (T) and configurational
+  internal energy (U) are also outputted to help you track the
+  equilibration of the system. These values should fluctuate around a
+  fixed value once the system reaches equilibrium. Once the simulation
+  is over, you'll see that the final configuration is written out
   to <em>config.equilibrated.xml</em>:
 </p>
 <?php codeblockstart(); ?>Simulation: Output written to output.xml.bz2
@@ -429,7 +427,8 @@ Simulation: Config written to config.equilibrated.xml<?php codeblockend("brush: 
   configuration so it should be discarded. The purpose of this first
   run is to allow the system to have enough time to "relax" from this
   crystalline configuration and "forget" about this initial
-  configuration.
+  configuration. Ideally, our results should be the same regardless of
+  where we started (a property of systems which are ergodic).
 </p>
 <p>
   From previous experience, $10^6$ events is more than enough to

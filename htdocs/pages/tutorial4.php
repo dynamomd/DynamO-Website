@@ -44,14 +44,10 @@
 <p>
   Although this tutorial looks at a multicomponent square-well fluid,
   it provides you with all of the knowledge you need to study any
-  multicomponent system. In the following section, we motivate the
-  square-well model and discuss its importance as a simplifed model of
-  atomic interactions. The remaining sections describe how to
-  implement a simulation of a binary (two-component) mixture of square-well
-  particles.
+  multicomponent system.
 </p>
 
-<h1><a id="aboutsquarewellfluids"></a>About square-well fluids</h1>
+<h2><a id="aboutsquarewellfluids"></a>About square-well fluids</h2>
 <p>
   For the purpose of the tutorial, we'll want to simulate a mixture of
   square-well molecules. If you want to learn more about the
@@ -65,7 +61,7 @@
   described in the following reference entry.
 </p>
 <?php button("Reference entry for <i>\"PBC\"</i> Type <b>BoundaryConditions</b>","/index.php/reference#typepbc");?>
-<h1>The whole tutorial in brief</h2>
+<h2>The whole tutorial in brief</h2>
 <p>
   We're going to study a binary mixture of square-well
   molecules. We'll have a larger species, A, and a smaller species,
@@ -200,29 +196,29 @@ Mode 1: Mono/Multi-component square wells
 <?php xmlXPathFile("pages/config.tut4.mono.xml", "/DynamOconfig/Simulation/Genus"); ?>
 <p>
   If we want to study a binary system, we'll need to define two
-  <b>Species</b> to be able to identify the two types of particles in the
-  output. Using two <b>Species</b> also provides a convenient way to specify
-  the different masses of the two types of particles. Lets assume we
-  want to convert the first 100 particles in the configuration file to
+  <b>Species</b> to be able to get per-species results in the output
+  data. Using two <b>Species</b> also provides a convenient way to
+  specify the different masses of the two types of particles. Lets
+  assume we want to convert the first 100 particles in the
+  configuration file to
   <b>Species</b> "A" and have the rest as <b>Species</b> "B", we can change the file
   to:
 </p>
 <?php xmlXPathFile("pages/config.tut4.binary.xml", "/DynamOconfig/Simulation/Genus"); ?>
 <p>
   You should notice that we've reduced the mass of the smaller
-  particles (type B) to match the ratio $m_A/m_B=8$. This implies
-  that we'll also need to effectively shrink the diameter of the
-  particles which are becoming <b>Species</b> B. Instead, we could have
+  particles (type B) to match the ratio $m_A/m_B=8$. This implies that
+  we'll also need to effectively shrink the diameter of the particles
+  which are becoming <b>Species</b> B. Instead, we could have
   increased the mass of the larger particles (type A) to satisfy this
   ratio; but this would have meant that we would also have to increase
   their diameter. The problem with increasing diameters of particles
   by hand is that you may accidentally cause nearby particles to
   overlap. We must be careful to avoid creating overlapping cores, as
-  the dynamics are undefined in these cases. Although DynamO is
-  extremely stable and may eventually resolve these overlaps, it is
-  not guaranteed in all cases. We always try to keep one mass scale
-  and one length scale set at unity, as this corresponds to a set of
-  reduced units (see
+  the dynamics are undefined in these cases. DynamO is extremely
+  stable and may eventually resolve these overlaps but it is not
+  guaranteed in all cases. We have kept one mass at a value of one, as
+  this corresponds to a set of reduced units (see
   the <a href="/index.php/FAQ#q-what-units-does-the-dynamod-command-useproduce">FAQ
   on the units of DynamO</a>)
 </p>
@@ -236,18 +232,8 @@ Mode 1: Mono/Multi-component square wells
 </p>
 <?php button("Reference entry for <i>\"Ranged\"</i> Type <b>IDRange</b>","/index.php/reference#typeranged");?>
 <p>
-  If we consult
-  the <a href="/index.php/reference#species">documentation for the
-  <b>Species</b> tag</a>, we see that each particle must belong to exactly
-  one <b>Species</b> and each <b>Species</b> must have a
-  representative <b>Interaction</b>, who's <i>name</i> is specified by
-  the <b>IntName</b> attribute. This <b>Interaction</b> is used to describe
-  particles in the <b>Species</b> for visualisation and for calculation of
-  properties such as its excluded volume. Here we will need to define
-  at least two interactions, called <i>"AAInteraction"</i> and
-  <i>"BBInteraction"</i> which describe the two types of particles in
-  the system. In the next section we'll take a look at setting up all
-  of the <b>Interaction</b>s of the system.
+  In the next section we'll take a look at setting up all of
+  the <b>Interaction</b>s of the system.
 </p>
 <h2>Setting up the Interactions</h2>
 <p>
@@ -260,25 +246,20 @@ Mode 1: Mono/Multi-component square wells
   Here, we will use three separate <b>Interaction</b> tags to input
   the parameters of the three types of interactions between all
   species (A-A, A-B, and B-B). We were very careful to shrink the mass
-  of type "B" particles so that, to satisfy the ratio
-  $\sigma_A/\sigma_B=2$, the large particles have a diameter of
+  of type "B" particles so that, in order to obtain the ratio
+  $\sigma_A/\sigma_B=2$, the large particles will have a diameter of
   $\sigma_A=1$ and the small particles a diameter of
   $\sigma_B=0.5$. An example implementation using these diameters is
   given below:
 </p>
 <?php xmlXPathFile("pages/config.tut4.binary.xml", "/DynamOconfig/Simulation/Interactions", 4,3); ?>
 <p>
-  The first <b>Interaction</b> entry handles the interactions between <b>Species</b>
-  "A" particles. A
+  The first <b>Interaction</b> entry handles the interactions
+  between <b>Species</b> "A" particles. A
   special <a href="/index.php/reference#typesingle">"Single" type
   IDPairRange</a> is used to convert a single IDRange, which
   identifies all of the type A particles, into a <b>IDPairRange</b>
-  describing all pairings of type A particles. This <b>Interaction</b> is
-  also used to represent the type A particles, as it has their
-  diameter and well width. Therefore, the name attribute of the
-  <b>Interaction</b> has been set to <i>"AAInteraction"</i> to
-  correspond with the
-  <b>Species</b> IntName attribute.
+  describing all pairings of type A particles.
 </p>
 <?php button("Reference entry for <i>\"Single\"</i> Type <b>IDPairRange</b>","/index.php/reference#typesingle");?>
 <p>
@@ -430,22 +411,23 @@ Mode 1: Mono/Multi-component square wells
   may cool or heat on compression
   (see <a href="http://en.wikipedia.org/wiki/Joule%E2%80%93Thomson_effect">Joule-Thomson
   effect</a>), but even cooling is problematic if the system becomes
-  glassy or "stuck" due to its reduced kinetic energy.
+  "stuck".
 </p>
 <p>
-  You may consider stopping the compression periodically to rescale
-  the temperature to try to accelerate the compression process. You
-  can find out how to <a href="/index.php/FAQ#stoppausepeek">stop any
-  simulation while it is running in this FAQ</a>.  To alter the
-  current temperature of a configuration file we can use the following
-  dynamod command:
+  You may consider stopping the compression periodically and rescaling
+  the temperature as it can accelerate the compression. You can find
+  out how to <a href="/index.php/FAQ#stoppausepeek">stop any
+  simulation while it is running in this FAQ</a>.  To rescale the
+  temperature of a configuration file we can use the following dynamod
+  command:
 </p>
 <?php codeblockstart(); ?>dynamod config.compressed.xml -r 1 -o config.rescaled.xml<?php codeblockend("brush: shell;"); ?>
 <p>
   This will rescale the velocities of the particles in the system so
   that the current temperature is 1 (set by the <i>-r</i>
-  option). Rescaling the temperature once after compression exactly
-  sets the temperature in "hard" systems such as the
+  option). Please note, that this does not thermostat the
+  temperature. Rescaling the temperature only exactly sets/thermostats
+  the temperature in "hard" systems such as the
   using <a href="/index.php/reference#typehardsphere">hard-sphere</a>/<a href="/index.php/reference#typeparallelcubes">parallel-cube</a>/<a href="/index.php/reference#typelines">hard-lines</a>
   systems. These systems have the internal energy of an ideal gas,
   therefore the temperature does not change with time (except if it is
@@ -454,17 +436,11 @@ Mode 1: Mono/Multi-component square wells
 </p>
 <h1><a id="thermostat"></a>Adding a thermostat</h1>
 <p>
-  Temperature is a measure of the kinetic energy of a particle system
-  but there are other stores of energy, such as the interaction or
-  configurational energy. In square well systems, particles inside
-  another particle's well have an additional negative potential energy
-  in addition to their kinetic energy. After you have rescaled the
-  temperature and begin to simulate the system again, particle pairs
-  may move in or out of each others square-well. This motion will
-  convert energy between potential and kinetic and the temperature
-  will again change. If we want to measure the system at a set
-  temperature, we will need to add a thermostat to hold the system at
-  the desired temperature.
+   After you have rescaled the temperature and begin to simulate the
+  system again, square-well particles may begin to rapidly heat or
+  cool as they exchange configurational energy for kinetic energy.  If
+  we want to measure the system at a set temperature, we will need to
+  add a thermostat to try hold the system at the desired temperature.
 </p>
 <p>
   To add a thermostat, again use the dynamod tool:

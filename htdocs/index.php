@@ -142,19 +142,17 @@ $contentdate = date("l jS F Y ", filemtime("pages/".$page.".php"));
 
 function create_toc( $content ) {
 	preg_match_all( '/<h([1-6])(.*)>([^<]+)<\/h[1-6]>/i', $content, $matches, PREG_SET_ORDER );
- 
-	global $anchors;
- 
+
+	global $anchors; 
 	$anchors = array();
-	$toc 	 = '<div id="TOC"><div id="header">Table of Contents</div><ol class="toc">'."\n";
-	$i 		 = 0;
- 
+        $prevlvl = 1;
+	$toc 	 = '<div id="TOC"><div id="header">Table of Contents</div>'."\n".'<ol class="toc">';
+
+ 	/*Scan over each heading in the document*/
 	foreach ( $matches as $heading ) {
- 
-		if ($i == 0)
-			$startlvl = $heading[1];
-		$lvl 		= $heading[1];
- 
+		$lvl = $heading[1];
+
+		/*Figure out the anchor id of the heading and if we need to add one*/
 		$ret = preg_match( '/id=[\'|"](.*)?[\'|"]/i', stripslashes($heading[2]), $anchor );
 		if ( $ret && $anchor[1] != '' ) {
 			$anchor = stripslashes( $anchor[1] );
@@ -164,55 +162,51 @@ function create_toc( $content ) {
 			$add_id = true;
 		}
  
+		/*Check if the new anchor is unique, alter it if it is not*/
 		if ( !in_array( $anchor, $anchors ) ) {
 			$anchors[] = $anchor;
 		} else {
 			$orig_anchor = $anchor;
-			$i = 2;
+			$j = 2;
 			while ( in_array( $anchor, $anchors ) ) {
-				$anchor = $orig_anchor.'-'.$i;
-				$i++;
+				$anchor = $orig_anchor.'-'.$j;
+				$j++;
 			}
 			$anchors[] = $anchor;
 		}
  
+		/*Add the anchor id if needed*/
 		if ( $add_id ) {
-			$content = substr_replace( $content, '<h'.$lvl.' id="'.$anchor.'"'.$heading[2].'>'.$heading[3].'</h'.$lvl.'>', strpos( $content, $heading[0] ), strlen( $heading[0] ) );
+		 $content = substr_replace( $content, '<h'.$lvl.' id="'.$anchor.'"'.$heading[2].'>'.$heading[3].'</h'.$lvl.'>', strpos( $content, $heading[0] ), strlen( $heading[0]));
 		}
  
+		/*Grab the title of the heading if needed.*/
 		$ret = preg_match( '/title=[\'|"](.*)?[\'|"]/i', stripslashes( $heading[2] ), $title );
 		if ( $ret && $title[1] != '' )
 			$title = stripslashes( $title[1] );
 		else	
 			$title = $heading[3];
-		$title 		= trim( strip_tags( $title ) );
- 
-		if ($i > 0) {
-			if ($prevlvl < $lvl) {
-				$toc .= "\n"."<ol>"."\n";
-			} else if ($prevlvl > $lvl) {
-				$toc .= '</li>'."\n";
-				while ($prevlvl > $lvl) {
-					$toc .= "</ol>"."\n".'</li>'."\n";
-					$prevlvl--;
-				}
-			} else {
-				$toc .= '</li>'."\n";
-			}
-		}
- 
-		$j = 0;
-		$toc .= '<li><a href="#'.$anchor.'">'.$title.'</a>';
+		$title = trim( strip_tags( $title ) );
+		
+		/*Open or close lists as needed*/
+                while ( $prevlvl < $lvl ) {
+		 $toc .= "\n".'<ol>';
+                 $prevlvl++;
+                }
+                while ( $prevlvl > $lvl ) {
+                 $toc .= "\n</ol>";
+                 $prevlvl--;
+                }
+                /* Add the list item*/
+		$toc .= "\n<li>".'<a href="#'.$anchor.'">'.$title."</a></li>";
 		$prevlvl = $lvl;
- 
-		$i++;
 	}
  
 	unset( $anchors );
  
-	while ( $lvl > $startlvl ) {
-		$toc .= "\n</ol>";
-		$lvl--;
+	while ( $lvl > 1 ) {
+	  $toc .= "\n</ol>";
+	 $lvl--;
 	}
  
 	$toc .= '</li>'."\n";
