@@ -60,6 +60,14 @@
 </p>
 <ul>
   <li>
+    <a href="http://events.tifrh.res.in/sof2014/Book/Patrick.pdf">
+      P. C. Royall, A. Malins, A. J. Dunleavy, and R. Pinney,
+      "Geometric Frustration is Strong in Model Fragile
+      Glassformers", <i>In Fragility of Glass-forming Liquids, TRiPS
+      13</i>, 2014, Ed. A. L. Greer, K. F. Kelton, S. Sastry
+    </a>
+  </li>
+  <li>
     <a href="http://dx.doi.org/10.1103/PhysRevE.88.022129">
       S. Mandal, V. Chikkadi, B. Nienhuis, D. Raabe, P. Schall,
       F. Varnik, "Heterogeneous Shear in Hard Sphere
