@@ -177,8 +177,11 @@
 </p>
 <h1>Q: When I try to run dynavis I get a GLXBadFBConfig error, what is wrong?</h1>
 <p>
-  Short answer: Your graphics card or drivers don't support OpenGL
-  3.3, you need to upgrade your drivers.
+  Short answer: Your graphics card and/or drivers do not support
+  OpenGL 3.3 contexts, which are required for the visualisation
+  library. To run the visualiser you will need a modern graphics card
+  (your PC should be able to run modern games at decent speeds). You
+  may need to either upgrade your drivers and/or your graphics card.
 </p>
 <p>
   This error usually appears right at the start, and looks like:
@@ -207,11 +210,22 @@ The error was 'GLXBadFBConfig'.
    backtrace from your debugger if you break on the gdk_x_error() function.)
 BoundedPQ: Exception Events = 0<?php codeblockend("brush: shell;"); ?>
 <p>
-  This is usually due to your computer running the open-source drivers
-  which are currently a little behind in implementing recent versions
-  of OpenGL. They are catching up quickly but it will be 2014 or
-  possibly later before OpenGL 3.3 is fully supported. In the meantime
-  we highly recommend that you use the binary drivers.
+  The GLXBadFBConfig error is raised as your system was unable to
+  provide an OpenGL 3.3 context.
+</p>
+<p>
+  If you are using built-in Intel graphics, you will probably not be
+  able to use the visualiser yet until the open source drivers catch
+  up with the closed-source drivers (and windows). They are catching
+  up quickly but it will be 2014 or possibly later before OpenGL 3.3
+  is fully supported and distributed. 
+</p>
+<p>
+  If you have a discrete graphics card, we highly recommend that you
+  use the binary drivers. Binary drivers are the closed-source drivers
+  developed by the manufacturers of your graphics card. For AMD/ATI
+  cards, the packages are called FGLRX, but for NVidia cards they are
+  usually called nvidia or nvidia-current.
 </p>
 <h1>Q: The Andersen thermostat is giving me a non-zero system momentum
 average. Is this an error?</h1>
