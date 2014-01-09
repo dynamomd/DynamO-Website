@@ -32,9 +32,8 @@
 <div style="clear:both;"></div>
 <h2>Tutorials</h2>
 <?php button("Tutorial 1: Compiling DynamO from Source","/index.php/tutorial1");?>
-<?php button("Tutorial 2: Introduction to the DynamO workflow","/index.php/tutorial2");?>
+<?php button("Tutorial 2: Introduction to the DynamO workflow (hard-sphere simulations)","/index.php/tutorial2");?>
 <?php button("Tutorial 3: Overview of the Configuration File Format","/index.php/tutorial3");?>
-<?php button("Tutorial 4: Example: Multicomponent Square-Well Fluid","/index.php/tutorial4");?>
 <?php button("Appendix A: Parsing Output and Config Files","/index.php/tutorialA");?>
 <h2>References</h2>
 <?php button("Configuration File Format Reference","/index.php/reference");?>
