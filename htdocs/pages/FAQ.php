@@ -12,6 +12,27 @@
 <p>
   Here are a list of frequently asked questions and their answers.
 </p>
+<h1 style="clear:both">Q: What does DynamO stand for?</h1>
+<p>
+  Short answer: <b>Dynam</b>ics of <b>O</b>bjects.
+</p>
+<p>
+  A more precise name would be "Dynamics of Discrete Objects," so if
+  there is ever an O'Reilly book on DynamO it will feature a Dodo on
+  the front cover.
+</p>
+<h1>Q: What is the logo of DynamO?</h1>
+<p>
+  Short answer: An illustration of an electric dynamo.
+</p>
+<p>
+  The source of the drawing is taken from the U.S. Patent 284,110
+  which describes an electric dynamo. This was redrawn and simplified
+  using inkscape. The artwork for the logo is available in the docs
+  folder of the source code
+  (<a href="https://github.com/toastedcrumpets/DynamO/tree/master/docs">available
+  here</a>).
+</p>
 <h1>Q: What are the units of DynamO?</h1>
 <p>
   Short answer: whatever units you use in the input configuration
