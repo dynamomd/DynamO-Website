@@ -461,7 +461,7 @@ Simulation: Config written to config.end.xml<?php codeblockend("brush: plain;");
   the visualiser controls. If you close the visualiser windows, the
   simulation will automatically unpause and will carry on running.
 </p>
-<h1>Processing the collected data</h1>
+<h1 id="processing">Processing the collected data</h1>
 <p>
   <b>dynarun</b> has the ability to collect a wide range of properties
   for molecular and granular systems. These include complex properties

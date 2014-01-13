@@ -335,5 +335,16 @@ dynarun config.out.xml.bz2 -c 1000000 -o config.final.xml -L IntEnergyHist
 </p>
 <h1 id="dataprocessing">Processing the results</h1>
 <p>
-  
+  In the first instance, we can start processing the collected data in
+  the same way
+  <a href="/index.php/tutorial2#processing">tutorial 2 deals with
+    processing collected data</a>. Expanding the output file:
 </p>
+<?php codeblockstart(); ?>
+bunzip2 output.xml.bz2
+<?php codeblockend("brush: shell;"); ?>
+<p>
+  We can then check the file to see how close the temperature is to
+  $k_B\,T=2$.
+</p>
+<?php xmlXPathFile("pages/output.tut4.xml", "//Temperature"); ?>
