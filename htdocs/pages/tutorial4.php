@@ -301,18 +301,19 @@ ETA 7s, Events 600k, t 39.2339, <MFT> 0.134103, T 2.02729, U -0.79425
   histograms.
 </p>
 <p>
-  Unfortunately there is a problem with leaving thermostats on while
-  collecting dynamical information like the transport
+  Unfortunately there is a problem with thermostats while collecting
+  data which characterises the dynamics of the system, e.g. the
+  transport
   coefficients. The <a href="/index.php/reference#typeandersen">Andersen
-  thermostat</a> we use changes the motion of the system when it
-  randomly re-assigns the particle velocities. If we measure the
+  thermostat</a> changes the motion of the system when it randomly
+  re-assigns the particle velocities. Thus, if we measure the
   properties of the system, they will be the those of the square-well
-  fluid AND the thermostat.
+  fluid AND the thermostat, not the fluid alone.
   
-  Also, if we take a look at
-  the <a href="/index.php/outputplugins#thermalconductivityrestrictions">documentation
-  for the thermal conductivity</a> we'll notice that it is restricted
-  only to NVE/microcanonical simulations.
+  Also, if we take a look at the restrictions on using
+  the <a href="/index.php/outputplugins#thermalconductivityrestrictions">thermal
+  conductivity</a>, we'll notice that it is restricted only to
+  NVE/microcanonical simulations (systems without a thermostat).
 </p>
 <h1 id="dataprocessing">Processing the results</h1>
 <p>

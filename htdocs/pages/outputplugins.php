@@ -85,33 +85,31 @@ dynarun config.xml -c 1000000 -L MFT:BinWidth=0.5,Length=100
   DynamO. The output tags of the Misc plugin and how they are
   collected are discussed in the following subsections.
 </p>
+<h4>Options</h4>
 <p>
-  <b>Options</b>: There are no options for this plugin.
+  There are no options for this plugin.
 </p>
 <h3>Density</h3>
 <p>
   This tag contains the number of particles divided by the volume of
   the primary image.
 </p>
-<p>
-  <b>Example output</b>:
-</p>
+<h4>Example output</h4>
 <?php codeblockstart();?>
 <Misc>
   <Density val="0.5"/>
 </Misc>
 <?php codeblockend("brush: xml;"); ?>
-<p>
-  <b>Full Tag, Subtag, and Attribute List</b>:
-</p>
+<h4>Full Tag, Subtag, and Attribute List</h4>
 <ul>
   <li>
     <b>val</b> <i>(attribute)</i>: The number density of the system
     ($N/V$).
   </li>
 </ul>
+<h4>Restrictions</h4>
 <p>
-  <b>Restrictions</b>: In non-periodic systems, this value may not have
+   In non-periodic systems, this value may not have
   any significance as the primary image is not related to the dynamics
   of the system. Complex boundary effects, such as walls reducing the
   accessible volume of the system, are not included in this
@@ -127,24 +125,21 @@ dynarun config.xml -c 1000000 -L MFT:BinWidth=0.5,Length=100
   <a href="/index.php/reference#selfinteractions">particle's
   self-interaction</a>.
 </p>
-<p>
-  <b>Example output</b>:
-</p>
+<h4>Example output</h4>
 <?php codeblockstart();?>
 <Misc>
   <PackingFraction val="0.261799387799154"/>
 </Misc>
 <?php codeblockend("brush: xml;"); ?>
-<p>
-  <b>Full Tag, Subtag, and Attribute List</b>:
-</p>
+<h4>Full Tag, Subtag, and Attribute List</h4>
 <ul>
   <li>
     <b>val</b> <i>(attribute)</i>: The packing fraction of the system.
   </li>
 </ul>
+<h4>Restrictions</h4>
 <p>
-  <b>Restrictions</b>: In non-periodic systems, this value may not
+   In non-periodic systems, this value may not
   have any significance as the primary image is not related to the
   dynamics of the system. Complex boundary effects, such as walls
   reducing the accessible volume of the system, are not included in
@@ -155,25 +150,22 @@ dynarun config.xml -c 1000000 -L MFT:BinWidth=0.5,Length=100
   This tag contains the number
   of <a href="/index.php/reference#species">Species</a> in the system.
 </p>
-<p>
-  <b>Example output</b>:
-</p>
+<h4>Example output</h4>
 <?php codeblockstart();?>
 <Misc>
   <SpeciesCount val="1"/>
 </Misc>
 <?php codeblockend("brush: xml;"); ?>
-<p>
-  <b>Full Tag, Subtag, and Attribute List</b>:
-</p>
+<h4>Full Tag, Subtag, and Attribute List</h4>
 <ul>
   <li>
     <b>val</b> <i>(attribute)</i>: The number of species in the
     system.
   </li>
 </ul>
+<h4>Restrictions</h4>
 <p>
-  <b>Restrictions</b>: None.
+   None.
 </p>
 <h3>ParticleCount</h3>
 <p>
@@ -181,34 +173,29 @@ dynarun config.xml -c 1000000 -L MFT:BinWidth=0.5,Length=100
   of <a href="/index.php/reference#species">Particles</a> in the
   system.
 </p>
-<p>
-  <b>Example output</b>:
-</p>
+<h4>Example output</h4>
 <?php codeblockstart();?>
 <Misc>
   <ParticleCount val="1372"/>
 </Misc>
 <?php codeblockend("brush: xml;"); ?>
-<p>
-  <b>Full Tag, Subtag, and Attribute List</b>:
-</p>
+<h4>Full Tag, Subtag, and Attribute List</h4>
 <ul>
   <li>
     <b>val</b> <i>(attribute)</i>: The number of particles in the
     system.
   </li>
 </ul>
+<h4>Restrictions</h4>
 <p>
-  <b>Restrictions</b>: None.
+   None.
 </p>
 <h3>SystemMomentum</h3>
 <p>
   This tag contains the current and average momentum of all of the
   particles in the system.  
 </p>
-<p>
-  <b>Example output</b>:
-</p>
+<h4>Example output</h4>
 <?php codeblockstart();?>
 <Misc>
   <SystemMomentum>
@@ -217,9 +204,7 @@ dynarun config.xml -c 1000000 -L MFT:BinWidth=0.5,Length=100
   </SystemMomentum>
 </Misc>
 <?php codeblockend("brush: xml;"); ?>
-<p>
-  <b>Full Tag, Subtag, and Attribute List</b>:
-</p>
+<h4>Full Tag, Subtag, and Attribute List</h4>
 <ul>
   <li>
     <b>Current</b> <i>(tag)</i>: The total momentum of the system at
@@ -242,8 +227,9 @@ dynarun config.xml -c 1000000 -L MFT:BinWidth=0.5,Length=100
     </ul>
   </li>
 </ul>
+<h4>Restrictions</h4>
 <p>
-  <b>Restrictions</b>: The averages in this tag are collected exactly
+   The averages in this tag are collected exactly
   (see the
   <a href="/index.php/FAQ#q-how-does-dynamo-collect-exact-timeaverages">FAQ
   on exact averages in DynamO</a>) and so this data is not valid
@@ -273,17 +259,13 @@ dynarun config.xml -c 1000000 -L MFT:BinWidth=0.5,Length=100
   rotational degrees of freedom and to $f=5$ in systems with
   rotational degrees of freedom.
 </p>
-<p>
-  <b>Example output</b>:
-</p>
+<h4>Example output</h4>
 <?php codeblockstart();?>
 <Misc>
   <Temperature Mean="1.00000000000002" MeanSqr="0.999999999999996" Current="1.00000000000001" Min="1.00000000000001" Max="1.00000000000001"/>
 </Misc>
 <?php codeblockend("brush: xml;"); ?>
-<p>
-  <b>Full Tag, Subtag, and Attribute List</b>:
-</p>
+<h4>Full Tag, Subtag, and Attribute List</h4>
 <ul>
   <li>
     <b>Mean</b> <i>(attribute)</i>: The time-averaged temperature,
@@ -305,8 +287,9 @@ dynarun config.xml -c 1000000 -L MFT:BinWidth=0.5,Length=100
     maximum values of the temperature during the simulation.
   </li>
 </ul>
+<h4>Restrictions</h4>
 <p>
-  <b>Restrictions</b>: The averages in this tag are collected exactly
+   The averages in this tag are collected exactly
   (see the
   <a href="/index.php/FAQ#q-how-does-dynamo-collect-exact-timeaverages">FAQ
   on exact averages in DynamO</a>) and so this data is not valid
@@ -321,17 +304,13 @@ dynarun config.xml -c 1000000 -L MFT:BinWidth=0.5,Length=100
   equal to the excess internal energy (also known as the
   configurational internal energy).
 </p>
-<p>
-  <b>Example output</b>:
-</p>
+<h4>Example output</h4>
 <?php codeblockstart();?>
 <Misc>
   <UConfigurational Mean="-7047.30749520661" MeanSqr="49679058.1379387" Current="-7340" Min="-8232" Max="-6912"/>
 </Misc>
 <?php codeblockend("brush: xml;"); ?>
-<p>
-  <b>Full Tag, Subtag, and Attribute List</b>:
-</p>
+<h4>Full Tag, Subtag, and Attribute List</h4>
 <ul>
   <li>
     <b>Mean</b> <i>(attribute)</i>: The time-averaged configurational
@@ -357,8 +336,9 @@ dynarun config.xml -c 1000000 -L MFT:BinWidth=0.5,Length=100
     during the simulation.
   </li>
 </ul>
+<h4>Restrictions</h4>
 <p>
-  <b>Restrictions</b>: The averages in this tag are collected exactly
+   The averages in this tag are collected exactly
   (see the
   <a href="/index.php/FAQ#q-how-does-dynamo-collect-exact-timeaverages">FAQ
   on exact averages in DynamO</a>) and so this data is not valid
@@ -382,28 +362,23 @@ dynarun config.xml -c 1000000 -L MFT:BinWidth=0.5,Length=100
   \[\frac{C_v}{k_B}=\frac{C_v^{ex.}}{k_B} +N\frac{f}{2}\] 
 
   where $f$ is the degrees of freedom of the particle.
-  <br/>
-  <b>Note</b>: 
 </p>
-<p>
-  <b>Example output</b>:
-</p>
+<h4>Example output</h4>
 <?php codeblockstart();?>
 <Misc>
   <ResidualHeatCapacity Value="80608.2639343955"/>
 </Misc>
 <?php codeblockend("brush: xml;"); ?>
-<p>
-  <b>Full Tag, Subtag, and Attribute List</b>:
-</p>
+<h4>Full Tag, Subtag, and Attribute List</h4>
 <ul>
   <li>
     <b>Value</b> <i>(attribute)</i>: The calculated excess
     heat capacity $(C_v^{ex.}/k_B)$.
   </li>
 </ul>
+<h4>Restrictions</h4>
 <p>
-  <b>Restrictions</b>: This expression and the values reported are
+   This expression and the values reported are
   only valid in the canonical (NVT) ensemble. The restrictions on
   the <a href="#uconfigurational">UConfigurational</a> plugin also
   apply.
@@ -438,9 +413,7 @@ dynarun config.xml -c 1000000 -L MFT:BinWidth=0.5,Length=100
   
   \[p=\mathrm{tr}(\mathbf{P})/3=\left(P_{xx}+P_{yy}+P_{zz}\right)/3\]
 </p>
-<p>
-  <b>Example output</b>:
-</p>
+<h4>Example output</h4>
 <?php codeblockstart();?>
 <Misc>
   <Pressure Avg="-1.92667849178502">
@@ -457,9 +430,7 @@ dynarun config.xml -c 1000000 -L MFT:BinWidth=0.5,Length=100
   </Pressure>
 </Misc>
 <?php codeblockend("brush: xml;"); ?>
-<p>
-  <b>Full Tag, Subtag, and Attribute List</b>:
-</p>
+<h4>Full Tag, Subtag, and Attribute List</h4>
 <ul>
   <li>
     <b>Avg</b> <i>(attribute)</i>: This attribute contains the
@@ -485,8 +456,9 @@ dynarun config.xml -c 1000000 -L MFT:BinWidth=0.5,Length=100
     above.
   </li>
 </ul>
+<h4>Restrictions</h4>
 <p>
-  <b>Restrictions</b>: The kinetic pressure averages are collected
+   The kinetic pressure averages are collected
   exactly (see the
   <a href="/index.php/FAQ#q-how-does-dynamo-collect-exact-timeaverages">FAQ
   on exact averages in DynamO</a>) and so only
@@ -503,17 +475,13 @@ dynarun config.xml -c 1000000 -L MFT:BinWidth=0.5,Length=100
   the <a href="#timing">Timing</a> tag for information on the
   calculation time of the simulation.
 </p>
-<p>
-  <b>Example output</b>:
-</p>
+<h4>Example output</h4>
 <?php codeblockstart();?>
 <Misc>
   <Duration Events="1059702" OneParticleEvents="0" TwoParticleEvents="1059702" VirtualEvents="1" Time="59.348997249289"/>
 </Misc>
 <?php codeblockend("brush: xml;"); ?>
-<p>
-  <b>Full Tag, Subtag, and Attribute List</b>:
-</p>
+<h4>Full Tag, Subtag, and Attribute List</h4>
 <ul>
   <li>
     <b>Events</b> <i>(attribute)</i>: The total number of events
@@ -547,17 +515,16 @@ dynarun config.xml -c 1000000 -L MFT:BinWidth=0.5,Length=100
     executed for, in simulation units.
   </li>
 </ul>
+<h4>Restrictions</h4>
 <p>
-  <b>Restrictions</b>: None.
+   None.
 </p>
 <h3>EventCounters</h3>
 <p>
   This tag contains more detailed information on the types of events
   which have occurred during the simulation.
 </p>
-<p>
-  <b>Example output</b>:
-</p>
+<h4>Example output</h4>
 <?php codeblockstart();?>
 <Misc>
   <EventCounters>
@@ -568,9 +535,7 @@ dynarun config.xml -c 1000000 -L MFT:BinWidth=0.5,Length=100
   </EventCounters>
 </Misc>
 <?php codeblockend("brush: xml;"); ?>
-<p>
-  <b>Full Tag, Subtag, and Attribute List</b>:
-</p>
+<h4>Full Tag, Subtag, and Attribute List</h4>
 <ul>
   <li>
     <b>Entry</b> <i>(tag)</i>: This tag contains attributes which
@@ -598,8 +563,9 @@ dynarun config.xml -c 1000000 -L MFT:BinWidth=0.5,Length=100
     </ul>
   </li>
 </ul>
+<h4>Restrictions</h4>
 <p>
-  <b>Restrictions</b>: None.
+   None.
 </p>
 <h3><a id="timing"></a>Timing</h3>
 <p>
@@ -607,17 +573,13 @@ dynarun config.xml -c 1000000 -L MFT:BinWidth=0.5,Length=100
   simulation. See the <a href="#duration">Duration</a> tag for more
   information on the "simulated" timing.
 </p>
-<p>
-  <b>Example output</b>:
-</p>
+<h4>Example output</h4>
 <?php codeblockstart();?>
 <Misc>
   <Timing Start="Mon Jan 14 20:26:37 2013 " End="Mon Jan 14 20:26:59 2013 " EventsPerSec="49262.070727909" SimTimePerSec="2.75894031681944"/>
 </Misc>
 <?php codeblockend("brush: xml;"); ?>
-<p>
-  <b>Full Tag, Subtag, and Attribute List</b>:
-</p>
+<h4>Full Tag, Subtag, and Attribute List</h4>
 <ul>
   <li>
     <b>Start</b> <i>(attribute)</i>: The date and time that the simulation
@@ -637,8 +599,9 @@ dynarun config.xml -c 1000000 -L MFT:BinWidth=0.5,Length=100
     per second of calculation.
   </li>
 </ul>
+<h4>Restrictions</h4>
 <p>
-  <b>Restrictions</b>: None.
+   None.
 </p>
 <h3>totMeanFreeTime</h3>
 <p>
@@ -649,24 +612,21 @@ dynarun config.xml -c 1000000 -L MFT:BinWidth=0.5,Length=100
 
   \[ t_{mft} = t_{sim}\,N/\left(2\,N_{2}^{events} + N_{1}^{events}\right)\]
 </p>
-<p>
-  <b>Example output</b>:
-</p>
+<h4>Example output</h4>
 <?php codeblockstart();?>
 <Misc>
   <totMeanFreeTime val="0.0384196803563759"/>
 </Misc>
 <?php codeblockend("brush: xml;"); ?>
-<p>
-  <b>Full Tag, Subtag, and Attribute List</b>:
-</p>
+<h4>Full Tag, Subtag, and Attribute List</h4>
 <ul>
   <li>
     <b>val</b> <i>(attribute)</i>: The mean free time, $t_{mft}$.
   </li>
 </ul>
+<h4>Restrictions</h4>
 <p>
-  <b>Restrictions</b>: Virtual events are not counted in this value,
+   Virtual events are not counted in this value,
   therfore it is not a direct measurement of the computational cost of
   simulating the system.
 </p>
@@ -679,25 +639,22 @@ dynarun config.xml -c 1000000 -L MFT:BinWidth=0.5,Length=100
   introduction of the stable EDMD algorithm has made this tag largely
   obsolete.
 </p>
-<p>
-  <b>Example output</b>:
-</p>
+<h4>Example output</h4>
 <?php codeblockstart();?>
 <Misc>
   <NegativeTimeEvents Count="0"/>
 </Misc>
 <?php codeblockend("brush: xml;"); ?>
-<p>
-  <b>Full Tag, Subtag, and Attribute List</b>:
-</p>
+<h4>Full Tag, Subtag, and Attribute List</h4>
 <ul>
   <li>
     <b>Count</b> <i>(attribute)</i>: The number of events executed
     with a time in the past.
   </li>
 </ul>
+<h4>Restrictions</h4>
 <p>
-  <b>Restrictions</b>: None.
+   None.
 </p>
 <h3>Memusage</h3>
 <p>
@@ -706,25 +663,22 @@ dynarun config.xml -c 1000000 -L MFT:BinWidth=0.5,Length=100
   the way this information is obtained, it is the upper limit of the
   memory in use at that time, and the actual utilisation may be lower.
 </p>
-<p>
-  <b>Example output</b>:
-</p>
+<h4>Example output</h4>
 <?php codeblockstart();?>
 <Misc>
   <Memusage MaxKiloBytes="6580"/>
 </Misc>
 <?php codeblockend("brush: xml;"); ?>
-<p>
-  <b>Full Tag, Subtag, and Attribute List</b>:
-</p>
+<h4>Full Tag, Subtag, and Attribute List</h4>
 <ul>
   <li>
     <b>MaxKiloBytes</b> <i>(attribute)</i>: The memory used by the
     simulation at the time the output file was written out.
   </li>
 </ul>
+<h4>Restrictions</h4>
 <p>
-  <b>Restrictions</b>: None.
+   None.
 </p>
 <h3><a id="thermalconductivity"></a>ThermalConductivity</h3>
 <p>
@@ -764,12 +718,13 @@ dynarun config.xml -c 1000000 -L MFT:BinWidth=0.5,Length=100
   your system is isotropic, you may just average the three values to
   improve your statistics.
 </p>
+<h4 id="extrapolationofcorrelators">Extrapolation to the
+  infinite time limit</h4>
 <p>
-  <b><a id="extrapolationofcorrelators"></a>Extrapolation to the
-  infinite time limit</b>: As with all of the Green-Kubo/Einstein
+  As with all of the Green-Kubo/Einstein
   relationships for the transport coefficients, the desired
   (hydrodynamic) values are the infinite time correlation values:
-
+  
   \[\mathbf{L}_{qq} = \lim_{\Delta t\to\infty} \mathbf{L}_{qq}(\Delta
   t)\]
 
@@ -779,12 +734,13 @@ dynarun config.xml -c 1000000 -L MFT:BinWidth=0.5,Length=100
   regressed to the long time section of the plot to extrapolate the
   value.
 </p>
+<h4 id="generalnotesoncorrlations">General notes on evaluating
+  correlation functions</h4>
 <p>
-  <b><a id="generalnotesoncorrlations"></a>General notes on evaluating
-  correlation functions</b>: The notes below attempt to explain that a
-  lot of judgement is needed when evaluation correlation
-  functions. There is only a "window" of correlation times which can
-  be used to extract the transport coefficients.
+  The notes below attempt to explain that a lot of judgement is needed
+  when evaluation correlation functions. There is only a "window" of
+  correlation times which can be used to extract the transport
+  coefficients.
   
   <br/><b>Note 1</b>: In periodic systems, correlation functions
   should be studied only up to one sound-wave traversal time of the
@@ -810,9 +766,7 @@ dynarun config.xml -c 1000000 -L MFT:BinWidth=0.5,Length=100
   correlation time to allow these microscopic processes to average out
   so that you can capture the true long-time behaviour of the fluid.
 </p>
-<p>
-  <b>Example output</b>:
-</p>
+<h4>Example output</h4>
 <?php codeblockstart();?>
 <Misc>
   <ThermalConductivity>
@@ -825,9 +779,7 @@ dynarun config.xml -c 1000000 -L MFT:BinWidth=0.5,Length=100
   </ThermalConductivity>
 </Misc>
 <?php codeblockend("brush: xml;"); ?>
-<p>
-  <b>Full Tag, Subtag, and Attribute List</b>:
-</p>
+<h4>Full Tag, Subtag, and Attribute List</h4>
 <ul>
   <li>
     <b>Correlator</b> <i>(tag)</i>: The correlation data, outputted in
@@ -846,8 +798,8 @@ dynarun config.xml -c 1000000 -L MFT:BinWidth=0.5,Length=100
     coefficient, measured in the $x$-direction.
   </li>
 </ul>
+<h4 id="thermalconductivityrestrictions">Restrictions</h4>
 <p>
-  <a id="thermalconductivityrestrictions"></a><b>Restrictions</b>:
   This form is only valid in the micro-canonical ensemble (NVE).  The
   current implementation is also only valid for systems without
   rotational degrees of freedom (such as the hard sphere, square-well,
@@ -900,19 +852,17 @@ dynarun config.xml -c 1000000 -L MFT:BinWidth=0.5,Length=100
   In isotropic systems we can then average each of the above
   direction to get an
 </p>
+<h4>Extrapolation to the infinite time limit</h4>
 <p>
-  <b>Extrapolation to the infinite time limit</b>:
   See <a href="#extrapolationofcorrelators">the notes in the
   ThermalConductivity section</a>.
 </p>
+<h4>General notes on evaluating correlation functions</h4>
 <p>
-  <b>General notes on evaluating correlation functions</b>:
   See <a href="#generalnotesoncorrlations">the notes in the
   ThermalConductivity section</a>.
 </p>
-<p>
-  <b>Example output</b>:
-</p>
+<h4>Example output</h4>
 <?php codeblockstart();?>
 <Misc>
   <Viscosity>
@@ -925,9 +875,7 @@ dynarun config.xml -c 1000000 -L MFT:BinWidth=0.5,Length=100
   </Viscosity>
 </Misc>
 <?php codeblockend("brush: xml;"); ?>
-<p>
-  <b>Full Tag, Subtag, and Attribute List</b>:
-</p>
+<h4>Full Tag, Subtag, and Attribute List</h4>
 <ul>
   <li>
     <b>Correlator</b> <i>(tag)</i>: The correlation data, outputted in
@@ -955,8 +903,9 @@ dynarun config.xml -c 1000000 -L MFT:BinWidth=0.5,Length=100
     of the time-dependent transport coefficient.
   </li>
 </ul>
+<h4>Restrictions</h4>
 <p>
-  <b>Restrictions</b>: This correlator is valid in all molecular
+   This correlator is valid in all molecular
   systems.
 </p>
 <h3><a id="mutualdiffusion"></a>MutualDiffusion</h3>
@@ -999,23 +948,22 @@ dynarun config.xml -c 1000000 -L MFT:BinWidth=0.5,Length=100
   the other. You should note that $L_{ab}=L_{ba}$, so DynamO only
   collects one half of all of these pairings.
 </p>
+<h4>Restrictions</h4>
 <p>
-  <b>Restrictions</b>: This correlator is valid in all molecular
+   This correlator is valid in all molecular
   systems.
 </p>
+<h4>Extrapolation to the infinite time limit</h4>
 <p>
-  <b>Extrapolation to the infinite time limit</b>:
   See <a href="#extrapolationofcorrelators">the notes in the
   ThermalConductivity section</a>.
 </p>
+<h4>General notes on evaluating correlation functions</h4>
 <p>
-  <b>General notes on evaluating correlation functions</b>:
   See <a href="#generalnotesoncorrlations">the notes in the
   ThermalConductivity section</a>.
 </p>
-<p>
-  <b>Example output</b>:
-</p>
+<h4>Example output</h4>
 <?php codeblockstart();?>
 <Misc>
   <MutualDiffusion>
@@ -1028,9 +976,7 @@ dynarun config.xml -c 1000000 -L MFT:BinWidth=0.5,Length=100
   </MutualDiffusion>
 </Misc>
 <?php codeblockend("brush: xml;"); ?>
-<p>
-  <b>Full Tag, Subtag, and Attribute List</b>:
-</p>
+<h4>Full Tag, Subtag, and Attribute List</h4>
 <ul>
   <li>
     <b>Species1</b> <i>(attribute)</i>: The name of the
@@ -1062,8 +1008,9 @@ dynarun config.xml -c 1000000 -L MFT:BinWidth=0.5,Length=100
     time-dependent transport coefficient.
   </li>
 </ul>
+<h4>Restrictions</h4>
 <p>
-  <b>Restrictions</b>: This correlator is valid in all molecular
+   This correlator is valid in all molecular
   systems.
 </p>
 <h3>ThermalDiffusion</h3>
@@ -1094,19 +1041,17 @@ dynarun config.xml -c 1000000 -L MFT:BinWidth=0.5,Length=100
   system, there is a corresponding thermal diffusion coefficient. You
   should note that $L_{aq}=L_{qa}$.
 </p>
+<h4>Extrapolation to the infinite time limit</h4>
 <p>
-  <b>Extrapolation to the infinite time limit</b>:
   See <a href="#extrapolationofcorrelators">the notes in the
   ThermalConductivity section</a>.
 </p>
+<h4>General notes on evaluating correlation functions</h4>
 <p>
-  <b>General notes on evaluating correlation functions</b>:
   See <a href="#generalnotesoncorrlations">the notes in the
   ThermalConductivity section</a>.
 </p>
-<p>
-  <b>Example output</b>:
-</p>
+<h4>Example output</h4>
 <?php codeblockstart();?>
 <Misc>
     <ThermalDiffusion>
@@ -1119,9 +1064,7 @@ dynarun config.xml -c 1000000 -L MFT:BinWidth=0.5,Length=100
   </ThermalDiffusion>
 </Misc>
 <?php codeblockend("brush: xml;"); ?>
-<p>
-  <b>Full Tag, Subtag, and Attribute List</b>:
-</p>
+<h4>Full Tag, Subtag, and Attribute List</h4>
 <ul>
   <li>
     <b>Species</b> <i>(attribute)</i>: The name of
@@ -1149,8 +1092,9 @@ dynarun config.xml -c 1000000 -L MFT:BinWidth=0.5,Length=100
     time-dependent transport coefficient.
   </li>
 </ul>
+<h4>Restrictions</h4>
 <p>
-  <b>Restrictions</b>: All restrictions to the
+   All restrictions to the
   <a href="#thermalconductivity">ThermalConductivity</a>
   and <a href="#mutualdiffusion">MutualDiffusion</a> correlators apply here.
 </p>
@@ -1161,14 +1105,13 @@ dynarun config.xml -c 1000000 -L MFT:BinWidth=0.5,Length=100
   (see the <a href="#uconfigurational">UConfigurational</a> plugin for
   more information on this value).
 </p>
-<p>
-  <b>Example usage</b>:
-</p>
+<h4>Example usage</h4>
 <?php codeblockstart();?>
 -L IntEnergyHist:BinWidth=0.5
 <?php codeblockend("brush: shell;"); ?>
-<p>
-  <b>Options</b>: There are no options for this plugin.
+<h4>Options</h4>
+<p> 
+  There are no options for this plugin.
 </p>
 <ul>
   <li>
@@ -1181,9 +1124,7 @@ dynarun config.xml -c 1000000 -L MFT:BinWidth=0.5,Length=100
     performance hit.
   </li>
 </ul>
-<p>
-  <b>Example output</b>:
-</p>
+<h4>Example output</h4>
 <?php codeblockstart();?>
 <EnergyHist BinWidth="1">
   <HistogramWeighted TotalWeight="304.576171140717" Dimension="1" BinWidth="1" AverageVal="-7579.03906905185">
@@ -1196,9 +1137,7 @@ dynarun config.xml -c 1000000 -L MFT:BinWidth=0.5,Length=100
   </HistogramWeighted>
 </EnergyHist>
 <?php codeblockend("brush: xml;"); ?>
-<p>
-  <b>Full Tag, Subtag, and Attribute List</b>:
-</p>
+<h4>Full Tag, Subtag, and Attribute List</h4>
 <ul>
   <li>
     <b>BinWidth</b> <i>(attribute)</i>: The width of the energy
@@ -1246,26 +1185,21 @@ dynarun config.xml -c 1000000 -L MFT:BinWidth=0.5,Length=100
   The <a href="#msdcorrelator">MSDCorrelator</a> plugin collects the
   evolution of the MSD over time if more detail is needed.
 </p>
-<p>
-  <b>Example usage</b>:
-</p>
+<h4>Example usage</h4>
 <?php codeblockstart();?>
 -L MSD
 <?php codeblockend("brush: shell;"); ?>
+<h4>Options</h4>
 <p>
-  <b>Options</b>: There are no options for this plugin.
+  There are no options for this plugin.
 </p>
-<p>
-  <b>Example output</b>:
-</p>
+<h4>Example output</h4>
 <?php codeblockstart();?>
 <MSD>
   <Species Name="Bulk" val="218.539491598976" diffusionCoeff="0.250540360762613"/>
 </MSD>
 <?php codeblockend("brush: xml;"); ?>
-<p>
-  <b>Full Tag, Subtag, and Attribute List</b>:
-</p>
+<h4>Full Tag, Subtag, and Attribute List</h4>
 <ul>
   <li>
     <b>Species</b> <i>(tag)</i>: This tag contains the mean standard
@@ -1313,14 +1247,13 @@ dynarun config.xml -c 1000000 -L MFT:BinWidth=0.5,Length=100
   to a log file (<i>trajectory.out</i>). This plugin is used to debug
   errors in the detection, scheduling, and execution of events.
 </p>
-<p>
-  <b>Example usage</b>:
-</p>
+<h4>Example usage</h4>
 <?php codeblockstart();?>
 -L Trajectory
 <?php codeblockend("brush: shell;"); ?>
+<h4>Options</h4>
 <p>
-  <b>Options</b>: There are no options for this plugin.
+  There are no options for this plugin.
 </p>
 <h1>Ticker Type Plugins</h1>
 <p>
@@ -1379,15 +1312,11 @@ r$ centered about a distance of $r$, $\delta_{\alpha\beta}$ is the
 kronecker delta function, and $N_{ticks}$ is the
 number of samples/ticks used to collect the histogram.
 </p>
-<p>
-  <b>Example usage</b>:
-</p>
+<h4>Example usage</h4>
 <?php codeblockstart();?>
 -L RadialDistribution:BinWidth=0.01,Length=5
 <?php codeblockend("brush: shell;"); ?>
-<p>
-  <b>Options</b>:
-</p>
+<h4>Options</h4>
 <ul>
   <li>
     <b>BinWidth</b> <i>default [0.01]</i>: The width of the histogram
@@ -1416,9 +1345,7 @@ number of samples/ticks used to collect the histogram.
     loaded or required if the SampleEnergy option has been specified.
   </li>
 </ul>
-<p>
-  <b>Example output</b>:
-</p>
+<h4>Example output</h4>
 <?php codeblockstart();?>
 <RadialDistribution SampleCount="29">
   <Species Name1="Bulk" Name2="Bulk">
@@ -1428,9 +1355,7 @@ number of samples/ticks used to collect the histogram.
   </Species>
 </RadialDistribution>
 <?php codeblockend("brush: xml;"); ?>
-<p>
-  <b>Full Tag, Subtag, and Attribute List</b>:
-</p>
+<h4>Full Tag, Subtag, and Attribute List</h4>
 <ul>
   <li>
     <b>Species</b> <i>(tag)</i>: Each Species tag contains the radial
@@ -1451,8 +1376,9 @@ number of samples/ticks used to collect the histogram.
     </ul>
   </li>
 </ul>
+<h4>Restrictions</h4>
 <p>
-  <b>Restrictions</b>: At discontinuities in the potential, the $g(r)$
+  At discontinuities in the potential, the $g(r)$
   function is also discontinuous. If you want to correctly capture
   these discontinuities, you must calculate the values of $g(r)$
   either side of the discontinuity using event rates.
@@ -1496,15 +1422,11 @@ number of Structures in the Topology.
   where $d=3$ is the dimensionality of the system and $D_\alpha$ is
   the diffusion coefficient of species $\alpha$.
 </p>
-<p>
-  <b>Example usage</b>:
-</p>
+<h4>Example usage</h4>
 <?php codeblockstart();?>
 -L VACF:Length=100
 <?php codeblockend("brush: shell;"); ?>
-<p>
-  <b>Options</b>:
-</p>
+<h4>Options</h4>
 <ul>
   <li>
     <b>Length</b> <i>default [50]</i>: The length is the number of
@@ -1513,9 +1435,7 @@ number of Structures in the Topology.
     t$, where $\Delta t$ is the tick interval.
   </li>
 </ul>
-<p>
-  <b>Example output</b>:
-</p>
+<h4>Example output</h4>
 <?php codeblockstart();?>
 <VACF>
   <Particles>
@@ -1535,9 +1455,7 @@ number of Structures in the Topology.
   </Topology>
 </VACF>
 <?php codeblockend("brush: xml;"); ?>
-<p>
-  <b>Full Tag, Subtag, and Attribute List</b>:
-</p>
+<h4>Full Tag, Subtag, and Attribute List</h4>
 <ul>
   <li>
     <b>Particles</b> <i>(tag)</i>: This tag encloses all the single particle
@@ -1618,15 +1536,11 @@ number of Structures in the Topology.
   prediction of the diffusion coefficient using the full time of the
   simulation.
 </p>
-<p>
-  <b>Example usage</b>:
-</p>
+<h4>Example usage</h4>
 <?php codeblockstart();?>
 -L MSDCorrelator:Length=100
 <?php codeblockend("brush: shell;"); ?>
-<p>
-  <b>Options</b>:
-</p>
+<h4>Options</h4>
 <ul>
   <li>
     <b>Length</b> <i>default [50]</i>: The length is the number of
@@ -1635,9 +1549,7 @@ number of Structures in the Topology.
     t$, where $\Delta t$ is the tick interval.
   </li>
 </ul>
-<p>
-  <b>Example output</b>:
-</p>
+<h4>Example output</h4>
 <?php codeblockstart();?>
 <MSDCorrelator>
   <Particles>
@@ -1657,9 +1569,7 @@ number of Structures in the Topology.
   </Topology>
 </MSDCorrelator>
 <?php codeblockend("brush: xml;"); ?>
-<p>
-  <b>Full Tag, Subtag, and Attribute List</b>:
-</p>
+<h4>Full Tag, Subtag, and Attribute List</h4>
 <ul>
   <li>
     <b>Particles</b> <i>(tag)</i>: This tag encloses all the single
