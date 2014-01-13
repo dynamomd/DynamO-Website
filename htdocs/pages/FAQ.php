@@ -12,7 +12,7 @@
 <p>
   Here are a list of frequently asked questions and their answers.
 </p>
-<h1 style="clear:both">Q: What does DynamO stand for?</h1>
+<h1>Q: What does DynamO stand for?</h1>
 <p>
   Short answer: <b>Dynam</b>ics of <b>O</b>bjects.
 </p>

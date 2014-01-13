@@ -42,6 +42,14 @@ Usage : dynamod <OPTIONS>...[CONFIG FILE]
   the output of the <b>make</b> command.
 </p>
 <h1>About this tutorial</h1>
+<div class="figure" style="clear:right; float:right;width:400px;">
+  <?php embedAJAXvideo("hardspheres", "tn6Cz0tNPuU", 400, 250); ?>
+  <div class="caption">
+    A video of the hard sphere system which is generated and simulated
+    in this tutorial.  <?php button("Show
+    Configuration","/pages/config.tut3.xml");?>
+  </div>
+</div>
 <p>
   When performing a molecular dynamics simulation with DynamO, the
   standard steps, or "workflow", is to:
@@ -68,14 +76,6 @@ Usage : dynamod <OPTIONS>...[CONFIG FILE]
   This tutorial will give you a general understanding of these steps
   and later tutorials will go into the details.
 </p>
-<div class="figure" style="clear:right; float:right;width:400px;">
-  <?php embedAJAXvideo("hardspheres", "tn6Cz0tNPuU", 400, 250); ?>
-  <div class="caption">
-    A video of the hard sphere system which is generated and simulated
-    in this tutorial.  <?php button("Show
-    Configuration","/pages/config.tut3.xml");?>
-  </div>
-</div>
 <p>
   In this tutorial you will simulate a hard-sphere fluid. The hard
   sphere is a simple molecular model used to capture the fundamental

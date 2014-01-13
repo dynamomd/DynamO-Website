@@ -32,7 +32,7 @@
   documentation for the configuration file format</a>.
 </p>
 <h2>The example configuration</h2>
-<div class="figure" style="clear:right; float:right;width:400px;">
+<div class="figure" style="clear:left; float:left;width:400px;">
   <?php embedAJAXvideo("hardspheres", "tn6Cz0tNPuU", 400, 250); ?>
   <div class="caption">
     The starting configuration of 1372 hard-spheres with periodic
