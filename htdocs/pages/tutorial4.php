@@ -69,7 +69,7 @@ dynarun config.out.xml.bz2 -c 1000000
 #Disable the thermostat again, so that we might collect accurate dynamic information
 dynamod -T 0 config.out.xml.bz2
 #Run the simulation to collect data on the system
-dynarun config.out.xml.bz2 -c 1000000 -o config.final.xml
+dynarun config.out.xml.bz2 -c 1000000 -o config.final.xml -L IntEnergyHist
 <?php codeblockend("brush: shell;"); ?>
 <p>
   We'll now look in detail at each of these commands.
@@ -315,6 +315,21 @@ ETA 7s, Events 600k, t 39.2339, <MFT> 0.134103, T 2.02729, U -0.79425
   conductivity</a>, we'll notice that it is restricted only to
   NVE/microcanonical simulations (systems without a thermostat).
 </p>
+<p>
+  We're going to have to disable the thermostat during data collection
+  and hope (and check) that the system fluctuates close to the target
+  temperature. We can use dynamod to disable the thermostat:
+</p>
+<?php codeblockstart(); ?>
+dynamod -T 0 config.out.xml.bz2
+<?php codeblockend("brush: shell;"); ?>
+<p>
+  Now we're ready to collect some data! We just run dynarun while
+  enabling the output plugins we wish to use:
+</p>
+<?php codeblockstart(); ?>
+dynarun config.out.xml.bz2 -c 1000000 -o config.final.xml -L IntEnergyHist
+<?php codeblockend("brush: shell;"); ?>
 <h1 id="dataprocessing">Processing the results</h1>
 <p>
   Still writing
