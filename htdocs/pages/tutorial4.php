@@ -9,9 +9,6 @@
    $pagetitle="Tutorial 4: Thermostats and data collection (transport properties)";
    ?>
 <?php printTOC(); ?>
-<p style="text-align:center; margin:15px; background-color:#FFD800; font-size:16pt; font-family:sans; line-height:40px;">
-  <b>This tutorial is currently being written and is incomplete.</b>
-</p>
 <p>
   This tutorial uses an example study of square-well particles to
   introduce several topics:
@@ -25,17 +22,23 @@
     <a href="#thermostat">How to use a thermostat.</a>
   </li>
   <li>
-    How to process collected data, including transport coefficients,
-    in the output file.
+    <a href="#datacollection">How to collect data, and considerations with thermostats.</a>
+  </li>
+  <li>
+    <a href="#dataprocessing">How to process collected data, including
+    transport coefficients, in the output file.</a>
   </li>
 </ul>
 <h2><a id="aboutsquarewellfluids"></a>About the system</h2>
 <p>
   For the purpose of the tutorial, we'll want to simulate a fluid of
-  square-well molecules. If you want to learn more about the
-  square-well potential, its parameters, and how it corresponds to
-  realistic intermolecular interactions please see the reference entry
-  linked below.
+  square-well molecules at a reduced temperature of $k_B\,T=2$ and a
+  reduced density of $\rho=0.1$ (see
+  the <a href="/index.php/FAQ#q-what-units-does-the-dynamod-command-useproduce">FAQ
+  on units</a> if you don't understand these values). If you want to
+  learn more about the square-well potential, its parameters, and how
+  it corresponds to realistic intermolecular interactions please see
+  the reference entry linked below.
 </p>
 <?php button("Reference entry for <i>\"SquareWell\"</i> Type <b>Interactions</b>","/index.php/reference#typesquarewell");?>
 <p>
@@ -54,31 +57,22 @@
 </p>
 <?php codeblockstart(); ?>
 #Create the low-density square-well system
-dynamod -m 1 -C 10 -d 0.1 --i1 0 -r 1 -o config.start.xml
-
+dynamod -m 1 -C 10 -d 0.1 --i1 0 -r 2.0 -o config.start.xml
 #Run the system briefly to check the temperature
 dynarun config.start.xml -c 1000000
-
-#Try to set the temperature through a second rescaling the particle velocities
-dynamod config.out.xml.bz2 -r 1.0
-
-#Run the system again to see how the temperature is affected
-dynarun config.out.xml.bz2 -c 1000000
-
 #Add a thermostat, to allow us to control the temperature
-dynamod config.out.xml.bz2 -T 1.0
-
+dynamod config.out.xml.bz2 -T 2.0
 #Run the system using the thermostat to set the temperature and let it equilibrate
 dynarun config.out.xml.bz2 -c 1000000
-
+#Run it some more to equilibrate it further
+dynarun config.out.xml.bz2 -c 1000000
 #Disable the thermostat again, so that we might collect accurate dynamic information
 dynamod -T 0 config.out.xml.bz2
-
 #Run the simulation to collect data on the system
 dynarun config.out.xml.bz2 -c 1000000 -o config.final.xml
 <?php codeblockend("brush: shell;"); ?>
 <p>
-  We'll now look in detail at these commands.
+  We'll now look in detail at each of these commands.
 </p>
 <h1><a id="settingup"></a>Setting up the configuration file</h1>
 <p>
@@ -131,7 +125,7 @@ Mode 1: Mono/Multi-component square wells
   Lets start by making a monocomponent mixture of square-wells using
   the following command:
 </p>
-<?php codeblockstart(); ?>dynamod -m 1 -C 10 -d 0.1 --i1 0 -r 1 -o config.start.xml<?php codeblockend("brush: shell;"); ?>
+<?php codeblockstart(); ?>dynamod -m 1 -C 10 -d 0.1 --i1 0 -r 2.0 -o config.start.xml<?php codeblockend("brush: shell;"); ?>
 <p style="font-family:monospaced;">
   The options passed here
   are <a href="/index.php/tutorial2#initial-positions-and-crystals">discussed
@@ -153,9 +147,10 @@ Mode 1: Mono/Multi-component square wells
   When creating the configuration, we initially set the temperature
   through the rescale option <i>-r</i>. This option works by rescaling
   all of the velocities of the particles so that the instantaneous
-  temperature is one (or whatever is passed as an argument to the
-  option). For a system without rotational degrees of freedom, the
-  temperature is given by
+  temperature is $k_B\,T=2$ (or whatever is passed as an argument to
+  the option). <a href="/index.php/outputplugins#temperature">For a
+  system without rotational degrees of freedom</a>, the temperature
+  is given by
 
   \[k_B\,T = \frac{1}{3\,N}\sum_i^N m_i\,v_i^2\]
 
@@ -185,10 +180,10 @@ Mode 1: Mono/Multi-component square wells
 </p>
 <?php codeblockstart(); ?>
 ...
-ETA 16s, Events 100k, t 8.26149, <MFT> 0.16523, T 1.5725, U -0.85875
-ETA 15s, Events 200k, t 15.2939, <MFT> 0.152939, T 1.58983, U -0.88475
-ETA 13s, Events 300k, t 22.3303, <MFT> 0.148868, T 1.58567, U -0.8785
-ETA 11s, Events 400k, t 29.2878, <MFT> 0.146439, T 1.592, U -0.888
+ETA 16s, Events 100k, t 7.08388, <MFT> 0.141678, T 2.47483, U -0.71225
+ETA 14s, Events 200k, t 13.6032, <MFT> 0.136032, T 2.48533, U -0.728
+ETA 12s, Events 300k, t 20.1072, <MFT> 0.134048, T 2.48133, U -0.722
+ETA 11s, Events 400k, t 26.6342, <MFT> 0.133171, T 2.48267, U -0.724
 ...
 <?php codeblockend("brush: shell;"); ?>
 <p>
@@ -200,23 +195,24 @@ ETA 11s, Events 400k, t 29.2878, <MFT> 0.146439, T 1.592, U -0.888
   \[\left\langle E\right\rangle=U + 3\,k_B\,T/2\]
   
   And see that for this system it remains constant at the starting
-  value of 1.5. This is one of the nice properties of event-driven
-  molecular dynamics, energy is exactly conserved. Unfortunately, we
-  still need some way of setting the temperature. We could rescale
-  again to take some energy out of the system to try to lower it to a
-  temperature of 1, but this would need to be repeated over by hand
-  until the temperature converged. Instead, we can use a thermostat to
-  try to hold the temperature constant.
+  value of $\approx3$. This is one of the nice properties of
+  event-driven molecular dynamics, energy is exactly
+  conserved. Unfortunately, we still need some way of setting the
+  temperature. We could rescale again to take some energy out of the
+  system to try to lower it to a temperature of $k_B\,T=2$, but this
+  would need to be repeated over by hand until the temperature
+  converged. Instead, we can use a thermostat to automatically
+  add/remove energy from the system to reach a specified temperature.
 </p>
 <h1><a id="thermostat"></a>Adding a thermostat</h1>
 <p>
   To add an <a href="/index.php/reference#typeandersen">Andersen
   thermostat</a>, again use the dynamod tool:
 </p>
-<?php codeblockstart(); ?>dynamod config.out.xml.bz2 -T 1.0 <?php codeblockend("brush: shell;"); ?>
+<?php codeblockstart(); ?>dynamod config.out.xml.bz2 -T 2.0 <?php codeblockend("brush: shell;"); ?>
 <p>
-  Please note, we're loading the <i>config.out.xml.bz2</i> file,
-  adding an <a href="/index.php/reference#typeandersen">Andersen
+  Please note that this command loads the <i>config.out.xml.bz2</i>
+  file, adds an <a href="/index.php/reference#typeandersen">Andersen
   thermostat</a>, and the result is saved into the default output file
   name, which is <i>config.out.xml.bz2</i>. This will overwrite the
   initial file, if you don't want to do this, specify a new file name
@@ -225,10 +221,11 @@ ETA 11s, Events 400k, t 29.2878, <MFT> 0.146439, T 1.592, U -0.888
 <p>
   The dynamod command above will add
   an <a href="/index.php/reference#typeandersen">Andersen
-  thermostat</a> to the system with a target temperature of 1 (set by
-  the <i>-T</i> argument). This thermostat will eventually bring the
-  system to the specified temperature, even with changes in the
-  configurational energy, by randomly reassigning particle velocities.
+  thermostat</a> to the system with a target temperature of $k_B\,T=2$
+  (set by the <i>-T</i> argument). This thermostat will eventually
+  bring the system to the specified temperature, even with changes in
+  the configurational energy, by randomly reassigning particle
+  velocities.
 </p>
 <p>
   <b>Note</b>: If you wish to change the thermostat temperature at a
@@ -238,7 +235,7 @@ ETA 11s, Events 400k, t 29.2878, <MFT> 0.146439, T 1.592, U -0.888
 <p>
   You can even use <b>dynamod</b> remove the thermostatt by using a
   temperature of zero (<i>-T 0</i>). Alternatively, you can open up
-  the configuration file in a text editor, and edit
+  the configuration file in a text editor, and edit or delete
   the <a href="/index.php/reference#typeandersen">Andersen type
   System</a> event by hand:
 </p>
@@ -248,19 +245,76 @@ ETA 11s, Events 400k, t 29.2878, <MFT> 0.146439, T 1.592, U -0.888
 </System>
 <?php codeblockend("brush: xml;"); ?>
 <p>
-  Now that we have set the density of the system and found a way to
-  control its temperature, we can create a state point (simulation
-  with a set temperature and density) and investigate its properties.
+  With the thermostat added and the temperature set to 1, we can see
+  what the result is on the temperature of the system. Again, running
+  the system
 </p>
-<h1>Running the simulation</h1>
+<?php codeblockstart(); ?>dynarun config.out.xml.bz2 -c 1000000<?php codeblockend("brush: shell;"); ?>
 <p>
-  Now that the system is set up, we need to equilibrate it before we
-  take any measurements. A rough guide to the length of time to
-  equilibrate the system is 25 events per particle but the only way to
-  be sure is to track properties and test that they reach a steady
-  state value.
+  And the output should look like this:
 </p>
-<h1>Processing the results</h1>
+<?php codeblockstart(); ?>
+...
+ETA 16s, Events 100k, t 6.28632, <MFT> 0.129188, T 2.15641, U -0.75675
+ETA 15s, Events 200k, t 12.6762, <MFT> 0.130097, T 2.05169, U -0.771
+ETA 13s, Events 300k, t 19.1881, <MFT> 0.13125, T 2.03105, U -0.7735
+ETA 11s, Events 400k, t 25.678, <MFT> 0.131705, T 2.01297, U -0.75525
+ETA 9s, Events 500k, t 32.179, <MFT> 0.13203, T 2.06379, U -0.7915
+ETA 7s, Events 600k, t 38.6795, <MFT> 0.132246, T 2.02205, U -0.77625
+ETA 6s, Events 700k, t 45.1681, <MFT> 0.132363, T 2.01704, U -0.7615
+ETA 4s, Events 800k, t 51.6511, <MFT> 0.132437, T 2.04454, U -0.78925
+ETA 2s, Events 900k, t 58.1523, <MFT> 0.132537, T 2.01887, U -0.79125
+ETA 0s, Events 1000k, t 64.6884, <MFT> 0.132689, T 1.9653, U -0.7795
+...
+<?php codeblockend("brush: shell;"); ?>
+<p>
+  We can see that the temperature approaches the required temperature
+  by the end. It's only just reached steady state (take a look at the
+  instantaneous $T$ and $U$ values) so it might be best to run the
+  configuration for another $10^6$ events.
+</p>
+<?php codeblockstart(); ?>dynarun config.out.xml.bz2 -c 10000000
+...
+ETA 16s, Events 100k, t 6.50405, <MFT> 0.13339, T 2.00641, U -0.7845
+ETA 15s, Events 200k, t 13.0134, <MFT> 0.13345, T 1.98747, U -0.78325
+ETA 13s, Events 300k, t 19.5232, <MFT> 0.133469, T 1.9498, U -0.7825
+ETA 11s, Events 400k, t 26.1082, <MFT> 0.133857, T 1.97389, U -0.815
+ETA 9s, Events 500k, t 32.6387, <MFT> 0.133873, T 2.01406, U -0.76675
+ETA 7s, Events 600k, t 39.2339, <MFT> 0.134103, T 2.02729, U -0.79425
+...
+<?php codeblockend("brush: shell;"); ?>
+<p>
+  Much better. We're now ready to collect some data!
+<h1 id="datacollection">Collecting Data</h1>
+<p>
+  At this point we have a system which has been equilibrated with a
+  thermostat. We want to collect some information on the properties of
+  the system, namely the internal energy histograms, diffusion
+  coefficients, viscosity, and thermal conductivity.
+</p>
+<p>
+  To find out what output plugins are available and how to load them
+  please see the <a href="/index.php/outputplugins">output plugin
+  documentation</a>. Most of what we want to collect is contained in
+  the <b>Misc</b> plugin which is loaded by default, but we'll need to
+  add the <b>IntEnergyHist</b> plugin to collect the energy
+  histograms.
+</p>
+<p>
+  Unfortunately there is a problem with leaving thermostats on while
+  collecting dynamical information like the transport
+  coefficients. The <a href="/index.php/reference#typeandersen">Andersen
+  thermostat</a> we use changes the motion of the system when it
+  randomly re-assigns the particle velocities. If we measure the
+  properties of the system, they will be the those of the square-well
+  fluid AND the thermostat.
+  
+  Also, if we take a look at
+  the <a href="/index.php/outputplugins#thermalconductivityrestrictions">documentation
+  for the thermal conductivity</a> we'll notice that it is restricted
+  only to NVE/microcanonical simulations.
+</p>
+<h1 id="dataprocessing">Processing the results</h1>
 <p>
   Still writing
 </p>

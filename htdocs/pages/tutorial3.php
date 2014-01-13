@@ -227,6 +227,12 @@ dynamod -m 0 -d 0.5 -C 7 -o config.start.xml
   simulation domain.
 </p>
 <?php xmlXPathFile("pages/config.tut3.xml", "/DynamOconfig/Simulation/SimulationSize"); ?>
+<div class="figure" style="clear:right; float:right;width:400px;">
+  <?php embedAJAXvideo("hardspheresExpand", "-QbpKrtPvWU", 400, 300); ?>
+  <div class="caption">
+    The effect of expanding the simulation domain.
+  </div>
+</div>
 <p>
   Here we can see the simulation is performed in a
   $14\times14\times14$ domain. We will see in a moment that this
@@ -236,12 +242,6 @@ dynamod -m 0 -d 0.5 -C 7 -o config.start.xml
   so you always need a <b>SimulationSize</b> tag in your
   configurations.
 </p>
-<div class="figure" style="clear:right; float:right;width:400px;">
-  <?php embedAJAXvideo("hardspheresExpand", "-QbpKrtPvWU", 400, 300); ?>
-  <div class="caption">
-    The effect of expanding the simulation domain.
-  </div>
-</div>
 <p>
   If we increase the size of the simulation domain to a
   $30\times30\times30$ domain, we lower the density of the
@@ -274,11 +274,6 @@ dynamod -m 0 -d 0.5 -C 7 -o config.start.xml
   conditions.
 </p>
 <h2>BC (Boundary Conditions)</h2>
-<p>
-  Another mandatory tag within the <b>Simulation</b> tags is the
-  Boundary Condition (<b>BC</b>) tag.
-</p>
-<?php xmlXPathFile("pages/config.tut3.xml", "/DynamOconfig/Simulation/BC"); ?>
 <div class="figure" style="clear:right; float:right;width:400px;">
   <?php embedAJAXvideo("infinitehardspheres", "RzjmpRtwDAw", 400, 300); ?>
   <div class="caption">
@@ -286,6 +281,11 @@ dynamod -m 0 -d 0.5 -C 7 -o config.start.xml
     Boundary Conditions set to <b>None</b>.
   </div>
 </div>
+<p>
+  Another mandatory tag within the <b>Simulation</b> tags is the
+  Boundary Condition (<b>BC</b>) tag.
+</p>
+<?php xmlXPathFile("pages/config.tut3.xml", "/DynamOconfig/Simulation/BC"); ?>
 <p>
   Here we can see that the current BCs are Periodic Boundary
   Conditions (<b>PBC</b>). This explains the "popping" of particles

@@ -29,16 +29,15 @@
   <a href="/index.php/support#contacting-the-developers">contact the
   developers</a> for some advice.
 </p>
-<div style="clear:both;"></div>
-<h2>Tutorials</h2>
+<div style="clear:both;text-align:center;"><b>Tutorials</b></div>
 <?php button("Tutorial 1: Compiling DynamO from Source","/index.php/tutorial1");?>
 <?php button("Tutorial 2: Introduction to the DynamO workflow (hard-sphere simulations)","/index.php/tutorial2");?>
 <?php button("Tutorial 3: Overview of the Configuration File Format","/index.php/tutorial3");?>
-<?php button("Appendix A: Parsing Output and Config Files","/index.php/tutorialA");?>
-<h2>References</h2>
+<div style="clear:both;text-align:center;"><b>References</b></div>
 <?php button("Configuration File Format Reference","/index.php/reference");?>
 <?php button("Output Plugin Reference","/index.php/outputplugins");?>
 <?php button("Frequently Asked Questions","/index.php/FAQ");?>
+<?php button("Parsing Output and Config Files","/index.php/tutorialA");?>
 <p>
 </p>
 <h1>Publications and Citing DynamO</h1>

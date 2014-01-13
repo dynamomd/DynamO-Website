@@ -6,7 +6,7 @@
    header( 'Location: /index.php/404');
    return;
    }
-   $pagetitle="Appendix A: Parsing Output and Config Files";
+   $pagetitle="Parsing Output and Config Files";
    ?>
 <?php printTOC(); ?>
 <p>

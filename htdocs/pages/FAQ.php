@@ -33,7 +33,7 @@
   (<a href="https://github.com/toastedcrumpets/DynamO/tree/master/docs">available
   here</a>).
 </p>
-<h1>Q: What are the units of DynamO?</h1>
+<h1 id="q-what-units-does-the-dynamod-command-useproduce">Q: What are the units of DynamO?</h1>
 <p>
   Short answer: whatever units you use in the input configuration
   file.

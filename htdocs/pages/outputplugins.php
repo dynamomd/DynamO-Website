@@ -847,11 +847,12 @@ dynarun config.xml -c 1000000 -L MFT:BinWidth=0.5,Length=100
   </li>
 </ul>
 <p>
-  <b>Restrictions</b>: This form is only valid in the micro-canonical
-  ensemble (NVE).  The current implementation is also only valid for
-  systems without rotational degrees of freedom (such as the hard
-  sphere, square-well, stepped-potential fluids), as it uses the
-  approximation $e_i\approx m\,v^2_i/2+U_{i,config}$
+  <a id="thermalconductivityrestrictions"></a><b>Restrictions</b>:
+  This form is only valid in the micro-canonical ensemble (NVE).  The
+  current implementation is also only valid for systems without
+  rotational degrees of freedom (such as the hard sphere, square-well,
+  stepped-potential fluids), as it uses the approximation $e_i\approx
+  m\,v^2_i/2+U_{i,config}$
   (see <a href="https://github.com/toastedcrumpets/DynamO/issues/23">issue
   #23</a> on the bug tracker).
 </p>
