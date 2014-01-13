@@ -296,9 +296,9 @@ ETA 7s, Events 600k, t 39.2339, <MFT> 0.134103, T 2.02729, U -0.79425
   To find out what output plugins are available and how to load them
   please see the <a href="/index.php/outputplugins">output plugin
   documentation</a>. Most of what we want to collect is contained in
-  the <b>Misc</b> plugin which is loaded by default, but we'll need to
-  add the <b>IntEnergyHist</b> plugin to collect the energy
-  histograms.
+  the <a href="/index.php/outputplugins#misc">Misc</a> plugin which is
+  loaded by default, but we'll need to add the <a href="/index.php/outputplugins#intenergyhist">IntEnergyHist</a>
+  plugin to collect the energy histograms.
 </p>
 <p>
   Unfortunately there is a problem with thermostats while collecting
@@ -330,7 +330,10 @@ dynamod -T 0 config.out.xml.bz2
 <?php codeblockstart(); ?>
 dynarun config.out.xml.bz2 -c 1000000 -o config.final.xml -L IntEnergyHist
 <?php codeblockend("brush: shell;"); ?>
+<p>
+  And we're now ready to process the results!
+</p>
 <h1 id="dataprocessing">Processing the results</h1>
 <p>
-  Still writing
+  
 </p>
