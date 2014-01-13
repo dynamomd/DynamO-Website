@@ -6,7 +6,7 @@
    header( 'Location: /index.php/404');
    return;
    }
-   $pagetitle="Tutorial 4: Thermostats, compression, and data collection";
+   $pagetitle="Tutorial 4: Thermostats and data collection (transport properties)";
    ?>
 <?php printTOC(); ?>
 <p style="text-align:center; margin:15px; background-color:#FFD800; font-size:16pt; font-family:sans; line-height:40px;">
@@ -17,10 +17,6 @@
   introduce several topics:
 </p>
 <ul>
-  <li>
-    <a href="#compressing">How to compress a system to higher
-    densities.</a>
-  </li>
   <li>
     <a href="#rescaling">How to rescale the velocities and how to set
     the temperature.</a>
@@ -52,38 +48,34 @@
 <h2>The whole tutorial in brief</h2>
 <p>
   We're going to create a square-well fluid with $N=4000$ particles at
-  a low density. We'll then compress it to a higher density to see how
-  compression works, then we'll try to control the temperature using
-  rescaling and thermostats. Finally, we'll collect some measurements
-  from the system. The commands we will use are
+  a low density. We'll try to control the temperature using velocity
+  rescaling, then using thermostats. Finally, we'll collect some
+  measurements from the system. The commands we will use are
 </p>
 <?php codeblockstart(); ?>
 #Create the low-density square-well system
 dynamod -m 1 -C 10 -d 0.1 --i1 0 -r 1 -o config.start.xml
 
-#Compress the system to a higher density
-dynarun config.start.xml --engine=3 --target-density 0.5 -o config.compressed.1.xml
-
 #Run the system briefly to check the temperature
-dynarun config.compressed.1.xml -c 1000000 -o config.compressed.2.xml
+dynarun config.start.xml -c 1000000
 
-#Try to set the temperature through rescaling the particle velocities
-dynamod config.compressed.2.xml -r 1.0 -o config.compressed.3.xml
+#Try to set the temperature through a second rescaling the particle velocities
+dynamod config.out.xml.bz2 -r 1.0
 
 #Run the system again to see how the temperature is affected
-dynarun config.compressed.3.xml -c 1000000 -o config.compressed.4.xml
+dynarun config.out.xml.bz2 -c 1000000
 
 #Add a thermostat, to allow us to control the temperature
-dynamod config.compressed.4.xml -T 1.0 -o config.thermostatted.xml
+dynamod config.out.xml.bz2 -T 1.0
 
 #Run the system using the thermostat to set the temperature and let it equilibrate
-dynarun config.thermostatted.xml -c 1000000 -o config.equilibrated.xml
+dynarun config.out.xml.bz2 -c 1000000
 
 #Disable the thermostat again, so that we might collect accurate dynamic information
-dynamod -T 0 config.equilibrated.xml -o config.equilibrated.xml
+dynamod -T 0 config.out.xml.bz2
 
 #Run the simulation to collect data on the system
-dynarun config.equilibrated.xml -c 1000000 -o config.final.xml
+dynarun config.out.xml.bz2 -c 1000000 -o config.final.xml
 <?php codeblockend("brush: shell;"); ?>
 <p>
   We'll now look in detail at these commands.
@@ -92,7 +84,8 @@ dynarun config.equilibrated.xml -c 1000000 -o config.final.xml
 <p>
   When you first start using DynamO, it is not really practical to try
   to create a configuration file from scratch. The <b>dynamod</b> tool
-  helps by providing many pre-made configuration files.
+  helps by providing many pre-designed systems to start your
+  simulations from.
 </p>
 <p>
   Following the same steps
@@ -149,107 +142,88 @@ Mode 1: Mono/Multi-component square wells
   configuration file is available below (it is a large XML file, so
   your browser may take some time to display it).
 </p>
-<?php button("Example monocomponent configuration","/pages/config.tut4.mono.xml");?>
+<?php button("Example initial configuration","/pages/config.tut4.start.xml");?>
 <p>
   As we haven't specified the well depth and well width, they have
   been left at their default values of 1 and 1.5 respectively. Next,
-  we're going to compress the system!
+  we're going to look at thermostatting the system.
 </p>
-<h1><a id="compressing"></a>Compressing the configuration</h1>
+<h1><a id="rescaling"></a>Rescaling velocities</h1>
 <p>
-  We've created a relatively configuration with a reduced density of
-  0.5.
-</p>
-<p>
-  To access high density systems while avoiding generating invalid
-  states, DynamO implements the linear compression algorithm first
-  proposed by
-  Woodcock[<a href="http://dx.doi.org/10.1111/j.1749-6632.1981.tb55667.x">paper</a>],
-  but later popularised by Lubachevsky and
-  Stillinger[<a href="http://dx.doi.org/10.1007/BF01054337">paper</a>]. This
-  is a mode of simulation where all particles grow in size over
-  time. At the end of the growth run, the dimensions are all rescaled
-  so that the particles have the same initial size, but the simulation
-  box has shrunk proportionally.
-</p>
-<p>
-  To carry out the compression, use the <i>engine</i> option
-  of <b>dynarun</b> to use the compression engine. You also set the
-  end point of the compression using either
-  the <i>--target-pack-frac</i> or the <i>--target-density</i>
-  option. If you don't use these options, the compression will keep
-  running and you'll have to manually stop the simulation
-  by <a href="/index.php/FAQ#stoppausepeek">pressing ctrl-c</a>.
-</p>
-<?php codeblockstart(); ?>dynarun config.start.xml --engine=3 --target-pack-frac 0.3 -o config.compressed.xml<?php codeblockend("brush: shell;"); ?>
-<p>
-  Please see <a href="/index.php/FAQ#packingfraction">this FAQ</a> on why we decided to set the packing fraction,
-  not the number density of the system.
+  When creating the configuration, we initially set the temperature
+  through the rescale option <i>-r</i>. This option works by rescaling
+  all of the velocities of the particles so that the instantaneous
+  temperature is one (or whatever is passed as an argument to the
+  option). For a system without rotational degrees of freedom, the
+  temperature is given by
+
+  \[k_B\,T = \frac{1}{3\,N}\sum_i^N m_i\,v_i^2\]
+
+  so it is clear that by scaling the velocities we can set the
+  temperature to whatever we wish. However, rescaling the temperature
+  only holds the temperature fixed (AKA thermostats) in "hard" systems
+  such as the
+  <a href="/index.php/reference#typehardsphere">hard-sphere</a>/<a href="/index.php/reference#typeparallelcubes">parallel-cube</a>/<a href="/index.php/reference#typelines">hard-lines</a>
+  systems. This is because these systems have no finite potential
+  energy terms between the particles, therefore the temperature does
+  not change with time (except if we perform work such as compression
+  on the system).
 </p>
 <p>
-  A video of an example compression run is given to the right (its a
-  10:1 size ratio system to exaggerate the effect). The simulation
-  ends automatically once the target number density or packing
-  fraction is reached which may take some time. If the system appears
-  to get "stuck" (the simulation time is not increasing), then it
-  might be wise to stop the compression
-  run, <a href="#rescaling">rescale the particle velocities</a>, and
-  to run a normal simulation for a while to allow the system to relax.
+  For square-well systems, we can set the temperature at the start of
+  the simulation, but it will change over time due to interactions
+  converting energy between kinetic and potential modes. We can see
+  this if we run a simulation on the starting configuration:
 </p>
+<?php codeblockstart(); ?>dynarun config.start.xml -c 1000000<?php codeblockend("brush: shell;"); ?>
 <p>
-  We will now finish setting up the system by looking at how we might
-  control the temperature of the system.
+  Please note, we didn't set an output configuration file name
+  using <i>-o</i> so the default <i>config.out.xml.bz2</i> is
+  used. Taking a look at the output, we can see the temperature (and
+  <a href="/index.php/outputplugins#uconfigurational">excess internal
+  energy $U$</a>) is fluctuating over time:
 </p>
-<h1><a id="rescaling"></a>Rescaling velocities to set the temperature</h1>
+<?php codeblockstart(); ?>
+...
+ETA 16s, Events 100k, t 8.26149, <MFT> 0.16523, T 1.5725, U -0.85875
+ETA 15s, Events 200k, t 15.2939, <MFT> 0.152939, T 1.58983, U -0.88475
+ETA 13s, Events 300k, t 22.3303, <MFT> 0.148868, T 1.58567, U -0.8785
+ETA 11s, Events 400k, t 29.2878, <MFT> 0.146439, T 1.592, U -0.888
+...
+<?php codeblockend("brush: shell;"); ?>
 <p>
-  During compression you should be able to observe that the system's
-  temperature and internal energy is varying significantly. This is
-  due to the change in internal energy due to density changes as well
-  as any work performed by the compression process. In repulsive
-  systems, this work always causes heating resulting in faster moving
-  particles and more events per unit of simulation time. This will
-  cause the compression to slow down as the simulation has to process
-  more events per unit of expansion. In attractive systems, the system
-  may cool or heat on compression
-  (see <a href="http://en.wikipedia.org/wiki/Joule%E2%80%93Thomson_effect">Joule-Thomson
-  effect</a>), but even cooling is problematic if the system becomes
-  "stuck".
-</p>
-<p>
-  You may consider stopping the compression periodically and rescaling
-  the temperature as it can accelerate the compression. You can find
-  out how to <a href="/index.php/FAQ#stoppausepeek">stop any
-  simulation while it is running in this FAQ</a>.  To rescale the
-  temperature of a configuration file we can use the following dynamod
-  command:
-</p>
-<?php codeblockstart(); ?>dynamod config.compressed.xml -r 1 -o config.rescaled.xml<?php codeblockend("brush: shell;"); ?>
-<p>
-  This will rescale the velocities of the particles in the system so
-  that the current temperature is 1 (set by the <i>-r</i>
-  option). Please note, that this does not thermostat the
-  temperature. Rescaling the temperature only exactly sets/thermostats
-  the temperature in "hard" systems such as the
-  using <a href="/index.php/reference#typehardsphere">hard-sphere</a>/<a href="/index.php/reference#typeparallelcubes">parallel-cube</a>/<a href="/index.php/reference#typelines">hard-lines</a>
-  systems. These systems have the internal energy of an ideal gas,
-  therefore the temperature does not change with time (except if it is
-  compressed). In systems such as the square-well fluid studied here
-  we will need to use a thermostat to control the temperature.
+  You should note that if the temperature fluctuates higher, the
+  internal energy fluctuates lower as the total energy is
+  constant. You can see this if you calculate the average energy per
+  particle
+
+  \[\left\langle E\right\rangle=U + 3\,k_B\,T/2\]
+  
+  And see that for this system it remains constant at the starting
+  value of 1.5. This is one of the nice properties of event-driven
+  molecular dynamics, energy is exactly conserved. Unfortunately, we
+  still need some way of setting the temperature. We could rescale
+  again to take some energy out of the system to try to lower it to a
+  temperature of 1, but this would need to be repeated over by hand
+  until the temperature converged. Instead, we can use a thermostat to
+  try to hold the temperature constant.
 </p>
 <h1><a id="thermostat"></a>Adding a thermostat</h1>
 <p>
-   After you have rescaled the temperature and begin to simulate the
-  system again, square-well particles may begin to rapidly heat or
-  cool as they exchange configurational energy for kinetic energy.  If
-  we want to measure the system at a set temperature, we will need to
-  add a thermostat to try hold the system at the desired temperature.
+  To add an <a href="/index.php/reference#typeandersen">Andersen
+  thermostat</a>, again use the dynamod tool:
+</p>
+<?php codeblockstart(); ?>dynamod config.out.xml.bz2 -T 1.0 <?php codeblockend("brush: shell;"); ?>
+<p>
+  Please note, we're loading the <i>config.out.xml.bz2</i> file,
+  adding an <a href="/index.php/reference#typeandersen">Andersen
+  thermostat</a>, and the result is saved into the default output file
+  name, which is <i>config.out.xml.bz2</i>. This will overwrite the
+  initial file, if you don't want to do this, specify a new file name
+  with the <i>-o</i> option.
 </p>
 <p>
-  To add a thermostat, again use the dynamod tool:
-</p>
-<?php codeblockstart(); ?>dynamod config.rescaled.xml -T 1.0 -o config.thermostatted.xml<?php codeblockend("brush: shell;"); ?>
-<p>
-  This will add
+  The dynamod command above will add
   an <a href="/index.php/reference#typeandersen">Andersen
   thermostat</a> to the system with a target temperature of 1 (set by
   the <i>-T</i> argument). This thermostat will eventually bring the
@@ -260,7 +234,7 @@ Mode 1: Mono/Multi-component square wells
   <b>Note</b>: If you wish to change the thermostat temperature at a
   later time, you can use the dynamod on the configuration again:
 </p>
-<?php codeblockstart(); ?>dynamod config.thermostatted.xml -T 4.0 -o config.thermostatted.xml<?php codeblockend("brush: shell;"); ?>
+<?php codeblockstart(); ?>dynamod config.out.xml.bz2 -T 4.0<?php codeblockend("brush: shell;"); ?>
 <p>
   You can even use <b>dynamod</b> remove the thermostatt by using a
   temperature of zero (<i>-T 0</i>). Alternatively, you can open up

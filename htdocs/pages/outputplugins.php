@@ -252,7 +252,7 @@ dynarun config.xml -c 1000000 -L MFT:BinWidth=0.5,Length=100
   gravity, <a href="https://github.com/toastedcrumpets/DynamO/issues/22">see
   issue #22</a>).
 </p>
-<h3>Temperature</h3>
+<h3 id="temperature">Temperature</h3>
 <p>
   This tag contains the temperature of the particles in the
   system. This includes rotational degrees of freedom (if present). As
