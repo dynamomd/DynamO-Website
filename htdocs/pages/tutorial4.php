@@ -86,45 +86,26 @@ dynamod -T 0 config.equilibrated.xml -o config.equilibrated.xml
 dynarun config.equilibrated.xml -c 1000000 -o config.final.xml
 <?php codeblockend("brush: shell;"); ?>
 <p>
-  We'll now look in detail at these commands, in particular how the
-  configuration file was edited by hand into a multicomponent system.
+  We'll now look in detail at these commands.
 </p>
 <h1><a id="settingup"></a>Setting up the configuration file</h1>
 <p>
   When you first start using DynamO, it is not really practical to try
-  to create a configuration file from scratch. It is much simpler and
-  convenient to take an existing configuration, which is close to the
-  system you wish to study, and to modify it. Once you are familiar
-  with the file format you may then write your own tools to generate
-  configuration files in the programming language of your choice (see
-  <a href="/index.php/tutorialA">Appendix A</a> for more information
-  on this).
+  to create a configuration file from scratch. The <b>dynamod</b> tool
+  helps by providing many pre-made configuration files.
 </p>
 <p>
-  We need to see what systems the <b>dynamod</b> command can prepare
-  so that we can pick the most convenient starting point for the
-  multicomponent square-well system. We again query the available
-  options of the <b>dynamod</b> command using the <i>--help</i>
-  option:
+  Following the same steps
+  in <a href="/index.php/tutorial2#generating-configuration-files">tutorial
+  2</a>, we again query the available options of the <b>dynamod</b>
+  command using the <i>--help</i> option:
 </p>
 <?php codeblockstart(); ?>dynamod --help<?php codeblockend("brush: shell;"); ?>
 <p>
-  A full listing of the options of the <b>dynamod</b> program is
-  outputted, and the start of the list of systems it can create/pack
-  should look like the following:
-</p>
-<?php codeblockstart(); ?>...
-Packer options:
-  -m [ --pack-mode ] arg Chooses the system to pack (construct)
-                         Packer Modes:
-                         0:  Monocomponent hard spheres
-                         1:  Mono/Multi-component square wells
-                         2:  Random walk of an isolated attractive polymer
-<?php codeblockend("brush: shell;"); ?>
-<p>
-  We see that square-well fluids can be made using <b>dynamod</b>'s
-  packing mode 1. We can get some more information on this mode using
-  the following command:
+  We then look for the most useful mode and we see that square-well
+  fluids can be made using <b>dynamod</b>'s packing mode 1. We can get
+  some more information on this mode by adding the <i>--help</i>
+  option:
 </p>
 <?php codeblockstart(); ?>dynamod -m 1 --help<?php codeblockend("brush: shell;"); ?>
 <p>
@@ -146,202 +127,38 @@ Mode 1: Mono/Multi-component square wells
   --s1 arg (monocomponent)    Instead of f1 and f2, you can specify a multicomponent system using this option. You need to pass the the parameters for each species as follows --s1 "diameter(d),lambda(l),mass(m),welldepth(e),molefrac(x):d,l,m,e,x[:...]"
 ...<?php codeblockend("brush: shell;"); ?>
 <p>
-  This mode can create a multicomponent system for us using the first
-  string option (<i>--s1</i>), but we'll create it by hand from the
-  monocomponent system.
+  Here you can see many of the same options available for hard-sphere
+  systems, as seen
+  in <a href="/index.php/tutorial2#generating-configuration-files">tutorial
+  2</a>. The only additions are the well width (<i>--f1</i>) and depth
+  (<i>--f2</i>) options and the option for a multicomponent system
+  (<i>--s1</i>).
 </p>
 <p>
   Lets start by making a monocomponent mixture of square-wells using
   the following command:
 </p>
-<?php codeblockstart(); ?>dynamod -m 1 -C 10 -d 0.5 --i1 0 -r 1 -o config.start.xml<?php codeblockend("brush: shell;"); ?>
+<?php codeblockstart(); ?>dynamod -m 1 -C 10 -d 0.1 --i1 0 -r 1 -o config.start.xml<?php codeblockend("brush: shell;"); ?>
 <p style="font-family:monospaced;">
   The options passed here
   are <a href="/index.php/tutorial2#initial-positions-and-crystals">discussed
   in detail in tutorial 2</a>. The only differences are that the
-  number of particles has been increased to 4000 (<i>-C 10</i>), and
-  we're creating square-well molecules (<i>-m 1</i>) instead of hard
-  spheres. An example of the configuration file is available below (it
-  is a large XML file, so your browser may take some time to display
-  it).
+  number of particles has been increased to 4000 (<i>-C 10</i>), we're
+  creating square-well molecules (<i>-m 1</i>) instead of hard
+  spheres, and the density is lower (<i>-d 0.1</i>). An example of the
+  configuration file is available below (it is a large XML file, so
+  your browser may take some time to display it).
 </p>
 <?php button("Example monocomponent configuration","/pages/config.tut4.mono.xml");?>
 <p>
-  This system has the 4000 particles we're looking for, but we'll need
-  to convert a fraction of these to another species to make the
-  multicomponent square-well system we wish to study. In the following
-  sections we look at what needs to be done to perform this
-  conversion, and learn how DynamO handles multiple interactions.
-</p>
-<h2>Adding a new Species</h2>
-<p>
-  If you open the <i>config.start.xml</i> file in a text editor,
-  you'll notice that there is only one <b>Species</b> defined:
-</p>
-<?php xmlXPathFile("pages/config.tut4.mono.xml", "/DynamOconfig/Simulation/Genus"); ?>
-<p>
-  If we want to study a binary system, we'll need to define two
-  <b>Species</b> to be able to get per-species results in the output
-  data. Using two <b>Species</b> also provides a convenient way to
-  specify the different masses of the two types of particles. Lets
-  assume we want to convert the first 100 particles in the
-  configuration file to
-  <b>Species</b> "A" and have the rest as <b>Species</b> "B", we can change the file
-  to:
-</p>
-<?php xmlXPathFile("pages/config.tut4.binary.xml", "/DynamOconfig/Simulation/Genus"); ?>
-<p>
-  You should notice that we've reduced the mass of the smaller
-  particles (type B) to match the ratio $m_A/m_B=8$. This implies that
-  we'll also need to effectively shrink the diameter of the particles
-  which are becoming <b>Species</b> B. Instead, we could have
-  increased the mass of the larger particles (type A) to satisfy this
-  ratio; but this would have meant that we would also have to increase
-  their diameter. The problem with increasing diameters of particles
-  by hand is that you may accidentally cause nearby particles to
-  overlap. We must be careful to avoid creating overlapping cores, as
-  the dynamics are undefined in these cases. DynamO is extremely
-  stable and may eventually resolve these overlaps but it is not
-  guaranteed in all cases. We have kept one mass at a value of one, as
-  this corresponds to a set of reduced units (see
-  the <a href="/index.php/FAQ#q-what-units-does-the-dynamod-command-useproduce">FAQ
-  on the units of DynamO</a>)
-</p>
-<p>
-  You should also notice that the <b>IDRange</b>
-  of <b>Type</b> <i>"Ranged"</i> is an inclusive range of particle
-  ID's. The particle ID's start with zero and end on 99; therefore,
-  the first <b>Species</b> tag corresponds to the first 100 particles
-  in the configuration file.  For more information on the
-  <i>"Ranged"</i> <b>IDRange</b> tag, please see the reference:
-</p>
-<?php button("Reference entry for <i>\"Ranged\"</i> Type <b>IDRange</b>","/index.php/reference#typeranged");?>
-<p>
-  In the next section we'll take a look at setting up all of
-  the <b>Interaction</b>s of the system.
-</p>
-<h2>Setting up the Interactions</h2>
-<p>
-  In the original file, only
-  one <a href="/index.php/reference#typesquarewell">square-well
-  Type <b>Interaction</b></a> is defined:
-</p>
-<?php xmlXPathFile("pages/config.tut4.mono.xml", "/DynamOconfig/Simulation/Interactions", 4, 2); ?>
-<p>
-  Here, we will use three separate <b>Interaction</b> tags to input
-  the parameters of the three types of interactions between all
-  species (A-A, A-B, and B-B). We were very careful to shrink the mass
-  of type "B" particles so that, in order to obtain the ratio
-  $\sigma_A/\sigma_B=2$, the large particles will have a diameter of
-  $\sigma_A=1$ and the small particles a diameter of
-  $\sigma_B=0.5$. An example implementation using these diameters is
-  given below:
-</p>
-<?php xmlXPathFile("pages/config.tut4.binary.xml", "/DynamOconfig/Simulation/Interactions", 4,3); ?>
-<p>
-  The first <b>Interaction</b> entry handles the interactions
-  between <b>Species</b> "A" particles. A
-  special <a href="/index.php/reference#typesingle">"Single" type
-  IDPairRange</a> is used to convert a single IDRange, which
-  identifies all of the type A particles, into a <b>IDPairRange</b>
-  describing all pairings of type A particles.
-</p>
-<?php button("Reference entry for <i>\"Single\"</i> Type <b>IDPairRange</b>","/index.php/reference#typesingle");?>
-<p>
-  The second <b>Interaction</b> entry corresponds to the inter-<b>Species</b>
-  <b>Interaction</b>s between type A and type B particles. Here,
-  another type of <b>IDPairRange</b> is used which takes
-  two <b>IDRange</b>s and creates a
-  <b>IDPairRange</b> which matches all pairings between them. The
-  diameter of the <b>Interaction</b> is worked out using the additive
-  rule:
-
-  \[\sigma_{AB}=\left(\sigma_A+\sigma_B\right)/2=\left(1+0.5\right)/2=0.75\]
-
-  Technically, the Lambda is also calculated using the additive rule,
-  but as both <b>Species</b> have the same Lambda value we have
-  $\lambda_{AB}=\lambda_A=\lambda_B=1.5$.
-</p>
-<?php button("Reference entry for <i>\"Pair\"</i> Type <b>IDPairRange</b>","/index.php/reference#typepair");?>
-<p>
-  The final <b>Interaction</b> represents the intra-<b>Species</b>
-  interactions between the type B particles. Surprisingly, this has
-  an <i>"All"</i> type
-  <b>IDPairRange</b> tag which maps to all possible pairings of particles in
-  the system. This works due to the way that DynamO searches for
-  <b>Interaction</b>s. DynamO moves down the list of <b>Interaction</b>s <u>in
-  order</u> testing against each <b>Interaction</b> for a match. The first
-  match is the one that is returned! So, this last tag actually
-  matches all pairs <u>except</u> for those that match above. The only
-  pairs which are left are the B-B pairings.
-</p>
-<p>
-  In the third <b>Interaction</b>, we could have also used the
-  following <b>IDPairRange</b> instead of the "All" type:
-</p>
-<?php codeblockstart(); ?>
-<IDPairRange Type="Single">
-  <IDRange Type="Ranged" Start="100" End="3999"/>
-</IDPairRange>
-<?php codeblockend("brush: xml;"); ?>
-<p>
-  A good reason for using the catch-<i>"All"</i> <b>Interaction</b> in
-  the end is that in complex systems with
-  unusual <b>Interaction</b> <b>IDPairRange</b>s it can be quite hard
-  to define which particles are actually left over. Using
-  an <i>"All"</i> rule at the end and catching the complex
-  interactions first makes it simpler to implement.
-</p>
-<p>
-  Although the example <b>Interaction</b>s listed above are suitable
-  for our system, it is obvious there is more than one way to specify
-  the
-  <b>Interaction</b>s. For example, we could specify the <i>B-B</i>
-  Interaction first instead. A general rule for DynamO is that the
-  simplest configuration files are the fastest but the way in which
-  the <b>Interaction</b>s are specified will usually not make much
-  difference to the performance of DynamO, so use whatever is most
-  convenient for you.
-</p>
-<h3>About CaptureMap tags</h3>
-<p>
-  You should notice that the <b>CaptureMap</b> tag in the original
-  mono-component configuration file has been deleted and that the new
-  <b>Interaction</b> tags do not contain them. This is deliberate as
-  we want DynamO to rebuild the <b>CaptureMap</b> as we have changed the
-  <b>Interaction</b> parameters. For more information
-  on <b>CaptureMap</b>s and why deleting it is required, please see
-  the reference linked below.
-</p>
-<?php button("Reference entry for <b>CaptureMap</b>","/index.php/reference#capturemap");?>
-<h2>Summary and finished example</h2>
-<p>
-  The configuration has now been modified to a two-component
-  square-well system and an example of the finished
-  configuration is available below. 
-</p>
-<?php button("Example low-density binary configuration","/pages/config.tut4.binary.xml");?>
-<p>
-  We'll now look at converting this into a high density
-  configuration and how to thermostat the temperature.
+  As we haven't specified the well depth and well width, they have
+  been left at their default values of 1 and 1.5 respectively. Next,
+  we're going to compress the system!
 </p>
 <h1><a id="compressing"></a>Compressing the configuration</h1>
-<div class="figure" style="clear:right; float:right;width:400px;">
-  <?php embedAJAXvideo("tut4_compression", "x62zeoF457w", 400, 225); ?>
-  <div class="caption">
-    A 10:1 size-ratio low-density binary square-well system under
-    compression.<br/>
-    <a href="/pages/config.tut4.binary.xml">View configuration file</a>
-  </div>
-</div>
 <p>
-  To create the binary system we had to shrink one set of particles to
-  avoid causing any overlaps or invalid states. Unfortunately, this
-  results in a low-density configuration (for example see right). The
-  low-density behaviour of fluids is fairly well-understood as it
-  approaches that of an ideal gas. Most of the interesting behaviour
-  we wish to explore through simulation appears at higher densities,
-  so we need a method to generate high-density systems.
+  We've created a relatively configuration with a reduced density of
+  0.5.
 </p>
 <p>
   To access high density systems while avoiding generating invalid

@@ -180,7 +180,7 @@ Mode 1: Mono/Multi-component square wells
   is a large XML file, so your browser may take some time to display
   it).
 </p>
-<?php button("Example monocomponent configuration","/pages/config.tut4.mono.xml");?>
+<?php button("Example monocomponent configuration","/pages/config.tut5.mono.xml");?>
 <p>
   This system has the 4000 particles we're looking for, but we'll need
   to convert a fraction of these to another species to make the
@@ -193,7 +193,7 @@ Mode 1: Mono/Multi-component square wells
   If you open the <i>config.start.xml</i> file in a text editor,
   you'll notice that there is only one <b>Species</b> defined:
 </p>
-<?php xmlXPathFile("pages/config.tut4.mono.xml", "/DynamOconfig/Simulation/Genus"); ?>
+<?php xmlXPathFile("pages/config.tut5.mono.xml", "/DynamOconfig/Simulation/Genus"); ?>
 <p>
   If we want to study a binary system, we'll need to define two
   <b>Species</b> to be able to get per-species results in the output
@@ -204,7 +204,7 @@ Mode 1: Mono/Multi-component square wells
   <b>Species</b> "A" and have the rest as <b>Species</b> "B", we can change the file
   to:
 </p>
-<?php xmlXPathFile("pages/config.tut4.binary.xml", "/DynamOconfig/Simulation/Genus"); ?>
+<?php xmlXPathFile("pages/config.tut5.binary.xml", "/DynamOconfig/Simulation/Genus"); ?>
 <p>
   You should notice that we've reduced the mass of the smaller
   particles (type B) to match the ratio $m_A/m_B=8$. This implies that
@@ -241,7 +241,7 @@ Mode 1: Mono/Multi-component square wells
   one <a href="/index.php/reference#typesquarewell">square-well
   Type <b>Interaction</b></a> is defined:
 </p>
-<?php xmlXPathFile("pages/config.tut4.mono.xml", "/DynamOconfig/Simulation/Interactions", 4, 2); ?>
+<?php xmlXPathFile("pages/config.tut5.mono.xml", "/DynamOconfig/Simulation/Interactions", 4, 2); ?>
 <p>
   Here, we will use three separate <b>Interaction</b> tags to input
   the parameters of the three types of interactions between all
@@ -252,7 +252,7 @@ Mode 1: Mono/Multi-component square wells
   $\sigma_B=0.5$. An example implementation using these diameters is
   given below:
 </p>
-<?php xmlXPathFile("pages/config.tut4.binary.xml", "/DynamOconfig/Simulation/Interactions", 4,3); ?>
+<?php xmlXPathFile("pages/config.tut5.binary.xml", "/DynamOconfig/Simulation/Interactions", 4,3); ?>
 <p>
   The first <b>Interaction</b> entry handles the interactions
   between <b>Species</b> "A" particles. A
@@ -335,7 +335,7 @@ Mode 1: Mono/Multi-component square wells
   square-well system and an example of the finished
   configuration is available below. 
 </p>
-<?php button("Example low-density binary configuration","/pages/config.tut4.binary.xml");?>
+<?php button("Example low-density binary configuration","/pages/config.tut5.binary.xml");?>
 <p>
   We'll now look at converting this into a high density
   configuration and how to thermostat the temperature.
@@ -346,7 +346,7 @@ Mode 1: Mono/Multi-component square wells
   <div class="caption">
     A 10:1 size-ratio low-density binary square-well system under
     compression.<br/>
-    <a href="/pages/config.tut4.binary.xml">View configuration file</a>
+    <a href="/pages/config.tut5.binary.xml">View configuration file</a>
   </div>
 </div>
 <p>
