@@ -68,19 +68,14 @@
 <?php codeblockstart(); ?>
 #Create the monocomponent system
 dynamod -m 1 -C 10 -d 0.5 --i1 0 -r 1 -o config.start.xml
-
 #Now edit config.start.xml by hand to convert it into a multicomponent system
 #...
-
 #Compress the multicomponent system to a higher density
 dynarun config.start.xml --engine=3 --target-pack-frac 0.1 -o config.compressed.xml
-
 #Add a thermostat, to allow us to control the temperature
 dynamod config.compressed.xml -T 1.0 -o config.thermostatted.xml
-
 #Equilibrate the system using the thermostat to set the temperature
 dynarun config.thermostatted.xml -c 1000000 -o config.equilibrated.thermostatted.xml
-
 #Now collect data on the system
 dynarun config.equilibrated.xml -c 1000000 -o config.final.xml
 <?php codeblockend("brush: shell;"); ?>
@@ -389,15 +384,23 @@ Mode 1: Mono/Multi-component square wells
 </p>
 <h1>Running the simulation</h1>
 <p>
-  To add a thermostat, again use the dynamod tool:
+  We'll add a thermostat to control the temperature to $k_B\,T=1.5$
+  and then equilibrate the system.
 </p>
-<?php codeblockstart(); ?>dynamod config.rescaled.xml -T 1.0 -o config.thermostatted.xml<?php codeblockend("brush: shell;"); ?>
+<?php codeblockstart(); ?>
+dynamod config.rescaled.xml -T 1.5 -o config.thermostatted.xml
+dynarun config.thermostatted.xml -c 1000000 -o config.equilibrated.thermostatted.xml
+<?php codeblockend("brush: shell;"); ?>
 <p>
-  Now that the system is set up, we need to equilibrate it before we
-  take any measurements. A rough guide to the length of time to
-  equilibrate the system is 25 events per particle but the only way to
-  be sure is to track properties and test that they reach a steady
-  state value.
+  Once this is done, we'll disable the thermostat and perform another
+  run to collect output data and include some output plugins.
+</p>
+<?php codeblockstart(); ?>
+dynamod config.thermostatted.xml -T 0 -o config.prerun.xml
+dynarun config.prerun.xml -c 1000000 -o config.end.xml -L MSD
+<?php codeblockend("brush: shell;"); ?>
+<p>
+  We'll now take a look at some of the results
 </p>
 <h1>Processing the results</h1>
 <p>
