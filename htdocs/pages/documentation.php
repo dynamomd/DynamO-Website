@@ -30,11 +30,11 @@
   developers</a> for some advice.
 </p>
 <div style="clear:both;text-align:center;"><b>Tutorials</b></div>
-<?php button("Tutorial 1: Compiling DynamO from Source","/index.php/tutorial1");?>
-<?php button("Tutorial 2: Introduction to DynamO","/index.php/tutorial2");?>
-<?php button("Tutorial 3: The configuration file","/index.php/tutorial3");?>
+<?php button("1: Compiling DynamO from Source","/index.php/tutorial1");?>
+<?php button("2: Introduction to DynamO","/index.php/tutorial2");?>
+<?php button("3: The configuration file","/index.php/tutorial3");?>
 
-<?php button("Tutorial 4: Thermostats and transport properties","/index.php/tutorial4");?>
+<?php button("4: Thermostats and transport properties","/index.php/tutorial4");?>
 <div style="clear:both;text-align:center;"><b>References</b></div>
 <?php button("Configuration File Format Reference","/index.php/reference");?>
 <?php button("Output Plugin Reference","/index.php/outputplugins");?>
