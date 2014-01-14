@@ -185,7 +185,7 @@ dynarun config.equilibrated.xml -c 1000000 -o config.end.xml
   generate from scratch. So lets take a look at how we can generate an
   basic example configuration file to start us off.
 </p>
-<h2>Generating configuration files</h2>
+<h2 id="generating-configuration-files">Generating configuration files</h2>
 <p>
   <b>dynamod</b> is a program designed to generate example
   configuration files, or to manipulate existing configuration
