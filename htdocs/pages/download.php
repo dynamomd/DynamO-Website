@@ -80,7 +80,7 @@
   one of the links below.
 </p>
 <?php button("Download Latest Development Branch","https://github.com/toastedcrumpets/DynamO/zipball/master");?>
-<!--<?php button("Download Stable Version 1.5.0","https://github.com/toastedcrumpets/DynamO/zipball/v1-5-0");?>--!>
+<!--<?php button("Download Stable Version 1.5.0","https://github.com/toastedcrumpets/DynamO/zipball/v1-5-0");?>-->
 <h1 id="prebuilt">Installing on Ubuntu 12.04 and later</h1>
 <p>
   DynamO is now extremely easy to install on Ubuntu. Although you can
