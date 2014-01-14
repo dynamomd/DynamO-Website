@@ -444,9 +444,9 @@ dynarun config.xml -c 1000000 -L MFT:BinWidth=0.5,Length=100
 
     \[\begin{align}
     \begin{matrix}
-    P_{xx} & P_{xy} & P_{xz}\\
-    P_{yx} & P_{yy} & P_{yz}\\
-    P_{zx} & P_{zy} & P_{zz}
+    P_{xx} &amp; P_{xy} &amp; P_{xz}\\
+    P_{yx} &amp; P_{yy} &amp; P_{yz}\\
+    P_{zx} &amp; P_{zy} &amp; P_{zz}
     \end{matrix}
     \end{align}\]
   </li>
@@ -1397,9 +1397,9 @@ t)\right\rangle_{t,\alpha}\]
   VACF at discrete points in time. The implementation is as follows:
 </p>
 \[\begin{align}
-\Psi_{\alpha}(i\Delta t)&=\left\langle\mathbf{v}(t)\cdot\mathbf{v}(t+i\Delta t)\right\rangle_{t,\alpha}
+\Psi_{\alpha}(i\Delta t)&amp;=\left\langle\mathbf{v}(t)\cdot\mathbf{v}(t+i\Delta t)\right\rangle_{t,\alpha}
 \\
-&=N_{ticks}^{-1}\sum_{j}^{N_{ticks}}N_\alpha^{-1}\sum_k^\alpha \mathbf{v}_k(t_j)\cdot\mathbf{v}_k(t_{j+i})
+&amp;=N_{ticks}^{-1}\sum_{j}^{N_{ticks}}N_\alpha^{-1}\sum_k^\alpha \mathbf{v}_k(t_j)\cdot\mathbf{v}_k(t_{j+i})
 \end{align}\]
 <p>
 where $\Delta t$ is the tick interval/time, $N_{ticks}$ is the number
@@ -1508,9 +1508,9 @@ number of Structures in the Topology.
   MSD at discrete points in time. The implementation is as follows:
 </p>
 \[\begin{align}
-\Psi_{\alpha}(i\Delta t)&=\left\langle \left[{\bf r}(t+i\Delta t)-{\bf r}(t)\right]^2\right\rangle_{t,\alpha}
+\Psi_{\alpha}(i\Delta t)&amp;=\left\langle \left[{\bf r}(t+i\Delta t)-{\bf r}(t)\right]^2\right\rangle_{t,\alpha}
 \\
-&=N_{ticks}^{-1}\sum_{j}^{N_{ticks}}N_\alpha^{-1}\sum_k^\alpha \left[{\bf r}_k(t_j)-{\bf r}_k(t_{j+i})\right]^2
+&amp;=N_{ticks}^{-1}\sum_{j}^{N_{ticks}}N_\alpha^{-1}\sum_k^\alpha \left[{\bf r}_k(t_j)-{\bf r}_k(t_{j+i})\right]^2
 \end{align}\]
 <p>
 where $\Delta t$ is the tick interval/time, $N_{ticks}$ is the number
