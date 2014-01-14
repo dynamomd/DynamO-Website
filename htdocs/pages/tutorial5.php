@@ -6,12 +6,9 @@
    header( 'Location: /index.php/404');
    return;
    }
-   $pagetitle="Tutorial 4: Example: Multicomponent Square-Well Fluid";
+   $pagetitle="Tutorial 5: Example: Multicomponent Square-Well Fluid";
    ?>
 <?php printTOC(); ?>
-<p style="text-align:center; margin:15px; background-color:#FFD800; font-size:16pt; font-family:sans; line-height:40px;">
-  <b>This tutorial is currently being written and is incomplete.</b>
-</p>
 <p>
   This tutorial uses an example study of multicomponent square-well
   particles to introduce several topics:
@@ -22,23 +19,15 @@
     the <b>dynamod</b> command as a basis for more complex systems.
   </li>
   <li>
-    <a href="#settingup">How to specify multiple species and complex interactions in the
-    configuration file.</a>
+    <a href="#settingup">How to specify multiple species and complex
+    interactions in the configuration file.</a>
   </li>
   <li>
     <a href="#compressing">How to compress a simulation to higher
     densities.</a>
   </li>
   <li>
-    <a href="#rescaling">How to rescale the temperature in a
-    configuration.</a>
-  </li>
-  <li>
-    <a href="#thermostat">How to add a thermostat.</a>
-  </li>
-  <li>
-    How to process collected data, including transport coefficients,
-    in the output file.
+    How to process collected data for multiple species.
   </li>
 </ul>
 <p>
@@ -62,18 +51,19 @@
 </p>
 <?php button("Reference entry for <i>\"PBC\"</i> Type <b>BoundaryConditions</b>","/index.php/reference#typepbc");?>
 <h2>The whole tutorial in brief</h2>
+<img height="194" width="500" alt="An illustration of the variables of the system." src="/images/tut5.species.png" style="display:block;margin:0 auto 0 auto;"/>
 <p>
-  We're going to study a binary mixture of square-well
-  molecules. We'll have a larger species, A, and a smaller species,
-  B. The mixture we will study has a hard-core diameter ratio of
-  $\sigma_A/\sigma_B=2$ and a mass ratio proportional to their
-  volumes $m_A/m_B=\sigma_A^3/\sigma_B^3=8$. Both molecules have
-  the same well-width factor $\lambda_A=\lambda_B=1.5$. For
-  interactions between species we'll use the additive rule. For
-  example, between species A and B the interaction diameter is
-  $\sigma_{AB}=\left(\sigma_A+\sigma_B\right)/2$. We'll want to study
-  a mixture of $N=4000$ particles over a range of densities and
-  concentrations. The dynamod/dynarun commands are
+  We're going to study a binary mixture of $N=4000$ square-well
+  molecules. We'll have a larger species, $A$, and a smaller species,
+  $B$. The mixture we will study has a hard-core diameter ratio of
+  $\sigma_A/\sigma_B=2$ and a mass ratio proportional to their volumes
+  $m_A/m_B=\sigma_A^3/\sigma_B^3=8$. Both molecules have the same
+  well-width factor $\lambda_A=\lambda_B=1.5$. For interactions
+  between species we'll use the additive rule. For example, between
+  species A and B the interaction diameter is
+  $\sigma_{AB}=\left(\sigma_A+\sigma_B\right)/2$. We'll want to be
+  able to study the mixture over a range of densities, temperatures,
+  and concentrations. The dynamod/dynarun commands we will run are
 </p>
 <?php codeblockstart(); ?>
 #Create the monocomponent system
@@ -91,12 +81,6 @@ dynamod config.compressed.xml -T 1.0 -o config.thermostatted.xml
 #Equilibrate the system using the thermostat to set the temperature
 dynarun config.thermostatted.xml -c 1000000 -o config.equilibrated.thermostatted.xml
 
-#Disable the thermostat again, so that we might collect accurate dynamical information
-dynamod -T 0 config.equilibrated.thermostatted.xml -o config.equilibrated.xml
-
-#Run the simulation again to ensure it is relaxed/equilibrated from disabling the thermostatt
-dynarun config.equilibrated.xml -c 1000000 -o config.equilibrated.xml
-
 #Now collect data on the system
 dynarun config.equilibrated.xml -c 1000000 -o config.final.xml
 <?php codeblockend("brush: shell;"); ?>
@@ -110,36 +94,16 @@ dynarun config.equilibrated.xml -c 1000000 -o config.final.xml
   to create a configuration file from scratch. It is much simpler and
   convenient to take an existing configuration, which is close to the
   system you wish to study, and to modify it. Once you are familiar
-  with the file format you may then write your own tools to generate
-  configuration files in the programming language of your choice (see
-  <a href="/index.php/tutorialA">Appendix A</a> for more information
-  on this).
+  with DynamO and the XML file format you may write your own tools to
+  generate configuration files in the programming language of your
+  choice (see the
+  <a href="/index.php/tutorialA">reference on XML libraries</a> for
+  more information on this).
 </p>
 <p>
-  We need to see what systems the <b>dynamod</b> command can prepare
-  so that we can pick the most convenient starting point for the
-  multicomponent square-well system. We again query the available
-  options of the <b>dynamod</b> command using the <i>--help</i>
-  option:
-</p>
-<?php codeblockstart(); ?>dynamod --help<?php codeblockend("brush: shell;"); ?>
-<p>
-  A full listing of the options of the <b>dynamod</b> program is
-  outputted, and the start of the list of systems it can create/pack
-  should look like the following:
-</p>
-<?php codeblockstart(); ?>...
-Packer options:
-  -m [ --pack-mode ] arg Chooses the system to pack (construct)
-                         Packer Modes:
-                         0:  Monocomponent hard spheres
-                         1:  Mono/Multi-component square wells
-                         2:  Random walk of an isolated attractive polymer
-<?php codeblockend("brush: shell;"); ?>
-<p>
-  We see that square-well fluids can be made using <b>dynamod</b>'s
-  packing mode 1. We can get some more information on this mode using
-  the following command:
+  Following the last tutorial, we can see that square-well fluids can
+  be made using <b>dynamod</b>'s packing mode 1. We can get some more
+  information on this mode using the following command:
 </p>
 <?php codeblockstart(); ?>dynamod -m 1 --help<?php codeblockend("brush: shell;"); ?>
 <p>
@@ -161,9 +125,9 @@ Mode 1: Mono/Multi-component square wells
   --s1 arg (monocomponent)    Instead of f1 and f2, you can specify a multicomponent system using this option. You need to pass the the parameters for each species as follows --s1 "diameter(d),lambda(l),mass(m),welldepth(e),molefrac(x):d,l,m,e,x[:...]"
 ...<?php codeblockend("brush: shell;"); ?>
 <p>
-  This mode can create a multicomponent system for us using the first
-  string option (<i>--s1</i>), but we'll create it by hand from the
-  monocomponent system.
+  You might notice that this mode can create a multicomponent system
+  for us using the first string option (<i>--s1</i>), but we'll create
+  it by hand here to understand the process.
 </p>
 <p>
   Lets start by making a monocomponent mixture of square-wells using
@@ -173,12 +137,10 @@ Mode 1: Mono/Multi-component square wells
 <p style="font-family:monospaced;">
   The options passed here
   are <a href="/index.php/tutorial2#initial-positions-and-crystals">discussed
-  in detail in tutorial 2</a>. The only differences are that the
-  number of particles has been increased to 4000 (<i>-C 10</i>), and
-  we're creating square-well molecules (<i>-m 1</i>) instead of hard
-  spheres. An example of the configuration file is available below (it
-  is a large XML file, so your browser may take some time to display
-  it).
+  in detail in tutorial 2</a>. The most significant value is the total
+  number of particles is $N=4000$ (<i>-C 10</i>). An example of the
+  configuration file is available below (it is a large XML file, so
+  your browser may take some time to display it).
 </p>
 <?php button("Example monocomponent configuration","/pages/config.tut5.mono.xml");?>
 <p>
@@ -215,10 +177,10 @@ Mode 1: Mono/Multi-component square wells
   their diameter. The problem with increasing diameters of particles
   by hand is that you may accidentally cause nearby particles to
   overlap. We must be careful to avoid creating overlapping cores, as
-  the dynamics are undefined in these cases. DynamO is extremely
-  stable and may eventually resolve these overlaps but it is not
-  guaranteed in all cases. We have kept one mass at a value of one, as
-  this corresponds to a set of reduced units (see
+  the dynamics are undefined in these cases. DynamO is stable to
+  overlaps and may eventually resolve these errors but it is not
+  guaranteed in all cases. We have also deliberately kept a mass at a
+  value of 1, as this corresponds to a set of reduced units (see
   the <a href="/index.php/FAQ#q-what-units-does-the-dynamod-command-useproduce">FAQ
   on the units of DynamO</a>)
 </p>
@@ -273,9 +235,9 @@ Mode 1: Mono/Multi-component square wells
 
   \[\sigma_{AB}=\left(\sigma_A+\sigma_B\right)/2=\left(1+0.5\right)/2=0.75\]
 
-  Technically, the Lambda is also calculated using the additive rule,
-  but as both <b>Species</b> have the same Lambda value we have
-  $\lambda_{AB}=\lambda_A=\lambda_B=1.5$.
+  Technically, the well-width factor $\lambda$ is also calculated
+  using the additive rule, but as both <b>Species</b> have the same
+  value we have $\lambda_{AB}=\lambda_A=\lambda_B=1.5$.
 </p>
 <?php button("Reference entry for <i>\"Pair\"</i> Type <b>IDPairRange</b>","/index.php/reference#typepair");?>
 <p>
@@ -305,8 +267,9 @@ Mode 1: Mono/Multi-component square wells
   unusual <b>Interaction</b> <b>IDPairRange</b>s it can be quite hard
   to define which particles are actually left over. Using
   an <i>"All"</i> rule at the end and catching the complex
-  interactions first makes it simpler to implement.
+  interactions makes it simpler to implement.
 </p>
+<h3>Optimal order of Interactions and IDPairRanges</h3>
 <p>
   Although the example <b>Interaction</b>s listed above are suitable
   for our system, it is obvious there is more than one way to specify
@@ -329,7 +292,7 @@ Mode 1: Mono/Multi-component square wells
   the reference linked below.
 </p>
 <?php button("Reference entry for <b>CaptureMap</b>","/index.php/reference#capturemap");?>
-<h2>Summary and finished example</h2>
+<h2>Summary and finished multicomponent example</h2>
 <p>
   The configuration has now been modified to a two-component
   square-well system and an example of the finished
@@ -381,37 +344,30 @@ Mode 1: Mono/Multi-component square wells
 </p>
 <?php codeblockstart(); ?>dynarun config.start.xml --engine=3 --target-pack-frac 0.3 -o config.compressed.xml<?php codeblockend("brush: shell;"); ?>
 <p>
-  Please see <a href="/index.php/FAQ#packingfraction">this FAQ</a> on why we decided to set the packing fraction,
-  not the number density of the system.
+  Once this command completes, we should have a compressed
+  configuration at a packing fracton of $0.3$. Please
+  see <a href="/index.php/FAQ#packingfraction">this FAQ</a> on why we
+  decided to set the packing fraction, not the number density of the
+  system.
 </p>
 <p>
   A video of an example compression run is given to the right (its a
-  10:1 size ratio system to exaggerate the effect). The simulation
-  ends automatically once the target number density or packing
-  fraction is reached which may take some time. If the system appears
-  to get "stuck" (the simulation time is not increasing), then it
-  might be wise to stop the compression
-  run, <a href="#rescaling">rescale the particle velocities</a>, and
-  to run a normal simulation for a while to allow the system to relax.
+  $\sigma_A/\sigma_B=10$ system to exaggerate the effect). The
+  simulation ends automatically once the target number density or
+  packing fraction is reached which may take some time. If the system
+  appears to get "stuck" (the simulation time is not increasing), then
+  it might be wise to stop the compression run, rescale the particle
+  velocities, and to run a normal simulation for a while to allow the
+  system to become unstuck/relax.
 </p>
+<h2><a id="rescaling"></a>Rescaling velocities during compression</h2>
 <p>
-  We will now finish setting up the system by looking at how we might
-  control the temperature of the system.
-</p>
-<h1><a id="rescaling"></a>Rescaling velocities to set the temperature</h1>
-<p>
-  During compression you should be able to observe that the system's
+  During compression you should be able to observe that the
   temperature and internal energy is varying significantly. This is
-  due to the change in internal energy due to density changes as well
-  as any work performed by the compression process. In repulsive
-  systems, this work always causes heating resulting in faster moving
-  particles and more events per unit of simulation time. This will
-  cause the compression to slow down as the simulation has to process
-  more events per unit of expansion. In attractive systems, the system
-  may cool or heat on compression
-  (see <a href="http://en.wikipedia.org/wiki/Joule%E2%80%93Thomson_effect">Joule-Thomson
-  effect</a>), but even cooling is problematic if the system becomes
-  "stuck".
+  due to the changes in internal energy and the work performed by the
+  compression process. The compression process also slows down over
+  time and any heating causes more events per unit time slowing it
+  even further.
 </p>
 <p>
   You may consider stopping the compression periodically and rescaling
@@ -425,58 +381,17 @@ Mode 1: Mono/Multi-component square wells
 <p>
   This will rescale the velocities of the particles in the system so
   that the current temperature is 1 (set by the <i>-r</i>
-  option). Please note, that this does not thermostat the
-  temperature. Rescaling the temperature only exactly sets/thermostats
-  the temperature in "hard" systems such as the
-  using <a href="/index.php/reference#typehardsphere">hard-sphere</a>/<a href="/index.php/reference#typeparallelcubes">parallel-cube</a>/<a href="/index.php/reference#typelines">hard-lines</a>
-  systems. These systems have the internal energy of an ideal gas,
-  therefore the temperature does not change with time (except if it is
-  compressed). In systems such as the square-well fluid studied here
-  we will need to use a thermostat to control the temperature.
+  option). Please note, <a href="/index.php/tutorial4#rescaling">as
+  discussed in the previous tutorial</a> this option does not
+  thermostat the temperature. In systems such as the square-well fluid
+  studied here we will need to use a thermostat to control the
+  temperature.
 </p>
-<h1><a id="thermostat"></a>Adding a thermostat</h1>
-<p>
-   After you have rescaled the temperature and begin to simulate the
-  system again, square-well particles may begin to rapidly heat or
-  cool as they exchange configurational energy for kinetic energy.  If
-  we want to measure the system at a set temperature, we will need to
-  add a thermostat to try hold the system at the desired temperature.
-</p>
+<h1>Running the simulation</h1>
 <p>
   To add a thermostat, again use the dynamod tool:
 </p>
 <?php codeblockstart(); ?>dynamod config.rescaled.xml -T 1.0 -o config.thermostatted.xml<?php codeblockend("brush: shell;"); ?>
-<p>
-  This will add
-  an <a href="/index.php/reference#typeandersen">Andersen
-  thermostat</a> to the system with a target temperature of 1 (set by
-  the <i>-T</i> argument). This thermostat will eventually bring the
-  system to the specified temperature, even with changes in the
-  configurational energy, by randomly reassigning particle velocities.
-</p>
-<p>
-  <b>Note</b>: If you wish to change the thermostat temperature at a
-  later time, you can use the dynamod on the configuration again:
-</p>
-<?php codeblockstart(); ?>dynamod config.thermostatted.xml -T 4.0 -o config.thermostatted.xml<?php codeblockend("brush: shell;"); ?>
-<p>
-  You can even use <b>dynamod</b> remove the thermostatt by using a
-  temperature of zero (<i>-T 0</i>). Alternatively, you can open up
-  the configuration file in a text editor, and edit
-  the <a href="/index.php/reference#typeandersen">Andersen type
-  System</a> event by hand:
-</p>
-<?php codeblockstart();?>
-<System Type="Andersen" Name="Thermostat" MFT="1.0" Temperature="1.0" SetPoint="0.05" SetFrequency="100">
-  <IDRange Type="All"/>
-</System>
-<?php codeblockend("brush: xml;"); ?>
-<p>
-  Now that we have set the density of the system and found a way to
-  control its temperature, we can create a state point (simulation
-  with a set temperature and density) and investigate its properties.
-</p>
-<h1>Running the simulation</h1>
 <p>
   Now that the system is set up, we need to equilibrate it before we
   take any measurements. A rough guide to the length of time to
