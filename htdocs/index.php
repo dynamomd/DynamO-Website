@@ -29,7 +29,7 @@ function showhideend($name)
 <?php echo $code;?> </p></div> <?php
  }
 
-function echoXML($xmlnode, $spacing, $max_depth, $max_children)
+function echoXML($xmlnode, $spacing, $max_depth, $max_children, $max_lines_of_text=3)
 {
  //Print the current node and its attributes
  echo str_repeat("  ", $spacing)."<".$xmlnode->getName();
@@ -56,10 +56,16 @@ function echoXML($xmlnode, $spacing, $max_depth, $max_children)
  echo str_repeat("  ", $spacing)."</".$xmlnode->getName().">\n";
  } else {
    $text = trim($xmlnode);
-   if (empty($text)) {
-     echo "/>\n";
+   echo ">\n";
+   if (!empty($text)) {
+   $s = explode("\n",$text);
+   if (count($s) <= $max_lines_of_text) {
+    //echo $text."\n";
    } else {
-   echo ">\n".$text."\n".str_repeat("  ", $spacing)."</".$xmlnode->getName().">\n";
+      $s = implode("\n",array_slice($s,0,$max_lines_of_text));
+      echo $s."\n...\n";
+   }
+   echo str_repeat("  ", $spacing)."</".$xmlnode->getName().">\n";
    }
  }
 }

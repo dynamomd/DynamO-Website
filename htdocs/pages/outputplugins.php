@@ -347,17 +347,18 @@ dynarun config.xml -c 1000000 -L MFT:BinWidth=0.5,Length=100
   gravity, <a href="https://github.com/toastedcrumpets/DynamO/issues/22">see
   issue #22</a>).
 </p>
-<h3>ResidualHeatCapacity</h3>
+<h3 id="residualheatcapacity">ResidualHeatCapacity</h3>
 <p>
   This tag is provided for convenience. It contains the excess heat
   capacity, calculated from the fluctuations of the configurational
   internal energy using the following expression:
   
   \[\frac{C_v^{ex.}}{k_B}=\frac{\left\langle U_{conf.}^2\right\rangle
-  - \left\langle U_{conf.}\right\rangle^2}{k_B^2\,T^2}\]
+  - \left\langle U_{conf.}\right\rangle^2}{N^2\,k_B^2\,T^2}\]
   
-  To calculate the full heat capacity of the system, the ideal gas
-  contribution must be added:
+  Where the $N^2$ term arises as the UConfigurational values are
+  extensive. To calculate the full heat capacity of the system, the
+  ideal gas contribution must be added:
 
   \[\frac{C_v}{k_B}=\frac{C_v^{ex.}}{k_B} +N\frac{f}{2}\] 
 
@@ -500,8 +501,7 @@ dynarun config.xml -c 1000000 -L MFT:BinWidth=0.5,Length=100
     <b>TwoParticleEvents</b> <i>(attribute)</i>: The total number of
     events involving a pair of
     particles. All <a href="/index.php/reference#interaction">Interaction</a>s
-    generate two-particle events
-    . <a href="/index.php/reference#system">System</a> events may
+    generate two-particle events. <a href="/index.php/reference#system">System</a> events may
     produce a mixture of single and two particle events at once.
   </li>
   <li>

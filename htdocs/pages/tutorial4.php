@@ -334,6 +334,7 @@ dynarun config.out.xml.bz2 -c 1000000 -o config.final.xml -L IntEnergyHist
   And we're now ready to process the results!
 </p>
 <h1 id="dataprocessing">Processing the results</h1>
+<h2>Thermodynamic properties</h2>
 <p>
   In the first instance, we can start processing the collected data in
   the same way
@@ -345,6 +346,86 @@ bunzip2 output.xml.bz2
 <?php codeblockend("brush: shell;"); ?>
 <p>
   We can then check the file to see how close the temperature is to
-  $k_B\,T=2$.
+  $k_B\,T=2$ after we disabled the thermostat. We use
+  the <a href="/index.php/outputplugins#temperature">Temperature</a>
+  tag in the output file for this:
 </p>
 <?php xmlXPathFile("pages/output.tut4.xml", "//Temperature"); ?>
+<p>
+ The average value has a deviation of $\approx1\%$ from the desired
+ value, which can be expected with this system size. Larger systems
+ (with longer equilibration times) will lower this value if needed (it
+ scales with $N^{-0.5}$). Its also interesting to note that DynamO
+ collects "exact" time averages wherever possible (see
+ the <a href="/index.php/FAQ#q-how-does-dynamo-collect-exact-timeaverages">FAQ
+ on averages</a>).
+</p>
+<p>
+  We can also get some scale for the fluctuation of the temperature by
+  calculating its standard deviation. We can calculate this using the
+  mean square value, e.g.
+  
+  \[\sigma_T=\sqrt{\left\langle T^2\right\rangle - \left\langle T\right\rangle^2} \approx0.007542\]
+
+  Again, this value is system size dependent and it is related the
+  heat capacity of the system.
+</p>
+<p>
+  Taking a look at
+  the <a href="/index.php/outputplugins#uconfigurational">UConfigurational</a>
+  tag, we have:
+</p>
+<?php xmlXPathFile("pages/output.tut4.xml", "//UConfigurational"); ?>
+<p>
+  where this is the total energy the system has through interactions
+  (if you want the specific configurational internal energy you will
+  need to divide by $N$). We could again calculate the standard
+  deviation, but as its related to the residual heat capacity, $C_V$,
+  by the following formula:
+  
+  \[\frac{C_v^{ex.}}{k_B}=\frac{\left\langle U_{conf.}^2\right\rangle
+  - \left\langle U_{conf.}\right\rangle^2}{k_B^2\,T^2}\]
+
+  we can just use
+  the <a href="/index.php/outputplugins#uconfigurational">ResidualHeatCapacity</a>
+  tag which calculates the above property:
+</p>
+<?php xmlXPathFile("pages/output.tut4.xml", "//ResidualHeatCapacity"); ?>
+<p>
+  Please note that, like the UConfigurational values, this value is
+  extensive.  We'll now take a look at processing collected data which
+  is more complex, beginning with the internal energy histogram.
+</p>
+<h2>Internal Energy Histogram</h2>
+<p>
+  The <a href="/index.php/outputplugins#intenergyhist">internal energy
+  histogram</a> is extremely interesting as it allows us to begin to
+  calculate properties such as the density of states and allows us to
+  use advanced techniques such as multicanonical simulations and
+  histogram reweighting. We enabled the internal energy histogram
+  plugin with the <i>-L IntEnergyHist</i> option to dynarun and its
+  output is under the <i>EnergyHist</i> tag.
+</p>
+<?php xmlXPathFile("pages/output.tut4.xml", "//EnergyHist"); ?>
+<p>
+  For all the details on what the above attributes mean, please see
+  the
+  <a href="/index.php/outputplugins#intenergyhist">IntEnergyHist
+  plugin documentation</a>, but it is essentially a list of
+  configurational internal energy values and the fraction of
+  simulation time spent in each (again collected
+  using <a href="/index.php/FAQ#q-how-does-dynamo-collect-exact-timeaverages">exact
+  time averaging</a> and not periodic sampling. If we wanted to
+  process or plot this data, we need to cut it out of
+  the <i>output.xml</i> file. For a full description of how to handle
+  XML files, please <a href="/index.php/tutorialA">take a look at the
+  reference</a>. Here, we'll use the xmlstarlet tool to cut it out:
+</p>
+<?php codeblockstart(); ?>
+xmlstarlet sel -t -v '//EnergyHist/HistogramWeighted' output.xml > histogram.dat
+<?php codeblockend("brush: shell;"); ?>
+<p>
+  Now we can plot the data and we should end up with a graph like the
+  one on the right.
+</p>
+<h2>Transport Properties</h2>

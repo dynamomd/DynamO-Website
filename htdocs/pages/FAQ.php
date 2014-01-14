@@ -151,7 +151,7 @@
   sets the mass, diameter, and well depth of all particles to be equal
   to 1, as this is the natural dimensionless units of the system.
 </p>
-<h1>Q: How does DynamO collect exact time-averages?</h1>
+<h1 id="q-how-does-dynamo-collect-exact-timeaverages">Q: How does DynamO collect exact time-averages?</h1>
 <p>
   Short answer: Many properties have a constant value between events,
   and so the following equation for the time average can be solved
@@ -160,31 +160,28 @@
   \[\left\langle A\right\rangle=t_{sim}^{-1}\int_0^{t_{sim}}A(t)\,{\rm d}t\]
   
   where $A(t)$ is the value of the property being averaged at a time
-  $t$ and $t_{sim}$ is the duration of the simulation. 
-</p>
-<p>
-  If $N_{events}$ occur during the duration of the simulation, and the
-  property $A$ only changes during events, the integration can be
+  $t$ and $t_{sim}$ is the duration of the simulation.  To illustrate,
+  if $N_{events}$ occur during the duration of the simulation, and the
+  property $A$ only changes on events, the integration can be
   rewritten as a sum:
 
   \[\left\langle A\right\rangle=t_{sim}^{-1}\sum_{i=1}^{N_{events}}A(t_{i-1})\left(t_i-t_{i-1}\right)\]
   
   where $t_i$ is the time of the $i$th event, $t_0=0$ by definition,
   and $A(t_i)$ is the value of the property just after the $i$th
-  event.  It is easy to collect an exact time average using this
-  expression.
+  event.
 </p>
 <p>
-  For example, in systems <b>without</b> gravity and <b>without</b>
-  shearing boundary conditions, the velocities of all particles are
-  constant between events. If we calculate the kinetic energy at the
-  start of the simulation, the only changes will occur during the
-  execution of an event. It is then very simple to collect exact
-  time-averages using the equation above. However, in gravity and in
-  shearing systems the particles velocities change with time causing
-  the kinetic energy to vary between events. Some of these changes can
-  also be integrated exactly, but at the moment DynamO does not do
-  this.
+  There are some restrictions to this. For example, in
+  systems <b>without</b> gravity and <b>without</b> shearing boundary
+  conditions, the velocities of all particles are constant between
+  events. If we calculate the kinetic energy at the start of the
+  simulation, the only changes will occur during the execution of an
+  event. It is then very simple to collect exact time-averages using
+  the equation above. However, in gravity and in shearing systems the
+  particles velocities change with time causing the kinetic energy to
+  vary between events. Some of these changes can also be integrated
+  exactly, but at the moment DynamO does not do this.
 </p>
 <h1>Q: You say I can edit the configuration files using my favourite text editor? How?</h1>
 <p>
