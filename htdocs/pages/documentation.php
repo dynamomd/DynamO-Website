@@ -35,6 +35,7 @@
 <?php button("3: The configuration file","/index.php/tutorial3");?>
 
 <?php button("4: Thermostats and transport properties","/index.php/tutorial4");?>
+<?php button("5: Multiple Species/Interactions and compression dynamics","/index.php/tutorial5");?>
 <div style="clear:both;text-align:center;"><b>References</b></div>
 <?php button("Configuration File Format Reference","/index.php/reference");?>
 <?php button("Output Plugin Reference","/index.php/outputplugins");?>
