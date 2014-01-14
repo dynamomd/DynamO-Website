@@ -400,11 +400,12 @@ bunzip2 output.xml.bz2
 <p>
   The <a href="/index.php/outputplugins#intenergyhist">internal energy
   histogram</a> is extremely interesting as it allows us to begin to
-  calculate properties such as the density of states and allows us to
-  use advanced techniques such as multicanonical simulations and
-  histogram reweighting. We enabled the internal energy histogram
-  plugin with the <i>-L IntEnergyHist</i> option to dynarun and its
-  output is under the <i>EnergyHist</i> tag.
+  calculate key thermodynamic properties such as the density of
+  states. This also allows us to use advanced techniques such as
+  multicanonical simulations and histogram reweighting. We enabled the
+  internal energy histogram plugin with the <i>-L IntEnergyHist</i>
+  option to dynarun and its output is under the <i>EnergyHist</i> tag
+  in the output file:
 </p>
 <?php xmlXPathFile("pages/output.tut4.xml", "//EnergyHist"); ?>
 <p>
@@ -421,11 +422,27 @@ bunzip2 output.xml.bz2
   XML files, please <a href="/index.php/tutorialA">take a look at the
   reference</a>. Here, we'll use the xmlstarlet tool to cut it out:
 </p>
+<div class="figure" style="float:right; ">
+  <a href="/images/tut1_initialpos.jpg">
+    <img height="323" width="350" alt="A rough internal energy histogram." src="/images/histogram.tut4.png"/>
+  </a>
+  <div class="caption">
+    A plot of the internal energy histogram.
+  </div>
+</div>
 <?php codeblockstart(); ?>
 xmlstarlet sel -t -v '//EnergyHist/HistogramWeighted' output.xml > histogram.dat
 <?php codeblockend("brush: shell;"); ?>
 <p>
   Now we can plot the data and we should end up with a graph like the
-  one on the right.
+  one on the right. It appears that this data is quite rough and
+  longer simulations are needed to accurately obtain good averages,
+  but this is a good initial estimate.
+</p>
+<p>
+  We've covered some basic properties and how to extract them, now we
+  will take a look at the transport properties.
 </p>
 <h2>Transport Properties</h2>
+<p>
+</p>
