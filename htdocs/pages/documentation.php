@@ -31,8 +31,12 @@
 </p>
 <div style="clear:both;text-align:center;"><b>Tutorials</b></div>
 <?php button("Tutorial 1: Compiling DynamO from Source","/index.php/tutorial1");?>
-<?php button("Tutorial 2: Introduction to the DynamO workflow (hard-sphere simulations)","/index.php/tutorial2");?>
+<?php button("Tutorial 2: Introduction to the DynamO workflow<br/> (Hard-sphere simulations)","/index.php/tutorial2");?>
 <?php button("Tutorial 3: Overview of the Configuration File Format","/index.php/tutorial3");?>
+
+<?php button("Tutorial 4: Thermostats and data collection<br/>(Square
+wells, internal energy histograms, and transport
+properties using dynatransport)","/index.php/tutorial4");?>
 <div style="clear:both;text-align:center;"><b>References</b></div>
 <?php button("Configuration File Format Reference","/index.php/reference");?>
 <?php button("Output Plugin Reference","/index.php/outputplugins");?>

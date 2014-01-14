@@ -6,7 +6,7 @@
    header( 'Location: /index.php/404');
    return;
    }
-   $pagetitle="Tutorial 4: Thermostats and data collection (transport properties)";
+   $pagetitle="Tutorial 4: Thermostats and data collection";
    ?>
 <?php printTOC(); ?>
 <p>
@@ -22,11 +22,11 @@
     <a href="#thermostat">How to use a thermostat.</a>
   </li>
   <li>
-    <a href="#datacollection">How to collect data, and considerations with thermostats.</a>
+    <a href="#datacollection">How to collect data and considerations with thermostats.</a>
   </li>
   <li>
-    <a href="#dataprocessing">How to process collected data, including
-    transport coefficients, in the output file.</a>
+    <a href="#dataprocessing">How to process collected data. This
+    includes transport coefficients using <b>dynatransport</b>.</a>
   </li>
 </ul>
 <h2><a id="aboutsquarewellfluids"></a>About the system</h2>
@@ -66,10 +66,10 @@ dynamod config.out.xml.bz2 -T 2.0
 dynarun config.out.xml.bz2 -c 1000000
 #Run it some more to equilibrate it further
 dynarun config.out.xml.bz2 -c 1000000
-#Disable the thermostat again, so that we might collect accurate dynamic information
-dynamod -T 0 config.out.xml.bz2
+#Disable the thermostat and remove any momentum, so that we might collect accurate dynamic information
+dynamod -T 0 -Z config.out.xml.bz2
 #Run the simulation to collect data on the system
-dynarun config.out.xml.bz2 -c 1000000 -o config.final.xml -L IntEnergyHist
+dynarun config.out.xml.bz2 -c 1000000 -o config.final.xml -L IntEnergyHist -L MSD
 <?php codeblockend("brush: shell;"); ?>
 <p>
   We'll now look in detail at each of these commands.
@@ -297,8 +297,10 @@ ETA 7s, Events 600k, t 39.2339, <MFT> 0.134103, T 2.02729, U -0.79425
   please see the <a href="/index.php/outputplugins">output plugin
   documentation</a>. Most of what we want to collect is contained in
   the <a href="/index.php/outputplugins#misc">Misc</a> plugin which is
-  loaded by default, but we'll need to add the <a href="/index.php/outputplugins#intenergyhist">IntEnergyHist</a>
-  plugin to collect the energy histograms.
+  loaded by default, but we'll need to add
+  the <a href="/index.php/outputplugins#intenergyhist">IntEnergyHist</a>
+  and <a href="/index.php/outputplugins#msd">MSD</a> plugins to
+  collect the energy histograms and diffusion data.
 </p>
 <p>
   Unfortunately there is a problem with thermostats while collecting
@@ -321,11 +323,14 @@ ETA 7s, Events 600k, t 39.2339, <MFT> 0.134103, T 2.02729, U -0.79425
   temperature. We can use dynamod to disable the thermostat:
 </p>
 <?php codeblockstart(); ?>
-dynamod -T 0 config.out.xml.bz2
+dynamod -T 0 -Z config.out.xml.bz2
 <?php codeblockend("brush: shell;"); ?>
 <p>
-  Now we're ready to collect some data! We just run dynarun while
-  enabling the output plugins we wish to use:
+  Please note that we also zeroed the total momentum again using
+  the <i>-Z</i> option as the <a href="/index.php/FAQ#q-the-andersen-thermostat-is-giving-me-a-nonzero-system-momentum-average-is-this-an-error">Andersen thermostat causes the total
+  momentum to fluctuate around zero</a>. Now we're ready to collect some
+  data! We just run dynarun while enabling the output plugins we wish
+  to use:
 </p>
 <?php codeblockstart(); ?>
 dynarun config.out.xml.bz2 -c 1000000 -o config.final.xml -L IntEnergyHist
@@ -352,11 +357,12 @@ bunzip2 output.xml.bz2
 </p>
 <?php xmlXPathFile("pages/output.tut4.xml", "//Temperature"); ?>
 <p>
- The average value has a deviation of $\approx1\%$ from the desired
+ The average value has a deviation of $\approx2\%$ from the desired
  value, which can be expected with this system size. Larger systems
- (with longer equilibration times) will lower this value if needed (it
- scales with $N^{-0.5}$). Its also interesting to note that DynamO
- collects "exact" time averages wherever possible (see
+ (with longer equilibration times) will lower this value if needed as
+ the fluctuations scale with $N^{-0.5}$. It is interesting to note at
+ this point that DynamO collects "exact" time averages wherever
+ possible (see
  the <a href="/index.php/FAQ#q-how-does-dynamo-collect-exact-timeaverages">FAQ
  on averages</a>).
 </p>
@@ -365,10 +371,12 @@ bunzip2 output.xml.bz2
   calculating its standard deviation. We can calculate this using the
   mean square value, e.g.
   
-  \[\sigma_T=\sqrt{\left\langle T^2\right\rangle - \left\langle T\right\rangle^2} \approx0.007542\]
+  \[\sigma_T=\sqrt{\left\langle T^2\right\rangle - \left\langle T\right\rangle^2} \approx0.009079\]
 
-  Again, this value is system size dependent and it is related the
-  heat capacity of the system.
+  Again, this value is system size dependent. Interestingly, this
+  value is related the heat capacity of the system, but we will
+  approach this property through the configurational internal energy
+  instead.
 </p>
 <p>
   Taking a look at
@@ -380,15 +388,15 @@ bunzip2 output.xml.bz2
   where this is the total energy the system has through interactions
   (if you want the specific configurational internal energy you will
   need to divide by $N$). We could again calculate the standard
-  deviation, but as its related to the residual heat capacity, $C_V$,
-  by the following formula:
+  deviation which is related to the residual heat capacity, $C_V$, by
+  the following formula:
   
   \[\frac{C_v^{ex.}}{k_B}=\frac{\left\langle U_{conf.}^2\right\rangle
   - \left\langle U_{conf.}\right\rangle^2}{k_B^2\,T^2}\]
 
-  we can just use
+  however, for convenience we can just use
   the <a href="/index.php/outputplugins#uconfigurational">ResidualHeatCapacity</a>
-  tag which calculates the above property:
+  tag which calculates this for us:
 </p>
 <?php xmlXPathFile("pages/output.tut4.xml", "//ResidualHeatCapacity"); ?>
 <p>
@@ -422,7 +430,7 @@ bunzip2 output.xml.bz2
   XML files, please <a href="/index.php/tutorialA">take a look at the
   reference</a>. Here, we'll use the xmlstarlet tool to cut it out:
 </p>
-<div class="figure" style="float:right; ">
+<div class="figure" style="float:right; width:350px;">
   <a href="/images/tut1_initialpos.jpg">
     <img height="323" width="350" alt="A rough internal energy histogram." src="/images/histogram.tut4.png"/>
   </a>
@@ -440,9 +448,90 @@ xmlstarlet sel -t -v '//EnergyHist/HistogramWeighted' output.xml > histogram.dat
   but this is a good initial estimate.
 </p>
 <p>
-  We've covered some basic properties and how to extract them, now we
-  will take a look at the transport properties.
+  We've covered some basic properties and how to extract tabulated
+  data, now we will take a look at the transport properties.
 </p>
 <h2>Transport Properties</h2>
+<p>
+  Transport properties, such as the viscosity, thermal conductivity,
+  and diffusivity are difficult to measure in simulation. They require
+  the use of correlators and need long simulation times to gain good
+  averages. You also need to be careful of their definition,
+  especially in multicomponent systems, and over what correlation
+  times it is valid to collect data from. This is all documented in
+  the <a href="/index.php/outputplugins#thermalconductivity">reference
+  entry for the thermal conductivity</a> but there is no substitute
+  for experience here. Please calculate known values from the
+  literature to validate your understanding before attempting to
+  measure new systems.
+</p>
+<p>
+  The easiest transport property to calculate is the self-diffusion
+  coefficient, obtained from
+  the <a href="/index.php/outputplugins#msd">MSD plugin</a>:
+</p>
+<?php xmlXPathFile("pages/output.tut4.xml", "//MSD"); ?>
+<p>
+  Here, each Species and Topology will have a separate entry for the
+  calculated diffusion coefficient. This value is just calculated from
+  the total distanced travelled over the simulation by each particle,
+  so there isn't a significant amount of work to do in processing
+  it. We only need to be confident that the simulations have been run
+  for sufficient time to reach the long-time behavior.
+<p>
+  The other transport property data lies within several correlator
+  tags. E.g.
+</p>
+<?php xmlXPathFile("pages/output.tut4.xml", "//ThermalConductivity"); ?>
+<div class="figure" style="float:right; width:384px;">
+  <a href="/images/correlator.tut4.png">
+    <img height="319" width="384" alt="The Einstein correlators for
+    the thermal conductivity." src="/images/correlator.tut4.png"/>
+  </a>
+  <div class="caption">
+    The Einstein correlators for the thermal conductivity
+  </div>
+</div>
+<p>
+  For the thermal conductivity, the first column is the time, the
+  second is the number of samples collected at that time, and the last
+  three columns are the correlator values in the $x$, $y$, and
+  $z$-directions. For more information please take a look at
+  the <a href="/index.php/outputplugins#thermalconductivity">reference
+  entry for the thermal conductivity</a>. As these are the Einstein
+  correlators, the thermal conductivity is related to the slope of the
+  correlator. If we cut the data out of <i>output.xml</i> using
+  xmlstarlet or some other tool and plot each correlator we end up
+  with the graph to the right.
+</p>
+<p>
+  Ideally, this plot should consist of points in a straight line which
+  we can fit a line to, to extract the slope/thermal transport
+  coefficient, $L_{\lambda\lambda}$. Unfortunately, at short times we
+  have short-time effects from molecular processes which we wish to
+  ignore. We are only interested in the behaviour at long times, where
+  a "hydrodynamic" description applies. Even more unfortunately, at
+  long times we have poor statistics (see the low number of samples)
+  AND we have effects from the periodic boundary conditions.
+</p>
+<p>
+  We need to extract the correlator curves, select a window of time to
+  fit a linear function to it, and to calculate the gradient/transport
+  coefficient. Luckily, there is the <b>dynatransport</b> tool to help
+  us do this.
+</p>
+<h3>dynatransport</h3>
+<p>
+If we run the <b>dynatransport</b> tool on the output file, we can get
+an estimate of the transport coefficients.
+</p>
+<?php codeblockstart(); ?>
+dynatransport output.xml
+ShearViscosityL_{\eta,\eta}= 0.0628751050012 +- 0.0 <R>^2= 0.386109814931
+BulkViscosityL_{\kappa,\kappa}= 11.3811651077 +- 0.0 <R>^2= 0.567696677048
+ThermalConductivityL_{\lambda,\lambda}= 0.178111094018 +- 0.0 <R>^2= 0.535953655856
+ThermalDiffusionL_{\lambda,Bulk}= -3.03999278728e-18 +- 0.0 <R>^2= 0.736800451496
+MutualDiffusionL_{Bulk,Bulk}= 1.04605741811e-34 +- 0.0 <R>^2= 0.893542145422
+<?php codeblockend("brush: shell;"); ?>
 <p>
 </p>

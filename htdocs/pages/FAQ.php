@@ -254,7 +254,7 @@ BoundedPQ: Exception Events = 0<?php codeblockend("brush: shell;"); ?>
   cards, the packages are called FGLRX, but for NVidia cards they are
   usually called nvidia or nvidia-current.
 </p>
-<h1>Q: The Andersen thermostat is giving me a non-zero system momentum
+<h1 id="q-the-andersen-thermostat-is-giving-me-a-nonzero-system-momentum-average-is-this-an-error">Q: The Andersen thermostat is giving me a non-zero system momentum
 average. Is this an error?</h1>
 <p>
   Short answer: Probably not. The Andersen thermostat allows the
