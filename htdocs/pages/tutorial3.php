@@ -6,23 +6,18 @@
    header( 'Location: /index.php/404');
    return;
    }
-   $pagetitle="Tutorial 3: Overview of the Configuration File Format";
+   $pagetitle="Tutorial 3: The configuration file";
    ?>
 <?php printTOC(); ?>
 <p>
   This tutorial is on the configuration file format of DynamO and
-  helps explain all of the DynamO terminology. You will need to
-  understand the configuration files of DynamO to understand how you
-  might set up any simulation you like by changing/creating a
-  configuration file.
+  helps explain all of the DynamO terminology.
 </p>
 <p>
   Every parameter of a simulation, apart from its duration, is set
-  inside the configuration file, so you need to be able to read the
-  configuration file to check these settings even if you don't intend
-  to change them. The configuration file format is also key to
-  understanding the DynamO code and documentation as it introduces all
-  of the terminology and concepts you'll need in the later tutorials.
+  inside the configuration file. The configuration file is also key to
+  understanding DynamO and the documentation as it introduces all of
+  the terminology and concepts you'll need in the later tutorials.
 </p>
 <p>
   In the following sections, we will create an example configuration
@@ -57,14 +52,15 @@ dynamod -m 0 -d 0.5 -C 7 -o config.start.xml
   the example provided.
 </p>
 <p>
-  XML files can be opened and edited by your favourite text editor or
-  opened in read only format by any web browser. If you
+  DynamO configuration files are XML files. XML files can be opened
+  and edited by your favourite text editor or opened in read only
+  format by any web browser. If you
   click <a href="/pages/config.tut3.xml">this link for the example
-    output</a> you will see that web browsers will present the contents
+  output</a> you will see that web browsers will present the contents
   of an XML file nicely, but to edit it you will need to save it and
   open the file again inside a text editor (see
   the <a href="/index.php/FAQ#q-you-say-i-can-edit-the-configuration-files-using-my-favourite-text-editor-how">FAQ
-    for more information</a>).
+  for more information</a>).
 </p>
 <h1>General layout</h1>
 <p>

@@ -37,7 +37,7 @@ function echoXML($xmlnode, $spacing, $max_depth, $max_children, $max_lines_of_te
   echo " ".$name."=\"".$attr."\"";
  }
 
- if ($xmlnode->count()){
+ if ($xmlnode->count()) {
   //Print the node's children and text
   echo ">\n";
   if ($max_depth == 1){
@@ -56,16 +56,18 @@ function echoXML($xmlnode, $spacing, $max_depth, $max_children, $max_lines_of_te
  echo str_repeat("  ", $spacing)."</".$xmlnode->getName().">\n";
  } else {
    $text = trim($xmlnode);
-   echo ">\n";
-   if (!empty($text)) {
-   $s = explode("\n",$text);
-   if (count($s) <= $max_lines_of_text) {
-    //echo $text."\n";
+   if (empty($text)) {
+     echo "/>\n";
    } else {
-      $s = implode("\n",array_slice($s,0,$max_lines_of_text));
-      echo $s."\n...\n";
-   }
-   echo str_repeat("  ", $spacing)."</".$xmlnode->getName().">\n";
+     echo ">\n";
+     $s = explode("\n",$text);
+     if (count($s) <= $max_lines_of_text) {
+       echo $text."\n";
+     } else {
+        $s = implode("\n",array_slice($s,0,$max_lines_of_text));
+        echo $s."\n...\n";
+     }
+     echo str_repeat("  ", $spacing)."</".$xmlnode->getName().">\n";
    }
  }
 }

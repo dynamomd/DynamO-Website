@@ -6,7 +6,7 @@
    header( 'Location: /index.php/404');
    return;
    }
-   $pagetitle="Tutorial 2: Introduction to the DynamO workflow";
+   $pagetitle="Tutorial 2: Introduction to DynamO";
    ?>
 <?php printTOC(); ?>
 <p>

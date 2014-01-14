@@ -6,7 +6,7 @@
    header( 'Location: /index.php/404');
    return;
    }
-   $pagetitle="Tutorial 4: Thermostats and data collection";
+   $pagetitle="Tutorial 4: Thermostats and transport properties";
    ?>
 <?php printTOC(); ?>
 <p>
