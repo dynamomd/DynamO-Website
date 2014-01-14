@@ -153,7 +153,7 @@ function create_toc( $content ) {
 	$anchors = array();
         $prevlvl = 1;
 	$toc 	 = '<div id="TOC"><div id="header">Table of Contents</div>'."\n".'<ol class="toc">';
-
+	$lineopen = False;
  	/*Scan over each heading in the document*/
 	foreach ( $matches as $heading ) {
 		$lvl = $heading[1];
@@ -196,15 +196,27 @@ function create_toc( $content ) {
 		
 		/*Open or close lists as needed*/
                 while ( $prevlvl < $lvl ) {
+		 if (!$lineopen) {
+		 $toc .= '<li style="list-style-type: none;">';
+		 }
+                 $lineopen = False;
 		 $toc .= "\n".'<ol>';
                  $prevlvl++;
                 }
                 while ( $prevlvl > $lvl ) {
+		 if ($lineopen) {
+		 $toc .= "</li>";
+		 }
                  $toc .= "\n</ol>";
+                 $lineopen = True; //ol elements are always in a line
                  $prevlvl--;
                 }
                 /* Add the list item*/
-		$toc .= "\n<li>".'<a href="#'.$anchor.'">'.$title."</a></li>";
+		 if ($lineopen) {
+		 $toc .= "</li>\n";
+		 }
+		$toc .= "\n<li>".'<a href="#'.$anchor.'">'.$title."</a>";
+                $lineopen = True;
 		$prevlvl = $lvl;
 	}
  
