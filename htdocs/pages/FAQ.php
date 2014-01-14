@@ -12,7 +12,7 @@
 <p>
   Here are a list of frequently asked questions and their answers.
 </p>
-<h1 style="clear:both">Q: What does DynamO stand for?</h1>
+<h1>Q: What does DynamO stand for?</h1>
 <p>
   Short answer: <b>Dynam</b>ics of <b>O</b>bjects.
 </p>
@@ -22,18 +22,27 @@
   the front cover.
 </p>
 <h1>Q: What is the logo of DynamO?</h1>
+<div class="figure" style="float:left; width:200px;">
+  <a href="/images/dynamologo.png">
+    <img height="205" width="200" alt="The dynamo logo" src="/images/dynamologo.png"/>
+  </a>
+  <div class="caption">
+    The DynamO logo.
+  </div>
+</div>
 <p>
-  Short answer: An illustration of an electric dynamo.
+  Short answer: An illustration of an electric dynamo (see left),
+  which forms the O of DynamO.
 </p>
 <p>
-  The source of the drawing is taken from the U.S. Patent 284,110
-  which describes an electric dynamo. This was redrawn and simplified
-  using inkscape. The artwork for the logo is available in the docs
-  folder of the source code
+  The "source" of the drawing is the U.S. Patent 284,110 which
+  describes an electric dynamo. The original figure was redrawn using
+  inkscape. The artwork for the logo is available in the docs folder
+  of the source code
   (<a href="https://github.com/toastedcrumpets/DynamO/tree/master/docs">available
   here</a>).
 </p>
-<h1 id="q-what-units-does-the-dynamod-command-useproduce">Q: What are the units of DynamO?</h1>
+<h1 style="clear:both;" id="q-what-units-does-the-dynamod-command-useproduce">Q: What are the units of DynamO?</h1>
 <p>
   Short answer: whatever units you use in the input configuration
   file.

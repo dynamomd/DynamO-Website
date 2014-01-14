@@ -13,8 +13,6 @@ rsort($file_array);
 ob_start();
 foreach ($file_array as $filename) 
 { 
-  echo "<div class=\"newsdate\">".date("jS F Y", filemtime($filename))."</div>";
   include($filename);
-  echo "<div class=\"newsdivider\"></div>"; 
 }
 ?>

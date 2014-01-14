@@ -69,7 +69,7 @@ dynarun config.out.xml.bz2 -c 1000000
 #Disable the thermostat again, so that we might collect accurate dynamic information
 dynamod -T 0 config.out.xml.bz2
 #Run the simulation to collect data on the system
-dynarun config.out.xml.bz2 -c 1000000 -o config.final.xml
+dynarun config.out.xml.bz2 -c 1000000 -o config.final.xml -L IntEnergyHist
 <?php codeblockend("brush: shell;"); ?>
 <p>
   We'll now look in detail at each of these commands.
@@ -296,25 +296,55 @@ ETA 7s, Events 600k, t 39.2339, <MFT> 0.134103, T 2.02729, U -0.79425
   To find out what output plugins are available and how to load them
   please see the <a href="/index.php/outputplugins">output plugin
   documentation</a>. Most of what we want to collect is contained in
-  the <b>Misc</b> plugin which is loaded by default, but we'll need to
-  add the <b>IntEnergyHist</b> plugin to collect the energy
-  histograms.
+  the <a href="/index.php/outputplugins#misc">Misc</a> plugin which is
+  loaded by default, but we'll need to add the <a href="/index.php/outputplugins#intenergyhist">IntEnergyHist</a>
+  plugin to collect the energy histograms.
 </p>
 <p>
-  Unfortunately there is a problem with leaving thermostats on while
-  collecting dynamical information like the transport
+  Unfortunately there is a problem with thermostats while collecting
+  data which characterises the dynamics of the system, e.g. the
+  transport
   coefficients. The <a href="/index.php/reference#typeandersen">Andersen
-  thermostat</a> we use changes the motion of the system when it
-  randomly re-assigns the particle velocities. If we measure the
+  thermostat</a> changes the motion of the system when it randomly
+  re-assigns the particle velocities. Thus, if we measure the
   properties of the system, they will be the those of the square-well
-  fluid AND the thermostat.
+  fluid AND the thermostat, not the fluid alone.
   
-  Also, if we take a look at
-  the <a href="/index.php/outputplugins#thermalconductivityrestrictions">documentation
-  for the thermal conductivity</a> we'll notice that it is restricted
-  only to NVE/microcanonical simulations.
+  Also, if we take a look at the restrictions on using
+  the <a href="/index.php/outputplugins#thermalconductivityrestrictions">thermal
+  conductivity</a>, we'll notice that it is restricted only to
+  NVE/microcanonical simulations (systems without a thermostat).
+</p>
+<p>
+  We're going to have to disable the thermostat during data collection
+  and hope (and check) that the system fluctuates close to the target
+  temperature. We can use dynamod to disable the thermostat:
+</p>
+<?php codeblockstart(); ?>
+dynamod -T 0 config.out.xml.bz2
+<?php codeblockend("brush: shell;"); ?>
+<p>
+  Now we're ready to collect some data! We just run dynarun while
+  enabling the output plugins we wish to use:
+</p>
+<?php codeblockstart(); ?>
+dynarun config.out.xml.bz2 -c 1000000 -o config.final.xml -L IntEnergyHist
+<?php codeblockend("brush: shell;"); ?>
+<p>
+  And we're now ready to process the results!
 </p>
 <h1 id="dataprocessing">Processing the results</h1>
 <p>
-  Still writing
+  In the first instance, we can start processing the collected data in
+  the same way
+  <a href="/index.php/tutorial2#processing">tutorial 2 deals with
+    processing collected data</a>. Expanding the output file:
 </p>
+<?php codeblockstart(); ?>
+bunzip2 output.xml.bz2
+<?php codeblockend("brush: shell;"); ?>
+<p>
+  We can then check the file to see how close the temperature is to
+  $k_B\,T=2$.
+</p>
+<?php xmlXPathFile("pages/output.tut4.xml", "//Temperature"); ?>

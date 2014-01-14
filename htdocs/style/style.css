@@ -29,17 +29,17 @@ body {
 
 h1 { 
     font-size:1.5em;
+    border-top:2px solid;
     border-bottom:2px solid;
     display:block;
-    clear:both;
     text-align:center;
-    margin-top:1.5em;
+    margin-top:1em;
+    color: #113366;
     /* Android autofit bugfix */
     background-color: #ffffff;
-    color: #113366;
 }
 
-h2 { 
+h2 {
     font-size:1.25em;
     margin-top:1.5em;
     display:block;
@@ -50,10 +50,14 @@ h2 {
 }
 
 h3 {
-    font-size:1.15em;
-    font-weight:bold;
+    font-size:1.25em;
     color: #113366;
-    text-decoration:underline;
+}
+
+h4 {
+    font-size:1em;
+    font-weight:normal;
+    color: #113366;
 }
 
 li { 
@@ -78,6 +82,7 @@ li {
     float:right;
     padding-top:10px;
     font-weight:bold;
+    color: #113366;
 }
 
 .video-container {
@@ -267,7 +272,7 @@ li {
 
 .figure { 
     display: inline-block; 
-    margin:5px;
+    margin:0 15px 15px;
     padding-top:15px;
     border:2px solid;
     background-color:#ffffff;

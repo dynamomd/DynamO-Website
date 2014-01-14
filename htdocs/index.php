@@ -141,7 +141,7 @@ $content = ob_get_clean();
 $contentdate = date("l jS F Y ", filemtime("pages/".$page.".php"));
 
 function create_toc( $content ) {
-	preg_match_all( '/<h([1-6])(.*)>([^<]+)<\/h[1-6]>/i', $content, $matches, PREG_SET_ORDER );
+	preg_match_all( '/<h([1-3])(.*)>([^<]+)<\/h[1-6]>/i', $content, $matches, PREG_SET_ORDER );
 
 	global $anchors; 
 	$anchors = array();
@@ -334,7 +334,9 @@ if ($TOC)
     <?php } ?>
     <!-- MATHJAX -->
     <?php if ($mathjax) { ?>
-    <script type="text/javascript" src="/MathJax/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/javascript"
+	    src="https://c328740.ssl.cf1.rackcdn.com/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+    </script>
     <script type="text/x-mathjax-config">
       MathJax.Hub.Config({
        tex2jax: {
