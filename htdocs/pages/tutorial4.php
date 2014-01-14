@@ -29,6 +29,9 @@
     includes transport coefficients using <b>dynatransport</b>.</a>
   </li>
 </ul>
+<p>
+  This is a full study on the square-well fluid system.
+</p>
 <h2><a id="aboutsquarewellfluids"></a>About the system</h2>
 <p>
   For the purpose of the tutorial, we'll want to simulate a fluid of
@@ -70,6 +73,8 @@ dynarun config.out.xml.bz2 -c 1000000
 dynamod -T 0 -Z config.out.xml.bz2
 #Run the simulation to collect data on the system
 dynarun config.out.xml.bz2 -c 1000000 -o config.final.xml -L IntEnergyHist -L MSD
+#Use dynatransport to analyse the transport coefficients
+dynatransport output.xml -s 2 -c 10 -v
 <?php codeblockend("brush: shell;"); ?>
 <p>
   We'll now look in detail at each of these commands.
@@ -499,26 +504,29 @@ xmlstarlet sel -t -v '//EnergyHist/HistogramWeighted' output.xml > histogram.dat
   $z$-directions. For more information please take a look at
   the <a href="/index.php/outputplugins#thermalconductivity">reference
   entry for the thermal conductivity</a>. As these are the Einstein
-  correlators, the thermal conductivity is related to the slope of the
-  correlator. If we cut the data out of <i>output.xml</i> using
-  xmlstarlet or some other tool and plot each correlator we end up
-  with the graph to the right.
+  correlators, the transport coefficients are the gradients of the
+  correlation functions. If we cut the data out of <i>output.xml</i>
+  using xmlstarlet or some other tool and plot each correlator we end
+  up with the graph to the right.
 </p>
 <p>
   Ideally, this plot should consist of points in a straight line which
-  we can fit a line to, to extract the slope/thermal transport
-  coefficient, $L_{\lambda\lambda}$. Unfortunately, at short times we
-  have short-time effects from molecular processes which we wish to
-  ignore. We are only interested in the behaviour at long times, where
-  a "hydrodynamic" description applies. Even more unfortunately, at
-  long times we have poor statistics (see the low number of samples)
-  AND we have effects from the periodic boundary conditions.
+  we can fit to extract the slope/thermal transport coefficient,
+  $L_{\lambda\lambda}$. Unfortunately, at short times we have
+  short-time effects from molecular processes which dominate the
+  correlator. We are only interested in the behaviour at long times,
+  where a "hydrodynamic" description applies, so we need to avoid
+  these short-time effects. Unfortunately again, at long times we have
+  poor statistics (see the low number of samples at long times) AND we
+  have effects from the periodic boundary conditions.
 </p>
 <p>
-  We need to extract the correlator curves, select a window of time to
-  fit a linear function to it, and to calculate the gradient/transport
-  coefficient. Luckily, there is the <b>dynatransport</b> tool to help
-  us do this.
+  We need to extract the correlator curves from a window which has
+  good statistics, ignores short times and avoids long time effects
+  and poor statistics. Once we have the window of time, we need to fit
+  a linear function to the correlator, and to calculate the
+  gradient/transport coefficient. Luckily, there is
+  the <b>dynatransport</b> tool to help us do all of this.
 </p>
 <h3>dynatransport</h3>
 <p>
@@ -534,4 +542,52 @@ ThermalDiffusionL_{\lambda,Bulk}= -3.03999278728e-18 +- 0.0 <R>^2= 0.73680045149
 MutualDiffusionL_{Bulk,Bulk}= 1.04605741811e-34 +- 0.0 <R>^2= 0.893542145422
 <?php codeblockend("brush: shell;"); ?>
 <p>
+  By default, <b>dynatransport</b> uses the full data set to calculate
+  the correlators. You should be able to see that the $R^2$ values of
+  the fits are significantly below $1$ which indicates that the
+  correlators are not linear in the window selected. We can view the
+  current fit by passing the <i>-v</i> option:
+</p>
+<?php codeblockstart(); ?>
+dynatransport output.xml -v
+<?php codeblockend("brush: shell;"); ?>
+<p>
+  After examining the fits and testing different window sizes its
+  clear that a suitable window appears to be $\Delta t \in [2,10]$. We
+  can set this window for dynatransport using the start (<i>-s</i>)
+  and cutoff (<i>-c</i>) options to give:
+</p>
+<?php codeblockstart(); ?>
+dynatransport output.xml -s 2 -c 10 -v
+ShearViscosityL_{\eta,\eta}= 0.195306335342 +- 0.0 <R>^2= 0.999498595286
+BulkViscosityL_{\kappa,\kappa}= 0.0707529418455 +- 0.0 <R>^2= 0.0110843745332
+ThermalConductivityL_{\lambda,\lambda}= 0.508343229525 +- 0.0 <R>^2= 0.997347634149
+ThermalDiffusionL_{\lambda,Bulk}= -4.22881210719e-19 +- 0.0 <R>^2= 0.866354789486
+MutualDiffusionL_{Bulk,Bulk}= 2.2536681734e-35 +- 0.0 <R>^2= 0.968183740424
+<?php codeblockend("brush: shell;"); ?>
+<p>
+  This gives a much better fit for the thermal conductivity
+  $L_{\lambda\,\lambda}\approx0.5083$ and viscosity
+  $L_{\eta\,\eta}\approx0.1953$. The bulk viscosity is relatively hard
+  to calculate and you should notice that the thermal diffusion,
+  $L_{\lambda\,Bulk}$, and mutual diffusion, $L_{Bulk,Bulk}$,
+  coefficients are close to zero. These coefficients are only non-zero
+  for systems with multiple Species.
+</p>
+<h1>Conclusions</h1>
+<p>
+  We've simulated a square well system of $N=4000$ molecules/particles
+  with a well-width of $\lambda=1.5$ at a reduced density of
+  $\rho=0.1$ and temperature
+  $k_B\,T=1.97\approx2$. Using <b>dynarun</b> we've equilibrated and
+  run the simulation to collect data. We've then calculated the
+  average configurational internal energy $U_{conf.}\approx-3161$ and
+  internal energy histograms.  Using <b>dynatransport</b> we've
+  calculated the self-diffusion coefficient $D\approx1.957$, thermal
+  conductivity $L_{\lambda\,\lambda}\approx0.5083$, and viscosity
+  $L_{\eta\,\eta}\approx0.1953$.
+</p>
+<p>
+  This is our first proper study with DynamO. Now we will look at more
+  complex systems and how to set them up.
 </p>

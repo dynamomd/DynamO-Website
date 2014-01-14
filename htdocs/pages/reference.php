@@ -168,8 +168,9 @@ function toggle_visibility(elementname) {
   events. How the events are sorted is specified by the <a href="#sorter">Sorter</a> tag.
 </p>
 <h2>Type="Dumb"</h2>
+<h4>Description</h4>
 <p>
-  <b>Description:</b> The "Dumb" scheduler is the most basic and
+ The "Dumb" scheduler is the most basic and
   slowest scheduler available. When particles undergo an event, the
   Dumb scheduler tests for new events against all other particles in
   the system (regardless of where they are). This cost scales linearly
@@ -177,15 +178,11 @@ function toggle_visibility(elementname) {
   $\mathcal{O}(N^2)$ scaling of the computational cost. This Scheduler
   type is only provided for debugging and testing purposes.
 </p>
-<p>
-  <b>Example Usage:</b>
-</p>
+<h4>Example usage</h4>
 <?php codeblockstart();?><Scheduler Type="Dumb">
   <Sorter .../>
 </Scheduler><?php codeblockend("brush: xml;"); ?>
-<p>
-  <b>Full Tag, Subtag, and Attribute List</b>:
-</p>
+<h4>Full Tag, Subtag, and Attribute List</h4>
 <ul>
   <li>
     <b>Type</b> <i>(attribute)</i>: Must have the
@@ -198,31 +195,29 @@ function toggle_visibility(elementname) {
   </li>
 </ul>
 <h2>Type="NeighbourList"</h2>
+<h4>Description</h4>
 <p>
-  <b>Description:</b> The "NeighbourList" scheduler uses a
+ The "NeighbourList" scheduler uses a
   NeighbourList to optimise the detection of events. When particles
   undergo an event, the NeighbourList scheduler only tests for new
   events against nearby particles. This cost is independent of the
   system size ($\mathcal{O}(1)$), resulting in an overall linear
   ($\mathcal{O}(N)$) scaling of the computational cost.
 </p>
+<h4>Note</h4>
 <p>
-  <b>Note:</b> The neighbour list used by the scheduler is not
+  The neighbour list used by the scheduler is not
   actually provided by the Scheduler. There must be a <a href="#global">Global</a>
   interaction available in the system which implements a
   NeighbourList. This neighbour list must have the name attribute set
   to "SchedulerNBList" to allow the NeighbourList Scheduler to
   identify it.
 </p>
-<p>
-  <b>Example Usage:</b>
-</p>
+<h4>Example usage</h4>
 <?php codeblockstart();?><Scheduler Type="NeighbourList">
   <Sorter .../>
 </Scheduler><?php codeblockend("brush: xml;"); ?>
-<p>
-  <b>Full Tag, Subtag, and Attribute List</b>:
-</p>
+<h4>Full Tag, Subtag, and Attribute List</h4>
 <ul>
   <li>
     <b>Type</b> <i>(attribute)</i>: Must have the
@@ -240,21 +235,18 @@ function toggle_visibility(elementname) {
   determining the next event to occur.
 </p>
 <h2>Type="CBT"</h2>
+<h4>Description</h4>
 <p>
-  <b>Description:</b> The "CBT" Sorter uses a STL priority queue for
+ The "CBT" Sorter uses a STL priority queue for
   each particle and inserts this into a Complete Binary Tree (CBT) to
   sort the events. This type of Sorter is very robust to unusual
   systems (such as systems with zero or one particle) but, as the
   computational cost scales as $\mathcal{O}(\log_2(N)$ with the system
   size, it is not the default Sorter used by DynamO.
 <p>
-<p>
-  <b>Example Usage:</b>
-</p>
+<h4>Example usage</h4>
 <?php codeblockstart();?><Sorter Type="CBT"/><?php codeblockend("brush: xml;"); ?>
-<p>
-  <b>Full Tag, Subtag, and Attribute List</b>:
-</p>
+<h4>Full Tag, Subtag, and Attribute List</h4>
 <ul>
   <li>
     <b>Type</b> <i>(attribute)</i>: Must have the
@@ -262,8 +254,9 @@ function toggle_visibility(elementname) {
   </li>
 </ul>
 <h2>Type="BoundedPQMinMax3"</h2>
+<h4>Description</h4>
 <p>
-  <b>Description:</b> The "BoundedPQMinMax3" Sorter uses a bounded
+ The "BoundedPQMinMax3" Sorter uses a bounded
   MinMax heap of size 3 to sort particle events. These particle queues
   are then presorted using a bounded priority queue. The earliest
   entry in the bounded priority queue is then sorted using a Complete
@@ -279,13 +272,9 @@ function toggle_visibility(elementname) {
   you may find the MinMax heap size might be increased or decreased to
   increase performance.
 </p>
-<p>
-  <b>Example Usage:</b>
-</p>
+<h4>Example usage</h4>
 <?php codeblockstart();?><Sorter Type="BoundedPQMinMax3"/><?php codeblockend("brush: xml;"); ?>
-<p>
-  <b>Full Tag, Subtag, and Attribute List</b>:
-</p>
+<h4>Full Tag, Subtag, and Attribute List</h4>
 <ul>
   <li>
     <b>Type</b> <i>(attribute)</i>: Must have the
@@ -295,23 +284,22 @@ function toggle_visibility(elementname) {
   </li>
 </ul>
 <h1><a id="simulationsize"></a>SimulationSize</h1>
+<h4>Description</h4>
 <p>
-  <b>Description:</b> The SimulationSize tag specifies the dimensions
+ The SimulationSize tag specifies the dimensions
   of the primary image for periodic boundary conditions. When the
   system is not periodic, it specifies the size of the tiled
   neighbourlist (if one is used). If no neighbour list is used in an
   infinite system, this tag has no effect.
 </p>
+<h4>Example usage</h4> 
 <p>
-  <b>Example Usage:</b> This example specifies a $10\times10\times10$
-  primary image.
+  This example specifies a $10\times10\times10$ primary image.
 </p>
 <?php codeblockstart();?>
 <SimulationSize x="10" y="10" z="10"/>
 <?php codeblockend("brush: xml;"); ?>
-<p>
-  <b>Full Tag, Subtag, and Attribute List</b>:
-</p>
+<h4>Full Tag, Subtag, and Attribute List</h4>
 <ul>
   <li>
     <b>x</b> <i>(attribute)</i>: The size in the $x$ dimension.
@@ -341,21 +329,18 @@ function toggle_visibility(elementname) {
   computational overhead of tracking the rotation of the particles.
 </p>
 <h2>Type="Point"</h2>
+<h4>Description</h4>
 <p>
-  <b>Description:</b> This Species type corresponds to point mass
+ This Species type corresponds to point mass
   (zero inertia) particles, but this type is also used in systems
   where inertial data is unimportant (atomic or frictionless
   systems). It is the simplest type of Species available.
 </p>
-<p>
-  <b>Example Usage:</b>
-</p>
+<h4>Example usage</h4> 
 <?php codeblockstart();?><Species Mass="1" Name="Bulk" Type="Point">
   <IDRange .../>
 </Species><?php codeblockend("brush: xml;"); ?>
-<p>
-  <b>Full Tag, Subtag, and Attribute List</b>:
-</p>
+<h4>Full Tag, Subtag, and Attribute List</h4>
 <ul>
   <li>
     <b>Type</b> <i>(attribute)</i>: Must have the
@@ -383,21 +368,18 @@ function toggle_visibility(elementname) {
   </li>
 </ul>
 <h2>Type="FixedCollider"</h2>
+<h4>Description</h4>
 <p>
-  <b>Description:</b> This Species type corresponds to particles which
+ This Species type corresponds to particles which
   have infinite mass and no inertia tensor. This is useful for
   particles which are used as the boundaries of a system (also called
   a particle mesh).
 </p>
-<p>
-  <b>Example Usage:</b>
-</p>
+<h4>Example usage</h4>
 <?php codeblockstart();?><Species Name="Bulk" Type="FixedCollider">
   <IDRange .../>
 </Species><?php codeblockend("brush: xml;"); ?>
-<p>
-  <b>Full Tag, Subtag, and Attribute List</b>:
-</p>
+<h4>Full Tag, Subtag, and Attribute List</h4>
 <ul>
   <li>
     <b>Type</b> <i>(attribute)</i>: Must have the
@@ -417,22 +399,19 @@ function toggle_visibility(elementname) {
   </li>
 </ul>
 <h2>Type="SphericalTop"</h2>
+<h4>Description</h4>
 <p>
-  <b>Description:</b> This Species type corresponds to particles where
+ This Species type corresponds to particles where
   the three principal momenta of inertia are identical. It is also
   used in systems where only two of the principal momenta of inertia
   are equal but the rotation is constrained such that the particle
   cannot precess.
 </p>
-<p>
-  <b>Example Usage:</b>
-</p>
+<h4>Example usage</h4>
 <?php codeblockstart();?><Species Mass="1" Name="Bulk" Type="SphericalTop" InertiaConstant="0.1">
   <IDRange .../>
 </Species><?php codeblockend("brush: xml;"); ?>
-<p>
-  <b>Full Tag, Subtag, and Attribute List</b>:
-</p>
+<h4>Full Tag, Subtag, and Attribute List</h4>
 <ul>
   <li>
     <b>Type</b> <i>(attribute)</i>: Must have the
@@ -475,18 +454,15 @@ function toggle_visibility(elementname) {
   conditions of the simulation.
 </p>
 <h2>Type="None"</h2>
+<h4>Description</h4>
 <p>
-  <b>Description:</b> The "None" boundary condition actually
+ The "None" boundary condition actually
   corresponds to an infinite system, without boundaries. The positions
   of the particles are not restricted in any dimension.
 </p>
-<p>
-  <b>Example Usage:</b>
-</p>
+<h4>Example usage</h4>
 <?php codeblockstart();?><BC Type="None"/><?php codeblockend("brush: xml;"); ?>
-<p>
-  <b>Full Tag, Subtag, and Attribute List</b>:
-</p>
+<h4>Full Tag, Subtag, and Attribute List</h4>
 <ul>
   <li>
     <b>Type</b> <i>(attribute)</i>: Must have the
@@ -494,8 +470,9 @@ function toggle_visibility(elementname) {
   </li>
 </ul>
 <h2>Type="PBC"</h2>
+<h4>Description</h4>
 <p>
-  <b>Description:</b> The "PBC" boundary condition applies periodic
+ The "PBC" boundary condition applies periodic
   boundary conditions to every dimension. The positions of the
   particles are wrapped to fit within the primary image, whose
   dimensions are specified by
@@ -528,13 +505,9 @@ function toggle_visibility(elementname) {
   possible to enter into two-phases if the simulation has attractive
   interactions, so care must still be taken.
 </p>
-<p>
-  <b>Example Usage:</b>
-</p>
+<h4>Example usage</h4>
 <?php codeblockstart();?><BC Type="PBC"/><?php codeblockend("brush: xml;"); ?>
-<p>
-  <b>Full Tag, Subtag, and Attribute List</b>:
-</p>
+<h4>Full Tag, Subtag, and Attribute List</h4>
 <ul>
   <li>
     <b>Type</b> <i>(attribute)</i>: Must have the
@@ -542,8 +515,9 @@ function toggle_visibility(elementname) {
   </li>
 </ul>
 <h2>Type="LE"</h2>
+<h4>Description</h4>
 <p>
-  <b>Description:</b> The "LE" boundary condition applies
+ The "LE" boundary condition applies
   Lees-Edwards boundary conditions to the system. These are periodic
   boundary conditions but they shear the system by setting the
   periodic images in the $y$ direction in motion in the $x$ direction
@@ -551,13 +525,9 @@ function toggle_visibility(elementname) {
   conditions.
 </p>
 <img src="/images/LEBC.png" alt="An illustration of the Lees-Edward sliding-brick boundary condition" width="714" height="251" style="display:block;margin:0 auto 0 auto;">
-<p>
-  <b>Example Usage:</b>
-</p>
+<h4>Example usage</h4>
 <?php codeblockstart();?><BC Type="LE" DXD="0" Rate="1"/><?php codeblockend("brush: xml;"); ?>
-<p>
-  <b>Full Tag, Subtag, and Attribute List</b>:
-</p>
+<h4>Full Tag, Subtag, and Attribute List</h4>
 <ul>
   <li>
     <b>Type</b> <i>(attribute)</i>: Must have the
@@ -611,21 +581,18 @@ function toggle_visibility(elementname) {
   particle properties, such as the excluded volume.
 </p>
 <h2>Type="Null"</h2>
+<h4>Description</h4>
 <p>
-  <b>Description:</b> The "Null" Interaction is used to mark particle
+ The "Null" Interaction is used to mark particle
   pairs out as non-interacting. All particle pairs must have a
   corresponding Interaction defined, so this Interaction is the only
   way to prevent events being generated for a set of particle pairs.
 </p>
-<p>
-  <b>Example Usage:</b>
-</p>
+<h4>Example usage</h4>
 <?php codeblockstart();?><Interaction Type="Null" Name="Bulk">
   <IDPairRange .../>
 </Interaction><?php codeblockend("brush: xml;"); ?>
-<p>
-  <b>Full Tag, Subtag, and Attribute List</b>:
-</p>
+<h4>Full Tag, Subtag, and Attribute List</h4>
 <ul>
   <li>
     <b>Type</b> <i>(attribute)</i>: Must have the
@@ -647,8 +614,9 @@ function toggle_visibility(elementname) {
   </li>
 </ul>
 <h2>Type="HardSphere"</h2>
+<h4>Description</h4>
 <p>
-  <b>Description:</b> The "HardSphere" Interaction implements the
+ The "HardSphere" Interaction implements the
   hard-sphere interaction potential. This is one of the simplest
   event-driven potentials available.
 </p>
@@ -686,11 +654,12 @@ function toggle_visibility(elementname) {
   properties of fluids from their molecular interactions. The
   interparticle potential of this model is given in the figure below:
 </p>
+<h4>Collision rule</h4> 
 <p>
-  <b>Collision Rule:</b> To perform an interaction we need a collision
-  rule which calculates the post-collision velocities of the two
-  particles undergoing the Interaction. The collision rule expresses the
-  post-collision velocities in terms of the pre-collision values.
+  To perform an interaction we need a collision rule which calculates
+  the post-collision velocities of the two particles undergoing the
+  Interaction. The collision rule expresses the post-collision
+  velocities in terms of the pre-collision values.
 </p>
 <?php showhidestart(); ?>
     Using the definition of the relative velocity
@@ -942,17 +911,13 @@ function toggle_visibility(elementname) {
   derivation above for more information on the symbols and their
   meaning.
 </p>
-<p>
-  <b>Example Usage:</b>
-</p>
+<h4>Example usage</h4>
 <?php codeblockstart();?>
 <Interaction Type="HardSphere" Diameter="1" Name="Bulk">
   <IDPairRange .../>
 </Interaction>
 <?php codeblockend("brush: xml;"); ?>
-<p>
-  <b>Full Tag, Subtag, and Attribute List</b>:
-</p>
+<h4>Full Tag, Subtag, and Attribute List</h4>
 <ul>
   <li>
     <b>Type</b> <i>(attribute)</i>: Must have the
@@ -1015,8 +980,9 @@ function toggle_visibility(elementname) {
   </li>
 </ul>
 <h2><a id="typesquarewell"></a>Type="SquareWell"</h2>
+<h4>Description</h4>
 <p>
-  <b>Description:</b> The "SquareWell" Interaction implements the
+ The "SquareWell" Interaction implements the
   square-well interaction potential, illustrated in the figure below. 
 </p>
 <p>
@@ -1071,16 +1037,12 @@ function toggle_visibility(elementname) {
   fundamental behaviour of square-well molecules, the fundamental
   behaviour of realistic potentials can also be explained.
 </p>
-<p>
-  <b>Example Usage:</b>
-</p>
+<h4>Example usage</h4>
 <?php codeblockstart();?><Interaction Type="SquareWell" Diameter="1" Elasticity="1" Lambda="1.5" WellDepth="1" Name="Bulk">
   <IDPairRange .../>
   <CaptureMap .../>
 </Interaction><?php codeblockend("brush: xml;"); ?>
-<p>
-  <b>Full Tag, Subtag, and Attribute List</b>:
-</p>
+<h4>Full Tag, Subtag, and Attribute List</h4>
 <ul>
   <li>
     <b>Type</b> <i>(attribute)</i>: Must have the
@@ -1154,20 +1116,17 @@ function toggle_visibility(elementname) {
     A simulation of Parallel hard cubes.
   </div>
 </div>
+<h4>Description</h4>
 <p>
-  <b>Description:</b> The "ParallelCubes" Interaction implements the
+ The "ParallelCubes" Interaction implements the
   hard cube interaction potential where the cubes do not rotate and
   are axis-aligned (a video of this system is presented to the right).
 </p>
-<p>
-  <b>Example Usage:</b>
-</p>
+<h4>Example usage</h4>
 <?php codeblockstart();?><Interaction Type="ParallelCubes" Diameter="1" Elasticity="1" Name="Bulk">
   <IDPairRange .../>
 </Interaction><?php codeblockend("brush: xml;"); ?>
-<p>
-  <b>Full Tag, Subtag, and Attribute List</b>:
-</p>
+<h4>Full Tag, Subtag, and Attribute List</h4>
 <ul>
   <li>
     <b>Type</b> <i>(attribute)</i>: Must have the
@@ -1213,20 +1172,17 @@ function toggle_visibility(elementname) {
     A simulation of Infinitely-thin rods.
   </div>
 </div>
+<h4>Description</h4>
 <p>
-  <b>Description:</b> The "Lines" Interaction implements the hard
+ The "Lines" Interaction implements the hard
   infinitely-thin rods interaction potential (a video of this system
   is presented to the right). 
 </p>
-<p>
-  <b>Example Usage:</b>
-</p>
+<h4>Example usage</h4>
 <?php codeblockstart();?><Interaction Type="Lines" Length="1" Elasticity="1" Name="Bulk">
   <IDPairRange .../>
 </Interaction><?php codeblockend("brush: xml;"); ?>
-<p>
-  <b>Full Tag, Subtag, and Attribute List</b>:
-</p>
+<h4>Full Tag, Subtag, and Attribute List</h4>
 <ul>
   <li>
     <b>Type</b> <i>(attribute)</i>: Must have the
@@ -1264,8 +1220,9 @@ function toggle_visibility(elementname) {
   </li>
 </ul>
 <h2>Type="Stepped"</h2>
+<h4>Description</h4>
 <p>
-  <b>Description:</b> The "Stepped" Interaction wraps a generic
+ The "Stepped" Interaction wraps a generic
   spherically-symmetric stepped <a href="#potential">Potential</a> and
   uses it for two-particle interactions. This can be used to implement
   many simple systems (hard-spheres, square-wells) and many complex
@@ -1274,8 +1231,9 @@ function toggle_visibility(elementname) {
   System event</a> to bind collections of particles together using
   a <a href="#potential">Potential</a>.
 </p>
+<h4>Example usage</h4>
 <p>
-  <b>Example Usage:</b> Generic wrapping of a <a href="#potential">Potential</a>.
+  Generic wrapping of a <a href="#potential">Potential</a>.
 </p>
 <?php codeblockstart();?>
 <Interaction Type="Stepped" Name="Bulk" LengthScale="1" EnergyScale="1">
@@ -1284,9 +1242,7 @@ function toggle_visibility(elementname) {
   <CaptureMap .../>
 </Interaction>
 <?php codeblockend("brush: xml;"); ?>
-<p>
-  <b>Full Tag, Subtag, and Attribute List</b>:
-</p>
+<h4>Full Tag, Subtag, and Attribute List</h4>
 <ul>
   <li>
     <b>Type</b> <i>(attribute)</i>: Must have the
@@ -1347,8 +1303,9 @@ function toggle_visibility(elementname) {
   </li>
 </ul>
 <h2>Type="ThinThread"</h2>
+<h4>Description</h4>
 <p>
-  <b>Description:</b> The "ThinThread" Interaction implements a
+ The "ThinThread" Interaction implements a
   square-well potential which has hysteresis. The particle behaves as
   a hard sphere, but once a pair of particles collide with the hard
   core, they enter the well. The energy of this well must be paid to
@@ -1363,16 +1320,12 @@ function toggle_visibility(elementname) {
   broken the particles will only interact again at short distances.
 </p>
 <img src="/images/thinthread.png" alt="A diagram of a thin thread molecule including its parameters" width="650" height="232" style="display:block;margin:0 auto 0 auto;">
-<p>
-  <b>Example Usage:</b>
-</p>
+<h4>Example usage</h4>
 <?php codeblockstart();?><Interaction Type="ThinThread" Diameter="1" Elasticity="1" Lambda="1.5" WellDepth="1" Name="Bulk">
   <IDPairRange .../>
   <CaptureMap .../>
 </Interaction><?php codeblockend("brush: xml;"); ?>
-<p>
-  <b>Full Tag, Subtag, and Attribute List</b>:
-</p>
+<h4>Full Tag, Subtag, and Attribute List</h4>
 <ul>
   <li>
     <b>Type</b> <i>(attribute)</i>: Must have the
@@ -1441,21 +1394,18 @@ function toggle_visibility(elementname) {
   </li>
 </ul>
 <h2>Type="SquareBond"</h2>
+<h4>Description</h4>
 <p>
-  <b>Description:</b> The "SquareBond" Interaction implements a
+ The "SquareBond" Interaction implements a
   square-well potential with an infinite interaction energy. This
   allows you to bond particles together to form polymeric structures.
 </p>
 <img src="/images/squarebond.png" alt="A diagram of a square-bond including its parameters" width="650" height="232" style="display:block;margin:0 auto 0 auto;">
-<p>
-  <b>Example Usage:</b>
-</p>
+<h4>Example usage</h4>
 <?php codeblockstart();?><Interaction Type="SquareBond" Diameter="1" Elasticity="1" Lambda="1.5" Name="Bulk">
   <IDPairRange .../>
 </Interaction><?php codeblockend("brush: xml;"); ?>
-<p>
-  <b>Full Tag, Subtag, and Attribute List</b>:
-</p>
+<h4>Full Tag, Subtag, and Attribute List</h4>
 <ul>
   <li>
     <b>Type</b> <i>(attribute)</i>: Must have the
@@ -1542,8 +1492,9 @@ function toggle_visibility(elementname) {
   simulation.
 </p>
 <h2>Type="Wall"</h2>
+<h4>Description</h4>
 <p>
-  <b>Description:</b> The "Wall" Local implements an infinite
+ The "Wall" Local implements an infinite
   plane/wall. This Local is typically used as a boundary of the
   simulation and may also be "thermalised" to inject or remove energy
   from the system. As these planes/walls are infinite, you must take
@@ -1553,17 +1504,13 @@ function toggle_visibility(elementname) {
   normal is aligned with the $y$-axis (which would defeat the purpose
   of using Lees-Edwards boundaries).
 </p>
-<p>
-  <b>Example Usage:</b>
-</p>
+<h4>Example usage</h4>
 <?php codeblockstart();?><Local Type="Wall" Name="GroundPlate" Elasticity="1" Diameter="1" Temperature="0.5">
   <IDRange Type="All"/>
   <Norm x="0" y="1" z="0"/>
   <Origin x="0" y="-7.5" z="0"/>
 </Local><?php codeblockend("brush: xml;"); ?>
-<p>
-  <b>Full Tag, Subtag, and Attribute List</b>:
-</p>
+<h4>Full Tag, Subtag, and Attribute List</h4>
 <ul>
   <li>
     <b>Type</b> <i>(attribute)</i>: Must have the
@@ -1650,22 +1597,19 @@ function toggle_visibility(elementname) {
   cellular neighbour list.
 </p>
 <h2>Type="Cells"</h2>
+<h4>Description</h4>
 <p>
-  <b>Description:</b> The "Cells" Global implements a cellular
+ The "Cells" Global implements a cellular
   neighbour list, which may be used by the Scheduler to optimise the
   simulation. The neighbourlist will track all particles that match
   its <a href="#idrange">IDRange</a> and can provide information on which tracked particles
   are within the neighbourhood of other particles or points.
 </p>
-<p>
-  <b>Example Usage:</b>
-</p>
+<h4>Example usage</h4>
 <?php codeblockstart();?><Global Type="Cells" Name="SchedulerNBList" NeighbourhoodRange="1">
   <IDRange .../>
 </Global><?php codeblockend("brush: xml;"); ?>
-<p>
-  <b>Full Tag, Subtag, and Attribute List</b>:
-</p>
+<h4>Full Tag, Subtag, and Attribute List</h4>
 <ul>
   <li>
     <b>Type</b> <i>(attribute)</i>: Must have the
@@ -1709,8 +1653,9 @@ function toggle_visibility(elementname) {
   Andersen thermostat.
 </p>
 <h2><a id="typeandersen"></a>Type="Andersen"</h2>
+<h4>Description</h4>
 <p>
-  <b>Description:</b> The "Andersen" System implements an Andersen
+ The "Andersen" System implements an Andersen
   thermostat. An Andersen thermostat functions by randomly reassigning
   the velocities of individual particles from a Gaussian distribution
   with a specified temperature. These reassignments occur at random
@@ -1735,17 +1680,13 @@ function toggle_visibility(elementname) {
   <b>SetPoint</b> attributes. If either attribute is missing the
   frequency control will be disabled.
 </p>
-<p>
-  <b>Example Usage:</b>
-</p>
+<h4>Example usage</h4>
 <?php codeblockstart();?>
 <System Type="Andersen" Name="Thermostat" MFT="1.0" Temperature="1.0" SetPoint="0.05" SetFrequency="100">
   <IDRange Type="All"/>
 </System>
 <?php codeblockend("brush: xml;"); ?>
-<p>
-  <b>Full Tag, Subtag, and Attribute List</b>:
-</p>
+<h4>Full Tag, Subtag, and Attribute List</h4>
 <ul>
   <li>
     <b>Type</b> <i>(attribute)</i>: Must have the
@@ -1788,15 +1729,16 @@ function toggle_visibility(elementname) {
   </li>
 </ul>
 <h2><a id="typeumbrella"></a>Type="Umbrella"</h2>
+<h4>Description</h4>
 <p>
-  <b>Description:</b> The "Umbrella" System implements an umbrella
+ The "Umbrella" System implements an umbrella
   potential, allowing a <a href="#potential">Potential</a> to be
   specified between the centres of mass of two collections of
   particles.
 </p>
+<h4>Example usage</h4>
 <p>
-  <b>Example Usage:</b> An umbrella potential between two groups of 64
-  particles:
+  An umbrella potential between two groups of 64 particles:
 </p>
 <?php codeblockstart();?>
 <System Type="Umbrella" Name="UmbrellaPotential" LengthScale="1" EnergyScale="1">
@@ -1826,9 +1768,7 @@ function toggle_visibility(elementname) {
   </Potential>
 </System>
 <?php codeblockend("brush: xml;"); ?>
-<p>
-  <b>Full Tag, Subtag, and Attribute List</b>:
-</p>
+<h4>Full Tag, Subtag, and Attribute List</h4>
 <ul>
   <li>
     <b>Type</b> <i>(attribute)</i>: Must have the
@@ -1874,21 +1814,18 @@ function toggle_visibility(elementname) {
   such as gravity.
 </p>
 <h2>Type="Newtonian"</h2>
+<h4>Description</h4>
 <p>
-  <b>Description:</b> The "Newtonian" Dynamics type is the standard
+ The "Newtonian" Dynamics type is the standard
   Dynamics implementation in DynamO. All particles are moving under
   standard Newtonian dynamics, without the influence of external
   forces.
 </p>
-<p>
-  <b>Example Usage:</b>
-</p>
+<h4>Example usage</h4>
 <?php codeblockstart();?>
 <Dynamics Type="Newtonian"/>
 <?php codeblockend("brush: xml;"); ?>
-<p>
-  <b>Full Tag, Subtag, and Attribute List</b>:
-</p>
+<h4>Full Tag, Subtag, and Attribute List</h4>
 <ul>
   <li>
     <b>Type</b> <i>(attribute)</i>: Must have the
@@ -1896,21 +1833,18 @@ function toggle_visibility(elementname) {
   </li>
 </ul>
 <h2>Type="NewtonianGravity"</h2>
+<h4>Description</h4>
 <p>
-  <b>Description:</b> The "NewtonianGravity" Dynamics type allows an
+ The "NewtonianGravity" Dynamics type allows an
   external acceleration to be included in the dynamics.
 </p>
-<p>
-  <b>Example Usage:</b>
-</p>
+<h4>Example usage</h4>
 <?php codeblockstart();?>
 <Dynamics Type="NewtonianGravity" ElasticV="1.0">
   <g x="0" y="-1" z="0"/>
 </Dynamics>
 <?php codeblockend("brush: xml;"); ?>
-<p>
-  <b>Full Tag, Subtag, and Attribute List</b>:
-</p>
+<h4>Full Tag, Subtag, and Attribute List</h4>
 <ul>
   <li>
     <b>Type</b> <i>(attribute)</i>: Must have the
@@ -1944,8 +1878,9 @@ function toggle_visibility(elementname) {
   </li>
 </ul>
 <h2>Type="NewtonianMC"</h2>
+<h4>Description</h4>
 <p>
-  <b>Description:</b> The "NewtonianMC" Dynamics implements a
+ The "NewtonianMC" Dynamics implements a
   multicanonical simulation. Multicanonical simulations deform the
   energy potential of the system to accelerate the dynamics.  A
   descriptive paper on the technique is
@@ -2001,9 +1936,7 @@ function toggle_visibility(elementname) {
   the <b>PotentialDeformation</b> tag. If there is no step specified
   for an energy, its $W$ value is automatically assumed to be zero.
 </p>
-<p>
-  <b>Example Usage:</b>
-</p>
+<h4>Example usage</h4>
 <?php codeblockstart();?>
 <Dynamics Type="NewtonianMC">
   <PotentialDeformation EnergyStep="0.01">
@@ -2013,9 +1946,7 @@ function toggle_visibility(elementname) {
   </PotentialDeformation>
 </Dynamics>
 <?php codeblockend("brush: xml;"); ?>
-<p>
-  <b>Full Tag, Subtag, and Attribute List</b>:
-</p>
+<h4>Full Tag, Subtag, and Attribute List</h4>
 <ul>
   <li>
     <b>Type</b> <i>(attribute)</i>: Must have the
@@ -2132,24 +2063,21 @@ function toggle_visibility(elementname) {
   a <b>D</b> and <b>M</b> attribute).
 </p>
 <h1><a id="pt"></a>Pt (Particle)</h1>
+<h4>Description</h4>
 <p>
-  <b>Description:</b> A <b>Pt</b> or Particle tag represents the
+ A <b>Pt</b> or Particle tag represents the
   unique data of a single particle. Each particle must have at least a
   position and velocity tag, but it may also include additional
   attributes and tags corresponding
   to <a href="#property">Properties</a>.
 </p>
-<p>
-  <b>Example Usage:</b>
-</p>
+<h4>Example usage</h4>
 <?php codeblockstart();?><Pt ID="0">
   <P x="1.71513720091304e+00" y="5.49987913872954e+00" z="4.32598642635552e+00"/>
   <V x="1.51174422678297e+00" y="-8.06881217863154e-01" z="-8.11332120569972e-01"/>
 </Pt>
 <?php codeblockend("brush: xml;"); ?>
-<p>
-  <b>Full Tag, Subtag, and Attribute List</b>:
-</p>
+<h4>Full Tag, Subtag, and Attribute List</h4>
 <ul>
   <li>
     <b>ID</b> <i>(attribute)</i>: DynamO loads and assigns ID's to
@@ -2205,14 +2133,16 @@ function toggle_visibility(elementname) {
   the <a href="#typelennardjonespotential">Lennard-Jones type</a>.
 </p>
 <h2><a id="typesteppedpotential"></a>Type="Stepped"</h2>
+<h4>Description</h4>
 <p>
-  <b>Description:</b> This Potential type allows a stepped potential
+ This Potential type allows a stepped potential
   to be directly entered in. This is the most general stepped
   potential available, but requires manual entry of the potential.
 </p>
+<h4>Example usage</h4>
 <p>
-  <b>Example Usage:</b> An implementation of the sixth hand stepped
-  approximation of the Lennard-Jones potential reported
+  An implementation of the sixth hand stepped approximation of the
+  Lennard-Jones potential reported
   by <a href="http://link.aip.org/link/doi/10.1063/1.456811">Chapela
   et al. (1989)</a>:
 </p>
@@ -2231,9 +2161,7 @@ function toggle_visibility(elementname) {
   <Step R="0.75" E="1.0e+300"/>
 </Potential>
 <?php codeblockend("brush: xml;"); ?>
-<p>
-  <b>Full Tag, Subtag, and Attribute List</b>:
-</p>
+<h4>Full Tag, Subtag, and Attribute List</h4>
 <ul>
   <li>
     <b>Type</b> <i>(attribute)</i>: Must have the
@@ -2283,19 +2211,16 @@ function toggle_visibility(elementname) {
   particles to which they apply.
 </p>
 <h2>Type="All"</h2>
+<h4>Description</h4>
 <p>
-  <b>Description:</b> An ID Range which maps to all particles in the
+ An ID Range which maps to all particles in the
   simulation.
 </p>
-<p>
-  <b>Example Usage:</b>
-</p>
+<h4>Example usage</h4>
 <?php codeblockstart();?>
 <IDRange Type="All"/>
 <?php codeblockend("brush: xml;"); ?>
-<p>
-  <b>Full Tag, Subtag, and Attribute List</b>:
-</p>
+<h4>Full Tag, Subtag, and Attribute List</h4>
 <ul>
   <li>
     <b>Type</b> <i>(attribute)</i>: Must have the value <i>"All"</i>
@@ -2303,16 +2228,13 @@ function toggle_visibility(elementname) {
   </li>
 </ul>
 <h2>Type="None"</h2>
+<h4>Description</h4>
 <p>
-  <b>Description:</b> An ID Range which does not map to any particles.
+ An ID Range which does not map to any particles.
 </p>
-<p>
-  <b>Example Usage:</b>
-</p>
+<h4>Example usage</h4>
 <?php codeblockstart();?><IDRange Type="None"/><?php codeblockend("brush: xml;"); ?>
-<p>
-  <b>Full Tag, Subtag, and Attribute List</b>:
-</p>
+<h4>Full Tag, Subtag, and Attribute List</h4>
 <ul>
   <li>
     <b>Type</b> <i>(attribute)</i>: Must have the
@@ -2320,22 +2242,19 @@ function toggle_visibility(elementname) {
   </li>
 </ul>
 <h2>Type="Ranged"</h2>
+<h4>Description</h4>
 <p>
-  <b>Description:</b> An ID Range which maps to a sequential list of
+ An ID Range which maps to a sequential list of
   particles simulation. The range is inclusive (both its start and end
   points are inside the range).
 </p>
-<p>
-  <b>Example Usage:</b>
-</p>
+<h4>Example usage</h4>
 <p>
   The following example <b>IDRange</b> includes the particle IDs 0, 1,
   2, 3, 4, and 5.
 </p>
 <?php codeblockstart();?><IDRange Type="Ranged" Start="0" End="5"/><?php codeblockend("brush: xml;"); ?>
-<p>
-  <b>Full Tag, Subtag, and Attribute List</b>:
-</p>
+<h4>Full Tag, Subtag, and Attribute List</h4>
 <ul>
   <li>
     <b>Type</b> <i>(attribute)</i>: Must have the
@@ -2351,14 +2270,13 @@ function toggle_visibility(elementname) {
   </li>
 </ul>
 <h2>Type="List"</h2>
+<h4>Description</h4>
 <p>
-  <b>Description:</b> An ID Range which maps to a specified list of
+ An ID Range which maps to a specified list of
   particles. This is the most general type of Range possible, as all
   IDs inside the range must be specfied individually.
 </p>
-<p>
-  <b>Example Usage:</b>
-</p>
+<h4>Example usage</h4>
 <p>
   The following example <b>IDRange</b> includes the particle IDs
   0, 2, and 5.
@@ -2369,9 +2287,7 @@ function toggle_visibility(elementname) {
   <ID val="5"/>
 </IDRange>
 <?php codeblockend("brush: xml;"); ?>
-<p>
-  <b>Full Tag, Subtag, and Attribute List</b>:
-</p>
+<h4>Full Tag, Subtag, and Attribute List</h4>
 <ul>
   <li>
     <b>Type</b> <i>(attribute)</i>: Must have the
@@ -2388,21 +2304,18 @@ function toggle_visibility(elementname) {
   </li>
 </ul>
 <h2>Type="Union"</h2>
+<h4>Description</h4>
 <p>
-  <b>Description:</b> An IDRange which combines several IDRanges into
+ An IDRange which combines several IDRanges into
   one.
 </p>
-<p>
-  <b>Example Usage:</b>
-</p>
+<h4>Example usage</h4>
 <?php codeblockstart();?><IDRange Type="Union">
   <IDRange .../>
   <IDRange .../>
   ...
 </IDRange><?php codeblockend("brush: xml;"); ?>
-<p>
-  <b>Full Tag, Subtag, and Attribute List</b>:
-</p>
+<h4>Full Tag, Subtag, and Attribute List</h4>
 <ul>
   <li>
     <b>Type</b> <i>(attribute)</i>: Must have the
@@ -2420,17 +2333,14 @@ function toggle_visibility(elementname) {
   collection or set of ID pairs.
 </p>
 <h2>Type="All"</h2>
+<h4>Description</h4>
 <p>
-  <b>Description:</b> An ID Range which maps to all pairs of particles
+ An ID Range which maps to all pairs of particles
   in the simulation.
 </p>
-<p>
-  <b>Example Usage:</b>
-</p>
+<h4>Example usage</h4>
 <?php codeblockstart();?><IDPairRange Type="All"/><?php codeblockend("brush: xml;"); ?>
-<p>
-  <b>Full Tag, Subtag, and Attribute List</b>:
-</p>
+<h4>Full Tag, Subtag, and Attribute List</h4>
 <ul>
   <li>
     <b>Type</b> <i>(attribute)</i>: Must have the value <i>"All"</i>
@@ -2438,17 +2348,14 @@ function toggle_visibility(elementname) {
   </li>
 </ul>
 <h2>Type="None"</h2>
+<h4>Description</h4>
 <p>
-  <b>Description:</b> An ID Range which doesn't map to any pair of
+ An ID Range which doesn't map to any pair of
   particles.
 </p>
-<p>
-  <b>Example Usage:</b>
-</p>
+<h4>Example usage</h4>
 <?php codeblockstart();?><IDPairRange Type="None"/><?php codeblockend("brush: xml;"); ?>
-<p>
-  <b>Full Tag, Subtag, and Attribute List</b>:
-</p>
+<h4>Full Tag, Subtag, and Attribute List</h4>
 <ul>
   <li>
     <b>Type</b> <i>(attribute)</i>: Must have the
@@ -2456,17 +2363,19 @@ function toggle_visibility(elementname) {
   </li>
 </ul>
 <h2><a id="typepair"></a>Type="Pair"</h2>
+<h4>Description</h4>
 <p>
-  <b>Description:</b> This creates a IDPairRange from two
+ This creates a IDPairRange from two
   IDRanges. Each particle ID in the first range is paired with all of
   the particle IDs in the second range. Pairs of particle IDs which
   only match one range are not included in the pair range.
 </p>
+<h4>Example usage</h4>
 <p>
-  <b>Example Usage:</b> This example pairs particle IDs 0,1,2 with IDs
-  3,4,5. Pairs only within one range, such as (0,1) or (3,4), are not
-  included. All IDRangePairs are symmetric, so both (1,4) and (4,1)
-  are included in this example range.
+  This example pairs particle IDs 0,1,2 with IDs 3,4,5. Pairs only
+  within one range, such as (0,1) or (3,4), are not included. All
+  IDRangePairs are symmetric, so both (1,4) and (4,1) are included in
+  this example range.
 </p>
 <?php codeblockstart();?>
 <IDPairRange Type="Pair">
@@ -2474,9 +2383,7 @@ function toggle_visibility(elementname) {
   <IDRange Type="Ranged" Start="3" End="5"/>
 </IDPairRange>
 <?php codeblockend("brush: xml;"); ?>
-<p>
-  <b>Full Tag, Subtag, and Attribute List</b>:
-</p>
+<h4>Full Tag, Subtag, and Attribute List</h4>
 <ul>
   <li>
     <b>Type</b> <i>(attribute)</i>: Must have the
@@ -2491,22 +2398,22 @@ function toggle_visibility(elementname) {
   </li>
 </ul>
 <h2><a id="typesingle"></a>Type="Single"</h2>
+<h4>Description</h4>
 <p>
-  <b>Description:</b> This creates a IDPairRange from one
+ This creates a IDPairRange from one
   IDRange. Every particle ID in the IDRange is paired with every other
   particle in the IDRange.
 </p>
+<h4>Example usage</h4>
 <p>
-  <b>Example Usage:</b> This example pairs particle IDs 0-0, 0-1, 0-2, 1-1, 1-2, and 2-2.
+  This example pairs particle IDs 0-0, 0-1, 0-2, 1-1, 1-2, and 2-2.
 </p>
 <?php codeblockstart();?>
 <IDPairRange Type="Single">
   <IDRange Type="Ranged" Start="0" End="2"/>
 </IDPairRange>
 <?php codeblockend("brush: xml;"); ?>
-<p>
-  <b>Full Tag, Subtag, and Attribute List</b>:
-</p>
+<h4>Full Tag, Subtag, and Attribute List</h4>
 <ul>
   <li>
     <b>Type</b> <i>(attribute)</i>: Must have the
@@ -2519,21 +2426,21 @@ function toggle_visibility(elementname) {
   </li>
 </ul>
 <h2><a id="typeself"></a>Type="Self"</h2>
+<h4>Description</h4>
 <p>
-  <b>Description:</b> This creates a IDPairRange from one
+ This creates a IDPairRange from one
   IDRange. Every particle ID in the IDRange is paired with itself.
 </p>
+<h4>Example usage</h4>
 <p>
-  <b>Example Usage:</b> This example pairs particle IDs 0-0, 1-1, and 2-2.
+  This example pairs particle IDs 0-0, 1-1, and 2-2.
 </p>
 <?php codeblockstart();?>
 <IDPairRange Type="Self">
   <IDRange Type="Ranged" Start="0" End="2"/>
 </IDPairRange>
 <?php codeblockend("brush: xml;"); ?>
-<p>
-  <b>Full Tag, Subtag, and Attribute List</b>:
-</p>
+<h4>Full Tag, Subtag, and Attribute List</h4>
 <ul>
   <li>
     <b>Type</b> <i>(attribute)</i>: Must have the
@@ -2546,15 +2453,17 @@ function toggle_visibility(elementname) {
   </li>
 </ul>
 <h2>Type="List"</h2>
+<h4>Description</h4>
 <p>
-  <b>Description:</b> This is the most versatile IDPairRange available
+ This is the most versatile IDPairRange available
   as it allows you to specify the particle pairings individually.
 </p>
+<h4>Example usage</h4>
 <p>
-  <b>Example Usage:</b> This example matches the particle pairings
-  (0,1), (1,2), and (2,3). As IDPairRanges are symmetric, the pairings
-  (1,0), (2,1), and (3,2) are also included. This example might be
-  used to bond particles together into a chain.
+  This example matches the particle pairings (0,1), (1,2), and
+  (2,3). As IDPairRanges are symmetric, the pairings (1,0), (2,1), and
+  (3,2) are also included. This example might be used to bond
+  particles together into a chain.
 </p>
 <?php codeblockstart();?>
 <IDPairRange Type="List">
@@ -2563,9 +2472,7 @@ function toggle_visibility(elementname) {
   <IDPair ID1="2" ID2="3"/>
 </IDPairRange>
 <?php codeblockend("brush: xml;"); ?>
-<p>
-  <b>Full Tag, Subtag, and Attribute List</b>:
-</p>
+<h4>Full Tag, Subtag, and Attribute List</h4>
 <ul>
   <li>
     <b>Type</b> <i>(attribute)</i>: Must have the
@@ -2587,13 +2494,12 @@ function toggle_visibility(elementname) {
   </li>
 </ul>
 <h2>Type="Union"</h2>
+<h4>Description</h4>
 <p>
-  <b>Description:</b> This creates a IDPairRange from a
+ This creates a IDPairRange from a
   combination/union of several IDPairRanges.
 </p>
-<p>
-  <b>Example Usage:</b>
-</p>
+<h4>Example usage</h4>
 <?php codeblockstart();?>
 <IDPairRange Type="Union">
   <IDPairRange .../>
@@ -2601,9 +2507,7 @@ function toggle_visibility(elementname) {
   ...
 </IDPairRange>
 <?php codeblockend("brush: xml;"); ?>
-<p>
-  <b>Full Tag, Subtag, and Attribute List</b>:
-</p>
+<h4>Full Tag, Subtag, and Attribute List</h4>
 <ul>
   <li>
     <b>Type</b> <i>(attribute)</i>: Must have the
@@ -2615,12 +2519,14 @@ function toggle_visibility(elementname) {
   </li>
 </ul>
 <h2>Type="Chains"</h2>
+<h4>Description</h4>
 <p>
-  <b>Description:</b> This IDPairRange is provided as a convenient way
+ This IDPairRange is provided as a convenient way
   to bond sequential particle IDs into linear chains.
 </p>
+<h4>Example usage</h4>
 <p>
-  <b>Example Usage:</b> If the example below was used with
+  If the example below was used with
   a <a href="#typesquarebond">square-bond Interaction</a>, it would
   bond a set of particles together into chains of 4.
   
@@ -2631,9 +2537,7 @@ function toggle_visibility(elementname) {
 <?php codeblockstart();?>
 <IDPairRange Type="Chains" Start="0" End="7" Interval="4"/>
 <?php codeblockend("brush: xml;"); ?>
-<p>
-  <b>Full Tag, Subtag, and Attribute List</b>:
-</p>
+<h4>Full Tag, Subtag, and Attribute List</h4>
 <ul>
   <li>
     <b>Type</b> <i>(attribute)</i>: Must have the
