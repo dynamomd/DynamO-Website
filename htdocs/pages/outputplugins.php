@@ -1465,14 +1465,14 @@ number of Structures in the Topology.
 	<b>Species</b> <i>(tag)</i>: This tag contains the VACF data
 	for a single species. The columns of data have the following format:
 	\[t \qquad \Psi_{\alpha}(t) \]
+	<ul>
+	  <li>
+	    <b>Name</b> <i>(attribute)</i>: The name of
+	    the <a href="/index.php/reference#species">Species</a>
+	    $\alpha$.
+	  </li>
+	</ul>
       </li>
-      <ul>
-	<li>
-	  <b>Name</b> <i>(attribute)</i>: The name of
-	  the <a href="/index.php/reference#species">Species</a>
-	  $\alpha$.
-	</li>
-      </ul>
     </ul>
   </li>
   <li>
