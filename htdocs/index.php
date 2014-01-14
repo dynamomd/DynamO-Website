@@ -215,7 +215,6 @@ function create_toc( $content ) {
 	 $lvl--;
 	}
  
-	$toc .= '</li>'."\n";
 	$toc .= '</ol></div>'."\n";
  
         return str_replace("TABLEOFCONTENTSMARKER",$toc,$content);
