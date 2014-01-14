@@ -273,8 +273,8 @@ xmlstarlet sel -t -m '//Pt/P' -v '@x' -o ' ' -v '@y' -o ' ' -v '@z' -n config.ou
   use the following identity
 </p>
 $$\begin{align*}
-\left|\mathbf{P}\right| &> R\\
-P_x^2+P_y^2+P_z^2 &> R^2
+\left|\mathbf{P}\right| &amp;> R\\
+P_x^2+P_y^2+P_z^2 &amp;> R^2
 \end{align*}$$
 <p>
   To use this XPath expression to delete the nodes, we simply run
