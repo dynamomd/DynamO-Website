@@ -9,9 +9,6 @@
    $pagetitle="Tutorial 5: Example: Multicomponent Square-Well Fluid";
    ?>
 <?php printTOC(); ?>
-<p style="text-align:center; margin:15px; background-color:#FFD800; font-size:16pt; font-family:sans; line-height:40px;">
-  <b>This tutorial is still being written.</b>
-</p>
 <p>
   This tutorial uses an example study of multicomponent square-well
   particles to introduce several topics:
@@ -74,13 +71,23 @@ dynamod -m 1 -C 10 -d 0.5 --i1 0 -r 1 -o config.start.xml
 #Now edit config.start.xml by hand to convert it into a multicomponent system
 #...
 #Compress the multicomponent system to a higher density
-dynarun config.start.xml --engine=3 --target-pack-frac 0.1 -o config.compressed.xml
+dynarun config.start.xml --engine=3 --target-pack-frac 0.3 -o config.compressed.xml
 #Add a thermostat, to allow us to control the temperature
-dynamod config.compressed.xml -T 1.0 -o config.thermostatted.xml
+dynamod config.compressed.xml -T 1.5 -o config.thermostatted.xml
 #Equilibrate the system using the thermostat to set the temperature
-dynarun config.thermostatted.xml -c 1000000 -o config.equilibrated.thermostatted.xml
+dynarun config.thermostatted.xml -c 1000000 -o config.thermostatted.xml
 #Now collect data on the system
-dynarun config.equilibrated.xml -c 1000000 -o config.final.xml
+dynamod config.thermostatted.xml -T 0 -o config.prerun.xml
+dynarun config.prerun.xml -c 1000000 -o config.end.xml -L MSD
+<?php codeblockend("brush: shell;"); ?>
+<p>
+  Once this is done, we'll disable the thermostat and perform another
+  run to collect output data and include some output plugins.
+</p>
+<?php codeblockstart(); ?>
+dynamod config.thermostatted.xml -T 0 -o config.prerun.xml
+dynarun config.prerun.xml -c 1000000 -o config.end.xml -L MSD
+
 <?php codeblockend("brush: shell;"); ?>
 <p>
   We'll now look in detail at these commands, in particular how the
@@ -375,7 +382,7 @@ Mode 1: Mono/Multi-component square wells
   temperature of a configuration file we can use the following dynamod
   command:
 </p>
-<?php codeblockstart(); ?>dynamod config.compressed.xml -r 1 -o config.rescaled.xml<?php codeblockend("brush: shell;"); ?>
+<?php codeblockstart(); ?>dynamod config.compressed.xml -r 1 -o config.compressed.xml<?php codeblockend("brush: shell;"); ?>
 <p>
   This will rescale the velocities of the particles in the system so
   that the current temperature is 1 (set by the <i>-r</i>
@@ -391,8 +398,8 @@ Mode 1: Mono/Multi-component square wells
   and then equilibrate the system.
 </p>
 <?php codeblockstart(); ?>
-dynamod config.rescaled.xml -T 1.5 -o config.thermostatted.xml
-dynarun config.thermostatted.xml -c 1000000 -o config.equilibrated.thermostatted.xml
+dynamod config.compressed.xml -T 1.5 -o config.thermostatted.xml
+dynarun config.thermostatted.xml -Z -c 1000000 -o config.thermostatted.xml
 <?php codeblockend("brush: shell;"); ?>
 <p>
   Once this is done, we'll disable the thermostat and perform another
@@ -400,12 +407,118 @@ dynarun config.thermostatted.xml -c 1000000 -o config.equilibrated.thermostatted
 </p>
 <?php codeblockstart(); ?>
 dynamod config.thermostatted.xml -T 0 -o config.prerun.xml
-dynarun config.prerun.xml -c 1000000 -o config.end.xml -L MSD
+dynarun config.prerun.xml -c 1000000 -o config.end.xml -L MSD -L RadialDistribution
 <?php codeblockend("brush: shell;"); ?>
 <p>
-  We'll now take a look at some of the results
+  Again, this might not have an absolutely correct temperature due to
+  the thermostat being disabled, but we need to disable it to measure
+  dynamical properties.
+</p>
+<h2>Enabling Ticker type plugins</h2>
+<p>
+  Some output plugins are classed
+  as <a href="/index.php/outputplugins#ticker-type-plugins">ticker
+  type plugins (see the reference)</a>. This includes
+  the <a href="/index.php/outputplugins#radialdistribution">RadialDistribution
+  plugin</a> which we enabled with a <i>-L RadialDistribution</i>
+  option to dynarun. These plugins only collect data at discrete
+  points or "ticks" in time, rather than over the duration of the
+  simulation.
+</p>
+<p>
+  These types of output plugins can sometimes significantly slow down
+  the simulation, so it is advised not to sample too frequently. Here,
+  we've chosen to sample every 0.1 units of simulation time (set by
+  the <i>-t 0.1</i> option). If we didn't set this option, the system
+  would sample once every mean free time (determined from the last run
+  of the configuration). For this simulation this will result in
+  around 30 ticks which, combined with the fact that radial
+  distribution functions are averaged over every particle, should give
+  enough samples for a fairly accurate determination of the data.
+</p>
+<p>
+  We'll now take a look at the results.
 </p>
 <h1>Processing the results</h1>
 <p>
-  Still writing
+  The first point to process is to establish if the temperature is
+  around the required value:
+</p>
+<?php xmlXPathFile("pages/output.tut5.xml", "//Temperature"); ?>
+<p>
+  Again, <a href="/index.php/tutorial4#dataprocessing">as discussed in
+  tutorial 4</a>, there is some drift but this is not unexpected.
+</p>
+<p>
+  We can see that the addition of a second Species to the system has
+  resulted in some additional information to be collected. For example,
+  the MSD plugin has collected per-species diffusion coefficients:
+</p>
+<?php xmlXPathFile("pages/output.tut5.xml", "//MSD"); ?>
+<p>
+  If we also run <b>dynatransport</b> on the system, we can see that
+  there are additional diffusive transport coefficients collected and
+  they are no-longer zero.
+</p>
+<?php codeblockstart(); ?>
+dynatransport output.xml -s 0.05 -c 0.3 -v
+ShearViscosityL_{\eta,\eta}= 1.46849095852 +- 0.0 <R>^2= 0.997803923764
+BulkViscosityL_{\kappa,\kappa}= 5.96424257036 +- 0.0 <R>^2= 0.98471945448
+ThermalConductivityL_{\lambda,\lambda}= 43.0867400675 +- 0.0 <R>^2= 0.999308834014
+ThermalDiffusionL_{\lambda,A}= -0.0538445647777 +- 0.0 <R>^2= 0.974926102908
+ThermalDiffusionL_{\lambda,B}= 0.0538445647777 +- 0.0 <R>^2= 0.974926102908
+MutualDiffusionL_{B,B}= 0.00259576820261 +- 0.0 <R>^2= 0.999630761695
+MutualDiffusionL_{A,B}= -0.00259576820261 +- 0.0 <R>^2= 0.999630761695
+MutualDiffusionL_{A,A}= 0.00259576820261 +- 0.0 <R>^2= 0.999630761695
+<?php codeblockend("brush: shell;"); ?>
+<p>
+  Please be careful about using these results as the above correlation
+  window, $\Delta t\in\left[0.05,0.3\right]$, was not rigourously
+  determined. Also, as there are now many molecular processes occuring
+  each with different timescales, it is more complex to determine when
+  short-time effects cease to dominate the correlation functions.
+</p>
+<h2>Ticker Plugins (RadialDistribution)</h2>
+<div class="figure" style="float:right; width:416px;">
+  <a href="/images/gr.tut5.png">
+    <img height="398" width="416" alt=" ." src="/images/gr.tut5.png"/>
+  </a>
+  <div class="caption">
+    A plot of the three radial distribution functions for the binary
+    square-well system studied.
+  </div>
+</div>
+<p>
+  In this tutorial, we introduced a new ticker-type plugin for
+  collecting the radial distribution function. The data for this
+  plugin is stored in the <b>RadialDistribution</b> tag in the output
+  file:
+</p>
+<?php xmlXPathFile("pages/output.tut5.xml", "//RadialDistribution"); ?>
+<p>
+  If we cut out each of the columns of data and plot them together we
+  have the graph presented to the right. We can see that the sampling
+  of the A-A distribution has poor statistics when compared to the
+  B-B, due to the relatively small number of A type particles in the
+  system when compared to the B-type. This is confirmed when we
+  compare the values of the <i>Samples</i> attribute for each
+  graph. We can attempt to mitigate this by increasing the "tick" rate
+  to collect more samples or by extending the simulation
+  time. Increasing the tick rate is cheaper but longer simulations
+  should give better sampling overall.
+</p>
+<p>
+  We can also see the discontinuities in $g(r)$ caused by the
+  discontinuity in the intermolecular potential at $r=\sigma$ and
+  $r=\lambda\,\sigma$ for each curve.
+</p>
+<h1>Summary</h1>
+<p>
+  We've now introduced multiple Species and Interactions, allowing a
+  wide range of mixtures to be studied and opening the door to the
+  construction of more complex systems. Ticker output plugins are
+  introduced as a new mechanism used to collect data on the
+  simulation, particularly for "expensive" computations like the
+  RadialDistribution plugin. Later tutorials will now focus on
+  increasing the complexity of the simulations.
 </p>

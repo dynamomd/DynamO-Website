@@ -274,9 +274,11 @@ ETA 0s, Events 1000k, t 64.6884, <MFT> 0.132689, T 1.9653, U -0.7795
 <?php codeblockend("brush: shell;"); ?>
 <p>
   We can see that the temperature approaches the required temperature
-  by the end. It's only just reached steady state (take a look at the
-  instantaneous $T$ and $U$ values) so it might be best to run the
-  configuration for another $10^6$ events.
+  at the end. Looking at the instantaneous $T$ and $U$ values it
+  appears to have reached steady state after around 200k events. The
+  average mean free time (<i>MFT</i>) is still changing but this is
+  due to it accumulating samples during the equilibration. We can
+  confirm this by running the configuration for another $10^6$ events.
 </p>
 <?php codeblockstart(); ?>dynarun config.out.xml.bz2 -c 10000000
 ...
@@ -289,7 +291,9 @@ ETA 7s, Events 600k, t 39.2339, <MFT> 0.134103, T 2.02729, U -0.79425
 ...
 <?php codeblockend("brush: shell;"); ?>
 <p>
-  Much better. We're now ready to collect some data!
+  Here its easy to see that the mean free time is relatively stable as
+  well. It is very difficult to conclusively prove that we're at
+  steady state but we're now ready to collect some data.
 <h1 id="datacollection">Collecting Data</h1>
 <p>
   At this point we have a system which has been equilibrated with a
@@ -365,11 +369,18 @@ bunzip2 output.xml.bz2
  The average value has a deviation of $\approx2\%$ from the desired
  value, which can be expected with this system size. Larger systems
  (with longer equilibration times) will lower this value if needed as
- the fluctuations scale with $N^{-0.5}$. It is interesting to note at
- this point that DynamO collects "exact" time averages wherever
- possible (see
+ the fluctuations scale with $N^{-0.5}$. For publication results, I
+ would recommend setting the temperature more accurately, perhaps
+ using the calculated heat capacity to estimate the required energy to
+ add or remove from the system to more accurately set the temperature.
+</p>
+<p>
+ It is interesting to note at this point that DynamO collects "exact"
+ time averages wherever possible (see
  the <a href="/index.php/FAQ#q-how-does-dynamo-collect-exact-timeaverages">FAQ
- on averages</a>).
+ on averages</a>). By exact we mean that the mean values are not
+ discretely sampled over the trajectory, but are true time averages
+ integrated over the length of the simulation.
 </p>
 <p>
   We can also get some scale for the fluctuation of the temperature by
@@ -436,7 +447,7 @@ bunzip2 output.xml.bz2
   reference</a>. Here, we'll use the xmlstarlet tool to cut it out:
 </p>
 <div class="figure" style="float:right; width:350px;">
-  <a href="/images/tut1_initialpos.jpg">
+  <a href="/images/histogram.tut4.png">
     <img height="323" width="350" alt="A rough internal energy histogram." src="/images/histogram.tut4.png"/>
   </a>
   <div class="caption">

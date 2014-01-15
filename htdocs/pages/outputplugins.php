@@ -1255,7 +1255,7 @@ dynarun config.xml -c 1000000 -L MFT:BinWidth=0.5,Length=100
 <p>
   There are no options for this plugin.
 </p>
-<h1>Ticker Type Plugins</h1>
+<h1 id="ticker-type-plugins">Ticker Type Plugins</h1>
 <p>
   Ticker-type plugins only measure properties at specified intervals
   of simulation time. An example of such a property is
@@ -1372,6 +1372,14 @@ number of samples/ticks used to collect the histogram.
 	<b>Name2</b> <i>(attribute)</i>: This is the name of the
 	species of the particles surrounding the particle at the
 	origin ($\beta$).
+      </li>
+      <li>
+	<b>Origins</b> <i>(attribute)</i>: The number of origins that
+	the function was averaged over.
+      </li>
+      <li>
+	<b>Samples</b> <i>(attribute)</i>: The total number of pair
+	distances sampled to construct the graph.
       </li>
     </ul>
   </li>
