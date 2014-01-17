@@ -307,7 +307,7 @@ if ($TOC)
       <a href="/" id="sitelogo" ></a>
     </div>
 
-    <a href="https://github.com/toastedcrumpets/DynamO/"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_red_aa0000.png" alt="Fork me on GitHub"></a>
+    <a href="https://github.com/toastedcrumpets/DynamO/"><img style="position: absolute; top: 0; right: 0; border: 0;" src="/images/forkme_right_red_aa0000.png" alt="Fork me on GitHub"></a>
 
     <!-- MENU -->
     <div id="menu">
@@ -363,7 +363,8 @@ if ($TOC)
        TeX: {
         equationNumbers: { autoNumber: "AMS" },
         extensions: ["AMSmath.js", "AMSsymbols.js", "autobold.js", "cancel.js"]
-        }
+        },
+	webFont: "TeX"
       });
     </script>
     <?php } ?>    

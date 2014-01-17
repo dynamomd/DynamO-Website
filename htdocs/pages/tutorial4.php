@@ -35,22 +35,25 @@
 <h2><a id="aboutsquarewellfluids"></a>About the system</h2>
 <p>
   For the purpose of the tutorial, we'll want to simulate a fluid of
-  square-well molecules at a reduced temperature of $k_B\,T=2$ and a
-  reduced density of $\rho=0.1$ (see
-  the <a href="/index.php/FAQ#q-what-units-does-the-dynamod-command-useproduce">FAQ
-  on units</a> if you don't understand these values). If you want to
-  learn more about the square-well potential, its parameters, and how
-  it corresponds to realistic intermolecular interactions please see
-  the reference entry linked below.
+  square-well molecules. These are essentially hard-sphere particles
+  with a short-range attractive well:
 </p>
-<?php button("Reference entry for <i>\"SquareWell\"</i> Type <b>Interactions</b>","/index.php/reference#typesquarewell");?>
+<img src="/images/sw.png" alt="A diagram of a square-well molecule including its parameters" width="650" height="232" style="display:block;margin:0 auto 0 auto;">
 <p>
-  We will again use periodic boundary conditions to allow us to
-  simulate an infinite fluid without the effects of walls or other
-  containers, and these are described in the following reference
-  entry:
+  We will simulate this fluid at a reduced temperature of $k_B\,T=2$
+  and a reduced density of $\rho=0.1$. If you want to learn more about
+  the square-well potential, its parameters, and how it corresponds to
+  realistic intermolecular interactions please see
+  the <a href="/index.php/reference#typesquarewell">reference
+  entry</a>. If you're uncertain of the units please see
+  the <a href="/index.php/FAQ#q-what-units-does-the-dynamod-command-useproduce">FAQ
+  on units</a>, but everything here is presented in reduced units.
 </p>
-<?php button("Reference entry for <i>\"PBC\"</i> Type <b>BoundaryConditions</b>","/index.php/reference#typepbc");?>
+<p>
+  We will again use <a href="/index.php/reference#typepbc">periodic
+  boundary conditions</a> to allow us to simulate an infinite fluid
+  without the effects of walls or other containers.
+</p>
 <h2>The whole tutorial in brief</h2>
 <p>
   We're going to create a square-well fluid with $N=4000$ particles at
