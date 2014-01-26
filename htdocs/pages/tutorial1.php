@@ -64,6 +64,11 @@
     Package</b>: libboost-dev, but it will be pulled in by the
     libboost-all-dev above.
   </li>
+  <li>
+    <a href="http://judy.sourceforge.net/">libJudy</a> - DynamO uses
+    Judy arrays for storing interaction information. <br/><b>Ubuntu
+    Package</b>: libjudy-dev.
+  </li>
 </ul>
 <p>
   If you cannot install a recent version of Boost or Boost Build on
@@ -146,17 +151,19 @@
 </p>
 <?php codeblockstart(); ?>Performing configuration checks
 
+    - Magnet: OpenCL libraries and headers (optional) : no
+    - DynamO: Judy array library (libJudy) : yes
+    - DynamO: libbz2 library   : yes
     - DynamO: Boost headers    : yes
     - DynamO: Boost filesystem library : yes
     - DynamO: Boost program options library : yes
     - DynamO: Boost iostreams library : yes
-    - Magnet: OpenCL libraries and headers (optional) : no
     - Magnet: libavcodec (video encoding support) : yes
     - Coil: Gtkmm              : yes
     - Coil: GLEW (v1.6+)       : yes
     - Coil: GLUT               : yes
-    - Coil: libCwiid Wii-mote support (Optional) : no
-    - DynamO-Coil Integration  : yes
+    - Coil: libCwiid Wii-mote support (Optional) : yes
+    - DynamO-Coil Integration Supported : yes
 ...patience...
 <?php codeblockend("brush: plain;"); ?>
 <p>
