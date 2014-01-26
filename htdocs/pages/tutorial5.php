@@ -36,7 +36,15 @@
   multicomponent system.
 </p>
 
-<h2><a id="aboutsquarewellfluids"></a>About square-well fluids</h2>
+<h2><a id="aboutsquarewellfluids"></a>The studied system</h2>
+<div class="figure" style="float:right; width:400px;clear:right;">
+  <a href="/images/tut5.lowdensity.png">
+    <img height="329" width="400" alt=" ." src="/images/tut5.lowdensity.png"/>
+  </a>
+  <div class="caption">
+    A rendering of the binary square-well system studied.
+  </div>
+</div>
 <p>
   For the purpose of the tutorial, we'll want to simulate a mixture of
   square-well molecules. If you want to learn more about the
@@ -46,16 +54,17 @@
 </p>
 <?php button("Reference entry for <i>\"SquareWell\"</i> Type <b>Interactions</b>","/index.php/reference#typesquarewell");?>
 <p>
+  We're going to study a binary mixture of $N=4000$ square-well
+  molecules. We'll have a larger species, $A$, and a smaller species,
+  $B$ (see right).
+</p>
+<p>
   We will again use periodic boundary conditions, and these are
   described in the following reference entry.
 </p>
 <?php button("Reference entry for <i>\"PBC\"</i> Type <b>BoundaryConditions</b>","/index.php/reference#typepbc");?>
-<h2>The whole tutorial in brief</h2>
-<img height="194" width="500" alt="An illustration of the variables of the system." src="/images/tut5.species.png" style="display:block;margin:0 auto 0 auto;"/>
 <p>
-  We're going to study a binary mixture of $N=4000$ square-well
-  molecules. We'll have a larger species, $A$, and a smaller species,
-  $B$. The mixture we will study has a hard-core diameter ratio of
+  The mixture we will study has a hard-core diameter ratio of
   $\sigma_A/\sigma_B=2$ and a mass ratio proportional to their volumes
   $m_A/m_B=\sigma_A^3/\sigma_B^3=8$. Both molecules have the same
   well-width factor $\lambda_A=\lambda_B=1.5$. For interactions
@@ -63,7 +72,13 @@
   species A and B the interaction diameter is
   $\sigma_{AB}=\left(\sigma_A+\sigma_B\right)/2$. We'll want to be
   able to study the mixture over a range of densities, temperatures,
-  and concentrations. The dynamod/dynarun commands we will run are
+  and concentrations.
+</p>
+<img height="194" width="500" alt="An illustration of the variables of the syste
+m." src="/images/tut5.species.png" style="display:block;margin:15px auto;"/>
+<h2>The whole tutorial in brief</h2>
+<p>
+  The dynamod/dynarun commands we will run are
 </p>
 <?php codeblockstart(); ?>
 #Create the monocomponent system
