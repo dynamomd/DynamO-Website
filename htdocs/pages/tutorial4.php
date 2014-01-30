@@ -508,7 +508,8 @@ xmlstarlet sel -t -v '//EnergyHist/HistogramWeighted' output.xml > histogram.dat
     the thermal conductivity." src="/images/correlator.tut4.png"/>
   </a>
   <div class="caption">
-    The Einstein correlators for the thermal conductivity
+    The Einstein correlators for the thermal conductivity in each
+    direction and the number of samples collected at each time point.
   </div>
 </div>
 <p>
@@ -565,11 +566,28 @@ MutualDiffusionL_{Bulk,Bulk}= 1.04605741811e-34 +- 0.0 <R>^2= 0.893542145422
 <?php codeblockstart(); ?>
 dynatransport output.xml -v
 <?php codeblockend("brush: shell;"); ?>
+<div class="figure" style="float:right; width:400px;">
+  <a href="/images/tut4.dynatransport.1.png">
+    <img height="322" width="400" alt="A fit of the complete shear viscosity data over the whole run." src="/images/tut4.dynatransport.1.png"/>
+  </a>
+  <div class="caption">
+    Sample output from dynatransport when used with the <i>-v</i>
+    option.
+  </div>
+</div>
 <p>
-  After examining the fits and testing different window sizes its
-  clear that a suitable window appears to be $\Delta t \in [2,10]$. We
-  can set this window for dynatransport using the start (<i>-s</i>)
-  and cutoff (<i>-c</i>) options to give:
+  This will give plots, like the one presented to the right, for each
+  transport property, including averaged correlator data, standard
+  deviations between each dimension, and the regressed line used to
+  calculate the coefficient.
+</p>
+<p>
+  Clearly, this linear fit is terrible and focuses too much on the
+  long time section which has poor sampling. After examining the fit
+  and testing a few different window sizes its clear that one suitable
+  window appears to be $\Delta t \in [2,10]$. We can set this window
+  for dynatransport using the start (<i>-s</i>) and cutoff (<i>-c</i>)
+  options to give:
 </p>
 <?php codeblockstart(); ?>
 dynatransport output.xml -s 2 -c 10 -v
@@ -579,8 +597,23 @@ ThermalConductivityL_{\lambda,\lambda}= 0.508343229525 +- 0.0 <R>^2= 0.997347634
 ThermalDiffusionL_{\lambda,Bulk}= -4.22881210719e-19 +- 0.0 <R>^2= 0.866354789486
 MutualDiffusionL_{Bulk,Bulk}= 2.2536681734e-35 +- 0.0 <R>^2= 0.968183740424
 <?php codeblockend("brush: shell;"); ?>
+<div class="figure" style="clear:right; float:right; width:400px;">
+  <a href="/images/tut4.dynatransport.2.png">
+    <img height="322" width="400" alt="A fit of the complete shear viscosity data over the whole run." src="/images/tut4.dynatransport.2.png"/>
+  </a>
+  <div class="caption">
+    Sample output from dynatransport when used with the <i>-v -s 2 -c
+    10</i> options to control the time window used for data fitting.
+  </div>
+</div>
 <p>
-  This gives a much better fit for the thermal conductivity
+  This fit is significantly better (see plot), although there is some strong
+  variation between the dimensions it appears that the average is
+  almost linear. We're only comparing the fit for the viscosity but
+  all fits should be checked.
+</p>
+<p>
+  Using this window gives a much better fit for the thermal conductivity
   $L_{\lambda\,\lambda}\approx0.5083$ and viscosity
   $L_{\eta\,\eta}\approx0.1953$. The bulk viscosity is relatively hard
   to calculate and you should notice that the thermal diffusion,
