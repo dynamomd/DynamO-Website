@@ -6,7 +6,7 @@
    header( 'Location: /index.php/404');
    return;
    }
-   $pagetitle="Tutorial 5: Example: Multicomponent Square-Well Fluid";
+   $pagetitle="Tutorial 5: Multiple species/interactions, compression dynamics, and ticker output plugins";
    ?>
 <?php printTOC(); ?>
 <p>

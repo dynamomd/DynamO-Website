@@ -6,7 +6,7 @@
    header( 'Location: /index.php/404');
    return;
    }
-   $pagetitle="Tutorial 1: Compiling and Installing DynamO";
+   $pagetitle="Tutorial 1: Compiling DynamO from source";
    ?>
 <?php printTOC(); ?>
 <p>
