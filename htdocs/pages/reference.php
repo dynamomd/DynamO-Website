@@ -613,7 +613,7 @@ function toggle_visibility(elementname) {
       IDPairRanges</a> for more information on the format of this tag.
   </li>
 </ul>
-<h2>Type="HardSphere"</h2>
+<h2 id="typehardsphere">Type="HardSphere"</h2>
 <h4>Description</h4>
 <p>
  The "HardSphere" Interaction implements the

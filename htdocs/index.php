@@ -39,21 +39,21 @@ function echoXML($xmlnode, $spacing, $max_depth, $max_children, $max_lines_of_te
 
  if ($xmlnode->count()) {
   //Print the node's children and text
-  echo ">\n";
+  echo ">";
   if ($max_depth == 1){
    //This node has children, but the maximum depth has been reached
-   echo str_repeat("  ", $spacing+1)."...\n"; 
+   echo "...</".$xmlnode->getName().">\n";
   } else {
-   //
    $childcounter = 0;
+   echo "\n";
    foreach ($xmlnode->children() as $child){
     echoXML($child, $spacing+1, $max_depth - 1, $max_children);
     if ((++$childcounter == $max_children)) break;
    }
    if (($childcounter == $max_children) && ($childcounter < $xmlnode->count()))
     echo str_repeat("  ", $spacing+1)."...\n";
+   echo str_repeat("  ", $spacing)."</".$xmlnode->getName().">\n";
   }
- echo str_repeat("  ", $spacing)."</".$xmlnode->getName().">\n";
  } else {
    $text = trim($xmlnode);
    if (empty($text)) {
