@@ -62,18 +62,24 @@ dynamod -m0 -d 1.0 -C 7 -o config.hs.xml
 </p>
 <h2>Adding polydispersity</h2>
 <p>
-  What we need to do is take each particle tag in the configuration
+  To add polydispersity to our configuration, we need to use
+  the <b>Property</b> tags. For details on exactly how these work,
+  please see the <a href="/index.php/reference#property">Property tags
+  reference page</a>. Here, we'll just look at what changes we need to
+  make. First, we take each particle (Pt) tag in the configuration
   file:
 </p>
 <?php xmlXPathFile("pages/config.tut6.HS.xml", "//ParticleData", 2,2); ?>
 <p>
-  And add attributes which specify its mass and diameter:
+  And add some attributes which specify its mass and diameter:
 </p>
 <?php xmlXPathFile("pages/config.tut6.poly.xml", "//ParticleData", 2,2); ?>
 <p>
-  These attributes are just extra data attached to the particle. We
-  need to tell DynamO it should load them by adding property
-  definitions:
+  These attributes are just extra data attached to the particle, the
+  names are arbitrary but its convenient to choose "M" for mass and
+  "D" for diameter. We need to then tell DynamO it should load these
+  attributes by adding definitions of the properties to the Property
+  tag:
 </p>
 <?php xmlXPathFile("pages/config.tut6.poly.xml", "//Properties", 2,3); ?>
 <p>
@@ -85,12 +91,12 @@ dynamod -m0 -d 1.0 -C 7 -o config.hs.xml
   These attributes will be loaded and saved by DynamO, but they're not
   used in the configuration yet. Lets change the current Interaction:
 </p>
-<?php xmlXPathFile("pages/config.tut6.HS.xml", "//Interactions/Interaction"); ?>
+<?php xmlXPathFile("pages/config.tut6.HS.xml", "//Interaction"); ?>
 <p>
   Here, we can replace the numerical property "1" used in the Diameter
   attribute with "D".
 </p>
-<?php xmlXPathFile("pages/config.tut6.poly.xml", "//Interactions/Interaction"); ?>
+<?php xmlXPathFile("pages/config.tut6.poly.xml", "//Interaction"); ?>
 <p>
   If you check
   the <a href="/index.php/reference#typehardsphere">reference entry
