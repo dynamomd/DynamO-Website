@@ -19,6 +19,14 @@
 </p>
 <div style="clear:both;text-align:center;">
 <div class="figure" style="width:533px; vertical-align:middle;">
+  <?php embedAJAXvideo("volumetricpot", "9_99P1p17V0", 533, 300); ?>
+  <div class="caption">
+    A simulation of flow through porous media. The boundary conditions
+    are implemented using volumetric potentials and data from a
+    microCT scan of a rock sample.
+  </div>
+</div>
+<div class="figure" style="width:533px; vertical-align:middle;">
   <?php embedAJAXvideo("drum", "_ksRY7SPHIU", 533, 300); ?>
   <div class="caption">
     A simulation of a rolling drum which may be used as the starting
