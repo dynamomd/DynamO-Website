@@ -335,4 +335,25 @@ fraction ($\eta$) instead of number density ($\rho$)?</h1>
   $\rho_{HS}^{max}=\sqrt{2}\approx1.41$. Thus we cannot immediately
   estimate what a "high" number density is for a polydisperse system.
 </p>
-
+<h1><a id="stoppausepeek"></a>Q: How do I take "snapshots" or regular samples of a running simulation?</h1>
+<p>
+  Short answer: Use the <i>--snapshot</i> or <i>--snapshot-events</i>
+  options to dynarun.
+</p>
+<p>
+  The <i>--snapshot</i> option allows you to set a time interval after
+  which dynarun will take a "snapshot" and save the configuration and
+  output data of the system into a file
+  named <i>Snapshot.0.xml.bz2</i>, <i>Snapshot.1.xml.bz2</i>, ... At
+  the same time, the current data from the output plugins is saved
+  to <i>Snapshot.output.0.xml.bz2</i> etc.
+</p>
+<p>
+  If you use the <i>--snapshot-events</i> option, this allows you to
+  take a snapshot every ficed number of events. These files are saved
+  to
+  <i>Snapshot.output.Xe.xml.bz2</i>
+  and <i>Snapshot.output.Xe.xml.bz2</i> where X is replaced with the
+  snapshot number. This name difference is to allow you to collect
+  both event and time snapshots together.
+</p>
