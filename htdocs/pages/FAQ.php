@@ -335,7 +335,7 @@ fraction ($\eta$) instead of number density ($\rho$)?</h1>
   $\rho_{HS}^{max}=\sqrt{2}\approx1.41$. Thus we cannot immediately
   estimate what a "high" number density is for a polydisperse system.
 </p>
-<h1><a id="stoppausepeek"></a>Q: How do I take "snapshots" or regular samples of a running simulation?</h1>
+<h1>Q: How do I take "snapshots" or regular samples of a running simulation?</h1>
 <p>
   Short answer: Use the <i>--snapshot</i> or <i>--snapshot-events</i>
   options to dynarun.
