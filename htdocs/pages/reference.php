@@ -469,7 +469,7 @@ function toggle_visibility(elementname) {
     value <i>"None"</i> to select this BC type.
   </li>
 </ul>
-<h2>Type="PBC"</h2>
+<h2 id="typepbc">Type="PBC"</h2>
 <h4>Description</h4>
 <p>
  The "PBC" boundary condition applies periodic

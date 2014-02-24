@@ -357,3 +357,26 @@ fraction ($\eta$) instead of number density ($\rho$)?</h1>
   snapshot number. This name difference is to allow you to collect
   both event and time snapshots together.
 </p>
+<h1>Q: Why are my particle positions negative?</h1>
+<p>
+  Short answer: DynamO can work with any sign of position, but for PBC
+  simulations it assumes your simulation is centered on the coordinate
+  $(0,0,0)$.
+</p>
+<p>
+  When DynamO writes out configuration files for simulations with
+  <a href="/index.php/reference#typepbc">Periodic Boundary Conditions
+  (PBC)</a>, all particles are "wrapped" into the main image which is
+  in the range $(\pm L_x, \pm L_y,\pm L_z)$ and $L_x$, $L_y$, and
+  $L_z$ are given by
+  the <a href="/index.php/reference#simulationsize">SimulationSize
+  tag</a>.
+</p>
+<p>
+  If the <i>--unwrapped</i> option is passed to dynarun, then all
+  positions are written out in "unfolded" coordinates. These are the
+  end positions of the particles that were originally in the primary
+  image at the start of the simulation. This is handy when calculating
+  diffusion properties (and is actually how DynamO stores the particle
+  positions during the calculations).
+</p>
