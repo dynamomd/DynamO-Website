@@ -1,6 +1,7 @@
 <?php 
    /*Check that this file is being accessed by the template*/
    $mathjax=1;
+   $TOC=1;
    if (!isset($in_template))
    {
    header( 'Location: /index.php/404');
@@ -8,7 +9,6 @@
    }
    $pagetitle="Tutorial 5: Multiple species/interactions, compression dynamics, and ticker output plugins";
    ?>
-<?php printTOC(); ?>
 <p>
   This tutorial uses an example study of multicomponent square-well
   particles to introduce several topics:

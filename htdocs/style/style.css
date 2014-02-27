@@ -1,6 +1,7 @@
 /* Main html element styles */
 html { height: 100%; }
 
+
 p {
     /* Android autofit bugfix */
     background-color: #ffffff;
@@ -24,7 +25,6 @@ body {
     padding: 0;
     height: 100%;
     background-color:#b7c7d7;
-    min-width:768px;
 }
 
 h1 { 
@@ -105,14 +105,6 @@ li {
     background-position: -273px 0;
 }
 
-#sitelogo { 
-    background-repeat:no-repeat; 
-    background-image:url(sitelogo.png); 
-    background-position: 15px 0px;
-    height: 115px;
-    display:block;
-}
-
 #footer {
     position:relative;
     height:41px;
@@ -163,9 +155,8 @@ li {
     padding:10px 15px;
     display:inline-block;
     border: 2px solid;
-    border-bottom:none;
     border-radius: 15px 15px 0 0;
-    margin-right:-2px;
+    margin-bottom:-2px;
     font-weight:bold;
 }
 
@@ -173,9 +164,9 @@ li {
     background-color:#ffffff;
     margin-bottom:-2px;
     z-index:100;
-    padding-bottom:12px;
     position:relative;
 }
+
 
 #menu a:hover { 
     background-color:#ccddcc;
@@ -242,10 +233,10 @@ li {
 }
 
 #pagetitle {
-    position:absolute;
+    /*position:absolute;
     top:2px;
     left:15px;
-    font-weight: bold;
+    font-weight: bold;*/
 }
 
 #pagedate {
@@ -272,7 +263,6 @@ li {
 
 .figure { 
     display: inline-block; 
-    margin:0 15px 15px;
     padding-top:15px;
     border:2px solid;
     background-color:#ffffff;
@@ -284,4 +274,49 @@ li {
     text-align:center; 
     clear: both;
     margin:15px;
+}
+
+#sitelogo {
+    width:100%;
+    max-width:424px;
+}
+
+@media all and (max-width:767px)  {
+    #menu a {
+	width:33.3333333333%;
+	padding:10px 0;
+	border-radius:0;
+	border:2px solid #000000;
+	text-align:center;
+	box-sizing:border-box;
+    }
+
+    #TOC {
+	float:none;
+	border:2px solid #000000;
+	display:block;
+	padding:0;
+	margin:5px;
+	border-radius: 15px;
+
+    }
+
+    #contentwrapper {
+	border-radius: 0 0 15px 15px;
+	padding-top: 15px;
+	border:2px solid;
+	position:relative;
+    }
+
+    #TOC #header {
+	border-radius: 15px 15px 0 0;
+	margin: 0;
+	float:none;
+	border:none;
+	padding:0;
+	width:100%;
+	text-align:center;
+	display:block;
+    }
+
 }

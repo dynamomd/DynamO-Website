@@ -112,19 +112,25 @@ function printTOC()
  {
    global $TOC;
    $TOC = 1;
-   echo "TABLEOFCONTENTSMARKER";
  }
 
 $containsvideo = false;
 
-function embedAJAXvideo($filename, $youtubecode, $width, $height)
+function embedAJAXvideo($filename, $youtubecode, $width, $height, $caption)
 {
    global $containsvideo;
    $containsvideo = true;
    $playtop=(intval($height) - 31) * 0.5;
    $playleft=(intval($width) - 31) * 0.5;
-   echo "<div class=\"video-container\" style=\"width:".$width."px;height:".$height."px;background-image:url('/videos/".$filename.".jpg')\" id=\"".$filename."video\" onclick=\"delayedLoadOfVideo('".$filename."video', '".$height."', '".$width."', '".$youtubecode."')\"><div class=\"play-button\" style=\"top:".$playtop."px; left:".$playleft."px;\"></div></div>";
-}
+   ?>
+<div class="figure" style="width:100%;max-width:<?=$width?>px; vertical-align:middle;">
+  <div class="video-container" style="width:100%;max-width:<?=$width?>px;height:auto;max-height:<?=$height?>px;" id="<?=$filename?>video" onclick="delayedLoadOfVideo('<?=$filename?>video', '<?=$height?>', '<?=$width?>', '<?=$youtubecode?>')">
+    <img style="width:100%;max-width:<?=$width?>px;" src="/videos/<?=$filename?>.jpg">
+    <div class=\"play-button\" style=\"top:".$playtop."px; left:".$playleft."px;\"></div>
+  </div>
+  <div class="caption"><?=$caption?></div>
+</div>
+<?php }
 
 /* Set the default page accessed when someone opens this file*/
 $page="frontpage";
@@ -231,18 +237,21 @@ function create_toc( $content ) {
  
 	$toc .= '</ol></div>'."\n";
  
-        return str_replace("TABLEOFCONTENTSMARKER",$toc,$content);
+        return $toc;
 }
+
+$content='<div id="pagetitle">'.$pagetitle.'</div>'.$content;
 
 if ($TOC)
  {
-  $content =  create_toc($content);
+  $content = create_toc($content).$content;
  }
 ?>
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="DynamO Event Driven Simulation Package" />
     <meta name="keywords" content="DynamO, Event Driven Simulation, hard sphere, square well" />
     <meta name="author" content="Marcus Bannerman" />
@@ -281,14 +290,18 @@ if ($TOC)
       function delayedLoadOfVideo(videoelemid, height, width, youtubecode)
       {
         videoelem = document.getElementById(videoelemid);
+        currentwidth = videoelem.offsetWidth;
+        currentHeight = (currentwidth + 0.0) * height / width;
         videoelem.removeAttribute("style");
         videoelem.removeAttribute("onclick");
-	videoelem.removeChild(videoelem.childNodes[0]);
+        while( videoelem.hasChildNodes() ){
+         videoelem.removeChild(videoelem.lastChild);
+        }
 
         player = new YT.Player(videoelemid, {
           playerVars: { modestbranding: true, 'showinfo': 0, theme: 'light', 'autohide': 1, 'rel': 0, wmode: "opaque"},
-          height: height,
-          width: width,
+          width: currentwidth,
+          height: currentHeight,
           videoId: youtubecode,
           events: {
             'onReady': onPlayerReady,
@@ -304,7 +317,7 @@ if ($TOC)
 
     <!-- HEADER AND LOGO -->
     <div class="logo rounded">
-      <a href="/" id="sitelogo" ></a>
+      <a href="/" id="sitelogolink"><img id="sitelogo" src="/style/sitelogo.png"></a>
     </div>
 
     <a href="https://github.com/toastedcrumpets/DynamO/"><img style="position: absolute; top: 0; right: 0; border: 0;" src="/images/forkme_right_red_aa0000.png" alt="Fork me on GitHub"></a>
@@ -312,11 +325,10 @@ if ($TOC)
     <!-- MENU -->
     <div id="menu">
       <!-- There can be no spaces between these elements, due to the treatment of the anchor tag as a word and the automatic kerning of html -->
-      <?php menulink("news", "News"); ?><?php menulink("download", "Download"); ?><?php menulink("documentation", "Documentation"); ?><?php menulink("features", "Features / Gallery"); ?><?php menulink("support", "Support"); ?><?php menulink("credits", "Credits"); ?>
+      <?php menulink("news", "News"); ?><?php menulink("download", "Download"); ?><?php menulink("documentation", "Manual"); ?><?php menulink("features", "Features"); ?><?php menulink("support", "Support"); ?><?php menulink("credits", "Credits"); ?>
     </div>
     <!-- CONTENT -->
     <div id="contentwrapper" class="rounded">
-      <div id="pagetitle"><?php echo $pagetitle; ?></div>
       <?php echo $content; ?>
       <div style="clear:both;height:10px;"></div>
       <div id="pagedate"><i>Page last modified: <?php echo $contentdate; ?></i></div>

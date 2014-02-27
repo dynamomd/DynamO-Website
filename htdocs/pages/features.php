@@ -18,129 +18,89 @@
   visualisation software, which is included as a part of DynamO.
 </p>
 <div style="clear:both;text-align:center;">
-<div class="figure" style="width:533px; vertical-align:middle;">
-  <?php embedAJAXvideo("volumetricpot", "9_99P1p17V0", 533, 300); ?>
-  <div class="caption">
-    A simulation of flow through porous media. The boundary conditions
+<?php embedAJAXvideo("snowmen", "zAC4PgtUwU4", 533, 300, "This is a
+    simulation of a snowmen molecules. Snowmen molecules can be used
+    as a tool to study crystal formation in binary systems (such as
+    NaCl salts) or as a simple model of a liquid crystal. They also
+    provide a initial test system for the implementation of composite
+    particles for granular systems."); ?>
+
+<?php embedAJAXvideo("volumetricpot", "9_99P1p17V0", 533, 300, "A
+    simulation of flow through porous media. The boundary conditions
     are implemented using volumetric potentials and data from a
-    microCT scan of a rock sample.
-  </div>
-</div>
-<div class="figure" style="width:533px; vertical-align:middle;">
-  <?php embedAJAXvideo("drum", "_ksRY7SPHIU", 533, 300); ?>
-  <div class="caption">
-    A simulation of a rolling drum which may be used as the starting
-    point for the model of a kiln or a ball mill.
-  </div>
-</div>
-<div class="figure" style="width:533px; vertical-align:middle;">
-  <?php embedAJAXvideo("leesedwards", "diXFTqiCXaQ", 533, 300); ?>
-  <div class="caption">
-    This is a live simulation of a granular hard-sphere system being
-    sheared using Lees-Edwards boundary conditions. Although there are
-    16k particles in the main image, at the end of the video over 4
-    million particles are being rendered in realtime.
-  </div>
-</div>
-<div class="figure" style="width:533px; vertical-align:middle;">
-  <?php embedAJAXvideo("snowmen", "zAC4PgtUwU4", 533, 300); ?>
-  <div class="caption">
-    This is a simulation of a snowmen molecules. Snowmen molecules can
-    be used as a tool to study crystal formation in binary systems
-    (such as NaCl salts) or as a simple model of a liquid
-    crystal. They also provide a initial test system for the
-    implementation of composite particles for granular systems.
-  </div>
-</div>
-<div class="figure" style="width:533px; vertical-align:middle;">
-<?php embedAJAXvideo("vibratedBed", "2MBmJRDzYYk", 533, 300); ?>
-  <div class="caption" >
-    A small test simulation of a vibrated mixture of granulate. The
-    wall at the bottom of the container has a "temperature" which is
-    an approximation of a high frequency and low amplitude vibration.
-  </div>
-</div>
-<div class="figure" style="width:533px; vertical-align:middle;">
-  <?php embedAJAXvideo("nanospheres", "zBi5eEP2V90", 533, 300); ?>
-  <div class="caption" >
-    A simulation of thermophoresis (also known as the Soret effect or
+    microCT scan of a rock sample."); ?>
+
+<?php embedAJAXvideo("drum", "_ksRY7SPHIU", 533, 300, "A simulation of
+    a rolling drum which may be used as the starting point for the
+    model of a kiln or a ball mill."); ?>
+
+<?php embedAJAXvideo("leesedwards", "diXFTqiCXaQ", 533, 300, "This is
+    a live simulation of a granular hard-sphere system being sheared
+    using Lees-Edwards boundary conditions. Although there are 16k
+    particles in the main image, at the end of the video over 4
+    million particles are being rendered in realtime."); ?>
+
+<?php embedAJAXvideo("vibratedBed", "2MBmJRDzYYk", 533, 300, "A small
+    test simulation of a vibrated mixture of granulate. The wall at
+    the bottom of the container has a \"temperature\" which is an
+    approximation of a high frequency and low amplitude
+    vibration.");?>
+
+<?php embedAJAXvideo("nanospheres", "zBi5eEP2V90", 533, 300, "A
+    simulation of thermophoresis (also known as the Soret effect or
     thermodiffusion) occurring in a nanofluid in between a hot and
     cold wall. Highlighted here is reverse thermophoresis, where the
-    larger species migrates towards the hot plate.
-  </div>
-</div>
-<div class="figure" style="width:533px; vertical-align:middle;">
-  <?php embedAJAXvideo("pendulum", "FrDoc6t7jwI", 533, 300); ?>
-  <div class="caption" >
-    A simulation of a pendulum used to test the constraint force
+    larger species migrates towards the hot plate."); ?>
+
+<?php embedAJAXvideo("pendulum", "FrDoc6t7jwI", 533, 300, "A
+    simulation of a pendulum used to test the constraint force
     implementation in gravity. The constraint force is used to anchor
     the top of the chain to the fixed particle (white), and is a key
-    element of the more general rigid-body simulators.
-  </div>
-</div>
-<div class="figure" style="width:533px; vertical-align:middle;">
-  <?php embedAJAXvideo("granularDamper", "3mlisuFJkqk", 533, 315); ?>
-  <div class="caption">
-    A simulation (top) of an experimental granular damper (bottom)
-    after an initial perturbation. Granular dampers are novel devices
-    used to dampen vibration in structures without requiring a fixed
-    anchor or significant maintainance. The simulator predicts the
-    decay of the amplitude to within 1% of the experimental results.
-  </div>
-</div>
-<div class="figure" style="width:533px; vertical-align:middle;">
-  <?php embedAJAXvideo("pairHPpolymer", "RXCOU9btDuQ", 400, 325); ?>
-  <div class="caption">
-    DynamO has many tools for simulating the folding of model proteins
-    and this is just an example simulation of a pair of heteropolymers
+    element of the more general rigid-body simulators."); ?>
+
+<?php embedAJAXvideo("granularDamper", "3mlisuFJkqk", 533, 315, "A
+    simulation (top) of an experimental granular damper (bottom) after
+    an initial perturbation. Granular dampers are novel devices used
+    to dampen vibration in structures without requiring a fixed anchor
+    or significant maintainance. The simulator predicts the decay of
+    the amplitude to within 1% of the experimental results."); ?>
+
+<?php embedAJAXvideo("pairHPpolymer", "RXCOU9btDuQ", 400, 325, "DynamO
+    has many tools for simulating the folding of model proteins and
+    this is just an example simulation of a pair of heteropolymers
     which agglomerate and begin to fold. The image in the lower right
-    is the contact map used to track the folded structure of the pair.
-  </div>
-</div>
-<div class="figure" style="width:533px; vertical-align:middle;">
-  <?php embedAJAXvideo("sleepingparticles", "9oaobaxhGX8", 533, 298); ?>
-  <div class="caption">
-    A simple test simulation of gravity and the boundary sphere meshes
+    is the contact map used to track the folded structure of the
+    pair."); ?>
+
+<?php embedAJAXvideo("sleepingparticles", "9oaobaxhGX8", 533, 298, "A
+    simple test simulation of gravity and the boundary sphere meshes
     used to implement the hopper, chute and cup. The particles in the
-    cup are sent to "sleep" (white) once they settle and may "wake up"
-    on impact. The advantage of sending particles to sleep is that
-    they incurr no computational cost.
-  </div>
-</div>
-<div class="figure" style="width:533px; vertical-align:middle;">
-  <?php embedAJAXvideo("trianglemesh", "1Rn-bL8S30Y", 533, 280); ?>
-  <div class="caption">
-    A test simulation of the triangle mesh boundaries, these can be
-    used to capture arbitrarily complex (and sharp) boundaries.
-  </div>
-</div>
-<div class="figure" style="width:533px; vertical-align:middle;">
-<?php embedAJAXvideo("shearpoly2d", "0kYY6NjE_sE", 533, 298); ?>
-  <div class="caption">
-    A simple simulation of sheared polydisperse hard disks used to
-    demonstrate the use of DynamO in 2D systems.
-  </div>
-</div>
-<div class="figure" style="width:533px; vertical-align:middle;">
-  <?php embedAJAXvideo("thinHardLines", "hUVZxEhjoc0", 533, 298); ?>
-  <div class="caption">
-    The complex dynamical system of infinitely-thin rods. These
-    "molecules" caused a stir when they were first proposed, as they
+    cup are sent to \"sleep\" (white) once they settle and may \"wake
+    up\" on impact. The advantage of sending particles to sleep is
+    that they incurr no computational cost."); ?>
+
+<?php embedAJAXvideo("trianglemesh", "1Rn-bL8S30Y", 533, 280, "A test
+    simulation of the triangle mesh boundaries, these can be used to
+    capture arbitrarily complex (and sharp) boundaries."); ?>
+
+<?php embedAJAXvideo("shearpoly2d", "0kYY6NjE_sE", 533, 298, "A simple
+    simulation of sheared polydisperse hard disks used to demonstrate
+    the use of DynamO in 2D systems."); ?>
+
+<?php embedAJAXvideo("thinHardLines", "hUVZxEhjoc0", 533, 298, "The
+    complex dynamical system of infinitely-thin rods. These
+    \"molecules\" caused a stir when they were first proposed, as they
     are an ideal gas which exhibits non-ideal transport
     properties. They are therefore an excellent model to test some of
-    the dynamical approximations of kinetic theory.
-  </div>
-</div>
-<div class="figure" style="width:533px; vertical-align:middle;">
-  <?php embedAJAXvideo("parallelCubes", "B_qASDj9J8I", 533, 300); ?>
-  <div class="caption">
-    Parallel hard cubes are another simple model-molecular system with
-    interesting thermodynamic behaviour. The freezing transition in
-    fluids is still poorly understood and this system is an "ideal"
-    model to explore it in, as it readily and obviously freezes but
-    appears to undergo a second order transition.
-  </div>
-</div>
+    the dynamical approximations of kinetic theory."); ?>
+
+<?php embedAJAXvideo("parallelCubes", "B_qASDj9J8I", 533, 300,
+    "Parallel hard cubes are another simple model-molecular system
+    with interesting thermodynamic behaviour. The freezing transition
+    in fluids is still poorly understood and this system is an
+    \"ideal\" model to explore it in, as it readily and obviously
+    freezes but appears to undergo a second order transition."); ?>
+
 </div>
 <h1 style="clear:both;">Full List of Features</h1>
 <h2>Key Features</h2>
