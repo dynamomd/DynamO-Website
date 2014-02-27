@@ -55,7 +55,7 @@
   M. N. Bannerman, R. Sargant,
     L. Lue, <a href="http://dx.doi.org/10.1002/jcc.21915">"DynamO: A
     free O(N) general event-driven simulator,"</a><i>
-    J. Comp. Chem.</i>, <b>32</b>, 3329-3338 (2011)"</a>
+    J. Comp. Chem.</i>, <b>32</b>, 3329-3338 (2011)"
 </div>
 <p>
   Below is a list of publications which have used DynamO in their
