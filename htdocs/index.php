@@ -240,12 +240,9 @@ function create_toc( $content ) {
         return $toc;
 }
 
-$content='<div id="pagetitle">'.$pagetitle.'</div>'.$content;
-
-if ($TOC)
- {
+if ($TOC) {
   $content = create_toc($content).$content;
- }
+}
 ?>
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -289,9 +286,11 @@ if ($TOC)
 
       function delayedLoadOfVideo(videoelemid, height, width, youtubecode)
       {
+        /*Grab the video element*/
         videoelem = document.getElementById(videoelemid);
+        /*Calculate how big the iframe needs to be to avoid resizing it*/
         currentwidth = videoelem.offsetWidth;
-        currentHeight = (currentwidth + 0.0) * height / width;
+        currentHeight = Math.ceil((currentwidth + 0.0) * height / width);
         videoelem.removeAttribute("style");
         videoelem.removeAttribute("onclick");
         while( videoelem.hasChildNodes() ){
@@ -331,17 +330,20 @@ if ($TOC)
     <div id="contentwrapper" class="rounded">
       <?php echo $content; ?>
       <div style="clear:both;height:10px;"></div>
-      <div id="pagedate"><i>Page last modified: <?php echo $contentdate; ?></i></div>
+      <p id="pagedate"><i>Page last modified: <?php echo $contentdate; ?></i></p>
     </div>
     
     <!-- FOOTER -->
     <div id="footer" class="rounded">
-      Copyright &copy; Marcus Bannerman 2008-<?php echo date("Y"); ?>
-      <?php if ($mathjax) { ?>
-      <a href="http://www.mathjax.org/" id="mathjaxfooterlogo"></a>
-      <?php } ?>
-      <a href="http://validator.w3.org/check?uri=referer" id="w3footerlogoHTML"></a>
-      <a href="http://jigsaw.w3.org/css-validator/check/referer" id="w3footerlogoCSS"></a>
+      <p style="float:left; display:inline-block;">&copy; M. Bannerman 2008-<?php echo date("Y"); ?></p>
+      <div id="footerlogos" style="float:right;">
+	<?php if ($mathjax) { ?>
+	<a href="http://www.mathjax.org/" id="mathjaxfooterlogo"></a>
+	<?php } ?>
+	<a href="http://validator.w3.org/check?uri=referer" id="w3footerlogoHTML"></a>
+	<a href="http://jigsaw.w3.org/css-validator/check/referer" id="w3footerlogoCSS"></a>
+      </div>
+      <div style="clear:both;"></div>
     </div>
 
     <!-- SPACER TO COUNTER DODGY PAGE MARGIN INTERACTIONS -->
