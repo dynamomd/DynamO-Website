@@ -94,9 +94,13 @@ li {
 }
 
 .video-container .play-button {
+    position:absolute;
+    width:100%;
     width:31px;
     height:31px;
-    position:absolute;
+    left:15px;
+    right:15px;
+    display:block;
     background-image: url(csssprites.png);
     background-position: -242px 0;
 }

@@ -120,13 +120,11 @@ function embedAJAXvideo($filename, $youtubecode, $width, $height, $caption)
 {
    global $containsvideo;
    $containsvideo = true;
-   $playtop=(intval($height) - 31) * 0.5;
-   $playleft=(intval($width) - 31) * 0.5;
    ?>
 <div class="figure" style="width:100%;max-width:<?=$width?>px; vertical-align:middle;">
   <div class="video-container" style="width:100%;max-width:<?=$width?>px;height:auto;max-height:<?=$height?>px;" id="<?=$filename?>video" onclick="delayedLoadOfVideo('<?=$filename?>video', '<?=$height?>', '<?=$width?>', '<?=$youtubecode?>')">
+    <div class="play-button"></div>
     <img style="width:100%;max-width:<?=$width?>px;" src="/videos/<?=$filename?>.jpg">
-    <div class="play-button" style="top:<?=$playtop?>px; left:<?=$playleft?>px;"></div>
   </div>
   <div class="caption"><?=$caption?></div>
 </div>
