@@ -126,7 +126,7 @@ function embedAJAXvideo($filename, $youtubecode, $width, $height, $caption)
 <div class="figure" style="width:100%;max-width:<?=$width?>px; vertical-align:middle;">
   <div class="video-container" style="width:100%;max-width:<?=$width?>px;height:auto;max-height:<?=$height?>px;" id="<?=$filename?>video" onclick="delayedLoadOfVideo('<?=$filename?>video', '<?=$height?>', '<?=$width?>', '<?=$youtubecode?>')">
     <img style="width:100%;max-width:<?=$width?>px;" src="/videos/<?=$filename?>.jpg">
-    <div class=\"play-button\" style=\"top:".$playtop."px; left:".$playleft."px;\"></div>
+    <div class="play-button" style="top:<?=$playtop?>px; left:<?=$playleft?>px;"></div>
   </div>
   <div class="caption"><?=$caption?></div>
 </div>
@@ -335,8 +335,8 @@ if ($TOC) {
     
     <!-- FOOTER -->
     <div id="footer" class="rounded">
-      <p style="float:left; display:inline-block;">&copy; M. Bannerman 2008-<?php echo date("Y"); ?></p>
-      <div id="footerlogos" style="float:right;">
+      <p>&copy; M. Bannerman 2008-<?php echo date("Y"); ?></p>
+      <div id="footerlogos">
 	<?php if ($mathjax) { ?>
 	<a href="http://www.mathjax.org/" id="mathjaxfooterlogo"></a>
 	<?php } ?>

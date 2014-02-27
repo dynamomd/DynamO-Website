@@ -112,7 +112,12 @@ li {
     border:2px solid;
 }
 
+#footerlogos {
+    float:right;
+    text-align:right;
+}
 #footer p {
+    float:left;
     display:inline-block;
     margin:0;
     padding:0;
