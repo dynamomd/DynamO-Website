@@ -63,9 +63,10 @@
 </p>
 <ul>
   <li>
-    C. Thomson, L. Lue, and M. N. Bannerman, <a href="http://dx.doi.org/10.1063/1.4861669">"Mapping continuous
-      potentials to discrete forms,"</a> <i>J. Chem. Phys.</i>, <b>140</b>,
-    034105 (2014)
+    C. Thomson, L. Lue, and
+      M. N. Bannerman, <a href="http://dx.doi.org/10.1063/1.4861669">"Mapping
+      continuous potentials to discrete
+      forms,"</a> <i>J. Chem. Phys.</i>, <b>140</b>, 034105 (2014)
   </li>
   <li>
     P. C. Royall, A. Malins, A. J. Dunleavy, and R. Pinney,
@@ -93,51 +94,47 @@
     Glasses,"</a> <i>Phys. Rev. Lett.</i>, <b>108</b>, 098301 (2012)
   </li>
   <li>
-      M. N. Bannerman, J. E. Kollmer, A. Sack, M. Heckel, P. Müller, and
-      T. Pöschel, <a href="http://dx.doi.org/10.1103/PhysRevE.84.011301">"Movers
-      and shakers: Granular damping in
-      microgravity,"</a> <i>Phys. Rev. E</i>, <b>84</b>, 011301 (2011)
-    </a>
+    M. N. Bannerman, J. E. Kollmer, A. Sack, M. Heckel, P. Müller, and
+    T. Pöschel, <a href="http://dx.doi.org/10.1103/PhysRevE.84.011301">"Movers
+    and shakers: Granular damping in
+    microgravity,"</a> <i>Phys. Rev. E</i>, <b>84</b>, 011301 (2011)
   </li>
   <li>
-      M. N. Bannerman and
-      L. Lue, <a href="http://link.aip.org/link/?JCP/133/124506">"Exact
-      event-rate formulae for square-well and square-shoulder
-      systems,"</a> <i>J. Chem. Phys.,</i> <b>133</b>, 124506 (2010)
-    </a>
+    M. N. Bannerman and
+    L. Lue, <a href="http://link.aip.org/link/?JCP/133/124506">"Exact
+    event-rate formulae for square-well and square-shoulder
+    systems,"</a> <i>J. Chem. Phys.,</i> <b>133</b>, 124506 (2010)
   </li>
   <li>
-    
-      M. N. Bannerman, L. Lue, L. V. Woodcock <a href="http://link.aip.org/link/?JCPSA6/132/084507/1">"Thermodynamic pressures
-      for hard spheres and closed-virial equation-of-state,"</a>
-      <i>J. Chem. Phys.</i>, <b>132</b>, 084507 (2010)
-    </a>
+    M. N. Bannerman, L. Lue,
+    L. V. Woodcock <a href="http://link.aip.org/link/?JCPSA6/132/084507/1">"Thermodynamic
+    pressures for hard spheres and closed-virial
+    equation-of-state,"</a>
+    <i>J. Chem. Phys.</i>, <b>132</b>, 084507 (2010)
   </li>
   <li>
     Wm. G. Hoover, C. G. Hoover,
-      M. N. Bannerman, <a href="http://dx.doi.org/10.1007/s10955-009-9795-0">"Single-Speed
-      Molecular Dynamics of Hard Parallel Squares and Cubes,"</a>
+    M. N. Bannerman, <a href="http://dx.doi.org/10.1007/s10955-009-9795-0">"Single-Speed
+    Molecular Dynamics of Hard Parallel Squares and Cubes,"</a>
     <i>J. Stat. Phys.</i>, <b>136</b>, 715-732 (2009)
   </li>
   <li>
     M. N. Bannerman, J. E. Magee,
     L. Lue, <a href="http://dx.doi.org/10.1103/PhysRevE.80.021801">"Structure
-      and stability of helices in square-well
-      homopolymers,"</a> <i>Phys. Rev. E</i>, <b>80</b>, 021801 (2009)
+    and stability of helices in square-well
+    homopolymers,"</a> <i>Phys. Rev. E</i>, <b>80</b>, 021801 (2009)
   </li>
   <li>
-      M. N. Bannerman,
-      L. Lue, <a href="http://dx.doi.org/10.1063/1.3120488">"Transport
-      properties of highly asymmetric hard sphere
-      mixtures,"</a> <i>J. Chem. Phys.</i>, <b>130</b>, 164507 (2009)
-    </a>
+    M. N. Bannerman,
+    L. Lue, <a href="http://dx.doi.org/10.1063/1.3120488">"Transport
+    properties of highly asymmetric hard sphere
+    mixtures,"</a> <i>J. Chem. Phys.</i>, <b>130</b>, 164507 (2009)
   </li>
   <li>
     M. N. Bannerman, T. E. Green, P. Grassia,
     L. Lue, <a href="http://dx.doi.org/10.1103/PhysRevE.79.041308">"Collision
     statistics in sheared inelastic hard
     spheres,"</a> <i>Phys. Rev. E</i>, <b>79</b>, 041308 (2009)
-    </a>
   </li>
 </ul>
 <p>
