@@ -124,7 +124,7 @@ function embedAJAXvideo($filename, $youtubecode, $width, $height, $caption)
 <div class="figure" style="width:100%;max-width:<?=$width?>px; vertical-align:middle;">
   <div class="video-container" style="width:100%;max-width:<?=$width?>px;height:auto;max-height:<?=$height?>px;" id="<?=$filename?>video" onclick="delayedLoadOfVideo('<?=$filename?>video', '<?=$height?>', '<?=$width?>', '<?=$youtubecode?>')">
     <div class="play-button"></div>
-    <img style="width:100%;max-width:<?=$width?>px;" src="/videos/<?=$filename?>.jpg">
+    <img alt="See descriptive caption below" style="width:100%;max-width:<?=$width?>px;" src="/videos/<?=$filename?>.jpg">
   </div>
   <div class="caption"><?=$caption?></div>
 </div>
