@@ -122,7 +122,7 @@ function embedfigure($filename, $width, $height, $caption)
   <a href="<?=$filename?>">
     <img alt="See descriptive caption below" style="width:100%;max-width:<?=$width?>px;" src="<?=$filename?>">
   </a>
-  <div class="caption"><?=$caption?></div>
+  <p class="caption"><?=$caption?></p>
 </div>
 <?php }
 
@@ -136,7 +136,7 @@ function embedAJAXvideo($filename, $youtubecode, $width, $height, $caption)
     <div class="play-button"></div>
     <img alt="See descriptive caption below" style="width:100%;max-width:<?=$width?>px;" src="/videos/<?=$filename?>.jpg">
   </div>
-  <div class="caption"><?=$caption?></div>
+  <p class="caption"><?=$caption?></p>
 </div>
 <?php }
 

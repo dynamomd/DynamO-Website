@@ -7,7 +7,7 @@
    }
    $pagetitle="Credits";
  ?>
-<img height="74" width="503" alt="Logos for the University of Aberdeen, EPSRC, and the MSS research group in Erlangen" src="/images/credit_logos.png" style="margin: 45px auto 10px auto; display:block;" />
+<img alt="Logos for the University of Aberdeen, EPSRC, and the MSS research group in Erlangen" src="/images/credit_logos.png" style="height:auto;max-height:74px;width:100%;max-width:503px;margin:15px auto; display:block;" />
 <h1>Programming Credits</h1>
 <ul>
   <li>

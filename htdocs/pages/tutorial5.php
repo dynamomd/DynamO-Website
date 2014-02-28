@@ -35,15 +35,10 @@
   it provides you with all of the knowledge you need to study any
   multicomponent system.
 </p>
-
 <h2><a id="aboutsquarewellfluids"></a>The studied system</h2>
-<div class="figure" style="float:right; width:400px;clear:right;">
-  <a href="/images/tut5.lowdensity.png">
-    <img height="329" width="400" alt=" ." src="/images/tut5.lowdensity.png"/>
-  </a>
-  <div class="caption">
-    A rendering of the binary square-well system studied.
-  </div>
+<div style="clear:right; float:right">
+<?php embedfigure("/images/tut5.lowdensity.png", 400, 329,
+    "A rendering of the binary square-well system studied.");?>
 </div>
 <p>
   For the purpose of the tutorial, we'll want to simulate a mixture of
@@ -74,8 +69,10 @@
   able to study the mixture over a range of densities, temperatures,
   and concentrations.
 </p>
-<img height="194" width="500" alt="An illustration of the variables of the syste
-m." src="/images/tut5.species.png" style="display:block;margin:15px auto;"/>
+<div style="text-align:center;">
+<?php embedfigure("/images/tut5.species.png", 500, 194, "An
+    illustration of the variables of the system.");?>
+</div>
 <h2>The whole tutorial in brief</h2>
 <p>
   The dynamod/dynarun commands we will run are
@@ -324,13 +321,9 @@ Mode 1: Mono/Multi-component square wells
   configuration and how to thermostat the temperature.
 </p>
 <h1><a id="compressing"></a>Compressing the configuration</h1>
-<div class="figure" style="clear:right; float:right;width:400px;">
-  <?php embedAJAXvideo("tut4_compression", "x62zeoF457w", 400, 225); ?>
-  <div class="caption">
-    A 10:1 size-ratio low-density binary square-well system under
-    compression.<br/>
-    <a href="/pages/config.tut5.binary.xml">View configuration file</a>
-  </div>
+<div style="clear:right; float:right;">
+  <?php embedAJAXvideo("tut4_compression", "x62zeoF457w", 400, 300, "A 10:1 size-ratio low-density binary square-well system under
+    compression.<br/><a href=\"/pages/config.tut5.binary.xml\">View configuration file</a>"); ?>
 </div>
 <p>
   To create the binary system we had to shrink one set of particles to
@@ -494,14 +487,10 @@ MutualDiffusionL_{A,A}= 0.00259576820261 +- 0.0 <R>^2= 0.999630761695
   short-time effects cease to dominate the correlation functions.
 </p>
 <h2>Ticker Plugins (RadialDistribution)</h2>
-<div class="figure" style="float:right; width:416px;">
-  <a href="/images/gr.tut5.png">
-    <img height="398" width="416" alt=" ." src="/images/gr.tut5.png"/>
-  </a>
-  <div class="caption">
-    A plot of the three radial distribution functions for the binary
-    square-well system studied.
-  </div>
+<div style="clear:right; float:right">
+<?php embedfigure("/images/gr.tut5.png", 416, 398,
+    "A plot of the three radial distribution functions for the binary
+    square-well system studied.");?>
 </div>
 <p>
   In this tutorial, we introduced a new ticker-type plugin for
