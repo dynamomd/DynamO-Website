@@ -8,7 +8,7 @@
    $pagetitle="Welcome";
    ?>
 <div style="float:right; padding: 15px;">
-  <img src="/images/frontpage.png" width="250" height="269" alt="A simulation of hopper flow." />
+  <img src="/images/frontpage.png" style="width:100%;max-width:250px;max-height:269px;height:auto" alt="A simulation of hopper flow." />
 </div>
 <p>
   DynamO is a free and open-source event-driven particle
