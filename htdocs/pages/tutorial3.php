@@ -27,13 +27,6 @@
   documentation for the configuration file format</a>.
 </p>
 <h2>The example configuration</h2>
-<div class="figure" style="clear:left; float:left;width:400px;">
-  <?php embedAJAXvideo("hardspheres", "tn6Cz0tNPuU", 400, 250); ?>
-  <div class="caption">
-    The starting configuration of 1372 hard-spheres with periodic
-    boundary conditions.
-  </div>
-</div>
 <p>
   We'll be taking a look at the hard-sphere configuration from the
   <a href="/index.php/tutorial2">previous tutorial</a> as it is one of
@@ -51,6 +44,11 @@ dynamod -m 0 -d 0.5 -C 7 -o config.start.xml
   <b>dynamod</b> will have different randomly-assigned velocities than
   the example provided.
 </p>
+<div style="float:right;clear:right;">
+<?php embedAJAXvideo("hardspheres", "tn6Cz0tNPuU", 400, 250, "The
+    starting configuration of 1372 hard-spheres with periodic boundary
+    conditions."); ?>
+</div>
 <p>
   DynamO configuration files are XML files. XML files can be opened
   and edited by your favourite text editor or opened in read only
@@ -223,11 +221,8 @@ dynamod -m 0 -d 0.5 -C 7 -o config.start.xml
   simulation domain.
 </p>
 <?php xmlXPathFile("pages/config.tut3.xml", "/DynamOconfig/Simulation/SimulationSize"); ?>
-<div class="figure" style="clear:right; float:right;width:400px;">
-  <?php embedAJAXvideo("hardspheresExpand", "-QbpKrtPvWU", 400, 300); ?>
-  <div class="caption">
-    The effect of expanding the simulation domain.
-  </div>
+<div style="clear:right; float:right;">
+  <?php embedAJAXvideo("hardspheresExpand", "-QbpKrtPvWU", 400, 300, "The effect of expanding the simulation domain."); ?>
 </div>
 <p>
   Here we can see the simulation is performed in a
@@ -270,12 +265,9 @@ dynamod -m 0 -d 0.5 -C 7 -o config.start.xml
   conditions.
 </p>
 <h2>BC (Boundary Conditions)</h2>
-<div class="figure" style="clear:right; float:right;width:400px;">
-  <?php embedAJAXvideo("infinitehardspheres", "RzjmpRtwDAw", 400, 300); ?>
-  <div class="caption">
-    The same configuration as in the movie above, but with the
-    Boundary Conditions set to <b>None</b>.
-  </div>
+<div style="clear:right; float:right;">
+  <?php embedAJAXvideo("infinitehardspheres", "RzjmpRtwDAw", 400, 300, "The same configuration as in the movie above, but with the
+    Boundary Conditions set to <b>None</b>."); ?>
 </div>
 <p>
   Another mandatory tag within the <b>Simulation</b> tags is the
@@ -369,8 +361,10 @@ dynamod -m 0 -d 0.5 -C 7 -o config.start.xml
   property once, and then <i>map</i> this property onto a <b>range</b>
   of particles (see image below).
 </p>
-<div style="width:456px; margin: 15px auto; display:block;">
-  <img src="/images/range_explanation.png" width="456" height="179" alt="A graphic comparing the traditional method of storing redundant particle data, and the functional method" />
+<div style="text-align:center;">
+<?php embedfigure("/images/range_explanation.png", 456, 179, "A
+graphic comparing the traditional method of storing particle data, and
+the functional method");?>
 </div>
 <p>
   This &quot;functional&quot; mapping saves memory and the small
@@ -424,12 +418,9 @@ dynamod -m 0 -d 0.5 -C 7 -o config.start.xml
   attributes. All <b>Interaction</b>s must have a <b>Name</b> which is
   used to identify it.
 </p>
-<div class="figure" style="float:right;width:400px;">
-  <?php embedAJAXvideo("granularhardspheres", "d6M43_Nr4pQ", 400, 300); ?>
-  <div class="caption">
-    Modifying the <b>Interaction</b> to make a low density granular
-    gas.
-  </div>
+<div style="clear:right;float:right;">
+  <?php embedAJAXvideo("granularhardspheres", "d6M43_Nr4pQ", 400, 300, "Modifying the <b>Interaction</b> to make a low density granular
+    gas."); ?>
 </div>
 <p>
   We can see the dramatic effect of some simple changes to the
@@ -482,13 +473,10 @@ dynamod -m 0 -d 0.5 -C 7 -o config.start.xml
 <?php button("Reference entry for <b>IDPairRange</b>
 	      tags","/index.php/reference#idpairrange");?>
 <h2>Dynamics</h2>
-<div class="figure" style="clear:right; float:right;width:400px;">
-  <?php embedAJAXvideo("fallinghardspheres", "Hx6rcS-RAkU", 400, 300); ?>
-  <div class="caption">
-    Enabling gravity causes all the particles to fall, but with
+<div style="clear:right; float:right;">
+  <?php embedAJAXvideo("fallinghardspheres", "Hx6rcS-RAkU", 400, 300, "Enabling gravity causes all the particles to fall, but with
     periodic boundary conditions there is nothing to arrest their
-    descent.
-  </div>
+    descent."); ?>
 </div>
 <p>
   Finally, the last non-empty tag to discuss is the <b>Dynamics</b>

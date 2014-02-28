@@ -116,6 +116,16 @@ function printTOC()
 
 $containsvideo = false;
 
+function embedfigure($filename, $width, $height, $caption)
+{ ?>
+<div class="figure" style="width:100%;max-width:<?=$width?>px; vertical-align:middle;">
+  <a href="<?=$filename?>">
+    <img alt="See descriptive caption below" style="width:100%;max-width:<?=$width?>px;" src="<?=$filename?>">
+  </a>
+  <div class="caption"><?=$caption?></div>
+</div>
+<?php }
+
 function embedAJAXvideo($filename, $youtubecode, $width, $height, $caption)
 {
    global $containsvideo;
