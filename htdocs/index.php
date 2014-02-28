@@ -124,7 +124,7 @@ function embedAJAXvideo($filename, $youtubecode, $width, $height, $caption)
 <div class="figure" style="width:100%;max-width:<?=$width?>px; vertical-align:middle;">
   <div class="video-container" style="width:100%;max-width:<?=$width?>px;height:auto;max-height:<?=$height?>px;" id="<?=$filename?>video" onclick="delayedLoadOfVideo('<?=$filename?>video', '<?=$height?>', '<?=$width?>', '<?=$youtubecode?>')">
     <div class="play-button"></div>
-    <img style="width:100%;max-width:<?=$width?>px;" src="/videos/<?=$filename?>.jpg">
+    <img alt="See descriptive caption below" style="width:100%;max-width:<?=$width?>px;" src="/videos/<?=$filename?>.jpg">
   </div>
   <div class="caption"><?=$caption?></div>
 </div>
@@ -314,7 +314,7 @@ if ($TOC) {
 
     <!-- HEADER AND LOGO -->
     <div class="logo rounded">
-      <a href="/" id="sitelogolink"><img id="sitelogo" src="/style/sitelogo.png"></a>
+      <a href="/" id="sitelogolink"><img id="sitelogo" alt="The DynamO logo" src="/style/sitelogo.png"></a>
     </div>
 
     <a href="https://github.com/toastedcrumpets/DynamO/"><img style="position: absolute; top: 0; right: 0; border: 0;" src="/images/forkme_right_red_aa0000.png" alt="Fork me on GitHub"></a>
