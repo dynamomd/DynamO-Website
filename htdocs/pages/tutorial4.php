@@ -38,7 +38,9 @@
   square-well molecules. These are essentially hard-sphere particles
   with a short-range attractive well:
 </p>
-<img src="/images/sw.png" alt="A diagram of a square-well molecule including its parameters" width="650" height="232" style="display:block;margin:0 auto 0 auto;">
+<div style="text-align:center;">
+<?php embedfigure("/images/sw.png", 650, 232, "A diagram of a square-well molecule including its parameters.");?>
+</div>
 <p>
   We will simulate this fluid at a reduced temperature of $k_B\,T=2$
   and a reduced density of $\rho=0.1$. If you want to learn more about
@@ -449,13 +451,8 @@ bunzip2 output.xml.bz2
   XML files, please <a href="/index.php/tutorialA">take a look at the
   reference</a>. Here, we'll use the xmlstarlet tool to cut it out:
 </p>
-<div class="figure" style="float:right; width:350px;">
-  <a href="/images/histogram.tut4.png">
-    <img height="323" width="350" alt="A rough internal energy histogram." src="/images/histogram.tut4.png"/>
-  </a>
-  <div class="caption">
-    A plot of the internal energy histogram.
-  </div>
+<div style="clear:right; float:right">
+<?php embedfigure("/images/histogram.tut4.png", 323, 350, "A rough internal energy histogram.");?>
 </div>
 <?php codeblockstart(); ?>
 xmlstarlet sel -t -v '//EnergyHist/HistogramWeighted' output.xml > histogram.dat
@@ -502,15 +499,9 @@ xmlstarlet sel -t -v '//EnergyHist/HistogramWeighted' output.xml > histogram.dat
   tags. E.g.
 </p>
 <?php xmlXPathFile("pages/output.tut4.xml", "//ThermalConductivity"); ?>
-<div class="figure" style="float:right; width:384px;">
-  <a href="/images/correlator.tut4.png">
-    <img height="319" width="384" alt="The Einstein correlators for
-    the thermal conductivity." src="/images/correlator.tut4.png"/>
-  </a>
-  <div class="caption">
-    The Einstein correlators for the thermal conductivity in each
-    direction and the number of samples collected at each time point.
-  </div>
+<div style="clear:right; float:right">
+<?php embedfigure("/images/correlator.tut4.png", 384, 319, "The Einstein correlators for the thermal conductivity in each
+    direction and the number of samples collected at each time point.");?>
 </div>
 <p>
   For the thermal conductivity, the first column is the time, the
@@ -566,14 +557,11 @@ MutualDiffusionL_{Bulk,Bulk}= 1.04605741811e-34 +- 0.0 <R>^2= 0.893542145422
 <?php codeblockstart(); ?>
 dynatransport output.xml -v
 <?php codeblockend("brush: shell;"); ?>
-<div class="figure" style="float:right; width:400px;">
-  <a href="/images/tut4.dynatransport.1.png">
-    <img height="322" width="400" alt="A fit of the complete shear viscosity data over the whole run." src="/images/tut4.dynatransport.1.png"/>
-  </a>
-  <div class="caption">
-    Sample output from dynatransport when used with the <i>-v</i>
-    option.
-  </div>
+
+<div style="clear:right; float:right">
+<?php embedfigure("/images/tut4.dynatransport.1.png", 400, 322,
+    "Sample output for the viscosity from dynatransport when used with
+    the <i>-v</i> option.");?>
 </div>
 <p>
   This will give plots, like the one presented to the right, for each
@@ -597,14 +585,10 @@ ThermalConductivityL_{\lambda,\lambda}= 0.508343229525 +- 0.0 <R>^2= 0.997347634
 ThermalDiffusionL_{\lambda,Bulk}= -4.22881210719e-19 +- 0.0 <R>^2= 0.866354789486
 MutualDiffusionL_{Bulk,Bulk}= 2.2536681734e-35 +- 0.0 <R>^2= 0.968183740424
 <?php codeblockend("brush: shell;"); ?>
-<div class="figure" style="clear:right; float:right; width:400px;">
-  <a href="/images/tut4.dynatransport.2.png">
-    <img height="322" width="400" alt="A fit of the complete shear viscosity data over the whole run." src="/images/tut4.dynatransport.2.png"/>
-  </a>
-  <div class="caption">
-    Sample output from dynatransport when used with the <i>-v -s 2 -c
-    10</i> options to control the time window used for data fitting.
-  </div>
+<div style="clear:right; float:right">
+<?php embedfigure("/images/tut4.dynatransport.2.png", 400, 322,
+    "Sample output from dynatransport when used with the <i>-v -s 2 -c
+    10</i> options to control the time window used for data fitting.");?>
 </div>
 <p>
   This fit is significantly better (see plot), although there is some strong
