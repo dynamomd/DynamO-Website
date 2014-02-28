@@ -278,8 +278,11 @@ li {
 }
 
 #sitelogo {
+    border-style:none;
     width:100%;
     max-width:424px;
+    height:auto;
+    max-height:115px;
 }
 
 @media all and (max-width:767px)  {
