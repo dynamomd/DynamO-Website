@@ -282,38 +282,28 @@ if ($TOC) {
     </script>
     <?php if ($containsvideo) { ?>
     <script type="text/javascript">
-      var tag = document.createElement('script');
-      tag.src = "//www.youtube.com/iframe_api";
-      var firstScriptTag = document.getElementsByTagName('script')[0];
-      firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
-
-      function onPlayerReady(event) {
-        event.target.playVideo();
-        event.target.setPlaybackQuality('highres');
-      }
-
       function delayedLoadOfVideo(videoelemid, height, width, youtubecode)
       {
         /*Grab the video element*/
         videoelem = document.getElementById(videoelemid);
         /*Calculate how big the iframe needs to be to avoid resizing it*/
-        currentwidth = videoelem.offsetWidth;
-        currentHeight = Math.ceil((currentwidth + 0.0) * height / width);
+        currentWidth = videoelem.offsetWidth;
+        currentHeight = Math.ceil((currentWidth + 0.0) * height / width);
+
+        /*Clean up the current video element*/
         videoelem.removeAttribute("style");
         videoelem.removeAttribute("onclick");
         while( videoelem.hasChildNodes() ){
          videoelem.removeChild(videoelem.lastChild);
         }
 
-        player = new YT.Player(videoelemid, {
-          playerVars: { modestbranding: true, 'showinfo': 0, theme: 'light', 'autohide': 1, 'rel': 0, wmode: "opaque"},
-          width: currentwidth,
-          height: currentHeight,
-          videoId: youtubecode,
-          events: {
-            'onReady': onPlayerReady,
-          }
-        });
+       /*Add a iframe to the video*/
+      var iframe=document.createElement("iframe");
+      iframe.src = "http://www.youtube.com/embed/".concat(youtubecode).concat("?rel=0;autoplay=1;vq=hd1080");
+      iframe.width = currentWidth;
+      iframe.height = currentHeight;
+      iframe.frameBorder = "0";
+      videoelem.appendChild(iframe);
       }
     </script>
     <?php } if (isset($pagecss)) { echo "<style>".$pagecss."</style>";} ?>
