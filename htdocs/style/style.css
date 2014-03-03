@@ -278,6 +278,10 @@ li {
     margin:15px;
 }
 
+.figure img {
+    border-style:none;
+}
+
 #sitelogo {
     border-style:none;
     width:100%;
