@@ -282,14 +282,10 @@ P_x^2+P_y^2+P_z^2 &amp;> R^2
   as follows:
 </p>
 <?php codeblockstart(); ?>cat config.start.xml | xmlstarlet ed -d '//Pt[P/@x * P/@x + P/@y * P/@y + P/@z * P/@z  > 25.0]' > config.trimmed.xml<?php codeblockend("brush: bash;"); ?>
-<div class="figure" style="width:450px; float:right;" >
-  <a href="/images/tutA_cubetosphere.png">
-    <img height="209" width="450" alt="An image demonstrating the effect of the XPath expression." src="/images/tutA_cubetosphere.png"/>
-  </a>
-  <div class="caption">
-    A demonstration of the effect of the XPath expression in creating
-    a rough sphere of particles.
-  </div>
+<div style="text-align:center;">
+  <?php embedfigure("/images/tutA_cubetosphere.png", 450, 209, "A
+    demonstration of the effect of the XPath expression in creating a
+    rough sphere of particles.");?>
 </div>
 <p>
   We can take a look at the difference between config.start.xml and

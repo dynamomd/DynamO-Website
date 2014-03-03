@@ -22,13 +22,8 @@
   the front cover.
 </p>
 <h1>Q: What is the logo of DynamO?</h1>
-<div class="figure" style="float:left; width:200px;">
-  <a href="/images/dynamologo.png">
-    <img height="205" width="200" alt="The dynamo logo" src="/images/dynamologo.png"/>
-  </a>
-  <div class="caption">
-    The DynamO logo.
-  </div>
+<div style="float:left; clear:left;">
+  <?php embedfigure("/images/dynamologo.png", 200, 205, "The DynamO logo.");?>
 </div>
 <p>
   Short answer: An illustration of an electric dynamo (see left),

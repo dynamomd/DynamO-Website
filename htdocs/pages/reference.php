@@ -495,7 +495,9 @@ function toggle_visibility(elementname) {
   images which are copies of the primary image as illustrated in the
   figure below:
 </p>
-<img src="/images/PBC.png" alt="The interparticle potential energy of a hard-sphere molecule" width="650" height="293" style="display:block;margin:0 auto 0 auto;">
+<div style="text-align:center;">
+<?php embedfigure("/images/PBC.png", 650, 293, "An illustration of periodic boundary conditions and the effective wraparound of particle positions.");?>
+</div>
 <p>
   These boundaries allow the approximation of an infinite fluid using
   a small repeating image. This is an approximation as the periodicity
@@ -524,7 +526,10 @@ function toggle_visibility(elementname) {
   (see figure below). They are also known as sliding-brick boundary
   conditions.
 </p>
-<img src="/images/LEBC.png" alt="An illustration of the Lees-Edward sliding-brick boundary condition" width="714" height="251" style="display:block;margin:0 auto 0 auto;">
+<div style="text-align:center;">
+<?php embedfigure("/images/LEBC.png", 714, 251, "An illustration of
+the Lees-Edward sliding-brick boundary condition");?>
+</div>
 <h4>Example usage</h4>
 <?php codeblockstart();?><BC Type="LE" DXD="0" Rate="1"/><?php codeblockend("brush: xml;"); ?>
 <h4>Full Tag, Subtag, and Attribute List</h4>
@@ -628,7 +633,9 @@ function toggle_visibility(elementname) {
   the volume of this diameter with the volume of other molecules. The
   parameters of this model are illustrated below:
 </p>
-<img src="/images/hardsphere.png" alt="The interparticle potential energy of a hard-sphere molecule" width="650" height="232" style="display:block;margin:0 auto 0 auto;">
+<div style="text-align:center;">
+<?php embedfigure("/images/hardsphere.png", 650, 232, "The interparticle potential energy of a hard-sphere molecule.");?>
+</div>
 <p>
   where $u(r)$ is the interparticle potential (which is the potential
   energy between two particles separated by a distance of
@@ -991,7 +998,9 @@ function toggle_visibility(elementname) {
   of $\lambda\,\sigma$ and a depth of $\varepsilon$. These variables
   are illustrated in the diagram below:
 </p>
-<img src="/images/sw.png" alt="A diagram of a square-well molecule including its parameters" width="650" height="232" style="display:block;margin:0 auto 0 auto;">
+<div style="text-align:center;">
+<?php embedfigure("/images/sw.png", 650, 232, "A diagram of a square-well molecule including its parameters.");?>
+</div>
 <p>
   where $u(r)$ is the interparticle potential (which is the potential
   energy between two particles separated by a distance of $r$).
@@ -1006,7 +1015,9 @@ function toggle_visibility(elementname) {
   (<span style="font-weight:bold; color:#800;">red</span>) is given in
   the figure below:
 </p>
-<img src="/images/swcomparison.png" alt="A diagram of a square-well molecule including its parameters" width="429" height="215" style="display:block;margin:0 auto 0 auto;">
+<div style="text-align:center;">
+<?php embedfigure("/images/swcomparison.png", 429, 215, "A comparision of a square-well potential and a \"realistic\" potential..");?>
+</div>
 <p>
   It is clear that the square-well potential is a rough approximation
   of the "realistic" potential, but its dynamics are not immediately
@@ -1110,17 +1121,14 @@ function toggle_visibility(elementname) {
   </li>
 </ul>
 <h2>Type="ParallelCubes"</h2>
-<div class="figure" style="width:266px; float:right;">
-  <?php embedAJAXvideo("parallelCubes_small", "B_qASDj9J8I", 266, 150); ?>
-  <div class="caption">
-    A simulation of Parallel hard cubes.
-  </div>
+<div style="clear:right; float:right;">
+  <?php embedAJAXvideo("parallelCubes_small", "B_qASDj9J8I", 266, 150, "A simulation of Parallel hard cubes."); ?>
 </div>
 <h4>Description</h4>
 <p>
- The "ParallelCubes" Interaction implements the
-  hard cube interaction potential where the cubes do not rotate and
-  are axis-aligned (a video of this system is presented to the right).
+  The "ParallelCubes" Interaction implements the hard cube interaction
+  potential where the cubes do not rotate and are axis-aligned (a
+  video of this system is presented to the right).
 </p>
 <h4>Example usage</h4>
 <?php codeblockstart();?><Interaction Type="ParallelCubes" Diameter="1" Elasticity="1" Name="Bulk">
@@ -1166,11 +1174,8 @@ function toggle_visibility(elementname) {
   </li>
 </ul>
 <h2>Type="Lines"</h2>
-<div class="figure" style="width:266px; vertical-align:middle; float:right;">
-  <?php embedAJAXvideo("thinHardLines", "hUVZxEhjoc0", 266, 150); ?>
-  <div class="caption">
-    A simulation of Infinitely-thin rods.
-  </div>
+<div style="clear:right; float:right;">
+  <?php embedAJAXvideo("thinHardLines", "hUVZxEhjoc0", 266, 150, "A simulation of Infinitely-thin rods."); ?>
 </div>
 <h4>Description</h4>
 <p>
@@ -1319,7 +1324,11 @@ function toggle_visibility(elementname) {
   surface tension (modelled by the well), but once the bridge is
   broken the particles will only interact again at short distances.
 </p>
-<img src="/images/thinthread.png" alt="A diagram of a thin thread molecule including its parameters" width="650" height="232" style="display:block;margin:0 auto 0 auto;">
+<div style="text-align:center;">
+<?php embedfigure("/images/thinthread.png", 650, 232, "The interaction
+potential of a thin thread molecule demonstrating its hysteresis and
+its parameters");?>
+</div>
 <h4>Example usage</h4>
 <?php codeblockstart();?><Interaction Type="ThinThread" Diameter="1" Elasticity="1" Lambda="1.5" WellDepth="1" Name="Bulk">
   <IDPairRange .../>
@@ -1400,7 +1409,9 @@ function toggle_visibility(elementname) {
   square-well potential with an infinite interaction energy. This
   allows you to bond particles together to form polymeric structures.
 </p>
-<img src="/images/squarebond.png" alt="A diagram of a square-bond including its parameters" width="650" height="232" style="display:block;margin:0 auto 0 auto;">
+<div style="text-align:center;">
+<?php embedfigure("/images/squarebond.png", 650, 232, "The square-bond interaction potential and its parameters.");?>
+</div>
 <h4>Example usage</h4>
 <?php codeblockstart();?><Interaction Type="SquareBond" Diameter="1" Elasticity="1" Lambda="1.5" Name="Bulk">
   <IDPairRange .../>
