@@ -1227,13 +1227,13 @@ the Lees-Edward sliding-brick boundary condition");?>
 <h2>Type="Stepped"</h2>
 <h4>Description</h4>
 <p>
- The "Stepped" Interaction wraps a generic
-  spherically-symmetric stepped <a href="#potential">Potential</a> and
-  uses it for two-particle interactions. This can be used to implement
-  many simple systems (hard-spheres, square-wells) and many complex
-  systems such as a discontinuous Lennard-Jones potential. An
-  alternative approach is to use a <a href="#typeumbrella">"Umbrella"
-  System event</a> to bind collections of particles together using
+  The "Stepped" Interaction wraps a generic spherically-symmetric
+  stepped <a href="#potential">Potential</a> and uses it for
+  two-particle interactions. This can be used to implement many simple
+  systems (hard-spheres, square-wells) and many complex systems such
+  as a discontinuous Lennard-Jones potential. An alternative approach
+  is to use a <a href="#typeumbrella">"Umbrella" System event</a> to
+  bind collections of particles together using
   a <a href="#potential">Potential</a>.
 </p>
 <h4>Example usage</h4>
@@ -1742,10 +1742,9 @@ its parameters");?>
 <h2><a id="typeumbrella"></a>Type="Umbrella"</h2>
 <h4>Description</h4>
 <p>
- The "Umbrella" System implements an umbrella
-  potential, allowing a <a href="#potential">Potential</a> to be
-  specified between the centres of mass of two collections of
-  particles.
+  The "Umbrella" System implements an umbrella potential, allowing
+  a <a href="#potential">Potential</a> to be specified between the
+  centres of mass of two collections of particles.
 </p>
 <h4>Example usage</h4>
 <p>
@@ -2146,9 +2145,28 @@ its parameters");?>
 <h2><a id="typesteppedpotential"></a>Type="Stepped"</h2>
 <h4>Description</h4>
 <p>
- This Potential type allows a stepped potential
-  to be directly entered in. This is the most general stepped
-  potential available, but requires manual entry of the potential.
+ This Potential type allows a stepped potential to be manual entered
+ and is the most general stepped potential available. There are two
+ classes of stepped potential, Left or Right, depending on which
+ "side" of the discontinuity is specified by the discontinuity's
+ energy. An illustration is given below:
+</p>
+<div style="text-align:center;">
+<?php embedfigure("/images/SteppedPotential.png", 648, 263, "A
+comparison of the two types of stepped potential. The discontinuity
+locations are marked with a cross, and the adjacent line marks the location of
+the corresponding step.");?>
+</div>
+<p>
+  In both potentials, there is an implicit step (the zero step) which
+  has an energy of zero (marked in black above).  Left stepped
+  potentials are used for forces which decay with $r$, whereas Right
+  stepped potentials are for forces which increase with $r$. This is
+  for efficiency, as the step "state" for a pair of particles which
+  are within the zero step are not stored in memory.  Therefore, a
+  stepped approximate Lennard-Jones potential is most efficiently
+  implemented as a Left stepped potential, whereas a spring potential
+  is most efficiently implemented using a Right potential.
 </p>
 <h4>Example usage</h4>
 <p>
@@ -2176,7 +2194,7 @@ its parameters");?>
 <ul>
   <li>
     <b>Type</b> <i>(attribute)</i>: Must have the
-    value <i>"Stepped"</i> to select this Dynamics type.
+    value <i>"Stepped"</i> to select this Potential type.
   </li>
   <li>
     <b>Direction</b> <i>(attribute)</i>: This sets the direction of
