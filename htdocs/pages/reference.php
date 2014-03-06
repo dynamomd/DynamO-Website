@@ -2154,19 +2154,20 @@ its parameters");?>
 <div style="text-align:center;">
 <?php embedfigure("/images/SteppedPotential.png", 648, 263, "A
 comparison of the two types of stepped potential. The discontinuity
-locations are marked with a cross, and the adjacent line marks the location of
-the corresponding step.");?>
+locations are marked with a cross, and the adjacent line marks the
+location of the corresponding step. The internal numbering DynamO uses
+for each step is also outlined.");?>
 </div>
 <p>
   In both potentials, there is an implicit step (the zero step) which
-  has an energy of zero (marked in black above).  Left stepped
-  potentials are used for forces which decay with $r$, whereas Right
-  stepped potentials are for forces which increase with $r$. This is
-  for efficiency, as the step "state" for a pair of particles which
-  are within the zero step are not stored in memory.  Therefore, a
-  stepped approximate Lennard-Jones potential is most efficiently
-  implemented as a Left stepped potential, whereas a spring potential
-  is most efficiently implemented using a Right potential.
+  has an energy of zero.  Left stepped potentials are used for forces
+  which decay with $r$, whereas Right stepped potentials are for
+  forces which increase with $r$. This is for efficiency, as the step
+  "state" for a pair of particles which are within the zero step are
+  not stored in memory.  Therefore, a stepped approximate
+  Lennard-Jones potential is most efficiently implemented as a Left
+  stepped potential, whereas a spring potential is most efficiently
+  implemented using a Right potential.
 </p>
 <h4>Example usage</h4>
 <p>
@@ -2216,7 +2217,7 @@ the corresponding step.");?>
   <li>
     <b>Step</b> <i>(tag)</i>: This tag represents a single
     discontinuity/step of the stepped potential. On load these steps
-    are sorted by their <b>R</b> value.
+    are sorted by their <b>R</b> value and allocated numbers as outlined above.
     <ul>
       <li>
 	<b>R</b> <i>(attribute)</i>: The radial separation of the
