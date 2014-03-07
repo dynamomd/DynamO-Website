@@ -2160,14 +2160,17 @@ for each step is also outlined.");?>
 </div>
 <p>
   In both potentials, there is an implicit step (the zero step) which
-  has an energy of zero.  Left stepped potentials are used for forces
-  which decay with $r$, whereas Right stepped potentials are for
-  forces which increase with $r$. This is for efficiency, as the step
-  "state" for a pair of particles which are within the zero step are
-  not stored in memory.  Therefore, a stepped approximate
-  Lennard-Jones potential is most efficiently implemented as a Left
-  stepped potential, whereas a spring potential is most efficiently
-  implemented using a Right potential.
+  has an energy of zero.  Left stepped potentials are best used for
+  forces which decay with $r$, whereas Right stepped potentials are
+  often used for forces which increase with $r$. This is for
+  efficiency due to two factors: The step number for a pair of
+  particles is not stored in memory if it has a value of zero and, for
+  automatically generated potentials, steps are computed from step 0
+  upwards (as required).  Therefore, a stepped Lennard-Jones potential
+  is most efficiently implemented as a Left potential as most possible
+  particle pairs are not interacting and will be within the zero
+  step. A computed bond (constraining) spring potential is most
+  efficiently implemented using a Right potential.
 </p>
 <h4>Example usage</h4>
 <p>
