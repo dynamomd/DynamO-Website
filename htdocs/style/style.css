@@ -176,6 +176,7 @@ li {
     margin-bottom:-2px;
     z-index:100;
     position:relative;
+    border-bottom:2px solid #ffffff;
 }
 
 
