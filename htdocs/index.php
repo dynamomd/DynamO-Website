@@ -162,7 +162,7 @@ $content = ob_get_clean();
 
 $contentdate = date("l jS F Y ", filemtime("pages/".$page.".php"));
 
-function create_toc( $content ) {
+function create_toc( &$content ) {
 	preg_match_all( '/<h([1-3])(.*)>([^<]+)<\/h[1-6]>/i', $content, $matches, PREG_SET_ORDER );
 
 	global $anchors; 
@@ -244,12 +244,11 @@ function create_toc( $content ) {
 	}
  
 	$toc .= '</ol></div>'."\n";
- 
-        return $toc;
+        $content = $toc.$content;
 }
 
 if ($TOC) {
-  $content = create_toc($content).$content;
+  create_toc($content);
 }
 ?>
 <!DOCTYPE html>

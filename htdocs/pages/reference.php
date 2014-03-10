@@ -1227,13 +1227,13 @@ the Lees-Edward sliding-brick boundary condition");?>
 <h2>Type="Stepped"</h2>
 <h4>Description</h4>
 <p>
- The "Stepped" Interaction wraps a generic
-  spherically-symmetric stepped <a href="#potential">Potential</a> and
-  uses it for two-particle interactions. This can be used to implement
-  many simple systems (hard-spheres, square-wells) and many complex
-  systems such as a discontinuous Lennard-Jones potential. An
-  alternative approach is to use a <a href="#typeumbrella">"Umbrella"
-  System event</a> to bind collections of particles together using
+  The "Stepped" Interaction wraps a generic spherically-symmetric
+  stepped <a href="#potential">Potential</a> and uses it for
+  two-particle interactions. This can be used to implement many simple
+  systems (hard-spheres, square-wells) and many complex systems such
+  as a discontinuous Lennard-Jones potential. An alternative approach
+  is to use a <a href="#typeumbrella">"Umbrella" System event</a> to
+  bind collections of particles together using
   a <a href="#potential">Potential</a>.
 </p>
 <h4>Example usage</h4>
@@ -1742,10 +1742,9 @@ its parameters");?>
 <h2><a id="typeumbrella"></a>Type="Umbrella"</h2>
 <h4>Description</h4>
 <p>
- The "Umbrella" System implements an umbrella
-  potential, allowing a <a href="#potential">Potential</a> to be
-  specified between the centres of mass of two collections of
-  particles.
+  The "Umbrella" System implements an umbrella potential, allowing
+  a <a href="#potential">Potential</a> to be specified between the
+  centres of mass of two collections of particles.
 </p>
 <h4>Example usage</h4>
 <p>
@@ -2146,9 +2145,32 @@ its parameters");?>
 <h2><a id="typesteppedpotential"></a>Type="Stepped"</h2>
 <h4>Description</h4>
 <p>
- This Potential type allows a stepped potential
-  to be directly entered in. This is the most general stepped
-  potential available, but requires manual entry of the potential.
+ This Potential type allows a stepped potential to be manual entered
+ and is the most general stepped potential available. There are two
+ classes of stepped potential, Left or Right, depending on which
+ "side" of the discontinuity is specified by the discontinuity's
+ energy. An illustration is given below:
+</p>
+<div style="text-align:center;">
+<?php embedfigure("/images/SteppedPotential.png", 648, 263, "A
+comparison of the two types of stepped potential. The discontinuity
+locations are marked with a cross, and the adjacent line marks the
+location of the corresponding step. The internal numbering DynamO uses
+for each step is also outlined.");?>
+</div>
+<p>
+  In both potentials, there is an implicit step (the zero step) which
+  has an energy of zero.  Left stepped potentials are best used for
+  forces which decay with $r$, whereas Right stepped potentials are
+  often used for forces which increase with $r$. This is for
+  efficiency due to two factors: The step number for a pair of
+  particles is not stored in memory if it has a value of zero and, for
+  automatically generated potentials, steps are computed from step 0
+  upwards (as required).  Therefore, a stepped Lennard-Jones potential
+  is most efficiently implemented as a Left potential as most possible
+  particle pairs are not interacting and will be within the zero
+  step. A computed bond (constraining) spring potential is most
+  efficiently implemented using a Right potential.
 </p>
 <h4>Example usage</h4>
 <p>
@@ -2176,7 +2198,7 @@ its parameters");?>
 <ul>
   <li>
     <b>Type</b> <i>(attribute)</i>: Must have the
-    value <i>"Stepped"</i> to select this Dynamics type.
+    value <i>"Stepped"</i> to select this Potential type.
   </li>
   <li>
     <b>Direction</b> <i>(attribute)</i>: This sets the direction of
@@ -2198,7 +2220,7 @@ its parameters");?>
   <li>
     <b>Step</b> <i>(tag)</i>: This tag represents a single
     discontinuity/step of the stepped potential. On load these steps
-    are sorted by their <b>R</b> value.
+    are sorted by their <b>R</b> value and allocated numbers as outlined above.
     <ul>
       <li>
 	<b>R</b> <i>(attribute)</i>: The radial separation of the

@@ -14,7 +14,7 @@
    height="31"
    id="svg2"
    version="1.1"
-   inkscape:version="0.48.3.1 r9886"
+   inkscape:version="0.48.4 r9939"
    sodipodi:docname="csssprites.svg"
    inkscape:export-filename="csssprites.png"
    inkscape:export-xdpi="90"
@@ -230,15 +230,15 @@
      inkscape:pageopacity="0"
      inkscape:pageshadow="2"
      inkscape:zoom="5.6"
-     inkscape:cx="374.74553"
-     inkscape:cy="1.217518"
+     inkscape:cx="251.60791"
+     inkscape:cy="0.46271869"
      inkscape:document-units="px"
      inkscape:current-layer="layer1"
      showgrid="true"
      inkscape:window-width="1280"
-     inkscape:window-height="977"
+     inkscape:window-height="974"
      inkscape:window-x="1278"
-     inkscape:window-y="24"
+     inkscape:window-y="27"
      inkscape:window-maximized="1"
      fit-margin-top="0"
      fit-margin-left="0"
@@ -1522,11 +1522,6 @@
        y="1022.4769"
        rx="2.9999864"
        ry="2.9999864" />
-    <path
-       style="fill:#ffffff;stroke:none"
-       d="m 279,1025.3102 0,25.3334 19,-12.6667 z"
-       id="path3328-1"
-       inkscape:connector-curvature="0" />
     <g
        id="g3678"
        transform="matrix(0.93781268,0,0,0.93781268,24.155919,65.507918)">
@@ -1637,5 +1632,10 @@
          x="348.57141"
          y="1030.6198"
          style="font-size:10px;font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-family:Sans;-inkscape-font-specification:Sans Bold">POWERED BY</tspan></text>
+    <path
+       style="fill:#00ff00;stroke:none"
+       d="m 281.37501,1028.4769 0,19 14.24998,-9.5 z"
+       id="path3328-7"
+       inkscape:connector-curvature="0" />
   </g>
 </svg>
