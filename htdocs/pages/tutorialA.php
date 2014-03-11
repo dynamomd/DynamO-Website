@@ -23,24 +23,51 @@
   files.</u></b>
 </p>
 <p>
-  The file format itself is covered in more depth
-  in <a href="/index.php/tutorial3">this tutorial</a>.  Before reading
-  this appendix it would be best to already be familiar with how
-  DynamO operates and have a good idea what information you'd like to
-  extract.
+  The configuration file format itself is covered in more depth
+  in <a href="/index.php/tutorial3">this tutorial</a> or in the
+  <a href="/index.php/reference">reference</a>. The description of the
+  output file format is available in
+  the <a href="/index.php/outputplugins">documentation for the output
+  plugins</a>. Before reading this appendix it would be best to
+  already be familiar with how DynamO operates and have a good idea
+  what information you'd like to extract.
 </p>
-<h1>XPath Expressions</h1>
+<h1>Using XML documents and XPath Expressions</h1>
 <p>
   The file formats of DynamO are written in XML, which is a convenient
   markup language that is easy for both humans and computers to
-  read. There are many excellent XML libraries and tools available out
-  there to help you, but there are some general concepts to first
-  understand before you can use them. 
-  </p>
+  read. The main advantage of writing data in XML is that there are
+  many excellent XML libraries and tools available out there to help
+  you read the files using any programming language you like; However,
+  there are some general concepts to first understand before you can
+  use them.
+</p>
 <p>
-  The main piece of information to learn is how to select or specify
-  part of an XML file to one of these tools or libraries. The method
-  of doing this is typically though XPath expressions. There is an
+  XML files consist of <b>tags</b> and <b>attributes</b>. Tags are a
+  way of organising information and can contain information
+</p>
+<?php codeblockstart(); ?>
+<TagName>
+  Some contained data, maybe some more XML tags.
+</TagName>
+<?php codeblockend("brush: xml;"); ?>
+<p>
+  Or they can be self closing if they don't contain any more tags/data:
+</p>
+<?php codeblockstart(); ?>
+<TagName/>
+<?php codeblockend("brush: xml;"); ?>
+<p>
+  Attributes are a way of attaching data to a tag. For example:
+</p>
+<?php codeblockstart(); ?>
+<Pet Type="Cat" Name="Tom"/>
+<Pet Type="Dog" Name="Fido"/>
+<?php codeblockend("brush: xml;"); ?>
+<p>
+  With our data organised using XML, we need a simple way to select
+  parts of it to read or edit it. The most convenient method of doing
+  this is typically though <b>XPath</b> expressions. There is an
   excellent
   introduction <a href="http://www.w3schools.com/xpath/default.asp">available
   here</a>, but we'll just quickly cover its basic use now.
@@ -183,14 +210,14 @@
 <p>
   There is a lot more to learn about XPath expressions, but we now
   know enough to access any data we would like to from the output and
-  config files of DynamO. 
+  config files of DynamO.
 </p>
 <p>
   We will now cover some tools and libraries that let you apply XPath
   expressions to XML documents and to actually discuss some
-  interesting examples.
+  interesting examples of using them.
 </p>
-<h1>Using XMLStarlet</h1>
+<h1>Using XMLStarlet (shell scripting)</h1>
 <p>
   The easiest way to see the effect of XPath expressions on a DynamO
   configuration file is to use
@@ -258,19 +285,19 @@ xmlstarlet sel -t -m '//Pt/P' -v '@x' -o ' ' -v '@y' -o ' ' -v '@z' -n config.ou
   range of $[\pm7,\pm7,\pm7]$.
 </p>
 <p>
-  Lets pretend that we want to chop off all particles whose centres
-  lie outside of a sphere of radius 5, centered about the origin. We
-  need an XPath expression to select all particle (Pt) tags, whose
-  centers (P) lie outside of the sphere. This can be achieved easily
-  using math in the predicate:
+  Lets say that we want to remove all particles whose centres lie
+  outside of a sphere of radius 5, centered about the origin. We need
+  an XPath expression to select all particle (Pt) tags, whose centers
+  (P) lie outside of the sphere. This can be achieved easily using
+  math in the predicate:
 </p>
 <?php codeblockstart(); ?>
 //Pt[P/@x * P/@x + P/@y * P/@y + P/@z * P/@z  > 25.0]
 <?php codeblockend("brush: xpath;"); ?>
 <p>
-  We have to use the square of the radius, $R^2=5^2=25$, is because
-  XPath does not support math functions such as square root, and we
-  use the following identity
+  We have used the square of the radius as the condition
+  ($R^2=5^2=25$) as XPath does not support complex math functions such
+  as square root, and we use the following identity
 </p>
 $$\begin{align*}
 \left|\mathbf{P}\right| &amp;> R\\
@@ -301,42 +328,46 @@ P_x^2+P_y^2+P_z^2 &amp;> R^2
   The simplest interface I've encountered is the lxml library in
   Python, which is introduced now.
 </p>
-<h1>Python</h1>
+<h1>Using Python</h1>
 <p>
-  The library I use for parsing XML in python is called lxml. If you
-  have it installed its relatively easy to give it XPath expressions
-  to use. A generic example is given below. This prints out the ID and
-  position of every particle in the config file.
+  Python has basic built in support for XML files, and several
+  libraries available such as lxml if advanced features are
+  needed.
 </p>
+<h2>Example: Making an XYZ Position File</h2>
 <?php codeblockstart(); ?>
 #!/usr/bin/python
 import os
-from lxml import etree
+import xml.etree.ElementTree as ET
 
 #A helpful function to load compressed or uncompressed XML files
 def loadXMLFile(filename):
-	#Check if the file is compressed or not, and 
-	if (os.path.splitext(filename)[1][1:].strip() == "bz2"):
-		import bz2
-		f = bz2.BZ2File(filename)
-		doc = etree.parse(f)
-		f.close()
-		return doc
-	else:
-		return etree.parse(filename)
+    #Check if the file is compressed or not, and 
+    if (os.path.splitext(filename)[1][1:].strip() == "bz2"):
+        import bz2
+        f = bz2.BZ2File(filename)
+        doc = ET.parse(f)
+        f.close()
+        return doc
+    else:
+        return etree.parse(filename)
 
 #Load the XML file
-XMLDoc = loadXMLFile("config.out.xml.bz2")
+XMLDoc=loadXMLFile("config.out.xml.bz2")
 #Grab the root element (the DynamOconfig element)
 RootElement=XMLDoc.getroot()
 
-#We can create a list of all particle tags using an xpath expression (xpath expressions always return lists)
+#We can create a list of all particle tags using an xpath expression
+(xpath expressions always return lists) 
 PtTags = RootElement.xpath("//Pt")
 
+#Print the number of particles
+print len(PtTags)
+#Print the position of each particle
 for PtElement in PtTags:
-	#print the ID, followed by the x y and z positions. This
-	#highlights the many (and confusing) ways you can access data
-	print PtElement.get("ID"), PtElement.xpath("P/@x")[0], PtElement.find("P").get("y"), PtElement.xpath("P/@z")[0]
+	#print the x, y, and z positions and show the many
+        #ways you can access data
+	print PtElement.xpath("P/@x")[0], PtElement.find("P").get("y"), PtElement.xpath("P/@z")[0]
 <?php codeblockend("brush: python;"); ?>
 <h2>Example: Creating a Povray file</h2>
 <p>
