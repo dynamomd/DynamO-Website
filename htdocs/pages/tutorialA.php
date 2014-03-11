@@ -217,6 +217,119 @@
   expressions to XML documents and to actually discuss some
   interesting examples of using them.
 </p>
+<h1>Using Python</h1>
+<p>
+  The most versatile way of processing data collected using DynamO has
+  to be with python. Python has basic built in support for XML files,
+  and several libraries available such as lxml if advanced XPath
+  features are needed. Below, we will introduce a couple of example
+  applications of Python and DynamO.
+</p>
+<h2>Example: Making an XYZ Position File</h2>
+<p>
+  The most common file format for handling atomic/particle systems is
+  the XYZ format. This file format just lists the total number of
+  particles and the positions (and sometimes velocities) of each
+  particle. Below is a sample python script which loads a config file
+  and prints to screen an XYZ-like list of data. Please note, you do
+  not need to write your own code for this, it is just an example as
+  DynamO already has a handy tool for creating XYZ files,
+  called <b>dynamo2xyz</b>. This is written in python and the latest
+  version
+  is <a href="https://github.com/toastedcrumpets/DynamO/blob/master/src/dynamo/programs/dynamo2xyz">available
+  here</a>.
+</p>
+<?php codeblockstart(); ?>
+#!/usr/bin/python
+import os
+import xml.etree.ElementTree as ET
+
+#A helpful function to load compressed or uncompressed XML files
+def loadXMLFile(filename):
+    #Check if the file is compressed or not, and 
+    if (os.path.splitext(filename)[1][1:].strip() == "bz2"):
+        import bz2
+        f = bz2.BZ2File(filename)
+        doc = ET.parse(f)
+        f.close()
+        return doc
+    else:
+        return etree.parse(filename)
+
+#Load the XML file
+XMLDoc=loadXMLFile("config.out.xml.bz2")
+#Grab the root element (the DynamOconfig element)
+RootElement=XMLDoc.getroot()
+
+#We can create a list of all particle tags using an xpath expression
+(xpath expressions always return lists) 
+PtTags = RootElement.xpath("//Pt")
+
+#Print the number of particles
+print len(PtTags)
+#Print the position of each particle
+for PtElement in PtTags:
+	#print the x, y, and z positions
+	print PtElement.xpath("P/@x")[0], PtElement.find("P").get("y"), PtElement.xpath("P/@z")[0]
+<?php codeblockend("brush: python;"); ?>
+<h2>Example: Creating a Povray file</h2>
+<p>
+  Sometimes you might want to prepare a very high quality image for
+  publication or presentation at a conference. Povray is an excellent
+  and free ray-tracing renderer, capable of producing stunning
+  scenes. This example script converts a dynamo output file into a
+  simple Povray file using the more-powerful <b>lxml</b> python
+  library.
+</p>
+<?php codeblockstart(); ?>
+#!/usr/bin/python
+import os
+import sys 
+import xml.etree.ElementTree as ET
+ 
+def loadXMLFile(filename):
+    #Check if the file is compressed or not, and 
+    if (os.path.splitext(filename)[1][1:].strip() == "bz2"):
+        import bz2
+        f = bz2.BZ2File(filename)
+        doc = ET.parse(f)
+        f.close()
+        return doc
+    else:
+        return ET.parse(filename)
+
+XMLDoc = loadXMLFile(sys.argv[1])
+ 
+# Write the header for the Povray file
+diameter = 1.0
+print '#version 3.6 ;'
+print '#include \"colors.inc\"'
+print '#include \"transforms.inc\"'
+print '#include \"glass.inc\"'
+print 'global_settings { max_trace_level 20 }'
+print 'global_settings { noise_generator 1 }'
+print 'global_settings { ambient_light 2.5 }'
+print 'global_settings { assumed_gamma 1.0 }'
+print 'background { rgb<1, 1, 1> }'
+print '#declare zoom = 10.4 ;'
+print '#declare Cam0 ='
+print '  camera {location  <-0.75*zoom , 0.75*zoom , zoom>'
+print '           look_at   <0.05 , 0.1 , 0.0>}'
+print 'camera{Cam0}'
+print 'light_source{<-10,50,0> color White}'
+print 'light_source{<10,30,30> color White}'
+print '#declare particle = sphere {'
+print ' <0,0,0>', diameter/2
+print ' texture { pigment { color rgb<0.1,0.1,0.6> }}'
+print '  finish { phong 0.9 phong_size 60 } }'
+ 
+#Create a list of all particle position (P) tags
+PtTags = XMLDoc.findall("//Pt/P")
+ 
+#Loop over each particles position, outputting a povray object for it
+for element in PtTags:
+    print "object { particle translate <", element.get("x"),",", element.get("y"),",", element.get("z"),">}"
+<?php codeblockend("brush: python;"); ?>
 <h1>Using XMLStarlet (shell scripting)</h1>
 <p>
   The easiest way to see the effect of XPath expressions on a DynamO
@@ -328,101 +441,3 @@ P_x^2+P_y^2+P_z^2 &amp;> R^2
   The simplest interface I've encountered is the lxml library in
   Python, which is introduced now.
 </p>
-<h1>Using Python</h1>
-<p>
-  Python has basic built in support for XML files, and several
-  libraries available such as lxml if advanced features are
-  needed.
-</p>
-<h2>Example: Making an XYZ Position File</h2>
-<?php codeblockstart(); ?>
-#!/usr/bin/python
-import os
-import xml.etree.ElementTree as ET
-
-#A helpful function to load compressed or uncompressed XML files
-def loadXMLFile(filename):
-    #Check if the file is compressed or not, and 
-    if (os.path.splitext(filename)[1][1:].strip() == "bz2"):
-        import bz2
-        f = bz2.BZ2File(filename)
-        doc = ET.parse(f)
-        f.close()
-        return doc
-    else:
-        return etree.parse(filename)
-
-#Load the XML file
-XMLDoc=loadXMLFile("config.out.xml.bz2")
-#Grab the root element (the DynamOconfig element)
-RootElement=XMLDoc.getroot()
-
-#We can create a list of all particle tags using an xpath expression
-(xpath expressions always return lists) 
-PtTags = RootElement.xpath("//Pt")
-
-#Print the number of particles
-print len(PtTags)
-#Print the position of each particle
-for PtElement in PtTags:
-	#print the x, y, and z positions and show the many
-        #ways you can access data
-	print PtElement.xpath("P/@x")[0], PtElement.find("P").get("y"), PtElement.xpath("P/@z")[0]
-<?php codeblockend("brush: python;"); ?>
-<h2>Example: Creating a Povray file</h2>
-<p>
-  Sometimes you might want to prepare a very high quality image for
-  publication or presentation at a conference. Povray is an excellent
-  and free ray-tracing renderer, capable of producing stunning
-  scenes. This example script converts a dynamo output file into a
-  simple Povray file.
-</p>
-<?php codeblockstart(); ?>
-#!/usr/bin/python
-import os
-from lxml import etree
-import sys
-
-def loadXMLFile(filename):
-	if (os.path.splitext(filename)[1][1:].strip() == "bz2"):
-		import bz2
-		f = bz2.BZ2File(filename)
-		doc = etree.parse(f)
-		f.close()
-		return doc
-	else:
-		return etree.parse(filename)
-
-XMLDoc = loadXMLFile(sys.argv[1])
-RootElement=XMLDoc.getroot()
-
-# Write the header for the Povray file
-diameter = 1.0
-print '#version 3.6 ;'
-print '#include \"colors.inc\"'
-print '#include \"transforms.inc\"'
-print '#include \"glass.inc\"'
-print 'global_settings { max_trace_level 20 }'
-print 'global_settings { noise_generator 1 }'
-print 'global_settings { ambient_light 2.5 }'
-print 'global_settings { assumed_gamma 1.0 }'
-print 'background { rgb<1, 1, 1> }'
-print '#declare zoom = 10.4 ;'
-print '#declare Cam0 ='
-print '  camera {location  <-0.75*zoom , 0.75*zoom , zoom>'
-print '           look_at   <0.05 , 0.1 , 0.0>}'
-print 'camera{Cam0}'
-print 'light_source{<-10,50,0> color White}'
-print 'light_source{<10,30,30> color White}'
-print '#declare particle = sphere {'
-print ' <0,0,0>', diameter/2
-print ' texture { pigment { color rgb<0.1,0.1,0.6> }}'
-print '  finish { phong 0.9 phong_size 60 } }'
-
-#Create a list of all particle position (P) tags
-PtTags = RootElement.xpath("//Pt/P")
-
-#Loop over each particles position, outputting a povray object for it
-for element in PtTags:
-	print "object { particle translate <", element.get("x"),",", element.get("y"),",", element.get("z"),">}"
-<?php codeblockend("brush: python;"); ?>
