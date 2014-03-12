@@ -299,6 +299,10 @@ li {
 	box-sizing:border-box;
     }
 
+    #menu a.selected {
+	border-bottom:2px solid #000000;
+    }
+
     #TOC {
 	float:none;
 	border:2px solid #000000;
