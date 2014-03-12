@@ -128,31 +128,29 @@ li {
     padding:0;
 }
 
-#w3footerlogoHTML, #w3footerlogoCSS {
-    width:88px; 
-    height:31px; 
+#mathjaxfooterlogo, #w3footerlogoHTML, #w3footerlogoCSS {
     background-image: url(csssprites.png); 
+    display:inline-block;
+    vertical-align:middle;
+    margin:0 5px;
 }
 
 #mathjaxfooterlogo {
-    width:127px; 
+    width:121px; 
     height:31px; 
-    display:inline-block;
-    background-image: url(csssprites.png); 
     background-position: -305px 0;
-    vertical-align:middle;
 }
 
 #w3footerlogoHTML {
-    display:inline-block;
+    width:88px; 
+    height:31px; 
     background-position: -90px 0;
-    vertical-align:middle;
 }
 
 #w3footerlogoCSS {
-    display:inline-block;
+    width:88px; 
+    height:31px; 
     background-position: 0 0;
-    vertical-align:middle;
 }
 
 #menu {
