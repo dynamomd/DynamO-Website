@@ -38,11 +38,11 @@
 <?php button("4: Thermostats and transport properties","/index.php/tutorial4");?>
 <?php button("5: Multiple species/interactions, compression dynamics, and ticker output plugins","/index.php/tutorial5");?>
 <?php button("6: Polydispersity, walls, granular dynamics, and a bit of python","/index.php/tutorial6");?>
+<?php button("A: Automatically processing output and config files","/index.php/tutorialA");?>
 <div style="clear:both;text-align:center;"><b>References</b></div>
+<?php button("Frequently Asked Questions","/index.php/FAQ");?>
 <?php button("Configuration File Format Reference","/index.php/reference");?>
 <?php button("Output Plugin Reference","/index.php/outputplugins");?>
-<?php button("Frequently Asked Questions","/index.php/FAQ");?>
-<?php button("Parsing Output and Config Files","/index.php/tutorialA");?>
 <p>
 </p>
 <h1>Citing DynamO and Publications</h1>
@@ -53,9 +53,9 @@
 </p>
 <div style="text-align:center;">
   M. N. Bannerman, R. Sargant,
-    L. Lue, <a href="http://dx.doi.org/10.1002/jcc.21915">"DynamO: A
-    free O(N) general event-driven simulator,"</a><i>
-    J. Comp. Chem.</i>, <b>32</b>, 3329-3338 (2011)"
+  L. Lue, <a href="http://dx.doi.org/10.1002/jcc.21915">"DynamO: A
+  free O(N) general event-driven simulator,"</a><i>
+  J. Comp. Chem.</i>, <b>32</b>, 3329-3338 (2011)"
 </div>
 <p>
   Below is a list of publications which have used DynamO in their
@@ -64,9 +64,9 @@
 <ul>
   <li>
     C. Thomson, L. Lue, and
-      M. N. Bannerman, <a href="http://dx.doi.org/10.1063/1.4861669">"Mapping
-      continuous potentials to discrete
-      forms,"</a> <i>J. Chem. Phys.</i>, <b>140</b>, 034105 (2014)
+    M. N. Bannerman, <a href="http://dx.doi.org/10.1063/1.4861669">"Mapping
+    continuous potentials to discrete
+    forms,"</a> <i>J. Chem. Phys.</i>, <b>140</b>, 034105 (2014)
   </li>
   <li>
     P. C. Royall, A. Malins, A. J. Dunleavy, and R. Pinney,
@@ -77,70 +77,70 @@
   <li>
     J. E. Kollmer, A. Sack, M. Heckel, F. Zimber, P. Mueller,
     M. N. Campbell Bannerman and T. Poeschel, <a href="">"Collective
-    Granular Dynamics in a Shaken Container at Low Gravity
-    Conditions,"</a> <i>AIP Conf. Proc.</i>, <b>1542</b>, 811-814
+      Granular Dynamics in a Shaken Container at Low Gravity
+      Conditions,"</a> <i>AIP Conf. Proc.</i>, <b>1542</b>, 811-814
     (2013)
   </li>
   <li>
     S. Mandal, V. Chikkadi, B. Nienhuis, D. Raabe, P. Schall, and
     F. Varnik, <a href="http://dx.doi.org/10.1103/PhysRevE.88.022129">"Heterogeneous
-    Shear in Hard Sphere Glasses,"</a> <i>Phys. Rev. E</i>, <b>88</b>,
+      Shear in Hard Sphere Glasses,"</a> <i>Phys. Rev. E</i>, <b>88</b>,
     022129 (2013)
   </li>
   <li>
     S. Mandal, M. Gross, D. Raabe, and
     F. Varnik, <a href="http://dx.doi.org/10.1103/PhysRevLett.108.098301">"Heterogeneous
-    Shear in Hard Sphere
-    Glasses,"</a> <i>Phys. Rev. Lett.</i>, <b>108</b>, 098301 (2012)
+      Shear in Hard Sphere
+      Glasses,"</a> <i>Phys. Rev. Lett.</i>, <b>108</b>, 098301 (2012)
   </li>
   <li>
     M. N. Bannerman, J. E. Kollmer, A. Sack, M. Heckel, P. Müller, and
     T. Pöschel, <a href="http://dx.doi.org/10.1103/PhysRevE.84.011301">"Movers
-    and shakers: Granular damping in
-    microgravity,"</a> <i>Phys. Rev. E</i>, <b>84</b>, 011301 (2011)
+      and shakers: Granular damping in
+      microgravity,"</a> <i>Phys. Rev. E</i>, <b>84</b>, 011301 (2011)
   </li>
   <li>
     M. N. Bannerman and
     L. Lue, <a href="http://link.aip.org/link/?JCP/133/124506">"Exact
-    event-rate formulae for square-well and square-shoulder
-    systems,"</a> <i>J. Chem. Phys.,</i> <b>133</b>, 124506 (2010)
+      event-rate formulae for square-well and square-shoulder
+      systems,"</a> <i>J. Chem. Phys.,</i> <b>133</b>, 124506 (2010)
   </li>
   <li>
     M. N. Bannerman, L. Lue,
     L. V. Woodcock <a href="http://link.aip.org/link/?JCPSA6/132/084507/1">"Thermodynamic
-    pressures for hard spheres and closed-virial
-    equation-of-state,"</a>
+      pressures for hard spheres and closed-virial
+      equation-of-state,"</a>
     <i>J. Chem. Phys.</i>, <b>132</b>, 084507 (2010)
   </li>
   <li>
     Wm. G. Hoover, C. G. Hoover,
     M. N. Bannerman, <a href="http://dx.doi.org/10.1007/s10955-009-9795-0">"Single-Speed
-    Molecular Dynamics of Hard Parallel Squares and Cubes,"</a>
+      Molecular Dynamics of Hard Parallel Squares and Cubes,"</a>
     <i>J. Stat. Phys.</i>, <b>136</b>, 715-732 (2009)
   </li>
   <li>
     M. N. Bannerman, J. E. Magee,
     L. Lue, <a href="http://dx.doi.org/10.1103/PhysRevE.80.021801">"Structure
-    and stability of helices in square-well
-    homopolymers,"</a> <i>Phys. Rev. E</i>, <b>80</b>, 021801 (2009)
+      and stability of helices in square-well
+      homopolymers,"</a> <i>Phys. Rev. E</i>, <b>80</b>, 021801 (2009)
   </li>
   <li>
     M. N. Bannerman,
     L. Lue, <a href="http://dx.doi.org/10.1063/1.3120488">"Transport
-    properties of highly asymmetric hard sphere
-    mixtures,"</a> <i>J. Chem. Phys.</i>, <b>130</b>, 164507 (2009)
+      properties of highly asymmetric hard sphere
+      mixtures,"</a> <i>J. Chem. Phys.</i>, <b>130</b>, 164507 (2009)
   </li>
   <li>
     M. N. Bannerman, T. E. Green, P. Grassia,
     L. Lue, <a href="http://dx.doi.org/10.1103/PhysRevE.79.041308">"Collision
-    statistics in sheared inelastic hard
-    spheres,"</a> <i>Phys. Rev. E</i>, <b>79</b>, 041308 (2009)
+      statistics in sheared inelastic hard
+      spheres,"</a> <i>Phys. Rev. E</i>, <b>79</b>, 041308 (2009)
   </li>
 </ul>
 <p>
   If you have any publications you want to be listed here please
   <a href="/index.php/support#contacting-the-developers">contact the
-  developers</a>.
+    developers</a>.
 </p>
 <h1>Recommended Resources</h1>
 <p>

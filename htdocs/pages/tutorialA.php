@@ -219,9 +219,12 @@
 </p>
 <h1>Using Python</h1>
 <p>
-  The most versatile way of processing data collected using DynamO has
-  to be with python. Python has basic built in support for XML files,
-  and several libraries available such as lxml if advanced XPath
+  The most versatile way of processing collected data has to be with
+  python. Many DynamO tools, such as <b>dynatransport</b>,
+  <b>dynamo2xyz</b>, and <b>dynamaprmsd</b>, are written in Python as
+  it is easy to use and has basic built in support for XML files. The
+  basic library only supports a small part of the XPath standard, but
+  there are several libraries available such as lxml if advanced XPath
   features are needed. Below, we will introduce a couple of example
   applications of Python and DynamO.
 </p>
@@ -356,7 +359,7 @@ xmlstarlet sel -t -m '//Pt/P' -v '@x' -o ' ' -v '@y' -o ' ' -v '@z' -n config.ou
 </p>
 <ul>
   <li>
-    <b>(-m '/P')</b> Search through the XML file and for each P tag inside a Pt tag:
+    <b>(-m '//Pt/P')</b> Search through the XML file for a P tag within a Pt tag, then:
     <ul>
       <li>
 	<b>(-v '@x')</b> Write out the value of the x attribute.
@@ -381,9 +384,9 @@ xmlstarlet sel -t -m '//Pt/P' -v '@x' -o ' ' -v '@y' -o ' ' -v '@z' -n config.ou
 </ul>
 <p>
   You should use shell redirection if you want to send this output to
-  a file.
+  a file (i.e., <b>xmlstarlet <i>options</i> > myfile.xyz</b>).
 </p>
-<h2>Example: Deleting Particles</h2>
+<h2>Example: Deleting Particles to make a sphere of spheres</h2>
 <p>
   We will now show a nice feature of XPath expressions, which is the
   ability to do math!
@@ -429,15 +432,11 @@ P_x^2+P_y^2+P_z^2 &amp;> R^2
 </div>
 <p>
   We can take a look at the difference between config.start.xml and
-  config.trimmed.xml using the visualiser and see the results to the
-  right.
+  config.trimmed.xml using the visualiser and see the results above.
 </p>
 <p>
   If you want to create or edit XML files in great detail, I highly
   recommend that you switch from using XMLStarlet to using an XML
-  library in the programming language of your choice. 
-</p>
-<p>
-  The simplest interface I've encountered is the lxml library in
-  Python, which is introduced now.
+  library in the programming language of your choice (like python),
+  but XMLStarlet is a great way to get started.
 </p>
