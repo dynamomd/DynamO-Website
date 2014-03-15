@@ -322,6 +322,7 @@ if ($TOC) {
       <!-- There can be no spaces between these elements, due to the treatment of the anchor tag as a word and the automatic kerning of html -->
       <?php menulink("news", "News"); ?><?php menulink("download", "Download"); ?><?php menulink("documentation", "Manual"); ?><?php menulink("features", "Features"); ?><?php menulink("support", "Support"); ?><?php menulink("credits", "Credits"); ?>
     </div>
+
     <!-- CONTENT -->
     <div id="contentwrapper" class="rounded">
       <?php echo $content; ?>
