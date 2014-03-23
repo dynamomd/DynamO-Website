@@ -53,7 +53,7 @@
 </TagName>
 <?php codeblockend("brush: xml;"); ?>
 <p>
-  Or they can be self closing if they don't contain any tags/data:
+  or they can be self closing if they don't contain any tags/data:
 </p>
 <?php codeblockstart(); ?>
 <TagName/>
