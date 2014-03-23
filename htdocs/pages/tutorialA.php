@@ -32,7 +32,7 @@
   already be familiar with how DynamO operates and have a good idea
   what information you'd like to extract.
 </p>
-<h1>Using XML documents and XPath Expressions</h1>
+<h1>Background on XML and XPath</h1>
 <p>
   The file formats of DynamO are written in XML, which is a convenient
   markup language that is easy for both humans and computers to
@@ -42,9 +42,10 @@
   there are some general concepts to first understand before you can
   use them.
 </p>
+<h2>XML Documents</h2>
 <p>
   XML files consist of <b>tags</b> and <b>attributes</b>. Tags are a
-  way of organising information and can contain information
+  way of organising information and can contain information like so:
 </p>
 <?php codeblockstart(); ?>
 <TagName>
@@ -52,7 +53,7 @@
 </TagName>
 <?php codeblockend("brush: xml;"); ?>
 <p>
-  Or they can be self closing if they don't contain any more tags/data:
+  Or they can be self closing if they don't contain any tags/data:
 </p>
 <?php codeblockstart(); ?>
 <TagName/>
@@ -67,10 +68,13 @@
 <p>
   With our data organised using XML, we need a simple way to select
   parts of it to read or edit it. The most convenient method of doing
-  this is typically though <b>XPath</b> expressions. There is an
-  excellent
-  introduction <a href="http://www.w3schools.com/xpath/default.asp">available
-  here</a>, but we'll just quickly cover its basic use now.
+  this is typically though <b>XPath</b> expressions.
+</p>
+<h2>XPath Expressions</h2>
+<p>
+  There is an excellent introduction to <b>XPath</b>
+  expressions <a href="http://www.w3schools.com/xpath/default.asp">available
+  here</a>, but we'll just quickly cover the basic usage now.
 </p>
 <p>
   We'll take an example XML file and discuss how to select different
@@ -246,7 +250,7 @@
 #!/usr/bin/python
 import os
 import xml.etree.ElementTree as ET
-
+ 
 #A helpful function to load compressed or uncompressed XML files
 def loadXMLFile(filename):
     #Check if the file is compressed or not, and 
@@ -257,23 +261,22 @@ def loadXMLFile(filename):
         f.close()
         return doc
     else:
-        return etree.parse(filename)
-
-#Load the XML file
-XMLDoc=loadXMLFile("config.out.xml.bz2")
-#Grab the root element (the DynamOconfig element)
-RootElement=XMLDoc.getroot()
-
+        return ET.parse(filename)
+ 
+#Load the XML file config.out.xml
+XMLDoc=loadXMLFile("config.out.xml")
+ 
 #We can create a list of all particle tags using an xpath expression
-(xpath expressions always return lists) 
-PtTags = RootElement.xpath("//Pt")
-
+#(xpath expressions always return lists)
+PtTags = XMLDoc.findall("//Pt")
+ 
 #Print the number of particles
 print len(PtTags)
-#Print the position of each particle
+
+#print the x, y, and z positions of each particle
 for PtElement in PtTags:
-	#print the x, y, and z positions
-	print PtElement.xpath("P/@x")[0], PtElement.find("P").get("y"), PtElement.xpath("P/@z")[0]
+    PosTag = PtElement.find("P")
+    print PosTag.get("x"), PosTag.get("y"), PosTag.get("z")
 <?php codeblockend("brush: python;"); ?>
 <h2>Example: Creating a Povray file</h2>
 <p>
