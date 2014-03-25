@@ -9,16 +9,6 @@
  ?>
 <?php printTOC(); ?>
 <p>
-  All of the documentation of DynamO assumes the reader has some
-  experience with both Linux and Molecular Dynamics simulation. The
-  tutorials are aimed at graduate-level students and so cover some of
-  the basics of the techniques. There are
-  some <a href="#recommended-resources">recommended resources</a>
-  listed below which will introduce the basics of these topics if you
-  are at all unfamiliar with them.
-</p>
-<h1>User Documentation</h1> 
-<p>
   The user documentation for DynamO comes in the form of a set of
   tutorials which take you through the fundamentals and lead you into
   more advanced applications of the code. There are also a set of
@@ -31,7 +21,14 @@
   <a href="/index.php/support#contacting-the-developers">contact the
   developers</a> for some advice.
 </p>
-<div style="clear:both;text-align:center;"><b>Tutorials</b></div>
+<p>
+  All of the documentation of DynamO assumes the reader has some
+  experience with both Linux and Molecular Dynamics simulation.  There
+  are some <a href="#recommended-resources">recommended resources</a>
+  listed below which will introduce the basics of these topics if you
+  are at all unfamiliar with them.
+</p>
+<h1 style="clear:both;">Tutorials</h1> 
 <?php button("1: Compiling DynamO from source","/index.php/tutorial1");?>
 <?php button("2: Introduction to DynamO","/index.php/tutorial2");?>
 <?php button("3: The configuration file","/index.php/tutorial3");?>
@@ -39,13 +36,14 @@
 <?php button("5: Multiple species/interactions, compression dynamics, and ticker output plugins","/index.php/tutorial5");?>
 <?php button("6: Polydispersity, walls, granular dynamics, and a bit of python","/index.php/tutorial6");?>
 <?php button("A: Automatically processing output and config files","/index.php/tutorialA");?>
-<div style="clear:both;text-align:center;"><b>References</b></div>
-<?php button("Frequently Asked Questions","/index.php/FAQ");?>
+<h1>Reference</h1> 
 <?php button("Configuration File Format Reference","/index.php/reference");?>
 <?php button("Output Plugin Reference","/index.php/outputplugins");?>
+<h1>FAQ</h1> 
+<?php button("Frequently Asked Questions","/index.php/FAQ");?>
 <p>
 </p>
-<h1>Citing DynamO and Publications</h1>
+<h1>DynamO Publications</h1>
 <p>
   If you find the DynamO useful and publish a paper using results
   obtained from DynamO, please help support it's development by citing

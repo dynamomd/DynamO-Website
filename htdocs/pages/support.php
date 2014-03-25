@@ -11,16 +11,14 @@
 <p>
   DynamO is a research project which has been open-sourced to help
   push forward both event-driven algorithms and discrete-potential
-  models. As such, the best way to recieve support for your own
-  project is to contact and collaborate with researchers/developers
-  familiar with DynamO. Listed below are some methods you can use to
-  do this.
+  models. The best way to recieve support is to contact and
+  collaborate with researchers/developers familiar with DynamO.
 </p>
 <p>
   If you think you have a straightforward question, please check
   the <a href="/index.php/documentation">online documentation</a>
-  first to see if it answers your questions. In particular, frequently
-  asked questions are answered in the <a href="/index.php/FAQ">FAQ</a>.
+  first to see if it answers your questions. In particular, check
+  the <a href="/index.php/FAQ">FAQ</a>.
 </p>
 <h1>Reporting Bugs</h1>
 <p>
@@ -29,7 +27,7 @@
   your problem might be resolved and it also allows you to track the
   progress in dealing with any reported issues.
 </p>
-<?php button("GitHub Issue Tracker",
+<?php button("GitHub Issue/Bug Tracker",
       "https://github.com/toastedcrumpets/DynamO/issues");?>
 <p>
   Please note, you will need a (free) GitHub account to report bugs.

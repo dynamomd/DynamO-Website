@@ -15,6 +15,22 @@
   you can compile DynamO yourself or, if you have Ubuntu linux, you
   can use the <a href="#installing-on-ubuntu-and-later">prebuilt packages</a>.
 </p>
+<h1 id="prebuilt">Installing on Ubuntu 12.04 and later</h1>
+<p>
+  There is a nightly build of the DynamO development tree which you
+  can use to get the cutting-edge features and automatic updates
+  whenever they are released.
+</p>
+<p>
+  To add the development packages, add the PPA to your system. Full
+  instructions can be found on
+  the <a href="https://launchpad.net/~dynamomd/+archive/dynamo-daily-ppa">PPA
+  site</a>, but a brief summary is given below.
+</p>
+<?php codeblockstart(); ?>sudo add-apt-repository ppa:dynamomd/dynamo-daily-ppa
+sudo apt-get update
+sudo apt-get install dynamo-core dynamo-tools dynamo-visualisation
+<?php codeblockend("brush: shell;"); ?>
 <h1>Source Code Downloads</h1>
 <p>
   There are several ways you can obtain a copy of the source code and
@@ -81,30 +97,3 @@
 </p>
 <?php button("Download Latest Development Branch","https://github.com/toastedcrumpets/DynamO/zipball/master");?>
 <!--<?php button("Download Stable Version 1.5.0","https://github.com/toastedcrumpets/DynamO/zipball/v1-5-0");?>-->
-<h1 id="prebuilt">Installing on Ubuntu 12.04 and later</h1>
-<p>
-  DynamO is now extremely easy to install on Ubuntu. Although you can
-  download individual packages by hand, the recommended installation
-  method is to add the PPA (Personal Package Archive) to your system
-  so that you will recieve automatic updates whenever they are
-  released.
-</p>
-<h2>Nightly Development Releases</h2>
-<p>
-  There is a daily build of the DynamO development tree which you can
-  use to get the cutting-edge features. 
-</p>
-<p>
-  To add the development packages, add the development PPA to your
-  system. Full instructions can be found on
-  the <a href="https://launchpad.net/~dynamomd/+archive/dynamo-daily-ppa">PPA
-  site</a>, but a brief summary is given below.
-</p>
-<?php codeblockstart(); ?>sudo add-apt-repository ppa:dynamomd/dynamo-daily-ppa
-sudo apt-get update
-sudo apt-get install dynamo-core dynamo-tools dynamo-visualisation
-<?php codeblockend("brush: shell;"); ?>
-<p>
-  <b> Warning!</b>  If the development PPA is installed, it will
-  override the stable PPA.
-</p>
