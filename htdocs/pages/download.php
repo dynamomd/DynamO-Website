@@ -6,7 +6,7 @@
    return;
    }
    $pagetitle="Download";
- ?>
+   ?>
 <?php printTOC(); ?>
 <p>
   DynamO is an open-source and free code, made available under version
@@ -25,7 +25,7 @@
   To add the development packages, add the PPA to your system. Full
   instructions can be found on
   the <a href="https://launchpad.net/~dynamomd/+archive/dynamo-daily-ppa">PPA
-  site</a>, but a brief summary is given below.
+    site</a>, but a brief summary is given below.
 </p>
 <?php codeblockstart(); ?>sudo add-apt-repository ppa:dynamomd/dynamo-daily-ppa
 sudo apt-get update
@@ -43,7 +43,7 @@ sudo apt-get install dynamo-core dynamo-tools dynamo-visualisation
   The recommended method of downloading an up-to-date copy of the
   DynamO sources is using git and
   the <a href="https://github.com/toastedcrumpets/DynamO"> public
-  GitHub repository</a>. Using git, it is easy to update your version
+    GitHub repository</a>. Using git, it is easy to update your version
   of the code and to send any changes you make back to the developers.
   To get a copy of the code, just install git and use the following
   command in your terminal:
@@ -61,22 +61,22 @@ sudo apt-get install dynamo-core dynamo-tools dynamo-visualisation
   are several available:
 </p>
 <ul>
-    <li>
-      <b>v1-5-0:</b> This is the most recent stable release, the
-      code is as stable as possible and has been thoroughly tested for
-      bugs, but it may miss recently added features.
-    </li>
-    <li>
-      <b>master:</b> This is the stable development branch for the
-      next release of DynamO, code <i>should</i> compile and run
-      without errors but it may be a little buggy.
-    </li>
-    <li>
-      <b>experimental:</b> This is where new patches and features are
-      born. Probably unstable and buggy, but very fresh! Not really
-      meant for the public, but its been made available to let others
-      track or join in the development process.
-    </li>
+  <li>
+    <b>v1-5-0:</b> This is the most recent stable release, the
+    code is as stable as possible and has been thoroughly tested for
+    bugs, but it may miss recently added features.
+  </li>
+  <li>
+    <b>master:</b> This is the stable development branch for the
+    next release of DynamO, code <i>should</i> compile and run
+    without errors but it may be a little buggy.
+  </li>
+  <li>
+    <b>experimental:</b> This is where new patches and features are
+    born. Probably unstable and buggy, but very fresh! Not really
+    meant for the public, but its been made available to let others
+    track or join in the development process.
+  </li>
 </ul>
 <p>
   If you decide you want something other than the default branch
@@ -96,4 +96,3 @@ sudo apt-get install dynamo-core dynamo-tools dynamo-visualisation
   one of the links below.
 </p>
 <?php button("Download Latest Development Branch","https://github.com/toastedcrumpets/DynamO/zipball/master");?>
-<!--<?php button("Download Stable Version 1.5.0","https://github.com/toastedcrumpets/DynamO/zipball/v1-5-0");?>-->
