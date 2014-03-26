@@ -2235,6 +2235,75 @@ for each step is also outlined.");?>
   </li>
 </ul>
 <h2><a id="typelennardjonespotential"></a>Type="LennardJones"</h2>
+<h4>Description</h4>
+<p>
+ This Potential is a stepped approximation to the truncated and
+ shifted Lennard-Jones potential. The approximation and its
+ optimisation is reported in the
+ paper: <a href="http://dx.doi.org/10.1063/1.4861669">"Mapping
+ continuous potentials to discrete forms," by Thomson, Lue, and
+ Bannerman</a>. This paper should be consulted for a more detailed
+ discussion of the parameters below. An example of a accurate
+ approximation is given below:
+</p>
+<div style="text-align:center;">
+<?php embedfigure("/images/LJPotential.png", 648, 351, "The continuous
+Lennard-Jones potential and a stepped approximation using the
+optimal/default settings and $10.8$ attractive steps. Both potentials
+have a cut-off radius of 3. The figure is in reduced units
+corresponding to $\\varepsilon=1$ and $\\sigma=1$");?>
+</div>
+<p>
+  The set-up of this stepped potential is outlined below.
+</p>
+<h4>Example usage</h4>
+<?php codeblockstart();?>
+<Potential Type="LennardJones" Sigma="1" Epsilon="1" CutOff="3" AttractiveSteps="10.8"/>
+<?php codeblockend("brush: xml;"); ?>
+<h4>Full Tag, Subtag, and Attribute List</h4>
+<ul>
+  <li>
+    <b>Type</b> <i>(attribute)</i>: Must have the
+    value <i>"LennardJones"</i> to select this Potential type.
+  </li>
+  <li>
+    <b>Sigma</b> <i>(attribute)</i>: Sets the distance $\sigma$ at
+    which the interaction energy is zero.
+  </li>
+  <li>
+    <b>Epsilon</b> <i>(attribute)</i>: Sets the energy $\varepsilon$
+    of the attractive well.
+  </li>
+  <li>
+    <b>Cutoff</b> <i>(attribute)</i>: The cutoff radius of the
+    potential.
+  </li>
+  <li>
+    <b>AttractiveSteps</b> <i>(attribute)</i>: The order of
+    approximation of the potential. Setting AttractiveSteps="10.8" is
+    sufficient for a close reproduction of the thermodynamic
+    properties provided the default UMode and RMode values are used.
+  </li>
+  <li>
+    <b>RMode</b> <i>(attribute, optional)</i>: Select the method used
+    to calculate the position of each step. This may be "DeltaR",
+    "DeltaU", or "DeltaV". If this attribute is not set, the
+    default/recommended value is used (currently "DeltaU").
+  </li>
+  <li>
+    <b>UMode</b> <i>(attribute, optional)</i>: Select the method used
+    to calculate the energy of each step. This may be "Left", "Right",
+    "Midpoint", "MidVolume", "Virial", or "Volume". If this attribute
+    is not set, the default/recommended value is used (currently
+    "Volume"). If "Virial" is selected, the <b>Temperature</b>
+    attribute must also be set.
+  </li>
+  <li>
+    <b>Temperature</b> <i>(attribute, optional)</i>: If
+    the <b>UMode</b> is set to "Virial" you must provide the
+    temperature used for the approximation in this attribute.
+  </li>
+</ul>
 <h1><a id="idrange"></a>IDRange</h1>
 <p>
   <b>IDRange</b>s are used to specify a range
