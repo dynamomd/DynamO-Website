@@ -298,7 +298,7 @@ if ($TOC) {
 
        /*Add a iframe to the video*/
       var iframe=document.createElement("iframe");
-      iframe.src = "http://www.youtube.com/embed/".concat(youtubecode).concat("?rel=0;autoplay=1;vq=hd1080");
+      iframe.src = "https://www.youtube.com/embed/".concat(youtubecode).concat("?rel=0;autoplay=1;vq=hd1080");
       iframe.width = currentWidth;
       iframe.height = currentHeight;
       iframe.frameBorder = "0";
