@@ -85,11 +85,11 @@ dynamod -m 1 -C 10 -d 0.5 --i1 0 -r 1 -o config.start.xml
 #Compress the multicomponent system to a higher density
 dynarun config.start.xml --engine=3 --target-pack-frac 0.3 -o config.compressed.xml
 #Add a thermostat, to allow us to control the temperature
-dynamod config.compressed.xml -T 1.5 -o config.thermostatted.xml
+dynamod config.compressed.xml -T 1.5 -Z -o config.thermostatted.xml
 #Equilibrate the system using the thermostat to set the temperature
 dynarun config.thermostatted.xml -c 1000000 -o config.thermostatted.xml
 #Now collect data on the system
-dynamod config.thermostatted.xml -T 0 -o config.prerun.xml
+dynamod config.thermostatted.xml -T 0 -Z -o config.prerun.xml
 dynarun config.prerun.xml -c 1000000 -o config.end.xml -L MSD
 <?php codeblockend("brush: shell;"); ?>
 <p>
@@ -97,7 +97,7 @@ dynarun config.prerun.xml -c 1000000 -o config.end.xml -L MSD
   run to collect output data and include some output plugins.
 </p>
 <?php codeblockstart(); ?>
-dynamod config.thermostatted.xml -T 0 -o config.prerun.xml
+dynamod config.thermostatted.xml -T 0 -Z -o config.prerun.xml
 dynarun config.prerun.xml -c 1000000 -o config.end.xml -L MSD
 
 <?php codeblockend("brush: shell;"); ?>
@@ -406,15 +406,15 @@ Mode 1: Mono/Multi-component square wells
   and then equilibrate the system.
 </p>
 <?php codeblockstart(); ?>
-dynamod config.compressed.xml -T 1.5 -o config.thermostatted.xml
-dynarun config.thermostatted.xml -Z -c 1000000 -o config.thermostatted.xml
+dynamod config.compressed.xml -T 1.5 -Z -o config.thermostatted.xml
+dynarun config.thermostatted.xml -c 1000000 -o config.thermostatted.xml
 <?php codeblockend("brush: shell;"); ?>
 <p>
   Once this is done, we'll disable the thermostat and perform another
   run to collect output data and include some output plugins.
 </p>
 <?php codeblockstart(); ?>
-dynamod config.thermostatted.xml -T 0 -o config.prerun.xml
+dynamod config.thermostatted.xml -T 0 -Z -o config.prerun.xml
 dynarun config.prerun.xml -c 1000000 -o config.end.xml -L MSD -L RadialDistribution
 <?php codeblockend("brush: shell;"); ?>
 <p>
