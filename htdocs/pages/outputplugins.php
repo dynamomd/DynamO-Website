@@ -688,7 +688,7 @@ dynarun config.xml -c 1000000 -L MFT:BinWidth=0.5,Length=100
   used here is:
 
   \[\Delta t\,\mathbf{L}_{qq} (\Delta t) =
-  \frac{1}{2\,V\,k_B^2\,T^2}\left\langle \left[\phi_{q}(t_0,\Delta
+  \frac{1}{2\,V\,k_B\,T}\left\langle \left[\phi_{q}(t_0,\Delta
   t)\right]^2\right\rangle_{t_0} \]
 
   where $\Delta t$ is the correlation time, the angle brackets
