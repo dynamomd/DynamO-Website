@@ -315,8 +315,13 @@ BOOST_BUILD_PATH=~/boost/tools/build/v2/ ~/boost/bjam install link=static runtim
 export CPATH=~/boost/:$CPATH
 export LIBRARY_PATH=~/boost/stage/lib/:$LIBRARY_PATH<?php codeblockend("brush: shell;"); ?>
 <h1>Troubleshooting</h1>
+<h2>Configuration checks say No, why?</h2>
 <p>
-  Here, common build errors will be discussed.
+  If you're trying to enable a feature, or simply get the code to
+  build you may be stopped by the configuration checks. To figure out
+  why a configuration check is failing, take a look
+  at <i>build-dir/config.log</i>. This is where the output of each
+  configuration check is stored.
 </p>
 <h2>Running make or bjam gives "rule check-target-builds unknown" error</h2>
 <p>
