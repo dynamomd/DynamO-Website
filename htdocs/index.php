@@ -262,8 +262,7 @@ if ($TOC) {
     <meta name="google-site-verification" content="atSxig_hk_QoQxF4dobExHXxGUIt57ToZf3g_welkB0" />
     <link rel="stylesheet" type="text/css" href="/style/style.css" />
     <?php if ($syntaxhighlighter) { ?>
-    <link href="/syntaxhighlighter/styles/shThemeDynamO.css" type="text/css" rel="stylesheet" />
-    <link href="/syntaxhighlighter/styles/shCore.css" type="text/css" rel="stylesheet" />
+    <link href="http://alexgorbatchev.com/pub/sh/current/styles/shThemeEclipse.css" rel="stylesheet" type="text/css" />
     <?php } ?>
     <!--[if lt IE 10]><link rel="stylesheet" href="/style/ie-css3-support.css" type="text/css"/><![endif]-->
     <link rel="icon" type="image/png" href="/images/favicon.png" />
@@ -349,22 +348,22 @@ if ($TOC) {
     <!-- JAVASCRIPT -->
     <!-- SYNTAXHIGHLIGHTER -->
     <?php if ($syntaxhighlighter) { ?>
-    <script type="text/javascript" src="/syntaxhighlighter/scripts/shCore.js"></script>
-    <script type="text/javascript" src="/syntaxhighlighter/scripts/shAutoloader.js"></script>
+    <script src="http://alexgorbatchev.com/pub/sh/current/scripts/shCore.js" type="text/javascript"></script>
+    <script src="http://alexgorbatchev.com/pub/sh/current/scripts/shAutoloader.js" type="text/javascript"></script>
     <script type="text/javascript">
       SyntaxHighlighter.autoloader(
-      'cpp c /syntaxhighlighter/scripts/shBrushCpp.js',
-      'bash shell script /syntaxhighlighter/scripts/shBrushBash.js',
-      'xml /syntaxhighlighter/scripts/shBrushXml.js',
-      'xpath /syntaxhighlighter/scripts/shBrushXPath.js',
-      'text plain /syntaxhighlighter/scripts/shBrushPlain.js',
-      'python /syntaxhighlighter/scripts/shBrushPython.js'
+      'cpp c http://alexgorbatchev.com/pub/sh/current/scripts/shBrushCpp.js',
+      'bash shell script http://alexgorbatchev.com/pub/sh/current/scripts/shBrushBash.js',
+      'xml http://alexgorbatchev.com/pub/sh/current/scripts/shBrushXml.js',
+      'xpath http://alexgorbatchev.com/pub/sh/current/scripts/shBrushXPath.js',
+      'text plain http://alexgorbatchev.com/pub/sh/current/scripts/shBrushPlain.js',
+      'python http://alexgorbatchev.com/pub/sh/current/scripts/shBrushPython.js'
       );
       SyntaxHighlighter.all();</script>
     <?php } ?>
     <!-- MATHJAX -->
     <?php if ($mathjax) { ?>
-    <script type="text/javascript" src="/MathJax/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+    <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
     </script>
     <script type="text/x-mathjax-config">
       MathJax.Hub.Config({
