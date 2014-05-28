@@ -9,15 +9,10 @@
  ?>
 <?php printTOC(); ?>
 <p>
-  The user documentation for DynamO comes in the form of a set of
-  tutorials which take you through the fundamentals and lead you into
-  more advanced applications of the code. There are also a set of
-  references which you can use to explore any system not directly
-  discussed in the tutorials. Some frequently asked questions are also
-  answered in the <a href="/index.php/FAQ">FAQ page</a>.  If the
-  system you wish to simulate is not covered in the tutorials, but is
-  supported in the <a href="/index.php/features">features</a>, please
-  feel free to
+  Here are the tutorials and reference documentation for DynamO. If
+  the system you wish to simulate is not covered in the tutorials, but
+  is listed in the <a href="/index.php/features">features</a> or
+  the <a href="#publications">publications</a>, please feel free to
   <a href="/index.php/support#contacting-the-developers">contact the
   developers</a> for some advice.
 </p>
@@ -43,7 +38,7 @@
 <?php button("Frequently Asked Questions","/index.php/FAQ");?>
 <p>
 </p>
-<h1>DynamO Publications</h1>
+<h1 id="publications">DynamO Publications</h1>
 <p>
   If you find the DynamO useful and publish a paper using results
   obtained from DynamO, please help support it's development by citing
