@@ -246,6 +246,7 @@ function create_toc( &$content ) {
         $content = $toc.$content;
 }
 
+
 if ($TOC) {
   create_toc($content);
 }
