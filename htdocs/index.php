@@ -279,29 +279,42 @@ if ($TOC) {
       })();
     </script>
     <?php if ($containsvideo) { ?>
+    <script type="text/javascript" src="https://www.youtube.com/iframe_api"></script>
     <script type="text/javascript">
       function delayedLoadOfVideo(videoelemid, height, width, youtubecode)
       {
-        /*Grab the video element*/
-        videoelem = document.getElementById(videoelemid);
-        /*Calculate how big the iframe needs to be to avoid resizing it*/
-        currentWidth = videoelem.offsetWidth;
-        currentHeight = Math.ceil((currentWidth + 0.0) * height / width);
+          /*Grab the video element*/
+          videoelem = document.getElementById(videoelemid);
+	  
+          /*Calculate how big the iframe needs to be to avoid resizing it*/
+          currentWidth = videoelem.offsetWidth;
+          currentHeight = Math.ceil((currentWidth + 0.0) * height / width);
+	  
+          /*Clean up the current video element*/
+          videoelem.removeAttribute("style");
+          videoelem.removeAttribute("onclick");
+          while( videoelem.hasChildNodes() ){
+              videoelem.removeChild(videoelem.lastChild);
+          }
 
-        /*Clean up the current video element*/
-        videoelem.removeAttribute("style");
-        videoelem.removeAttribute("onclick");
-        while( videoelem.hasChildNodes() ){
-         videoelem.removeChild(videoelem.lastChild);
-        }
-
-       /*Add a iframe to the video*/
-      var iframe=document.createElement("iframe");
-      iframe.src = "https://www.youtube.com/embed/".concat(youtubecode).concat("?rel=0;autoplay=1;vq=hd1080");
-      iframe.width = currentWidth;
-      iframe.height = currentHeight;
-      iframe.frameBorder = "0";
-      videoelem.appendChild(iframe);
+	  /*Add a iframe to the video*/
+	  //var iframe=document.createElement("iframe");
+	  ////iframe.src = "https://www.youtube.com/embed/".concat(youtubecode).concat("?rel=0;autoplay=1;vq=hd1080;fs=1");
+	  //iframe.width = currentWidth;
+	  //iframe.height = currentHeight;
+	  ////iframe.frameBorder = "0";
+	  //iframe.id = 'vid'.concat(videoelemid);
+	  //videoelem.appendChild(iframe);
+	  var player;
+          player = new YT.Player(videoelemid, {
+              height: currentHeight,
+              width: currentWidth,
+              videoId: youtubecode,
+	      playerVars : { 'autoplay':1, 'modestbranding':1, 'rel':0, 'theme':'light', 'autohide':1},
+              events: {
+		  'onReady': function(event) { event.target.pauseVideo(); event.target.setPlaybackQuality('hd720'); event.target.playVideo(); }
+	      }
+          });
       }
     </script>
     <?php } if (isset($pagecss)) { echo "<style>".$pagecss."</style>";} ?>
