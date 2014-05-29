@@ -142,7 +142,6 @@ function embedAJAXvideo($filename, $youtubecode, $width, $height, $caption)
 
 /* Set the default page accessed when someone opens this file*/
 $page="frontpage";
-
 /* Check if there is a page to be loaded */
 if (isset($_GET["page"]))
 { $page = htmlspecialchars($_GET["page"]); }
