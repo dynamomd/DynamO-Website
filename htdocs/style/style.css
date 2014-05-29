@@ -7,10 +7,15 @@ p {
     background-color: #ffffff;
 }
 
-.syntaxhighlighterwrapper {
-    display:inline-block;
-    max-width:100%;
-    min-height:20px;
+.syntaxhighlighter {
+    margin:5px;
+    padding:5px;
+    border:1px solid #000000;
+    
+}
+.syntaxhighlighter .toolbar {
+    float:right;
+    padding: 0 4px;
 }
 
 .newsdivider {
