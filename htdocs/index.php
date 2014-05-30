@@ -293,7 +293,7 @@ if ($TOC) {
           /*Clean up the current video element*/
           videoelem.removeAttribute("style");
           videoelem.removeAttribute("onclick");
-          while( videoelem.hasChildNodes() ){
+          while( videoelem.hasChildNodes() ) {
               videoelem.removeChild(videoelem.lastChild);
           }
 
@@ -312,7 +312,7 @@ if ($TOC) {
               videoId: youtubecode,
 	      playerVars : { 'autoplay':1, 'modestbranding':1, 'rel':0, 'theme':'light', 'autohide':1},
               events: {
-		  'onReady': function(event) { event.target.pauseVideo(); event.target.setPlaybackQuality('hd720'); event.target.playVideo(); }
+		  //'onReady': function(event) { event.target.pauseVideo(); event.target.setPlaybackQuality('hd720'); event.target.playVideo(); }
 	      }
           });
       }
