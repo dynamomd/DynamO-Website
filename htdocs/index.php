@@ -285,7 +285,7 @@ if ($TOC) {
       {
           /*Grab the video element*/
           videoelem = document.getElementById(videoelemid);
-	  
+	  videoelem.setAttribute('style', 'background-color:#FFFFFF;');
           /*Calculate how big the iframe needs to be to avoid resizing it*/
           currentWidth = videoelem.offsetWidth;
           currentHeight = Math.ceil((currentWidth + 0.0) * height / width);
@@ -310,9 +310,10 @@ if ($TOC) {
               height: currentHeight,
               width: currentWidth,
               videoId: youtubecode,
-	      playerVars : { 'autoplay':1, 'modestbranding':1, 'rel':0, 'theme':'light', 'autohide':1},
+	      playerVars : { autoplay:1, modestbranding:1, rel:0, theme:'light', autohide:1, wmode:'opaque'},
               events: {
-		  //'onReady': function(event) { event.target.pauseVideo(); event.target.setPlaybackQuality('hd720'); event.target.playVideo(); }
+		  //Hack to get the player to run in a higher quality, you can't see much of the detail without it.
+		  'onStateChange': function(event) { if (event.data == YT.PlayerState.PLAYING) { event.target.setPlaybackQuality('highres'); } }
 	      }
           });
       }
