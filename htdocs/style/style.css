@@ -1,6 +1,45 @@
 /* Main html element styles */
 html { height: 100%; }
 
+.table-of-contents h1, .table-of-contents ul, .table-of-contents li {
+    margin:0;
+    padding:0;
+    border:none;
+    background:none;
+}
+.table-of-contents ul {
+    list-style-position: inside;
+    padding-left:1em;
+}
+.table-of-contents h1 {
+    text-align:left;
+}
+.table-of-contents {
+    background: #eeeeff;
+    font-size: 1em;
+    padding: 0 0 1em 1em;
+    float:right;
+    border-left: 2px solid #113366;
+    border-bottom: 2px solid #113366;
+    border-radius:0 15px;
+    margin:-15px -15px 0 0;
+}
+.table-of-contents a {
+    text-decoration: none;
+}
+.table-of-contents a:hover,
+.table-of-contents a:active {
+    text-decoration: underline;
+}
+
+h1:target, h2:target, h3:target {
+    animation: highlight 1s;
+}
+
+@keyframes highlight {
+    from { background-color: yellow; }
+    to { background-color: white; }
+}
 
 p {
     /* Android autofit bugfix */
@@ -40,6 +79,7 @@ h1 {
     text-align:center;
     margin-top:1em;
     color: #113366;
+    min-width:20%;
     /* Android autofit bugfix */
     background-color: #ffffff;
 }
@@ -69,7 +109,7 @@ li {
     margin:5px;     
     /* Android autofit bugfix */
     background-color: #ffffff;
- }
+}
 
 .rounded {
     border-radius: 15px;
@@ -212,26 +252,26 @@ li {
 #TOC li { 
     /* Android autofit bugfix */
     background-color:#ccddee;
- }
+}
 
 #TOC ol {
     /* Android autofit bugfix */
     list-style-type: square;
     background-color:#ccddee;
     padding-left:15px;
- }
+}
 
 #TOC ol ol {
     list-style-type: disc;
     background-color:#ccddee;
     padding-left:20px;
- }
+}
 
 #TOC ol ol ol {
     list-style-type: circle;
     background-color:#ccddee;
     padding-left:20px;
- }
+}
 
 #TOC #header {
     float:right;
@@ -304,6 +344,17 @@ li {
 	box-sizing:border-box;
     }
 
+    .table-of-contents {
+	float:none;
+	border-radius:0;
+	margin:0;
+	border: 2px solid #113366;
+    }
+
+    h1,h2,h3,p {
+	clear:both;
+    }
+
     #menu a.selected {
 	border-bottom:2px solid #000000;
     }
@@ -315,7 +366,7 @@ li {
 	padding:0;
 	margin:5px;
 	border-radius: 15px;
-
+	
     }
 
     #contentwrapper {

@@ -160,96 +160,6 @@ include_once("pages/".$page.".php");
 $content = ob_get_clean();
 
 $contentdate = date("l jS F Y ", filemtime("pages/".$page.".php"));
-
-function create_toc( &$content ) {
-	preg_match_all( '/<h([1-3])(.*)>([^<]+)<\/h[1-6]>/i', $content, $matches, PREG_SET_ORDER );
-
-	global $anchors; 
-	$anchors = array();
-        $prevlvl = 1;
-	$toc 	 = '<div id="TOC"><div id="header">Table of Contents</div>'."\n".'<ol class="toc">';
-	$lineopen = False;
- 	/*Scan over each heading in the document*/
-	foreach ( $matches as $heading ) {
-		$lvl = $heading[1];
-
-		/*Figure out the anchor id of the heading and if we need to add one*/
-		$ret = preg_match( '/id=[\'|"](.*)?[\'|"]/i', stripslashes($heading[2]), $anchor );
-		if ( $ret && $anchor[1] != '' ) {
-			$anchor = stripslashes( $anchor[1] );
-			$add_id = false;
-		} else {
-			$anchor = preg_replace( '/\s+/', '-', preg_replace('/[^a-z\s]/', '', strtolower( $heading[3] ) ) );
-			$add_id = true;
-		}
- 
-		/*Check if the new anchor is unique, alter it if it is not*/
-		if ( !in_array( $anchor, $anchors ) ) {
-			$anchors[] = $anchor;
-		} else {
-			$orig_anchor = $anchor;
-			$j = 2;
-			while ( in_array( $anchor, $anchors ) ) {
-				$anchor = $orig_anchor.'-'.$j;
-				$j++;
-			}
-			$anchors[] = $anchor;
-		}
- 
-		/*Add the anchor id if needed*/
-		if ( $add_id ) {
-		 $content = substr_replace( $content, '<h'.$lvl.' id="'.$anchor.'"'.$heading[2].'>'.$heading[3].'</h'.$lvl.'>', strpos( $content, $heading[0] ), strlen( $heading[0]));
-		}
- 
-		/*Grab the title of the heading if needed.*/
-		$ret = preg_match( '/title=[\'|"](.*)?[\'|"]/i', stripslashes( $heading[2] ), $title );
-		if ( $ret && $title[1] != '' )
-			$title = stripslashes( $title[1] );
-		else	
-			$title = $heading[3];
-		$title = trim( strip_tags( $title ) );
-		
-		/*Open or close lists as needed*/
-                while ( $prevlvl < $lvl ) {
-		 if (!$lineopen) {
-		 $toc .= '<li style="list-style-type: none;">';
-		 }
-                 $lineopen = False;
-		 $toc .= "\n".'<ol>';
-                 $prevlvl++;
-                }
-                while ( $prevlvl > $lvl ) {
-		 if ($lineopen) {
-		 $toc .= "</li>";
-		 }
-                 $toc .= "\n</ol>";
-                 $lineopen = True; //ol elements are always in a line
-                 $prevlvl--;
-                }
-                /* Add the list item*/
-		 if ($lineopen) {
-		 $toc .= "</li>\n";
-		 }
-		$toc .= "\n<li>".'<a href="#'.$anchor.'">'.$title."</a>";
-                $lineopen = True;
-		$prevlvl = $lvl;
-	}
- 
-	unset( $anchors );
- 
-	while ( $lvl > 1 ) {
-	  $toc .= "\n</ol>";
-	 $lvl--;
-	}
- 
-	$toc .= '</ol></div>'."\n";
-        $content = $toc.$content;
-}
-
-
-if ($TOC) {
-  create_toc($content);
-}
 ?>
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -278,6 +188,8 @@ if ($TOC) {
       var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
       })();
     </script>
+    <script src="/prefixfree.min.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
     <?php if ($containsvideo) { ?>
     <script type="text/javascript" src="https://www.youtube.com/iframe_api"></script>
     <script type="text/javascript">
@@ -393,6 +305,31 @@ if ($TOC) {
 	webFont: "TeX"
       });
     </script>
-    <?php } ?>    
+    <?php } ?>
+    <?php if ($TOC) { ?>
+    <script>
+var ToC = "<nav role='navigation' class='table-of-contents'>" +
+    "<h1>Contents:</h1>" +
+    "<ul>";
+var newLine, el, title, linkid;
+$("h1,h2").each(function() {
+    el = $(this);
+    title = el.text();
+    if (el.is('[id]')) {
+	linkid = el.attr('id');
+    } else {
+	//id tags must start with a letter, so strip any invalid characters
+	linkid = title.replace(/[^a-z0-9]+/gi,'');
+    }
+    el.attr("id", linkid);
+    listyle=""
+    if (el.is("h2"))
+	listyle='style="margin-left:2em;"'
+    ToC += "<li "+listyle+"><a href='#" + linkid + "'>" + title +"</a></li>";
+});
+ToC +="</ul>" +"</nav>";
+$("#contentwrapper").prepend(ToC);
+    </script>
+    <?php } ?>
   </body>
 </html>
