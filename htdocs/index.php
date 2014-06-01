@@ -309,7 +309,7 @@ $contentdate = date("l jS F Y ", filemtime("pages/".$page.".php"));
     <?php if ($TOC) { ?>
     <script>
 var ToC = "<nav role='navigation' class='table-of-contents'>" +
-    "<h1>Contents:</h1>" +
+    "<div id=\"table-of-contents-title\">Table of Contents</div><div style=\"clear:both;\"></div>" +
     "<ul>";
 var newLine, el, title, linkid;
 $("h1,h2").each(function() {

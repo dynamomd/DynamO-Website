@@ -1,7 +1,7 @@
 /* Main html element styles */
 html { height: 100%; }
 
-.table-of-contents h1, .table-of-contents ul, .table-of-contents li {
+.table-of-contents ul, .table-of-contents li {
     margin:0;
     padding:0;
     border:none;
@@ -11,22 +11,33 @@ html { height: 100%; }
     list-style-position: inside;
     padding-left:1em;
 }
-.table-of-contents h1 {
-    text-align:left;
+#table-of-contents-title {
+    background: #ffffff;
+    border-left:2px solid #000000;
+    border-bottom:2px solid #000000;
+    border-radius:0 15px;
+    font-weight:bold;
+    margin:0 -15px 0 auto;
+    padding:0 5px;
+    float:right;
 }
+
 .table-of-contents {
+    min-width:300px;
     background: #eeeeff;
     font-size: 1em;
-    padding: 0 0 1em 1em;
+    padding: 0 1em 1em 1em;
     float:right;
     border-left: 2px solid #113366;
     border-bottom: 2px solid #113366;
     border-radius:0 15px;
     margin:-15px -15px 0 0;
 }
+
 .table-of-contents a {
     text-decoration: none;
 }
+
 .table-of-contents a:hover,
 .table-of-contents a:active {
     text-decoration: underline;
@@ -344,7 +355,7 @@ li {
 	box-sizing:border-box;
     }
 
-    .table-of-contents {
+    .table-of-contents, #table-of-contents-title {
 	float:none;
 	border-radius:0;
 	margin:0;
