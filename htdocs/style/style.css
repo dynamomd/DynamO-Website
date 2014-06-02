@@ -23,7 +23,6 @@ html { height: 100%; }
 }
 
 .table-of-contents {
-    min-width:300px;
     background: #eeeeff;
     font-size: 1em;
     padding: 0 1em 1em 1em;
