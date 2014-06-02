@@ -56,6 +56,9 @@
 </p>
 <ul>
   <li>
+    M. N. Bannerman, S. Strobl, A. Formella, and T. Poschel, <a href="http://dx.doi.org/10.1007/s40571-014-0021-8">"Stable algorithm for event detection in event-driven particle dynamics,"</a> <i>Comp. Part. Mech.</i>, <b>1</b>, 191-198 (2014)
+  </li>
+  <li>
     C. Thomson, L. Lue, and
     M. N. Bannerman, <a href="http://dx.doi.org/10.1063/1.4861669">"Mapping
     continuous potentials to discrete
