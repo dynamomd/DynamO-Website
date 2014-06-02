@@ -250,14 +250,14 @@ ETA 11s, Events 400k, t 26.6342, <MFT> 0.133171, T 2.48267, U -0.724
   System</a> event by hand:
 </p>
 <?php codeblockstart();?>
-<System Type="Andersen" Name="Thermostat" MFT="1.0" Temperature="1.0" SetPoint="0.05" SetFrequency="100">
+<System Type="Andersen" Name="Thermostat" MFT="2.0" Temperature="1.0" SetPoint="0.05" SetFrequency="100">
   <IDRange Type="All"/>
 </System>
 <?php codeblockend("brush: xml;"); ?>
 <p>
-  With the thermostat added and the temperature set to 1, we can see
-  what the result is on the temperature of the system. Again, running
-  the system
+  With the thermostat added and the temperature set to $k_B\,T=2$, we
+  can see what the result is on the temperature of the system. Again,
+  running the system
 </p>
 <?php codeblockstart(); ?>dynarun config.out.xml.bz2 -c 1000000<?php codeblockend("brush: shell;"); ?>
 <p>
@@ -298,7 +298,8 @@ ETA 7s, Events 600k, t 39.2339, <MFT> 0.134103, T 2.02729, U -0.79425
 <p>
   Here its easy to see that the mean free time is relatively stable as
   well. It is very difficult to conclusively prove that we're at
-  steady state but we're now ready to collect some data.
+  steady state but previous experience with this system tells us that
+  we're now ready to collect some data.
 <h1 id="datacollection">Collecting Data</h1>
 <p>
   At this point we have a system which has been equilibrated with a
@@ -394,10 +395,10 @@ bunzip2 output.xml.bz2
   
   \[\sigma_T=\sqrt{\left\langle T^2\right\rangle - \left\langle T\right\rangle^2} \approx0.009079\]
 
-  Again, this value is system size dependent. Interestingly, this
-  value is related the heat capacity of the system, but we will
-  approach this property through the configurational internal energy
-  instead.
+  Again, this value is system size dependent. Interestingly, in NVE
+  simulations this value is related the heat capacity of the system;
+  however, we will calculate this property through the configurational
+  internal energy below.
 </p>
 <p>
   Taking a look at
@@ -409,7 +410,7 @@ bunzip2 output.xml.bz2
   where this is the total energy the system has through interactions
   (if you want the specific configurational internal energy you will
   need to divide by $N$). We could again calculate the standard
-  deviation which is related to the residual heat capacity, $C_V$, by
+  deviation which is related to the residual heat capacity, $C_V^{ex.}$, by
   the following formula:
   
   \[\frac{C_v^{ex.}}{k_B}=\frac{\left\langle U_{conf.}^2\right\rangle

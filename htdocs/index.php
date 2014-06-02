@@ -209,23 +209,15 @@ $contentdate = date("l jS F Y ", filemtime("pages/".$page.".php"));
               videoelem.removeChild(videoelem.lastChild);
           }
 
-	  /*Add a iframe to the video*/
-	  //var iframe=document.createElement("iframe");
-	  ////iframe.src = "https://www.youtube.com/embed/".concat(youtubecode).concat("?rel=0;autoplay=1;vq=hd1080;fs=1");
-	  //iframe.width = currentWidth;
-	  //iframe.height = currentHeight;
-	  ////iframe.frameBorder = "0";
-	  //iframe.id = 'vid'.concat(videoelemid);
-	  //videoelem.appendChild(iframe);
-	  var player;
-          player = new YT.Player(videoelemid, {
+          new YT.Player(videoelemid, {
               height: currentHeight,
               width: currentWidth,
               videoId: youtubecode,
 	      playerVars : { autoplay:1, modestbranding:1, rel:0, theme:'light', autohide:1, wmode:'opaque'},
               events: {
 		  //Hack to get the player to run in a higher quality, you can't see much of the detail without it.
-		  'onStateChange': function(event) { if (event.data == YT.PlayerState.PLAYING) { event.target.setPlaybackQuality('highres'); } }
+		  'onStateChange': function(event) { if (event.data == YT.PlayerState.BUFFERING) { event.target.setPlaybackQuality('hd720'); } },
+		  'onReady': function(event) { event.target.setPlaybackQuality('hd720'); }
 	      }
           });
       }
