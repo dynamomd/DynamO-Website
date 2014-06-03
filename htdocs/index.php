@@ -216,8 +216,8 @@ $contentdate = date("l jS F Y ", filemtime("pages/".$page.".php"));
 	      playerVars : { autoplay:1, modestbranding:1, rel:0, theme:'light', autohide:1, wmode:'opaque'},
               events: {
 		  //Hack to get the player to run in a higher quality, you can't see much of the detail without it.
-		  'onStateChange': function(event) { if (event.data == YT.PlayerState.BUFFERING) { event.target.setPlaybackQuality('hd720'); } },
-		  'onReady': function(event) { event.target.setPlaybackQuality('hd720'); }
+		  'onStateChange': function(event) { if (event.data == YT.PlayerState.BUFFERING) { event.target.setPlaybackQuality('highres'); } },
+		  'onReady': function(event) { event.target.setPlaybackQuality('highres'); }
 	      }
           });
       }

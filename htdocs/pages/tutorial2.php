@@ -49,25 +49,28 @@ Usage : dynamod <OPTIONS>...[CONFIG FILE]
 <ol>
   <li>
     Create an initial "configuration" file, which is the starting
-    point of the simulation. This file contains a description of all
-    particles and their interactions.
+    point of the simulation.
   </li>
   <li>
-    Use the initial configuration file as the start of a simulation to
-    allow the configuration to relax and come into equilibrium. The
-    output of this stage is an "equilibrated" configuration file.
+    Use the initial configuration file as the start of a
+    simulation. Equilibrate or "relax" this configuration by running
+    it through time in the simulation. The output of this stage is
+    hopefully then an "equilibrated" configuration file.
   </li>
   <li>
     Use the equilibrated configuration as the start of a simulation to
-    collect data. You will generate a final configuration file, which
-    can be used as the starting point for other simulations, and an
-    output file, containing all the data collected by DynamO.
+    collect data. You will also generate a final configuration file
+    which can be used as the starting point for other simulations.
   </li>
 </ol>
 <p>
-  This tutorial will give you a general understanding of these steps
-  and later tutorials will go into the details.
+  This tutorial will give you a general understanding of these steps.
 </p>
+<div style="clear:right;float:right;">
+<?php embedAJAXvideo("hardspheres", "tn6Cz0tNPuU", 400, 250, "A video
+    of the hard sphere system which is generated and simulated in this
+    tutorial."); ?>
+</div>
 <p>
   In this tutorial you will simulate a hard-sphere fluid. The hard
   sphere is a simple molecular model used to capture the fundamental
@@ -80,19 +83,10 @@ Usage : dynamod <OPTIONS>...[CONFIG FILE]
   assigned random velocities. The particles are then coloured by their
   ID number and the simulation is "run".
 </p>
-<div style="clear:right;float:right;">
-<?php embedAJAXvideo("hardspheres", "tn6Cz0tNPuU", 400, 250, "A video
-    of the hard sphere system which is generated and simulated in this
-    tutorial."); ?>
-</div>
 <p>
-  In the video you may notice some particles popping in and out of
-  view, these are particles which are moving from one side of the
-  simulation volume to the other when they pass through the periodic
-  boundary condition (you can see some red particles disappear on the
-  left and instantaneously reappear on the right). We use periodic
-  boundary conditions as they allow us to simulate a small amount of
-  fluid as though it is part of an infinite/bulk system (see
+  Here we use periodic boundary conditions as they allow us to
+  simulate a small amount of fluid as though it is part of an
+  infinite/bulk system (see
   the <a href="/index.php/reference#typepbc">reference</a> entry for
   more details).
 </p>
@@ -100,16 +94,19 @@ Usage : dynamod <OPTIONS>...[CONFIG FILE]
   As the simulation proceeds, the initial lattice structure rapidly
   disappears. However, it is obvious from the clear colour banding
   that the particles have not actually moved very far from their
-  initial positions. The system still has a "memory" of its initial
-  configuration and we will need to equilibrate the system before we
-  can collect data.
+  initial positions. The system still has a configurational "memory"
+  of its initial state. If we're trying to measure the ensemble
+  average of properties, like the diffusion coefficient, we will need
+  to ensure that the initial state has no effect on the results
+  collected.
 </p>
 <p>
-  To equilibrate the system, the simulation is then set to run at full
-  speed for a few thousand collisions and then slowed down again to
-  take a look at the results. We can see that the simulation has
-  equilibrated well and the coloured particles are well mixed. This
-  system is now ready to sample "equilibrium" data from.
+  To equilibrate the system and move it away from this initial state,
+  the simulation is then set to run at full speed for a few thousand
+  collisions and then slowed down again to take a look at the
+  results. We can see that the simulation has equilibrated well and
+  the coloured particles are well mixed. This system should now be
+  ready to sample "equilibrium"/ensemble-average data from.
 </p>
 <p>
   Let's take a look at how this simulation was performed in DynamO...
@@ -127,9 +124,8 @@ Usage : dynamod <OPTIONS>...[CONFIG FILE]
   the <a href="/index.php/FAQ#q-what-are-the-units-of-dynamo">FAQ on
   the units of DynamO</a>).  You want to create the system, and then
   run it for $10^6$ collisions to equilibrate, then carry on and run
-  it for another $10^6$ collisions to collect some data for your
-  research. All you have to do is run the following commands in your
-  terminal/shell:
+  it for another $10^6$ collisions to collect some data. All you have
+  to do is run the following commands in your terminal/shell:
 </p>
 <?php codeblockstart(); ?>
 dynamod -m 0 -C 7 -d 0.5 --i1 0 -r 1 -o config.start.xml
@@ -137,9 +133,7 @@ dynarun config.start.xml -c 1000000 -o config.equilibrated.xml
 dynarun config.equilibrated.xml -c 1000000 -o config.end.xml
 <?php codeblockend("brush: shell;"); ?>
 <p>
-  But what were those three commands and what do the options/switches
-  (-c -o -m) control? We'll look at each command individually in the
-  following sections.
+  We'll look at each command individually in the following sections.
 </p>
 <h1>Configuration files and dynamod</h1>
 <p>
@@ -300,7 +294,7 @@ Mode 0: Monocomponent hard spheres
   can physically achieve for mono-sized hard spheres without
   generating overlaps. It also provides a good starting point for
   other particle shapes and types too, so you'll often see rods,
-  polymers, and other shapes initially arranged in an FCC lattice!
+  polymers, and other shapes initially arranged in an FCC lattice.
 </p>
 <p>
   So, back to <b>dynamod</b>. When you pass <em>-C7 --i1 0</em>
@@ -441,7 +435,7 @@ Simulation: Config written to config.end.xml<?php codeblockend("brush: plain;");
   data outputted by the dynarun command. In the following section we
   discuss the contents of the <em>output.xml.bz2</em> file.
 </p>
-<h2>Visualising the simulation</h2>
+<h2>Visualising the simulation (optional)</h2>
 <p>
   If you want to visualise a configuration or simulation, you replace
   the <b>dynarun</b> program with the <b>dynavis</b> program like so:
@@ -499,12 +493,11 @@ Simulation: Config written to config.end.xml<?php codeblockend("brush: plain;");
 <p>
   Here you can see that the temperature is almost exactly 1. Hard
   spheres have no configurational internal energy, so once you set
-  their temperature it will not fluctuate. In this case, we don't need
-  a thermostat to hold the temperature at 1. 
+  their temperature in an NVE simulation it will not fluctuate.
 </p>
 <p>
-  An interesting property for the hard sphere system is the pressure,
-  conveniently available under the Pressure tag:
+  A more interesting property for the hard sphere system is the
+  pressure, conveniently available under the Pressure tag:
 </p>
 <?php xmlXPathFile("pages/tutorial2output.xml", "//Pressure"); ?>
 <p>
@@ -527,7 +520,7 @@ $$
 <p>
   More information on the pressure tag is available in
   the <a href="/index.php/outputplugins#pressure">reference
-  documentation</a>:
+  documentation for the Pressure tag</a>:
 </p>
 <p>
   There are some other properties available, such as the

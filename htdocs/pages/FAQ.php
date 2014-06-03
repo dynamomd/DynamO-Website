@@ -122,8 +122,8 @@
   $N$, and the volume of the system, $V$. Typically, the volume of the
   system is expressed through the reduced number density
   $\rho^*=\sigma^3\,N/V$. Therefore, the only parameters ever varied
-  in a study of monocomponent hard-sphere systems are the dimensionlessdensity
-  $\rho^*$ and the particle count.
+  in a study of monocomponent hard-sphere systems are the
+  dimensionless density $\rho^*$ and the particle count.
 </p>
 <p>
   The <b>dynamod</b> mode for creating hard sphere systems therefore
@@ -149,8 +149,8 @@
 <h1 id="q-how-does-dynamo-collect-exact-timeaverages">Q: How does DynamO collect exact time-averages?</h1>
 <p>
   Short answer: Many properties have a constant value between events,
-  and so the following equation for the time average can be solved
-  analytically:
+  and so the following equation for the time average can be solved in
+  a piecewise analytical fashion:
 
   \[\left\langle A\right\rangle=t_{sim}^{-1}\int_0^{t_{sim}}A(t)\,{\rm d}t\]
   
@@ -362,8 +362,8 @@ fraction ($\eta$) instead of number density ($\rho$)?</h1>
   When DynamO writes out configuration files for simulations with
   <a href="/index.php/reference#typepbc">Periodic Boundary Conditions
   (PBC)</a>, all particles are "wrapped" into the main image which is
-  in the range $(\pm L_x, \pm L_y,\pm L_z)$ and $L_x$, $L_y$, and
-  $L_z$ are given by
+  in the range $(\pm L_x/2,\, \pm L_y/2,\, \pm L_z/2)$ and $L_x$,
+  $L_y$, and $L_z$ are given by
   the <a href="/index.php/reference#simulationsize">SimulationSize
   tag</a>.
 </p>
