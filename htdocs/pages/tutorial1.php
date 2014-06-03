@@ -39,12 +39,18 @@
   optional dependencies which, if they're installed, will activate
   extra features such as saving visualisations directly to video.
 </p>
-<h2>Essential libraries</h2>
+<h2>Essential programs and libraries</h2>
 <p>
   These programs and libraries <b>must</b> be installed if you want to
   compile DynamO:
 </p>
 <ul>
+  <li>
+    <a href="http://git-scm.com/">git</a> - Git is the version control
+    software which you use to download the code. If you cannot install
+    this, you can download a source file instead.<br/><b>Ubuntu
+    Package</b>: git.
+  </li>
   <li>
     <a href="http://gcc.gnu.org">gcc</a>
     and <a href="http://www.gnu.org/software/make/">make</a> - You
@@ -65,8 +71,9 @@
     libboost-all-dev above.
   </li>
   <li>
-    <a href="http://judy.sourceforge.net/">libJudy</a> - DynamO uses
-    Judy arrays for storing interaction information. <br/><b>Ubuntu
+    <a href="http://judy.sourceforge.net/">libJudy</a> (Optional) -
+    DynamO uses Judy arrays for storing interaction information. This
+    significantly speeds up stepped interactions. <br/><b>Ubuntu
     Package</b>: libjudy-dev.
   </li>
 </ul>
@@ -76,7 +83,7 @@
   packages), please see the section on <a href="#with-boost">using a
   local Boost installation</a> below.
 </p>
-<h2>Visualiser requirements</h2>
+<h2>Visualiser requirements (Optional)</h2>
 <p>
   These programs and libraries only need to be installed if you want
   to use the visualiser supplied with DynamO:
@@ -114,12 +121,9 @@
 <p>
   If this command fails, it could be because you don't have an
   internet connection or you are behind a proxy. Please ensure that
-  your proxy details are correctly set up in git (e.g. for Aberdeen
-  university clusters and computers you will need to set the proxy
-  using the following command, <i>git config --global http.proxy
-  http://proxy.abdn.ac.uk:8080</i>). If you have an old version of git
-  (such as the tom cluster in Manchester), you can try using the git
-  protocal using the following command:
+  your proxy details are correctly set up in git. If you have an old
+  version of git (such as the tom cluster in Manchester), you can try
+  using the git protocal using the following command:
 </p>
 <?php codeblockstart(); ?>git clone git://github.com/toastedcrumpets/DynamO.git<?php codeblockend("brush: shell;"); ?>
 <p>
@@ -221,10 +225,10 @@ sudo make install<?php codeblockend("brush: shell;"); ?>
 <h1>Building debugging executables</h1>
 <p>
   If you're having some trouble with DynamO, you can build a debug
-  version of the simulator once a normal version has been built. This
-  version is slower than the standard version, but contains many extra
-  sanity checks and verbose error reports. To create the debugging
-  version just run the following command in the DynamO directory
+  version. This version is slower than the standard version, but
+  contains many extra sanity checks and verbose error reports. To
+  create the debugging version just run the following command in the
+  DynamO directory
 </p>
 <?php codeblockstart(); ?>make debug
 sudo make install<?php codeblockend("brush: shell;"); ?>
@@ -293,7 +297,7 @@ wget http://downloads.sourceforge.net/project/boost/boost/1.53.0/boost_1_53_0.ta
 <?php codeblockstart(); ?>cd ~/
 git clone https://github.com/toastedcrumpets/DynamO.git
 cd ~/DynamO/
-BOOST_BUILD_PATH=~/boost/tools/build/v2/ ~/boost/bjam install link=static runtime-link=static include=~/boost/ linkflags="-L ~/boost/stage/lib/"<?php codeblockend("brush: shell;"); ?>
+BOOST_BUILD_PATH=~/boost/tools/build/v2/ ~/boost/bjam install include=~/boost/ linkflags="-L ~/boost/stage/lib/"<?php codeblockend("brush: shell;"); ?>
 <p>
   The option <i>link=static</i> and <i>runtime-link=static</i> ensures
   that the boost libraries are linked statically so that you can run
