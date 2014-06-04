@@ -62,6 +62,7 @@ pre {
     margin:5px;
     padding:5px;
     border:1px solid #000000;
+    white-space: pre-wrap;
 }
 
 .newsdivider {

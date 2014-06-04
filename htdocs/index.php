@@ -118,7 +118,7 @@ $containsvideo = false;
 
 function embedfigure($filename, $width, $height, $caption)
 { ?>
-<div class="figure" style="width:100%;max-width:<?=$width?>px; vertical-align:middle;">
+<div class="figure" style="width:100%;max-width:<?=$width+10?>px; vertical-align:middle;padding:5px;">
   <a href="<?=$filename?>">
     <img alt="See descriptive caption below" style="width:100%;max-width:<?=$width?>px;" src="<?=$filename?>">
   </a>
