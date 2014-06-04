@@ -51,20 +51,20 @@
 <TagName>
   Some contained data, maybe some more XML tags.
 </TagName>
-<?php codeblockend("brush: xml;"); ?>
+<?php codeblockend("xml"); ?>
 <p>
   or they can be self closing if they don't contain any tags/data:
 </p>
 <?php codeblockstart(); ?>
 <TagName/>
-<?php codeblockend("brush: xml;"); ?>
+<?php codeblockend("xml"); ?>
 <p>
   Attributes are a way of attaching data to a tag. For example:
 </p>
 <?php codeblockstart(); ?>
 <Pet Type="Cat" Name="Tom"/>
 <Pet Type="Dog" Name="Fido"/>
-<?php codeblockend("brush: xml;"); ?>
+<?php codeblockend("xml"); ?>
 <p>
   With our data organised using XML, we need a simple way to select
   parts of it to read or edit it. The most convenient method of doing
@@ -107,7 +107,7 @@
     <Memusage MaxKiloBytes="35404"/>
   </Misc>
 </OutputData>
-<?php codeblockend("brush: xml;"); ?>
+<?php codeblockend("xml"); ?>
 <p>
   Let us say we wanted to read the number of events the simulation has
   run for. We can specify the Event attribute of the Duration tag
@@ -115,7 +115,7 @@
 </p>
 <?php codeblockstart(); ?>
 /OutputData/Misc/Duration/@Events
-<?php codeblockend("brush: xpath;"); ?>
+<?php codeblockend("xpath"); ?>
 <p>
   This XPath expression selects the Event attribute by descending from
   the root tag (<b>OutputData</b>) all the way down to
@@ -130,7 +130,7 @@
 </p>
 <?php codeblockstart(); ?>
 //Duration/@Events
-<?php codeblockend("brush: xpath;"); ?>
+<?php codeblockend("xpath"); ?>
 <p>
   Notice the double forward slash at the start? It means search
   through the whole document for the node called Duration, then try to
@@ -167,7 +167,7 @@
     ...
   </ParticleData>
 </DynamOconfig>
-<?php codeblockend("brush: xml;"); ?>
+<?php codeblockend("xml"); ?>
 <p>
   What if we wanted to select all the Pt (particle) tags so we can
   later read their P (position) tags? The following two expressions
@@ -176,7 +176,7 @@
 <?php codeblockstart(); ?>
 /DynamOconfig/ParticleData/Pt
 //Pt
-<?php codeblockend("brush: xpath;"); ?>
+<?php codeblockend("xpath"); ?>
 <p>
   So how do we select just one tag out of a whole list of tags? Well,
   the easiest way is to specify its number, like so:
@@ -184,7 +184,7 @@
 <?php codeblockstart(); ?>
 /DynamOconfig/ParticleData/Pt[1]
 //Pt[1]
-<?php codeblockend("brush: xpath;"); ?>
+<?php codeblockend("xpath"); ?>
 <p>
   Both of these expressions create a list of Pt tags, then select the
   first one to appear (in this case, the one with and ID attribute of
@@ -194,7 +194,7 @@
 </p>
 <?php codeblockstart(); ?>
 //Pt[@ID="0"]
-<?php codeblockend("brush: xpath;"); ?>
+<?php codeblockend("xpath"); ?>
 <p>
   Now we're searching for a Pt tag with an ID attribute value of
   0. These square bracket expressions are called predictates and they
@@ -203,14 +203,14 @@
 </p>
 <?php codeblockstart(); ?>
 //Pt[last()]
-<?php codeblockend("brush: xpath;"); ?>
+<?php codeblockend("xpath"); ?>
 <p>
   Or we could select the P tags of all Pt tags with an ID below
   4 using the following XPath expressions:
 </p>
 <?php codeblockstart(); ?>
 //Pt[@ID<4]/P
-<?php codeblockend("brush: xpath;"); ?>
+<?php codeblockend("xpath"); ?>
 <p>
   There is a lot more to learn about XPath expressions, but we now
   know enough to access any data we would like to from the output and
@@ -277,7 +277,7 @@ print len(PtTags)
 for PtElement in PtTags:
     PosTag = PtElement.find("P")
     print PosTag.get("x"), PosTag.get("y"), PosTag.get("z")
-<?php codeblockend("brush: python;"); ?>
+<?php codeblockend("python"); ?>
 <h2>Example: Creating a Povray file</h2>
 <p>
   Sometimes you might want to prepare a very high quality image for
@@ -335,7 +335,7 @@ PtTags = XMLDoc.findall("//Pt/P")
 #Loop over each particles position, outputting a povray object for it
 for element in PtTags:
     print "object { particle translate <", element.get("x"),",", element.get("y"),",", element.get("z"),">}"
-<?php codeblockend("brush: python;"); ?>
+<?php codeblockend("python"); ?>
 <h1>Using XMLStarlet (shell scripting)</h1>
 <p>
   The easiest way to see the effect of XPath expressions on a DynamO
@@ -354,7 +354,7 @@ for element in PtTags:
 </p>
 <?php codeblockstart(); ?>
 xmlstarlet sel -t -m '//Pt/P' -v '@x' -o ' ' -v '@y' -o ' ' -v '@z' -n config.out.xml
-<?php codeblockend("brush: shell;"); ?>
+<?php codeblockend("bash"); ?>
 <p>
   Breaking this command down, it calls xmlstarlet, places it into
   select mode (sel). Then it starts a template (-t) which is a command
@@ -397,7 +397,7 @@ xmlstarlet sel -t -m '//Pt/P' -v '@x' -o ' ' -v '@y' -o ' ' -v '@z' -n config.ou
 <p>
   First, create a system of 1372 hard spheres using the following command:
 </p>
-<?php codeblockstart(); ?>dynamod -m 0 -C 7 -d 0.5 -o config.start.xml<?php codeblockend("brush: bash;"); ?>
+<?php codeblockstart(); ?>dynamod -m 0 -C 7 -d 0.5 -o config.start.xml<?php codeblockend("bash"); ?>
 <p>
   If you take a look inside the configuration, you'll see the system
   is a 14x14x14 periodic cube, and the particle positions lie in the
@@ -412,7 +412,7 @@ xmlstarlet sel -t -m '//Pt/P' -v '@x' -o ' ' -v '@y' -o ' ' -v '@z' -n config.ou
 </p>
 <?php codeblockstart(); ?>
 //Pt[P/@x * P/@x + P/@y * P/@y + P/@z * P/@z  > 25.0]
-<?php codeblockend("brush: xpath;"); ?>
+<?php codeblockend("xpath"); ?>
 <p>
   We have used the square of the radius as the condition
   ($R^2=5^2=25$) as XPath does not support complex math functions such
@@ -427,7 +427,7 @@ P_x^2+P_y^2+P_z^2 &amp;> R^2
   XMLstarlet using its edit (ed) mode, and apply a delete (-d) action
   as follows:
 </p>
-<?php codeblockstart(); ?>cat config.start.xml | xmlstarlet ed -d '//Pt[P/@x * P/@x + P/@y * P/@y + P/@z * P/@z  > 25.0]' > config.trimmed.xml<?php codeblockend("brush: bash;"); ?>
+<?php codeblockstart(); ?>cat config.start.xml | xmlstarlet ed -d '//Pt[P/@x * P/@x + P/@y * P/@y + P/@z * P/@z  > 25.0]' > config.trimmed.xml<?php codeblockend("bash"); ?>
 <div style="text-align:center;">
   <?php embedfigure("/images/tutA_cubetosphere.png", 450, 209, "A
     demonstration of the effect of the XPath expression in creating a
