@@ -2,30 +2,32 @@
 html { height: 100%; }
 
 .table-of-contents ul, .table-of-contents li {
-    margin:0;
-    padding:0;
-    border:none;
     background:none;
 }
 .table-of-contents ul {
+    list-style-type:disc;
     list-style-position: inside;
-    padding-left:1em;
+    padding:0 1em;
+    text-align:left;
 }
+
+.table-of-contents .subsection {
+    margin-left:1em;
+    list-style-type:circle;
+}
+
 #table-of-contents-title {
     background: #ffffff;
     border-left:2px solid #000000;
     border-bottom:2px solid #000000;
     border-radius:0 15px;
     font-weight:bold;
-    margin:0 -15px 0 auto;
-    padding:0 5px;
+    padding:0 1em;
     float:right;
 }
 
 .table-of-contents {
     background: #eeeeff;
-    font-size: 1em;
-    padding: 0 1em 1em 1em;
     float:right;
     border-left: 2px solid #113366;
     border-bottom: 2px solid #113366;

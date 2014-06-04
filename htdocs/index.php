@@ -304,7 +304,7 @@ $("h1,h2").each(function() {
     el.attr("id", linkid);
     listyle=""
     if (el.is("h2"))
-	listyle='style="margin-left:2em;"'
+	listyle='class="subsection"'
     ToC += "<li "+listyle+"><a href='#" + linkid + "'>" + title +"</a></li>";
 });
 ToC +="</ul>" +"</nav>";
