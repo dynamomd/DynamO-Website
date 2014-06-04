@@ -80,7 +80,7 @@ dynamod -T 0 -Z config.out.xml.bz2
 dynarun config.out.xml.bz2 -c 1000000 -o config.final.xml -L IntEnergyHist -L MSD
 #Use dynatransport to analyse the transport coefficients
 dynatransport output.xml -s 2 -c 10 -v
-<?php codeblockend("brush: shell;"); ?>
+<?php codeblockend("bash"); ?>
 <p>
   We'll now look in detail at each of these commands.
 </p>
@@ -97,14 +97,14 @@ dynatransport output.xml -s 2 -c 10 -v
   2</a>, we again query the available options of the <b>dynamod</b>
   command using the <i>--help</i> option:
 </p>
-<?php codeblockstart(); ?>dynamod --help<?php codeblockend("brush: shell;"); ?>
+<?php codeblockstart(); ?>dynamod --help<?php codeblockend("bash"); ?>
 <p>
   We then look for the most useful mode and we see that square-well
   fluids can be made using <b>dynamod</b>'s packing mode 1. We can get
   some more information on this mode by adding the <i>--help</i>
   option:
 </p>
-<?php codeblockstart(); ?>dynamod -m 1 --help<?php codeblockend("brush: shell;"); ?>
+<?php codeblockstart(); ?>dynamod -m 1 --help<?php codeblockend("bash"); ?>
 <p>
   And a detailed description of the modes options will be outputted on
   screen:
@@ -122,7 +122,7 @@ Mode 1: Mono/Multi-component square wells
   --f1 arg (=1.5)             Well width factor (also known as lambda)
   --f2 arg (=1)               Well Depth (negative values create square shoulders)
   --s1 arg (monocomponent)    Instead of f1 and f2, you can specify a multicomponent system using this option. You need to pass the the parameters for each species as follows --s1 "diameter(d),lambda(l),mass(m),welldepth(e),molefrac(x):d,l,m,e,x[:...]"
-...<?php codeblockend("brush: shell;"); ?>
+...<?php codeblockend("bash"); ?>
 <p>
   Here you can see many of the same options available for hard-sphere
   systems, as seen
@@ -135,7 +135,7 @@ Mode 1: Mono/Multi-component square wells
   Lets start by making a monocomponent mixture of square-wells using
   the following command:
 </p>
-<?php codeblockstart(); ?>dynamod -m 1 -C 10 -d 0.1 --i1 0 -r 2.0 -o config.start.xml<?php codeblockend("brush: shell;"); ?>
+<?php codeblockstart(); ?>dynamod -m 1 -C 10 -d 0.1 --i1 0 -r 2.0 -o config.start.xml<?php codeblockend("bash"); ?>
 <p style="font-family:monospaced;">
   The options passed here
   are <a href="/index.php/tutorial2#initial-positions-and-crystals">discussed
@@ -180,7 +180,7 @@ Mode 1: Mono/Multi-component square wells
   converting energy between kinetic and potential modes. We can see
   this if we run a simulation on the starting configuration:
 </p>
-<?php codeblockstart(); ?>dynarun config.start.xml -c 1000000<?php codeblockend("brush: shell;"); ?>
+<?php codeblockstart(); ?>dynarun config.start.xml -c 1000000<?php codeblockend("bash"); ?>
 <p>
   Please note, we didn't set an output configuration file name
   using <i>-o</i> so the default <i>config.out.xml.bz2</i> is
@@ -195,7 +195,7 @@ ETA 14s, Events 200k, t 13.6032, <MFT> 0.136032, T 2.48533, U -0.728
 ETA 12s, Events 300k, t 20.1072, <MFT> 0.134048, T 2.48133, U -0.722
 ETA 11s, Events 400k, t 26.6342, <MFT> 0.133171, T 2.48267, U -0.724
 ...
-<?php codeblockend("brush: shell;"); ?>
+<?php codeblockend("bash"); ?>
 <p>
   You should note that if the temperature fluctuates higher, the
   internal energy fluctuates lower as the total energy is
@@ -219,7 +219,7 @@ ETA 11s, Events 400k, t 26.6342, <MFT> 0.133171, T 2.48267, U -0.724
   To add an <a href="/index.php/reference#typeandersen">Andersen
   thermostat</a>, again use the dynamod tool:
 </p>
-<?php codeblockstart(); ?>dynamod config.out.xml.bz2 -T 2.0 <?php codeblockend("brush: shell;"); ?>
+<?php codeblockstart(); ?>dynamod config.out.xml.bz2 -T 2.0 <?php codeblockend("bash"); ?>
 <p>
   Please note that this command loads the <i>config.out.xml.bz2</i>
   file, adds an <a href="/index.php/reference#typeandersen">Andersen
@@ -241,7 +241,7 @@ ETA 11s, Events 400k, t 26.6342, <MFT> 0.133171, T 2.48267, U -0.724
   <b>Note</b>: If you wish to change the thermostat temperature at a
   later time, you can use the dynamod on the configuration again:
 </p>
-<?php codeblockstart(); ?>dynamod config.out.xml.bz2 -T 4.0<?php codeblockend("brush: shell;"); ?>
+<?php codeblockstart(); ?>dynamod config.out.xml.bz2 -T 4.0<?php codeblockend("bash"); ?>
 <p>
   You can even use <b>dynamod</b> remove the thermostatt by using a
   temperature of zero (<i>-T 0</i>). Alternatively, you can open up
@@ -253,13 +253,13 @@ ETA 11s, Events 400k, t 26.6342, <MFT> 0.133171, T 2.48267, U -0.724
 <System Type="Andersen" Name="Thermostat" MFT="2.0" Temperature="1.0" SetPoint="0.05" SetFrequency="100">
   <IDRange Type="All"/>
 </System>
-<?php codeblockend("brush: xml;"); ?>
+<?php codeblockend("xml"); ?>
 <p>
   With the thermostat added and the temperature set to $k_B\,T=2$, we
   can see what the result is on the temperature of the system. Again,
   running the system
 </p>
-<?php codeblockstart(); ?>dynarun config.out.xml.bz2 -c 1000000<?php codeblockend("brush: shell;"); ?>
+<?php codeblockstart(); ?>dynarun config.out.xml.bz2 -c 1000000<?php codeblockend("bash"); ?>
 <p>
   And the output should look like this:
 </p>
@@ -276,7 +276,7 @@ ETA 4s, Events 800k, t 51.6511, <MFT> 0.132437, T 2.04454, U -0.78925
 ETA 2s, Events 900k, t 58.1523, <MFT> 0.132537, T 2.01887, U -0.79125
 ETA 0s, Events 1000k, t 64.6884, <MFT> 0.132689, T 1.9653, U -0.7795
 ...
-<?php codeblockend("brush: shell;"); ?>
+<?php codeblockend("bash"); ?>
 <p>
   We can see that the temperature approaches the required temperature
   at the end. Looking at the instantaneous $T$ and $U$ values it
@@ -294,7 +294,7 @@ ETA 11s, Events 400k, t 26.1082, <MFT> 0.133857, T 1.97389, U -0.815
 ETA 9s, Events 500k, t 32.6387, <MFT> 0.133873, T 2.01406, U -0.76675
 ETA 7s, Events 600k, t 39.2339, <MFT> 0.134103, T 2.02729, U -0.79425
 ...
-<?php codeblockend("brush: shell;"); ?>
+<?php codeblockend("bash"); ?>
 <p>
   Here its easy to see that the mean free time is relatively stable as
   well. It is very difficult to conclusively prove that we're at
@@ -339,7 +339,7 @@ ETA 7s, Events 600k, t 39.2339, <MFT> 0.134103, T 2.02729, U -0.79425
 </p>
 <?php codeblockstart(); ?>
 dynamod -T 0 -Z config.out.xml.bz2
-<?php codeblockend("brush: shell;"); ?>
+<?php codeblockend("bash"); ?>
 <p>
   Please note that we also zeroed the total momentum again using
   the <i>-Z</i> option as the <a href="/index.php/FAQ#q-the-andersen-thermostat-is-giving-me-a-nonzero-system-momentum-average-is-this-an-error">Andersen thermostat causes the total
@@ -349,7 +349,7 @@ dynamod -T 0 -Z config.out.xml.bz2
 </p>
 <?php codeblockstart(); ?>
 dynarun config.out.xml.bz2 -c 1000000 -o config.final.xml -L IntEnergyHist
-<?php codeblockend("brush: shell;"); ?>
+<?php codeblockend("bash"); ?>
 <p>
   And we're now ready to process the results!
 </p>
@@ -363,7 +363,7 @@ dynarun config.out.xml.bz2 -c 1000000 -o config.final.xml -L IntEnergyHist
 </p>
 <?php codeblockstart(); ?>
 bunzip2 output.xml.bz2
-<?php codeblockend("brush: shell;"); ?>
+<?php codeblockend("bash"); ?>
 <p>
   We can then check the file to see how close the temperature is to
   $k_B\,T=2$ after we disabled the thermostat. We use
@@ -457,7 +457,7 @@ bunzip2 output.xml.bz2
 </div>
 <?php codeblockstart(); ?>
 xmlstarlet sel -t -v '//EnergyHist/HistogramWeighted' output.xml > histogram.dat
-<?php codeblockend("brush: shell;"); ?>
+<?php codeblockend("bash"); ?>
 <p>
   Now we can plot the data and we should end up with a graph like the
   one on the right. It appears that this data is quite rough and
@@ -547,7 +547,7 @@ BulkViscosityL_{\kappa,\kappa}= 11.3811651077 +- 0.0 <R>^2= 0.567696677048
 ThermalConductivityL_{\lambda,\lambda}= 0.178111094018 +- 0.0 <R>^2= 0.535953655856
 ThermalDiffusionL_{\lambda,Bulk}= -3.03999278728e-18 +- 0.0 <R>^2= 0.736800451496
 MutualDiffusionL_{Bulk,Bulk}= 1.04605741811e-34 +- 0.0 <R>^2= 0.893542145422
-<?php codeblockend("brush: shell;"); ?>
+<?php codeblockend("bash"); ?>
 <p>
   By default, <b>dynatransport</b> uses the full data set to calculate
   the correlators. You should be able to see that the $R^2$ values of
@@ -557,7 +557,7 @@ MutualDiffusionL_{Bulk,Bulk}= 1.04605741811e-34 +- 0.0 <R>^2= 0.893542145422
 </p>
 <?php codeblockstart(); ?>
 dynatransport output.xml -v
-<?php codeblockend("brush: shell;"); ?>
+<?php codeblockend("bash"); ?>
 
 <div style="clear:right; float:right">
 <?php embedfigure("/images/tut4.dynatransport.1.png", 400, 322,
@@ -585,7 +585,7 @@ BulkViscosityL_{\kappa,\kappa}= 0.0707529418455 +- 0.0 <R>^2= 0.0110843745332
 ThermalConductivityL_{\lambda,\lambda}= 0.508343229525 +- 0.0 <R>^2= 0.997347634149
 ThermalDiffusionL_{\lambda,Bulk}= -4.22881210719e-19 +- 0.0 <R>^2= 0.866354789486
 MutualDiffusionL_{Bulk,Bulk}= 2.2536681734e-35 +- 0.0 <R>^2= 0.968183740424
-<?php codeblockend("brush: shell;"); ?>
+<?php codeblockend("bash"); ?>
 <div style="clear:right; float:right">
 <?php embedfigure("/images/tut4.dynatransport.2.png", 400, 322,
     "Sample output from dynatransport when used with the <i>-v -s 2 -c

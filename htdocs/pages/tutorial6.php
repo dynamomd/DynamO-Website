@@ -53,7 +53,7 @@
 </p>
 <?php codeblockstart(); ?>
 dynamod -m0 -d 1.0 -C 7 -o config.hs.xml
-<?php codeblockend("brush: shell;"); ?>
+<?php codeblockend("bash"); ?>
 <p>
   This creates a system of mono-sized spheres in periodic boundary
   conditions. First, we want to add polydispersity to the system. We
@@ -115,7 +115,7 @@ dynamod -m0 -d 1.0 -C 7 -o config.hs.xml
   easy-to-use language is python. I achieved everything above using
   the script below:
 </p>
-<?php codeblockstart(); echo file_get_contents("pages/tut6.py"); codeblockend("brush: python;"); ?>
+<?php codeblockstart(); echo file_get_contents("pages/tut6.py"); codeblockend("python"); ?>
 <p>
   Please take a look at the documentation
   on <a href="/index.php/tutorialA">"Parsing Output and Config

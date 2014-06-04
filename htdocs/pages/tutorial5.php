@@ -91,7 +91,7 @@ dynarun config.thermostatted.xml -c 1000000 -o config.thermostatted.xml
 #Now collect data on the system
 dynamod config.thermostatted.xml -T 0 -Z -o config.prerun.xml
 dynarun config.prerun.xml -c 1000000 -o config.end.xml -L MSD
-<?php codeblockend("brush: shell;"); ?>
+<?php codeblockend("bash"); ?>
 <p>
   Once this is done, we'll disable the thermostat and perform another
   run to collect output data and include some output plugins.
@@ -100,7 +100,7 @@ dynarun config.prerun.xml -c 1000000 -o config.end.xml -L MSD
 dynamod config.thermostatted.xml -T 0 -Z -o config.prerun.xml
 dynarun config.prerun.xml -c 1000000 -o config.end.xml -L MSD
 
-<?php codeblockend("brush: shell;"); ?>
+<?php codeblockend("bash"); ?>
 <p>
   We'll now look in detail at these commands, in particular how the
   configuration file was edited by hand into a multicomponent system.
@@ -122,7 +122,7 @@ dynarun config.prerun.xml -c 1000000 -o config.end.xml -L MSD
   be made using <b>dynamod</b>'s packing mode 1. We can get some more
   information on this mode using the following command:
 </p>
-<?php codeblockstart(); ?>dynamod -m 1 --help<?php codeblockend("brush: shell;"); ?>
+<?php codeblockstart(); ?>dynamod -m 1 --help<?php codeblockend("bash"); ?>
 <p>
   And a detailed description of the modes options will be outputted on
   screen:
@@ -140,7 +140,7 @@ Mode 1: Mono/Multi-component square wells
   --f1 arg (=1.5)             Well width factor (also known as lambda)
   --f2 arg (=1)               Well Depth (negative values create square shoulders)
   --s1 arg (monocomponent)    Instead of f1 and f2, you can specify a multicomponent system using this option. You need to pass the the parameters for each species as follows --s1 "diameter(d),lambda(l),mass(m),welldepth(e),molefrac(x):d,l,m,e,x[:...]"
-...<?php codeblockend("brush: shell;"); ?>
+...<?php codeblockend("bash"); ?>
 <p>
   You might notice that this mode can create a multicomponent system
   for us using the first string option (<i>--s1</i>), but we'll create
@@ -150,7 +150,7 @@ Mode 1: Mono/Multi-component square wells
   Lets start by making a monocomponent mixture of square-wells using
   the following command:
 </p>
-<?php codeblockstart(); ?>dynamod -m 1 -C 10 -d 0.5 --i1 0 -r 1 -o config.start.xml<?php codeblockend("brush: shell;"); ?>
+<?php codeblockstart(); ?>dynamod -m 1 -C 10 -d 0.5 --i1 0 -r 1 -o config.start.xml<?php codeblockend("bash"); ?>
 <p style="font-family:monospaced;">
   The options passed here
   are <a href="/index.php/tutorial2#initial-positions-and-crystals">discussed
@@ -277,7 +277,7 @@ Mode 1: Mono/Multi-component square wells
 <IDPairRange Type="Single">
   <IDRange Type="Ranged" Start="100" End="3999"/>
 </IDPairRange>
-<?php codeblockend("brush: xml;"); ?>
+<?php codeblockend("bash"); ?>
 <p>
   A good reason for using the catch-<i>"All"</i> <b>Interaction</b> in
   the end is that in complex systems with
@@ -355,7 +355,7 @@ Mode 1: Mono/Multi-component square wells
   running and you'll have to manually stop the simulation
   by <a href="/index.php/FAQ#stoppausepeek">pressing ctrl-c</a>.
 </p>
-<?php codeblockstart(); ?>dynarun config.start.xml --engine=3 --target-pack-frac 0.3 -o config.compressed.xml<?php codeblockend("brush: shell;"); ?>
+<?php codeblockstart(); ?>dynarun config.start.xml --engine=3 --target-pack-frac 0.3 -o config.compressed.xml<?php codeblockend("bash"); ?>
 <p>
   Once this command completes, we should have a compressed
   configuration at a packing fracton of $0.3$. Please
@@ -390,7 +390,7 @@ Mode 1: Mono/Multi-component square wells
   temperature of a configuration file we can use the following dynamod
   command:
 </p>
-<?php codeblockstart(); ?>dynamod config.compressed.xml -r 1 -o config.compressed.xml<?php codeblockend("brush: shell;"); ?>
+<?php codeblockstart(); ?>dynamod config.compressed.xml -r 1 -o config.compressed.xml<?php codeblockend("bash"); ?>
 <p>
   This will rescale the velocities of the particles in the system so
   that the current temperature is 1 (set by the <i>-r</i>
@@ -408,7 +408,7 @@ Mode 1: Mono/Multi-component square wells
 <?php codeblockstart(); ?>
 dynamod config.compressed.xml -T 1.5 -Z -o config.thermostatted.xml
 dynarun config.thermostatted.xml -c 1000000 -o config.thermostatted.xml
-<?php codeblockend("brush: shell;"); ?>
+<?php codeblockend("bash"); ?>
 <p>
   Once this is done, we'll disable the thermostat and perform another
   run to collect output data and include some output plugins.
@@ -416,7 +416,7 @@ dynarun config.thermostatted.xml -c 1000000 -o config.thermostatted.xml
 <?php codeblockstart(); ?>
 dynamod config.thermostatted.xml -T 0 -Z -o config.prerun.xml
 dynarun config.prerun.xml -c 1000000 -o config.end.xml -L MSD -L RadialDistribution
-<?php codeblockend("brush: shell;"); ?>
+<?php codeblockend("bash"); ?>
 <p>
   Again, this might not have an absolutely correct temperature due to
   the thermostat being disabled, but we need to disable it to measure
@@ -478,7 +478,7 @@ ThermalDiffusionL_{\lambda,B}= 0.0538445647777 +- 0.0 <R>^2= 0.974926102908
 MutualDiffusionL_{B,B}= 0.00259576820261 +- 0.0 <R>^2= 0.999630761695
 MutualDiffusionL_{A,B}= -0.00259576820261 +- 0.0 <R>^2= 0.999630761695
 MutualDiffusionL_{A,A}= 0.00259576820261 +- 0.0 <R>^2= 0.999630761695
-<?php codeblockend("brush: shell;"); ?>
+<?php codeblockend("bash"); ?>
 <p>
   Please be careful about using these results as the above correlation
   window, $\Delta t\in\left[0.05,0.3\right]$, was not rigourously

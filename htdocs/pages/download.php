@@ -43,7 +43,7 @@
 <?php codeblockstart(); ?>sudo add-apt-repository ppa:dynamomd/dynamo-daily-ppa
 sudo apt-get update
 sudo apt-get install dynamo-core dynamo-tools dynamo-visualisation
-<?php codeblockend("brush: shell;"); ?>
+<?php codeblockend("bash"); ?>
 <h1>Source Code</h1>
 <p>
   There are several ways you can obtain a copy of the source code and
@@ -61,14 +61,14 @@ sudo apt-get install dynamo-core dynamo-tools dynamo-visualisation
   To get a copy of the code, just install git and use the following
   command in your terminal:
 </p> 
-<?php codeblockstart(); ?>git clone http://github.com/toastedcrumpets/DynamO.git<?php codeblockend("brush: shell;"); ?>
+<?php codeblockstart(); ?>git clone http://github.com/toastedcrumpets/DynamO.git<?php codeblockend("bash"); ?>
 <p>
   This will create a folder called <em>DynamO</em> in the working
   directory. If this command fails (you have a restrictive proxy), you
   can try the alternative git protocol address using the command
   below:
 </p>
-<?php codeblockstart(); ?>git clone git://github.com/toastedcrumpets/DynamO.git<?php codeblockend("brush: shell;"); ?>
+<?php codeblockstart(); ?>git clone git://github.com/toastedcrumpets/DynamO.git<?php codeblockend("bash"); ?>
 <p>
   You can now pick which branch or version of DynamO you'd like. There
   are several available:
@@ -96,7 +96,7 @@ sudo apt-get install dynamo-core dynamo-tools dynamo-visualisation
   (master), just check it out by running the following command in the
   DynamO directory:
 </p>
-<?php codeblockstart(); ?>git checkout v1-5-0<?php codeblockend("brush: shell;"); ?>
+<?php codeblockstart(); ?>git checkout v1-5-0<?php codeblockend("bash"); ?>
 <p>
   Now that you've downloaded the source code, you can follow the tutorial on how to compile DynamO:
 </p>

@@ -22,7 +22,7 @@
   check if dynamo works by opening a terminal and typing the following
   command:
 </p>
-<?php codeblockstart(); ?>dynamod<?php codeblockend("brush: shell;"); ?>
+<?php codeblockstart(); ?>dynamod<?php codeblockend("bash"); ?>
 <p>
    If everything is working correctly, you should see the copyright
   notice and the descriptions of the options of the dynamod program:
@@ -33,7 +33,7 @@ This is free software, and you are welcome to redistribute it
 under certain conditions. See the licence you obtained with
 the code
 Usage : dynamod <OPTIONS>...[CONFIG FILE]
-...<?php codeblockend("brush: plain;"); ?>
+...<?php codeblockend("bash"); ?>
 <p>
   If you do not see the above output, please double check that you
   encountered no errors while installing/building DynamO. If you have
@@ -131,7 +131,7 @@ Usage : dynamod <OPTIONS>...[CONFIG FILE]
 dynamod -m 0 -C 7 -d 0.5 --i1 0 -r 1 -o config.start.xml
 dynarun config.start.xml -c 1000000 -o config.equilibrated.xml
 dynarun config.equilibrated.xml -c 1000000 -o config.end.xml
-<?php codeblockend("brush: shell;"); ?>
+<?php codeblockend("bash"); ?>
 <p>
   We'll look at each command individually in the following sections.
 </p>
@@ -141,7 +141,7 @@ dynarun config.equilibrated.xml -c 1000000 -o config.end.xml
   initial <b>configuration file</b>, called <em>config.start.xml</em>,
   using <b>dynamod</b>.
 </p>
-<?php codeblockstart(); ?>dynamod -m 0 -C 7 -d 0.5 --i1 0 -r 1 -o config.start.xml<?php codeblockend("brush: shell;"); ?>
+<?php codeblockstart(); ?>dynamod -m 0 -C 7 -d 0.5 --i1 0 -r 1 -o config.start.xml<?php codeblockend("bash"); ?>
 <p>
   In this section, we will briefly learn about the configuration files
   of DynamO, which are the main input and output of DynamO, and how to
@@ -183,21 +183,21 @@ dynarun config.equilibrated.xml -c 1000000 -o config.end.xml
   files. We can take a look at the options of <b>dynamod</b> using
   the <em>--help</em> option:
 </p>
-<?php codeblockstart(); ?>dynamod --help<?php codeblockend("brush: shell;"); ?>
+<?php codeblockstart(); ?>dynamod --help<?php codeblockend("bash"); ?>
 <p>
   There are many options available and a lot are related to modifying
   existing configurations (this is why it is called dyna<b>mod</b>),
   but if we want to generate a configuration we are only need to be
   interested in the bottom section which starts with:
 </p>
-<?php codeblockstart(); ?>...
+<pre>...
 Packer options:
   -m [ --pack-mode ] arg    Chooses the system to pack (construct)
                             Packer Modes:
                             0:  Monocomponent hard spheres
                             1:  Mono/Multi-component square wells
                             2:  Random walk of an isolated attractive polymer
-...<?php codeblockend("brush: plain;"); ?>
+...</pre>
 <p>
   This section is a list of the built in example configurations
   that <b>dynamod</b> can produce.  We ask <b>dynamod</b> to generate
@@ -211,11 +211,11 @@ Packer options:
   the <em>--help</em> option again in combination with the
   selected <em>--pack-mode</em>:
 </p>
-<?php codeblockstart(); ?>dynamod -m0 --help<?php codeblockend("brush: shell;"); ?>
+<?php codeblockstart(); ?>dynamod -m0 --help<?php codeblockend("bash"); ?>
 <p>
  And you should get the following output:
 </p>
-<?php codeblockstart(); ?>
+<pre>
 Mode 0: Monocomponent hard spheres
  Options
   -C [ --NCells ] arg (=7)    Set the default number of lattice unit-cells in each direction.
@@ -227,17 +227,17 @@ Mode 0: Monocomponent hard spheres
   --i1 arg (=FCC)             Lattice type (0=FCC, 1=BCC, 2=SC)
   --i2 arg (disabled)         Adds a temperature rescale event every x events
   --f1 arg (=1.0)             Sets the elasticity of the hard spheres
-<?php codeblockend("brush: plain;"); ?>
+</pre>
 <p>
   What you can see here are a list of options with their default
   values in parenthesis, so if you run:
 </p>
-<?php codeblockstart(); ?>dynamod -m0 -o config.start.xml.bz2<?php codeblockend("brush: shell;"); ?>
+<?php codeblockstart(); ?>dynamod -m0 -o config.start.xml.bz2<?php codeblockend("bash"); ?>
 <p>
   It will actually output the same result as running the following
   command.
 </p>
-<?php codeblockstart(); ?>dynamod -m 0 -C 7 -d 0.5 --i1 0 -r 1 -o config.start.xml<?php codeblockend("brush: shell;"); ?>
+<?php codeblockstart(); ?>dynamod -m 0 -C 7 -d 0.5 --i1 0 -r 1 -o config.start.xml<?php codeblockend("bash"); ?>
 <p>
   This is the exact command that was discussed in the brief overview,
   and its the default set-up of the hard-sphere example. There are
@@ -314,7 +314,7 @@ Mode 0: Monocomponent hard spheres
   To conclude this part, we'll quickly summarise the description of
   each of the options passed to dynamod:
 </p>
-<?php codeblockstart(); ?>dynamod -m 0 -C 7 -d 0.5 --i1 0 -r 1 -o config.start.xml<?php codeblockend("brush: shell;"); ?>
+<?php codeblockstart(); ?>dynamod -m 0 -C 7 -d 0.5 --i1 0 -r 1 -o config.start.xml<?php codeblockend("bash"); ?>
 <p>
   The above command says:
 </p>
@@ -349,7 +349,7 @@ Mode 0: Monocomponent hard spheres
   screen detailing the steps dynamod is carrying out, but at the end
   you should see the following 
 </p>
-<?php codeblockstart(); ?>Simulation: Config written to config.start.xml<?php codeblockend("brush: plain;"); ?>
+<pre>Simulation: Config written to config.start.xml</pre>
 <p>
   Which indicates the command was successful. You can take a look at
   the <a href="/pages/config.tut3.xml">contents of the configuration
@@ -368,7 +368,7 @@ Mode 0: Monocomponent hard spheres
   the <em>-c</em> and <em>-o</em> options. The command we're going to
   use is:
 </p>
-<?php codeblockstart(); ?>dynarun config.start.xml -c 1000000 -o config.equilibrated.xml<?php codeblockend("brush: shell;"); ?>
+<?php codeblockstart(); ?>dynarun config.start.xml -c 1000000 -o config.equilibrated.xml<?php codeblockend("bash"); ?>
 <p>
   This command takes the configuration in <em>config.start.xml</em>
   and runs it for 10<sup>6</sup> events/collisions <i>(-c
@@ -378,7 +378,7 @@ Mode 0: Monocomponent hard spheres
   natural unit of computation is an event. You may specify the
   duration in units of time using the <em>-h</em> option like so:
 </p>
-<?php codeblockstart(); ?>dynarun config.start.xml -f 190 -o config.equilibrated.xml<?php codeblockend("brush: shell;"); ?>
+<?php codeblockstart(); ?>dynarun config.start.xml -f 190 -o config.equilibrated.xml<?php codeblockend("bash"); ?>
 <p>
   In this system, a simulation for 190 units of time is roughly
   proportional to $10^6$ events, so both commands should result in
@@ -390,10 +390,10 @@ Mode 0: Monocomponent hard spheres
   When you run the command above, you should see some periodic output
   from <b>dynarun</b> informing you of its progress in the simulation:
 </p>
-<?php codeblockstart(); ?>...
+<pre>
 ETA 15s, Events 100k, t 19.0566, <MFT> 0.130728, T 1, U 0
 ETA 14s, Events 200k, t 38.0891, <MFT> 0.130645, T 1, U 0
-...<?php codeblockend("brush: plain;"); ?>
+...</pre>
 <p>
   In order, the columns are: an estimate of how much longer the
   simulation will take (ETA), how many events have been executed
@@ -405,8 +405,8 @@ ETA 14s, Events 200k, t 38.0891, <MFT> 0.130645, T 1, U 0
   is over, you'll see that the final configuration is written out
   to <em>config.equilibrated.xml</em>:
 </p>
-<?php codeblockstart(); ?>Simulation: Output written to output.xml.bz2
-Simulation: Config written to config.equilibrated.xml<?php codeblockend("brush: plain;"); ?>
+<pre>Simulation: Output written to output.xml.bz2
+Simulation: Config written to config.equilibrated.xml</pre>
 <p>
   Some collected data is also written to <em>output.xml.bz2</em>, but
   this data will contain influences of the initial crystalline
@@ -425,10 +425,10 @@ Simulation: Config written to config.equilibrated.xml<?php codeblockend("brush: 
   is now used as the input to a new "production" run using the
   following command:
 </p>
-<?php codeblockstart(); ?>dynarun config.equilibrated.xml -c 1000000 -o config.end.xml<?php codeblockend("brush: shell;"); ?>
+<?php codeblockstart(); ?>dynarun config.equilibrated.xml -c 1000000 -o config.end.xml<?php codeblockend("bash"); ?>
 <p></p>
-<?php codeblockstart(); ?>Simulation: Output written to output.xml.bz2
-Simulation: Config written to config.end.xml<?php codeblockend("brush: plain;"); ?>
+<pre>Simulation: Output written to output.xml.bz2
+Simulation: Config written to config.end.xml</pre>
 <p>
   The final configuration is written out to
   the <em>config.end.xml</em> file, but this is not the only source of
@@ -440,7 +440,7 @@ Simulation: Config written to config.end.xml<?php codeblockend("brush: plain;");
   If you want to visualise a configuration or simulation, you replace
   the <b>dynarun</b> program with the <b>dynavis</b> program like so:
 </p>
-<?php codeblockstart(); ?>dynavis config.equilibrated.xml -c 1000000 -o config.end.xml<?php codeblockend("brush: shell;"); ?>
+<?php codeblockstart(); ?>dynavis config.equilibrated.xml -c 1000000 -o config.end.xml<?php codeblockend("bash"); ?>
 <p>
   The simulation will load and the visualiser windows will appear. The
   simulation will be paused at the start and you can un-pause it using
@@ -474,7 +474,7 @@ Simulation: Config written to config.end.xml<?php codeblockend("brush: plain;");
   To read this output data file, you must first un-compress the file
   using the <b>bunzip2</b> command using the following command:
 </p>
-<?php codeblockstart(); ?>bunzip2 output.xml.bz2<?php codeblockend("brush: shell;"); ?>
+<?php codeblockstart(); ?>bunzip2 output.xml.bz2<?php codeblockend("bash"); ?>
 <p>
   This will uncompress the file from <em>output.xml.bz2</em> into
   <em>output.xml</em>, and you will be able to open it using your

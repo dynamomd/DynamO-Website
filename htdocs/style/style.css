@@ -56,15 +56,10 @@ p {
     background-color: #ffffff;
 }
 
-.syntaxhighlighter {
+pre {
     margin:5px;
     padding:5px;
     border:1px solid #000000;
-    
-}
-.syntaxhighlighter .toolbar {
-    float:right;
-    padding: 0 4px;
 }
 
 .newsdivider {
@@ -72,7 +67,7 @@ p {
     clear:both;
     background-color:#000000;
     margin:15px;
-}	
+}
 
 body {
     margin: 0;

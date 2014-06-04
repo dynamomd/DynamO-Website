@@ -36,7 +36,7 @@
 </p>
 <?php codeblockstart(); ?>
 dynamod -m 0 -d 0.5 -C 7 -o config.start.xml
-<?php codeblockend("brush: shell;"); ?>
+<?php codeblockend("bash"); ?>
 <p>
   An example config.start.xml is also available online
     <a href="/pages/config.tut3.xml">here</a>. Please note that the
@@ -67,7 +67,7 @@ dynamod -m 0 -d 0.5 -C 7 -o config.start.xml
   file. You'll notice that there is a short line at the top that
   identifies this file as an XML file:
 </p>
-<?php codeblockstart(); echo "<?xml version=\"1.0\"?>"; codeblockend("brush: xml;"); ?>
+<?php codeblockstart(); echo "<?xml version=\"1.0\"?>"; codeblockend("xml"); ?>
 <p>
   Underneath this lies the contents of the file. You will notice that
   the whole content of the file is enclosed within a pair
@@ -497,7 +497,7 @@ the functional method");?>
     </Dynamics>
   </Simulation>
 </DynamOconfig>
-<?php codeblockend("brush: xml;"); ?>
+<?php codeblockend("xml"); ?>
 <p>
   This simulation is not particularly interesting as there are no
   objects for the particles to fall on to, so the system simply

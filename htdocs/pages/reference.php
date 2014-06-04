@@ -181,7 +181,7 @@ function toggle_visibility(elementname) {
 <h4>Example usage</h4>
 <?php codeblockstart();?><Scheduler Type="Dumb">
   <Sorter .../>
-</Scheduler><?php codeblockend("brush: xml;"); ?>
+</Scheduler><?php codeblockend("xml"); ?>
 <h4>Full Tag, Subtag, and Attribute List</h4>
 <ul>
   <li>
@@ -216,7 +216,7 @@ function toggle_visibility(elementname) {
 <h4>Example usage</h4>
 <?php codeblockstart();?><Scheduler Type="NeighbourList">
   <Sorter .../>
-</Scheduler><?php codeblockend("brush: xml;"); ?>
+</Scheduler><?php codeblockend("xml"); ?>
 <h4>Full Tag, Subtag, and Attribute List</h4>
 <ul>
   <li>
@@ -245,7 +245,7 @@ function toggle_visibility(elementname) {
   size, it is not the default Sorter used by DynamO.
 <p>
 <h4>Example usage</h4>
-<?php codeblockstart();?><Sorter Type="CBT"/><?php codeblockend("brush: xml;"); ?>
+<?php codeblockstart();?><Sorter Type="CBT"/><?php codeblockend("xml"); ?>
 <h4>Full Tag, Subtag, and Attribute List</h4>
 <ul>
   <li>
@@ -273,7 +273,7 @@ function toggle_visibility(elementname) {
   increase performance.
 </p>
 <h4>Example usage</h4>
-<?php codeblockstart();?><Sorter Type="BoundedPQMinMax3"/><?php codeblockend("brush: xml;"); ?>
+<?php codeblockstart();?><Sorter Type="BoundedPQMinMax3"/><?php codeblockend("xml"); ?>
 <h4>Full Tag, Subtag, and Attribute List</h4>
 <ul>
   <li>
@@ -298,7 +298,7 @@ function toggle_visibility(elementname) {
 </p>
 <?php codeblockstart();?>
 <SimulationSize x="10" y="10" z="10"/>
-<?php codeblockend("brush: xml;"); ?>
+<?php codeblockend("xml"); ?>
 <h4>Full Tag, Subtag, and Attribute List</h4>
 <ul>
   <li>
@@ -339,7 +339,7 @@ function toggle_visibility(elementname) {
 <h4>Example usage</h4> 
 <?php codeblockstart();?><Species Mass="1" Name="Bulk" Type="Point">
   <IDRange .../>
-</Species><?php codeblockend("brush: xml;"); ?>
+</Species><?php codeblockend("xml"); ?>
 <h4>Full Tag, Subtag, and Attribute List</h4>
 <ul>
   <li>
@@ -378,7 +378,7 @@ function toggle_visibility(elementname) {
 <h4>Example usage</h4>
 <?php codeblockstart();?><Species Name="Bulk" Type="FixedCollider">
   <IDRange .../>
-</Species><?php codeblockend("brush: xml;"); ?>
+</Species><?php codeblockend("xml"); ?>
 <h4>Full Tag, Subtag, and Attribute List</h4>
 <ul>
   <li>
@@ -410,7 +410,7 @@ function toggle_visibility(elementname) {
 <h4>Example usage</h4>
 <?php codeblockstart();?><Species Mass="1" Name="Bulk" Type="SphericalTop" InertiaConstant="0.1">
   <IDRange .../>
-</Species><?php codeblockend("brush: xml;"); ?>
+</Species><?php codeblockend("xml"); ?>
 <h4>Full Tag, Subtag, and Attribute List</h4>
 <ul>
   <li>
@@ -461,7 +461,7 @@ function toggle_visibility(elementname) {
   of the particles are not restricted in any dimension.
 </p>
 <h4>Example usage</h4>
-<?php codeblockstart();?><BC Type="None"/><?php codeblockend("brush: xml;"); ?>
+<?php codeblockstart();?><BC Type="None"/><?php codeblockend("xml"); ?>
 <h4>Full Tag, Subtag, and Attribute List</h4>
 <ul>
   <li>
@@ -508,7 +508,7 @@ function toggle_visibility(elementname) {
   interactions, so care must still be taken.
 </p>
 <h4>Example usage</h4>
-<?php codeblockstart();?><BC Type="PBC"/><?php codeblockend("brush: xml;"); ?>
+<?php codeblockstart();?><BC Type="PBC"/><?php codeblockend("xml"); ?>
 <h4>Full Tag, Subtag, and Attribute List</h4>
 <ul>
   <li>
@@ -531,7 +531,7 @@ function toggle_visibility(elementname) {
 the Lees-Edward sliding-brick boundary condition");?>
 </div>
 <h4>Example usage</h4>
-<?php codeblockstart();?><BC Type="LE" DXD="0" Rate="1"/><?php codeblockend("brush: xml;"); ?>
+<?php codeblockstart();?><BC Type="LE" DXD="0" Rate="1"/><?php codeblockend("xml"); ?>
 <h4>Full Tag, Subtag, and Attribute List</h4>
 <ul>
   <li>
@@ -596,7 +596,7 @@ the Lees-Edward sliding-brick boundary condition");?>
 <h4>Example usage</h4>
 <?php codeblockstart();?><Interaction Type="Null" Name="Bulk">
   <IDPairRange .../>
-</Interaction><?php codeblockend("brush: xml;"); ?>
+</Interaction><?php codeblockend("xml"); ?>
 <h4>Full Tag, Subtag, and Attribute List</h4>
 <ul>
   <li>
@@ -923,7 +923,7 @@ the Lees-Edward sliding-brick boundary condition");?>
 <Interaction Type="HardSphere" Diameter="1" Name="Bulk">
   <IDPairRange .../>
 </Interaction>
-<?php codeblockend("brush: xml;"); ?>
+<?php codeblockend("xml"); ?>
 <h4>Full Tag, Subtag, and Attribute List</h4>
 <ul>
   <li>
@@ -1052,7 +1052,7 @@ the Lees-Edward sliding-brick boundary condition");?>
 <?php codeblockstart();?><Interaction Type="SquareWell" Diameter="1" Elasticity="1" Lambda="1.5" WellDepth="1" Name="Bulk">
   <IDPairRange .../>
   <CaptureMap .../>
-</Interaction><?php codeblockend("brush: xml;"); ?>
+</Interaction><?php codeblockend("xml"); ?>
 <h4>Full Tag, Subtag, and Attribute List</h4>
 <ul>
   <li>
@@ -1133,7 +1133,7 @@ the Lees-Edward sliding-brick boundary condition");?>
 <h4>Example usage</h4>
 <?php codeblockstart();?><Interaction Type="ParallelCubes" Diameter="1" Elasticity="1" Name="Bulk">
   <IDPairRange .../>
-</Interaction><?php codeblockend("brush: xml;"); ?>
+</Interaction><?php codeblockend("xml"); ?>
 <h4>Full Tag, Subtag, and Attribute List</h4>
 <ul>
   <li>
@@ -1186,7 +1186,7 @@ the Lees-Edward sliding-brick boundary condition");?>
 <h4>Example usage</h4>
 <?php codeblockstart();?><Interaction Type="Lines" Length="1" Elasticity="1" Name="Bulk">
   <IDPairRange .../>
-</Interaction><?php codeblockend("brush: xml;"); ?>
+</Interaction><?php codeblockend("xml"); ?>
 <h4>Full Tag, Subtag, and Attribute List</h4>
 <ul>
   <li>
@@ -1246,7 +1246,7 @@ the Lees-Edward sliding-brick boundary condition");?>
   <Potential .../>
   <CaptureMap .../>
 </Interaction>
-<?php codeblockend("brush: xml;"); ?>
+<?php codeblockend("xml"); ?>
 <h4>Full Tag, Subtag, and Attribute List</h4>
 <ul>
   <li>
@@ -1333,7 +1333,7 @@ its parameters");?>
 <?php codeblockstart();?><Interaction Type="ThinThread" Diameter="1" Elasticity="1" Lambda="1.5" WellDepth="1" Name="Bulk">
   <IDPairRange .../>
   <CaptureMap .../>
-</Interaction><?php codeblockend("brush: xml;"); ?>
+</Interaction><?php codeblockend("xml"); ?>
 <h4>Full Tag, Subtag, and Attribute List</h4>
 <ul>
   <li>
@@ -1415,7 +1415,7 @@ its parameters");?>
 <h4>Example usage</h4>
 <?php codeblockstart();?><Interaction Type="SquareBond" Diameter="1" Elasticity="1" Lambda="1.5" Name="Bulk">
   <IDPairRange .../>
-</Interaction><?php codeblockend("brush: xml;"); ?>
+</Interaction><?php codeblockend("xml"); ?>
 <h4>Full Tag, Subtag, and Attribute List</h4>
 <ul>
   <li>
@@ -1520,7 +1520,7 @@ its parameters");?>
   <IDRange Type="All"/>
   <Norm x="0" y="1" z="0"/>
   <Origin x="0" y="-7.5" z="0"/>
-</Local><?php codeblockend("brush: xml;"); ?>
+</Local><?php codeblockend("xml"); ?>
 <h4>Full Tag, Subtag, and Attribute List</h4>
 <ul>
   <li>
@@ -1619,7 +1619,7 @@ its parameters");?>
 <h4>Example usage</h4>
 <?php codeblockstart();?><Global Type="Cells" Name="SchedulerNBList" NeighbourhoodRange="1">
   <IDRange .../>
-</Global><?php codeblockend("brush: xml;"); ?>
+</Global><?php codeblockend("xml"); ?>
 <h4>Full Tag, Subtag, and Attribute List</h4>
 <ul>
   <li>
@@ -1696,7 +1696,7 @@ its parameters");?>
 <System Type="Andersen" Name="Thermostat" MFT="1.0" Temperature="1.0" SetPoint="0.05" SetFrequency="100">
   <IDRange Type="All"/>
 </System>
-<?php codeblockend("brush: xml;"); ?>
+<?php codeblockend("xml"); ?>
 <h4>Full Tag, Subtag, and Attribute List</h4>
 <ul>
   <li>
@@ -1777,7 +1777,7 @@ its parameters");?>
     <Step R="6.0" E="6.0"/>
   </Potential>
 </System>
-<?php codeblockend("brush: xml;"); ?>
+<?php codeblockend("xml"); ?>
 <h4>Full Tag, Subtag, and Attribute List</h4>
 <ul>
   <li>
@@ -1834,7 +1834,7 @@ its parameters");?>
 <h4>Example usage</h4>
 <?php codeblockstart();?>
 <Dynamics Type="Newtonian"/>
-<?php codeblockend("brush: xml;"); ?>
+<?php codeblockend("xml"); ?>
 <h4>Full Tag, Subtag, and Attribute List</h4>
 <ul>
   <li>
@@ -1853,7 +1853,7 @@ its parameters");?>
 <Dynamics Type="NewtonianGravity" ElasticV="1.0">
   <g x="0" y="-1" z="0"/>
 </Dynamics>
-<?php codeblockend("brush: xml;"); ?>
+<?php codeblockend("xml"); ?>
 <h4>Full Tag, Subtag, and Attribute List</h4>
 <ul>
   <li>
@@ -1955,7 +1955,7 @@ its parameters");?>
     ...
   </PotentialDeformation>
 </Dynamics>
-<?php codeblockend("brush: xml;"); ?>
+<?php codeblockend("xml"); ?>
 <h4>Full Tag, Subtag, and Attribute List</h4>
 <ul>
   <li>
@@ -2000,7 +2000,7 @@ its parameters");?>
 <Interaction Type="HardSphere" Diameter="1.5" Elasticity="1" Name="Bulk">
   <IDPairRange .../>
 </Interaction>
-<?php codeblockend("brush: xml;"); ?>
+<?php codeblockend("xml"); ?>
 <p>
   The values of the <i>Diameter</i> and <i>Elasticity</i> are called
   a <i>numeric</i> properties where the value of the property
@@ -2012,7 +2012,7 @@ its parameters");?>
 <Interaction Type="HardSphere" Diameter="D" Elasticity="1" Name="Bulk">
   <IDPairRange .../>
 </Interaction>
-<?php codeblockend("brush: xml;"); ?>
+<?php codeblockend("xml"); ?>
 <p>
   Here we've used the name "D" to refer to a new named
   Property. Whenever DynamO encounters a property specifier, such as
@@ -2024,7 +2024,7 @@ its parameters");?>
 </p>
 <?php codeblockstart();?><Local Type="Wall" Name="GroundPlate" Elasticity="1" Diameter="D">
   ...
-</Local><?php codeblockend("brush: xml;"); ?>
+</Local><?php codeblockend("xml"); ?>
 <p>
   And now both the Wall Local and the HardSphere Interaction will use
   the same diameter for each particle. Each named Property must be
@@ -2038,7 +2038,7 @@ its parameters");?>
   <Property Type="PerParticle" Name="D" Units="Length"/>
   <Property Type="PerParticle" Name="M" Units="Mass"/>
 </Properties>
-<?php codeblockend("brush: xml;"); ?>
+<?php codeblockend("xml"); ?>
 <p>
   You should note that the units of the Property must correspond to
   the units of the property specifier. If you check
@@ -2053,7 +2053,7 @@ its parameters");?>
 </p>
 <?php codeblockstart();?><Species Mass="M" Name="Bulk" Type="Point">
   ...
-</Species><?php codeblockend("brush: xml;"); ?>
+</Species><?php codeblockend("xml"); ?>
 <p>
   Once the per-particle Property has been defined and referred to in
   other parts of the configuration file, you must specify the value of
@@ -2065,7 +2065,7 @@ its parameters");?>
   <P .../>
   <V .../>
 </Pt>
-<?php codeblockend("brush: xml;"); ?>
+<?php codeblockend("xml"); ?>
 <p>
   At the moment, there is only the PerParticle type of named property,
   and every single particle must have the corresponding property
@@ -2086,7 +2086,7 @@ its parameters");?>
   <P x="1.71513720091304e+00" y="5.49987913872954e+00" z="4.32598642635552e+00"/>
   <V x="1.51174422678297e+00" y="-8.06881217863154e-01" z="-8.11332120569972e-01"/>
 </Pt>
-<?php codeblockend("brush: xml;"); ?>
+<?php codeblockend("xml"); ?>
 <h4>Full Tag, Subtag, and Attribute List</h4>
 <ul>
   <li>
@@ -2193,7 +2193,7 @@ for each step is also outlined.");?>
   <Step R="0.80" E="66.74"/>
   <Step R="0.75" E="1.0e+300"/>
 </Potential>
-<?php codeblockend("brush: xml;"); ?>
+<?php codeblockend("xml"); ?>
 <h4>Full Tag, Subtag, and Attribute List</h4>
 <ul>
   <li>
@@ -2259,7 +2259,7 @@ corresponding to $\\varepsilon=1$ and $\\sigma=1$");?>
 <h4>Example usage</h4>
 <?php codeblockstart();?>
 <Potential Type="LennardJones" Sigma="1" Epsilon="1" CutOff="3" AttractiveSteps="10.8"/>
-<?php codeblockend("brush: xml;"); ?>
+<?php codeblockend("xml"); ?>
 <h4>Full Tag, Subtag, and Attribute List</h4>
 <ul>
   <li>
@@ -2321,7 +2321,7 @@ corresponding to $\\varepsilon=1$ and $\\sigma=1$");?>
 <h4>Example usage</h4>
 <?php codeblockstart();?>
 <IDRange Type="All"/>
-<?php codeblockend("brush: xml;"); ?>
+<?php codeblockend("xml"); ?>
 <h4>Full Tag, Subtag, and Attribute List</h4>
 <ul>
   <li>
@@ -2335,7 +2335,7 @@ corresponding to $\\varepsilon=1$ and $\\sigma=1$");?>
  An ID Range which does not map to any particles.
 </p>
 <h4>Example usage</h4>
-<?php codeblockstart();?><IDRange Type="None"/><?php codeblockend("brush: xml;"); ?>
+<?php codeblockstart();?><IDRange Type="None"/><?php codeblockend("xml"); ?>
 <h4>Full Tag, Subtag, and Attribute List</h4>
 <ul>
   <li>
@@ -2355,7 +2355,7 @@ corresponding to $\\varepsilon=1$ and $\\sigma=1$");?>
   The following example <b>IDRange</b> includes the particle IDs 0, 1,
   2, 3, 4, and 5.
 </p>
-<?php codeblockstart();?><IDRange Type="Ranged" Start="0" End="5"/><?php codeblockend("brush: xml;"); ?>
+<?php codeblockstart();?><IDRange Type="Ranged" Start="0" End="5"/><?php codeblockend("xml"); ?>
 <h4>Full Tag, Subtag, and Attribute List</h4>
 <ul>
   <li>
@@ -2388,7 +2388,7 @@ corresponding to $\\varepsilon=1$ and $\\sigma=1$");?>
   <ID val="2"/>
   <ID val="5"/>
 </IDRange>
-<?php codeblockend("brush: xml;"); ?>
+<?php codeblockend("xml"); ?>
 <h4>Full Tag, Subtag, and Attribute List</h4>
 <ul>
   <li>
@@ -2416,7 +2416,7 @@ corresponding to $\\varepsilon=1$ and $\\sigma=1$");?>
   <IDRange .../>
   <IDRange .../>
   ...
-</IDRange><?php codeblockend("brush: xml;"); ?>
+</IDRange><?php codeblockend("xml"); ?>
 <h4>Full Tag, Subtag, and Attribute List</h4>
 <ul>
   <li>
@@ -2441,7 +2441,7 @@ corresponding to $\\varepsilon=1$ and $\\sigma=1$");?>
   in the simulation.
 </p>
 <h4>Example usage</h4>
-<?php codeblockstart();?><IDPairRange Type="All"/><?php codeblockend("brush: xml;"); ?>
+<?php codeblockstart();?><IDPairRange Type="All"/><?php codeblockend("xml"); ?>
 <h4>Full Tag, Subtag, and Attribute List</h4>
 <ul>
   <li>
@@ -2456,7 +2456,7 @@ corresponding to $\\varepsilon=1$ and $\\sigma=1$");?>
   particles.
 </p>
 <h4>Example usage</h4>
-<?php codeblockstart();?><IDPairRange Type="None"/><?php codeblockend("brush: xml;"); ?>
+<?php codeblockstart();?><IDPairRange Type="None"/><?php codeblockend("xml"); ?>
 <h4>Full Tag, Subtag, and Attribute List</h4>
 <ul>
   <li>
@@ -2484,7 +2484,7 @@ corresponding to $\\varepsilon=1$ and $\\sigma=1$");?>
   <IDRange Type="Ranged" Start="0" End="2"/>
   <IDRange Type="Ranged" Start="3" End="5"/>
 </IDPairRange>
-<?php codeblockend("brush: xml;"); ?>
+<?php codeblockend("xml"); ?>
 <h4>Full Tag, Subtag, and Attribute List</h4>
 <ul>
   <li>
@@ -2514,7 +2514,7 @@ corresponding to $\\varepsilon=1$ and $\\sigma=1$");?>
 <IDPairRange Type="Single">
   <IDRange Type="Ranged" Start="0" End="2"/>
 </IDPairRange>
-<?php codeblockend("brush: xml;"); ?>
+<?php codeblockend("xml"); ?>
 <h4>Full Tag, Subtag, and Attribute List</h4>
 <ul>
   <li>
@@ -2541,7 +2541,7 @@ corresponding to $\\varepsilon=1$ and $\\sigma=1$");?>
 <IDPairRange Type="Self">
   <IDRange Type="Ranged" Start="0" End="2"/>
 </IDPairRange>
-<?php codeblockend("brush: xml;"); ?>
+<?php codeblockend("xml"); ?>
 <h4>Full Tag, Subtag, and Attribute List</h4>
 <ul>
   <li>
@@ -2573,7 +2573,7 @@ corresponding to $\\varepsilon=1$ and $\\sigma=1$");?>
   <IDPair ID1="1" ID2="2"/>
   <IDPair ID1="2" ID2="3"/>
 </IDPairRange>
-<?php codeblockend("brush: xml;"); ?>
+<?php codeblockend("xml"); ?>
 <h4>Full Tag, Subtag, and Attribute List</h4>
 <ul>
   <li>
@@ -2608,7 +2608,7 @@ corresponding to $\\varepsilon=1$ and $\\sigma=1$");?>
   <IDPairRange .../>
   ...
 </IDPairRange>
-<?php codeblockend("brush: xml;"); ?>
+<?php codeblockend("xml"); ?>
 <h4>Full Tag, Subtag, and Attribute List</h4>
 <ul>
   <li>
@@ -2638,7 +2638,7 @@ corresponding to $\\varepsilon=1$ and $\\sigma=1$");?>
 </p>
 <?php codeblockstart();?>
 <IDPairRange Type="Chains" Start="0" End="7" Interval="4"/>
-<?php codeblockend("brush: xml;"); ?>
+<?php codeblockend("xml"); ?>
 <h4>Full Tag, Subtag, and Attribute List</h4>
 <ul>
   <li>

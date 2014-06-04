@@ -190,7 +190,7 @@
   the command line. For example, to open a compressed configuration
   file from the terminal to edit it using Kate, just write:
 </p>
-<?php codeblockstart(); ?>kate config.out.xml.bz2<?php codeblockend("brush: shell;"); ?>
+<?php codeblockstart(); ?>kate config.out.xml.bz2<?php codeblockend("bash"); ?>
 <p>
   DynamO writes out a compressed xml files by default (indicated by
   the extension <i>.bz2</i>). Luckily, most text editors will happily
@@ -230,7 +230,7 @@ The error was 'GLXBadFBConfig'.
    To debug your program, run it with the --sync command line
    option to change this behavior. You can then get a meaningful
    backtrace from your debugger if you break on the gdk_x_error() function.)
-BoundedPQ: Exception Events = 0<?php codeblockend("brush: shell;"); ?>
+BoundedPQ: Exception Events = 0<?php codeblockend("bash"); ?>
 <p>
   The GLXBadFBConfig error is raised as your system was unable to
   provide an OpenGL 3.3 context.
@@ -280,7 +280,7 @@ Tue 09:55, Events 100k, t 19.0976, <MFT> 0.131009, T 1, U 0
 Caught SIGINT, notifying running simulation...
 
 <S>hutdown or <P>eek at data output:
-<?php codeblockend("brush: shell;"); ?>
+<?php codeblockend("bash"); ?>
 <p>
   While this menu is displayed, dynarun is paused and waiting for
   input.  If dynarun recieves a second SIGINT (ctrl-c) while waiting

@@ -117,7 +117,7 @@
   download a copy of the DynamO source code.  The recommended method
   is to use git to download the source, which would look like this:
 </p>
-<?php codeblockstart(); ?>git clone https://github.com/toastedcrumpets/DynamO.git<?php codeblockend("brush: shell;"); ?>
+<?php codeblockstart(); ?>git clone https://github.com/toastedcrumpets/DynamO.git<?php codeblockend("bash"); ?>
 <p>
   If this command fails, it could be because you don't have an
   internet connection or you are behind a proxy. Please ensure that
@@ -125,12 +125,12 @@
   version of git (such as the tom cluster in Manchester), you can try
   using the git protocal using the following command:
 </p>
-<?php codeblockstart(); ?>git clone git://github.com/toastedcrumpets/DynamO.git<?php codeblockend("brush: shell;"); ?>
+<?php codeblockstart(); ?>git clone git://github.com/toastedcrumpets/DynamO.git<?php codeblockend("bash"); ?>
 <p>
   One of the above commands should allow you to download the source
   code so now change into the directory ready to start the build.
 </p>
-<?php codeblockstart(); ?>cd DynamO<?php codeblockend("brush: shell;"); ?>
+<?php codeblockstart(); ?>cd DynamO<?php codeblockend("bash"); ?>
 <h1>Step 2: Compilation</h1>
 <p>
   DynamO uses the modern, powerful, but fairly complex boost-build
@@ -142,7 +142,7 @@
   Building DynamO is then as straightforward as running the make
   command:
 </p>
-<?php codeblockstart(); ?>make<?php codeblockend("brush: shell;"); ?>
+<?php codeblockstart(); ?>make<?php codeblockend("bash"); ?>
 <p>
   This step will take a while as there are hundreds of source files to
   compile.
@@ -153,7 +153,7 @@
   dependencies it needs to build. The list of tests should look like
   this (they may be in any order):
 </p>
-<?php codeblockstart(); ?>Performing configuration checks
+<pre>Performing configuration checks
 
     - Magnet: OpenCL libraries and headers (optional) : no
     - DynamO: Judy array library (libJudy) : yes
@@ -168,8 +168,7 @@
     - Coil: GLUT               : yes
     - Coil: libCwiid Wii-mote support (Optional) : yes
     - DynamO-Coil Integration Supported : yes
-...patience...
-<?php codeblockend("brush: plain;"); ?>
+...patience...</pre>
 <p>
   If you are missing any of the boost libraries, then DynamO won't
   build at all. If you are missing any of Coil's dependencies you will
@@ -191,7 +190,7 @@
   You can now install DynamO into your system (<em>/usr/bin</em>) using the
   following command.
 </p>
-<?php codeblockstart(); ?>sudo make install<?php codeblockend("brush: shell;"); ?>
+<?php codeblockstart(); ?>sudo make install<?php codeblockend("bash"); ?>
 <p>
   Alternatively, you may just run the executables from where they
   are or add the directory <em>DynamO/bin</em> to your PATH variable.
@@ -211,14 +210,14 @@
   If there has been a major update to the code, you will need to clean
   up the current version of the code by running the following command:
 </p>
-<?php codeblockstart(); ?>make clean<?php codeblockend("brush: shell;"); ?>
+<?php codeblockstart(); ?>make clean<?php codeblockend("bash"); ?>
 <p>
   You can then easily update to the latest version of DynamO by just
   running the following commands:
 </p>
 <?php codeblockstart(); ?>git pull
 make
-sudo make install<?php codeblockend("brush: shell;"); ?>
+sudo make install<?php codeblockend("bash"); ?>
 <p>
   and you should now have an up-to-date set of executables installed!
 </p>
@@ -231,7 +230,7 @@ sudo make install<?php codeblockend("brush: shell;"); ?>
   DynamO directory
 </p>
 <?php codeblockstart(); ?>make debug
-sudo make install<?php codeblockend("brush: shell;"); ?>
+sudo make install<?php codeblockend("bash"); ?>
 <p>
   This will install some executables built with debugging symbols and
   extra sanity checks. These executables have the suffix "<em>_d</em>"
@@ -257,31 +256,31 @@ sudo make install<?php codeblockend("brush: shell;"); ?>
   directory on the cluster:
 </p>
 <?php codeblockstart(); ?>cd ~
-wget http://downloads.sourceforge.net/project/boost/boost/1.53.0/boost_1_53_0.tar.bz2<?php codeblockend("brush: shell;"); ?>
+wget http://downloads.sourceforge.net/project/boost/boost/1.53.0/boost_1_53_0.tar.bz2<?php codeblockend("bash"); ?>
 <p>
   Once it has finished downloading, you need to untar the Boost
   sources into a directory before you can compile them. The following
   command will do the trick.
 </p>
-<?php codeblockstart(); ?>tar -xjf boost_1_53_0.tar.bz2<?php codeblockend("brush: shell;"); ?>
+<?php codeblockstart(); ?>tar -xjf boost_1_53_0.tar.bz2<?php codeblockend("bash"); ?>
 <p>
   You should now have a <i>boost_1_53_0</i> directory in your home
   directory. Just in case you need to upgrade boost in the future, I
   would rename the directory to something more generic:
 </p>
-<?php codeblockstart(); ?>mv boost_1_53_0 boost<?php codeblockend("brush: shell;"); ?>
+<?php codeblockstart(); ?>mv boost_1_53_0 boost<?php codeblockend("bash"); ?>
 <p>
   Next we need to build the boost-build system. Change into the boost
   directory and run the <i>bootstrap.sh</i> script:
 </p>
 <?php codeblockstart(); ?>cd ~/boost
-./bootstrap.sh<?php codeblockend("brush: shell;"); ?>
+./bootstrap.sh<?php codeblockend("bash"); ?>
 <p>
   Once its finished bootstrapping the boost build system, you should
   now have the <i>bjam</i> executable in the current directory. Now
   we're ready to build the boost libraries using the bjam command.
 </p>
-<?php codeblockstart(); ?>./bjam<?php codeblockend("brush: shell;"); ?>
+<?php codeblockstart(); ?>./bjam<?php codeblockend("bash"); ?>
 <p>
   If everything goes well, you should have a message informing you
   that the libraries are in <i>stage/lib</i> and the headers are in
@@ -297,7 +296,7 @@ wget http://downloads.sourceforge.net/project/boost/boost/1.53.0/boost_1_53_0.ta
 <?php codeblockstart(); ?>cd ~/
 git clone https://github.com/toastedcrumpets/DynamO.git
 cd ~/DynamO/
-BOOST_BUILD_PATH=~/boost/tools/build/v2/ ~/boost/bjam install include=~/boost/ linkflags="-L ~/boost/stage/lib/"<?php codeblockend("brush: shell;"); ?>
+BOOST_BUILD_PATH=~/boost/tools/build/v2/ ~/boost/bjam install include=~/boost/ linkflags="-L ~/boost/stage/lib/"<?php codeblockend("bash"); ?>
 <p>
   The option <i>link=static</i> and <i>runtime-link=static</i> ensures
   that the boost libraries are linked statically so that you can run
@@ -317,7 +316,7 @@ BOOST_BUILD_PATH=~/boost/tools/build/v2/ ~/boost/bjam install include=~/boost/ l
 </p>
 <?php codeblockstart(); ?>export BOOST_BUILD_PATH=~/boost/tools/build/v2/
 export CPATH=~/boost/:$CPATH
-export LIBRARY_PATH=~/boost/stage/lib/:$LIBRARY_PATH<?php codeblockend("brush: shell;"); ?>
+export LIBRARY_PATH=~/boost/stage/lib/:$LIBRARY_PATH<?php codeblockend("bash"); ?>
 <h1>Troubleshooting</h1>
 <h2>Configuration checks say No, why?</h2>
 <p>
@@ -339,7 +338,7 @@ export LIBRARY_PATH=~/boost/stage/lib/:$LIBRARY_PATH<?php codeblockend("brush: s
 builddep.set-feature-on-build
 rule check-target-builds unknown in module ../magnet/jam/builddep.
 src/dynamo/jamfile:45: in modules.load
-<?php codeblockend("brush: shell;"); ?>
+<?php codeblockend("bash"); ?>
 <p>
   This error is because your boost/bjam installation is too old to
   support the "check-target-builds" feature which DynamO uses to check

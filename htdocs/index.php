@@ -12,7 +12,7 @@ function codeblockstart()
 function codeblockend($opts)
  {
    $code = ob_get_clean();
-   echo "<pre><code>".htmlentities($code)."</code></pre>";
+   echo "<pre><code class=\"".$opts."\">".htmlentities($code)."</code></pre>";
  }
 
 function showhidestart()
@@ -90,7 +90,7 @@ function xmlXPathFile($file, $xpathExpr, $max_depth = 0, $max_children = 0)
    foreach (array_reverse($tags) as $node){
     echo str_repeat("  ", --$currentdepth)."</".$node.">\n";
    }
-   codeblockend("brush: xml;");
+   codeblockend("xml");
 }
 
 function button($text, $link)
@@ -227,7 +227,7 @@ $contentdate = date("l jS F Y ", filemtime("pages/".$page.".php"));
           });
       }
     </script>
-    <?php } if (isset($pagecss)) { echo "<style>".$pagecss."</style>";} ?>
+    <?php }?>
   </head>
   <body>
     <!-- SPACER TO COUNTER DODGY PAGE MARGIN INTERACTIONS -->
