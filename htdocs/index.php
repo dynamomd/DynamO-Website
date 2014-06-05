@@ -118,7 +118,7 @@ $containsvideo = false;
 
 function embedfigure($filename, $width, $height, $caption)
 { ?>
-<div class="figure" style="width:100%;max-width:<?=$width+10?>px; vertical-align:middle;padding:5px;">
+<div class="figure" style="width:100%;max-width:<?=$width+10?>px; vertical-align:middle;">
   <a href="<?=$filename?>">
     <img alt="See descriptive caption below" style="width:100%;max-width:<?=$width?>px;" src="<?=$filename?>">
   </a>
@@ -131,8 +131,8 @@ function embedAJAXvideo($filename, $youtubecode, $width, $height, $caption)
    global $containsvideo;
    $containsvideo = true;
    ?>
-<div class="figure" style="width:100%;max-width:<?=$width?>px; vertical-align:middle;">
-  <div class="video-container" style="width:100%;max-width:<?=$width?>px;height:auto;max-height:<?=$height?>px;" id="<?=$filename?>video" onclick="delayedLoadOfVideo('<?=$filename?>video', '<?=$height?>', '<?=$width?>', '<?=$youtubecode?>')">
+<div class="figure" style="width:100%;max-width:<?=$width+10?>px; vertical-align:middle;">
+  <div class="video-container" style="max-width:<?=$width?>px;max-height:<?=$height?>px;" id="<?=$filename?>video" onclick="delayedLoadOfVideo('<?=$filename?>video', '<?=$height?>', '<?=$width?>', '<?=$youtubecode?>')">
     <div class="play-button"></div>
     <img alt="See descriptive caption below" style="width:100%;max-width:<?=$width?>px;" src="/videos/<?=$filename?>.jpg">
   </div>

@@ -35,7 +35,7 @@ function toggle_visibility(elementname) {
 </p>
 <h1>General Structure</h1>
 <div id="taglist">
-  <ul style="padding-left: 15px;list-style:circle; list-style-position:inside; font-weight:bold; padding-left:5px; margin-top:5px;">
+  <ul>
     <li>
       DynamOconfig
       <ul>
