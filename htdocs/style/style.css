@@ -134,7 +134,7 @@ h1:target, h2:target, h3:target {
 }
 
 .figure .video-container {
-    padding:5px;
+    padding-top:5px;
     position:relative;
     clear:both;
     cursor: pointer;
