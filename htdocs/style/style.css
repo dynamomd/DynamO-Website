@@ -92,22 +92,6 @@ h1:target, h2:target, h3:target {
     margin:-15px -15px 0 0;
 }
 
-.newsdivider {
-    height:2px;
-    clear:both;
-    background-color:#000000;
-    margin:15px;
-}
-
-.newsdate {
-    display:inline;
-    float:right;
-    margin-top:1.2em;
-    font-weight:bold;
-    color: #113366;
-    margin-left:15px;
-}
-
 .figure {
     display: inline-block;
     position:relative;
