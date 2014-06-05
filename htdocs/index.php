@@ -23,7 +23,7 @@ function showhideend($name)
    $code = ob_get_clean();
    $unique_identifier = uniqid("codeid");
    ?>
-<div style="background:#eeeeee;  border:2px solid #000000; position:relative; padding-top:30px;" class="rounded">
+<div style="background:#eeeeee;  border:2px solid #000000; position:relative; padding-top:30px;">
   <a style="background:#ffffff; display:block; position:absolute; padding:5px 5px 5px 5px; left:0;top:0; border-radius:15px 0 15px 0; border-right:2px solid #000000;border-bottom:2px solid #000000;" href="javascript:toggle_visibility('<?php echo $unique_identifier;?>')"><?php echo $name; ?></a>
   <p id="<?php echo $unique_identifier; ?>" style="background:#eeeeee; display:none">
 <?php echo $code;?> </p></div> <?php
@@ -234,7 +234,7 @@ $contentdate = date("l jS F Y ", filemtime("pages/".$page.".php"));
     <div style="height:15px;"></div>
 
     <!-- HEADER AND LOGO -->
-    <div class="logo rounded">
+    <div class="logo">
       <a href="/" id="sitelogolink"><img id="sitelogo" alt="The DynamO logo" src="/style/sitelogo.png"></a>
     </div>
     <a href="https://github.com/toastedcrumpets/DynamO/"><img style="position: absolute; top: 0; right: 0; border: 0;" src="/images/forkme_right_red_aa0000.png" alt="Fork me on GitHub"></a>
@@ -246,14 +246,14 @@ $contentdate = date("l jS F Y ", filemtime("pages/".$page.".php"));
     </div>
 
     <!-- CONTENT -->
-    <div id="contentwrapper" class="rounded">
+    <div id="contentwrapper">
       <?php echo $content; ?>
       <div style="clear:both;height:10px;"></div>
       <p id="pagedate"><i>Page last modified: <?php echo $contentdate; ?></i></p>
     </div>
     
     <!-- FOOTER -->
-    <div id="footer" class="rounded">
+    <div id="footer">
       <p>&copy; M. Bannerman 2008-<?php echo date("Y"); ?></p>
       <div id="footerlogos">
 	<?php if ($mathjax) { ?>

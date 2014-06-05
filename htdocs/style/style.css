@@ -99,15 +99,10 @@ h1:target, h2:target, h3:target {
     margin:15px;
 }
 
-.rounded {
-    border-radius: 15px;
-    padding: 15px;
-    background-color: #ffffff;
-    margin: 0px 15px 15px 15px;
-}
-
 .logo {
     border:2px solid;
+    padding: 15px;
+    margin: 0 15px 15px 15px;
 }
 
 .newsdate {
@@ -121,11 +116,15 @@ h1:target, h2:target, h3:target {
 
 .figure {
     display: inline-block;
-    border:2px solid;
-    background-color:#ffffff;
-    border-radius: 15px 15px 15px 15px;
     position:relative;
 }
+
+#contentwrapper, .logo, .figure, #footer, .button a {
+    border-radius: 15px;
+    background-color: #ffffff;
+    border:2px solid;
+}
+
 
 .figure .caption { 
     text-align:center; 
@@ -172,10 +171,8 @@ h1:target, h2:target, h3:target {
 .button a:hover { background-color: #ccddcc; }
 
 .button a {
-    border:2px solid;
     position:relative;
     padding: 5px 15px;
-    border-radius:15px;
     background-color:#e0f0ff;
     color:#000000;
     display:inline-block;
@@ -192,6 +189,7 @@ h1:target, h2:target, h3:target {
 }
 
 #footer {
+    margin: 0 15px 15px 15px;
     position:relative;
     padding-left:15px;
     line-height:41px;
@@ -268,9 +266,11 @@ h1:target, h2:target, h3:target {
 }
 
 #contentwrapper {
+    padding: 15px;
     border-radius: 0 15px 15px 15px;
     border:2px solid;
     position:relative;
+    margin: 0px 15px 15px 15px;
 }
 
 #pagedate {
@@ -279,10 +279,14 @@ h1:target, h2:target, h3:target {
 }
 
 @media all and (max-width:767px)  {
+    #menu a, .logo, #footer, .table-of-contents, #table-of-contents-title, #contentwrapper {
+	border-radius:0;
+	
+    }
+
     #menu a {
 	width:33.3333333333%;
 	padding:10px 0;
-	border-radius:0;
 	border:2px solid #000000;
 	text-align:center;
 	box-sizing:border-box;
@@ -290,7 +294,6 @@ h1:target, h2:target, h3:target {
 
     .table-of-contents, #table-of-contents-title {
 	float:none;
-	border-radius:0;
 	margin:0;
 	border: 2px solid #113366;
     }
@@ -303,32 +306,9 @@ h1:target, h2:target, h3:target {
 	border-bottom:2px solid #000000;
     }
 
-    #TOC {
-	float:none;
-	border:2px solid #000000;
-	display:block;
-	padding:0;
-	margin:5px;
-	border-radius: 15px;
-	
-    }
-
     #contentwrapper {
-	border-radius: 0 0 15px 15px;
 	padding-top: 15px;
 	border:2px solid;
 	position:relative;
     }
-
-    #TOC #header {
-	border-radius: 15px 15px 0 0;
-	margin: 0;
-	float:none;
-	border:none;
-	padding:0;
-	width:100%;
-	text-align:center;
-	display:block;
-    }
-
 }
