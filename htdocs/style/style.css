@@ -99,12 +99,6 @@ h1:target, h2:target, h3:target {
     margin:15px;
 }
 
-.logo {
-    border:2px solid;
-    padding: 15px;
-    margin: 0 15px 15px 15px;
-}
-
 .newsdate {
     display:inline;
     float:right;
@@ -179,8 +173,18 @@ h1:target, h2:target, h3:target {
     text-decoration:none;
 }
 
-#sitelogo {
+.logo {
+    border:2px solid;
+    padding: 15px;
+    margin: 0 15px 15px 15px;
+}
+.logo a {
     display:block;
+    text-align:center;
+}
+
+#sitelogo {
+    display:inline-block;
     border-style:none;
     width:100%;
     max-width:424px;
