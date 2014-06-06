@@ -1,4 +1,4 @@
-/* Main html element styles */
+* Main html element styles */
 html { height: 100%; }
 
 body {
@@ -292,6 +292,9 @@ h1:target, h2:target, h3:target {
 
     #table-of-contents-title {
 	text-align:center;
+    }
+    .table-of-contents ul {
+	margin-top:1em;
     }
     .table-of-contents, #table-of-contents-title {
 	float:none;
