@@ -176,9 +176,6 @@ $contentdate = date("l jS F Y ", filemtime("pages/".$page.".php"));
     <title>DynamO: <?php echo $pagetitle; ?></title>
   </head>
   <body>
-    <!-- SPACER TO COUNTER DODGY PAGE MARGIN INTERACTIONS -->
-    <div style="height:15px;"></div>
-
     <!-- HEADER AND LOGO -->
     <div class="logo">
       <a href="/" id="sitelogolink"><img id="sitelogo" alt="The DynamO logo" src="/style/sitelogo.png"></a>

@@ -99,13 +99,14 @@ h1:target, h2:target, h3:target {
     border-left: 2px solid #113366;
     border-bottom: 2px solid #113366;
     border-radius:0 15px;
-    margin:-15px -15px 0 0;
+    margin:-10px -10px 5px 5px;
 }
 
 #contentwrapper, .logo, .figure, #footer, .button a {
+    padding:10px;
     border-radius: 15px;
     background-color: #ffffff;
-    border:2px solid;
+    border:2px solid #000000;
 }
 
 .figure {
@@ -155,11 +156,8 @@ h1:target, h2:target, h3:target {
     text-decoration:none;
 }
 
-.logo {
-    border:2px solid;
-    padding: 15px;
-    margin: 0 15px 15px 15px;
-}
+.logo { margin:15px; }
+
 .logo a {
     display:block;
     text-align:center;
@@ -252,9 +250,7 @@ h1:target, h2:target, h3:target {
 }
 
 #contentwrapper {
-    padding: 15px;
     border-radius: 0 15px 15px 15px;
-    border:2px solid;
     position:relative;
     margin: 0px 15px 15px 15px;
 }
