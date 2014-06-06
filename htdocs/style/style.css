@@ -290,8 +290,12 @@ h1:target, h2:target, h3:target {
 	box-sizing:border-box;
     }
 
+    #table-of-contents-title {
+	text-align:center;
+    }
     .table-of-contents, #table-of-contents-title {
 	float:none;
+	position:static;
 	margin:0;
 	border: 2px solid #113366;
     }
