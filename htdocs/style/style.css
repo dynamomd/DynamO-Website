@@ -49,12 +49,17 @@ pre {
     white-space: pre-wrap;
 }
 
-ul {
-    padding:0 1em;
-    list-style-position: inside;
-}
+ul { padding:0 0 0 1em; }
 
-li { margin:5px;}
+li { margin:5px; list-style-type:disc; }
+
+li li { list-style-type:circle; }
+
+li li li { list-style-type:square; }
+
+li li li li { list-style-type:circle; }
+
+li li li li li { list-style-type:disc; }
 
 a { text-decoration: none; }
 a:hover, a:active { text-decoration: underline; }
@@ -80,12 +85,17 @@ h1:target, h2:target, h3:target {
     border-radius:0 15px;
     padding:0 1em;
     font-weight:bold;
-    float:right;
+    position:absolute;
+    right:0;
+}
+.table-of-contents ul {
+    margin-top:2em;
 }
 
 .table-of-contents {
     background: #eeeeff;
     float:right;
+    padding:0 1em 0 1em;
     border-left: 2px solid #113366;
     border-bottom: 2px solid #113366;
     border-radius:0 15px;

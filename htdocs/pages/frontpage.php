@@ -49,7 +49,6 @@ rsort($file_array);
 if (!empty($file_array))
 { 
   $filename = current($file_array);
- echo "<div class=\"newsdate\">".date("jS F Y", filemtime($filename))."</div>";
- include($filename); 
+  include($filename); 
 }
 ?>

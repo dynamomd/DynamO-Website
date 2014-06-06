@@ -171,63 +171,9 @@ $contentdate = date("l jS F Y ", filemtime("pages/".$page.".php"));
     <meta name="author" content="Marcus Bannerman" />
     <meta name="google-site-verification" content="atSxig_hk_QoQxF4dobExHXxGUIt57ToZf3g_welkB0" />
     <link rel="stylesheet" type="text/css" href="/style/style.css" />
-    <?php if ($syntaxhighlighter) { ?>
-    <link rel="stylesheet" href="http://yandex.st/highlightjs/8.0/styles/googlecode.min.css">
-    <script src="http://yandex.st/highlightjs/8.0/highlight.min.js"></script>
-    <script>
-      hljs.configure({ languages:['bash', 'xml', 'python']});
-      hljs.initHighlightingOnLoad();
-    </script>
-    <?php } ?>
     <!--[if lt IE 10]><link rel="stylesheet" href="/style/ie-css3-support.css" type="text/css"/><![endif]-->
     <link rel="icon" type="image/png" href="/images/favicon.png" />
     <title>DynamO: <?php echo $pagetitle; ?></title>
-    <script type="text/javascript">
-      var _gaq = _gaq || [];
-      _gaq.push(['_setAccount', 'UA-31464781-1']);
-      _gaq.push(['_trackPageview']);
-      
-      (function() {
-      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-      })();
-    </script>
-    <script src="/prefixfree.min.js"></script>
-    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
-    <?php if ($containsvideo) { ?>
-    <script type="text/javascript" src="https://www.youtube.com/iframe_api"></script>
-    <script type="text/javascript">
-      function delayedLoadOfVideo(videoelemid, height, width, youtubecode)
-      {
-          /*Grab the video element*/
-          videoelem = document.getElementById(videoelemid);
-	  videoelem.setAttribute('style', 'background-color:#FFFFFF;');
-          /*Calculate how big the iframe needs to be to avoid resizing it*/
-          currentWidth = videoelem.offsetWidth;
-          currentHeight = Math.ceil((currentWidth + 0.0) * height / width);
-	  
-          /*Clean up the current video element*/
-          videoelem.removeAttribute("style");
-          videoelem.removeAttribute("onclick");
-          while( videoelem.hasChildNodes() ) {
-              videoelem.removeChild(videoelem.lastChild);
-          }
-
-          new YT.Player(videoelemid, {
-              height: currentHeight,
-              width: currentWidth,
-              videoId: youtubecode,
-	      playerVars : { autoplay:1, modestbranding:1, rel:0, theme:'light', autohide:1, wmode:'opaque'},
-              events: {
-		  //Hack to get the player to run in a higher quality, you can't see much of the detail without it.
-		  'onStateChange': function(event) { if (event.data == YT.PlayerState.BUFFERING) { event.target.setPlaybackQuality('highres'); } },
-		  'onReady': function(event) { event.target.setPlaybackQuality('highres'); }
-	      }
-          });
-      }
-    </script>
-    <?php }?>
   </head>
   <body>
     <!-- SPACER TO COUNTER DODGY PAGE MARGIN INTERACTIONS -->
@@ -267,6 +213,60 @@ $contentdate = date("l jS F Y ", filemtime("pages/".$page.".php"));
     <!-- SPACER TO COUNTER DODGY PAGE MARGIN INTERACTIONS -->
     <div style="height:1px;"></div>
     <!-- JAVASCRIPT -->
+    <script type="text/javascript">
+      var _gaq = _gaq || [];
+      _gaq.push(['_setAccount', 'UA-31464781-1']);
+      _gaq.push(['_trackPageview']);
+      
+      (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+      })();
+    </script>
+    <?php if ($syntaxhighlighter) { ?>
+    <link rel="stylesheet" href="http://yandex.st/highlightjs/8.0/styles/googlecode.min.css">
+    <script src="http://yandex.st/highlightjs/8.0/highlight.min.js"></script>
+    <script>
+      hljs.configure({ languages:['bash', 'xml', 'python']});
+      hljs.initHighlightingOnLoad();
+    </script>
+    <?php } ?>
+    <script src="/prefixfree.min.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+    <?php if ($containsvideo) { ?>
+    <script type="text/javascript" src="https://www.youtube.com/iframe_api"></script>
+    <script type="text/javascript">
+      function delayedLoadOfVideo(videoelemid, height, width, youtubecode)
+      {
+          /*Grab the video element*/
+          videoelem = document.getElementById(videoelemid);
+	  videoelem.setAttribute('style', 'background-color:#FFFFFF;');
+          /*Calculate how big the iframe needs to be to avoid resizing it*/
+          currentWidth = videoelem.offsetWidth;
+          currentHeight = Math.ceil((currentWidth + 0.0) * height / width);
+	  
+          /*Clean up the current video element*/
+          videoelem.removeAttribute("style");
+          videoelem.removeAttribute("onclick");
+          while( videoelem.hasChildNodes() ) {
+              videoelem.removeChild(videoelem.lastChild);
+          }
+
+          new YT.Player(videoelemid, {
+              height: currentHeight,
+              width: currentWidth,
+              videoId: youtubecode,
+	      playerVars : { autoplay:1, modestbranding:1, rel:0, theme:'light', autohide:1, wmode:'opaque'},
+              events: {
+		  //Hack to get the player to run in a higher quality, you can't see much of the detail without it.
+		  'onStateChange': function(event) { if (event.data == YT.PlayerState.BUFFERING) { event.target.setPlaybackQuality('highres'); } },
+		  'onReady': function(event) { event.target.setPlaybackQuality('highres'); }
+	      }
+          });
+      }
+    </script>
+    <?php }?>
     <!-- MATHJAX -->
     <?php if ($mathjax) { ?>
     <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
