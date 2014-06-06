@@ -7,8 +7,8 @@
    }
    $pagetitle="Welcome";
    ?>
-<div style="float:right; padding: 15px;">
-  <img src="/images/frontpage.png" style="width:100%;max-width:250px;max-height:269px;height:auto" alt="A simulation of hopper flow." />
+<div style="float:right;">
+  <?php embedfigure("/images/frontpage.png", 250, 269, "See the <a href=\"/index.php/features\">Features</a> section for examples of what DynamO can do.");?>
 </div>
 <p>
   DynamO is a free and open-source event-driven particle
@@ -40,7 +40,7 @@
 </p>
 
 <!-- Page End -->
-<h1 style="clear:both;">Latest News</h1>
+<h1>Latest News</h1>
 <?php 
 //Look in the news directory and create a date sorted list of the news items
 $file_array=glob('pages/news/*.html');

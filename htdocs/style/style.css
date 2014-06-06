@@ -102,38 +102,26 @@ h1:target, h2:target, h3:target {
     margin:-15px -15px 0 0;
 }
 
-.figure {
-    display: inline-block;
-    position:relative;
-}
-
 #contentwrapper, .logo, .figure, #footer, .button a {
     border-radius: 15px;
     background-color: #ffffff;
     border:2px solid;
 }
 
+.figure {
+    padding:5px;
+    display: inline-block;
+    position:relative;
+    vertical-align:middle;
+}
 
 .figure .caption { 
     text-align:center; 
-    clear: both;
-    margin:15px;
-}
-
-
-.figure a {
-    display:inline-block;
-    margin:5px;
-    border-style:none;
 }
 
 .figure .video-container {
-    padding-top:15px;
     position:relative;
-    clear:both;
     cursor: pointer;
-    margin-left:auto; 
-    margin-right:auto;
     display:inline-block;
 }
 
