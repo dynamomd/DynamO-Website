@@ -31,7 +31,7 @@
 <?php button("5: Multiple species/interactions, compression dynamics, and ticker output plugins","/index.php/tutorial5");?>
 <?php button("6: Polydispersity, walls, granular dynamics, and a bit of python","/index.php/tutorial6");?>
 <?php button("A: Automatically processing output and config files","/index.php/tutorialA");?>
-<h1>Reference</h1> 
+<h1>References</h1> 
 <?php button("Configuration File Format Reference","/index.php/reference");?>
 <?php button("Output Plugin Reference","/index.php/outputplugins");?>
 <h1>FAQ</h1> 

@@ -22,16 +22,16 @@ function toggle_visibility(elementname) {
 </script>
 <?php printTOC(); ?>
 <p>
-  In this reference a complete description of the file format is
-  presented. The introductory documentation in this reference is terse
-  as <a href="/index.php/tutorial3">a general introduction to the file
-  format is covered in tutorial 3</a>. 
+  This is a reference for the configuration file format of DynamO. If
+  you are new to DynamO, please see
+  the <a href="/index.php/tutorial3">general introduction to the file
+  format in tutorial 3</a> first.
 </p>
 <p>
-  In the following sections, all of the available tags of the
-  configuration file are listed and all of the options are detailed
-  for each tag type. Below is a hyperlinked hierarchy of the tags in
-  the configuration file.
+  In the following sections, all of the available XML tags and
+  attributes of the configuration file are listed and all of the
+  options are detailed for each tag type. Below is a hyperlinked
+  hierarchy of the tags in the configuration file.
 </p>
 <h1>General Structure</h1>
 <div id="taglist">
@@ -165,7 +165,8 @@ function toggle_visibility(elementname) {
 <h1><a id="scheduler"></a>Scheduler</h1>
 <p>
   The Scheduler specifies how DynamO searches the simulation for
-  events. How the events are sorted is specified by the <a href="#sorter">Sorter</a> tag.
+  events. How the events are actually sorted by the scheduler is
+  specified through the <a href="#sorter">Sorter</a> tag.
 </p>
 <h2>Type="Dumb"</h2>
 <h4>Description</h4>
@@ -206,12 +207,17 @@ function toggle_visibility(elementname) {
 </p>
 <h4>Note</h4>
 <p>
-  The neighbour list used by the scheduler is not
-  actually provided by the Scheduler. There must be a <a href="#global">Global</a>
-  interaction available in the system which implements a
-  NeighbourList. This neighbour list must have the name attribute set
-  to "SchedulerNBList" to allow the NeighbourList Scheduler to
-  identify it.
+  The NeighbourList scheduler will automatically add
+  a <a href="#global">Global</a> neighbour-list interaction to the
+  system if one has not already been specified. The current default is
+  the <a href="#TypeCells">Cells</a>
+  type <a href="#global">Global</a>.
+</p>
+<p>
+  If you want to specify the neighbour list type or change its
+  parameters, please add a <a href="#global">Global</a> with the name
+  attribute set to "SchedulerNBList" to allow the NeighbourList
+  Scheduler to identify it.
 </p>
 <h4>Example usage</h4>
 <?php codeblockstart();?><Scheduler Type="NeighbourList">
