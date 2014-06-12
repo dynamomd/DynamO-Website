@@ -674,6 +674,55 @@ dynarun config.xml -c 1000000 -L MFT:BinWidth=0.5,Length=100
 <p>
    None.
 </p>
+<h3>Definitions of the transport coefficients</h4>
+<p>
+  DynamO contains Einstein correlators for a number of transport
+  coefficients. The definitions used here are the "mainstream"
+  coefficients, which is the most convenient definition for molecular
+  dynamics.
+
+  \[\begin{align}
+  {\bf X}_q &= - \frac{1}{T}\nabla T & {\bf X}_a &= -T\,\nabla \left(\frac{\mu_a}{T}\right)
+  \end{align}
+  \]
+  \[\begin{align}
+  {\bf J}_a &= \sum_b L_{ab}\,{\bf X}_b + L_{au}\,{\bf X}_u\\
+  {\bf J}_q &= \sum_a L_{qa}\,{\bf X}_a + L_{qq}\,{\bf X}_q\\
+  \end{align}
+  \]
+</p>
+<p>
+  The Onsager reciprocity relations are $L_{ab}=L_{ba}$ and
+  $L_{ua}=L_{au}$. As diffusion cannot result in the bulk motion of
+  the fluid, we have $\sum_a {\bf J}_a=0$. As a result, we must have
+  $L_{aa}=\sum_{b\neq a}L_{ab}$.
+</p>
+<p>
+  The phenomenological coefficients $L_{ab}$, $L_{aq}$, and $L_{qq}$
+  are distinct to the coefficients which appear in the common
+  expressions for the fluxes, i.e., Newton's/Fourier's/Fick's law;
+  However, they are related. As an example, the derivation of the
+  thermal conductivity for a binary mixture is outlined
+  below. Fourier's law is as follows:
+
+  \[
+  q = -\lambda \nabla T
+  \]
+
+  This definition is only applicable in the absence of diffusional
+  forces ($J_a=0$). Assuming a binary system ($a\in1,2$) and using
+  this condition to eliminate the diffusive forces (${\bf X}_a$), we
+  can rearrange the heat flux to read.
+  
+  \[\begin{align}
+  {\bf J_q} &= \left(L_{qq} -\frac{L_{1q}^2}{L_{12}}\right) {\bf X}_q\\
+  &= \frac{1}{T}\left(L_{qq} -\frac{L_{1q}^2}{L_{12}}\right) \nabla T
+  \end{align}
+  \]
+
+  Comparing this to Fourier's law allows us to define $\lambda$, but
+  only in the absence of diffusive forces for a binary mixture.
+</p>
 <h3><a id="thermalconductivity"></a>ThermalConductivity</h3>
 <p>
   This tag contains the Einstein correlation function which can be
