@@ -7,10 +7,9 @@
    return;
    }
    $pagetitle="Output Plugin/File Reference";
+   $pagetab="Output Plugins"
    ?>
 <?php printTOC(); ?>
-<p style="text-align:center; margin:15px; background-color:#FFD800; font-family:sans; line-height:40px;">
-</p>
 <p>
   Output plugins are routines which can be activated in DynamO to
   collect measurements on the simulation <i>while it is

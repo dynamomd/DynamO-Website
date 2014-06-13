@@ -7,6 +7,7 @@
    return;
    }
    $pagetitle="Frequently asked questions";
+   $pagetab="FAQ";
    ?>
 <?php printTOC(); ?>
 <p>

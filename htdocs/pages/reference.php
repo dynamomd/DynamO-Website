@@ -8,6 +8,7 @@
    }
    $pagetitle="Configuration File Format Reference";
    $pagecss="#taglist ul {padding-left: 15px;} #taglist li {list-style:disc; list-style-position:inside; font-weight:bold; padding-left:5px; margin-top:5px;}";
+   $pagetab="Config Format";
 ?>
 <script> 
 function toggle_visibility(elementname) {

@@ -99,11 +99,11 @@ function button($text, $link)
 <?php
  }
 
-function menulink($linkpage, $text)
+function menulink($linkpage, $text, $class="")
  {
    global $page;
    echo "<a";
-   if ($page == $linkpage) echo " class=\"selected\"";
+   if ($page == $linkpage) echo " class=\"selected ".$class."\"";
    echo " href=\"/index.php/".$linkpage."\">".$text."</a>";
  }
 
@@ -158,7 +158,6 @@ $in_template=1;
 ob_start();
 include_once("pages/".$page.".php");
 $content = ob_get_clean();
-
 $contentdate = date("l jS F Y ", filemtime("pages/".$page.".php"));
 ?>
 <!DOCTYPE html>
@@ -185,7 +184,16 @@ $contentdate = date("l jS F Y ", filemtime("pages/".$page.".php"));
     <!-- MENU -->
     <div id="menu">
       <!-- There can be no spaces between these elements, due to the treatment of the anchor tag as a word and the automatic kerning of html -->
-      <?php menulink("news", "News"); ?><?php menulink("download", "Download"); ?><?php menulink("documentation", "Manual"); ?><?php menulink("features", "Features"); ?><?php menulink("support", "Support"); ?><?php menulink("credits", "Credits"); ?>
+      <?php 
+	 menulink("news", "News");
+	 menulink("download", "Download");
+	 menulink("documentation", "Manual");
+	 menulink("features", "Features");
+	 menulink("support", "Support");
+	 menulink("credits", "Credits");
+	 if (isset($pagetab))
+	    menulink($page, $pagetab, "pagetab");
+	 ?>
     </div>
 
     <!-- CONTENT -->
@@ -289,7 +297,7 @@ var ToC = "<nav role='navigation' class='table-of-contents'>" +
     "<div id=\"table-of-contents-title\">Table of Contents</div><div style=\"clear:both;\"></div>" +
     "<ul>";
 var newLine, el, title, linkid;
-$("h1,h2").each(function() {
+$("h1,h2,h3").each(function() {
     el = $(this);
     title = el.text();
     if (el.is('[id]')) {
@@ -301,7 +309,10 @@ $("h1,h2").each(function() {
     el.attr("id", linkid);
     listyle=""
     if (el.is("h2"))
-	listyle='class="subsection"'
+	listyle='class="subsection"';
+    else if (el.is("h3"))
+	listyle='class="subsubsection"';
+    
     ToC += "<li "+listyle+"><a href='#" + linkid + "'>" + title +"</a></li>";
 });
 ToC +="</ul>" +"</nav>";

@@ -69,6 +69,12 @@ a:hover, a:active { text-decoration: underline; }
     list-style-type:circle;
 }
 
+.table-of-contents .subsubsection {
+    margin-left:2em;
+    list-style-type:square;
+    font-size:90%;
+}
+
 h1:target, h2:target, h3:target {
     animation: highlight 1s;
 }
@@ -93,13 +99,13 @@ h1:target, h2:target, h3:target {
 }
 
 .table-of-contents {
+    position:relative;
     background: #eeeeff;
     float:right;
     padding:0 1em 0 1em;
-    border-left: 2px solid #113366;
-    border-bottom: 2px solid #113366;
-    border-radius:0 15px;
-    margin:-10px -10px 5px 5px;
+    border: 2px solid #000000;
+    border-radius:15px 15px 15px 15px;
+    margin:5px 0 5px 5px;
 }
 
 #contentwrapper, .logo, .figure, #footer, .button a {
@@ -229,17 +235,17 @@ h1:target, h2:target, h3:target {
     border: 2px solid;
     border-radius: 15px 15px 0 0;
     margin-bottom:-2px;
+    margin-right:-2px;
     font-weight:bold;
 }
 
 #menu a.selected {
     background-color:#ffffff;
-    margin-bottom:-2px;
     z-index:100;
     position:relative;
-    border-bottom:2px solid #ffffff;
+    border-bottom:none;
+    padding-bottom:12px;
 }
-
 
 #menu a:hover { 
     background-color:#ccddcc;
@@ -268,10 +274,15 @@ h1:target, h2:target, h3:target {
 
     #menu a {
 	width:33.3333333333%;
+	margin:0 -2px -2px 0;
 	padding:10px 0;
 	border:2px solid #000000;
 	text-align:center;
 	box-sizing:border-box;
+    }
+
+    #menu a.selected {
+	padding:10px 0;
     }
 
     #table-of-contents-title {
@@ -293,6 +304,10 @@ h1:target, h2:target, h3:target {
 
     #menu a.selected {
 	border-bottom:2px solid #000000;
+    }
+
+    #menu .pagetab {
+	width:100%;
     }
 
     #contentwrapper {

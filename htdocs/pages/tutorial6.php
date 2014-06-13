@@ -7,6 +7,7 @@
    return;
    }
    $pagetitle="Tutorial 6: Polydispersity, locals (walls), granular dynamics,  and a bit of python";
+   $pagetab="Tutorial 6";
    ?>
 <?php printTOC(); ?>
 <p style="text-align:center; margin:15px; background-color:#FFD800; font-size:16pt; font-family:sans; line-height:40px;">

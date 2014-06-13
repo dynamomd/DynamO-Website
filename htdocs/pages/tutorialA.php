@@ -7,6 +7,7 @@
    return;
    }
    $pagetitle="Parsing Output and Config Files";
+   $pagetab="Tutorial A";
    ?>
 <?php printTOC(); ?>
 <p>

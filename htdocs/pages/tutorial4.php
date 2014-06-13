@@ -6,8 +6,9 @@
    header( 'Location: /index.php/404');
    return;
    }
-   $pagetitle="Tutorial 4: Thermostats and transport properties";
-   ?>
+   $pagetitle="Tutorial 4: Thermostats and transport properties"; 
+   $pagetab="Tutorial 4";
+  ?>
 <?php printTOC(); ?>
 <p>
   This tutorial uses an example study of square-well particles to
@@ -32,7 +33,7 @@
 <p>
   This is a full study on the square-well fluid system.
 </p>
-<h2><a id="aboutsquarewellfluids"></a>About the system</h2>
+<h2 id="aboutsquarewellfluids">About the system</h2>
 <p>
   For the purpose of the tutorial, we'll want to simulate a fluid of
   square-well molecules. These are essentially hard-sphere particles
@@ -84,7 +85,7 @@ dynatransport output.xml -s 2 -c 10 -v
 <p>
   We'll now look in detail at each of these commands.
 </p>
-<h1><a id="settingup"></a>Setting up the configuration file</h1>
+<h1 id="settingup">Setting up the configuration file</h1>
 <p>
   When you first start using DynamO, it is not really practical to try
   to create a configuration file from scratch. The <b>dynamod</b> tool
@@ -152,7 +153,7 @@ Mode 1: Mono/Multi-component square wells
   been left at their default values of 1 and 1.5 respectively. Next,
   we're going to look at thermostatting the system.
 </p>
-<h1><a id="rescaling"></a>Rescaling velocities</h1>
+<h1 id="rescaling">Rescaling velocities</h1>
 <p>
   When creating the configuration, we initially set the temperature
   through the rescale option <i>-r</i>. This option works by rescaling
@@ -214,7 +215,7 @@ ETA 11s, Events 400k, t 26.6342, <MFT> 0.133171, T 2.48267, U -0.724
   converged. Instead, we can use a thermostat to automatically
   add/remove energy from the system to reach a specified temperature.
 </p>
-<h1><a id="thermostat"></a>Adding a thermostat</h1>
+<h1 id="thermostat">Adding a thermostat</h1>
 <p>
   To add an <a href="/index.php/reference#typeandersen">Andersen
   thermostat</a>, again use the dynamod tool:

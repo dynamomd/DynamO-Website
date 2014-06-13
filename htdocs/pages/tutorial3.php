@@ -7,6 +7,7 @@
    return;
    }
    $pagetitle="Tutorial 3: The configuration file";
+   $pagetab="Tutorial 3";
    ?>
 <?php printTOC(); ?>
 <p>

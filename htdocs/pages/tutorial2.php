@@ -7,6 +7,7 @@
    return;
    }
    $pagetitle="Tutorial 2: Introduction to DynamO";
+   $pagetab="Tutorial 2";
    ?>
 <?php printTOC(); ?>
 <p>

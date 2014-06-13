@@ -8,6 +8,7 @@
    return;
    }
    $pagetitle="Tutorial 5: Multiple species/interactions, compression dynamics, and ticker output plugins";
+   $pagetab="Tutorial 5";
    ?>
 <p>
   This tutorial uses an example study of multicomponent square-well
@@ -35,7 +36,7 @@
   it provides you with all of the knowledge you need to study any
   multicomponent system.
 </p>
-<h2><a id="aboutsquarewellfluids"></a>The studied system</h2>
+<h2 id="aboutsquarewellfluids">The studied system</h2>
 <div style="clear:right; float:right">
 <?php embedfigure("/images/tut5.lowdensity.png", 400, 329,
     "A rendering of the binary square-well system studied.");?>
@@ -105,7 +106,7 @@ dynarun config.prerun.xml -c 1000000 -o config.end.xml -L MSD
   We'll now look in detail at these commands, in particular how the
   configuration file was edited by hand into a multicomponent system.
 </p>
-<h1><a id="settingup"></a>Setting up the configuration file</h1>
+<h1 id="settingup">Setting up the configuration file</h1>
 <p>
   When you first start using DynamO, it is not really practical to try
   to create a configuration file from scratch. It is much simpler and
@@ -320,7 +321,7 @@ Mode 1: Mono/Multi-component square wells
   We'll now look at converting this into a high density
   configuration and how to thermostat the temperature.
 </p>
-<h1><a id="compressing"></a>Compressing the configuration</h1>
+<h1 id="compressing">Compressing the configuration</h1>
 <div style="clear:right; float:right;">
   <?php embedAJAXvideo("tut4_compression", "x62zeoF457w", 400, 300, "A 10:1 size-ratio low-density binary square-well system under
     compression.<br/><a href=\"/pages/config.tut5.binary.xml\">View configuration file</a>"); ?>
@@ -373,7 +374,7 @@ Mode 1: Mono/Multi-component square wells
   velocities, and to run a normal simulation for a while to allow the
   system to become unstuck/relax.
 </p>
-<h2><a id="rescaling"></a>Rescaling velocities during compression</h2>
+<h2 id="rescaling">Rescaling velocities during compression</h2>
 <p>
   During compression you should be able to observe that the
   temperature and internal energy is varying significantly. This is

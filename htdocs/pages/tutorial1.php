@@ -7,6 +7,7 @@
    return;
    }
    $pagetitle="Tutorial 1: Compiling DynamO from source";
+   $pagetab="Tutorial 1";
    ?>
 <?php printTOC(); ?>
 <p>
@@ -236,7 +237,7 @@ sudo make install<?php codeblockend("bash"); ?>
   extra sanity checks. These executables have the suffix "<em>_d</em>"
   (dynamod_d and dynarun_d) to indicate they're the debugging version.
 </p>
-<h1><a id="with-boost"></a>Using a local Boost installation</h1>
+<h1 id="with-boost">Using a local Boost installation</h1>
 <p>
   In some environments it can be difficult to meet the installation
   requirements of DynamO. For example, on HPC resources you usually
