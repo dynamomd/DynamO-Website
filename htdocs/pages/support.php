@@ -65,7 +65,7 @@
     <a href="http://danger.med.unc.edu/tools.php">iFold:</a> This is
     an event driven simulator for protein simulations presented by the
     Dokholyan group. It doesn't appear that the simulator is
-    publically available but the results are impressive.
+    publically available.
   </li>
   <li>
     <a href="http://www.speadmd.org/">SPEADMD</a> : This is a
@@ -84,15 +84,21 @@
       brownian dynamics, and also has its own 3D visualizer.
   </li>
   <li>
-    <a href="http://people.cas.uab.edu/~khu/gt/Hardballs">Hardballs</a>:
-    <br /> This appears to be the start of 2D EDMD simulation code.
+    <a href="http://mmb.irbbarcelona.org/MDdMD/">MDdMD</a>: <br /> A
+    web interface to a EDMD code for studying conformational
+    transitions with coarse-grained discrete models. Appears to be
+    closed source but openly accessible.
   </li>
   <li>
     <a href="http://www.lps.ens.fr/~krauth/index.php/Bernard_Krauth_Wilson_2009">Event-Chain
-      Algorithm:</a> <br />A remarkable event-driven algorithm capable
-      of evolving discrete and continuous potential
+      Algorithm:</a> <br /> A remarkable event-driven algorithm
+      capable of evolving discrete and continuous potential
       configurations. Not molecular dynamics but a great example of
       advanced algorithmic ideas from the event driven particles
       field.
+  </li>
+  <li>
+    <a href="http://people.cas.uab.edu/~khu/gt/Hardballs">Hardballs</a>:
+    <br /> This appears to be the start of 2D EDMD simulation code.
   </li>
 </ul>
