@@ -19,7 +19,7 @@
 <p>
   All of the documentation of DynamO assumes the reader has some
   experience with both Linux and Molecular Dynamics simulation.  There
-  are some <a href="#recommended-resources">recommended resources</a>
+  are some <a href="#RecommendedResources">recommended resources</a>
   listed below which will introduce the basics of these topics if you
   are at all unfamiliar with them.
 </p>
