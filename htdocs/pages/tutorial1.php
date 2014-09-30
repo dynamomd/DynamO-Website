@@ -223,6 +223,7 @@ tar -xf boost_1_56_0.tar.gz
 </p>
 <?php codeblockstart(); ?>cd ~/boost_1_56_0
 ./bootstrap.sh --with-libraries=program_options,system,filesystem,iostreams,test
+./b2
 <?php codeblockend("bash"); ?>
 <p>
   Now we can compile DynamO using this local boost
