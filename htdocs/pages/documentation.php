@@ -9,12 +9,7 @@
  ?>
 <?php printTOC(); ?>
 <p>
-  Here are the tutorials and reference documentation for DynamO. If
-  the system you wish to simulate is not covered in the tutorials, but
-  is listed in the <a href="/index.php/features">features</a> or
-  the <a href="#publications">publications</a>, please feel free to
-  <a href="/index.php/support#contacting-the-developers">contact the
-  developers</a> for some advice.
+  Here are the tutorials and reference documentation for DynamO.
 </p>
 <p>
   All of the documentation of DynamO assumes the reader has some
@@ -23,7 +18,7 @@
   listed below which will introduce the basics of these topics if you
   are at all unfamiliar with them.
 </p>
-<h1 style="clear:both;">Tutorials</h1> 
+<h1 style="clear:both;">Tutorials</h1>
 <?php button("1: Compiling DynamO from source","/index.php/tutorial1");?>
 <?php button("2: Introduction to DynamO","/index.php/tutorial2");?>
 <?php button("3: The configuration file","/index.php/tutorial3");?>
@@ -47,14 +42,17 @@
 <div style="text-align:center;">
   M. N. Bannerman, R. Sargant,
   L. Lue, <a href="http://dx.doi.org/10.1002/jcc.21915">"DynamO: A
-  free O(N) general event-driven simulator,"</a><i>
-  J. Comp. Chem.</i>, <b>32</b>, 3329-3338 (2011)"
+    free O(N) general event-driven simulator,"</a>
+  <i>J. Comp. Chem.</i>, <b>32</b>, 3329-3338 (2011)
 </div>
 <p>
-  Below is a list of publications which have used DynamO in their
-  results:
+  Below is an incomplete list of publications which have used DynamO
+  in their results:
 </p>
 <ul>
+  <li>
+    S. Mandal, S. Lang, M. Gross, M. Oettel, D. Raabe, T. Franosch, and F. Varnik, <a href="http://dx.doi.org/10.1038/ncomms5435">"Multiple reentrant glass transitions in confined hard-sphere glasses,"</a> <i>Nature Communications</i>, <b>1</b>, 5, 4435 (2014)
+  </li>
   <li>
     M. N. Bannerman, S. Strobl, A. Formella, and T. Poschel, <a href="http://dx.doi.org/10.1007/s40571-014-0021-8">"Stable algorithm for event detection in event-driven particle dynamics,"</a> <i>Comp. Part. Mech.</i>, <b>1</b>, 191-198 (2014)
   </li>
@@ -79,9 +77,15 @@
   </li>
   <li>
     S. Mandal, V. Chikkadi, B. Nienhuis, D. Raabe, P. Schall, and
-    F. Varnik, <a href="http://dx.doi.org/10.1103/PhysRevE.88.022129">"Heterogeneous
-      Shear in Hard Sphere Glasses,"</a> <i>Phys. Rev. E</i>, <b>88</b>,
+    F. Varnik, <a href="http://dx.doi.org/10.1103/PhysRevE.88.022129">"Single-particle fluctuations and directional correlations in driven hard-sphere glasses,"</a> <i>Phys. Rev. E</i>, <b>88</b>,
     022129 (2013)
+  </li>
+  <li>
+    K. B. Hollingshead, A. Jain, and
+    T. M. Truskett, <a href="http://dx.doi.org/10.1063/1.4826649">"Communication:
+    Fine discretization of pair interactions and an approximate
+    analytical strategy for predicting equilibrium behavior of complex
+    fluids,"</a> <i>J. Chem. Phys.</i>, <b>139</b>, 161102 (2013)
   </li>
   <li>
     S. Mandal, M. Gross, D. Raabe, and
