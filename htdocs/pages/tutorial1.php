@@ -25,8 +25,8 @@
 <h1>Step 0: Build requirements</h1>
 <p>
   DynamO is only tested on <b>Gnu/Linux</b> based systems (e.g.,
-  Ubuntu/Gentoo/RedHat/Suse). Compilation under Mac and windows is a
-  work in progress.
+  Ubuntu/Gentoo/RedHat/Suse). Compilation under Mac and windows is
+  under development.
 </p>
 <p>
   To build DynamO you will need a compiler, CMake, and several other
@@ -38,31 +38,69 @@
   convenience, commands to install these packages on Debian and RedHat
   based distributions are given below.
 </p>
-<h2>Ubuntu/Debian</h2>
+<h2>Ubuntu</h2>
 <p>
-  On <b>Ubuntu/Debian</b>, you can install these dependencies using
-  the following command:
+  On <b>Ubuntu</b> versions 12.04 and above, you can install the minimum dependencies
+  using the following command:
 </p>
 <?php codeblockstart(); ?>sudo apt-get install git build-essential cmake libboost-all-dev<?php codeblockend("bash"); ?>
 <p>
   And the optional packages with this command:
 </p>
 <?php codeblockstart(); ?>apt-get install libjudy-dev libgtkmm-2.4-dev freeglut3-dev libavcodec-dev libglew1.6-dev<?php codeblockend("bash"); ?>
-<h2>Red Hat Enterprise/CentOS/Scientific Linux  (6/7)</h2>
 <p>
-  <b>Notes:</b> For older distributions (e.g. RHEL 6), you will need
-  to update to a modern compiler (gcc 4.6+) and you will also need to
-  install an up-to-date version of boost. Please search online for how
-  to update gcc using the SCL system, and compile/install your own
-  copy of boost.
+  Now you can continue to <a href="#step1">step 1</a>.
 </p>
+<h2>CentOS/Red Hat Enterprise Linux (RHEL)/Scientific Linux 6</h2>
+<p>
+  For older RedHat based distributions (e.g. RHEL 5 or 6), you will
+  need to update to a modern compiler (gcc 4.6+) and you will also
+  need to install an up-to-date version of boost. The instructions
+  have only been tested on CentOS 6.5.
+</p>
+<p>
+  To install the modern compiler, you will need to install the updated
+  developer toolset. For all variants of RedHat, this involves
+  installing the developer tool set. Instructions on how to do this
+  are listed below for the three main distributions:
+</p>
+<ul>
+  <li><a href="https://access.redhat.com/documentation/en-US/Red_Hat_Developer_Toolset">RedHat Enterprise Linux instructions here.</a></li>
+  <li>
+    <a href="http://linux.web.cern.ch/linux/devtoolset/">Scientific Linux instructions here.</a>
+  </li>
+  <li>CentOS 5/6: Become root and type the following commands:
+    <?php codeblockstart(); ?>
+    wget http://people.centos.org/tru/devtools-1 ... s-1.1.repo -O /etc/yum.repos.d/devtools-1.1.repo
+    yum install devtoolset-1.1<?php codeblockend("bash"); ?>
+    When you need to activate the updated gcc compiler, simply type this command first:
+    <?php codeblockstart(); ?>scl enable devtoolset-1.1 bash<?php codeblockend("bash"); ?>
+  </li>
+</ul>
+<p>
+  You can then install the minimum dependencies like so
+</p>
+<?php codeblockstart(); ?>yum groupinstall "Development Tools"
+yum install git cmake bzip2-devel
+<?php codeblockend("bash"); ?>
+<p>
+  You will also need to install an up-to-date version of boost by
+  hand, preferably v1.50 or above.
+</p>
+<p>
+  If you are having trouble updating to a modern version of boost,
+  please try the instructions for <a href="#withboost">installing
+  using a local boost</a>. Otherwise, continue
+  with <a href="#step1">step 1</a>.
+</p>
+<h2>Red Hat Enterprise/CentOS/Scientific Linux 7</h2>
 <p>
   To install the minimum dependencies, use the following two commands:
 </p>
 <?php codeblockstart(); ?>yum groupinstall "Development Tools"
-yum install git cmake boost-devel bzip2-devel 
+yum install git cmake boost-devel bzip2-devel
 <?php codeblockend("bash"); ?>
-<h1>Step 1: Download the code</h1>
+<h1 id="step1">Step 1: Download the code</h1>
 <p>
   You must then download a copy of the source code. The recommended
   method is to use git:
@@ -107,13 +145,15 @@ cmake ..<?php codeblockend("bash"); ?>
 </p>
 <?php codeblockstart(); ?>make install<?php codeblockend("bash"); ?>
 <p>
-  Alternatively, you may just run the executables from where they are.
-  Congratulations, you now have a working installation of DynamO and
-  can now move on to the next tutorial:
+  Alternatively, you may just run the executables from the build
+  directory.  Congratulations, you now have a working installation of
+  DynamO and can now move on to the next tutorial:
 </p>
 <?php button("Tutorial 2: Introduction to the DynamO workflow","/index.php/tutorial2");?>
+<h1>Testing</h1>
 <p>
-  You can also test that everything works by running the test suite
+  DynamO has a test-suite to confirm that the code is functioning as
+  expected. You can run the test suite using the make test command:
 </p>
 <?php codeblockstart(); ?>make test<?php codeblockend("bash"); ?>
 <h1>Updating</h1>
@@ -153,7 +193,49 @@ sudo make install<?php codeblockend("bash"); ?>
 </p>
 <?php codeblockstart(); ?>cd DynamO
 mkdir debug-build-dir
+#Create a special build directory for the debug code
 cd debug-build-dir
+#Set up the build
 cmake -DCMAKE_BUILD_TYPE=Debug ..
+#Begin the compilation
 make
 sudo make install<?php codeblockend("bash"); ?>
+<h1 id="withboost">Compiling using a local boost installation</h1>
+<p>
+  Many HPC resources have up-to-date compilers but out-of-date boost
+  installations. In these cases it can be handy to have a way to
+  install boost locally, in your own home directory.
+</p>
+<p>
+  First, download the source of the current release of the boost
+  library
+  from <a href="http://www.boost.org/users/download/">here</a>, and
+  extract it. You can do this using the commands below, provided wget
+  is installed (it is not installed by default on Mac/OSX systems).
+</p>
+<?php codeblockstart(); ?>cd ~
+wget http://downloads.sourceforge.net/project/boost/boost/1.56.0/boost_1_56_0.tar.gz
+tar -xf boost_1_56_0.tar.gz
+<?php codeblockend("bash"); ?>
+<p>
+  Now change into the boost source directory and build only the
+  libraries that DynamO needs.
+</p>
+<?php codeblockstart(); ?>cd ~/boost_1_56_0
+./bootstrap.sh --with-libraries=program_options,system,filesystem,iostreams,test
+<?php codeblockend("bash"); ?>
+<p>
+  Now we can compile DynamO using this local boost
+  installation. Change back to the DynamO directory and run the
+  following commands:
+</p>
+<?php codeblockstart(); ?>#Make the build directory
+mkdir -p build-dir
+#Set up the build pointing to the local boost installation
+cd build-dir
+export BOOST_ROOT=~/boost_1_56_0/
+export BOOST_LIBRARYDIR=~/boost_1_56_0/stage/lib
+cmake ../
+#begin the compilation
+make
+<?php codeblockend("bash"); ?>
