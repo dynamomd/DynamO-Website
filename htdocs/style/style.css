@@ -106,6 +106,7 @@ h1:target, h2:target, h3:target {
     border: 2px solid #000000;
     border-radius:15px 15px 15px 15px;
     margin:5px 0 5px 5px;
+    min-width:140px;
 }
 
 #contentwrapper, .logo, .figure, #footer, .button a {
