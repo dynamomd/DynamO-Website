@@ -89,9 +89,9 @@ yum install git cmake bzip2-devel
 </p>
 <p>
   If you are having trouble updating to a modern version of boost,
-  please try the instructions for <a href="#withboost">installing
-  using a local boost</a>. Otherwise, continue
-  with <a href="#step1">step 1</a>.
+  please follow <a href="#step1">step 1</a> to download a copy of the
+  DynamO source code, then try the instructions
+  for <a href="#withboost">installing using a local boost</a>.
 </p>
 <h2>Red Hat Enterprise/CentOS/Scientific Linux 7</h2>
 <p>
@@ -138,6 +138,46 @@ cmake ..<?php codeblockend("bash"); ?>
   to actually compile the code.
 </p>
 <?php codeblockstart(); ?>make<?php codeblockend("bash"); ?>
+<h1 id="withboost">Alternative Step 2:Compiling using a local boost installation</h1>
+<p>
+  Many HPC resources have up-to-date compilers but out-of-date boost
+  installations. In these cases it can be handy to have a way to
+  install boost locally, in your own home directory.
+</p>
+<p>
+  First, download the source of the current release of the boost
+  library
+  from <a href="http://www.boost.org/users/download/">here</a>, and
+  extract it. You can do this using the commands below, provided wget
+  is installed (it is not installed by default on Mac/OSX systems).
+</p>
+<?php codeblockstart(); ?>cd ~
+wget http://downloads.sourceforge.net/project/boost/boost/1.56.0/boost_1_56_0.tar.gz
+tar -xf boost_1_56_0.tar.gz
+<?php codeblockend("bash"); ?>
+<p>
+  Now change into the boost source directory and build only the
+  libraries that DynamO needs.
+</p>
+<?php codeblockstart(); ?>cd ~/boost_1_56_0
+./bootstrap.sh --with-libraries=program_options,system,filesystem,iostreams,test
+./b2
+<?php codeblockend("bash"); ?>
+<p>
+  Now we can compile DynamO using this local boost
+  installation. Change back to the DynamO directory and run the
+  following commands:
+</p>
+<?php codeblockstart(); ?>#Make the build directory
+mkdir -p build-dir
+#Set up the build pointing to the local boost installation
+cd build-dir
+export BOOST_ROOT=~/boost_1_56_0/
+export BOOST_LIBRARYDIR=~/boost_1_56_0/stage/lib
+cmake ../
+#begin the compilation
+make
+<?php codeblockend("bash"); ?>
 <h1>Step 3: Installation</h1>
 <p>
   Once the compilation has completed, you can install DynamO into your
@@ -200,43 +240,3 @@ cmake -DCMAKE_BUILD_TYPE=Debug ..
 #Begin the compilation
 make
 sudo make install<?php codeblockend("bash"); ?>
-<h1 id="withboost">Compiling using a local boost installation</h1>
-<p>
-  Many HPC resources have up-to-date compilers but out-of-date boost
-  installations. In these cases it can be handy to have a way to
-  install boost locally, in your own home directory.
-</p>
-<p>
-  First, download the source of the current release of the boost
-  library
-  from <a href="http://www.boost.org/users/download/">here</a>, and
-  extract it. You can do this using the commands below, provided wget
-  is installed (it is not installed by default on Mac/OSX systems).
-</p>
-<?php codeblockstart(); ?>cd ~
-wget http://downloads.sourceforge.net/project/boost/boost/1.56.0/boost_1_56_0.tar.gz
-tar -xf boost_1_56_0.tar.gz
-<?php codeblockend("bash"); ?>
-<p>
-  Now change into the boost source directory and build only the
-  libraries that DynamO needs.
-</p>
-<?php codeblockstart(); ?>cd ~/boost_1_56_0
-./bootstrap.sh --with-libraries=program_options,system,filesystem,iostreams,test
-./b2
-<?php codeblockend("bash"); ?>
-<p>
-  Now we can compile DynamO using this local boost
-  installation. Change back to the DynamO directory and run the
-  following commands:
-</p>
-<?php codeblockstart(); ?>#Make the build directory
-mkdir -p build-dir
-#Set up the build pointing to the local boost installation
-cd build-dir
-export BOOST_ROOT=~/boost_1_56_0/
-export BOOST_LIBRARYDIR=~/boost_1_56_0/stage/lib
-cmake ../
-#begin the compilation
-make
-<?php codeblockend("bash"); ?>
