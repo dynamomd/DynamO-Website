@@ -16,7 +16,7 @@
 </p>
 <p>
   If you've already installed DynamO using
-  the <a href="/index.php/download#prebuilt">prebuilt packages</a>,
+  the <a href="/index.php/download#prebuilt-ubuntu">prebuilt packages</a>,
   you can skip straight to tutorial 2:
 </p>
 <?php button("Tutorial 2: Introduction to the DynamO workflow: Running a simulation of hard spheres","/index.php/tutorial2");?>
