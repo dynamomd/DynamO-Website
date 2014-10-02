@@ -35,8 +35,8 @@
   minimum requirements are <b>git</b>, <b>cmake</b>, and the <b>boost
   libraries</b>. For the visualiser to compile, you
   need <b>freeglut</b>, <b>GLEW</b>, and <b>gtkmm-2.4</b>. For your
-  convenience, commands to install these packages on Debian and RedHat
-  based distributions are given below.
+  convenience, commands to install these packages on Debian,
+  RedHat-based, and OpenSUSE distributions are given below.
 </p>
 <h2>Ubuntu</h2>
 <p>
@@ -100,6 +100,15 @@ yum install git cmake bzip2-devel
 <?php codeblockstart(); ?>yum groupinstall "Development Tools"
 yum install git cmake boost-devel bzip2-devel
 <?php codeblockend("bash"); ?>
+<h2>OpenSUSE (13.1)</h2>
+<p>
+  These instructions have only been tested on OpenSUSE 13.1. To
+  install the minimum dependencies, use the following command:
+</p>
+<?php codeblockstart(); ?>sudo zypper install gcc-c++ cmake libbz2-devel git boost-devel<?php codeblockend("bash"); ?>
+<p>
+  Now you can continue to <a href="#step1">step 1</a>.
+</p>
 <h1 id="step1">Step 1: Download the code</h1>
 <p>
   You must then download a copy of the source code. The recommended
