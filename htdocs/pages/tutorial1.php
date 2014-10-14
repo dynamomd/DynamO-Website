@@ -72,6 +72,7 @@
   <li>CentOS 5/6: Become root and type the following commands:
     <?php codeblockstart(); ?>
     wget http://people.centos.org/tru/devtools-1.1/devtools-1.1.repo -P /etc/yum.repos.d
+    echo "enabled=1" >> /etc/yum.repos.d/devtools-1.1.repo
     yum install devtoolset-1.1<?php codeblockend("bash"); ?>
     When you need to activate the updated gcc compiler, simply type this command first:
     <?php codeblockstart(); ?>scl enable devtoolset-1.1 bash<?php codeblockend("bash"); ?>
