@@ -43,7 +43,7 @@
   On <b>Ubuntu</b> versions 12.04 and above, you can install the minimum dependencies
   using the following command:
 </p>
-<?php codeblockstart(); ?>sudo apt-get install git build-essential cmake libboost-all-dev<?php codeblockend("bash"); ?>
+<?php codeblockstart(); ?>sudo apt-get install git build-essential cmake libboost-all-dev libbz2-dev<?php codeblockend("bash"); ?>
 <p>
   And the optional packages with this command:
 </p>
