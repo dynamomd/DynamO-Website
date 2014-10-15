@@ -43,5 +43,5 @@ For instructions on how to download the code using Git and compile it
 </p>
 <?php codeblockstart(); ?>sudo add-apt-repository ppa:dynamomd/dynamo-daily-ppa
 sudo apt-get update
-sudo apt-get install dynamo-core dynamo-tools dynamo-visualisation
+sudo apt-get install dynamomd
 <?php codeblockend("bash"); ?>
