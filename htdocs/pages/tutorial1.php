@@ -47,7 +47,7 @@
 <p>
   And the optional packages with this command:
 </p>
-<?php codeblockstart(); ?>apt-get install libjudy-dev libgtkmm-2.4-dev freeglut3-dev libavcodec-dev libglew1.6-dev<?php codeblockend("bash"); ?>
+<?php codeblockstart(); ?>apt-get install libjudy-dev libgtkmm-2.4-dev freeglut3-dev libavcodec-dev libglew1.6-dev libxmu-dev<?php codeblockend("bash"); ?>
 <p>
   Now you can continue to <a href="#step1">step 1</a>.
 </p>
