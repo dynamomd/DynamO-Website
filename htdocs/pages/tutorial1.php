@@ -134,7 +134,11 @@ yum install git cmake boost-devel bzip2-devel
 </p>
 <?php codeblockstart(); ?>mkdir build-dir
 cd build-dir
-cmake ..<?php codeblockend("bash"); ?>
+cmake .. -DCMAKE_BUILD_TYPE="Release"<?php codeblockend("bash"); ?>
+<p>
+  The build type is set to "Release" to ensure DynamO is built with
+  optimisations turned on.
+</p>
 <p>
   This last step should take a few seconds while cmake checks the
   setup of your system. If there are any errors, they are typically
@@ -184,7 +188,7 @@ mkdir -p build-dir
 cd build-dir
 export BOOST_ROOT=~/boost_1_56_0/
 export BOOST_LIBRARYDIR=~/boost_1_56_0/stage/lib
-cmake ../
+cmake ../ -DCMAKE_BUILD_TYPE="Release"
 #begin the compilation
 make
 <?php codeblockend("bash"); ?>
@@ -227,7 +231,7 @@ git pull<?php codeblockend("bash"); ?>
 </p>
 <?php codeblockstart(); ?>mkdir build-dir
 cd build-dir 
-cmake ../
+cmake ../ -DCMAKE_BUILD_TYPE="Release"
 make
 sudo make install<?php codeblockend("bash"); ?>
 <p>
@@ -246,7 +250,7 @@ mkdir debug-build-dir
 #Create a special build directory for the debug code
 cd debug-build-dir
 #Set up the build
-cmake -DCMAKE_BUILD_TYPE=Debug ..
+cmake .. -DCMAKE_BUILD_TYPE="Debug"
 #Begin the compilation
 make
 sudo make install<?php codeblockend("bash"); ?>
