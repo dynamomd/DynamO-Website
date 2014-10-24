@@ -38,11 +38,6 @@
 <h1>Libraries and Source Code Used</h1>
 <ul>
   <li>
-    A templated vector and matrix class, provided
-    by <a href="http://www.chem.utoronto.ca/~rzon/">Ramses van
-    Zon</a>, is used as the basis for most vector operations.
-  </li>
-  <li>
     XML parsing uses <a href="http://rapidxml.sourceforge.net/">RapidXML</a>.
   </li>
   <li>
@@ -54,8 +49,7 @@
     some excellent open source libraries utilised within the code.
   </li>
   <li>
-    The build system used to build DynamO
-    is <a href="http://www.boost.org/boost-build2/">boost build</a>.
+    The build system used is the CMake system.
   </li>
   <li>
     <a href="http://boscoh.com/">Bosco ho</a> provided
