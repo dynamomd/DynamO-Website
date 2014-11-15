@@ -143,6 +143,10 @@ yum install glew-devel freeglut-devel gtkmm24-devel libpng-devel libXmu-devel
 cd build-dir
 cmake ..<?php codeblockend("bash"); ?>
 <p>
+  By default the build type is set to "Release" to ensure DynamO is
+  built with optimisations turned on.
+</p>
+<p>
   This last step should take a few seconds while cmake checks the
   setup of your system. If there are any errors, they are typically
   due to missing build dependencies. If you cannot fix these on your
@@ -253,7 +257,7 @@ mkdir debug-build-dir
 #Create a special build directory for the debug code
 cd debug-build-dir
 #Set up the build
-cmake -DCMAKE_BUILD_TYPE=Debug ..
+cmake .. -DCMAKE_BUILD_TYPE="Debug"
 #Begin the compilation
 make
 sudo make install<?php codeblockend("bash"); ?>
