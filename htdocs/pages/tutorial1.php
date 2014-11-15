@@ -101,6 +101,13 @@ yum install git cmake bzip2-devel
 <?php codeblockstart(); ?>yum groupinstall "Development Tools"
 yum install git cmake boost-devel bzip2-devel
 <?php codeblockend("bash"); ?>
+<p>
+  If you wish to compile the visualiser, you will need to install the
+  following packages:
+</p>
+<?php codeblockstart(); ?>
+yum install glew-devel freeglut-devel gtkmm24-devel libpng-devel libXmu-devel
+<?php codeblockend("bash"); ?>
 <h2>OpenSUSE (13.1)</h2>
 <p>
   These instructions have only been tested on OpenSUSE 13.1. To
