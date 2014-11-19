@@ -1651,11 +1651,159 @@ number of Structures in the Topology.
 	<ul>
 	  <li>
 	    <b>Name</b> <i>(attribute)</i>: The name of
-	    the <a href="/index.php/reference#species">Structure</a>
+	    the <a href="/index.php/reference#structure">Structure</a>
 	    $\alpha$.
 	  </li>
 	</ul>
       </li>
     </ul>
+  </li>
+</ul>
+
+<h2 id="radiusgyration">RadiusGyration</h2>
+<p>
+  The RadiusGyration plugin calculates and averages the radius of
+  gyration for each
+  <a href="/index.php/reference#structure">Structure</a> tag in the
+  system. This is used as a measure of the size and shape of complex
+  molecules such as polymers.
+</p>
+<p>
+  To calculate the radii of gyration, we attempt to account for
+  periodic boundary conditions by walking along the chain using the
+  previous particle's position as the origin of the coordinate system
+  before applying boundary conditions. We first calculate the inertia
+  tensor like so:
+
+  \[ 
+  \mathbf{I} = \sum_i
+  m_i\left[\left(\mathbf{r}_i\cdot\mathbf{r}_i\right)\mathbf{1} -
+  \mathbf{r}_i\,\mathbf{r}_i\right] \]
+
+  Then we scale out the mass and calculate the eigenvectors and values
+  of the matrix $\mathbf{I} / \sum_i m_i$. The unit eigenvectors are
+  the principle axes of the molecule and the eigenvalues are the radii
+  of gyration.
+</p>
+<p>
+  This plugin also calculates the Nematic order parameter. For each
+  molecule $i$, we assign the principle axis corresponding to the
+  largest radius of gyration as the director $\mathbf{u}_i$. Then we
+  construct the following tensor:
+  
+  \[
+  \mathbf{S} = \frac{1}{2\,N_{mono}}\sum_i \left(3\,\mathbf{u}_i\,\mathbf{u}_i - \mathbf{1}\right)
+  \]
+
+  We then calculate the eigenvectors and values of $\mathbf{S}$. If
+  the system is aligned nematically, the eigenvectors indicate the
+  alignment directions of the molecules. In particular, the largest
+  eigenvector should correspond to the fluid director. 
+</p>
+<p>
+  Assume we rotate the matrix $\mathbf{S}$ to a coordinate frame where
+  $x$, $y$, and $z$ coincide with the eigenvectors (in increasing
+  order). In perfectly aligned nematic, prolate fluids, we expect:
+  
+  \[
+  \tilde{\mathbf{S}} = \begin{bmatrix}-0.5 & 0 & 0\\0 & -0.5 & 0 \\ 0 & 0 & 1\end{bmatrix}
+  \]
+  
+  In perfectly aligned oblate geometry we expect
+  \[
+  \tilde{\mathbf{S}} = \begin{bmatrix}0.5 & 0 & 0\\0 & 0.5 & 0 \\ 0 & 0 & -1\end{bmatrix}
+  \]
+
+  If the molecules are not aligned/isotropic, we expect
+  $\tilde{\mathbf{S}}=\mathbf{0}$.
+</p>
+<h4>Example usage</h4>
+<?php codeblockstart();?>
+-L RadiusGyration:BinWidthGyration=0.01,BinWidthNematic=0.001
+<?php codeblockend("bash"); ?>
+<h4>Options</h4>
+<ul>
+  <li>
+    <b>BinWidthGyration</b> <i>default [0.01]</i>: This is the width
+    of the histogram bins used while collecting statistics on the
+    radii of gyration.
+  </li>
+  <li>
+    <b>BinWidthNematic</b> <i>default [0.001]</i>: This is the width
+    of the histogram bins used while collecting statistics on the
+    nematic order parameter.
+  </li>
+</ul>
+<h4>Example output</h4>
+<?php codeblockstart();?>
+  <ChainGyration>
+    <Chain Name="HelixPolymer">
+      <GyrationRadii>
+        <Histogram SampleCount="1578" Dimension="1" BinWidth="0.01" AverageVal="0.42709125475285176">
+0.029999999999999999 0.063371356147021538
+0.070000000000000007 0.6337135614702154
+...
+        </Histogram>
+        <Histogram SampleCount="1578" Dimension="1" BinWidth="0.01" AverageVal="1.6703738910012673">
+0.28999999999999998 0.063371356147021538
+0.32000000000000001 0.12674271229404308
+...
+        </Histogram>
+        <Histogram SampleCount="1578" Dimension="1" BinWidth="0.01" AverageVal="9.7681432192648927">
+2.1200000000000001 0.063371356147021538
+2.2200000000000002 0.063371356147021538
+...
+        </Histogram>
+      </GyrationRadii>
+      <NematicOrderParameter x="-0.5" y="-0.49999999999999994" z="0.99999999999999911">
+        <Histogram SampleCount="1578" Dimension="1" BinWidth="0.001" AverageVal="-0.5">
+	  ...
+        </Histogram>
+        <Histogram SampleCount="1578" Dimension="1" BinWidth="0.001" AverageVal="-0.5">
+	  ...
+        </Histogram>
+        <Histogram SampleCount="1578" Dimension="1" BinWidth="0.001" AverageVal="1">
+	  ...
+        </Histogram>
+      </NematicOrderParameter>
+    </Chain>
+  </ChainGyration>
+<?php codeblockend("xml"); ?>
+<h4>Full Tag, Subtag, and Attribute List</h4>
+<ul>
+  <li>
+    <b>Chain</b> <i>(tag)</i>: The data is collected separately for
+    each <a href="/index.php/reference#structurechain">Chain type
+    Structure</a> in the configuration file.
+  <ul>
+    <li>
+      <b>Name</b> <i>(attribute)</i>: The name of
+      the <a href="/index.php/reference#structurechain">Chain type
+	Structure</a>.
+    </li>
+    <li>
+      <b>GyrationRadii</b> <i>(tag)</i>: This tag contains histograms
+      of the values of the three radii of gyration. The radii are
+      sorted by increasing magnitude. Each histogram entry is the
+      radii and and corresponding frequency.
+    </li>
+    <li>
+      <b>NematicOrderParameter</b> <i>(tag)</i>: This tag contains histograms of
+      the values of the three radii of gyration. The radii are sorted
+      by increasing magnitude.
+      <ul>
+	<li>
+	  <b>x</b>, <b>y</b>, <b>z</b> <i>(attributes)</i>: This is
+	  the current "director" for the fluid (at the time of the
+	  output).
+	</li>
+	<li>
+	  <b>Histogram</b> <i>(tags)</i>: These are histograms of the
+	  eigenvalues of $\mathbf{S}$ which correspond to the
+	  diagonal terms of $\tilde{\mathbf{S}}$.
+	</li>
+      </ul>
+    </li>
+  </ul>
   </li>
 </ul>

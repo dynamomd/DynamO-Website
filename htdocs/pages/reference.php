@@ -73,7 +73,7 @@ function toggle_visibility(elementname) {
 	    <li>
 	      <a>Topology<sup>1</sup></a>
 	      <ul><li>
-		  <a href="#topology">Structure</a>
+		  <a href="#structure">Structure</a>
 	      </li></ul>
 	    </li>
 	    <li>
@@ -559,7 +559,7 @@ the Lees-Edward sliding-brick boundary condition");?>
     time).
   </li>
 </ul>
-<h1 id="topology">Structure</h1>
+<h1 id="structure">Structure</h1>
 <p>
   Structure tags are used to specify multi-particle structures, such
   as molecules. This is to mark these structures to allow specialized
@@ -569,7 +569,7 @@ the Lees-Edward sliding-brick boundary condition");?>
 <p>
   Each Structure tag contains one or
   more <a href="#idrange">IDRange</a> tags, each of which specifies a
-  single structure of the same type. So one Topology tag has at least
+  single structure of the same type. So one Structure tag has at least
   the following basic format:
 </p>
 <?php codeblockstart();?>
@@ -581,7 +581,7 @@ the Lees-Edward sliding-brick boundary condition");?>
   </Structure>
 </Topology>
 <?php codeblockend("xml"); ?>
-<h2>Type="Chain"</h2>
+<h2 id="structurechain">Type="Chain"</h2>
 <h4>Description</h4>
 <p>
   The "Chain" Structure is used to mark out a single linear chain
@@ -2365,7 +2365,7 @@ corresponding to $\\varepsilon=1$ and $\\sigma=1$");?>
   <b>IDRange</b>s are used to specify a range
   of <a href="#pt">Particle</a> IDs. These are used in
   <a href="#species">Species</a>, <a href="#local">Local</a>, <a href="#global">Global</a>
-  and <a href="#topology">Topology</a> objects to specify the set of
+  and <a href="#structure">Structure</a> objects to specify the set of
   particles to which they apply.
 </p>
 <h2>Type="All"</h2>
