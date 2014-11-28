@@ -346,7 +346,7 @@ fraction ($\eta$) instead of number density ($\rho$)?</h1>
 </p>
 <p>
   If you use the <i>--snapshot-events</i> option, this allows you to
-  take a snapshot every ficed number of events. These files are saved
+  take a snapshot every fixed number of events. These files are saved
   to
   <i>Snapshot.output.Xe.xml.bz2</i>
   and <i>Snapshot.output.Xe.xml.bz2</i> where X is replaced with the
