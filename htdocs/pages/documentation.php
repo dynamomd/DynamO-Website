@@ -51,6 +51,12 @@
 </p>
 <ul>
   <li>
+    J. Wei, L. Xu, and
+    F. Song <a href="http://dx.doi.org/10.1063/1.4906084">"Range
+    effect on percolation threshold and structural properties for
+    short-range attractive spheres,"</a> <i>J. Chem. Phys</i>, <b>142</b>, 034504 (2015)
+  </li>
+  <li>
     S. Mandal, S. Lang, M. Gross, M. Oettel, D. Raabe, T. Franosch, and F. Varnik, <a href="http://dx.doi.org/10.1038/ncomms5435">"Multiple reentrant glass transitions in confined hard-sphere glasses,"</a> <i>Nature Communications</i>, <b>1</b>, 5, 4435 (2014)
   </li>
   <li>
