@@ -291,12 +291,9 @@ $contentdate = date("l jS F Y ", filemtime("pages/".$page.".php"));
       });
     </script>
     <?php } ?>
-    <?php if ($TOC) { ?>
     <script>
-var ToC = "<nav role='navigation' class='table-of-contents'>" +
-    "<div id=\"table-of-contents-title\">Table of Contents</div><div style=\"clear:both;\"></div>" +
-    "<ul>";
-var newLine, el, title, linkid;
+//Ensure every h1/h2/h3 tag has an id and link
+var el, title, linkid;
 $("h1,h2,h3").each(function() {
     el = $(this);
     title = el.text();
@@ -307,6 +304,20 @@ $("h1,h2,h3").each(function() {
 	linkid = title.replace(/[^a-z0-9]+/gi,'');
     }
     el.attr("id", linkid);
+    el.text("");
+    el.append("<a href=\"#"+linkid+"\">"+title+"</a>")
+});
+    </script>
+    <?php if ($TOC) { ?>
+    <script>
+var ToC = "<nav role='navigation' class='table-of-contents'>" +
+    "<div id=\"table-of-contents-title\">Table of Contents</div><div style=\"clear:both;\"></div>" +
+    "<ul>";
+var el, title, linkid;
+$("h1,h2,h3").each(function() {
+    el = $(this);
+    title = el.text();
+    linkid = el.attr('id');
     listyle=""
     if (el.is("h2"))
 	listyle='class="subsection"';
