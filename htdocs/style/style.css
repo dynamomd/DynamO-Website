@@ -64,6 +64,7 @@ li li li li li { list-style-type:disc; }
 a { text-decoration: none; }
 a:hover, a:active { text-decoration: underline; }
 
+
 .table-of-contents .subsection {
     margin-left:1em;
     list-style-type:circle;
@@ -77,6 +78,15 @@ a:hover, a:active { text-decoration: underline; }
 
 h1:target, h2:target, h3:target {
     animation: highlight 1s;
+}
+
+h1 a, h2 a, h3 a {
+    color: #113366;
+}
+
+h1 a:hover, h2 a:hover, h3 a:hover {
+    color: #113366;
+    text-decoration: none;
 }
 
 @keyframes highlight {

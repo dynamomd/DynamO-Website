@@ -11,6 +11,7 @@
 $file_array=glob('pages/news/*.html');
 rsort($file_array);
 ob_start();
+
 foreach ($file_array as $filename) 
 { 
   include($filename);
