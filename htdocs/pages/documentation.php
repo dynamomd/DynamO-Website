@@ -46,10 +46,12 @@
   <i>J. Comp. Chem.</i>, <b>32</b>, 3329-3338 (2011)
 </div>
 <p>
-  Below is an incomplete list of publications which have used DynamO
-  in their results:
+  Below is an incomplete list of publications which have used DynamO:
 </p>
 <ul>
+  <li>
+    A. J. Dunleavy, K. Wiesner, R. Yamamoto, and C. P. Royall <a href="http://dx.doi.org/10.1038/ncomms7089">"Mutual information reveals multiple structural relaxation mechanisms in a model glass former,"</a> <i>Nature Communications</i>, <b>6</b>, 6089 (2015)
+  </li>
   <li>
     J. Wei, L. Xu, and
     F. Song <a href="http://dx.doi.org/10.1063/1.4906084">"Range
