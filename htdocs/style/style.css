@@ -90,7 +90,7 @@ h1 a:hover, h2 a:hover, h3 a:hover {
 }
 
 @keyframes highlight {
-    from { background-color: yellow; }
+    from { background-color: #96CDCD; }
     to { background-color: white; }
 }
 
