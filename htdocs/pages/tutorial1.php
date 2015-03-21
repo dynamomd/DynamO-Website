@@ -94,12 +94,12 @@ yum install git cmake bzip2-devel
   DynamO source code, then try the instructions
   for <a href="#withboost">installing using a local boost</a>.
 </p>
-<h2>Red Hat Enterprise/CentOS/Scientific Linux 7</h2>
+<h2>Red Hat Enterprise/CentOS/Scientific Linux 7/Fedora 21+</h2>
 <p>
   To install the minimum dependencies, use the following two commands:
 </p>
 <?php codeblockstart(); ?>yum groupinstall "Development Tools"
-yum install git cmake boost-devel bzip2-devel
+yum install git cmake boost-devel bzip2-devel gcc-c++
 <?php codeblockend("bash"); ?>
 <p>
   If you wish to compile the visualiser, you will need to install the
