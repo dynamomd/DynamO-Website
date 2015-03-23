@@ -8,4 +8,7 @@ AddType video/mp4 .mp4
 AddType video/webm .webm
 AddType text/x-component .htc
 FileETag none
-
+<Files "uploadbuild.php">
+  Order Allow,Deny
+  Allow from gcpcluster.uoa.abdn.ac.uk
+</Files>
