@@ -31,6 +31,7 @@ function endswith($string, $test) {
 
 echo "<table id=\"download-table\">\n";
 echo "<thead><tr><td>Version</td><td>Build date</td><td>Distribution</td></tr></thead>\n";
+echo "<tbody>\n";
 try {
   $packagetypes = array("ubuntu14.04.deb" => "Ubuntu 14.04", "ubuntu12.04.deb" => "Ubuntu 12.04", "centos7.rpm" => "CentOS 7 (RedHat Enterprise Linux)", "centos6.6.rpm" => "CentOS\
  6.6 (RedHat Enterprise Linux)", "fedora21.rpm" => "Fedora 21", "debian7.deb" => "Debian 7 (Wheezy)", "opensuse13.2.rpm" => "OpenSUSE 13.2");
@@ -54,6 +55,7 @@ catch (RuntimeException $e) {
   echo "<li>Failed to load the prebuilt packages. ";
   echo $e->getMessage()."</li>\n";
 }
+echo "</tbody>\n";
 echo "</table>\n";
 ?>
 <p>
