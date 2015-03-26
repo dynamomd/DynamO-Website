@@ -17,9 +17,9 @@
 
 <h1 id="prebuilt">Prebuilt packages</h1>
 <p>
-  These builds of the DynamO source code are built each day for a range of
-  popular Linux distributions. You may need to install additional
-  packages for DynamO to work.
+  These builds of the DynamO source code are built regularly for a
+  range of popular Linux distributions. You may need to install
+  additional packages for DynamO to work.
 </p>
 <?php
 function endswith($string, $test) {
@@ -59,9 +59,12 @@ echo "</tbody>\n";
 echo "</table>\n";
 ?>
 <p>
-  If your distribution is not listed above,
-  please <a href="index.php/support#ContactingtheDevelopers">contact the
-    developers</a> to request an additional build,
+  You can check the status of the builds using
+  the <a href="http://cdash.dynamomd.org/index.php?project=DynamO">DynamO
+  CDash site</a>. If your distribution or version is not listed above
+  and you think it should be,
+  please <a href="index.php/support#ContactingtheDevelopers">contact
+  the developers</a> to request an additional build,
   or <a href="/index.php/tutorial1">compile the code yourself</a>.
   <h1 id="prebuilt-ubuntu">Ubuntu PPA</h1>
 <p>
