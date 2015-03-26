@@ -11,11 +11,11 @@ table#download-table td, table#download-table th {
     text-align:center;
 }
 
-table#download-table td.yes {
+table#download-table tbody tr td.yes {
     background-color:#ddffdd;
 }
 
-table#download-table td.no {
+table#download-table tbody tr td.no {
     background-color:#ffdddd;
 }
 
