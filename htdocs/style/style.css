@@ -3,7 +3,6 @@ a, table#download-table tbody  { color:#2063c7; }
 table#download-table {
     margin:5px auto 5px auto;
     border-collapse:collapse;
-    color:
 }
 
 table#download-table td, table#download-table th {
@@ -25,7 +24,7 @@ table#download-table thead {
     background-color: #eeeeff;    
 }
 
-table#download-table tbody td:hover {
+table#download-table tbody tr:hover td {
     background-color: #eeeeee;
     cursor:pointer;
 }
