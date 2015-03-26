@@ -13,11 +13,11 @@ table#download-table td, table#download-table th {
 }
 
 table#download-table td.yes {
-    background-color:ddffdd;
+    background-color:#ddffdd;
 }
 
 table#download-table td.no {
-    background-color:ffdddd;
+    background-color:#ffdddd;
 }
 
 table#download-table thead {
