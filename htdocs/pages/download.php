@@ -76,8 +76,9 @@ echo "</table>\n";
 <p>
   Please note, you may need to install additional packages for DynamO
   to work, and not all functionality is supported across all
-  platforms. Only more recent distributions support the visualiser and
-  advanced potentials.
+  platforms. Only more recent distributions support the visualiser
+  (due to requirements on OpenGL libraries) and advanced potentials
+  (due to the required compiler support of C++11).
 </p>
 <p>
   You can check the status of the builds using
