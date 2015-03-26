@@ -25,7 +25,7 @@ table#download-table thead {
 }
 
 table#download-table tbody tr:hover td, table#download-table tbody tr:hover td.yes, table#download-table tbody tr:hover td.no {
-    background-color: #eeeeff;
+    background-color: #96CDCD;
     cursor:pointer;
 }
 
