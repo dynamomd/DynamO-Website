@@ -29,21 +29,30 @@ function endswith($string, $test) {
   }
 
 echo "<table id=\"download-table\">\n";
-echo "<thead><tr><td>Version</td><td>Build date</td><td>Distribution</td></tr></thead>\n";
+echo "<thead><tr><td>Distribution</td><td>Version</td><td>Build date</td><td>Visualiser</td><td>Adv. Potentials</td></tr></thead>\n";
 echo "<tbody>\n";
 try {
-  $packagetypes = array("ubuntu14.04.deb" => "Ubuntu 14.04", "ubuntu12.04.deb" => "Ubuntu 12.04", "centos7.rpm" => "CentOS 7 (RedHat Enterprise Linux)", "centos6.6.rpm" => "CentOS 6.6 (RedHat Enterprise Linux)", "fedora21.rpm" => "Fedora 21", "debian7.deb" => "Debian 7 (Wheezy)", "opensuse13.2.rpm" => "OpenSUSE 13.2");
+  $packagetypes = array(
+    array("extension" => "ubuntu14.04.deb", "distro" => "Ubuntu 14.04", "vis" => "Yes", "c++11" => "Yes"),
+    array("extension" => "ubuntu12.04.deb", "distro" => "Ubuntu 12.04", "vis" => "Yes", "c++11" => "No"), 
+    array("extension" => "centos7.rpm", "distro" => "CentOS 7 (RedHat Enterprise Linux)", "vis" => "No", "c++11" => "No"),
+    array("extension" => "centos6.6.rpm", "distro" => "CentOS 6.6 (RedHat Enterprise Linux)", "vis" => "No", "c++11" => "No"),
+    array("extension" => "fedora21.rpm", "distro" => "Fedora 21", "vis" => "Yes", "c++11" => "Yes"),
+    array("extension" => "debian7.deb", "distro" => "Debian 7 (Wheezy)", "vis" => "Yes", "c++11" => "No"),
+    array("extension" => "opensuse13.2.rpm", "distro" => "OpenSUSE 13.2", "vis" => "Yes", "c++11" => "Yes"));
 
-  foreach($packagetypes as $extension => $distroid) {
-    $buildfiles = glob('build-uploads/*'.$extension);
+  foreach($packagetypes as $data) {
+    $buildfiles = glob('build-uploads/*'.$data["extension"]);
     if(!empty($buildfiles)) {
       array_multisort(array_map( 'filemtime', $buildfiles), SORT_NUMERIC,SORT_DESC, $buildfiles);
       $file=$buildfiles[0];
       preg_match("#dynamomd-([0-9\\.]+)#", $file, $matches);
       echo "<tr onclick=\"window.document.location='/".$file."'\">";
+      echo "<td>".$data["distro"]."</a></td>";
       echo "<td>".$matches[1]."</td>";
-    echo "<td>".date("d/m/y", filemtime($file))."</td>";
-      echo "<td>".$distroid."</a></td>";
+      echo "<td>".date("d/m/y", filemtime($file))."</td>";
+      echo "<td>".$data["vis"]."</td>";
+      echo "<td>".$data["c++11"]."</td>";
       echo "</tr>\n";
     }
   }
