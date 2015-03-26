@@ -28,18 +28,26 @@ function endswith($string, $test) {
   return substr_compare($string, $test, $strlen - $testlen, $testlen) === 0;
   }
 
+function YesNotd($value) {
+   if ($value){
+      echo "<td style=\"background-color:#aaffaa;\">Yes</td>";
+   } else {
+      echo "<td style=\"background-color:#ffaaaa;\">No</td>";
+   }
+  }
+
 echo "<table id=\"download-table\">\n";
 echo "<thead><tr><td>Distribution</td><td>Version</td><td>Build date</td><td>Visualiser</td><td>Adv. Potentials</td></tr></thead>\n";
 echo "<tbody>\n";
 try {
   $packagetypes = array(
-    array("extension" => "ubuntu14.04.deb", "distro" => "Ubuntu 14.04", "vis" => "Yes", "c++11" => "Yes"),
-    array("extension" => "ubuntu12.04.deb", "distro" => "Ubuntu 12.04", "vis" => "Yes", "c++11" => "No"), 
-    array("extension" => "centos7.rpm", "distro" => "CentOS 7 (RedHat Enterprise Linux)", "vis" => "No", "c++11" => "No"),
-    array("extension" => "centos6.6.rpm", "distro" => "CentOS 6.6 (RedHat Enterprise Linux)", "vis" => "No", "c++11" => "No"),
-    array("extension" => "fedora21.rpm", "distro" => "Fedora 21", "vis" => "Yes", "c++11" => "Yes"),
-    array("extension" => "debian7.deb", "distro" => "Debian 7 (Wheezy)", "vis" => "Yes", "c++11" => "No"),
-    array("extension" => "opensuse13.2.rpm", "distro" => "OpenSUSE 13.2", "vis" => "Yes", "c++11" => "Yes"));
+    array("extension" => "ubuntu14.04.deb", "distro" => "Ubuntu 14.04", "vis" => True, "c++11" => True),
+    array("extension" => "ubuntu12.04.deb", "distro" => "Ubuntu 12.04", "vis" => True, "c++11" => False), 
+    array("extension" => "centos7.rpm", "distro" => "CentOS 7 (RedHat Enterprise Linux)", "vis" => False, "c++11" => False),
+    array("extension" => "centos6.6.rpm", "distro" => "CentOS 6.6 (RedHat Enterprise Linux)", "vis" => False, "c++11" => False),
+    array("extension" => "fedora21.rpm", "distro" => "Fedora 21", "vis" => True, "c++11" => True),
+    array("extension" => "debian7.deb", "distro" => "Debian 7 (Wheezy)", "vis" => True, "c++11" => False),
+    array("extension" => "opensuse13.2.rpm", "distro" => "OpenSUSE 13.2", "vis" => True, "c++11" => True));
 
   foreach($packagetypes as $data) {
     $buildfiles = glob('build-uploads/*'.$data["extension"]);
@@ -51,8 +59,8 @@ try {
       echo "<td>".$data["distro"]."</a></td>";
       echo "<td>".$matches[1]."</td>";
       echo "<td>".date("d/m/y", filemtime($file))."</td>";
-      echo "<td>".$data["vis"]."</td>";
-      echo "<td>".$data["c++11"]."</td>";
+      YesNotd($data["vis"]);
+      YesNotd($data["c++11"]);
       echo "</tr>\n";
     }
   }
