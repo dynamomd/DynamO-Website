@@ -66,14 +66,13 @@
     by <a href="http://www.blue-neutrino.com/">Severin Strobl</a>.
   </li>
   <li>
-    A big thank you to Michael R Sweet for
-    creating <a href="http://www.easysw.com/~mike/fldiff/index.html">fldiff</a>,
-    a program which makes it so easy to compare good and bad EDMD
-    trajectories, its has saved hours of debugging in the scheduler code.
+    Thank you to Michael R Sweet for creating fldiff, a program which
+    makes it so easy to compare good and bad EDMD trajectories and has
+    saved hours of debugging in the scheduler code. This has now been
+    superceeded by the meld program.
   </li>
   <li>
-    Cédric Laugerotte's website was a great help for determining
-    <a href="http://student.ulb.ac.be/~claugero/sphere/index.html">tesselations
-    of spheres</a>.
+    Cédric Laugerotte's website (now offline) was a great help for determining
+    tesselations of spheres</a>.
   </li>
 </ul>
