@@ -18,8 +18,7 @@
 <h1 id="prebuilt">Prebuilt packages</h1>
 <p>
   These builds of the DynamO source code are built regularly for a
-  range of popular Linux distributions. You may need to install
-  additional packages for DynamO to work.
+  range of popular Linux distributions.
 </p>
 <?php
 function endswith($string, $test) {
@@ -58,6 +57,12 @@ catch (RuntimeException $e) {
 echo "</tbody>\n";
 echo "</table>\n";
 ?>
+<p>
+  Please note, you may need to install additional packages for DynamO
+  to work, and not all functionality is supported across all
+  platforms. Only more recent distributions support the visualiser and
+  advanced potentials.
+</p>
 <p>
   You can check the status of the builds using
   the <a href="http://cdash.dynamomd.org/index.php?project=DynamO">DynamO
