@@ -30,9 +30,9 @@ function endswith($string, $test) {
 
 function YesNotd($value) {
    if ($value){
-      echo "<td style=\"background-color:#aaffaa;\">Yes</td>";
+      echo "<td class=\"yes\">Yes</td>";
    } else {
-      echo "<td style=\"background-color:#ffaaaa;\">No</td>";
+      echo "<td class=\"no\">No</td>";
    }
   }
 
