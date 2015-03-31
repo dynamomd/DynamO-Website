@@ -230,7 +230,7 @@ $contentdate = date("l jS F Y ", filemtime("pages/".$page.".php"));
       })();
     </script>
     <?php if ($syntaxhighlighter) { ?>
-    <link rel="stylesheet" href="http://yandex.st/highlightjs/8.0/styles/googlecode.min.css"/>
+    <link rel="stylesheet" type='text/css' property="stylesheet" href="http://yandex.st/highlightjs/8.0/styles/googlecode.min.css"/>
     <script src="http://yandex.st/highlightjs/8.0/highlight.min.js"></script>
     <script>
       hljs.configure({ languages:['bash', 'xml', 'python']});
