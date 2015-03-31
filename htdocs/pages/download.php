@@ -17,8 +17,8 @@
 
 <h1 id="prebuilt">Prebuilt packages</h1>
 <p>
-  These builds of the DynamO source code are built regularly for a
-  range of popular Linux distributions.
+  The DynamO source code is built regularly for a range of popular
+  Linux distributions.
 </p>
 <?php
 function endswith($string, $test) {
@@ -37,8 +37,7 @@ function YesNotd($value) {
   }
 
 echo "<table id=\"download-table\">\n";
-echo "<thead><tr><td>Distribution</td><td>Version</td><td>Build date</td><td>Visualiser</td><td>Adv. Potentials</td></tr></thead>\n";
-echo "<tbody>\n";
+echo "<thead><tr><th>Distribution</th><th>Version</th><th>Build date</th><th>Visualiser</th><th>Adv. Potentials</th></tr></thead>\n";
 try {
   $packagetypes = array(
     array("extension" => "ubuntu14.04.deb", "distro" => "Ubuntu 14.04", "vis" => True, "c++11" => True),
@@ -49,6 +48,8 @@ try {
     array("extension" => "debian7.deb", "distro" => "Debian 7 (Wheezy)", "vis" => True, "c++11" => False),
     array("extension" => "opensuse13.2.rpm", "distro" => "OpenSUSE 13.2", "vis" => True, "c++11" => True));
 
+  $filecount=0;
+  echo "<tbody>\n";
   foreach($packagetypes as $data) {
     $buildfiles = glob('build-uploads/*'.$data["extension"]);
     if(!empty($buildfiles)) {
@@ -56,13 +57,18 @@ try {
       $file=$buildfiles[0];
       preg_match("#dynamomd-([0-9\\.]+)#", $file, $matches);
       echo "<tr onclick=\"window.document.location='/".$file."'\">";
-      echo "<td>".$data["distro"]."</a></td>";
+      echo "<td>".$data["distro"]."</td>";
       echo "<td>".$matches[1]."</td>";
       echo "<td>".date("d/m/y", filemtime($file))."</td>";
       YesNotd($data["vis"]);
       YesNotd($data["c++11"]);
       echo "</tr>\n";
+      $filecount+=1;
     }
+  }
+  echo "</tbody>\n";
+  if ($filecount==0) {
+   echo "<tr><th colspan=\"5\">No builds found!</td></tr>";
   }
 }
 catch (RuntimeException $e) {
@@ -70,7 +76,6 @@ catch (RuntimeException $e) {
   echo "<li>Failed to load the prebuilt packages. ";
   echo $e->getMessage()."</li>\n";
 }
-echo "</tbody>\n";
 echo "</table>\n";
 ?>
 <p>
