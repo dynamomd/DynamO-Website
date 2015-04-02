@@ -11,7 +11,7 @@
 <h1>Programming Credits</h1>
 <ul>
   <li>
-    <b>Marcus Bannerman (2006-Present)</b>: DynamO was originally developed
+    <b>Marcus Bannerman</b>: DynamO was originally developed
     during Marcus' PhD, under the supervision of Dr Leo Lue and was
     funded through a EPSRC doctoral training award. From 2009 till
     2011, this work continued during his Post-Doc at the University of
@@ -21,18 +21,24 @@
     simulators.
   </li>
   <li>
-    <b>Leo Lue (2006-Present)</b>: Provided a complete event driven code,
-    histogram reweighting scripts and more which were used as references
-    while DynamO was developed. Leo provides a great amount of
-    theoretical/technical support and more recently implemented the MJ
+    <b>Leo Lue</b>: Provided a complete event driven code, histogram
+    reweighting scripts, and more which were used as reference
+    implementations while DynamO was developed. Leo provides a great
+    amount of theoretical/technical support and implemented the MJ
     model for protein interactions.
   </li>
+  <li><b>Gil Rutter</b>: Gil implemented the PRIME protein potential,
+  which is the first complex multi-site potential in DynamO. This
+  required significant development and determination of the
+  free/unpublished model parameters. Gil continues to work on
+  developing this model.
+  </li>
   <li>
-    <b>Robert Sargant (2008-2010)</b>: Rob started the work on
+    <b>Robert Sargant</b>: Robert began the implementation of
     asymmetric potentials with rotational degrees of freedom. He
-    implemented the dynamics of lines and the essential root finder of
-    Frenkel and Maguire among other improvements. He was also funded
-    by the EPSRC.
+    implemented the dynamics of lines and the root finder of Frenkel
+    and Maguire among other improvements. Robert was funded by the
+    EPSRC under a DTA award.
   </li>
 </ul>
 <h1>Libraries and Source Code Used</h1>
