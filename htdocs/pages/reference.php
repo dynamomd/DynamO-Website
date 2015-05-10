@@ -1789,6 +1789,13 @@ its parameters");?>
     events.
   </li>
   <li>
+    <b>Dimensions</b> <i>(attribute)</i>: A number indicating how many
+    dimensions of the particles are to be thermostatted. The default
+    is all (=3). If set to 2, the $z$ dimension is not affected by the
+    thermostat, and if set to 1, neither the $y$ or $z$-dimensions are
+    affected.
+  </li>
+  <li>
     <b><a href="#idrange">IDRange</a></b> <i>(tag)</i>: This <a href="#idrange">IDRange</a> tag specifies the
     particles to which the thermostat is applied. See
     the <a href="#idrange">section on IDRanges</a> for more
