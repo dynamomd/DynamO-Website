@@ -101,4 +101,9 @@
     <a href="http://people.cas.uab.edu/~khu/gt/Hardballs">Hardballs</a>:
     <br /> This appears to be the start of 2D EDMD simulation code.
   </li>
+  <li>
+    <a href="http://www.etomica.org">etomica</a>: Java code for
+    simulating hard-spheres, square-wells, and a wide range of other
+    models.
+  </li>
 </ul>
