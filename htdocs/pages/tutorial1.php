@@ -229,7 +229,9 @@ make
   First, you will need to pull any new updates from the git repository:
 </p>
 <?php codeblockstart(); ?>cd DynamO
-git pull<?php codeblockend("bash"); ?>
+git pull
+git submodule init
+git submodule update<?php codeblockend("bash"); ?>
 <p>
   Then you should scrub the old build. This can be done by removing
   the build-dir:
