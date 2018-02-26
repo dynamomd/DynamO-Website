@@ -34,7 +34,7 @@
   which, if they're installed, will activate extra features. The
   minimum requirements are <b>git</b>, <b>cmake</b>, and the <b>boost
   libraries</b>. For the visualiser to compile, you
-  need <b>freeglut</b>, <b>GLEW</b>, and <b>gtkmm-2.4</b>. For your
+  need <b>freeglut</b>, <b>GLEW</b>, and <b>gtkmm-3</b>. For your
   convenience, commands to install these packages on Debian,
   RedHat-based, and OpenSUSE distributions are given below.
 </p>
@@ -47,7 +47,7 @@
 <p>
   And the optional packages with this command:
 </p>
-<?php codeblockstart(); ?>apt-get install libjudy-dev libgtkmm-2.4-dev freeglut3-dev libavcodec-dev libglew1.6-dev libxmu-dev<?php codeblockend("bash"); ?>
+<?php codeblockstart(); ?>apt-get install libjudy-dev libgtkmm-3.0-dev freeglut3-dev libavcodec-dev libglew1.6-dev libxmu-dev<?php codeblockend("bash"); ?>
 <p>
   Now you can continue to <a href="#step1">step 1</a>.
 </p>
@@ -106,7 +106,7 @@ yum install git cmake boost-devel bzip2-devel gcc-c++
   following packages:
 </p>
 <?php codeblockstart(); ?>
-yum install glew-devel freeglut-devel gtkmm24-devel libpng-devel libXmu-devel
+yum install glew-devel freeglut-devel gtkmm30-devel libpng-devel libXmu-devel
 <?php codeblockend("bash"); ?>
 <h2>OpenSUSE (13.1)</h2>
 <p>
