@@ -131,9 +131,11 @@ yum install glew-devel freeglut-devel gtkmm30-devel libpng-devel libXmu-devel
 <?php codeblockstart(); ?>git clone git://github.com/toastedcrumpets/DynamO.git<?php codeblockend("bash"); ?>
 <p>
   Both of these commands create a folder called DynamO with the full
-  code inside. Change in to this folder to build the code.
+  code inside. Change in to this folder to grab the submodules and to build the code.
 </p>
-<?php codeblockstart(); ?>cd DynamO<?php codeblockend("bash"); ?>
+<?php codeblockstart(); ?>cd DynamO
+git submodule init
+git submodule update<?php codeblockend("bash"); ?>
 <h1>Step 2: Compilation</h1>
 <p>
   DynamO uses the CMake build system to handle its compilation. You
