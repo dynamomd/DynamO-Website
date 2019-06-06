@@ -50,6 +50,12 @@
 </p>
 <ul>
   <li>
+    S. Pieprzyk, M. N. Bannerman, A. C. Brańka, M. Chudakc, and D. M. Heyes, <a href="http://dx.doi.org/10.1039/C9CP00903E">"Thermodynamic and dynamical properties of the hard sphere system revisited by molecular dynamics simulation,"</a> <i>Phys. Chem. Chem. Phys.</i>, <b>21</b>, 6886–6899 (2019)
+  </li>
+  <li>
+    H. Zhang and Y. Han, <a href="https://journals.aps.org/prx/abstract/10.1103/PhysRevX.8.041023">"Compression-induced polycrystal-glass transition in binary crystals,"</a> <i>Phys. Rev. X</i>, <b>8</b>, 041023 (2018)
+  </li>
+  <li>
     A. J. Dunleavy, K. Wiesner, R. Yamamoto, and C. P. Royall <a href="http://dx.doi.org/10.1038/ncomms7089">"Mutual information reveals multiple structural relaxation mechanisms in a model glass former,"</a> <i>Nature Communications</i>, <b>6</b>, 6089 (2015)
   </li>
   <li>
