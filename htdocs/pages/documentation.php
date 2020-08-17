@@ -50,6 +50,10 @@
 </p>
 <ul>
   <li>
+    C. Alexandrou, V. Harmandaris, A. Irakleous, G. Koutsou,and N. Savva, <a href="https://arxiv.org/abs/2008.03165">
+    "Modeling the evolution of COVID-19,"</a> <i>Arxiv</i>, 2008.03165 (2020)
+  </li>
+  <li>
     S. Pieprzyk, M. N. Bannerman, A. C. Brańka, M. Chudakc, and D. M. Heyes, <a href="http://dx.doi.org/10.1039/C9CP00903E">"Thermodynamic and dynamical properties of the hard sphere system revisited by molecular dynamics simulation,"</a> <i>Phys. Chem. Chem. Phys.</i>, <b>21</b>, 6886–6899 (2019)
   </li>
   <li>
