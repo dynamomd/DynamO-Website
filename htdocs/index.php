@@ -230,15 +230,15 @@ $contentdate = date("l jS F Y ", filemtime("pages/".$page.".php"));
       })();
     </script>
     <?php if ($syntaxhighlighter) { ?>
-    <link rel="stylesheet" type='text/css' property="stylesheet" href="http://yandex.st/highlightjs/8.0/styles/googlecode.min.css"/>
-    <script src="http://yandex.st/highlightjs/8.0/highlight.min.js"></script>
+    <link rel="stylesheet" type='text/css' property="stylesheet" href="https://yandex.st/highlightjs/8.0/styles/googlecode.min.css"/>
+    <script src="https://yandex.st/highlightjs/8.0/highlight.min.js"></script>
     <script>
       hljs.configure({ languages:['bash', 'xml', 'python']});
       hljs.initHighlightingOnLoad();
     </script>
     <?php } ?>
     <script src="/prefixfree.min.js"></script>
-    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
     <?php if ($containsvideo) { ?>
     <script type="text/javascript" src="https://www.youtube.com/iframe_api"></script>
     <script type="text/javascript">
@@ -274,7 +274,7 @@ $contentdate = date("l jS F Y ", filemtime("pages/".$page.".php"));
     <?php }?>
     <!-- MATHJAX -->
     <?php if ($mathjax) { ?>
-    <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+    <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
     </script>
     <script type="text/x-mathjax-config">
       MathJax.Hub.Config({
