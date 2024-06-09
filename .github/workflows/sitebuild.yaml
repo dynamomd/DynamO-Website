@@ -38,7 +38,7 @@ jobs:
       - name: Build webserver with apache and php
         run: docker build -t webserver .
       - name: Run webserver ready to serve the site
-        run: docker run -d -p 8080:80 webserver -v $(pwd):/var/www/html
+        run: docker run -d -p 8080:80 -v $(pwd):/var/www/html webserver 
       - name: Wait for webserver to start
         run: sleep 5
       - name: Download pages using wget to the deploy directory
