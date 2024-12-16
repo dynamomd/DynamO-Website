@@ -40,14 +40,14 @@
 </p>
 <h2>Ubuntu</h2>
 <p>
-  On <b>Ubuntu</b> versions 12.04 and above, you can install the minimum dependencies
+  On <b>Ubuntu</b>, you can install the minimum dependencies
   using the following command:
 </p>
-<?php codeblockstart(); ?>sudo apt-get install git build-essential cmake libboost-all-dev libbz2-dev<?php codeblockend("bash"); ?>
+<?php codeblockstart(); ?>sudo apt-get install git build-essential cmake libboost-all-dev libbz2-dev libeigen3-dev<?php codeblockend("bash"); ?>
 <p>
   And the optional packages with this command:
 </p>
-<?php codeblockstart(); ?>apt-get install libjudy-dev libgtkmm-3.0-dev freeglut3-dev libavcodec-dev libglew1.6-dev libxmu-dev<?php codeblockend("bash"); ?>
+<?php codeblockstart(); ?>apt-get install libgtkmm-3.0-dev freeglut3-dev libavcodec-dev libglew-dev libxmu-dev<?php codeblockend("bash"); ?>
 <p>
   Now you can continue to <a href="#step1">step 1</a>.
 </p>
