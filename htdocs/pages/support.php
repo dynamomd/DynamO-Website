@@ -25,7 +25,7 @@
   You can contact the developers of DynamO by emailing the following
   address:
 </p>
-<?php button("support@dynamomd.org", "mailto:support@dynamomd.org");?>
+<?php button("support@dynamomd.com", "mailto:support@dynamomd.com");?>
 <p>
   If it turns out that you've discovered a bug in DynamO, you will be
   encouraged to post a bug report on the Github issue tracker so you
